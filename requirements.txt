@@ -1,0 +1,2 @@
+django==1.7.1
+mezzanine==3.1.10

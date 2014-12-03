@@ -8,11 +8,12 @@ import string
 import tempfile
 
 LOCAL_SETTINGS_PATH = './website/local_settings.py'
+LOCAL_SETTINGS_EXAMPLE_PATH = './website/local_settings_example.py'
 
 def main():
     if os.path.exists(LOCAL_SETTINGS_PATH):
         print(LOCAL_SETTINGS_PATH + ' already exists, please remove if manually if you indent to overwrite it.')
-    shutil.copyfile('./website/local_settings_example.py', LOCAL_SETTINGS_PATH)
+    shutil.copyfile(LOCAL_SETTINGS_EXAMPLE_PATH, LOCAL_SETTINGS_PATH)
     secret_key_random = generate_random_secret_key()
     replace(LOCAL_SETTINGS_PATH, "SECRET_KEY = ''", "SECRET_KEY = '" + secret_key_random + "'")
 

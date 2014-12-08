@@ -12,7 +12,7 @@ LOCAL_SETTINGS_EXAMPLE_PATH = './website/local_settings_example.py'
 
 def main():
     if os.path.exists(LOCAL_SETTINGS_PATH):
-        print(LOCAL_SETTINGS_PATH + ' already exists, please remove if manually if you indent to overwrite it.')
+        print('ERROR: ' + LOCAL_SETTINGS_PATH + ' already exists! Please remove this file manually if you intent to overwrite it.')
     shutil.copyfile(LOCAL_SETTINGS_EXAMPLE_PATH, LOCAL_SETTINGS_PATH)
     secret_key_random = generate_random_secret_key()
     replace(LOCAL_SETTINGS_PATH, "SECRET_KEY = ''", "SECRET_KEY = '" + secret_key_random + "'")

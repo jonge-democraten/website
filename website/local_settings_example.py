@@ -3,6 +3,8 @@ DEBUG = True
 # SECURITY WARNING: Make this unique, and don't share it with anybody.
 SECRET_KEY = ''
 
+TIME_ZONE = "Europe/Amsterdam"
+
 DATABASES = {
     "default": {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".

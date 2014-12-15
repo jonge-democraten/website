@@ -3,7 +3,7 @@ python:
   - "3.4"
 # command to install dependencies
 install:
-  - "./build_env.sh"
+  - "pip install -r requirements.txt"
   - "python create_local_settings.py"
 # command to run tests
 script:

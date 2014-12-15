@@ -1,5 +1,6 @@
 website
 =======
+[![Build Status](https://travis-ci.org/jonge-democraten/website.svg?branch=master)](https://travis-ci.org/jonge-democraten/website)
 
 JD website
 

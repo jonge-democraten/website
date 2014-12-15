@@ -8,3 +8,5 @@ install:
 # command to run tests
 script:
   - "python website/manage.py migrate"
+notifications:
+  email: false

@@ -7,6 +7,6 @@ install:
   - "python create_local_settings.py"
 # command to run tests
 script:
-  - "python website/manage.py migrate"
+  - "python website/manage.py createdb --nodata --noinput"
 notifications:
   email: false

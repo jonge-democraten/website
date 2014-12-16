@@ -8,5 +8,6 @@ install:
 # command to run tests
 script:
   - "python website/manage.py createdb --nodata --noinput"
+  - "python website/manage.py test website"
 notifications:
   email: false

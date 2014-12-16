@@ -243,6 +243,7 @@ INSTALLED_APPS = (
     "mezzanine.pages",
     "mezzanine.galleries",
     "mezzanine.twitter",
+    "website",
     #"mezzanine.accounts",
     #"mezzanine.mobile",
 )

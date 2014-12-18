@@ -145,7 +145,7 @@ AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # The numeric mode to set newly-uploaded files to. The value should be
@@ -244,8 +244,8 @@ INSTALLED_APPS = (
     "mezzanine.galleries",
     "mezzanine.twitter",
     "website",
-    #"mezzanine.accounts",
-    #"mezzanine.mobile",
+    # "mezzanine.accounts",
+    # "mezzanine.mobile",
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -310,14 +310,14 @@ OPTIONAL_APPS = (
 #########################
 
 LOG_DIR = PROJECT_ROOT
-                       
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format' : "[%(asctime)s] %(levelname)s [%(name)s::%(funcName)s() (%(lineno)s)]: %(message)s",
-            'datefmt' : "%d/%b/%Y %H:%M:%S"
+            'format': "[%(asctime)s] %(levelname)s [%(name)s::%(funcName)s() (%(lineno)s)]: %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
         },
         'simple': {
             'format': "[%(asctime)s] %(levelname)s: %(message)s"
@@ -355,14 +355,14 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers':['file_django', 'console'],
+            'handlers': ['file_django', 'console'],
             'propagate': True,
-            'level':'ERROR',
+            'level': 'ERROR',
         },
         'website': {
-            'handlers':['file_debug', 'file_error', 'console'],
+            'handlers': ['file_debug', 'file_error', 'console'],
             'propagate': True,
-            'level':'DEBUG',
+            'level': 'DEBUG',
         },
     },
 }

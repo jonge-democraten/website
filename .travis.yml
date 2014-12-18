@@ -10,6 +10,6 @@ install:
 script:
   - "python website/manage.py createdb --nodata --noinput"
   - "python website/manage.py test website"
-  - "flake8 website"
+  - "flake8 website --statistics --exit-zero"
 notifications:
   email: false

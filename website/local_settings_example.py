@@ -5,6 +5,8 @@ SECRET_KEY = ''
 
 TIME_ZONE = "Europe/Amsterdam"
 
+ALLOWED_HOSTS = ['127.0.0.1']
+
 DATABASES = {
     "default": {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".

@@ -31,9 +31,9 @@ Installation of the full project, and running a test server, can be done in a fe
 For Windows users, it is adviced to install a Linux virtual machine and use this to install the project. Please visit [this](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox) howto for step-by-step instructions to install Ubuntu on VirtualBox. 
 
 **Virtual environment**  
-Build a new work environment. This creates a virtual enviroment `env` and installs all required modules,  
+Build a new work environment. This creates a virtual environment `env` and installs all required modules,  
 `$ ./build_env.sh`  
-Activate the virtual enviroment,  
+Activate the virtual environment,  
 `$ source ./env/bin/activate`  
 From now on, everything you do within the project should be from a shell with activated virtual env.
 
@@ -118,7 +118,7 @@ The log statements include log level, application, class, function and line numb
 ##### Levels
 Five log levels are available, `logger.debug()`, `logger.info()`, `logger.warning()`, `logger.error()`, `logger.critical()`. 
 
-##### Ouput (console and files)
+##### Output (console and files)
 The log statements for the applications are written to the console, if DEBUG=True, and always to `debug.log` and `error.log`. Django errors can be found in `django.log`.
 
 ##### Confidential information 

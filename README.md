@@ -16,14 +16,16 @@ The project is in the initial development stage. Nothing is stable and everythin
   - [Logging](#workflow)
 
 ## Installation
+Installation is easy.
 
-##### Quick steps
+#### Basics
 1. `$ ./build_env.sh`
 1. `$ source ./env/bin/activate`  
 1. `$ python create_local_settings.py`
 1. `$ python website/manage.py createdb`
 1. `$ python website/manage.py runserver`  
 
+#### Detailed instructions
 **Linux**  
 Installation of the full project, and running a test server, can be done in a few minutes on any Linux machine. Just follow the steps below. It does not require manual configuration.
 
@@ -47,7 +49,7 @@ You have to create an initial database and a root user and password for the data
 
 **Run a test server**  
 You can run a local test server with the command,  
-`(env) $ python3 website/manage.py runserver`  
+`(env) $ python website/manage.py runserver`  
 You can now visit [127.0.0.1:8000](http://127.0.0.1:8000) in your browser to view the web interface.
 
 **Clean project**  
@@ -127,4 +129,4 @@ Confidential information should not be logged. During initial development, loggi
 #### Database migrations
 A [database migration](https://docs.djangoproject.com/en/1.7/topics/migrations/) needs to be created after database structure changes in `models.py`,  
 `$ python website/manage.py makemigrations <app_label>`  
-The generated migration file is commited together with changes in `models.py`. Migrations have to be carefully managed between different branches, so keep track of other branches and prepare for a merge.
+The generated migration file is committed together with changes in `models.py`. Migrations have to be carefully managed between different branches, so keep track of other branches and prepare for a merge.

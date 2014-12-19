@@ -5,13 +5,47 @@ website
 JD website
 
 ## Installation
- * **Build a new work environment:** `$ ./build_env.sh`
- * **Remove the current work env:** `$ ./clean_env.sh`
- * **Generate local settings:** `$ python3 create_local_settings.py`
- * **Activate work env:** `$ source ./env/bin/activate`
- * **Create a database:** `(env) $ python3 website/manage.py createdb`
- * **Run the test server:** `(env) $ python3 website/manage.py runserver`
- 
+
+##### Quick steps
+1. `$ ./build_env.sh`
+1. `$ source ./env/bin/activate`  
+1. `$ python create_local_settings.py`
+1. `$ python website/manage.py createdb`
+1. `$ python website/manage.py runserver`  
+
+##### Linux
+Installation of the full project, and running a test server, can be done in a few minutes on any Linux machine. Just follow the steps below. It does not require manual configuration.
+
+##### Windows
+For Windows users, it is adviced to install a Linux virtual machine and use this to install the project. Please visit [this](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox) howto for step-by-step instructions to install Ubuntu on VirtualBox. 
+
+##### Virtual environment
+Build a new work environment. This creates a virtual enviroment `env` and installs all required modules,  
+`$ ./build_env.sh`
+
+Activate the virtual enviroment,  
+`$ source ./env/bin/activate`
+
+From now on, everything you do within the project should be from a shell with activated virtual env.
+
+##### Configure Django settings
+A default `local_settings.py` can be generated for development,  
+`$ python create_local_settings.py`
+
+##### Create a database  
+You have to create an initial database and a root user and password for the database,  
+`(env) $ python website/manage.py createdb`
+
+##### Run the test server
+You can run a local test server with the command,  
+`(env) $ python3 website/manage.py runserver`  
+You can now visit [127.0.0.1:8000](http://127.0.0.1:8000) in your browser to view the web interface.
+
+##### Clean project
+You can remove the virtual environment and database with,  
+`$ ./clean_env.sh`
+
+
 ## Testing 
 All application logic code is to be unit tested. Unit tests are ideally created before development of functionality.  
 It supports development and documents, in real code instead of text, what classes and functions are supposed to do.
@@ -24,14 +58,14 @@ This framework is based on the Python unittest module.
 Tests are defined in the `tests.py` file of the application directory. 
 
 ##### Run tests
-Tests for the project's Django applications can be run with the following command, 
-
+Tests for the project's Django applications can be run with the following command,  
 `(env) $ python website/manage.py test <appname>`
 
 #### Automated testing
 [Travis](https://travis-ci.org/jonge-democraten/website) is used to automatically install the environment and run tests on changes in the project.  
 The file `.travis.yml` contains the Travis commands to install and test the project.  
 The build indicator on top of this document shows the status of the last automated install and tests.
+
 
 ## Development
 This section provides some guidelines to ensure consistency within the project and streamline the workflow.  
@@ -41,7 +75,6 @@ The default Python and Django code style is used. Read about it [here](https://d
 
 *"Write code as simple as possible and focus on readability. Write code for others to understand and read."* - [source]
 (http://c2.com/cgi/wiki?CodeForTheMaintainer)
-
 
 #### Workflow
 New features are developed on a separate feature branch.  

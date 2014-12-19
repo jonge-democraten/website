@@ -76,16 +76,16 @@ The build indicator on top of this document shows the status of the last automat
 ## Development
 This section provides some guidelines to ensure consistency within the project and streamline the workflow.  
 
+#### Workflow
+New features are developed on a separate feature branch.  
+This allows you to work independently on a feature and still share code. Push feature branch commits often to communicate what you are working on.  
+Read more about this workflow [here](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
+
 #### Coding standards
 The default Python and Django code style is used. Read about it [here](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/).
 
 *"Write code as simple as possible and focus on readability. Write code for others to understand and read."* - [source]
 (http://c2.com/cgi/wiki?CodeForTheMaintainer)
-
-#### Workflow
-New features are developed on a separate feature branch.  
-This allows you to work independently on a feature and still share code. Push feature branch commits often to communicate what you are working on.  
-Read more about this workflow [here](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
 
 #### Logging
 The Python logging module is used for logging. Add and commit plenty of useful log statements. This support effective debugging. 

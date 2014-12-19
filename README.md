@@ -68,7 +68,7 @@ Tests are defined in the `tests.py` file of the application directory.
 
 ##### Run tests
 Tests for the project's Django applications can be run with the following command,  
-`(env) $ python website/manage.py test <appname>`
+`(env) $ python website/manage.py test <app_label>`
 
 #### Automated testing
 [Travis](https://travis-ci.org/jonge-democraten/website) is used to automatically install the environment and run tests on changes in the project.  
@@ -123,3 +123,8 @@ The log statements for the applications are written to the console, if DEBUG=Tru
 
 ##### Confidential information 
 Confidential information should not be logged. During initial development, logging of confidential information is allowed if marked with a `CONF` tag, `logger.debug('CONF ' + member.DNA)`. These will be removed before deployment. 
+
+#### Database migrations
+A [database migration](https://docs.djangoproject.com/en/1.7/topics/migrations/) needs to be created after database structure changes in `models.py`,  
+`$ python website/manage.py makemigrations <app_label>`  
+The generated migration file is commited together with changes in `models.py`. Migrations have to be carefully managed between different branches, so keep track of other branches and prepare for a merge.

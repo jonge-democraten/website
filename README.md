@@ -3,6 +3,14 @@ website
 [![Build Status](https://travis-ci.org/jonge-democraten/website.svg?branch=master)](https://travis-ci.org/jonge-democraten/website)
 
 JD website
+## Contents
+
+- [Installation](#installation)
+- [Testing](#testing)
+- [Development](#development)
+  - [Workflow](#workflow)
+  - [Coding standards](#coding-standards)
+  - [Logging](#workflow)
 
 ## Installation
 
@@ -13,35 +21,33 @@ JD website
 1. `$ python website/manage.py createdb`
 1. `$ python website/manage.py runserver`  
 
-##### Linux
+**Linux**  
 Installation of the full project, and running a test server, can be done in a few minutes on any Linux machine. Just follow the steps below. It does not require manual configuration.
 
-##### Windows
+**Windows**  
 For Windows users, it is adviced to install a Linux virtual machine and use this to install the project. Please visit [this](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox) howto for step-by-step instructions to install Ubuntu on VirtualBox. 
 
-##### Virtual environment
+**Virtual environment**  
 Build a new work environment. This creates a virtual enviroment `env` and installs all required modules,  
-`$ ./build_env.sh`
-
+`$ ./build_env.sh`  
 Activate the virtual enviroment,  
-`$ source ./env/bin/activate`
-
+`$ source ./env/bin/activate`  
 From now on, everything you do within the project should be from a shell with activated virtual env.
 
-##### Configure Django settings
+**Configure Django settings**  
 A default `local_settings.py` can be generated for development,  
 `$ python create_local_settings.py`
 
-##### Create a database  
+**Create a database**  
 You have to create an initial database and a root user and password for the database,  
 `(env) $ python website/manage.py createdb`
 
-##### Run the test server
+**Run a test server**  
 You can run a local test server with the command,  
 `(env) $ python3 website/manage.py runserver`  
 You can now visit [127.0.0.1:8000](http://127.0.0.1:8000) in your browser to view the web interface.
 
-##### Clean project
+**Clean project**  
 You can remove the virtual environment and database with,  
 `$ ./clean_env.sh`
 

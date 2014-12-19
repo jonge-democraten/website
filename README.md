@@ -13,6 +13,7 @@ The project is in the initial development stage. Nothing is stable and everythin
 - [Development](#development)
   - [Workflow](#workflow)
   - [Coding standards](#coding-standards)
+  - [Code documentation](#code-documentation)
   - [Logging](#logging)
   - [Database migrations](#database-migrations)
 
@@ -88,7 +89,7 @@ This allows you to work independently on a feature and still share code. Push fe
 Read more about this workflow [here](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
 
 #### Coding standards
-The default Python and Django code style is used. Read about it [here](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/).  
+The default Python and Django [code style](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/) is used.  
 Write code as simple as possible and focus on readability. Write code for others to understand and read.
 
 *"Always code as if the person who ends up maintaining your code is a violent psychopath who knows where you live. "* - [source](http://c2.com/cgi/wiki?CodeForTheMaintainer)
@@ -96,6 +97,25 @@ Write code as simple as possible and focus on readability. Write code for others
 **Flake8**  
 Flake8 is a Python tool to check code style. It runs automatically on Travis after each commit.  
 You can find the Flake8 output in the [latest Travis build log](https://travis-ci.org/jonge-democraten/website).
+
+#### Code documentation
+Add comments to code that is not self-explanatory.  
+Use [python docstrings](http://en.wikipedia.org/wiki/Docstring#Python) to describe files, classes and functions.  
+Add a brief docstring to files and classes. To functions only if necessary. Example,
+```python
+"""
+File description.
+"""
+
+class ExampleClass(Example):
+    """ Class description. """
+
+    def example_function(self):
+        """
+        Function description 
+        on multiple lines.
+        """
+```
 
 #### Logging
 The Python logging module is used for logging. Add and commit plenty of useful log statements. This support effective debugging. 

@@ -1,8 +1,11 @@
-website
+jdwebsite
 =======
-[![Build Status](https://travis-ci.org/jonge-democraten/website.svg?branch=master)](https://travis-ci.org/jonge-democraten/website)
+[![Build Status](https://travis-ci.org/jonge-democraten/website.svg?branch=master)](https://travis-ci.org/jonge-democraten/website)  
+A website application and content management system in development for the [Jonge Democraten](http://jongedemocraten.nl/).  
+Based on Python, Django and [Mezzanine](http://mezzanine.jupo.org/). Open-source and under the MIT-licence. 
 
-JD website
+The project is in the initial development stage. Nothing is stable and everything may change. 
+
 ## Contents
 
 - [Installation](#installation)

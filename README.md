@@ -13,7 +13,8 @@ The project is in the initial development stage. Nothing is stable and everythin
 - [Development](#development)
   - [Workflow](#workflow)
   - [Coding standards](#coding-standards)
-  - [Logging](#workflow)
+  - [Logging](#logging)
+  - [Database migrations](#database-migrations)
 
 ## Installation
 Installation is easy.
@@ -50,7 +51,7 @@ You have to create an initial database and a root user and password for the data
 **Run a test server**  
 You can run a local test server with the command,  
 `(env) $ python website/manage.py runserver`  
-You can now visit [127.0.0.1:8000](http://127.0.0.1:8000) in your browser to view the web interface.
+and visit [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser to view the web interface.
 
 **Clean project**  
 You can remove the virtual environment and database with,  
@@ -122,7 +123,7 @@ Five log levels are available, `logger.debug()`, `logger.info()`, `logger.warnin
 The log statements for the applications are written to the console, if DEBUG=True, and always to `debug.log` and `error.log`. Django errors can be found in `django.log`.
 
 **Configuration**  
-Logging is configured in the Django `settings.py` `LOGGING` variables. Information about configuration you can be found [here](https://docs.djangoproject.com/en/1.7/topics/logging/). New applications have to be added before logging becomes active for those applications. 
+Logging is configured in the Django `settings.py` `LOGGING` variables. Information about configuration can be found [here](https://docs.djangoproject.com/en/1.7/topics/logging/). New applications have to be added before logging becomes active for those applications. 
 
 **Confidential information**  
 Confidential information should not be logged. During initial development, logging of confidential information is allowed if marked with a `CONF` tag, `logger.debug('CONF ' + member.DNA)`. These will be removed before deployment. 

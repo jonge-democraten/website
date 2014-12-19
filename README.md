@@ -68,7 +68,7 @@ The project uses the [Django unit test](https://docs.djangoproject.com/en/dev/to
 This framework is based on the Python unittest module.  
 Tests are defined in the `tests.py` file of the application directory. 
 
-##### Run tests
+**Run tests**  
 Tests for the project's Django applications can be run with the following command,  
 `(env) $ python website/manage.py test <app_label>`
 
@@ -99,9 +99,7 @@ You can find the Flake8 output in the [latest Travis build log](https://travis-c
 #### Logging
 The Python logging module is used for logging. Add and commit plenty of useful log statements. This support effective debugging. 
 
-Logging is configured in the Django `settings.py` `LOGGING` variables. Information about configuration you can be found [here](https://docs.djangoproject.com/en/1.7/topics/logging/). New applications have to be added before logging becomes active for those applications. 
-
-##### How to use
+**How to use**  
 To add log statements, simply add the following at the top of your Python file,
 ```python
 import logging
@@ -117,13 +115,16 @@ The log statements include log level, application, class, function and line numb
 ```python
 [2014-12-19 22:39:11] ERROR [website.tests::test_logfile() (23)]: Cannot find anything here.
 ```
-##### Levels
+**Levels**  
 Five log levels are available, `logger.debug()`, `logger.info()`, `logger.warning()`, `logger.error()`, `logger.critical()`. 
 
-##### Output (console and files)
+**Output (console and files)**  
 The log statements for the applications are written to the console, if DEBUG=True, and always to `debug.log` and `error.log`. Django errors can be found in `django.log`.
 
-##### Confidential information 
+**Configuration**  
+Logging is configured in the Django `settings.py` `LOGGING` variables. Information about configuration you can be found [here](https://docs.djangoproject.com/en/1.7/topics/logging/). New applications have to be added before logging becomes active for those applications. 
+
+**Confidential information**  
 Confidential information should not be logged. During initial development, logging of confidential information is allowed if marked with a `CONF` tag, `logger.debug('CONF ' + member.DNA)`. These will be removed before deployment. 
 
 #### Database migrations

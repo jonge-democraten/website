@@ -13,16 +13,14 @@ JD website
  * **Run the test server:** `(env) $ python3 website/manage.py runserver`
  
 ## Testing 
-All application logic code is to be unit tested. Unit tests are ideally created before development of functionality.
+All application logic code is to be unit tested. Unit tests are ideally created before development of functionality.  
 It supports development and documents, in real code instead of text, what classes and functions are supposed to do.
-Feature branches are only merged if unit tests are written and all pass. 
-
+Feature branches are only merged if unit tests are written and all pass.  
 Higher level user interface actions are tested manually. 
 
 #### Unit tests
 The project uses the [Django unit test](https://docs.djangoproject.com/en/dev/topics/testing/overview/) framework to create unit tests. 
-This framework is based on the Python unittest module. 
-
+This framework is based on the Python unittest module.  
 Tests are defined in the `tests.py` file of the application directory. 
 
 ##### Run tests
@@ -31,12 +29,9 @@ Tests for the project's Django applications can be run with the following comman
 `(env) $ python website/manage.py test <appname>`
 
 #### Automated testing
-[Travis](https://travis-ci.org/jonge-democraten/website) is used to automatically install the environment and run tests on changes in the project. 
-
-The file `.travis.yml` contains the Travis commands to install and test the project.
-
+[Travis](https://travis-ci.org/jonge-democraten/website) is used to automatically install the environment and run tests on changes in the project.  
+The file `.travis.yml` contains the Travis commands to install and test the project.  
 The build indicator on top of this document shows the status of the last automated install and tests.
-
 
 ## Development
 This section provides some guidelines to ensure consistency within the project and streamline the workflow.  
@@ -49,16 +44,14 @@ The default Python and Django code style is used. Read about it [here](https://d
 
 
 #### Workflow
-New features are developed on a separate feature branch. 
-
-This allows you to work independently on a feature and still share code. Push feature branch commits often to communicate what you are working on. 
-
+New features are developed on a separate feature branch.  
+This allows you to work independently on a feature and still share code. Push feature branch commits often to communicate what you are working on.  
 Read more about this workflow [here](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
 
 #### Logging
 The Python logging module is used for logging. Add and commit plenty of useful log statements. This support effective debugging. 
 
-The logging is configured in the Django `settings.py` `LOGGING` variables. Information about configuration you can be found [here](https://docs.djangoproject.com/en/1.7/topics/logging/). New applications have to be added before logging becomes active for those applications. 
+Logging is configured in the Django `settings.py` `LOGGING` variables. Information about configuration you can be found [here](https://docs.djangoproject.com/en/1.7/topics/logging/). New applications have to be added before logging becomes active for those applications. 
 
 ##### How to use
 To add log statements, simply add the following at the top of your Python file,
@@ -73,13 +66,13 @@ logger.warning('warning message')
 logger.error('error message')
 ```
 The log statements include log level, application, class, function and line number of the log statement,
-
 ```python
 [2014-12-19 22:39:11] ERROR [website.tests::test_logfile() (23)]: Cannot find anything here.
 ```
 ##### Levels
 Five log levels are available, `logger.debug()`, `logger.info()`, `logger.warning()`, `logger.error()`, `logger.critical()`. 
 
+##### Ouput (console and files)
 The log statements for the applications are written to the console, if DEBUG=True, and always to `debug.log` and `error.log`. Django errors can be found in `django.log`.
 
 ##### Confidential information 

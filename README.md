@@ -44,7 +44,7 @@ This section provides some guidelines to ensure consistency within the project a
 #### Coding standards
 The default Python and Django code style is used. Read about it [here](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/).
 
-*"Write code as simple as possible and focus on readability. Write code for others to understand and read."* - [source
+*"Write code as simple as possible and focus on readability. Write code for others to understand and read."* - [source]
 (http://c2.com/cgi/wiki?CodeForTheMaintainer)
 
 

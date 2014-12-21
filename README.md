@@ -25,7 +25,10 @@ Installation is easy (Assumed: Linux-like environment https://github.com/jonge-d
 1. `$ source ./env/bin/activate`  
 1. `$ python create_local_settings.py`
 1. `$ python website/manage.py createdb`
+1. `$ python website/manage.py loaddata demo_data` #Optional, loads demo data (login: admin/admin)
 1. `$ python website/manage.py runserver`  
+
+
 
 #### Detailed instructions
 **Linux**  

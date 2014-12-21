@@ -18,7 +18,7 @@ The project is in the initial development stage. Nothing is stable and everythin
   - [Database migrations](#database-migrations)
 
 ## Installation
-Installation is easy.
+Installation is easy (Assumed: Linux-like environment https://github.com/jonge-democraten/website/wiki/Installeer-de-ontwikkelomgeving).
 
 #### Basics
 1. `$ ./build_env.sh`

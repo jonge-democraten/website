@@ -1,0 +1,12 @@
+{% load pages_tags i18n future %}
+
+{% spaceless %}
+{% for page in page_branch %}
+    {% if not has_home and page.is_primary and forloop.first %}
+    <a href="{% url "home" %}">{% trans "Home" %}</a> | 
+    {% endif %}
+    {% if page.in_menu and page.is_primary%}
+    <a href="{{ page.get_absolute_url }}">{{ page.title }}</a> | 
+    {% endif %}
+{% endfor %}
+{% endspaceless %}

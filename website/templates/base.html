@@ -43,16 +43,19 @@
         {% page_menu "pages/menus/jdmenu.html" %}
         </div> <!-- headerDiv -->
 
-        <div>
+        <div id="contentDiv" class="clearing">
 
-        <h2>{% block title %}{% endblock %}</h>
+            <div id="contentLeftDiv" class="clearing">
+                <div id="homeDiv">
+                <div class="item-page">
 
-        </div>
+                    <h2>{% block title %}{% endblock %}</h2>
 
-
-        <div>
-            {% block main %}{% endblock %}
-        </div>
+                    {% block main %}{% endblock %}
+                </div>
+                </div>              
+            </div>
+        </div> <!-- contentDiv -->
 
         <footer>
 

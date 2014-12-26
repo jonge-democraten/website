@@ -774,7 +774,7 @@ ul.pagination a:active
   left: 10px;
   width: 950px;
   height: 30px;
-  background-image: url('/templates/jd/images/MenuBackground.png');
+  background-image: url('../images/menu_background.png');
 }
 
 

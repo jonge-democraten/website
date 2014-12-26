@@ -16,7 +16,7 @@
 {% endmetablock %}{% endblock %}
 
 {% block title %}
-{% editable page.title %}{{ page.title }}{% endeditable %}
+<a href="{{ page.get_absolute_url }}">{% editable page.title %}{{ page.title }}{% endeditable %}</a>
 {% endblock %}
 
 {% block main %}

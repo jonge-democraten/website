@@ -35,28 +35,33 @@
 
 <body id="{% block body_id %}body{% endblock %}">
 
-<div>
-{% page_menu "pages/menus/jdmenu.html" %}
-<br>
-{% page_menu "pages/menus/jdsubmenu.html" %}
-</div>
+<div id="outerDiv">
+    <div id="innerDiv">
+        <div id="headerDiv">
+        {% include "header.html" %}
 
-<div>
+        {% page_menu "pages/menus/jdmenu.html" %}
+        {% page_menu "pages/menus/jdsubmenu.html" %}
+        </div>
 
-<h1>{% block title %}{% endblock %}</h1>
+        <div>
 
-</div>
+        <h1>{% block title %}{% endblock %}</h1>
+
+        </div>
 
 
-<div>
-    {% block main %}{% endblock %}
-</div>
+        <div>
+            {% block main %}{% endblock %}
+        </div>
 
-<footer>
+        <footer>
 
-</footer>
+        </footer>
 
-{% include "includes/footer_scripts.html" %}
+        {% include "includes/footer_scripts.html" %}
+    </div> <!-- innerDiv -->
+</div> <!-- outerDiv -->
 
 </body>
 </html>

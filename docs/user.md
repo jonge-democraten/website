@@ -1,3 +1,3 @@
 # User manual
 
-## Managing content
+### Managing content

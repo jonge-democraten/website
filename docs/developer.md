@@ -1,11 +1,12 @@
-## Developers manual
+Developers manual
+================
 
 This section provides development installation information and some guidelines to ensure consistency within the project and streamline the workflow.  
 
-### Installation
+# Installation
 Installation is easy (Assumed: Linux-like environment https://github.com/jonge-democraten/website/wiki/Installeer-de-ontwikkelomgeving).
 
-#### Basics
+### Basics
 1. `$ ./build_env.sh`
 1. `$ source ./env/bin/activate`  
 1. `$ python create_local_settings.py`
@@ -13,7 +14,7 @@ Installation is easy (Assumed: Linux-like environment https://github.com/jonge-d
 1. `$ python website/manage.py loaddata demo_data` #Optional, loads demo data (login: admin/admin)
 1. `$ python website/manage.py runserver`  
 
-#### Detailed instructions
+### Detailed instructions
 **Linux**  
 Installation of the full project, and running a test server, can be done in a few minutes on any Linux machine. Just follow the steps below. It does not require manual configuration.
 
@@ -44,12 +45,12 @@ and visit [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser to view
 You can remove the virtual environment and database with,  
 `$ ./clean_env.sh`
 
-### Workflow
+# Workflow
 New features are developed on a separate feature branch.  
 This allows you to work independently on a feature and still share code. Push feature branch commits often to communicate what you are working on.  
 Read more about this workflow [here](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
 
-### Code standards
+# Code standards
 The default Python and Django [code style](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/) is used.  
 Write code as simple as possible and focus on readability. Write code for others to understand and read.
 
@@ -59,7 +60,7 @@ Write code as simple as possible and focus on readability. Write code for others
 Flake8 is a Python tool to check code style. It runs automatically on Travis after each commit.  
 You can find the Flake8 output in the [latest Travis build log](https://travis-ci.org/jonge-democraten/website).
 
-### Code documentation
+# Code documentation
 Add comments to code that is not self-explanatory.  
 Use [python docstrings](http://en.wikipedia.org/wiki/Docstring#Python) to describe files, classes and functions.  
 Add a brief docstring to files and classes. To functions only if necessary. Example,
@@ -78,7 +79,7 @@ class ExampleClass(Example):
         """
 ```
 
-### Logging
+# Logging
 The Python logging module is used for logging. Add and commit plenty of useful log statements. This support effective debugging. 
 
 **How to use**  
@@ -109,7 +110,7 @@ Logging is configured in the Django `settings.py` `LOGGING` variables. Informati
 **Confidential information**  
 Confidential information should not be logged. During initial development, logging of confidential information is allowed if marked with a `CONF` tag, `logger.debug('CONF ' + member.DNA)`. These will be removed before deployment. 
 
-### Database migrations
+# Database migrations
 A [database migration](https://docs.djangoproject.com/en/1.7/topics/migrations/) needs to be created after database structure changes in `models.py`,  
 `$ python website/manage.py makemigrations <app_label>`  
 The generated migration file is committed together with changes in `models.py`. Migrations have to be carefully managed between different branches, so keep track of other branches and prepare for a merge.

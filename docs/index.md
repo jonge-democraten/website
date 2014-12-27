@@ -5,5 +5,3 @@ jdwebsite is a website application and content management system in development 
 Based on Python, Django and [Mezzanine](http://mezzanine.jupo.org/). Open-source and under the MIT-licence. 
 
 The project is in the initial development stage. Nothing is stable and everything may change. 
-
-#### Documents

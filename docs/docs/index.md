@@ -7,6 +7,3 @@ Based on Python, Django and [Mezzanine](http://mezzanine.jupo.org/). Open-source
 The project is in the initial development stage. Nothing is stable and everything may change. 
 
 #### Documents
-* ** [User manual](user.md) **
-* ** [Developers manual](developer.md) **
-* ** [Testing](testing.md) **

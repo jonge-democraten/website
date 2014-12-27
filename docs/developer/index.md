@@ -1,8 +1,7 @@
-Introduction
+Developers manual
 =================
-A manual with information for developers. 
-
-This section provides development installation information and some guidelines to ensure consistency within the project and streamline the workflow.  
+This is a manual for developers.  
+This section provides development installation information and some guidelines to ensure consistency within the project and streamline the workflow.
 
 Installation
 -------
@@ -114,12 +113,10 @@ The Python logging module is used for logging. Add and commit plenty of useful l
 
 **How to use**  
 To add log statements, simply add the following at the top of your Python file,
-
 ```python
 import logging
 logger = logging.getLogger(__name__)
 ```
-
 and add a new log statement anywhere in this file by,
 
     logger.debug('debug log statement')

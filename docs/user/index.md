@@ -1,4 +1,5 @@
-Introduction
+Users manual
 ===========
 
-### Managing content
+Managing content
+----------------

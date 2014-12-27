@@ -1,10 +1,10 @@
 site_name: jdwebsite docs
-docs_dir: ./docs
+docs_dir: ./
 repo_url: https://github.com/jonge-democraten/website
 site_author: Jonge Democration ICT-team
 
 pages:
 - ['index.md', 'Introduction']
-- ['user.md', 'User manual']
-- ['developer.md', 'Developer manual']
+- ['user.md', 'Users']
+- ['developer.md', 'Developers']
 - ['testing.md', 'Testing']

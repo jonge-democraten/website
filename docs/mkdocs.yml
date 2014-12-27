@@ -1,0 +1,9 @@
+site_name: jdwebsite docs
+repo_url: https://github.com/jonge-democraten/website/
+site_author: Jonge Democraten
+
+pages:
+- ['index.md', 'Home']
+- ['user.md', 'User manual']
+- ['developer.md', 'Developers']
+- ['testing.md', 'Testing']

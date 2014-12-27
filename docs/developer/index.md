@@ -1,9 +1,11 @@
-Developers manual
-================
+Introduction
+=================
+A manual with information for developers. 
 
 This section provides development installation information and some guidelines to ensure consistency within the project and streamline the workflow.  
 
-# Installation
+Installation
+-------
 Installation is easy (Assumed: Linux-like environment https://github.com/jonge-democraten/website/wiki/Installeer-de-ontwikkelomgeving).
 
 ### Basics
@@ -45,12 +47,15 @@ and visit [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser to view
 You can remove the virtual environment and database with,  
 `$ ./clean_env.sh`
 
-# Workflow
+Workflow
+-------
 New features are developed on a separate feature branch.  
 This allows you to work independently on a feature and still share code. Push feature branch commits often to communicate what you are working on.  
 Read more about this workflow [here](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
 
-# Code standards
+
+Code standards
+-------
 The default Python and Django [code style](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/) is used.  
 Write code as simple as possible and focus on readability. Write code for others to understand and read.
 
@@ -60,7 +65,9 @@ Write code as simple as possible and focus on readability. Write code for others
 Flake8 is a Python tool to check code style. It runs automatically on Travis after each commit.  
 You can find the Flake8 output in the [latest Travis build log](https://travis-ci.org/jonge-democraten/website).
 
-# Code documentation
+
+Code documentation
+-------
 Add comments to code that is not self-explanatory.  
 Use [python docstrings](http://en.wikipedia.org/wiki/Docstring#Python) to describe files, classes and functions.  
 Add a brief docstring to files and classes. To functions only if necessary. Example,
@@ -79,21 +86,46 @@ class ExampleClass(Example):
         """
 ```
 
-# Logging
+Testing
+-------
+All application logic code is to be unit tested. Unit tests are ideally created before development of functionality.  
+It supports development and documents, in real code instead of text, what classes and functions are supposed to do.
+Feature branches are only merged if unit tests are written and all pass.  
+Higher level user interface actions are tested manually. 
+
+#### Unit tests
+The project uses the [Django unit test](https://docs.djangoproject.com/en/dev/topics/testing/overview/) framework to create unit tests. 
+This framework is based on the Python unittest module.  
+Tests are defined in the `tests.py` file of the application directory. 
+
+**Run tests**  
+Tests for the project's Django applications can be run with the following command,  
+`(env) $ python website/manage.py test <app_label>`
+ 
+#### Automated testing
+[Travis](https://travis-ci.org/jonge-democraten/website) is used to automatically install the environment and run tests on changes in the project.  
+The file `.travis.yml` contains the Travis commands to install and test the project.  
+The build indicator on top of this document show
+
+
+Logging
+-------
 The Python logging module is used for logging. Add and commit plenty of useful log statements. This support effective debugging. 
 
 **How to use**  
 To add log statements, simply add the following at the top of your Python file,
+
 ```python
 import logging
 logger = logging.getLogger(__name__)
 ```
+
 and add a new log statement anywhere in this file by,
-```python
-logger.debug('debug log statement')
-logger.warning('warning message')
-logger.error('error message')
-```
+
+    logger.debug('debug log statement')
+    logger.warning('warning message')
+    logger.error('error message')
+
 The log statements include log level, application, class, function and line number of the log statement,
 ```python
 [2014-12-19 22:39:11] ERROR [website.tests::test_logfile() (23)]: Cannot find anything here.
@@ -110,7 +142,9 @@ Logging is configured in the Django `settings.py` `LOGGING` variables. Informati
 **Confidential information**  
 Confidential information should not be logged. During initial development, logging of confidential information is allowed if marked with a `CONF` tag, `logger.debug('CONF ' + member.DNA)`. These will be removed before deployment. 
 
-# Database migrations
+
+Database migrations
+-------
 A [database migration](https://docs.djangoproject.com/en/1.7/topics/migrations/) needs to be created after database structure changes in `models.py`,  
 `$ python website/manage.py makemigrations <app_label>`  
 The generated migration file is committed together with changes in `models.py`. Migrations have to be carefully managed between different branches, so keep track of other branches and prepare for a merge.

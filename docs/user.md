@@ -1,3 +1,0 @@
-# User manual
-
-### Managing content

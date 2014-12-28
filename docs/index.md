@@ -1,4 +1,4 @@
-jdwebsite docs
+JDWebsite
 =======
 
 jdwebsite is a website application and content management system in development for the [Jonge Democraten](http://jongedemocraten.nl/).  

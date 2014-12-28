@@ -1,5 +1,5 @@
-Users manual
-===========
+Introduction
+------------
 
 Managing content
 ----------------

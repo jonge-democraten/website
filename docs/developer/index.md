@@ -9,10 +9,11 @@ This is a manual for jdwebsite developers.
 * Code and documentation guidelines.
 
 <h3>Todo</h3>
-* Mezzanine usage within the jdwebsite; tweaks and pitfalls. 
+* Mezzanine and jdwebsite; tweaks and pitfalls. 
 * Deployment instructions.
 * Versioning strategy.
 * Useful development tools.
+* Project structure
 
 # Installation
 Installation is easy on a Linux-like operating system.  

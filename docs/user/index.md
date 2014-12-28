@@ -1,5 +1,5 @@
-Introduction
-------------
+<h1>User manual</h1>
 
-Managing content
-----------------
+## Introduction
+
+## Managing content

@@ -8,10 +8,6 @@ use_absolute_urls: true
 theme: 'readthedocs'
 
 pages:
-- ['index.md', 'General', 'Info']
-- ['user/index.md', 'User', 'Manual']
-- ['developer/index.md', 'Developers', 'Getting started']
-- ['developer/quality.md', 'Developers', 'Quality']
-- ['developer/logging.md', 'Developers', 'Logging']
-- ['developer/testing.md', 'Developers', 'Testing']
-- ['developer/database.md', 'Developers', 'Database']
+- ['index.md', '', 'JD Website']
+- ['user/index.md', '', 'User manual']
+- ['developer/index.md', '', 'Developer manual']

@@ -1,14 +1,13 @@
-Introduction
--------------
+<h1>Getting started</h1>
+
 This is a manual for developers.  
 This section provides development installation information and some guidelines to ensure consistency within the project and streamline the workflow.
 
+# Installation
+Installation is easy on a Linux-like operating system.  
+[Installeer de ontwikkelomgeving voor beginners](https://github.com/jonge-democraten/website/wiki/Installeer-de-ontwikkelomgeving)
 
-Installation
--------
-Installation is easy (Assumed: Linux-like environment https://github.com/jonge-democraten/website/wiki/Installeer-de-ontwikkelomgeving).
-
-### Basics
+## Basics
 1. `$ ./build_env.sh`
 1. `$ source ./env/bin/activate`  
 1. `$ python create_local_settings.py`
@@ -16,7 +15,7 @@ Installation is easy (Assumed: Linux-like environment https://github.com/jonge-d
 1. `$ python website/manage.py loaddata demo_data` #Optional, loads demo data (login: admin/admin)
 1. `$ python website/manage.py runserver`  
 
-### Detailed instructions
+## Detailed instructions
 **Linux**  
 Installation of the full project, and running a test server, can be done in a few minutes on any Linux machine. Just follow the steps below. It does not require manual configuration.
 
@@ -46,10 +45,3 @@ and visit [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser to view
 **Clean project**  
 You can remove the virtual environment and database with,  
 `$ ./clean_env.sh`
-
-
-Database migrations
--------
-A [database migration](https://docs.djangoproject.com/en/1.7/topics/migrations/) needs to be created after database structure changes in `models.py`,  
-`$ python website/manage.py makemigrations <app_label>`  
-The generated migration file is committed together with changes in `models.py`. Migrations have to be carefully managed between different branches, so keep track of other branches and prepare for a merge.

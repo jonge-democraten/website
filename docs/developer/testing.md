@@ -1,5 +1,5 @@
-Testing
-=======
+<h1>Testing</h1>
+
 All application logic code is to be unit tested. Unit tests are ideally created before development of functionality.  
 It supports development and documents, in real code instead of text, what classes and functions are supposed to do.
 Feature branches are only merged if unit tests are written and all pass.  

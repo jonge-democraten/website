@@ -1,13 +1,17 @@
 site_name: 'jdwebsite'
-docs_dir: './docs'
+docs_dir: 'docs'
 repo_url: 'https://github.com/jonge-democraten/website'
 site_author: 'Jonge Democration ICT-team'
+copyright: Copyright &copy; Jonge Democration.
+include_search: true
+use_absolute_urls: true
 theme: 'readthedocs'
 
 pages:
-- ['index.md', 'Info', 'Documentation']
+- ['index.md', 'General', 'Info']
 - ['user/index.md', 'User', 'Manual']
-- ['developer/index.md', 'Developers', 'Installation']
+- ['developer/index.md', 'Developers', 'Getting started']
 - ['developer/quality.md', 'Developers', 'Quality']
 - ['developer/logging.md', 'Developers', 'Logging']
 - ['developer/testing.md', 'Developers', 'Testing']
+- ['developer/database.md', 'Developers', 'Database']

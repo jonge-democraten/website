@@ -1,5 +1,4 @@
-Logging
-=======
+<h1>Logging</h1>
 The Python logging module is used for logging. Add and commit plenty of useful log statements. This support effective debugging. 
 
 ### Example

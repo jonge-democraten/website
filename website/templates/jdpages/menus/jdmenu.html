@@ -12,7 +12,7 @@
         {% if page.in_menu and page.is_primary %}
         <li class="{% if page.is_current_or_ascendant %} current active deeper parent {% endif %}">
             <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
-            {% page_menu "pages/menus/jdsubmenu.html" page %}
+            {% page_menu "jdpages/menus/jdsubmenu.html" page %}
         </li> 
         {% endif %}
     {% endfor %}

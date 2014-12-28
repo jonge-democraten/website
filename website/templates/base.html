@@ -40,21 +40,66 @@
         <div id="headerDiv">
         {% include "header.html" %}
 
-        {% page_menu "pages/menus/jdmenu.html" %}
+        {% page_menu "jdpages/menus/jdmenu.html" %}
         </div> <!-- headerDiv -->
 
         <div id="contentDiv" class="clearing">
 
             <div id="contentLeftDiv" class="clearing">
                 <div id="homeDiv">
-                <div class="item-page">
+                    <div class="item-page">     
+                        <h2>{% block title %}{% endblock %}</h2>
+                        
+                        {% block main %}{% endblock %}
+                    
+                    </div>
+                </div> <!-- homeDiv -->
 
-                    <h2>{% block title %}{% endblock %}</h2>
-
-                    {% block main %}{% endblock %}
+                <div id="homeLeftDiv">home left div</div>
+                <div id="homeRightDiv">home right div</div> 
+                           
+            </div> <!-- contentLeftDiv -->
+            
+            <div id="contentRightDiv">
+            
+                <div class="moduletablenieuws">
+                    <h3>JD Blog</h3>
+                          
+                    <div class="mod_placeherenieuws">
+                        <div style="overflow:auto;" class="mod_placehere_leading even">
+                            <div class="placehere">
+                                <h2 class="contentheading">
+                                    <a href="{{ sidebar_blog_post.get_absolute_url }}"
+                                      class="contentpagetitle">{{ sidebar_blog_post.title }}</a> 
+                                </h2>
+                                <p class="buttonheading"></p>
+                                {{ sidebar_blog_post.content|truncatechars:100  }}
+                                        
+                                <p class="readmore"><a href="{{ sidebar_blog_post.get_absolute_url }}"> Lees meer...</a></p>
+                            </div>
+                        </div>
+                    </div>    
                 </div>
-                </div>              
-            </div>
+                  
+                <div class="moduletabletwitter">
+                    <h3>Twitter</h3>
+                </div>
+                
+                <div class="moduletable">
+                    <div class="custom"  >
+                        <p><a href="https://jongedemocraten.nl/word-actief.html"> <img src="https://jongedemocraten.nl/templates/jd/images/wordlid/wordlid1.jpg" border="0" alt="Word lid!" style="margin-bottom: 10px;" /></a></p>
+                    </div>
+                </div>
+                
+                <div class="moduletableonline">
+                    <h3>Jonge Democraten Online</h3>
+                    <div class="customonline"  >
+                        <p><a href="http://www.facebook.com/group.php?gid=2225510846" title="Facebook Group" rel="external nofollow"><img src="https://jongedemocraten.nl/templates/jd/images/share/facebook.png" border="0" alt="Facebook Group" width="32" height="32" /></a><a href="http://www.linkedin.com/groups?gid=1039477" title="Linked In Group" rel="external nofollow"><img src="https://jongedemocraten.nl/templates/jd/images/share/linkedin.png" border="0" alt="LinkedIn Group" width="32" height="32" /></a><a href="http://twitter.com/jongedemocraten" title="Twitter" rel="external nofollow"><img src="https://jongedemocraten.nl/templates/jd/images/share/twitter.png" border="0" alt="Twitter" width="32" height="32" /></a><a href="http://youtube.com/jongedemocraten" title="YouTube" rel="external nofollow"><img src="https://jongedemocraten.nl/templates/jd/images/share/youtube.png" border="0" alt="YouTube" width="32" height="32" /></a></p>
+                    </div>
+                </div>
+                
+            </div> <!-- contentRightDiv -->
+            
         </div> <!-- contentDiv -->
 
     </div> <!-- innerDiv -->

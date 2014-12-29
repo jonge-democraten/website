@@ -1,9 +1,9 @@
-{% extends "pages/page.html" %}
+{% extends "pages/jdpage.html" %}
 
 {% load mezzanine_tags %}
 
-{% block main %}{{ block.super }}
-
+{% block richtext_content %}
+                
 {% editable page.richtextpage.content %}
 {{ page.richtextpage.content|richtext_filters|safe }}
 {% endeditable %}

@@ -393,7 +393,7 @@ p.readmore {
 }
 
 .moduletablenieuws h3, .moduletablepeiling h3, .moduletableonline h3, .moduletabletwitter h3{
-  background: url("../images/TitleBackground.png") repeat-x #578439;
+  background: url("../images/title_background.png") repeat-x #578439;
   border-bottom: 1px solid #38683d;
   color: #fff;
   padding: 2px 5px !important;
@@ -1337,7 +1337,7 @@ div.jevtt_text{
  * Frontpage styles
  */
 #homeRightDiv h3, #homeLeftDiv h3 {
-  background: url("../images/TitleBackground.png") repeat-x #578439;
+  background: url("../images/title_background.png") repeat-x #578439;
   border-bottom: 1px solid #38683d;
   color: #fff;
   padding: 0 5px;
@@ -1357,7 +1357,7 @@ div.jevtt_text{
 
 /* FP activiteiten/nieuws/weblog */
 .afdeling #homeRightDiv h3, .afdeling #homeLeftDiv h3 {
-  background: url("../images/TitleBackground.png") repeat-x #578439;
+  background: url("../images/title_background.png") repeat-x #578439;
   border-bottom: 1px solid #38683d;
   color: #fff;
   padding: 0 5px;
@@ -1882,7 +1882,7 @@ div.jevtt_text{
   padding: 5px;
 }
 #system-message dt{
-    background: url("../images/TitleBackground.png") repeat-x scroll 0% 0% rgb(87, 132, 57);
+    background: url("../images/title_background.png") repeat-x scroll 0% 0% rgb(87, 132, 57);
     border-bottom: 1px solid rgb(56, 104, 61);
     padding: 2px 5px !important;
     margin: 0px;

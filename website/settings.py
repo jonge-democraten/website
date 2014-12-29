@@ -243,6 +243,7 @@ INSTALLED_APPS = (
     "mezzanine.pages",
     "mezzanine.galleries",
     "mezzanine.twitter",
+    "captcha",
     "website",
     # "mezzanine.accounts",
     # "mezzanine.mobile",
@@ -407,5 +408,8 @@ else:
 FORMS_EXTRA_FIELDS = [
     [
         100, "django.forms.IntegerField", "Integer",
+    ],
+    [
+        101, "captcha.fields.CaptchaField", "CAPTCHA",
     ],
 ]

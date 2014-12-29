@@ -20,6 +20,10 @@ urlpatterns = i18n_patterns(
     ("^admin/", include(admin.site.urls)),
 )
 
+urlpatterns += patterns('',
+    url(r'^captcha/', include('captcha.urls')),
+)
+
 urlpatterns += patterns(
     '',
 

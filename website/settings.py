@@ -75,6 +75,12 @@ from __future__ import absolute_import, unicode_literals
 #
 # BLOG_USE_FEATURED_IMAGE = True
 
+####################
+# PROJECT SETTINGS #
+####################
+
+SITE_TITLE = "Jonge Democraten"
+
 ########################
 # MAIN DJANGO SETTINGS #
 ########################

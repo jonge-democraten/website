@@ -7,7 +7,7 @@ from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.page_processors import processor_for
 
-from .models import JDPage
+from .models import JDPage, JDHomePage
 
 
 @processor_for(JDPage)

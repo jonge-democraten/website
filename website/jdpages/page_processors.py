@@ -15,6 +15,7 @@ class BlogPostInfo():
         self.title = blogpost.title
         self.author = blogpost.user
         self.content = strip_tags(blogpost.content)
+        self.url = blogpost.get_absolute_url()
 
 
 @processor_for(JDPage)

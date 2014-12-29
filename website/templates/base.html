@@ -57,13 +57,13 @@
                         <div style="overflow:auto;" class="mod_placehere_leading even">
                             <div class="placehere">
                                 <h2 class="contentheading">
-                                    <a href="{{ sidebar_blog_post.get_absolute_url }}"
+                                    <a href="{{ sidebar_blogpost.url }}"
                                       class="contentpagetitle">{{ sidebar_blogpost.title }}</a> 
                                 </h2>
                                 <p class="buttonheading"></p>
                                 {{ sidebar_blogpost.content|truncatechars:200 }}
                                         
-                                <p class="readmore"><a href="{{ sidebar_blog_post.get_absolute_url }}"> Lees meer...</a></p>
+                                <p class="readmore"><a href="{{ sidebar_blogpost.url }}"> Lees meer...</a></p>
                             </div>
                         </div>
                     </div>    

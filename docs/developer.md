@@ -196,7 +196,7 @@ The code base of jdwebsite contains demo data to demonstrate functionality. To c
 python3 website/manage.py dumpdata --all --natural --indent 2 forms pages sites blog auth.User > website/fixtures/demo_data.json
 ```
 
-This fixture may be loaded when initialising the development environment (see [Installation](#Installation)).
+This fixture may be loaded when initialising the development environment (see [Installation](#installation)).
 
 <h3>Caveat</h3>
 

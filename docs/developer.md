@@ -186,3 +186,18 @@ A [database migration](https://docs.djangoproject.com/en/1.7/topics/migrations/)
     
 The generated migration file is committed together with changes in `models.py`.  
 Migrations have to be carefully managed between different branches, so keep track of other branches and prepare for a merge.
+
+-----
+## Demo data
+
+The code base of jdwebsite contains demo data to demonstrate functionality. To create demo data, dump a fixture. 
+
+```
+python3 website/manage.py dumpdata --all --natural --indent 2 forms pages sites blog auth.User > website/fixtures/demo_data.json
+```
+
+This fixture may be loaded when initialising the development environment (see [Installation](#Installation)).
+
+<h3>Caveat</h3>
+
+For some reason, the categories of blog posts in Blogs on non-default Sites are not exported correctly. To include this information, you have to add it by hand.

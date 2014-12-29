@@ -10,11 +10,18 @@ from mezzanine.pages.page_processors import processor_for
 from .models import JDPage, JDHomePage
 
 
+class BlogPostInfo():
+    def __init__(self, blogpost):
+        self.title = blogpost.title
+        self.author = blogpost.user
+        self.content = strip_tags(blogpost.content)
+
+
 @processor_for(JDPage)
 @processor_for(JDHomePage)
 def add_sidebar_blog_info(request, page):
-    logger.warning(page.title)
     sidebar_blog_category = BlogCategory.objects.get(id=1)
     sidebar_blog_posts = BlogPost.objects.all().filter(categories=sidebar_blog_category).filter(status=CONTENT_STATUS_PUBLISHED)
-    logger.warning(sidebar_blog_posts)
-    return {"sidebar_blog_post": sidebar_blog_posts.last()}
+    sidebar_blogpost = sidebar_blog_posts.last()
+    blogpost_info = BlogPostInfo(sidebar_blogpost)
+    return {"sidebar_blogpost": blogpost_info}

@@ -58,10 +58,10 @@
                             <div class="placehere">
                                 <h2 class="contentheading">
                                     <a href="{{ sidebar_blog_post.get_absolute_url }}"
-                                      class="contentpagetitle">{{ sidebar_blog_post.title }}</a> 
+                                      class="contentpagetitle">{{ sidebar_blogpost.title }}</a> 
                                 </h2>
                                 <p class="buttonheading"></p>
-                                {{ sidebar_blog_post.content|truncatechars:100  }}
+                                {{ sidebar_blogpost.content|truncatechars:200 }}
                                         
                                 <p class="readmore"><a href="{{ sidebar_blog_post.get_absolute_url }}"> Lees meer...</a></p>
                             </div>

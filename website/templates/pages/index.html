@@ -7,8 +7,7 @@
 {% block main %}
 
 <div id="homeDiv">
-    <div class="item-page">     
-        
+    <div class="item-page">
         {% editable page.jdhomepage.content %}
         {{ page.jdhomepage.content|richtext_filters|safe }}
         {% endeditable %}
@@ -17,33 +16,19 @@
 </div> <!-- homeDiv -->
 
 <div id="homeLeftDiv">
-    
     <div class="moduletable">
         <h3>Politiek</h3>
         <div class="mod_placehere">
             <div style="overflow:auto;" class="mod_placehere_leading even">
+                {% for post in politiek_blogposts_info %}
                 <div class="placehere">
-                    <h2 class="contentheading">
-                    <a href="/jdmedia/actuele-publiciteit/5220-een-partijverbod-druist-in-tegen-de-democratie.html"
-                      class="contentpagetitle"> Een partijverbod druist in tegen de democratie</a> </h2>
-                    <p class="articleinfo">  <span class="createdate"> donderdag 18 december 2014 12:41</span> </p>
+                    <h2 class="contentheading"><a href="{{ post.url }}" class="contentpagetitle">{{ post.title }}</a></h2>
+                    <p class="articleinfo"><span class="createdate"></span></p>
                     <p class="buttonheading"></p>
-                            Robert Mugabe, Raúl Castro, Kim Jong-Un en Sybrand Buma. Allen heb ze één ding gemeen: het willen uitbannen van onwelgevallige partijen. Uiterlijk 18 december wordt er in de ... <p class="readmore">
-                    <a href="/jdmedia/actuele-publiciteit/5220-een-partijverbod-druist-in-tegen-de-democratie.html"> Lees meer...</a>
-                    </p>
+                    {{ post.content|truncatechars:200 }}
+                    <p class="readmore"><a href="{{ post.url }}">Lees meer...</a></p>
                 </div>
-                
-                <div class="placehere">
-                    <h2 class="contentheading">
-                    <a href="/jdmedia/actuele-publiciteit/5219-jonge-democraten-zetten-eerste-kamer-te-koop-op-marktplaats.html"
-                      class="contentpagetitle"> Jonge Democraten zetten Eerste Kamer te koop op Marktplaats</a> </h2>
-                    <p class="articleinfo">  <span class="createdate"> donderdag 18 december 2014 09:13</span> </p>
-                    <p class="buttonheading"></p>
-                            Sinds vandaag is het mogelijk om via Marktplaats een bod uit te brengen op de Eerste Kamer. De senaat is in de uitverkoop gedaan door de Jonge Democraten (D66), die met deze actie ... <p class="readmore">
-                    <a href="/jdmedia/actuele-publiciteit/5219-jonge-democraten-zetten-eerste-kamer-te-koop-op-marktplaats.html"> Lees meer...</a>
-                    </p>
-                </div>
-            
+                {% endfor %}            
             </div>
         </div>    
     </div>

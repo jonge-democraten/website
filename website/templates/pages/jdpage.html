@@ -21,7 +21,9 @@
     <div class="item-page">     
         <h2><a href="{{ page.get_absolute_url }}">{% editable page.title %}{{ page.title }}{% endeditable %}</a></h2>
         
-        {% block richtext_content %}{% endblock %}
+        {% editable page.jdpage.content %}
+        {{ page.jdpage.content|richtext_filters|safe }}
+        {% endeditable %}
         
     </div>
 </div> <!-- homeDiv -->

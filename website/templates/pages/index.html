@@ -1,10 +1,15 @@
-{% extends "pages/richtextpage.html" %}
+{% extends "base.html" %}
+
+{% load mezzanine_tags %}
 
 {% block main %}
 
 <div id="homeDiv">
     <div class="item-page">     
-        <h2><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></h2>
+        
+        {% editable page.jdhomepage.content %}
+        {{ page.jdhomepage.content|richtext_filters|safe }}
+        {% endeditable %}
     
     </div>
 </div> <!-- homeDiv -->

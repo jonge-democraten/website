@@ -9,5 +9,5 @@ theme: 'readthedocs'
 
 pages:
 - ['index.md', '', 'JD Website']
-- ['user/index.md', '', 'User manual']
-- ['developer/index.md', '', 'Developer manual']
+- ['user.md', '', 'User manual']
+- ['developer.md', '', 'Developer manual']

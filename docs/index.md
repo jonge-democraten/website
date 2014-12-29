@@ -2,8 +2,8 @@
 Documentation of the [jdwebsite](https://github.com/jonge-democraten/website) project.
 
 ### Documentation
-* **[User manual](./user/index.md)**
-* **[Developer manual](./developer/index.md)**
+* **[User manual](user.md)**
+* **[Developer manual](developer.md)**
 
 ### About
 * **jdwebsite** is a website application and content management system in development for the [Jonge Democraten](http://jongedemocraten.nl/).

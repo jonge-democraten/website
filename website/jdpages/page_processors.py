@@ -11,7 +11,8 @@ from .models import JDPage
 
 
 @processor_for(JDPage)
-def jdpage(request, page):
+@processor_for(JDHomePage)
+def add_sidebar_blog_info(request, page):
     logger.warning(page.title)
     sidebar_blog_category = BlogCategory.objects.get(id=1)
     sidebar_blog_posts = BlogPost.objects.all().filter(categories=sidebar_blog_category).filter(status=CONTENT_STATUS_PUBLISHED)

@@ -40,24 +40,12 @@
         <div id="headerDiv">
         {% include "header.html" %}
 
-        {% page_menu "jdpages/menus/jdmenu.html" %}
+        {% page_menu "pages/menus/jdmenu.html" %}
         </div> <!-- headerDiv -->
 
         <div id="contentDiv" class="clearing">
-
             <div id="contentLeftDiv" class="clearing">
-                <div id="homeDiv">
-                    <div class="item-page">     
-                        <h2>{% block title %}{% endblock %}</h2>
-                        
-                        {% block main %}{% endblock %}
-                    
-                    </div>
-                </div> <!-- homeDiv -->
-
-                <div id="homeLeftDiv">home left div</div>
-                <div id="homeRightDiv">home right div</div> 
-                           
+                {% block main %}{% endblock %}               
             </div> <!-- contentLeftDiv -->
             
             <div id="contentRightDiv">

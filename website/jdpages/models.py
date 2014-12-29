@@ -20,3 +20,8 @@ class JDContentBase(models.Model):
 class JDPage(Page, RichText, JDContentBase):
     """
     """
+
+
+class JDHomePage(Page, RichText, JDContentBase):
+    """
+    """

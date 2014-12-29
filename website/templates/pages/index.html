@@ -1,0 +1,69 @@
+{% extends "pages/richtextpage.html" %}
+
+{% block main %}
+
+<div id="homeDiv">
+    <div class="item-page">     
+        <h2><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></h2>
+    
+    </div>
+</div> <!-- homeDiv -->
+
+<div id="homeLeftDiv">
+    
+    <div class="moduletable">
+        <h3>Politiek</h3>
+        <div class="mod_placehere">
+            <div style="overflow:auto;" class="mod_placehere_leading even">
+                <div class="placehere">
+                    <h2 class="contentheading">
+                    <a href="/jdmedia/actuele-publiciteit/5220-een-partijverbod-druist-in-tegen-de-democratie.html"
+                      class="contentpagetitle"> Een partijverbod druist in tegen de democratie</a> </h2>
+                    <p class="articleinfo">  <span class="createdate"> donderdag 18 december 2014 12:41</span> </p>
+                    <p class="buttonheading"></p>
+                            Robert Mugabe, Raúl Castro, Kim Jong-Un en Sybrand Buma. Allen heb ze één ding gemeen: het willen uitbannen van onwelgevallige partijen. Uiterlijk 18 december wordt er in de ... <p class="readmore">
+                    <a href="/jdmedia/actuele-publiciteit/5220-een-partijverbod-druist-in-tegen-de-democratie.html"> Lees meer...</a>
+                    </p>
+                </div>
+                
+                <div class="placehere">
+                    <h2 class="contentheading">
+                    <a href="/jdmedia/actuele-publiciteit/5219-jonge-democraten-zetten-eerste-kamer-te-koop-op-marktplaats.html"
+                      class="contentpagetitle"> Jonge Democraten zetten Eerste Kamer te koop op Marktplaats</a> </h2>
+                    <p class="articleinfo">  <span class="createdate"> donderdag 18 december 2014 09:13</span> </p>
+                    <p class="buttonheading"></p>
+                            Sinds vandaag is het mogelijk om via Marktplaats een bod uit te brengen op de Eerste Kamer. De senaat is in de uitverkoop gedaan door de Jonge Democraten (D66), die met deze actie ... <p class="readmore">
+                    <a href="/jdmedia/actuele-publiciteit/5219-jonge-democraten-zetten-eerste-kamer-te-koop-op-marktplaats.html"> Lees meer...</a>
+                    </p>
+                </div>
+            
+            </div>
+        </div>    
+    </div>
+    
+    <div class="moduletable">
+        <div class="custom"  >
+            <p><a href="http://jongedemocraten.nl/component/jevents/month.calendar/">»</a><a href="http://jongedemocraten.nl/jdmedia/persberichten.html"> Archief Persberichten</a></p>
+            <p><a href="http://jongedemocraten.nl/component/jevents/month.calendar/">»</a><a href="http://jongedemocraten.nl/jdmedia/actuele-publiciteit.html"> Archief JD in de Media</a></p>
+            <p><a href="http://jongedemocraten.nl/component/jevents/month.calendar/">»</a><a href="http://jongedemocraten.nl/politiek.html"> Archief Politiek</a></p>
+        </div>
+    </div>
+    
+</div>
+
+<div id="homeRightDiv">
+    
+    <div class="moduletable">
+        <h3>Mededelingen</h3>
+    </div>
+    
+    <div class="moduletable">
+        <div class="custom"  >
+            <p><a href="http://jongedemocraten.nl/component/jevents/month.calendar/">»</a><a href="https://jongedemocraten.nl/organisatie/mededelingen.html"> Meer Mededelingen</a></p>
+        </div>
+    </div>
+    
+</div>
+
+{{ block.super }}
+{% endblock %}

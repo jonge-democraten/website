@@ -243,6 +243,7 @@ INSTALLED_APPS = (
     "mezzanine.pages",
     "mezzanine.galleries",
     "mezzanine.twitter",
+    "captcha",
     "website",
     # "mezzanine.accounts",
     # "mezzanine.mobile",
@@ -397,3 +398,18 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+
+
+#################
+# FORM SETTINGS #
+#################
+
+# Register the extra form field to store integers (NUMBER stores floats).
+FORMS_EXTRA_FIELDS = [
+    [
+        100, "django.forms.IntegerField", "Integer",
+    ],
+    [
+        101, "captcha.fields.CaptchaField", "CAPTCHA",
+    ],
+]

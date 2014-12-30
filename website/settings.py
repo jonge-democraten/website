@@ -81,6 +81,12 @@ from __future__ import absolute_import, unicode_literals
 
 SITE_TITLE = "Jonge Democraten"
 
+SIDEBAR_BLOG = "JD Blog"
+
+HOMEPAGE_LEFT_COLUMN_BLOG = "Politiek"
+
+HOMEPAGE_RIGHT_COLUMN_BLOG = "Mededelingen"
+
 ########################
 # MAIN DJANGO SETTINGS #
 ########################
@@ -269,6 +275,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "mezzanine.conf.context_processors.settings",
     "mezzanine.pages.context_processors.page",
+    "website.context_processors.page",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,

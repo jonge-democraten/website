@@ -20,7 +20,7 @@
         <h3>Politiek</h3>
         <div class="mod_placehere">
             <div style="overflow:auto;" class="mod_placehere_leading even">
-                {% for post in politiek_blogposts_info %}
+                {% for post in leftcolumn_blogposts_info %}
                 <div class="placehere">
                     <h2 class="contentheading"><a href="{{ post.url }}" class="contentpagetitle">{{ post.title }}</a></h2>
                     <p class="articleinfo"><span class="createdate">{{ post.date|date:"l j F Y" }}</span></p>
@@ -47,6 +47,19 @@
     
     <div class="moduletable">
         <h3>Mededelingen</h3>
+        <div class="mod_placehere">
+            <div style="overflow:auto;" class="mod_placehere_leading even">
+                {% for post in rightcolumn_blogposts_info %}
+                <div class="placehere">
+                    <h2 class="contentheading"><a href="{{ post.url }}" class="contentpagetitle">{{ post.title }}</a></h2>
+                    <p class="articleinfo"><span class="createdate">{{ post.date|date:"l j F Y" }}</span></p>
+                    <p class="buttonheading"></p>
+                    {{ post.content|truncatechars:200 }}
+                    <p class="readmore"><a href="{{ post.url }}">Lees meer...</a></p>
+                </div>
+                {% endfor %}            
+            </div>
+        </div>    
     </div>
     
     <div class="moduletable">

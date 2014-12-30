@@ -56,3 +56,83 @@ class TestLogging(TestCase):
             logfile_str = file_error.read()
             self.assertTrue(logfile_str.find(debug_message) == -1)
             self.assertTrue(logfile_str.find(error_message) != -1)
+
+class TestIframeStripping(TestCase):
+    """
+    Unit tests for iframe stripping (only allow YouTube video embedding).
+    Tests the accuracy of website.utils.filters.filter_non_video_iframes.
+    """
+    def test_youtube_not_stripped(self):
+        """
+        Test whether an iframe containing an embedded YouTube
+        video is indeed not stripped when passed through the filter.
+        """
+        from bs4 import BeautifulSoup as bs
+        from website.utils.filters import filter_non_video_iframes
+
+        self.maxDiff = None
+        field_value = """
+        <div id="test">
+<p>Wit amet interdum dolor felis ut ante. Morbi a facilisis ante, in lobortis urna. Etiam ut nunc quis libero interdum aliquam eu at magna. Nunc vehicula risus eleifend molestie vulputate. Mauris diam odio, congue eget lorem id, finibus imperdiet sem.</p>
+<p><iframe height="315" src="//www.youtube.com/embed/-Y6ImGzTF70" width="560"></iframe></p>
+<p>Vestibulum eget posuere metus, vel finibus leo. Suspendisse congue orci magna, in vestibulum lacus pulvinar a. Donec egestas, felis id feugiat tempus, orci velit ullamcorper risus, et ultricies augue arcu ullamcorper dolor. Mauris eget sollicitudin purus. Aenean a cursus risus, sit amet mattis erat. Curabitur vel venenatis sem. Cras non gravida tellus, eu egestas tellus. Morbi at lorem a turpis blandit vulputate vitae a est.</p></div>
+        """
+        self.assertEqual(str(bs(field_value, 'html.parser')), \
+            filter_non_video_iframes(field_value))
+
+    def test_vimeo_stripped(self):
+        """
+        Test whether a video from a non-YouTube site is stripped
+        when passed through the filter.
+        """
+        from bs4 import BeautifulSoup as bs
+        from website.utils.filters import filter_non_video_iframes
+        field_value = """
+        <div id="test">
+<p>Wit amet interdum dolor felis ut ante. Morbi a facilisis ante, in lobortis urna. Etiam ut nunc quis libero interdum aliquam eu at magna. Nunc vehicula risus eleifend molestie vulputate. Mauris diam odio, congue eget lorem id, finibus imperdiet sem.</p>
+<iframe src="//player.vimeo.com/video/114963142?byline=0&amp;portrait=0&amp;color=ff0179" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><p><a href="http://vimeo.com/114963142">IONIAN</a> from <a href="http://vimeo.com/ryanclarke">Ryan Clarke</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+<p>Vestibulum eget posuere metus, vel finibus leo. Suspendisse congue orci magna, in vestibulum lacus pulvinar a. Donec egestas, felis id feugiat tempus, orci velit ullamcorper risus, et ultricies augue arcu ullamcorper dolor. Mauris eget sollicitudin purus. Aenean a cursus risus, sit amet mattis erat. Curabitur vel venenatis sem. Cras non gravida tellus, eu egestas tellus. Morbi at lorem a turpis blandit vulputate vitae a est.</p></div>
+        """
+        field_value_stripped = """
+        <div id="test">
+<p>Wit amet interdum dolor felis ut ante. Morbi a facilisis ante, in lobortis urna. Etiam ut nunc quis libero interdum aliquam eu at magna. Nunc vehicula risus eleifend molestie vulputate. Mauris diam odio, congue eget lorem id, finibus imperdiet sem.</p>
+<p><a href="http://vimeo.com/114963142">IONIAN</a> from <a href="http://vimeo.com/ryanclarke">Ryan Clarke</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+<p>Vestibulum eget posuere metus, vel finibus leo. Suspendisse congue orci magna, in vestibulum lacus pulvinar a. Donec egestas, felis id feugiat tempus, orci velit ullamcorper risus, et ultricies augue arcu ullamcorper dolor. Mauris eget sollicitudin purus. Aenean a cursus risus, sit amet mattis erat. Curabitur vel venenatis sem. Cras non gravida tellus, eu egestas tellus. Morbi at lorem a turpis blandit vulputate vitae a est.</p></div>
+        """
+        self.assertEqual(str(bs(field_value_stripped, 'html.parser')), \
+            filter_non_video_iframes(field_value))
+
+    def test_nonstandard_youtube_stripped(self):
+        """
+        Test whether an embedded YouTube video that does not follow
+        the standard options gets stripped as well.
+        """
+        from bs4 import BeautifulSoup as bs
+        from website.utils.filters import filter_non_video_iframes
+        self.maxDiff = None
+        field_value_pre = """<div id="test">
+<p>Wit amet interdum dolor felis ut ante. Morbi a facilisis ante, in lobortis urna. Etiam ut nunc quis libero interdum aliquam eu at magna. Nunc vehicula risus eleifend molestie vulputate. Mauris diam odio, congue eget lorem id, finibus imperdiet sem.</p>"""
+        field_value_post = """<p>Vestibulum eget posuere metus, vel finibus leo. Suspendisse congue orci magna, in vestibulum lacus pulvinar a. Donec egestas, felis id feugiat tempus, orci velit ullamcorper risus, et ultricies augue arcu ullamcorper dolor. Mauris eget sollicitudin purus. Aenean a cursus risus, sit amet mattis erat. Curabitur vel venenatis sem. Cras non gravida tellus, eu egestas tellus. Morbi at lorem a turpis blandit vulputate vitae a est.</p></div>"""
+
+        # First case: embed from a different URL
+        field_value_different_src = field_value_pre + \
+            """<iframe width="560" height="315" src="//www.youtub.com/embed/-Y6ImGzTF70"></iframe>""" + \
+            field_value_post
+        self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')), \
+            filter_non_video_iframes(field_value_different_src))
+
+        # Second case: embed using an attribute other than
+        # the ones YouTube sets by default (width, height, src,
+        # frameborders, allowfullscreen)
+        field_value_different_attributes = field_value_pre + \
+            """<iframe id="nonstandard" width="560" height="315" src="//www.youtube.com/embed/-Y6ImGzTF70"></iframe>""" + \
+            field_value_post
+        self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')), \
+            filter_non_video_iframes(field_value_different_attributes))
+
+        # Third case: iframe contains information.
+        field_value_iframe_has_content = field_value_pre + \
+            """<iframe width="560" height="315" src="//www.youtube.com/embed/-Y6ImGzTF70">Test Information</iframe>""" + \
+            field_value_post
+        self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')), \
+            filter_non_video_iframes(field_value_iframe_has_content))

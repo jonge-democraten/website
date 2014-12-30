@@ -413,3 +413,30 @@ FORMS_EXTRA_FIELDS = [
         101, "captcha.fields.CaptchaField", "CAPTCHA",
     ],
 ]
+
+
+##############################
+# YOUTUBE EMBEDDING SETTINGS #
+##############################
+
+# Could not find a way to append to the default, so we copy the defaults here.
+# The defaults are defined in mezzanine/core/defaults.py"
+RICHTEXT_ALLOWED_TAGS = ("a", "abbr", "acronym", "address", "area", "article", "aside",
+    "b", "bdo", "big", "blockquote", "br", "button", "caption", "center",
+    "cite", "code", "col", "colgroup", "dd", "del", "dfn", "dir", "div",
+    "dl", "dt", "em", "fieldset", "figure", "font", "footer", "form",
+    "h1", "h2", "h3", "h4", "h5", "h6", "header", "hr", "i", "img",
+    "input", "ins", "kbd", "label", "legend", "li", "map", "menu",
+    "nav", "ol", "optgroup", "option", "p", "pre", "q", "s", "samp",
+    "section", "select", "small", "span", "strike", "strong",
+    "sub", "sup", "table", "tbody", "td", "textarea",
+    "tfoot", "th", "thead", "tr", "tt", "u", "ul", "var", "wbr")
+# We append iframes to allow Youtube video embedding
+RICHTEXT_ALLOWED_TAGS += ("iframe",)
+
+# We disallow all iframes that are not an embedded YouTube video.
+# We first copy the default value (defined in mezzanine/core/defaults.py).
+RICHTEXT_FILTERS = ("mezzanine.utils.html.thumbnails",)
+# We append a function that strips iframes that do not follow the default format
+# for an embedded YouTube video.
+RICHTEXT_FILTERS += ("website.utils.filters.filter_non_video_iframes",)

@@ -1,5 +1,6 @@
 from django.utils.html import strip_tags
 
+
 class BlogPostInfo():
     def __init__(self, blogpost):
         self.title = blogpost.title

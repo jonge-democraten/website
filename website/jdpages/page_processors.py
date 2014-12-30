@@ -1,6 +1,6 @@
 import logging
 logger = logging.getLogger(__name__)
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from django.conf import settings
 from django.db.models import Q
@@ -21,6 +21,7 @@ def add_left_column_blogposts(request, page):
         blogposts_info.append(BlogPostInfo(post))
     return {"leftcolumn_blogposts_info": blogposts_info}
 
+
 @processor_for(JDHomePage)
 def add_right_column_blogposts(request, page):
     blog_posts = get_public_blogposts(settings.HOMEPAGE_RIGHT_COLUMN_BLOG)[:3]
@@ -28,6 +29,7 @@ def add_right_column_blogposts(request, page):
     for post in blog_posts:
         blogposts_info.append(BlogPostInfo(post))
     return {"rightcolumn_blogposts_info": blogposts_info}
+
 
 def get_public_blogposts(blogcategory):
     blog_category = BlogCategory.objects.get(title=blogcategory)

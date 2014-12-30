@@ -38,7 +38,7 @@
 <div id="outerDiv">
     <div id="innerDiv">
         <div id="headerDiv">
-        {% include "header.html" %}
+        {% include "elements/header.html" %}
 
         {% page_menu "pages/menus/jdmenu.html" %}
         </div> <!-- headerDiv -->
@@ -69,11 +69,11 @@
                     </div>    
                 </div>
                 
-                {% include "twitter_feed.html" %}
+                {% include "elements/twitter_feed.html" %}
                 
-                {% include "word_lid_banner.html" %}
+                {% include "elements/word_lid_banner.html" %}
                 
-                {% include "social_media_icons.html" %}
+                {% include "elements/social_media_icons.html" %}
                 
             </div> <!-- contentRightDiv -->
             
@@ -82,7 +82,7 @@
     </div> <!-- innerDiv -->
 </div> <!-- outerDiv -->
 
-{% include "footer.html" %}
+{% include "elements/footer.html" %}
 
 {% include "includes/footer_scripts.html" %}
 

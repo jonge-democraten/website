@@ -13,7 +13,10 @@ def page(request):
     """
     Adds the sidebar blogpost info to the context.
     """
-    sidebar_blog_category = BlogCategory.objects.get(title=settings.SIDEBAR_BLOG)
+    try: 
+        sidebar_blog_category = BlogCategory.objects.get(title=settings.SIDEBAR_BLOG)
+    except BlogCategory.DoesNotExist:
+        return {} # the blog category may not exist
     sidebar_blog_posts = BlogPost.objects.all().filter(categories=sidebar_blog_category).filter(status=CONTENT_STATUS_PUBLISHED)
     sidebar_blogpost = sidebar_blog_posts.last()
     if not sidebar_blogpost:

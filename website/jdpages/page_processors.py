@@ -37,6 +37,9 @@ def add_right_column_blogposts(request, page):
 
 
 def get_public_blogposts(blogcategory):
-    blog_category = BlogCategory.objects.get(title=blogcategory)
+    try: 
+        blog_category = BlogCategory.objects.get(title=blogcategory)
+    except BlogCategory.DoesNotExist:
+        return [] # the blog category may not exist
     blog_posts = BlogPost.objects.all().filter(categories=blog_category).filter(status=CONTENT_STATUS_PUBLISHED)
     return blog_posts.filter(publish_date__lte=datetime.now()).filter(Q(expiry_date__isnull=True) | Q(expiry_date__gte=datetime.now()))

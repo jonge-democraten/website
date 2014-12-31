@@ -140,25 +140,31 @@ logger.debug('CONF ' + member.DNA)
 These will be removed before deployment.  
 
 -----
-## Code standards
- * The default Python and Django [code style](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/) is used.  
- * Write code as simple as possible and focus on readability. 
- * Write code for others to understand and read.
+## Documentation
 
-*"Always code as if the person who ends up maintaining your code is a violent psychopath who knows where you live. "* - [source](http://c2.com/cgi/wiki?CodeForTheMaintainer)
+* Documentation can be found in the `/docs/` directory.
+* Docs are writtin in plain text with [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) formatting.
+* [MkDocs](http://www.mkdocs.org/) can be used to convert the doc files into nice looking html.
+* [readthedocs.org](http://jdwebsite.readthedocs.org/en/latest/) hosts a html version of the documentation, generated from the markdown files.
 
-<h3>Code check</h3>
-* Flake8 is a Python tool to check code style. 
-* It runs automatically on Travis after each commit.
-* You can find the Flake8 output in the [latest Travis build log](https://travis-ci.org/jonge-democraten/website).
+<h3>MkDocs</h3>
+You can use [MkDocs](http://www.mkdocs.org/) to preview the documentation in the readthedocs template.  
+Install mkdocs using pip, 
 
------
-## Code documentation
+    $ pip install mkdocs
+    
+run a preview server in the project directory,
+
+    $ mkdocs serve
+    
+and visit [127.0.0.1:8000](http://127.0.0.1:8000) to preview the generated documentation.
+
+<h3>Code documentation</h3>
 * Add comments to code that is not self-explanatory.
 * Use [python docstrings](http://en.wikipedia.org/wiki/Docstring#Python) to describe files, classes and functions.
 * Add docstrings to files, classes and functions if useful.
 
-<h3>Example</h3>
+**Example**
 ```python
 """
 File description.
@@ -173,6 +179,19 @@ class ExampleClass(Example):
         on multiple lines.
         """
 ```
+
+-----
+## Code standards
+ * The default Python and Django [code style](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/) is used.  
+ * Write code as simple as possible and focus on readability. 
+ * Write code for others to understand and read.
+
+*"Always code as if the person who ends up maintaining your code is a violent psychopath who knows where you live. "* - [source](http://c2.com/cgi/wiki?CodeForTheMaintainer)
+
+<h3>Code check</h3>
+* Flake8 is a Python tool to check code style. 
+* It runs automatically on Travis after each commit.
+* You can find the Flake8 output in the [latest Travis build log](https://travis-ci.org/jonge-democraten/website).
 
 -----
 ## Database

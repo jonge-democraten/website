@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% load mezzanine_tags %}
+
+{% block meta_title %}Home{% endblock %}
+
+{% block main %}
+
+<div id="homeDiv">
+    <div class="item-page">
+        {% editable page.jdhomepage.content %}
+        {{ page.jdhomepage.content|richtext_filters|safe }}
+        {% endeditable %}
+    
+    </div>
+</div> <!-- homeDiv -->
+
+<div id="homeLeftDiv">
+    <div class="moduletable">
+        <h3>Politiek</h3>
+        <div class="mod_placehere">
+            <div style="overflow:auto;" class="mod_placehere_leading even">
+                {% for post in leftcolumn_blogposts_info %}
+                <div class="placehere">
+                    <h2 class="contentheading"><a href="{{ post.url }}" class="contentpagetitle">{{ post.title }}</a></h2>
+                    <p class="articleinfo"><span class="createdate">{{ post.date|date:"l j F Y" }}</span></p>
+                    <p class="buttonheading"></p>
+                    {{ post.content|truncatechars:200 }}
+                    <p class="readmore"><a href="{{ post.url }}">Lees meer...</a></p>
+                </div>
+                {% endfor %}            
+            </div>
+        </div>    
+    </div>
+    
+    <div class="moduletable">
+        <div class="custom"  >
+            <p><a href="/media/persberichten.html">» Archief Persberichten</a></p>
+            <p><a href="/media/actuele-publiciteit.html">» Archief JD in de Media</a></p>
+            <p><a href="/politiek">» Archief Politiek</a></p>
+        </div>
+    </div>
+    
+</div>
+
+<div id="homeRightDiv">
+    
+    <div class="moduletable">
+        <h3>Mededelingen</h3>
+        <div class="mod_placehere">
+            <div style="overflow:auto;" class="mod_placehere_leading even">
+                {% for post in rightcolumn_blogposts_info %}
+                <div class="placehere">
+                    <h2 class="contentheading"><a href="{{ post.url }}" class="contentpagetitle">{{ post.title }}</a></h2>
+                    <p class="articleinfo"><span class="createdate">{{ post.date|date:"l j F Y" }}</span></p>
+                    <p class="buttonheading"></p>
+                    {{ post.content|truncatechars:200 }}
+                    <p class="readmore"><a href="{{ post.url }}">Lees meer...</a></p>
+                </div>
+                {% endfor %}            
+            </div>
+        </div>    
+    </div>
+    
+    <div class="moduletable">
+        <div class="custom"  >
+            <p><a href="/organisatie/mededelingen">» Meer Mededelingen</a></p>
+        </div>
+    </div>
+    
+</div>
+
+{{ block.super }}
+{% endblock %}

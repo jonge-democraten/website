@@ -1,0 +1,26 @@
+{% load pages_tags i18n future %}
+
+{% spaceless %}
+{% for page in page_branch %}
+    {% if page.in_menu %}
+    {% if page.is_current_child or page.is_current_sibling %}        
+    {% if not page.is_primary and page.parent.is_primary %}
+
+    {% if forloop.first %}
+    <ul>
+    {% endif %}
+
+    <li class="{% if page.is_current_or_ascendant %} current active {% endif %}">
+        <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+    </li> 
+
+    {% if forloop.last %}
+    </ul>
+    {% endif %}
+
+    {% endif %}        
+    {% endif %}
+    {% endif %}
+    
+{% endfor %}
+{% endspaceless %}

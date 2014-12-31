@@ -8,8 +8,6 @@ Based on Python, Django and [Mezzanine](http://mezzanine.jupo.org/). Open-source
 * **[User manual](http://jdwebsite.readthedocs.org/en/latest/user/)**
 * **[Developer manual](http://jdwebsite.readthedocs.org/en/latest/developer/)**
 
-The [user manual](http://jdwebsite.readthedocs.org/en/latest/user/) and [developers documentation](http://jdwebsite.readthedocs.org/en/latest/developer/) can be found [here](http://jdwebsite.readthedocs.org).  
-
 #### Quick install
 1. `$ ./build_env.sh`
 1. `$ source ./env/bin/activate`  

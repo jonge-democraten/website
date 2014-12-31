@@ -1,3 +1,8 @@
+"""
+Mezzanine page processors for jdpages.
+Read the mezzanine documentation for more info.
+"""
+
 import logging
 logger = logging.getLogger(__name__)
 from datetime import datetime

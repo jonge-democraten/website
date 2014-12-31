@@ -60,6 +60,11 @@ You can run a local test server with the command,
 
 and visit [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser to view the web interface.
 
+<h3>Hostnames</h3>
+Add the following line to your `/etc/hosts` file to enable the subdomains,
+
+    127.0.0.1 jd.local lh.jd.local ams.jd.local
+
 <h3>Update and clean</h3>
 **Get the latest changes**  
 To get the latest version of the project, type the following git command in your project directory,

@@ -214,11 +214,9 @@ Migrations have to be carefully managed between different branches, so keep trac
 -----
 ## Demo data
 
-The code base of jdwebsite contains demo data to demonstrate functionality. To create demo data, dump a fixture. 
+The code base of jdwebsite contains demo data to demonstrate functionality. To create demo data, dump a fixture in `/website/fixtures/`, 
 
-```
-python3 website/manage.py dumpdata --all --natural --indent 2 forms pages sites blog auth.User jdpages > website/fixtures/demo_data.json
-```
+    $ ./create_demo_data.sh
 
 This fixture may be loaded when initialising the development environment (see [Installation](#installation)).
 

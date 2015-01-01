@@ -454,3 +454,12 @@ RICHTEXT_FILTERS = ("mezzanine.utils.html.thumbnails",)
 # We append a function that strips iframes that do not follow the default format
 # for an embedded YouTube video.
 RICHTEXT_FILTERS += ("website.utils.filters.filter_non_video_iframes",)
+
+
+###########################
+# EMAIL ADDRESS FILTERING #
+###########################
+
+# We append a filter that encodes all email addresses and mailto links as HTML
+# entities.
+RICHTEXT_FILTERS += ("website.utils.filters.obfuscate_email_addresses",)

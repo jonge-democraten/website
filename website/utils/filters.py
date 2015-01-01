@@ -44,7 +44,7 @@ def filter_non_video_iframes(html, testing = False):
 
 def obfuscate_email_addresses(html):
     """
-    Given an HTML string, will obfuscate e-mail addresses using JavaScript.
+    Given an HTML string, will obfuscate e-mail addresses using HTML entities.
     Works on mailto links and plain e-mail addresses.
 
     Returns the HTML string with obfuscated e-mail addresses.

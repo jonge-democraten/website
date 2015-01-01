@@ -136,3 +136,40 @@ class TestIframeStripping(TestCase):
             field_value_post
         self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')), \
             filter_non_video_iframes(field_value_iframe_has_content))
+
+class TestEmailObfuscation(TestCase):
+    """
+    Unit tests for e-mail obfuscation functionality. Tests the accuracy of
+    website.utils.filters.obfuscate_email_addresses.
+    """
+
+    test_html = """
+    Context Context Context mailbox@example.com More Context.
+    Context Context <a href="mailto:mailbox@example.com">mail me</a> Context.
+    Context <a href="mailto:mailbox@example.com">mailbox@example.com</a>.
+    """
+
+    def test_no_at_character(self):
+        """
+        First case: is the '@' character indeed removed from the e-mail
+        addresses?
+        """
+        from website.utils.filters import obfuscate_email_addresses
+        self.assertFalse('@' in obfuscate_email_addresses(self.test_html))
+
+    def test_no_mailbox_name(self):
+        """
+        Second case: is the mailbox name indeed removed from plain view? (I.e.
+        is it no longer included in plaintext?)
+        """
+        from website.utils.filters import obfuscate_email_addresses
+        self.assertFalse('mailbox' in obfuscate_email_addresses(self.test_html))
+
+    def test_no_domain_name(self):
+        """
+        Third case: is the domain name indeed removed from plain view? (I.e.
+        is it no longer included in plaintext?)
+        """
+        from website.utils.filters import obfuscate_email_addresses
+        self.assertFalse('example' in obfuscate_email_addresses(self.test_html))
+        self.assertFalse('com' in obfuscate_email_addresses(self.test_html))

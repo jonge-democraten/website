@@ -6,7 +6,7 @@ from django.conf import settings
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 
-from website.containers import BlogPostInfo
+from website.utils.containers import BlogPostInfo
 
 
 def page(request):

@@ -15,7 +15,7 @@ from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.page_processors import processor_for
 
 from .models import JDPage, JDHomePage
-from website.containers import BlogPostInfo
+from website.utils.containers import BlogPostInfo
 
 
 @processor_for(JDHomePage)

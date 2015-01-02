@@ -1,2 +1,2 @@
 
-default_app_config = 'website.jdpages.apps.JDPages'
+default_app_config = 'website.apps.JDPagesConfig'

@@ -257,6 +257,7 @@ INSTALLED_APPS = (
     "mezzanine.twitter",
     "captcha",
     "website",
+    "website.core",
     "website.jdpages",
     # "mezzanine.accounts",
     # "mezzanine.mobile",
@@ -276,7 +277,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "mezzanine.conf.context_processors.settings",
     "mezzanine.pages.context_processors.page",
-    "website.context_processors.page",
+    "website.core.context_processors.page",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,

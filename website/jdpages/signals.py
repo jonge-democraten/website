@@ -28,11 +28,13 @@ def post_save_callback(sender, instance, created, **kwargs):
         if ColumnElementWidget.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)):
             return
         blog_category = instance
-        blog_category_item = BlogCategoryElement()
-        blog_category_item.blog_category = blog_category
-        blog_category_item.title = blog_category.title
-        blog_category_item.content_type = ContentType.objects.get_for_model(sender)
-        blog_category_item.object_id = instance.id
-        blog_category_item.site = instance.site
-        blog_category_item.save()
+        blog_category_element = BlogCategoryElement()
+        blog_category_element.blog_category = blog_category
+        blog_category_element.title = blog_category.title
+        blog_category_element.content_type = ContentType.objects.get_for_model(BlogCategory)
+        blog_category_element.object_id = blog_category.id
+        blog_category_element.save()
+        blog_category_element.site_id = instance.site_id
+        blog_category_element.save(update_site=False)
+        logger.info('Created BlogCategoryElement: ', blog_category_element)
     return

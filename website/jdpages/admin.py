@@ -5,7 +5,7 @@ from django.contrib import admin
 
 from mezzanine.pages.admin import PageAdmin
 
-from website.jdpages.models import JDPage, JDHomePage, JDColumnElement, BlogCategoryElement
+from website.jdpages.models import JDPage, JDHomePage, ColumnElementWidget, BlogCategoryElement
 
 
 class JDHomePageAdmin(PageAdmin):
@@ -34,7 +34,7 @@ class JDHomePageAdmin(PageAdmin):
         self_page_id = request.resolver_match.args[0]
         jdhomepage = JDHomePage.objects.get(id=self_page_id)
         if db_field.name == 'column_elements_left' or db_field.name == 'column_elements_right':
-            kwargs["queryset"] = JDColumnElement.objects.filter(site=jdhomepage.site)
+            kwargs["queryset"] = ColumnElementWidget.objects.filter(site=jdhomepage.site)
         return super(JDHomePageAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
 
 
@@ -44,4 +44,4 @@ class JDColumnItemAdmin(admin.ModelAdmin):
 
 admin.site.register(JDPage, PageAdmin)
 admin.site.register(JDHomePage, JDHomePageAdmin)
-admin.site.register(JDColumnElement, JDColumnItemAdmin)
+admin.site.register(ColumnElementWidget, JDColumnItemAdmin)

@@ -12,7 +12,7 @@ from django.conf import settings
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.pages.page_processors import processor_for
 
-from website.jdpages.models import JDPage, JDHomePage, JDColumnElement, BlogCategoryElement
+from website.jdpages.models import JDPage, JDHomePage, ColumnElementWidget, BlogCategoryElement
 from website.utils.containers import BlogPostItem
 
 
@@ -30,5 +30,5 @@ def get_original_elements(elements):
     elements_new = []
     for element in elements:
         if element.content_type.model_class() == BlogCategory:
-            elements_new.append(BlogCategoryElement.get_blog_category_element(element))
+            elements_new.append(BlogCategoryElement.get_original_element(element))
     return elements_new

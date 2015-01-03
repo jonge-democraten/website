@@ -12,27 +12,15 @@ from django.db import models
 from django.db.models import Q
 
 from mezzanine.blog.models import BlogCategory, BlogPost
-from mezzanine.core.models import RichText, Displayable, SiteRelated
+from mezzanine.core.models import Orderable, RichText, Displayable, SiteRelated
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.models import Page
 from mezzanine.utils.sites import Site
 
-from website.utils.containers import BlogPostItem
+from website.utils.containers import BlogPostItem, HorizontalPosition
+     
 
-
-class JDContentBase(models.Model):
-    """
-    Abstract model that provides extra content to a mezzanine page.
-    Can be used in new Page mixins. 
-    """
-    header_image = models.CharField(editable=True, max_length=1000,
-                                    blank=True, null=False, default="")
-
-    class Meta:
-        abstract = True
-        
-
-class ColumnElementWidget(SiteRelated):
+class ColumnElement(SiteRelated):
     """ 
     Generic graphical column element.
     Contains a reference to a generic ContentType derived object.
@@ -40,7 +28,7 @@ class ColumnElementWidget(SiteRelated):
     Designed to be created on creation of such objects.
     """
     title = models.CharField(max_length=1000, blank=True, null=False, default="")
-    content_type = models.ForeignKey(ContentType, blank=False, null=True)
+    content_type = models.ForeignKey(ContentType, blank=True, null=True)
     object_id = models.PositiveIntegerField(blank=False, null=True, verbose_name='related object id')
     content_object = GenericForeignKey('content_type', 'object_id')
     max_items = models.PositiveIntegerField(default=3, blank=False, null=False)
@@ -53,12 +41,11 @@ class ColumnElementWidget(SiteRelated):
         return self.content_type.model_class().objects.get(id=self.object_id)
 
     class Meta:
-        verbose_name = u'Column element widget'
+        verbose_name = 'Column element'
 
 
-class BlogCategoryElement(ColumnElementWidget):
+class BlogCategoryElement(ColumnElement):
     """ Graphical page element for a blog category. """     
-
     @staticmethod
     def get_element_with_items(element):
         """ Adds blogpost items to a BlogCategoryElement. """   
@@ -70,21 +57,58 @@ class BlogCategoryElement(ColumnElementWidget):
         return blog_cat_element
 
 
+class ColumnElementWidget(Orderable, SiteRelated):
+    """ """
+    column_element = models.ForeignKey(ColumnElement, blank=False, null=True)
+    page = models.ForeignKey(Page, blank=False, null=True)
+    horizontal_position = models.CharField(max_length=20, 
+                                           choices=HorizontalPosition.POSITION_CHOICES, 
+                                           default=HorizontalPosition.RIGHT)
+    
+    def __str__(self):
+        return str(self.column_element) + ' widget'
+    
+    @staticmethod
+    def get_widgets(horizontal_position):
+        return ColumnElementWidget.objects.filter(horizontal_position=horizontal_position)
+
+    class Meta:
+        verbose_name = 'Column element widget'
+
+
+class JDContentBase(models.Model):
+    """
+    Abstract model that provides extra content to a mezzanine page.
+    Can be used in new Page mixins. 
+    """
+    header_image = models.CharField(editable=True, max_length=1000,
+                                    blank=True, null=False, default="")
+
+    class Meta:
+        abstract = True
+
+
 class JDPage(Page, RichText, JDContentBase):
     """ Page model for general richtext pages. """
 
     class Meta:
-        verbose_name = u'JD Page'
+        verbose_name = 'JD Page'
 
 
 class JDHomePage(Page, RichText, JDContentBase):
     """ Page model for the site homepage. """
-    column_elements_left = models.ManyToManyField(ColumnElementWidget, blank=True, null=True, related_name="column_elements_left")
-    column_elements_right = models.ManyToManyField(ColumnElementWidget, blank=True, null=True, related_name="column_elements_right")
+
+    def get_column_elements(self, hor_pos):
+        element_widgets = ColumnElementWidget.get_widgets(hor_pos).filter(page=self)
+        elements = []
+        for widget in element_widgets:
+            elements.append(widget.column_element)
+        return elements
 
     class Meta:
-        verbose_name = u'JD Homepage'
+        verbose_name = 'JD Homepage'
 
+        
 
 def get_public_blogposts(blog_category):
     """ Returns all blogposts for a given category that are published and not expired. """

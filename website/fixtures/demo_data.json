@@ -1025,14 +1025,6 @@
 {
   "fields": {
     "header_image": "",
-    "column_elements_left": [
-      1,
-      5
-    ],
-    "column_elements_right": [
-      2,
-      6
-    ],
     "content": "<p>Welkom op de website van de Jonge Democraten. De JD is met ruim 5500 leden een van de grootste politieke jongerenorganisaties van Nederland.</p>"
   },
   "pk": 17,

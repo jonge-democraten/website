@@ -7,7 +7,7 @@ from django.dispatch import receiver
 
 from mezzanine.blog.models import BlogCategory
 
-from website.jdpages.models import ColumnElementWidget, BlogCategoryElement
+from website.jdpages.models import ColumnElement, BlogCategoryElement
 
 
 @receiver(post_save)
@@ -25,7 +25,7 @@ def post_save_callback(sender, instance, created, **kwargs):
     if not created:
         return
     if sender == BlogCategory:
-        if ColumnElementWidget.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)):
+        if ColumnElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)):
             return
         blog_category = instance
         blog_category_element = BlogCategoryElement()

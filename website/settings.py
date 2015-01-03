@@ -18,7 +18,7 @@ ADMIN_MENU_ORDER = (
        "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
     ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
     ("Users", ("auth.User", "auth.Group",)),
-    ("Page elements", ("jdpages.ColumnElementWidget",)),
+    ("Page elements", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget",)),
 )
 
 # A three item sequence, each containing a sequence of template tags

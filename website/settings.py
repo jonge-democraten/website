@@ -479,3 +479,21 @@ RICHTEXT_FILTERS += ("website.utils.filters.filter_non_video_iframes",)
 # We append a filter that encodes all email addresses and mailto links as HTML
 # entities.
 RICHTEXT_FILTERS += ("website.utils.filters.obfuscate_email_addresses",)
+
+
+##########################
+# MEDIA LIBRARY SETTINGS #
+##########################
+
+# We want to also allow uploading of .docx files. Appending to settings is not 
+# possible, so we copy-pasted the default settings here and added '.docx'.
+#
+# Default is available at /filebrowser_safe/settings.py
+FILEBROWSER_EXTENSIONS = {
+  'Folder': [''],
+  'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff'],
+  'Video': ['.mov', '.wmv', '.mpeg', '.mpg', '.avi', '.rm'],
+  'Document': ['.pdf', '.doc', '.docx', '.rtf', '.txt', '.xls', '.csv'],
+  'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p'],
+  'Code': ['.html', '.py', '.js', '.css']
+}

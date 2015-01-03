@@ -5,7 +5,7 @@ from django.contrib import admin
 
 from mezzanine.pages.admin import PageAdmin
 
-from website.jdpages.models import JDPage, JDHomePage, JDColumnItem
+from website.jdpages.models import JDPage, JDHomePage, JDColumnElement, BlogCategoryElement
 
 
 class JDHomePageAdmin(PageAdmin):
@@ -18,31 +18,30 @@ class JDHomePageAdmin(PageAdmin):
         # remove the column items, these are shown in a new set
         new_fields_none = []
         for field in fieldset_none[1]['fields']:
-            if not field == 'column_items_left' and not field == 'column_items_right':
+            if not field == 'column_elements_left' and not field == 'column_elements_right':
                 new_fields_none.append(field)
         fieldset_none[1]['fields'] = new_fields_none
                 
-        fieldset_column_items = (("Column items"), 
+        fieldset_column_elements = (("Column elements"), 
                                  {
-                                  "fields": ["column_items_left", 'column_items_right'],
+                                  "fields": ["column_elements_left", 'column_elements_right'],
                                   "classes": ("collapse-closed",)
                                  })
-        fieldsets = (fieldset_none, fieldset_metadata, fieldset_column_items) 
-        logger.warning(fieldsets)
+        fieldsets = (fieldset_none, fieldset_metadata, fieldset_column_elements) 
         return fieldsets
     
     def formfield_for_manytomany(self, db_field, request, **kwargs):
         self_page_id = request.resolver_match.args[0]
         jdhomepage = JDHomePage.objects.get(id=self_page_id)
-        if db_field.name == 'column_items_left' or db_field.name == 'column_items_right':
-            kwargs["queryset"] = JDColumnItem.objects.filter(site=jdhomepage.site)
+        if db_field.name == 'column_elements_left' or db_field.name == 'column_elements_right':
+            kwargs["queryset"] = JDColumnElement.objects.filter(site=jdhomepage.site)
         return super(JDHomePageAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
 
 
 class JDColumnItemAdmin(admin.ModelAdmin):
-    list_display = ('content_object', 'content_type', 'object_id', 'site')
+    list_display = ('content_object', 'content_type', 'object_id', 'site', 'title',)
 
 
 admin.site.register(JDPage, PageAdmin)
 admin.site.register(JDHomePage, JDHomePageAdmin)
-admin.site.register(JDColumnItem, JDColumnItemAdmin)
+admin.site.register(JDColumnElement, JDColumnItemAdmin)

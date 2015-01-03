@@ -5,6 +5,7 @@ from django.shortcuts import render
 
 from mezzanine.blog.models import BlogCategory
 
+from website.jdpages.models import BlogCategoryElement
 
 def get_elements_with_items(element_widgets):
     """ 

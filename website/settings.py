@@ -485,15 +485,17 @@ RICHTEXT_FILTERS += ("website.utils.filters.obfuscate_email_addresses",)
 # MEDIA LIBRARY SETTINGS #
 ##########################
 
-# We want to also allow uploading of .docx files. Appending to settings is not 
-# possible, so we copy-pasted the default settings here and added '.docx'.
+# We want to also allow uploading of .odt, .ods, .docx and .xlsx files. 
+# Appending to settings is not possible, so we copy-pasted the default settings
+# here and added '.odt', '.ods', '.docx' and '.xlsx'.
 #
 # Default is available at /filebrowser_safe/settings.py
 FILEBROWSER_EXTENSIONS = {
     'Folder': [''],
     'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff'],
     'Video': ['.mov', '.wmv', '.mpeg', '.mpg', '.avi', '.rm'],
-    'Document': ['.pdf', '.doc', '.docx', '.rtf', '.txt', '.xls', '.csv'],
+    'Document': ['.pdf', '.doc', '.docx', '.rtf', '.txt', '.xls', '.xlsx', \
+         '.csv', '.odt', '.ods'],
     'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p'],
     'Code': ['.html', '.py', '.js', '.css']
 }

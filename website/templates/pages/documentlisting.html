@@ -1,0 +1,26 @@
+{% extends "pages/jdpage.html" %}
+{% load mezzanine_tags keyword_tags %}
+
+{% block main %}
+
+<div id="homeDiv">
+    <div class="item-page">
+
+        <h2><a href="{{ page.get_absolute_url }}">{% editable page.title %}{{ page.title }}{% endeditable %}</a></h2>
+
+        {% editable page.documentlisting.content %}
+        {{ page.documentlisting.content|richtext_filters|safe }}
+        {% endeditable %}
+
+        <ul class="document-list">
+        {% for document in page.documentlisting.documents.all %}
+            <li class="document-list-item">
+                <a href="{{document.document.url}}" download="">{{document.description}}</a>
+            </li>
+        {% endfor %}
+        </ul>
+
+    </div>
+</div> <!-- homeDiv -->
+
+{% endblock %}

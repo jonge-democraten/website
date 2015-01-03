@@ -32,11 +32,3 @@ def get_original_elements(elements):
         if element.content_type.model_class() == BlogCategory:
             elements_new.append(BlogCategoryElement.get_blog_category_element(element))
     return elements_new
-
-# @processor_for(JDHomePage)
-# def add_right_column_blogposts(request, page):
-#     blog_posts = get_public_blogposts(settings.HOMEPAGE_RIGHT_COLUMN_BLOG)[:3]
-#     blogposts_info = []
-#     for post in blog_posts:
-#         blogposts_info.append(BlogPostInfo(post))
-#     return {"rightcolumn_blogposts_info": blogposts_info}

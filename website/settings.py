@@ -490,10 +490,10 @@ RICHTEXT_FILTERS += ("website.utils.filters.obfuscate_email_addresses",)
 #
 # Default is available at /filebrowser_safe/settings.py
 FILEBROWSER_EXTENSIONS = {
-  'Folder': [''],
-  'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff'],
-  'Video': ['.mov', '.wmv', '.mpeg', '.mpg', '.avi', '.rm'],
-  'Document': ['.pdf', '.doc', '.docx', '.rtf', '.txt', '.xls', '.csv'],
-  'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p'],
-  'Code': ['.html', '.py', '.js', '.css']
+    'Folder': [''],
+    'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff'],
+    'Video': ['.mov', '.wmv', '.mpeg', '.mpg', '.avi', '.rm'],
+    'Document': ['.pdf', '.doc', '.docx', '.rtf', '.txt', '.xls', '.csv'],
+    'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p'],
+    'Code': ['.html', '.py', '.js', '.css']
 }

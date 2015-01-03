@@ -49,15 +49,19 @@ class ColumnElementWidget(SiteRelated):
         return str(self.content_object) + ' (' + str(self.content_type) + ')'
 
     def get_object(self):
+        """ Returns the content object. """
         return self.content_type.model_class().objects.get(id=self.object_id)
 
     class Meta:
-        verbose_name = u'Column element'
+        verbose_name = u'Column element widget'
 
 
-class BlogCategoryElement(JDColumnElement):         
+class BlogCategoryElement(ColumnElementWidget):
+    """ Graphical page element for a blog category. """     
+
     @staticmethod
-    def get_blog_category_element(element):
+    def get_element_with_items(element):
+        """ Adds blogpost items to a BlogCategoryElement. """   
         blog_cat_element = BlogCategoryElement.objects.get(id=element.id)
         blog_cat_element.items = []
         blogposts = get_public_blogposts(element.get_object())[:element.max_items]
@@ -67,9 +71,7 @@ class BlogCategoryElement(JDColumnElement):
 
 
 class JDPage(Page, RichText, JDContentBase):
-    """
-    Page model for general richtext pages.
-    """
+    """ Page model for general richtext pages. """
 
     class Meta:
         verbose_name = u'JD Page'

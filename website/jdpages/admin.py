@@ -33,7 +33,7 @@ class HomePageAdmin(PageAdmin):
 
 
 class ColumnElementAdmin(admin.ModelAdmin):
-    list_display = ('content_object', 'content_type', 'object_id', 'site', 'title',)
+    list_display = ('content_object', 'content_type', 'object_id', 'site',)
 
 
 class DocumentInline(TabularDynamicInlineAdmin):

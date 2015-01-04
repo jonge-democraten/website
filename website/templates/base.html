@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
 {% load pages_tags mezzanine_tags i18n future staticfiles %}
+{% ifinstalled mezzanine.blog %}{% load blog_tags %}{% endifinstalled %}
 
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -11,8 +12,15 @@
 <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
 {% ifinstalled mezzanine.blog %}
+{% blog_categories as categories %}
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
 <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+{% if categories %}
+{% for category in categories %}
+<link rel="alternate" type="application/rss+xml" title="{{ category }} RSS" href="{% url "blog_post_feed_category" category.slug "rss" %}">
+<link rel="alternate" type="application/atom+xml" title="{{ category }} Atom" href="{% url "blog_post_feed_category" category.slug "atom" %}">
+{% endfor %}
+{% endif %}
 {% endifinstalled %}
 
 {% compress css %}

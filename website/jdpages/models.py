@@ -14,16 +14,15 @@ from django.utils.translation import ugettext_lazy as _
 
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.fields import FileField
-from mezzanine.core.models import Orderable, RichText, Displayable, SiteRelated
+from mezzanine.core.models import Orderable, RichText, SiteRelated
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.models import Page
-from mezzanine.utils.sites import Site
 
 from website.utils.containers import BlogPostItem, HorizontalPosition
-     
+
 
 class ColumnElement(SiteRelated):
-    """ 
+    """
     Generic graphical column element.
     Contains a reference to a generic ContentType derived object.
     The referenced object is responsible for adding items to this element.
@@ -50,15 +49,15 @@ class ColumnElementWidget(Orderable, SiteRelated):
     column_element = models.ForeignKey(ColumnElement, blank=False, null=True)
     page = models.ForeignKey(Page, blank=False, null=True)
     max_items = models.PositiveIntegerField(default=3, blank=False, null=False)
-    horizontal_position = models.CharField(max_length=20, 
-                                           choices=HorizontalPosition.POSITION_CHOICES, 
+    horizontal_position = models.CharField(max_length=20,
+                                           choices=HorizontalPosition.POSITION_CHOICES,
                                            default=HorizontalPosition.RIGHT)
 
     @staticmethod
     def add_items_to_widgets(element_widgets):
-        """ 
-        Adds the items to this element 
-        Contains a ContentType type switch which determines 
+        """
+        Adds the items to this element
+        Contains a ContentType type switch which determines
         element_widgets --- a list of ColumnElements
         """
         for widget in element_widgets:
@@ -79,7 +78,7 @@ class ColumnElementWidget(Orderable, SiteRelated):
 class ContentBase(models.Model):
     """
     Abstract model that provides extra content to a mezzanine page.
-    Can be used in new Page mixins. 
+    Can be used in new Page mixins.
     """
     header_image = models.CharField(editable=True, max_length=1000,
                                     blank=True, null=False, default="")
@@ -117,8 +116,8 @@ class Document(Orderable):
     """
 
     document_listing = models.ForeignKey(DocumentListing, related_name="documents")
-    document = FileField(_("Document"), max_length = 200, format = "Document")
-    description = models.CharField(_("Description"), max_length = 1000)
+    document = FileField(_("Document"), max_length=200, format="Document")
+    description = models.CharField(_("Description"), max_length=1000)
 
     def __str__(self):
         return self.description

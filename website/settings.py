@@ -14,8 +14,7 @@ from __future__ import absolute_import, unicode_literals
 # Controls the ordering and grouping of the admin menu.
 #
 ADMIN_MENU_ORDER = (
-    ("Content", ("pages.Page", "blog.BlogPost",
-       "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
+    ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
     ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
     ("Users", ("auth.User", "auth.Group",)),
     ("Page elements", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget",)),
@@ -328,7 +327,7 @@ LOG_DIR = PROJECT_ROOT
 # Max. logfile size
 LOGFILE_MAXSIZE = 10 * 1024 * 1024
 
-# Number of old log files that are stored before they are deleted 
+# Number of old log files that are stored before they are deleted
 # see https://docs.python.org/3/library/logging.handlers.html#rotatingfilehandler
 LOGFILE_BACKUP_COUNT = 3
 
@@ -482,7 +481,7 @@ RICHTEXT_FILTERS += ("website.utils.filters.obfuscate_email_addresses",)
 # MEDIA LIBRARY SETTINGS #
 ##########################
 
-# We want to also allow uploading of .odt, .ods, .docx and .xlsx files. 
+# We want to also allow uploading of .odt, .ods, .docx and .xlsx files.
 # Appending to settings is not possible, so we copy-pasted the default settings
 # here and added '.odt', '.ods', '.docx' and '.xlsx'.
 #

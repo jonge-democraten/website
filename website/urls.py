@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
+from django.views.defaults import page_not_found
 
 # from mezzanine.core.views import direct_to_template
 
@@ -22,6 +23,10 @@ urlpatterns = i18n_patterns(
 
 urlpatterns += patterns('',
     url(r'^captcha/', include('captcha.urls')),
+)
+
+urlpatterns += patterns('',
+    url(r'^comment/', page_not_found),
 )
 
 urlpatterns += patterns(

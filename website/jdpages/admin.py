@@ -6,7 +6,7 @@ from django.contrib import admin
 from mezzanine.pages.admin import PageAdmin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
 
-from website.jdpages.models import JDPage, JDHomePage, ColumnElement, ColumnElementWidget, BlogCategoryElement
+from website.jdpages.models import JDPage, JDHomePage, ColumnElement, ColumnElementWidget
 from website.utils.containers import HorizontalPosition
 
 

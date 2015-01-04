@@ -39,22 +39,24 @@ class ColumnElement(SiteRelated):
     def get_object(self):
         """ Returns the content object. """
         return self.content_type.model_class().objects.get(id=self.object_id)
+    
+    @staticmethod
+    def get_elements_with_items(elements):
+        """ 
+        Adds the items to this element 
+        Contains a ContentType type switch which determines 
+        elements --- a list of ColumnElements
+        """
+        for element in elements:
+            if element.content_type.model_class() == BlogCategory:
+                element.items = []
+                blogposts = get_public_blogposts(element.get_object())[:element.max_items]
+                for post in blogposts:
+                    element.items.append(BlogPostItem(post))
+        return elements
 
     class Meta:
         verbose_name = 'Column element'
-
-
-class BlogCategoryElement(ColumnElement):
-    """ Graphical page element for a blog category. """     
-    @staticmethod
-    def get_element_with_items(element):
-        """ Adds blogpost items to a BlogCategoryElement. """   
-        blog_cat_element = BlogCategoryElement.objects.get(id=element.id)
-        blog_cat_element.items = []
-        blogposts = get_public_blogposts(element.get_object())[:element.max_items]
-        for post in blogposts:
-            blog_cat_element.items.append(BlogPostItem(post))
-        return blog_cat_element
 
 
 class ColumnElementWidget(Orderable, SiteRelated):

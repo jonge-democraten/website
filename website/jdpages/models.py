@@ -78,7 +78,7 @@ class ColumnElementWidget(Orderable, SiteRelated):
         verbose_name = 'Column element widget'
 
 
-class JDContentBase(models.Model):
+class ContentBase(models.Model):
     """
     Abstract model that provides extra content to a mezzanine page.
     Can be used in new Page mixins. 
@@ -90,14 +90,14 @@ class JDContentBase(models.Model):
         abstract = True
 
 
-class JDPage(Page, RichText, JDContentBase):
+class JDPage(Page, RichText, ContentBase):
     """ Page model for general richtext pages. """
 
     class Meta:
         verbose_name = 'JD Page'
 
 
-class JDHomePage(Page, RichText, JDContentBase):
+class HomePage(Page, RichText, ContentBase):
     """ Page model for the site homepage. """
 
     def get_column_elements(self, hor_pos):
@@ -108,7 +108,7 @@ class JDHomePage(Page, RichText, JDContentBase):
         return elements
 
     class Meta:
-        verbose_name = 'JD Homepage'
+        verbose_name = 'Homepage'
 
         
 

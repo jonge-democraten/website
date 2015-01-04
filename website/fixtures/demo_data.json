@@ -670,7 +670,7 @@
     "_meta_title": "",
     "_order": 0,
     "description": "Welkom op de website van de Jonge Democraten. De JD is met ruim 5500 leden een van de grootste politieke jongerenorganisaties van Nederland.",
-    "content_model": "jdhomepage",
+    "content_model": "homepage",
     "slug": "/",
     "status": 2,
     "in_sitemap": true,
@@ -748,7 +748,7 @@
     "_meta_title": "",
     "_order": 0,
     "description": ".",
-    "content_model": "jdhomepage",
+    "content_model": "homepage",
     "slug": "/",
     "status": 2,
     "in_sitemap": true,
@@ -774,7 +774,7 @@
     "_meta_title": "",
     "_order": 0,
     "description": "Welkom op de afdelingsite van de Jonge Democraten Leiden-Haaglanden. Hier vind je informatie over ons als\u00a0bestuur, de activiteiten die wij organiseren en de verschillende\u00a0commissies\u00a0die onze afdeling rijk is.",
-    "content_model": "jdhomepage",
+    "content_model": "homepage",
     "slug": "/",
     "status": 2,
     "in_sitemap": true,
@@ -1028,7 +1028,7 @@
     "content": "<p>Welkom op de website van de Jonge Democraten. De JD is met ruim 5500 leden een van de grootste politieke jongerenorganisaties van Nederland.</p>"
   },
   "pk": 17,
-  "model": "jdpages.jdhomepage"
+  "model": "jdpages.homepage"
 },
 {
   "fields": {
@@ -1036,7 +1036,7 @@
     "content": "<p>.</p>"
   },
   "pk": 22,
-  "model": "jdpages.jdhomepage"
+  "model": "jdpages.homepage"
 },
 {
   "fields": {
@@ -1044,7 +1044,7 @@
     "content": "<p>Welkom op de afdelingsite van de Jonge Democraten Leiden-Haaglanden. Hier vind je informatie over ons als\u00a0bestuur, de activiteiten die wij organiseren en de verschillende\u00a0commissies\u00a0die onze afdeling rijk is.</p>"
   },
   "pk": 23,
-  "model": "jdpages.jdhomepage"
+  "model": "jdpages.homepage"
 },
 {
   "fields": {

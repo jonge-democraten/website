@@ -6,7 +6,7 @@ from django.contrib import admin
 from mezzanine.pages.admin import PageAdmin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
 
-from website.jdpages.models import JDPage, JDHomePage, ColumnElement, ColumnElementWidget
+from website.jdpages.models import JDPage, HomePage, ColumnElement, ColumnElementWidget
 from website.utils.containers import HorizontalPosition
 
 
@@ -28,7 +28,7 @@ class RightColumnElementWidgetInline(TabularDynamicInlineAdmin):
         return ColumnElementWidget.get_widgets(HorizontalPosition.RIGHT)
 
 
-class JDHomePageAdmin(PageAdmin):
+class HomePageAdmin(PageAdmin):
     inlines = [LeftColumnElementWidgetInline, RightColumnElementWidgetInline,]
 
 
@@ -37,6 +37,6 @@ class ColumnElementAdmin(admin.ModelAdmin):
 
 
 admin.site.register(JDPage, PageAdmin)
-admin.site.register(JDHomePage, JDHomePageAdmin)
+admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(ColumnElement, ColumnElementAdmin)
 admin.site.register(ColumnElementWidget)

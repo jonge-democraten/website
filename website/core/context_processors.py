@@ -6,7 +6,7 @@ from django.conf import settings
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 
-from website.utils.containers import BlogPostInfo
+from website.utils.containers import BlogPostItem
 
 
 def page(request):
@@ -21,5 +21,5 @@ def page(request):
     sidebar_blogpost = sidebar_blog_posts.last()
     if not sidebar_blogpost:
         return {}
-    blogpost_info = BlogPostInfo(sidebar_blogpost)
+    blogpost_info = BlogPostItem(sidebar_blogpost)
     return {"sidebar_blogpost": blogpost_info}

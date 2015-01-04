@@ -1,0 +1,5 @@
+<h2 class="contentheading"><a href="{{ item.url }}" class="contentpagetitle">{{ item.title }}</a></h2>
+<p class="articleinfo"><span class="createdate">{{ item.date|date:"l j F Y" }}</span></p>
+<p class="buttonheading"></p>
+{{ item.content|truncatechars:200 }}
+<p class="readmore"><a href="{{ item.url }}">Lees meer...</a></p>

@@ -8,30 +8,31 @@
 
 <div id="homeDiv">
     <div class="item-page">
-        {% editable page.jdhomepage.content %}
-        {{ page.jdhomepage.content|richtext_filters|safe }}
+        {% editable page.homepage.content %}
+        {{ page.homepage.content|richtext_filters|safe }}
         {% endeditable %}
     
     </div>
 </div> <!-- homeDiv -->
 
+
 <div id="homeLeftDiv">
+{% for element in column_elements_left %}
     <div class="moduletable">
-        <h3>Politiek</h3>
+        <h3>{{ element.title }} </h3>
         <div class="mod_placehere">
             <div style="overflow:auto;" class="mod_placehere_leading even">
-                {% for post in leftcolumn_blogposts_info %}
                 <div class="placehere">
-                    <h2 class="contentheading"><a href="{{ post.url }}" class="contentpagetitle">{{ post.title }}</a></h2>
-                    <p class="articleinfo"><span class="createdate">{{ post.date|date:"l j F Y" }}</span></p>
-                    <p class="buttonheading"></p>
-                    {{ post.content|truncatechars:200 }}
-                    <p class="readmore"><a href="{{ post.url }}">Lees meer...</a></p>
-                </div>
-                {% endfor %}            
+                {% for item in element.items %}
+                    {% with template_name=item.get_template_name|stringformat:"s" %}
+                        {% include "elements/"|add:template_name %}
+                    {% endwith %}
+                {% endfor %}
+                </div>        
             </div>
-        </div>    
+        </div> 
     </div>
+{% endfor %}
     
     <div class="moduletable">
         <div class="custom"  >
@@ -45,23 +46,22 @@
 
 <div id="homeRightDiv">
     
+{% for element in column_elements_right %}
     <div class="moduletable">
-        <h3>Mededelingen</h3>
+        <h3>{{ element.title }} </h3>
         <div class="mod_placehere">
             <div style="overflow:auto;" class="mod_placehere_leading even">
-                {% for post in rightcolumn_blogposts_info %}
                 <div class="placehere">
-                    <h2 class="contentheading"><a href="{{ post.url }}" class="contentpagetitle">{{ post.title }}</a></h2>
-                    <p class="articleinfo"><span class="createdate">{{ post.date|date:"l j F Y" }}</span></p>
-                    <p class="buttonheading"></p>
-                    {{ post.content|truncatechars:200 }}
-                    <p class="readmore"><a href="{{ post.url }}">Lees meer...</a></p>
-                </div>
-                {% endfor %}            
+                {% for item in element.items %}
+                    {% with template_name=item.get_template_name|stringformat:"s" %}
+                        {% include "elements/"|add:template_name %}
+                    {% endwith %}
+                {% endfor %}
+                </div>        
             </div>
-        </div>    
+        </div> 
     </div>
-    
+{% endfor %}
     <div class="moduletable">
         <div class="custom"  >
             <p><a href="/organisatie/mededelingen">» Meer Mededelingen</a></p>

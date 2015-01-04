@@ -51,7 +51,7 @@ class Document(Orderable):
     Model for a document in a DocumentListing.
     """
 
-    document_listing = models.ForeignKey("DocumentListing", related_name="documents")
+    document_listing = models.ForeignKey(DocumentListing, related_name="documents")
     document = FileField(_("Document"), max_length = 200, format = "Document")
     description = models.CharField(_("Description"), max_length = 1000)
 

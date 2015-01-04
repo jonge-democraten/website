@@ -23,10 +23,11 @@ from website.utils.containers import BlogPostItem, HorizontalPosition
 
 class ColumnElement(SiteRelated):
     """
-    Generic graphical column element.
-    Contains a reference to a generic ContentType derived object.
-    The referenced object is responsible for adding items to this element.
-    Designed to be created on creation of such objects.
+    A generic column element with reference to any model object.
+    Designed to be created on creation of supported objects, see signals.py.
+    Used by ColumnElementWidget to represent generic data in a html column.
+    The ColumnElementWidget contains the information on how to display the
+    model object of this element.
     """
     content_type = models.ForeignKey(ContentType, blank=True, null=True)
     object_id = models.PositiveIntegerField(blank=False, null=True, verbose_name='related object id')
@@ -44,7 +45,12 @@ class ColumnElement(SiteRelated):
 
 
 class ColumnElementWidget(Orderable, SiteRelated):
-    """ """
+    """ 
+    User interface object that shows some data in a html column on a page.
+    Contains a reference to some generic data represented by ColumnElement.
+    Contains a html item factory that generates the html for the supported
+    element types. Each element contains of one or more items. 
+    """
     title = models.CharField(max_length=1000, blank=True, null=False, default="")
     column_element = models.ForeignKey(ColumnElement, blank=False, null=True)
     page = models.ForeignKey(Page, blank=False, null=True)
@@ -78,7 +84,7 @@ class ColumnElementWidget(Orderable, SiteRelated):
 class ContentBase(models.Model):
     """
     Abstract model that provides extra content to a mezzanine page.
-    Can be used in new Page mixins.
+    Can be re-used in Page mixins.
     """
     header_image = models.CharField(editable=True, max_length=1000,
                                     blank=True, null=False, default="")

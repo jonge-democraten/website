@@ -47,5 +47,4 @@ class DocumentListingAdmin(PageAdmin):
 admin.site.register(JDPage, PageAdmin)
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(ColumnElement, ColumnElementAdmin)
-admin.site.register(ColumnElementWidget)
 admin.site.register(DocumentListing, DocumentListingAdmin)

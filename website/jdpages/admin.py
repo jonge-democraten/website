@@ -54,8 +54,16 @@ class HomePageAdmin(PageAdmin):
     inlines = [LeftColumnElementWidgetInline, RightColumnElementWidgetInline,]
 
 
+class DocumentAdmin(admin.ModelAdmin):
+    list_display = ('description', 'document', 'document_listing')
+
+
 class ColumnElementAdmin(admin.ModelAdmin):
-    list_display = ('content_object', 'content_type', 'object_id', 'site',)
+    list_display = ('id', 'content_object', 'content_type', 'object_id', 'site',)
+
+
+class ColumnElementWidgetAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'column_element', 'page', 'max_items', 'horizontal_position', 'site')
 
 
 class DocumentInline(TabularDynamicInlineAdmin):

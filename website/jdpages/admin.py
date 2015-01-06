@@ -1,6 +1,7 @@
 import logging
 logger = logging.getLogger(__name__)
 
+from django.conf import settings
 from django.contrib import admin
 from django.utils.functional import curry
 
@@ -76,5 +77,9 @@ class DocumentListingAdmin(PageAdmin):
 
 admin.site.register(JDPage, PageAdmin)
 admin.site.register(HomePage, HomePageAdmin)
-admin.site.register(ColumnElement, ColumnElementAdmin)
 admin.site.register(DocumentListing, DocumentListingAdmin)
+
+if settings.DEBUG:
+    admin.site.register(ColumnElement, ColumnElementAdmin)
+    admin.site.register(ColumnElementWidget, ColumnElementWidgetAdmin)
+    admin.site.register(Document, DocumentAdmin)

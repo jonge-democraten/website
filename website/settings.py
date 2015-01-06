@@ -17,7 +17,7 @@ ADMIN_MENU_ORDER = (
     ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
     ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
     ("Users", ("auth.User", "auth.Group",)),
-    ("Page elements", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget",)),
+    ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget", 'jdpages.Document', 'jdpages.DocumentListing',)),
 )
 
 # A three item sequence, each containing a sequence of template tags

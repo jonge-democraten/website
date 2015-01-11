@@ -9,6 +9,7 @@ Based on Python, Django and [Mezzanine](http://mezzanine.jupo.org/). Open-source
 * **[Developer manual](http://jdwebsite.readthedocs.org/en/latest/developer/)**
 
 #### Quick install
+1. `$ ./clean_env.sh`
 1. `$ ./build_env.sh`
 1. `$ source ./env/bin/activate`  
 1. `$ python create_local_settings.py`

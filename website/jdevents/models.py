@@ -3,19 +3,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from mezzanine.core.models import Displayable, RichText
 
-class RepeatType(models.Model):
-    DAILY = 'daily'
-    WEEKLY = 'weekly',
-    MONTHLY = 'monthly'
-
-    REPEAT_CHOICES = (
-        (DAILY, _('Daily')),
-        (WEEKLY, _('Weekly')),
-        (MONTHLY, _('Monthly'))
-    )
-
-    repeat_type = models.CharField(max_length=10, choices=REPEAT_CHOICES)
-
 class Event(Displayable, RichText):
     """
         Main object for each event.
@@ -35,7 +22,7 @@ class Occurence(models.Model):
         Represents an occurence of an event. Can be automatically repeated
     """
 
+    event = models.ForeignKey(Event)
     start = models.DateTimeField()
     end = models.DateTimeField()
-    repeat = models.ForeignKey(RepeatType, default=None, blank=True)
 

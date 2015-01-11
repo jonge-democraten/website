@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from mezzanine.core.models import Displayable, RichText
 
@@ -8,9 +9,9 @@ class RepeatType(models.Model):
     MONTHLY = 'monthly'
 
     REPEAT_CHOICES = (
-        (DAILY, 'REPEAT_DAILY'),
-        (WEEKLY, 'REPEAT_WEEKLY'),
-        (MONTHLY, 'REPEAT_MONTHLY')
+        (DAILY, _('Daily')),
+        (WEEKLY, _('Weekly')),
+        (MONTHLY, _('Monthly'))
     )
 
     repeat_type = models.CharField(max_length=10, choices=REPEAT_CHOICES)

@@ -2,7 +2,6 @@ from django.db import models
 
 from mezzanine.core.models import Displayable, RichText
 
-
 class RepeatType(models.Model):
     DAILY = 'daily'
     WEEKLY = 'weekly',
@@ -30,7 +29,12 @@ class Event(Displayable, RichText):
         Besides that, it derives from RichText, which provides a WYSIWYG field.
     """
 
-    event_date = models.DateTimeField()
-    event_end = models.DateTimeField()
+class Occurence(models.Model):
+    """
+        Represents an occurence of an event. Can be automatically repeated
+    """
+
+    start = models.DateTimeField()
+    end = models.DateTimeField()
     repeat = models.ForeignKey(RepeatType, default=None, blank=True)
 

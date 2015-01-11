@@ -257,6 +257,7 @@ INSTALLED_APPS = (
     "website.jdpages",
     # "mezzanine.accounts",
     # "mezzanine.mobile",
+    "debug_toolbar",
 )
 
 # List of processors used by RequestContext to populate the context.

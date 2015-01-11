@@ -25,4 +25,5 @@ class Occurence(models.Model):
     event = models.ForeignKey(Event)
     start = models.DateTimeField()
     end = models.DateTimeField()
+    extra_information = models.CharField(max_length=255, blank=True, null=True)
 

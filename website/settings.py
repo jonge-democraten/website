@@ -15,7 +15,7 @@ from __future__ import absolute_import, unicode_literals
 #
 ADMIN_MENU_ORDER = (
     ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
-    ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
+    ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting")),
     ("Users", ("auth.User", "auth.Group",)),
     ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget", 'jdpages.Document', 'jdpages.DocumentListing',)),
 )
@@ -258,6 +258,7 @@ INSTALLED_APPS = (
     "swingtime",
     # "mezzanine.accounts",
     # "mezzanine.mobile",
+    "debug_toolbar",
 )
 
 # List of processors used by RequestContext to populate the context.

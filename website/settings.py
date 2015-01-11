@@ -255,7 +255,6 @@ INSTALLED_APPS = (
     "website",
     "website.core",
     "website.jdpages",
-    "website.jdevents",
     # "mezzanine.accounts",
     # "mezzanine.mobile",
 )

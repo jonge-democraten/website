@@ -7,6 +7,7 @@ Installation is easy on a Linux-like operating system.
 For Windows and Mac, we advise to create a Linux virtual machine. Instructions are given below.
 
 <h3>Basics</h3>
+    $ ./clean_env.sh
     $ ./build_env.sh
     $ source ./env/bin/activate
     $ python create_local_settings.py
@@ -33,6 +34,10 @@ Create a new clone of the project,
     $ git clone https://github.com/jonge-democraten/website.git
 
 **Virtual environment**  
+Delete an existing virtual environment,
+
+    $ ./clean_env.sh
+
 Create a virtual environment in `./env/` and install all dependencies,
 
     $ ./build_env.sh  

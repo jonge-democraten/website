@@ -21,3 +21,16 @@ class ColumnElementTest(TestCase):
         self.assertEqual(ColumnElement.objects.count(), 1)
         element = ColumnElement.objects.get(id=1)
         self.assertEqual(element.get_object(), category)
+
+    def test_auto_delete(self):
+        """
+        Tests whether a ColumnElement is automatically deleted
+        when a BlogCategory is deleted.
+        """
+        category = BlogCategory.objects.create(title="Test Blog")
+        self.assertEqual(ColumnElement.objects.count(), 1)
+        element = ColumnElement.objects.get(id=1)
+        self.assertEqual(element.get_object(), category)
+        category.delete()
+        self.assertEqual(BlogCategory.objects.count(), 0)
+        self.assertEqual(ColumnElement.objects.count(), 0)

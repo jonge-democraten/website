@@ -39,8 +39,7 @@ def pre_delete_callback(sender, instance, **kwargs):
     sender -- the model class
     instance -- the actual instance being saved
     """
-    if sender == BlogCategory:
-        related_elements = ColumnElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender))
-        for element in related_elements:
-            element.delete()
+    related_elements = ColumnElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender))
+    for element in related_elements:
+        element.delete()
     return

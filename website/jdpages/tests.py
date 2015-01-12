@@ -8,7 +8,7 @@ from mezzanine.blog.models import BlogCategory
 from .models import ColumnElement
 
 
-class ColumnElementTest(TestCase):
+class TestColumnElement(TestCase):
     """ ColumnElement test case. """
 
     def test_auto_create(self):

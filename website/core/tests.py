@@ -173,3 +173,55 @@ class TestEmailObfuscation(TestCase):
         from website.utils.filters import obfuscate_email_addresses
         self.assertFalse('example' in obfuscate_email_addresses(self.test_html))
         self.assertFalse('com' in obfuscate_email_addresses(self.test_html))
+
+class TestScriptTagWhitelisting(TestCase):
+    """
+    Unit tests for script tag whitelisting functionality. Tests the accuracy of
+    website.utils.filters.strip_scripts_not_in_whitelist.
+    """
+    from mezzanine.conf import settings
+
+    whitelist = settings.RICHTEXT_SCRIPT_TAG_WHITELIST
+
+    evil_html = """
+    This is inconspicuous text that contains evil JavaScript.<script src="http://ev.il/code.js"></script>"""
+
+    evil_html_stripped = """
+    This is inconspicuous text that contains evil JavaScript."""
+
+    good_html = """
+    This is nice text that contains JavaScript. But don't worry:
+    it's all good because it was whitelisted.
+    """
+
+    if len(whitelist) > 0:
+        good_html += whitelist[0]
+
+    boring_html = """
+    This is nice but boring text. It contains another tag, but no scripts.
+    <p>This is a separate paragraph.</p>
+    """
+
+    def test_evil_is_stripped(self):
+        """ Test if an evil script tag is indeed stripped. """
+        from website.utils.filters import strip_scripts_not_in_whitelist
+        from bs4 import BeautifulSoup as bs
+
+        self.assertEqual(strip_scripts_not_in_whitelist(self.evil_html),
+            str(bs(self.evil_html_stripped, 'html.parser')))
+
+    def good_is_not_stripped(self):
+        """ Test if a whitelisted script tag indeed passes unstripped. """
+        from website.utils.filters import strip_scripts_not_in_whitelist
+        from bs4 import BeautifulSoup as bs
+
+        self.assertEqual(strip_scripts_not_in_whitelist(self.good_html),
+            str(bs(self.good_html, 'html.parser')))
+
+    def boring_is_unchanged(self):
+        """ Test if an irrelevant HTML tag passes unstripped. """
+        from website.utils.filters import strip_scripts_not_in_whitelist
+        from bs4 import BeautifulSoup as bs
+ 
+        self.assertEqual(strip_scripts_not_in_whitelist(self.boring_html),
+            str(bs(self.boring_html, 'html.parser')))

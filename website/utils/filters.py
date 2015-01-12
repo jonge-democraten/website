@@ -75,3 +75,32 @@ def obfuscate_email_addresses(html):
             resulting_html += fragment
 
     return resulting_html
+
+def strip_scripts_not_in_whitelist(html):
+    """
+    Given an HTML string, will strip all script tags that do not conform to
+    one of the whitelist patterns as defined in settings.py.
+    """
+    from bs4 import BeautifulSoup
+    from mezzanine.conf import settings
+    import logging
+    logger = logging.getLogger(__name__)
+
+    # Parse the whitelist into a list of tags (to make sure format matches exactly)
+    allowed_tags = []
+    for allowed_tag_str in settings.RICHTEXT_SCRIPT_TAG_WHITELIST:
+        allowed_tags.append(str(BeautifulSoup(allowed_tag_str, "html.parser").find("script")))
+
+    # Parse the input HTML into a DOM
+    dom = BeautifulSoup(html, "html.parser")
+ 
+    # Look for all script tags and match them to the whitelist
+    for script_tag in dom.findAll("script"):
+        if str(script_tag) not in allowed_tags:
+            script_tag.extract()
+            logger.debug("Found non-whitelisted script tag. Stripped.")
+            logger.debug("CONF: stripped tag is "+str(script_tag))
+        else:
+            logger.debug("Found whitelisted script tag. Did not strip.")
+
+    return str(dom)

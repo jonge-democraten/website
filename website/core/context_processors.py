@@ -6,10 +6,11 @@ from django.conf import settings
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 
+from website.jdpages.models import get_public_blogposts
 from website.utils.containers import BlogPostItem
 
 
-def page(request):
+def sidebar(request):
     """
     Adds the sidebar blogpost info to the context.
     """
@@ -17,7 +18,7 @@ def page(request):
         sidebar_blog_category = BlogCategory.objects.get(title=settings.SIDEBAR_BLOG)
     except BlogCategory.DoesNotExist:
         return {}  # the blog category may not exist
-    sidebar_blog_posts = BlogPost.objects.all().filter(categories=sidebar_blog_category).filter(status=CONTENT_STATUS_PUBLISHED)
+    sidebar_blog_posts = get_public_blogposts(sidebar_blog_category)
     sidebar_blogpost = sidebar_blog_posts.last()
     if not sidebar_blogpost:
         return {}

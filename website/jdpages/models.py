@@ -81,33 +81,14 @@ class ColumnElementWidget(Orderable, SiteRelated):
         verbose_name = 'Column element widget'
 
 
-class ContentBase(models.Model):
-    """
-    Abstract model that provides extra content to a mezzanine page.
-    Can be re-used in Page mixins.
-    """
-    header_image = models.CharField(editable=True, max_length=1000,
-                                    blank=True, null=False, default="")
-
-    class Meta:
-        abstract = True
-
-
-class JDPage(Page, RichText, ContentBase):
-    """ Page model for general richtext pages. """
-
-    class Meta:
-        verbose_name = 'JD Page'
-
-
-class HomePage(Page, RichText, ContentBase):
+class HomePage(Page, RichText):
     """ Page model for the site homepage. """
 
     class Meta:
         verbose_name = 'Homepage'
 
 
-class DocumentListing(Page, RichText, ContentBase):
+class DocumentListing(Page, RichText):
     """
     Page model for document listing pages.
     """

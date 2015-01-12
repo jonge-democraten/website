@@ -7,13 +7,13 @@ from django.utils.functional import curry
 
 from mezzanine.pages.admin import PageAdmin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
-from website.jdpages.models import JDPage, HomePage, ColumnElement, ColumnElementWidget, DocumentListing, Document
+from website.jdpages.models import HomePage, ColumnElement, ColumnElementWidget, DocumentListing, Document
 
 from website.utils.containers import HorizontalPosition
 
 
 class ColumnElementWidgetInline(TabularDynamicInlineAdmin):
-    """"""
+    """ """
     model = ColumnElementWidget
 
     def get_formset(self, request, obj=None, **kwargs):
@@ -75,7 +75,6 @@ class DocumentListingAdmin(PageAdmin):
     inlines = (DocumentInline,)
 
 
-admin.site.register(JDPage, PageAdmin)
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(DocumentListing, DocumentListingAdmin)
 

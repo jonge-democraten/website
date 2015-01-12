@@ -25,7 +25,6 @@ class ColumnElementWidgetInline(TabularDynamicInlineAdmin):
         initial.append({'horizontal_position': self.get_default_position(),})
         formset = super(ColumnElementWidgetInline, self).get_formset(request, obj, **kwargs)
         formset.__init__ = curry(formset.__init__, initial=initial)
-        logger.warning(self.get_default_position())
         return formset
 
 

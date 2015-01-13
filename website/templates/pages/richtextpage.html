@@ -22,8 +22,8 @@
     
         <h2><a href="{{ page.get_absolute_url }}">{% editable page.title %}{{ page.title }}{% endeditable %}</a></h2>
         
-        {% editable page.jdpage.content %}
-        {{ page.jdpage.content|richtext_filters|safe }}
+        {% editable page.richtextpage.content %}
+        {{ page.richtextpage.content|richtext_filters|safe }}
         {% endeditable %}
         
     </div>

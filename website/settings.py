@@ -160,6 +160,9 @@ STATICFILES_FINDERS = (
 # a mode you'd pass directly to os.chmod.
 FILE_UPLOAD_PERMISSIONS = 0o644
 
+# This setting allows any user with backend access to change or delete any
+# blog post by any other user of that site.
+OWNABLE_MODELS_ALL_EDITABLE = ('blog.BlogPost',)
 
 #############
 # DATABASES #

@@ -496,7 +496,7 @@ RICHTEXT_SCRIPT_TAG_WHITELIST = (
     '<script type="text/javascript" src="http://d3js.org/queue.v1.min.js"></script>',
     '<script type="text/javascript" src="http://d3js.org/d3.geo.projection.v0.min.js"></script>',
     '<script type="text/javascript" src="http://d3js.org/topojson.v0.min.js"></script>',
-    '<script type="text/javascript" src="http://jongedemocraten.nl/templates/jd/javascript/kaart/render.js"></script>',
+    '<script type="text/javascript" src="http://jd.local:8000/static/js/render.js"></script>',
 )
 
 ##########################

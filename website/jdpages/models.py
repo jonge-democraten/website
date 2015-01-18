@@ -39,7 +39,7 @@ class ColumnElement(SiteRelated):
     def get_object(self):
         """ Returns the content object. """
         return self.content_type.model_class().objects.get(id=self.object_id)
-
+    
     class Meta:
         verbose_name = 'Column element'
 
@@ -81,33 +81,14 @@ class ColumnElementWidget(Orderable, SiteRelated):
         verbose_name = 'Column element widget'
 
 
-class ContentBase(models.Model):
-    """
-    Abstract model that provides extra content to a mezzanine page.
-    Can be re-used in Page mixins.
-    """
-    header_image = models.CharField(editable=True, max_length=1000,
-                                    blank=True, null=False, default="")
-
-    class Meta:
-        abstract = True
-
-
-class JDPage(Page, RichText, ContentBase):
-    """ Page model for general richtext pages. """
-
-    class Meta:
-        verbose_name = 'JD Page'
-
-
-class HomePage(Page, RichText, ContentBase):
+class HomePage(Page, RichText):
     """ Page model for the site homepage. """
 
     class Meta:
         verbose_name = 'Homepage'
 
 
-class DocumentListing(Page, RichText, ContentBase):
+class DocumentListing(Page, RichText):
     """
     Page model for document listing pages.
     """
@@ -137,3 +118,13 @@ def get_public_blogposts(blog_category):
     """ Returns all blogposts for a given category that are published and not expired. """
     blog_posts = BlogPost.objects.all().filter(categories=blog_category).filter(status=CONTENT_STATUS_PUBLISHED)
     return blog_posts.filter(publish_date__lte=datetime.now()).filter(Q(expiry_date__isnull=True) | Q(expiry_date__gte=datetime.now()))
+
+
+def create_columnelement_for_blogcategory(blog_category):
+    blog_category_element = ColumnElement()
+    blog_category_element.title = blog_category.title
+    blog_category_element.content_type = ContentType.objects.get_for_model(BlogCategory)
+    blog_category_element.object_id = blog_category.id
+    blog_category_element.save() # this overrides any set site_id, so we set it again below
+    blog_category_element.site_id = blog_category.site_id
+    blog_category_element.save(update_site=False)

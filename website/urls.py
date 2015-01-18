@@ -31,6 +31,11 @@ urlpatterns += patterns('',
     url(r'^comment/', page_not_found),
 )
 
+# Enable robots.txt file generation
+urlpatterns += patterns('',
+    url(r'^robots\.txt$', include('robots.urls')),
+)
+
 urlpatterns += patterns(
     '',
 

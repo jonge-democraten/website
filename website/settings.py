@@ -261,6 +261,7 @@ INSTALLED_APPS = (
     # "mezzanine.accounts",
     # "mezzanine.mobile",
     "debug_toolbar",
+    "robots",
 )
 
 # List of processors used by RequestContext to populate the context.

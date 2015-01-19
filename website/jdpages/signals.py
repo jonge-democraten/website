@@ -52,6 +52,8 @@ def pre_delete_callback(sender, instance, **kwargs):
         related_elements = ColumnElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender))
     elif sender == SocialMediaButtonGroup:
         related_elements = SidebarElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender))
+
     for element in related_elements:
         element.delete()    
+
     return

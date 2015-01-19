@@ -13,7 +13,7 @@ from website.jdpages.models import ColumnElement, ColumnElementWidget
 from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import Sidebar, SidebarElement, SidebarElementWidget
 from website.jdpages.models import SocialMediaButtonGroup, SocialMediaButton
-from website.utils.containers import HorizontalPosition
+from website.jdpages.views import HorizontalPosition
 
 
 class ColumnElementWidgetInline(TabularDynamicInlineAdmin):

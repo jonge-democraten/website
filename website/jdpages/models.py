@@ -18,7 +18,7 @@ from mezzanine.core.models import Orderable, RichText, SiteRelated
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.models import Page
 
-from website.utils.containers import BlogPostItem, HorizontalPosition, SocialMediaButtonItem
+from website.jdpages.views import BlogPostItem, HorizontalPosition, SocialMediaButtonItem
 
 
 class ColumnElement(SiteRelated):
@@ -80,6 +80,12 @@ class ColumnElementWidget(Orderable, SiteRelated):
         verbose_name = 'Column element widget'
 
 
+class Sidebar(SiteRelated):
+    
+    def __str__(self):
+        return "Sidebar"
+
+
 class SidebarElement(SiteRelated):
     """
     A generic sidebar element with reference to any model object.
@@ -100,12 +106,6 @@ class SidebarElement(SiteRelated):
     
     class Meta:
         verbose_name = 'Sidebar element'
-
-
-class Sidebar(SiteRelated):
-    
-    def __str__(self):
-        return "Sidebar"
 
 
 class SidebarElementWidget(Orderable, SiteRelated):

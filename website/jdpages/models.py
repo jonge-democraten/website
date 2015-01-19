@@ -24,8 +24,7 @@ from website.utils.containers import BlogPostItem, HorizontalPosition, SocialMed
 class ColumnElement(SiteRelated):
     """
     A generic column element with reference to any model object.
-    Designed to be created on creation of supported objects, see signals.py.
-    Used by ColumnElementWidget to represent generic data in a html column.
+    Designed to be created when a supported model is created, see signals.py.
     The ColumnElementWidget contains the information on how to display the
     model object of this element.
     """
@@ -64,7 +63,7 @@ class ColumnElementWidget(Orderable, SiteRelated):
         """
         Adds the items to this element
         Contains a ContentType type switch which determines
-        element_widgets --- a list of ColumnElements
+        element_widgets --- a list of SidebarElements
         """
         for widget in element_widgets:
             if widget.column_element.content_type.model_class() == BlogCategory:
@@ -83,10 +82,9 @@ class ColumnElementWidget(Orderable, SiteRelated):
 
 class SidebarElement(SiteRelated):
     """
-    A generic column element with reference to any model object.
-    Designed to be created on creation of supported objects, see signals.py.
-    Used by ColumnElementWidget to represent generic data in a html column.
-    The ColumnElementWidget contains the information on how to display the
+    A generic sidebar element with reference to any model object.
+    Designed to be created when a supported model is created, see signals.py.
+    The SidebarElementWidget contains the information on how to display the
     model object of this element.
     """
     content_type = models.ForeignKey(ContentType, blank=True, null=True)
@@ -112,10 +110,9 @@ class Sidebar(SiteRelated):
 
 class SidebarElementWidget(Orderable, SiteRelated):
     """ 
-    User interface object that shows some data in a html column on a page.
-    Contains a reference to some generic data represented by ColumnElement.
-    Contains a html item factory that generates the html for the supported
-    element types. Each element contains of one or more items. 
+    User interface object that shows some data in a html sidebar.
+    Contains a reference to some generic data represented by SidebarElement.
+    Contains an item factory for supported element types types.
     """
     title = models.CharField(max_length=1000, blank=False, null=False, default="")
     sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
@@ -125,9 +122,8 @@ class SidebarElementWidget(Orderable, SiteRelated):
     @staticmethod
     def add_items_to_widgets(element_widgets):
         """
-        Adds the items to this element
-        Contains a ContentType type switch which determines
-        element_widgets --- a list of ColumnElements
+        Add html template and data for each element item.
+        element_widgets --- a list of SidebarElementWidgets
         """
         for widget in element_widgets:
             if widget.sidebar_element.content_type.model_class() == SocialMediaButtonGroup:

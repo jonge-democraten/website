@@ -1,12 +1,10 @@
 """
 Mezzanine page processors for jdpages.
-Read the mezzanine documentation for more info.
+Read the mezzanine documentation for more info about page processors.
 """
 
 import logging
 logger = logging.getLogger(__name__)
-
-from django.conf import settings
 
 from mezzanine.pages.page_processors import processor_for
 

@@ -7,8 +7,12 @@ from django.utils.functional import curry
 
 from mezzanine.pages.admin import PageAdmin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
-from website.jdpages.models import HomePage, ColumnElement, ColumnElementWidget, DocumentListing, Document
 
+from website.jdpages.models import HomePage 
+from website.jdpages.models import ColumnElement, ColumnElementWidget
+from website.jdpages.models import DocumentListing, Document
+from website.jdpages.models import Sidebar, SidebarElement, SidebarElementWidget
+from website.jdpages.models import SocialMediaButtonGroup, SocialMediaButton
 from website.utils.containers import HorizontalPosition
 
 
@@ -74,10 +78,38 @@ class DocumentListingAdmin(PageAdmin):
     inlines = (DocumentInline,)
 
 
+class SidebarElementWidgetInline(TabularDynamicInlineAdmin):
+    model = SidebarElementWidget
+
+
+class SidebarAdmin(admin.ModelAdmin):
+    model = Sidebar
+    inlines = (SidebarElementWidgetInline,)
+
+
+class SidebarElementAdmin(admin.ModelAdmin):
+    list_display = ('id', 'content_object', 'content_type', 'object_id', 'site',)
+
+
+class SidebarElementWidgetAdmin(admin.ModelAdmin):
+    list_display = ('id', 'sidebar_element', 'site')
+
+
+class SocialMediaButtonInline(TabularDynamicInlineAdmin):
+    model = SocialMediaButton
+
+
+class SocialMediaButtonGroupAdmin(admin.ModelAdmin):
+    inlines = (SocialMediaButtonInline,)
+
 admin.site.register(HomePage, HomePageAdmin)
+admin.site.register(Sidebar, SidebarAdmin)
+admin.site.register(SocialMediaButtonGroup, SocialMediaButtonGroupAdmin)
 admin.site.register(DocumentListing, DocumentListingAdmin)
 
 if settings.DEBUG:
     admin.site.register(ColumnElement, ColumnElementAdmin)
     admin.site.register(ColumnElementWidget, ColumnElementWidgetAdmin)
+    admin.site.register(SidebarElement, SidebarElementAdmin)
+    admin.site.register(SidebarElementWidget, SidebarElementWidgetAdmin)
     admin.site.register(Document, DocumentAdmin)

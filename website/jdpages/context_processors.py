@@ -3,16 +3,16 @@ logger = logging.getLogger(__name__)
 
 from django.conf import settings
 
-from mezzanine.blog.models import BlogCategory, BlogPost
-from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
+from mezzanine.blog.models import BlogCategory
 
 from website.jdpages.models import get_public_blogposts
+from website.jdpages.models import SidebarElementWidget
 from website.utils.containers import BlogPostItem
 
 
 def sidebar(request):
     """
-    Adds the sidebar blogpost info to the context.
+    Adds the sidebar elements to the context.
     """
     try:
         sidebar_blog_category = BlogCategory.objects.get(title=settings.SIDEBAR_BLOG)
@@ -23,4 +23,10 @@ def sidebar(request):
     if not sidebar_blogpost:
         return {}
     blogpost_info = BlogPostItem(sidebar_blogpost)
-    return {"sidebar_blogpost": blogpost_info}
+    
+    sidebar_elements = SidebarElementWidget.objects.all()
+    sidebar_elements = SidebarElementWidget.add_items_to_widgets(sidebar_elements)
+        
+    
+    return {"sidebar_blogpost": blogpost_info,
+            "sidebar_elements": sidebar_elements,}

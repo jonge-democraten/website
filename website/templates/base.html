@@ -79,7 +79,13 @@
                 
                 {% include "elements/word_lid_banner.html" %}
                 
-                {% include "elements/social_media_icons.html" %}
+                {% for element in sidebar_elements %}
+                    <div class="moduletable">
+                        {% with template_name=element.template_name %}
+                            {% include "elements/"|add:template_name %}
+                        {% endwith %}
+                    </div>
+                {% endfor %}
                 
             </div> <!-- contentRightDiv -->
             

@@ -1,7 +1,4 @@
-import datetime
-
 from django.utils.html import strip_tags
-from django.utils.safestring import mark_safe
 
 
 class HorizontalPosition():
@@ -13,12 +10,12 @@ class HorizontalPosition():
     )
 
 
-class ColumnItem():
+class Item():
     def get_template_name(self):
         return "none"
       
 
-class BlogPostItem(ColumnItem):
+class BlogPostItem(Item):
     def __init__(self, blogpost):
         self.title = blogpost.title
         self.author = blogpost.user
@@ -28,4 +25,10 @@ class BlogPostItem(ColumnItem):
 
     def get_template_name(self):
         return "blogpostitem.html"
+
+
+class SocialMediaButtonItem(Item):
+    def __init__(self, button):
+        self.url = button.url
+        self.icon_url = button.get_icon_url()
 

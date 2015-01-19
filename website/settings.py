@@ -15,9 +15,11 @@ from __future__ import absolute_import, unicode_literals
 #
 ADMIN_MENU_ORDER = (
     ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
-    ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting")),
+    ("Site", ("blog.BlogCategory", "jdpages.Sidebar", "sites.Site", "redirects.Redirect", "conf.Setting")),
     ("Users", ("auth.User", "auth.Group",)),
-    ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget", 'jdpages.Document', 'jdpages.DocumentListing',)),
+    ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget", 
+                      "jdpages.SidebarElement", "jdpages.SidebarElementWidget", "jdpages.SocialMediaButtonGroup",
+                      "jdpages.Document",)),
 )
 
 # A three item sequence, each containing a sequence of template tags
@@ -277,7 +279,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "mezzanine.conf.context_processors.settings",
     "mezzanine.pages.context_processors.page",
-    "website.core.context_processors.sidebar",
+    "website.jdpages.context_processors.sidebar",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,

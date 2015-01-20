@@ -25,7 +25,7 @@ def sidebar(request):
     blogpost_info = BlogPostItem(sidebar_blogpost)
     
     sidebar_elements = SidebarElementWidget.objects.all()
-    sidebar_elements = SidebarElementWidget.add_items_to_widgets(sidebar_elements)
+    sidebar_items = SidebarElementWidget.create_widget_items(sidebar_elements)
 
     return {"sidebar_blogpost": blogpost_info,
-            "sidebar_elements": sidebar_elements,}
+            "sidebar_items": sidebar_items,}

@@ -30,9 +30,19 @@ class BlogPostItem(Item):
         return "blogpostitem.html"
 
 
+class SocialMediaButtonGroupItem(Item):
+    def __init__(self, group):
+        from website.jdpages.models import SocialMediaButton
+        buttons = SocialMediaButton.objects.filter(social_media_group=group)
+        self.children = []
+        for button in buttons:
+            self.children.append(SocialMediaButtonItem(button))
+
+    def get_template_name(self):
+        return "social_media_icons.html"
+
+
 class SocialMediaButtonItem(Item):
-    template_name = "social_media_icons.html"
-    
     def __init__(self, button):
         self.url = button.url
         self.icon_url = button.get_icon_url()

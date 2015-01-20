@@ -79,9 +79,9 @@
                 
                 {% include "elements/word_lid_banner.html" %}
                 
-                {% for element in sidebar_elements %}
+                {% for item in sidebar_items %}
                     <div class="moduletable">
-                        {% with template_name=element.template_name %}
+                        {% with template_name=item.get_template_name %}
                             {% include "elements/"|add:template_name %}
                         {% endwith %}
                     </div>

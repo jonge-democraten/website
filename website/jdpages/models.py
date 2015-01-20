@@ -18,7 +18,8 @@ from mezzanine.core.models import Orderable, RichText, SiteRelated
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.models import Page
 
-from website.jdpages.views import BlogPostItem, HorizontalPosition, SocialMediaButtonItem
+from website.jdpages.views import BlogPostItem, HorizontalPosition 
+from website.jdpages.views import SocialMediaButtonGroupItem
 
 
 class ColumnElement(SiteRelated):
@@ -59,7 +60,7 @@ class ColumnElementWidget(Orderable, SiteRelated):
                                            default=HorizontalPosition.RIGHT)
 
     @staticmethod
-    def add_items_to_widgets(element_widgets):
+    def create_widget_items(element_widgets):
         """
         Adds the items to this element
         Contains a ContentType type switch which determines
@@ -120,19 +121,20 @@ class SidebarElementWidget(Orderable, SiteRelated):
     max_items = models.PositiveIntegerField(default=3, blank=False, null=False)
 
     @staticmethod
-    def add_items_to_widgets(element_widgets):
+    def create_widget_items(element_widgets):
         """
         Add html template and data for each element item.
         element_widgets --- a list of SidebarElementWidgets
         """
+        items = []
         for widget in element_widgets:
-            if widget.sidebar_element.content_type.model_class() == SocialMediaButtonGroup:
-                widget.items = []
-                buttons = SocialMediaButton.objects.filter(social_media_group=widget.sidebar_element.get_object())
-                for button in buttons:
-                    widget.items.append(SocialMediaButtonItem(button))
-                widget.template_name = "social_media_icons.html"
-        return element_widgets
+            model_type = widget.sidebar_element.content_type.model_class()
+            if model_type  == SocialMediaButtonGroup:
+                button_group = widget.sidebar_element.get_object()
+                item = SocialMediaButtonGroupItem(button_group)
+                item.title = widget.title
+                items.append(item)
+        return items
 
     def __str__(self):
         return str(self.sidebar_element) + ' widget'

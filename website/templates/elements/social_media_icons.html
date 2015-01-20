@@ -1,11 +1,11 @@
 {% load staticfiles %}
 
 <div class="moduletableonline">
-    <h3>{{ element.title }}</h3>
+    <h3>{{ item.title }}</h3>
     <div class="customonline"  >
         {% spaceless %}
         <p>
-        {% for item in element.items %}
+        {% for item in item.children %}
             <a href="{{ item.url }}" title="Facebook Group" rel="external nofollow">
                 <img src="{% static item.icon_url %}" border="0" alt="Facebook Group" width="32" height="32"/>
             </a>   

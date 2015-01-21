@@ -18,7 +18,7 @@ from mezzanine.core.models import Orderable, RichText, SiteRelated
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.models import Page
 
-from website.jdpages.views import BlogPostItem, HorizontalPosition 
+from website.jdpages.views import BlogPostItem, HorizontalPosition
 from website.jdpages.views import SocialMediaButtonGroupItem
 
 
@@ -45,11 +45,11 @@ class ColumnElement(SiteRelated):
 
 
 class ColumnElementWidget(Orderable, SiteRelated):
-    """ 
+    """
     User interface object that shows some data in a html column on a page.
     Contains a reference to some generic data represented by ColumnElement.
     Contains a html item factory that generates the html for the supported
-    element types. Each element contains of one or more items. 
+    element types. Each element contains of one or more items.
     """
     title = models.CharField(max_length=1000, blank=True, null=False, default="")
     column_element = models.ForeignKey(ColumnElement, blank=False, null=True)
@@ -78,7 +78,7 @@ class ColumnElementWidget(Orderable, SiteRelated):
         return str(self.column_element) + ' widget'
 
     class Meta:
-        verbose_name = 'Column element widget'
+        verbose_name = 'Column widget'
 
 
 class Sidebar(SiteRelated):
@@ -106,16 +106,16 @@ class SidebarElement(SiteRelated):
     def get_object(self):
         """ Returns the content object. """
         return self.content_type.model_class().objects.get(id=self.object_id)
-    
+
     class Meta:
         verbose_name = 'Sidebar element'
 
 
 class SidebarElementWidget(Orderable, SiteRelated):
-    """ 
+    """
     User interface object that shows some data in a html sidebar.
     Contains a reference to some generic data represented by SidebarElement.
-    Contains an item factory for supported element types types.
+    Contains an item factory for supported element types.
     """
     title = models.CharField(max_length=1000, blank=False, null=False, default="")
     sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
@@ -180,10 +180,10 @@ class Document(Orderable):
 
 class SocialMediaButtonGroup(SiteRelated):
     name = models.CharField(max_length=200, blank=False, null=False, help_text='The name is only used in the admin.')
-  
+
     def get_social_media_buttons(self):
         return SocialMediaButton.objects.filter(social_media_group=self)
-      
+
     def __str__(self):
         return self.name
 
@@ -193,28 +193,28 @@ class SocialMediaButton(SiteRelated):
     LINKEDIN = 'LI'
     TWITTER = 'TW'
     YOUTUBE = 'YT'
-    
+
     SOCIAL_MEDIA_CHOICES = (
         (FACEBOOK, 'Facebook'),
         (LINKEDIN, 'LinkedIn'),
         (TWITTER, 'Twitter'),
         (YOUTUBE, 'YouTube'),
     )
-    
+
     SOCIAL_MEDIA_ICONS = {
         FACEBOOK: 'facebook.png',
         LINKEDIN: 'linkedin.png',
         TWITTER: 'twitter.png',
         YOUTUBE: 'youtube.png',
     }
-    
+
     type = models.CharField(max_length=2, choices=SOCIAL_MEDIA_CHOICES)
     url = models.URLField(max_length=1000, help_text='http://www.example.com')
     social_media_group = models.ForeignKey(SocialMediaButtonGroup)
-    
+
     def get_icon_url(self):
         return 'images/icons/' + SocialMediaButton.SOCIAL_MEDIA_ICONS[self.type]
-    
+
     def __str__(self):
         return str(type)
 

@@ -15,10 +15,11 @@ from __future__ import absolute_import, unicode_literals
 #
 ADMIN_MENU_ORDER = (
     ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
-    ("Site", ("blog.BlogCategory", "jdpages.Sidebar", "sites.Site", "redirects.Redirect", "conf.Setting")),
+    ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting",)),
+    ("Sidebar", ("jdpages.Sidebar", "jdpages.SocialMediaButtonGroup",)),
     ("Users", ("auth.User", "auth.Group",)),
     ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget", 
-                      "jdpages.SidebarElement", "jdpages.SidebarElementWidget", "jdpages.SocialMediaButtonGroup",
+                      "jdpages.SidebarElement", "jdpages.SidebarElementWidget",
                       "jdpages.Document",)),
 )
 

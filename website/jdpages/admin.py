@@ -85,9 +85,11 @@ class SidebarElementWidgetInline(TabularDynamicInlineAdmin):
 class SidebarAdmin(admin.ModelAdmin):
     model = Sidebar
     inlines = (SidebarElementWidgetInline,)
+    list_display = ('name', 'active', 'site')
 
 
 class SidebarElementAdmin(admin.ModelAdmin):
+    model = SidebarElement
     list_display = ('id', 'content_object', 'content_type', 'object_id', 'site',)
 
 
@@ -101,6 +103,7 @@ class SocialMediaButtonInline(TabularDynamicInlineAdmin):
 
 class SocialMediaButtonGroupAdmin(admin.ModelAdmin):
     inlines = (SocialMediaButtonInline,)
+
 
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(Sidebar, SidebarAdmin)

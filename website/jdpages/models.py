@@ -82,7 +82,9 @@ class ColumnElementWidget(Orderable, SiteRelated):
 
 
 class Sidebar(SiteRelated):
-    
+    name = models.CharField(max_length=200)
+    active = models.BooleanField(blank=False, null=False, default=True)
+
     def __str__(self):
         return "Sidebar"
 
@@ -140,7 +142,7 @@ class SidebarElementWidget(Orderable, SiteRelated):
         return str(self.sidebar_element) + ' widget'
 
     class Meta:
-        verbose_name = 'Sidebar element widget'
+        verbose_name = 'Sidebar widget'
 
 
 class HomePage(Page, RichText):

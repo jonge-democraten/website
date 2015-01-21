@@ -7,8 +7,8 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('contenttypes', '0001_initial'),
         ('sites', '0001_initial'),
+        ('contenttypes', '0001_initial'),
         ('jdpages', '0006_removejdpage'),
     ]
 
@@ -16,8 +16,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Sidebar',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('site', models.ForeignKey(to='sites.Site', editable=False)),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
+                ('name', models.CharField(max_length=200)),
+                ('active', models.BooleanField(default=True)),
+                ('site', models.ForeignKey(editable=False, to='sites.Site')),
             ],
             options={
                 'abstract': False,
@@ -27,10 +29,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='SidebarElement',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
                 ('object_id', models.PositiveIntegerField(verbose_name='related object id', null=True)),
                 ('content_type', models.ForeignKey(to='contenttypes.ContentType', null=True, blank=True)),
-                ('site', models.ForeignKey(to='sites.Site', editable=False)),
+                ('site', models.ForeignKey(editable=False, to='sites.Site')),
             ],
             options={
                 'verbose_name': 'Sidebar element',
@@ -40,16 +42,16 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='SidebarElementWidget',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
                 ('_order', models.IntegerField(verbose_name='Order', null=True)),
-                ('title', models.CharField(default='', max_length=1000)),
+                ('title', models.CharField(max_length=1000, default='')),
                 ('max_items', models.PositiveIntegerField(default=3)),
                 ('sidebar', models.ForeignKey(to='jdpages.Sidebar')),
-                ('sidebar_element', models.ForeignKey(to='jdpages.SidebarElement', null=True)),
-                ('site', models.ForeignKey(to='sites.Site', editable=False)),
+                ('sidebar_element', models.ForeignKey(null=True, to='jdpages.SidebarElement')),
+                ('site', models.ForeignKey(editable=False, to='sites.Site')),
             ],
             options={
-                'verbose_name': 'Sidebar element widget',
+                'verbose_name': 'Sidebar widget',
                 'ordering': ('_order',),
             },
             bases=(models.Model,),
@@ -57,10 +59,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='SocialMediaButton',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
                 ('type', models.CharField(max_length=2, choices=[('FB', 'Facebook'), ('LI', 'LinkedIn'), ('TW', 'Twitter'), ('YT', 'YouTube')])),
                 ('url', models.URLField(max_length=1000, help_text='http://www.example.com')),
-                ('site', models.ForeignKey(to='sites.Site', editable=False)),
+                ('site', models.ForeignKey(editable=False, to='sites.Site')),
             ],
             options={
                 'abstract': False,
@@ -70,9 +72,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='SocialMediaButtonGroup',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
                 ('name', models.CharField(max_length=200, help_text='The name is only used in the admin.')),
-                ('site', models.ForeignKey(to='sites.Site', editable=False)),
+                ('site', models.ForeignKey(editable=False, to='sites.Site')),
             ],
             options={
                 'abstract': False,
@@ -84,5 +86,9 @@ class Migration(migrations.Migration):
             name='social_media_group',
             field=models.ForeignKey(to='jdpages.SocialMediaButtonGroup'),
             preserve_default=True,
+        ),
+        migrations.AlterModelOptions(
+            name='columnelementwidget',
+            options={'verbose_name': 'Column widget', 'ordering': ('_order',)},
         ),
     ]

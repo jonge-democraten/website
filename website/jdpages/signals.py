@@ -24,7 +24,6 @@ def post_save_callback(sender, instance, created, **kwargs):
     instance -- the actual instance being saved
     created -- a boolean; True if a new record was created
     """
-    logger.warning('post_save')
     if not created:
         return
     if sender == BlogCategory:

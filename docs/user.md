@@ -3,3 +3,13 @@
 ## Introduction
 
 ## Managing content
+
+### Pages
+
+### Blogposts
+
+### Events
+
+### Newsletters
+
+### Images and Documents

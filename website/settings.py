@@ -160,6 +160,9 @@ STATICFILES_FINDERS = (
 # a mode you'd pass directly to os.chmod.
 FILE_UPLOAD_PERMISSIONS = 0o644
 
+# This setting allows any user with backend access to change or delete any
+# blog post by any other user of that site.
+OWNABLE_MODELS_ALL_EDITABLE = ('blog.BlogPost',)
 
 #############
 # DATABASES #
@@ -276,7 +279,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "mezzanine.conf.context_processors.settings",
     "mezzanine.pages.context_processors.page",
-    "website.core.context_processors.page",
+    "website.core.context_processors.sidebar",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -479,6 +482,27 @@ RICHTEXT_FILTERS += ("website.utils.filters.filter_non_video_iframes",)
 # entities.
 RICHTEXT_FILTERS += ("website.utils.filters.obfuscate_email_addresses",)
 
+####################################
+# SCRIPT TAG WHITELISTING SETTINGS #
+####################################
+
+# We allow the script tag in rich text fields.
+RICHTEXT_ALLOWED_TAGS += ("script",)
+
+# However, we do apply a filter to check them.
+RICHTEXT_FILTERS += ("website.utils.filters.strip_scripts_not_in_whitelist",)
+
+# We only allow whitelisted script tags. The rest is removed.
+# This is the whitelist. Only exact matches are allowed.
+# Rationale behing whitelist:
+# Lines 1-5: department map 'Afdelingen'
+RICHTEXT_SCRIPT_TAG_WHITELIST = (
+    '<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>',
+    '<script type="text/javascript" src="http://d3js.org/queue.v1.min.js"></script>',
+    '<script type="text/javascript" src="http://d3js.org/d3.geo.projection.v0.min.js"></script>',
+    '<script type="text/javascript" src="http://d3js.org/topojson.v0.min.js"></script>',
+    '<script type="text/javascript" src="/static/js/render.js"></script>',
+)
 
 ##########################
 # MEDIA LIBRARY SETTINGS #

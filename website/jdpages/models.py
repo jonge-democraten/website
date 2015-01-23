@@ -18,8 +18,6 @@ from mezzanine.core.models import Orderable, RichText, SiteRelated
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.models import Page
 
-from website.utils.containers import BlogPostItem, HorizontalPosition
-
 
 class ColumnElement(SiteRelated):
     """
@@ -44,6 +42,15 @@ class ColumnElement(SiteRelated):
         verbose_name = 'Column element'
 
 
+class HorizontalPosition():
+    LEFT = 'Left'
+    RIGHT = 'Right'
+    POSITION_CHOICES = (
+        (LEFT, 'Left'),
+        (RIGHT, 'Right'),
+    )
+
+
 class ColumnElementWidget(Orderable, SiteRelated):
     """ 
     User interface object that shows some data in a html column on a page.
@@ -58,21 +65,6 @@ class ColumnElementWidget(Orderable, SiteRelated):
     horizontal_position = models.CharField(max_length=20,
                                            choices=HorizontalPosition.POSITION_CHOICES,
                                            default=HorizontalPosition.RIGHT)
-
-    @staticmethod
-    def add_items_to_widgets(element_widgets):
-        """
-        Adds the items to this element
-        Contains a ContentType type switch which determines
-        element_widgets --- a list of ColumnElements
-        """
-        for widget in element_widgets:
-            if widget.column_element.content_type.model_class() == BlogCategory:
-                widget.items = []
-                blogposts = get_public_blogposts(widget.column_element.get_object())[:widget.max_items]
-                for post in blogposts:
-                    widget.items.append(BlogPostItem(post))
-        return element_widgets
 
     def __str__(self):
         return str(self.column_element) + ' widget'

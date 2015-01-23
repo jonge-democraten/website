@@ -3,11 +3,10 @@ logger = logging.getLogger(__name__)
 
 from django.conf import settings
 
-from mezzanine.blog.models import BlogCategory, BlogPost
-from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
+from mezzanine.blog.models import BlogCategory
 
 from website.jdpages.models import get_public_blogposts
-from website.utils.containers import BlogPostItem
+from website.jdpages.views import BlogPostItem
 
 
 def sidebar(request):

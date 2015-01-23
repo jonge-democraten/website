@@ -9,7 +9,7 @@ from mezzanine.pages.admin import PageAdmin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
 from website.jdpages.models import HomePage, ColumnElement, ColumnElementWidget, DocumentListing, Document
 
-from website.utils.containers import HorizontalPosition
+from website.jdpages.models import HorizontalPosition
 
 
 class ColumnElementWidgetInline(TabularDynamicInlineAdmin):

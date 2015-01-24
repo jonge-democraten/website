@@ -210,6 +210,14 @@ class SocialMediaButton(SiteRelated):
         return str(type)
 
 
+class SidebarBanner(SiteRelated):
+    title = models.CharField(max_length=1000, blank=False, null=False, default="")
+    image = FileField(max_length=200, format="Image")
+    url = models.URLField(max_length=1000, help_text='http://www.example.com')
+    description = models.CharField(max_length=1000, blank=True, null=False, default="",
+                                   help_text='This is shown as tooltip and alt text. ')
+
+
 def get_public_blogposts(blog_category):
     """ Returns all blogposts for a given category that are published and not expired. """
     blog_posts = BlogPost.objects.all().filter(categories=blog_category).filter(status=CONTENT_STATUS_PUBLISHED)
@@ -243,4 +251,14 @@ def create_sidebarelement_for_blogcategory(blog_category):
     element.object_id = blog_category.id
     element.save()  # this overrides the site_id, so we set it again below
     element.site_id = blog_category.site_id
+    element.save(update_site=False)
+
+
+def create_sidebarelement_for_banner(sidebar_banner):
+    element = SidebarElement()
+    element.title = sidebar_banner.title
+    element.content_type = ContentType.objects.get_for_model(SidebarBanner)
+    element.object_id = sidebar_banner.id
+    element.save()  # this overrides the site_id, so we set it again below
+    element.site_id = sidebar_banner.site_id
     element.save(update_site=False)

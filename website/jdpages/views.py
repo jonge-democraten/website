@@ -3,10 +3,11 @@ logger = logging.getLogger(__name__)
 
 from django.utils.html import strip_tags
 
-from mezzanine.blog.models import BlogCategory, BlogPost
+from mezzanine.blog.models import BlogCategory
 
 from website.jdpages.models import get_public_blogposts
 from website.jdpages.models import SocialMediaButtonGroup
+from website.jdpages.models import SidebarBanner
 
 
 def create_sidebar_items(sidebar_widgets):
@@ -21,6 +22,11 @@ def create_sidebar_items(sidebar_widgets):
         elif model_type == BlogCategory:
             blogcategory = widget.sidebar_element.get_object()
             item = BlogCategorySidebarItem(blogcategory, widget.max_items)
+            item.title = widget.title
+            items.append(item)
+        elif model_type == SidebarBanner:
+            banner = widget.sidebar_element.get_object()
+            item = BannerSidebarItem(banner)
             item.title = widget.title
             items.append(item)
     return items
@@ -76,3 +82,13 @@ class SocialMediaButtonItem(Item):
     def __init__(self, button):
         self.url = button.url
         self.icon_url = button.get_icon_url()
+
+
+class BannerSidebarItem(Item):
+    def __init__(self, banner):
+        self.image_url = banner.image.url
+        self.url = banner.url
+        self.description = banner.description
+
+    def get_template_name(self):
+        return "banner_sidebar_item.html"

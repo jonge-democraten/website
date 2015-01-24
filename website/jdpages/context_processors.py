@@ -23,19 +23,8 @@ def sidebar(request):
     
     if not sidebar.exists():
         return {}
-    
-    try:
-        sidebar_blog_category = BlogCategory.objects.get(title=settings.SIDEBAR_BLOG)
-    except BlogCategory.DoesNotExist:
-        return {}  # the blog category may not exist
-    sidebar_blog_posts = get_public_blogposts(sidebar_blog_category)
-    sidebar_blogpost = sidebar_blog_posts.last()
-    if not sidebar_blogpost:
-        return {}
-    blogpost_info = BlogPostItem(sidebar_blogpost)
 
     sidebar_elements = SidebarElementWidget.objects.filter(sidebar=sidebar)
     sidebar_items = create_sidebar_items(sidebar_elements)
 
-    return {"sidebar_blogpost": blogpost_info,
-            "sidebar_items": sidebar_items,}
+    return {"sidebar_items": sidebar_items,}

@@ -221,7 +221,7 @@ def create_columnelement_for_blogcategory(blog_category):
     blog_category_element.title = blog_category.title
     blog_category_element.content_type = ContentType.objects.get_for_model(BlogCategory)
     blog_category_element.object_id = blog_category.id
-    blog_category_element.save() # this overrides the site_id, so we set it again below
+    blog_category_element.save()  # this overrides the site_id, so we set it again below
     blog_category_element.site_id = blog_category.site_id
     blog_category_element.save(update_site=False)
 
@@ -231,6 +231,16 @@ def create_sidebarelement_for_socialmediagroup(social_media_group):
     element.title = "Social media"
     element.content_type = ContentType.objects.get_for_model(SocialMediaButtonGroup)
     element.object_id = social_media_group.id
-    element.save() # this overrides the site_id, so we set it again below
+    element.save()  # this overrides the site_id, so we set it again below
     element.site_id = social_media_group.site_id
+    element.save(update_site=False)
+
+
+def create_sidebarelement_for_blogcategory(blog_category):
+    element = SidebarElement()
+    element.title = blog_category.title
+    element.content_type = ContentType.objects.get_for_model(BlogCategory)
+    element.object_id = blog_category.id
+    element.save()  # this overrides the site_id, so we set it again below
+    element.site_id = blog_category.site_id
     element.save(update_site=False)

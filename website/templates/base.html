@@ -52,28 +52,12 @@
         </div> <!-- headerDiv -->
 
         <div id="contentDiv" class="clearing">
+
             <div id="contentLeftDiv" class="clearing">
                 {% block main %}{% endblock %}               
             </div> <!-- contentLeftDiv -->
             
             <div id="contentRightDiv">
-            
-                <div class="moduletablenieuws">
-                    <h3>JD Blog</h3>
-                          
-                    <div class="mod_placeherenieuws">
-                        <div style="overflow:auto;" class="mod_placehere_leading even">
-                            <div class="placehere">
-                                <h2 class="contentheading">
-                                    <a href="{{ sidebar_blogpost.url }}" class="contentpagetitle">{{ sidebar_blogpost.title }}</a> 
-                                </h2>
-                                <p class="buttonheading"></p>
-                                {{ sidebar_blogpost.content|truncatechars:200 }}       
-                                <p class="readmore"><a href="{{ sidebar_blogpost.url }}"> Lees meer...</a></p>
-                            </div>
-                        </div>
-                    </div>    
-                </div>
                 
                 {% include "elements/twitter_feed.html" %}
                 

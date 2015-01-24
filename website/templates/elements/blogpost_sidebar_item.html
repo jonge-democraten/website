@@ -1,0 +1,19 @@
+<div class="moduletablenieuws">
+    <h3>{{ item.title }}</h3>
+
+    {% for blogpost in item.children %}
+        <div class="mod_placeherenieuws">
+            <div style="overflow:auto;" class="mod_placehere_leading even">
+                <div class="placehere">
+                    <h2 class="contentheading">
+                        <a href="{{ blogpost.url }}" class="contentpagetitle">{{ blogpost.title }}</a>
+                    </h2>
+                    <p class="buttonheading"></p>
+                    {{ blogpost.content|truncatechars:200 }}
+                    <p class="readmore"><a href="{{ blogpost.url }}"> Lees meer...</a></p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>

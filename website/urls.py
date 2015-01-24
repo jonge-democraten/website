@@ -61,6 +61,11 @@ urlpatterns += patterns(
 
     url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
 
+    # URLs for events
+    # This is in a separate package called swingtime, because we made
+    # our own fork of django-swingtime
+    url("^events/", include("swingtime.urls")),
+
     # HOMEPAGE FOR A BLOG-ONLY SITE
     # -----------------------------
     # This pattern points the homepage to the blog post listing page,

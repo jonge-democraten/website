@@ -9,14 +9,12 @@ from website.jdpages.models import get_public_blogposts
 
 
 def create_column_items(column_widgets):
-    logger.debug(column_widgets)
     column_items = []
     for widget in column_widgets:
         model_class = widget.column_element.content_type.model_class()
         if model_class == BlogCategory:
             blog_category = widget.column_element.get_object()
             column_items.append(BlogCategoryItem(blog_category, widget.max_items))
-    logger.debug(column_items)
     return column_items
 
 

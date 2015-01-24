@@ -16,11 +16,11 @@ from __future__ import absolute_import, unicode_literals
 ADMIN_MENU_ORDER = (
     ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
     ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting",)),
-    ("Sidebar", ("jdpages.Sidebar", "jdpages.SocialMediaButtonGroup", "jdpages.SidebarBanner", "jdpages.SidebarTwitter")),
+    ("Sidebar", ("jdpages.Sidebar", "jdpages.SocialMediaButtonGroup", "jdpages.SidebarBanner",)),
     ("Users", ("auth.User", "auth.Group",)),
     ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget", 
                       "jdpages.SidebarElement", "jdpages.SidebarElementWidget",
-                      "jdpages.Document",)),
+                      "jdpages.Document", "jdpages.SidebarTwitter",)),
 )
 
 # A three item sequence, each containing a sequence of template tags

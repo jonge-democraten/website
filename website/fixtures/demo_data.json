@@ -160,7 +160,7 @@
 {
   "fields": {
     "form": 14,
-    "entry_time": "2014-12-27T22:33:05.576Z"
+    "entry_time": "2014-12-27T22:33:05.576"
   },
   "pk": 3,
   "model": "forms.formentry"
@@ -274,9 +274,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:35:53.992Z",
+    "created": "2014-12-21T21:35:53.992",
     "short_url": null,
-    "publish_date": "2014-12-21T21:35:53Z",
+    "publish_date": "2014-12-21T21:35:53",
     "site": 1,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -284,7 +284,7 @@
     "status": 2,
     "parent": null,
     "titles": "Word actief!",
-    "updated": "2014-12-30T23:19:34.098Z",
+    "updated": "2014-12-30T23:19:34.098",
     "title": "Word actief!",
     "_meta_title": "",
     "_order": 1,
@@ -300,9 +300,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:36:16.018Z",
+    "created": "2014-12-21T21:36:16.018",
     "short_url": null,
-    "publish_date": "2014-12-21T21:36:16.017Z",
+    "publish_date": "2014-12-21T21:36:16.017",
     "site": 1,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -310,7 +310,7 @@
     "status": 2,
     "parent": null,
     "titles": "Media",
-    "updated": "2014-12-21T21:36:16.018Z",
+    "updated": "2014-12-21T21:36:16.018",
     "title": "Media",
     "_meta_title": "",
     "_order": 3,
@@ -326,9 +326,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:38:38.599Z",
+    "created": "2014-12-21T21:38:38.599",
     "short_url": null,
-    "publish_date": "2014-12-21T21:38:38.598Z",
+    "publish_date": "2014-12-21T21:38:38.598",
     "site": 1,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -336,7 +336,7 @@
     "status": 2,
     "parent": 3,
     "titles": "Media / JD Blog",
-    "updated": "2014-12-21T21:38:43.657Z",
+    "updated": "2014-12-21T21:38:43.657",
     "title": "JD Blog",
     "_meta_title": "",
     "_order": 0,
@@ -352,9 +352,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:39:03.485Z",
+    "created": "2014-12-21T21:39:03.485",
     "short_url": null,
-    "publish_date": "2014-12-21T21:39:03.485Z",
+    "publish_date": "2014-12-21T21:39:03.485",
     "site": 1,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -362,7 +362,7 @@
     "status": 2,
     "parent": 3,
     "titles": "Media / Persberichten",
-    "updated": "2014-12-21T21:39:03.492Z",
+    "updated": "2014-12-21T21:39:03.492",
     "title": "Persberichten",
     "_meta_title": "",
     "_order": 1,
@@ -378,9 +378,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:39:42.707Z",
+    "created": "2014-12-21T21:39:42.707",
     "short_url": null,
-    "publish_date": "2014-12-21T21:39:42.705Z",
+    "publish_date": "2014-12-21T21:39:42.705",
     "site": 3,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -388,7 +388,7 @@
     "status": 2,
     "parent": null,
     "titles": "Word actief!",
-    "updated": "2014-12-21T21:39:42.707Z",
+    "updated": "2014-12-21T21:39:42.707",
     "title": "Word actief!",
     "_meta_title": "",
     "_order": 1,
@@ -404,9 +404,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:39:54.779Z",
+    "created": "2014-12-21T21:39:54.779",
     "short_url": null,
-    "publish_date": "2014-12-21T21:39:54.776Z",
+    "publish_date": "2014-12-21T21:39:54.776",
     "site": 3,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -414,7 +414,7 @@
     "status": 2,
     "parent": null,
     "titles": "Organisatie",
-    "updated": "2014-12-21T21:39:54.779Z",
+    "updated": "2014-12-21T21:39:54.779",
     "title": "Organisatie",
     "_meta_title": "",
     "_order": 2,
@@ -430,9 +430,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:39:59.444Z",
+    "created": "2014-12-21T21:39:59.444",
     "short_url": null,
-    "publish_date": "2014-12-21T21:39:59.442Z",
+    "publish_date": "2014-12-21T21:39:59.442",
     "site": 3,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -440,7 +440,7 @@
     "status": 2,
     "parent": 7,
     "titles": "Organisatie / Bestuur",
-    "updated": "2014-12-21T21:40:44.994Z",
+    "updated": "2014-12-21T21:40:44.994",
     "title": "Bestuur",
     "_meta_title": "",
     "_order": 0,
@@ -456,9 +456,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:40:15.081Z",
+    "created": "2014-12-21T21:40:15.081",
     "short_url": null,
-    "publish_date": "2014-12-21T21:40:15.079Z",
+    "publish_date": "2014-12-21T21:40:15.079",
     "site": 3,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -466,7 +466,7 @@
     "status": 2,
     "parent": 7,
     "titles": "Organisatie / Regionaal Politiek Programma",
-    "updated": "2014-12-21T21:40:51.654Z",
+    "updated": "2014-12-21T21:40:51.654",
     "title": "Regionaal Politiek Programma",
     "_meta_title": "",
     "_order": 1,
@@ -482,9 +482,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:40:19.832Z",
+    "created": "2014-12-21T21:40:19.832",
     "short_url": null,
-    "publish_date": "2014-12-21T21:40:19.830Z",
+    "publish_date": "2014-12-21T21:40:19.830",
     "site": 3,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -492,7 +492,7 @@
     "status": 2,
     "parent": 7,
     "titles": "Organisatie / AAV",
-    "updated": "2014-12-21T21:40:54.359Z",
+    "updated": "2014-12-21T21:40:54.359",
     "title": "AAV",
     "_meta_title": "",
     "_order": 2,
@@ -508,9 +508,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:40:40.527Z",
+    "created": "2014-12-21T21:40:40.527",
     "short_url": null,
-    "publish_date": "2014-12-21T21:40:40.525Z",
+    "publish_date": "2014-12-21T21:40:40.525",
     "site": 3,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -518,7 +518,7 @@
     "status": 2,
     "parent": 7,
     "titles": "Organisatie / Afdelingsreglement",
-    "updated": "2014-12-21T21:40:56.270Z",
+    "updated": "2014-12-21T21:40:56.270",
     "title": "Afdelingsreglement",
     "_meta_title": "",
     "_order": 3,
@@ -534,9 +534,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:42:31.210Z",
+    "created": "2014-12-21T21:42:31.210",
     "short_url": null,
-    "publish_date": "2014-12-21T21:42:31.209Z",
+    "publish_date": "2014-12-21T21:42:31.209",
     "site": 3,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -544,7 +544,7 @@
     "status": 2,
     "parent": null,
     "titles": "Nieuws",
-    "updated": "2014-12-21T21:42:31.210Z",
+    "updated": "2014-12-21T21:42:31.210",
     "title": "Nieuws",
     "_meta_title": "",
     "_order": 3,
@@ -560,9 +560,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:42:48.179Z",
+    "created": "2014-12-21T21:42:48.179",
     "short_url": null,
-    "publish_date": "2014-12-21T21:42:48.178Z",
+    "publish_date": "2014-12-21T21:42:48.178",
     "site": 3,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -570,7 +570,7 @@
     "status": 2,
     "parent": null,
     "titles": "Weblog",
-    "updated": "2014-12-21T21:42:48.179Z",
+    "updated": "2014-12-21T21:42:48.179",
     "title": "Weblog",
     "_meta_title": "",
     "_order": 4,
@@ -586,9 +586,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-26T10:40:31.513Z",
+    "created": "2014-12-26T10:40:31.513",
     "short_url": null,
-    "publish_date": "2014-12-26T10:40:31Z",
+    "publish_date": "2014-12-26T10:40:31",
     "site": 1,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -596,7 +596,7 @@
     "status": 2,
     "parent": 2,
     "titles": "Word actief! / Word lid!",
-    "updated": "2015-01-01T18:31:47.106Z",
+    "updated": "2015-01-01T18:31:47.106",
     "title": "Word lid!",
     "_meta_title": "",
     "_order": 0,
@@ -612,9 +612,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-29T16:09:13.588Z",
+    "created": "2014-12-29T16:09:13.588",
     "short_url": null,
-    "publish_date": "2014-12-29T16:09:13Z",
+    "publish_date": "2014-12-29T16:09:13",
     "site": 1,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -622,7 +622,7 @@
     "status": 2,
     "parent": null,
     "titles": "Afdelingen",
-    "updated": "2015-01-18T19:18:42.053Z",
+    "updated": "2015-01-18T19:18:42.053",
     "title": "Afdelingen",
     "_meta_title": "",
     "_order": 4,
@@ -638,9 +638,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-29T16:34:15.695Z",
+    "created": "2014-12-29T16:34:15.695",
     "short_url": null,
-    "publish_date": "2014-12-29T16:34:15.695Z",
+    "publish_date": "2014-12-29T16:34:15.695",
     "site": 1,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -648,7 +648,7 @@
     "status": 2,
     "parent": null,
     "titles": "Visie",
-    "updated": "2014-12-29T16:34:15.695Z",
+    "updated": "2014-12-29T16:34:15.695",
     "title": "Visie",
     "_meta_title": null,
     "_order": 5,
@@ -664,9 +664,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-31T11:14:42.969Z",
+    "created": "2014-12-31T11:14:42.969",
     "short_url": null,
-    "publish_date": "2014-12-31T11:14:42Z",
+    "publish_date": "2014-12-31T11:14:42",
     "site": 1,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -674,7 +674,7 @@
     "status": 2,
     "parent": null,
     "titles": "Home",
-    "updated": "2014-12-31T11:16:25.490Z",
+    "updated": "2014-12-31T11:16:25.490",
     "title": "Home",
     "_meta_title": "",
     "_order": 0,
@@ -690,9 +690,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-31T11:20:44.706Z",
+    "created": "2014-12-31T11:20:44.706",
     "short_url": null,
-    "publish_date": "2014-12-31T11:20:44Z",
+    "publish_date": "2014-12-31T11:20:44",
     "site": 1,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -700,7 +700,7 @@
     "status": 2,
     "parent": 15,
     "titles": "Afdelingen / Amsterdam",
-    "updated": "2014-12-31T11:20:57.455Z",
+    "updated": "2014-12-31T11:20:57.455",
     "title": "Amsterdam",
     "_meta_title": null,
     "_order": 0,
@@ -716,9 +716,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-31T11:21:31.245Z",
+    "created": "2014-12-31T11:21:31.245",
     "short_url": null,
-    "publish_date": "2014-12-31T11:21:31.244Z",
+    "publish_date": "2014-12-31T11:21:31.244",
     "site": 1,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -726,7 +726,7 @@
     "status": 2,
     "parent": 15,
     "titles": "Afdelingen / Leiden-Haaglanden",
-    "updated": "2014-12-31T11:21:31.246Z",
+    "updated": "2014-12-31T11:21:31.246",
     "title": "Leiden-Haaglanden",
     "_meta_title": null,
     "_order": 1,
@@ -742,9 +742,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-31T13:46:34.819Z",
+    "created": "2014-12-31T13:46:34.819",
     "short_url": null,
-    "publish_date": "2014-12-31T13:46:34Z",
+    "publish_date": "2014-12-31T13:46:34",
     "site": 2,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -752,7 +752,7 @@
     "status": 2,
     "parent": null,
     "titles": "Home",
-    "updated": "2014-12-31T13:47:18.225Z",
+    "updated": "2014-12-31T13:47:18.225",
     "title": "Home",
     "_meta_title": "",
     "_order": 0,
@@ -768,9 +768,9 @@
 },
 {
   "fields": {
-    "created": "2014-12-31T14:08:06.771Z",
+    "created": "2014-12-31T14:08:06.771",
     "short_url": null,
-    "publish_date": "2014-12-31T14:08:06Z",
+    "publish_date": "2014-12-31T14:08:06",
     "site": 3,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -778,7 +778,7 @@
     "status": 2,
     "parent": null,
     "titles": "Home",
-    "updated": "2014-12-31T14:08:51.406Z",
+    "updated": "2014-12-31T14:08:51.406",
     "title": "Home",
     "_meta_title": "",
     "_order": 0,
@@ -794,9 +794,9 @@
 },
 {
   "fields": {
-    "created": "2015-01-03T23:02:01.802Z",
+    "created": "2015-01-03T23:02:01.802",
     "short_url": null,
-    "publish_date": "2015-01-03T23:02:01.797Z",
+    "publish_date": "2015-01-03T23:02:01.797",
     "site": 1,
     "login_required": false,
     "in_menus": "1,2,3",
@@ -804,7 +804,7 @@
     "status": 2,
     "parent": null,
     "titles": "Documenten",
-    "updated": "2015-01-03T23:02:01.802Z",
+    "updated": "2015-01-03T23:02:01.802",
     "title": "Documenten",
     "_meta_title": "",
     "_order": 6,
@@ -1011,7 +1011,7 @@
 },
 {
   "fields": {
-    "last_login": "2015-01-18T23:13:25.872Z",
+    "last_login": "2015-01-18T23:13:25.872",
     "username": "admin",
     "is_active": true,
     "user_permissions": [],
@@ -1021,7 +1021,7 @@
     "first_name": "",
     "is_superuser": true,
     "groups": [],
-    "date_joined": "2014-12-21T21:34:09.881Z",
+    "date_joined": "2014-12-21T21:34:09.881",
     "password": "pbkdf2_sha256$12000$7lZdKvhp8rSo$/iSJHxO1UrsFsoCK9Gzx69/5q8d6COJYjvbAoNqt8IQ="
   },
   "pk": 1,
@@ -1958,7 +1958,7 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:37:04.611Z",
+    "created": "2014-12-21T21:37:04.611",
     "status": 2,
     "site": 1,
     "keywords_string": "",
@@ -1973,11 +1973,11 @@
     "related_posts": [],
     "description": "\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus eget erat efficitur porta. Donec a lorem urna. Morbi tincidunt ligula eget lectus condimentum, vitae consequat leo eleifend. Vivamus a porttitor felis. Curabitur suscipit, erat et varius egestas, odio ante pretium ante, a consectetur ligula urna non ante. Vivamus in libero convallis, tempus sem non, dignissim quam. Nam molestie diam nec leo dignissim, et iaculis erat aliquet. Praesent ullamcorper massa libero, non tempus eros commodo egestas. Nulla lorem elit, auctor id malesuada sit amet, semper in orci. Maecenas faucibus, risus vitae venenatis lacinia, erat mi venenatis augue, sit amet interdum dolor felis ut ante. Morbi a facilisis ante, in lobortis urna. Etiam ut nunc quis libero interdum aliquam eu at magna. Nunc vehicula risus eleifend molestie vulputate. Mauris diam odio, congue eget lorem id, finibus imperdiet sem.",
     "featured_image": null,
-    "updated": "2014-12-30T23:22:53.495Z",
+    "updated": "2014-12-30T23:22:53.495",
     "slug": "een-mooie-weblog",
     "allow_comments": true,
     "short_url": "http://jd.local:8000/blog/een-mooie-weblog/",
-    "publish_date": "2014-12-21T21:37:04Z",
+    "publish_date": "2014-12-21T21:37:04",
     "rating_average": 0.0,
     "categories": [
       1
@@ -1992,7 +1992,7 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:37:15.769Z",
+    "created": "2014-12-21T21:37:15.769",
     "status": 2,
     "site": 1,
     "keywords_string": "",
@@ -2007,11 +2007,11 @@
     "related_posts": [],
     "description": "\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus eget erat efficitur porta. Donec a lorem urna. Morbi tincidunt ligula eget lectus condimentum, vitae consequat leo eleifend. Vivamus a porttitor felis. Curabitur suscipit, erat et varius egestas, odio ante pretium ante, a consectetur ligula urna non ante. Vivamus in libero convallis, tempus sem non, dignissim quam. Nam molestie diam nec leo dignissim, et iaculis erat aliquet. Praesent ullamcorper massa libero, non tempus eros commodo egestas. Nulla lorem elit, auctor id malesuada sit amet, semper in orci. Maecenas faucibus, risus vitae venenatis lacinia, erat mi venenatis augue, sit amet interdum dolor felis ut ante. Morbi a facilisis ante, in lobortis urna. Etiam ut nunc quis libero interdum aliquam eu at magna. Nunc vehicula risus eleifend molestie vulputate. Mauris diam odio, congue eget lorem id, finibus imperdiet sem.",
     "featured_image": null,
-    "updated": "2014-12-31T11:18:38.752Z",
+    "updated": "2014-12-31T11:18:38.752",
     "slug": "een-groot-nieuwtje",
     "allow_comments": true,
     "short_url": "http://jd.local:8000/blog/een-groot-nieuwtje/",
-    "publish_date": "2014-12-21T21:37:15.767Z",
+    "publish_date": "2014-12-21T21:37:15.767",
     "rating_average": 0.0,
     "categories": [
       2
@@ -2026,7 +2026,7 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:41:33.326Z",
+    "created": "2014-12-21T21:41:33.326",
     "status": 2,
     "site": 3,
     "keywords_string": "",
@@ -2041,11 +2041,11 @@
     "related_posts": [],
     "description": "\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus eget erat efficitur porta. Donec a lorem urna. Morbi tincidunt ligula eget lectus condimentum, vitae consequat leo eleifend. Vivamus a porttitor felis. Curabitur suscipit, erat et varius egestas, odio ante pretium ante, a consectetur ligula urna non ante. Vivamus in libero convallis, tempus sem non, dignissim quam. Nam molestie diam nec leo dignissim, et iaculis erat aliquet. Praesent ullamcorper massa libero, non tempus eros commodo egestas. Nulla lorem elit, auctor id malesuada sit amet, semper in orci. Maecenas faucibus, risus vitae venenatis lacinia, erat mi venenatis augue, sit amet interdum dolor felis ut ante. Morbi a facilisis ante, in lobortis urna. Etiam ut nunc quis libero interdum aliquam eu at magna. Nunc vehicula risus eleifend molestie vulputate. Mauris diam odio, congue eget lorem id, finibus imperdiet sem.",
     "featured_image": null,
-    "updated": "2014-12-21T21:41:33.326Z",
+    "updated": "2014-12-21T21:41:33.326",
     "slug": "een-controversi\u00eble-weblog",
     "allow_comments": true,
     "short_url": null,
-    "publish_date": "2014-12-21T21:41:33.322Z",
+    "publish_date": "2014-12-21T21:41:33.322",
     "rating_average": 0.0,
     "categories": [
       3
@@ -2060,7 +2060,7 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:41:45.325Z",
+    "created": "2014-12-21T21:41:45.325",
     "status": 2,
     "site": 3,
     "keywords_string": "",
@@ -2075,11 +2075,11 @@
     "related_posts": [],
     "description": "\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus eget erat efficitur porta. Donec a lorem urna. Morbi tincidunt ligula eget lectus condimentum, vitae consequat leo eleifend. Vivamus a porttitor felis. Curabitur suscipit, erat et varius egestas, odio ante pretium ante, a consectetur ligula urna non ante. Vivamus in libero convallis, tempus sem non, dignissim quam. Nam molestie diam nec leo dignissim, et iaculis erat aliquet. Praesent ullamcorper massa libero, non tempus eros commodo egestas. Nulla lorem elit, auctor id malesuada sit amet, semper in orci. Maecenas faucibus, risus vitae venenatis lacinia, erat mi venenatis augue, sit amet interdum dolor felis ut ante. Morbi a facilisis ante, in lobortis urna. Etiam ut nunc quis libero interdum aliquam eu at magna. Nunc vehicula risus eleifend molestie vulputate. Mauris diam odio, congue eget lorem id, finibus imperdiet sem.",
     "featured_image": null,
-    "updated": "2015-01-18T23:14:57.450Z",
+    "updated": "2015-01-18T23:14:57.450",
     "slug": "een-mildere-weblog",
     "allow_comments": true,
     "short_url": "http://lh.jd.local:8000/blog/een-mildere-weblog/",
-    "publish_date": "2014-12-21T21:41:45.323Z",
+    "publish_date": "2014-12-21T21:41:45.323",
     "rating_average": 0.0,
     "categories": [
       3
@@ -2094,7 +2094,7 @@
 },
 {
   "fields": {
-    "created": "2014-12-21T21:41:59.969Z",
+    "created": "2014-12-21T21:41:59.969",
     "status": 2,
     "site": 3,
     "keywords_string": "",
@@ -2109,11 +2109,11 @@
     "related_posts": [],
     "description": "\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus eget erat efficitur porta. Donec a lorem urna. Morbi tincidunt ligula eget lectus condimentum, vitae consequat leo eleifend. Vivamus a porttitor felis. Curabitur suscipit, erat et varius egestas, odio ante pretium ante, a consectetur ligula urna non ante. Vivamus in libero convallis, tempus sem non, dignissim quam. Nam molestie diam nec leo dignissim, et iaculis erat aliquet. Praesent ullamcorper massa libero, non tempus eros commodo egestas. Nulla lorem elit, auctor id malesuada sit amet, semper in orci. Maecenas faucibus, risus vitae venenatis lacinia, erat mi venenatis augue, sit amet interdum dolor felis ut ante. Morbi a facilisis ante, in lobortis urna. Etiam ut nunc quis libero interdum aliquam eu at magna. Nunc vehicula risus eleifend molestie vulputate. Mauris diam odio, congue eget lorem id, finibus imperdiet sem.",
     "featured_image": null,
-    "updated": "2015-01-18T23:08:30.509Z",
+    "updated": "2015-01-18T23:08:30.509",
     "slug": "het-persbericht-van-het-jaar",
     "allow_comments": true,
     "short_url": "http://lh.jd.local:8000/blog/het-persbericht-van-het-jaar/",
-    "publish_date": "2014-12-21T21:41:59.965Z",
+    "publish_date": "2014-12-21T21:41:59.965",
     "rating_average": 0.0,
     "categories": [
       4
@@ -2128,7 +2128,7 @@
 },
 {
   "fields": {
-    "created": "2014-12-31T11:17:42.436Z",
+    "created": "2014-12-31T11:17:42.436",
     "status": 2,
     "site": 1,
     "keywords_string": "",
@@ -2143,11 +2143,11 @@
     "related_posts": [],
     "description": "Robert Mugabe, Ra\u00fal Castro, Kim Jong-Un en Sybrand Buma. Allen heb ze \u00e9\u00e9n ding gemeen: het willen uitbannen van onwelgevallige partijen. Uiterlijk 18 december wordt er in de Tweede Kamer gestemd over het voorstel van de CDA-voorman om zogenaamde 'democratie-ondermijnende' partijen te verbieden. De ironie wil echter dat de christendemocraten juist met dit voorstel de bijl aan de wortel van ons democratisch bestel leggen.",
     "featured_image": null,
-    "updated": "2014-12-31T11:18:29.940Z",
+    "updated": "2014-12-31T11:18:29.940",
     "slug": "een-partijverbod-druist-in-tegen-de-democratie",
     "allow_comments": true,
     "short_url": "http://jd.local:8000/blog/een-partijverbod-druist-in-tegen-de-democratie/",
-    "publish_date": "2014-12-31T11:17:42Z",
+    "publish_date": "2014-12-31T11:17:42",
     "rating_average": 0.0,
     "categories": [
       5

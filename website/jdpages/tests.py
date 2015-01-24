@@ -40,7 +40,7 @@ class TestColumnElement(TestCase):
 class TestSidebarElement(TestCase):
     """ SidebarElement test case. """
 
-    def test_auto_create(self):
+    def test_auto_create_social_media(self):
         """
         Tests whether a SidebarElement is automatically created
         when a SocialMediaButtonGroup is created, 
@@ -51,7 +51,7 @@ class TestSidebarElement(TestCase):
         element = SidebarElement.objects.get(id=1)
         self.assertEqual(element.get_object(), group)
 
-    def test_auto_delete(self):
+    def test_auto_delete_social_media(self):
         """
         Tests whether the related SidebarElement is automatically deleted
         when a SocialMediaButtonGroup is deleted.
@@ -61,5 +61,29 @@ class TestSidebarElement(TestCase):
         element = SidebarElement.objects.get(id=1)
         self.assertEqual(element.get_object(), group)
         group.delete()
+        self.assertEqual(SocialMediaButtonGroup.objects.count(), 0)
+        self.assertEqual(SidebarElement.objects.count(), 0)
+
+    def test_auto_create_blogcategory(self):
+        """
+        Tests whether a SidebarElement is automatically created
+        when a BlogCategory is created,
+        and that the element has a reference to it.
+        """
+        blogcategory = BlogCategory.objects.create(title="Test BlogCategory")
+        self.assertEqual(SidebarElement.objects.count(), 1)
+        element = SidebarElement.objects.get(id=1)
+        self.assertEqual(element.get_object(), blogcategory)
+
+    def test_auto_delete_blogcategory(self):
+        """
+        Tests whether the related SidebarElement is automatically deleted
+        when a BlogCategory is deleted.
+        """
+        blogcategory = BlogCategory.objects.create(title="Test BlogCategory")
+        self.assertEqual(SidebarElement.objects.count(), 1)
+        element = SidebarElement.objects.get(id=1)
+        self.assertEqual(element.get_object(), blogcategory)
+        blogcategory.delete()
         self.assertEqual(SocialMediaButtonGroup.objects.count(), 0)
         self.assertEqual(SidebarElement.objects.count(), 0)

@@ -146,7 +146,7 @@ TEMPLATE_LOADERS = (
     "django.template.loaders.app_directories.Loader",
 )
 
-AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
+AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend", 'janeus.backend.JaneusBackend')
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -261,6 +261,7 @@ INSTALLED_APPS = (
     # "mezzanine.accounts",
     # "mezzanine.mobile",
     "debug_toolbar",
+    "janeus",
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -391,6 +392,11 @@ LOGGING = {
             'level': 'ERROR',
         },
         'website': {
+            'handlers': ['file_debug', 'file_error', 'console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'janeus': {
             'handlers': ['file_debug', 'file_error', 'console'],
             'propagate': True,
             'level': 'DEBUG',

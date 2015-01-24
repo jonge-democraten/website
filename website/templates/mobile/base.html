@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %} class="mobile">
+{% load pages_tags mezzanine_tags i18n future staticfiles %}
+{% ifinstalled mezzanine.blog %}{% load blog_tags %}{% endifinstalled %}
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
+  <meta name="author" content="{{ TODO }}" />
+  <meta name="description" content="{% block meta_description %}{% endblock %}" />
+  <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TAGLINE %} - {{ settings.SITE_TAGLINE }}{% endif %}</title>
+  <link rel="stylesheet" href="/modules/mod_rkr_cookiebanner/assets/rkr_cookiebanner.css" type="text/css" />
+  <link rel="stylesheet" href="/components/com_jevents/views/alternative/assets/css/modstyle.css" type="text/css" />
+  <script src="/media/system/js/mootools-core.js" type="text/javascript"></script>
+  <script src="/media/system/js/core.js" type="text/javascript"></script>
+  <script src="/media/system/js/caption.js" type="text/javascript"></script>
+  <script type="text/javascript">
+window.addEvent('load', function() {
+                new JCaption('img.caption');
+            });
+  </script>
+
+<meta content='initial-scale=1,width=device-width' name='viewport'/>
+<script src="/media/system/js/mootools-more.js" type="text/javascript"></script>
+<link rel="icon" href="/templates/jd/images/jdicon.png" type="image/png" />
+<link rel="stylesheet" href="/templates/jd/css/template.css" type="text/css" />
+<script src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+
+<meta name="twitter:card" value="summary">
+<meta name="twitter:url" value="{{ TODO }}">
+<meta name="twitter:title" value="{% block meta_title %}{% endblock %}{% if settings.SITE_TAGLINE %} - {{ settings.SITE_TAGLINE }}{% endif %}">
+<meta name="twitter:description" value="{% block meta_description %}{% endblock %}">
+<meta name="twitter:image" value="http://jongedemocraten.nl/images/landelijk/logo_tumb.jpg">
+
+<meta name="twitter:creator" value="@JongeDemocraten">
+<meta name="twitter:site" value="@JongeDemocraten"></head>
+
+<body class="{% body_class %}body{% endblock %}">
+<div id="outerDiv">
+  <div id="innerDiv">
+    <div id="headerDiv">
+      <div id="logoDiv">
+        <a href="/"><img src="/templates/jd/images/mobile/Logo.png" alt="Jonge Democraten " /></a>
+      </div>
+      <div id="menuDiv">
+
+<ul class="menu">
+{{ TODO }}
+</ul>
+
+      </div>
+    <div id="menuBtn">Menu<span></span></div>
+    <script>
+        $(document).ready(function(){
+            var menuSlide = new Fx.Slide('menuDiv',{'duration': 500}).hide();
+            $('#menuBtn').click(function(){
+                menuSlide.toggle().chain(function(){
+                    var pos = (menuSlide.open ? '0 -9px' : '0 0');
+                    $('menuBtn').getElement('span').setStyle('background-position', pos);
+                });
+            });
+        });
+    </script>
+    </div>
+
+    <div id="contentDiv" class="clearing">
+{% block main %}{% endblock %}
+
+    <section class="collapsable agenda">
+        <div class="moduletableagenda">
+            <h3>Agenda</h3>
+            {% include "mobile/elements/agenda.html" %}
+    </section>
+
+{% block blogwidget %}{% endblock %}
+  <script>
+    var slides = [];
+    $$('section').each(function(sect,idx){
+      var slider = sect.getElement('div.mod_placehere, div.mod_placeherenieuws, div.tablewrapper');
+      if (slider) {
+        slides[idx] = new Fx.Slide(slider,{'duration': 500});
+        if (sect.hasClass('closed')) {
+          slides[idx].hide();
+        } else {
+          slides[idx].show();
+        }
+        sect.getElement('h3').addEvent('click',function(){
+          console.log(idx);
+          console.log(slides[idx].open);
+          slides[idx].toggle().chain(function(){
+            if (slides[idx].open) {
+              sect.removeClass('closed');
+            } else {
+              sect.addClass('closed');
+            }
+          });
+        });
+      }
+    });
+  </script>
+{% block upbutton %}{% endblock %}
+    </div>
+  </div>
+</div>
+
+<div id="footerDiv">
+        <div class="moduletableonline">
+
+
+<div class="customonline"  >
+    <p><a href="http://www.facebook.com/group.php?gid=2225510846" title="Facebook Group" rel="nofollow"><img src="http://www.jongedemocraten.nl/templates/jd/images/mobile/fb.png" border="0" alt="Facebook Group" width="36" height="36" /></a> <a href="http://twitter.com/jongedemocraten" title="Twitter" rel="nofollow"><img src="http://www.jongedemocraten.nl/templates/jd/images/mobile/tw.png" border="0" alt="Twitter" width="36" height="36" /></a> <a href="http://www.linkedin.com/groups?gid=1039477" title="Linked In Group" rel="nofollow"><img src="http://www.jongedemocraten.nl/templates/jd/images/mobile/in.png" border="0" alt="Linked In Group" width="36" height="36" /></a> <a href="http://youtube.com/jongedemocraten" title="YouTube" rel="nofollow"><img src="http://www.jongedemocraten.nl/templates/jd/images/mobile/yt.png" border="0" alt="YouTube" width="36" height="36" /> </a></p></div>
+        </div>
+
+<p><a href="{{ TODO }}?nomobile">Naar de reguliere website</a></p>
+        <div class="moduletable">
+
+<div class="custom"  >
+    <p>© {{ TODO }} Jonge Democraten</p></div>
+        </div>
+            <div class="moduletable">
+                    <h3>RKR Cookie Banner</h3>
+                        <div id="cookie-message" class="cb antraciet atbottom">
+        <div class="content">
+            Deze website maakt gebruik van cookies. Lees ons <a href="http://jongedemocraten.nl/contact-mainmenu-2196.html#privacypolicy" title="privacy statement">privacy statement</a> voor meer informatie. Gaat u akkoord met het gebruik hiervan?     </div>
+        <div class="buttons">
+            <a id="set-cookie" class="cb green" href="#">Ja, ik ga akkoord</a>
+            <a id="remove-cookie-message" class="cb red" href="#">Liever niet</a>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        // Set cookies
+        function SetCookie(c_name, value, expiredays) {
+            var exdate = new Date();
+            exdate.setDate(exdate.getDate() + expiredays);
+            var c_value = escape(value) + ";path=/" + ((expiredays==null) ? "" : ";expires=" + exdate.toGMTString());
+            document.cookie=c_name + "=" + c_value;
+        }
+        $("#set-cookie").click(function() {
+            SetCookie('cb_accept_cookies', 'yes', 365 * 10);
+            $("#cookie-message").remove();
+                        window.location.reload();
+                    });
+        $("#remove-cookie-message").click(function() {
+            SetCookie('cb_accept_cookies', 'no', 365 * 10);
+            $("#cookie-message").remove();
+                        window.location.reload();
+                    });
+    });
+    </script>
+
+        </div>
+
+</div>
+
+<!-- TABS JS -->
+<script src="/templates/jd/javascript/jquery-1.3.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/templates/jd/javascript/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript">
+  jQuery.noConflict();
+  jQuery(function() {
+    jQuery("#tabs").tabs();
+  });
+</script>
+<!-- END TABS -->
+<!-- Piwik -->
+
+ <!-- End Piwik Tracking Code -->
+</body>
+</html>

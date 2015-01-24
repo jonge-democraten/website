@@ -164,6 +164,10 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 # blog post by any other user of that site.
 OWNABLE_MODELS_ALL_EDITABLE = ('blog.BlogPost',)
 
+# Using this setting, we force every site to use its own directory within
+# the Media Library.
+MEDIA_LIBRARY_PER_SITE = True
+
 #############
 # DATABASES #
 #############

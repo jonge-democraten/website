@@ -217,6 +217,8 @@ class SidebarBanner(SiteRelated):
     description = models.CharField(max_length=1000, blank=True, null=False, default="",
                                    help_text='This is shown as tooltip and alt text. ')
 
+    def __str__(self):
+        return self.title + ' (' + self.url + ')'
 
 def get_public_blogposts(blog_category):
     """ Returns all blogposts for a given category that are published and not expired. """

@@ -84,8 +84,6 @@ ADMIN_MENU_ORDER = (
 
 SITE_TITLE = "Jonge Democraten"
 
-SIDEBAR_BLOG = "JD Blog"
-
 ########################
 # MAIN DJANGO SETTINGS #
 ########################

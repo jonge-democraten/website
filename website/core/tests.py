@@ -225,3 +225,34 @@ class TestScriptTagWhitelisting(TestCase):
  
         self.assertEqual(strip_scripts_not_in_whitelist(self.boring_html),
             str(bs(self.boring_html, 'html.parser')))
+
+
+class TestJaneus(TestCase):
+    """ Test Janeus integration """
+
+    def test_no_access_by_default(self):
+        from janeus.backend import JaneusBackend
+        self.assertTrue(JaneusBackend().authenticate("someuser", "somepass") is None)
+
+    def test_access_after_role(self):
+        from janeus.models import JaneusRole
+        role = JaneusRole(role="role1")
+        role.save()
+
+        from janeus.backend import JaneusBackend
+        user = JaneusBackend().authenticate("someuser", "somepass")
+        self.assertTrue(user is not None)
+        self.assertTrue(user.user_permissions.count() == 0)
+        
+    def test_permissions(self):
+        from janeus.models import JaneusRole
+        role = JaneusRole(role="role1")
+        role.save()
+
+        from django.contrib.auth.models import Permission
+        role.permissions.add(*Permission.objects.all())
+
+        from janeus.backend import JaneusBackend
+        user = JaneusBackend().authenticate("someuser", "somepass")
+        self.assertTrue(user is not None)
+        self.assertTrue(user.user_permissions.count() == Permission.objects.count())

@@ -57,6 +57,7 @@ class TestLogging(TestCase):
             self.assertTrue(logfile_str.find(debug_message) == -1)
             self.assertTrue(logfile_str.find(error_message) != -1)
 
+
 class TestIframeStripping(TestCase):
     """
     Unit tests for iframe stripping (only allow YouTube video embedding).
@@ -137,6 +138,7 @@ class TestIframeStripping(TestCase):
         self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')), \
             filter_non_video_iframes(field_value_iframe_has_content))
 
+
 class TestEmailObfuscation(TestCase):
     """
     Unit tests for e-mail obfuscation functionality. Tests the accuracy of
@@ -174,6 +176,7 @@ class TestEmailObfuscation(TestCase):
         self.assertFalse('example' in obfuscate_email_addresses(self.test_html))
         self.assertFalse('com' in obfuscate_email_addresses(self.test_html))
 
+
 class TestScriptTagWhitelisting(TestCase):
     """
     Unit tests for script tag whitelisting functionality. Tests the accuracy of
@@ -210,7 +213,7 @@ class TestScriptTagWhitelisting(TestCase):
         self.assertEqual(strip_scripts_not_in_whitelist(self.evil_html),
             str(bs(self.evil_html_stripped, 'html.parser')))
 
-    def good_is_not_stripped(self):
+    def test_good_is_not_stripped(self):
         """ Test if a whitelisted script tag indeed passes unstripped. """
         from website.utils.filters import strip_scripts_not_in_whitelist
         from bs4 import BeautifulSoup as bs
@@ -218,7 +221,7 @@ class TestScriptTagWhitelisting(TestCase):
         self.assertEqual(strip_scripts_not_in_whitelist(self.good_html),
             str(bs(self.good_html, 'html.parser')))
 
-    def boring_is_unchanged(self):
+    def test_boring_is_unchanged(self):
         """ Test if an irrelevant HTML tag passes unstripped. """
         from website.utils.filters import strip_scripts_not_in_whitelist
         from bs4 import BeautifulSoup as bs

@@ -4,6 +4,7 @@ logger = logging.getLogger(__name__)
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
+from django.contrib.sites.models import Site
 
 from mezzanine.blog.models import BlogCategory
 
@@ -11,8 +12,10 @@ from website.jdpages.models import ColumnElement
 from website.jdpages.models import SocialMediaButtonGroup 
 from website.jdpages.models import SidebarElement
 from website.jdpages.models import SidebarBanner
+from website.jdpages.models import SidebarTwitter
 from website.jdpages.models import create_columnelement_for_blogcategory
 from website.jdpages.models import create_sidebarelement_for_banner
+from website.jdpages.models import create_sidebarelement_for_twitter
 from website.jdpages.models import create_sidebarelement_for_socialmediagroup
 from website.jdpages.models import create_sidebarelement_for_blogcategory
 
@@ -29,6 +32,13 @@ def post_save_callback(sender, instance, created, **kwargs):
     """
     if not created:
         return
+
+    if sender == Site:
+        twitter_sidebar = SidebarTwitter.objects.create(title="Twitter Sidebar")
+        twitter_sidebar.site_id = instance.id
+        twitter_sidebar.save(update_site=False)
+        create_sidebarelement_for_twitter(twitter_sidebar)
+
     if sender == BlogCategory:
         if not ColumnElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)):  # TODO BR: move this check to create_columnelement_for_blogcategory function
             create_columnelement_for_blogcategory(instance)

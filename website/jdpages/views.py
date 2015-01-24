@@ -7,7 +7,7 @@ from mezzanine.blog.models import BlogCategory
 
 from website.jdpages.models import get_public_blogposts
 from website.jdpages.models import SocialMediaButtonGroup
-from website.jdpages.models import SidebarBanner
+from website.jdpages.models import SidebarBanner, SidebarTwitter
 
 
 def create_sidebar_items(sidebar_widgets):
@@ -27,6 +27,10 @@ def create_sidebar_items(sidebar_widgets):
         elif model_type == SidebarBanner:
             banner = widget.sidebar_element.get_object()
             item = BannerSidebarItem(banner)
+            item.title = widget.title
+            items.append(item)
+        elif model_type == SidebarTwitter:
+            item = TwitterSidebarItem()
             item.title = widget.title
             items.append(item)
     return items
@@ -92,3 +96,8 @@ class BannerSidebarItem(Item):
 
     def get_template_name(self):
         return "banner_sidebar_item.html"
+
+
+class TwitterSidebarItem(Item):
+    def get_template_name(self):
+        return "twitter_feed_item.html"

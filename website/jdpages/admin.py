@@ -13,7 +13,7 @@ from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import HomePage
 from website.jdpages.models import HorizontalPosition
 from website.jdpages.models import Sidebar, SidebarElement, SidebarElementWidget
-from website.jdpages.models import SidebarBanner
+from website.jdpages.models import SidebarBanner, SidebarTwitter
 from website.jdpages.models import SocialMediaButtonGroup, SocialMediaButton
 
 
@@ -109,6 +109,7 @@ class SocialMediaButtonGroupAdmin(admin.ModelAdmin):
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(Sidebar, SidebarAdmin)
 admin.site.register(SidebarBanner)
+admin.site.register(SidebarTwitter)
 admin.site.register(SocialMediaButtonGroup, SocialMediaButtonGroupAdmin)
 admin.site.register(DocumentListing, DocumentListingAdmin)
 

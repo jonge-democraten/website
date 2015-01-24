@@ -46,9 +46,9 @@
 <div id="outerDiv">
     <div id="innerDiv">
         <div id="headerDiv">
-        {% include "elements/header.html" %}
+            {% include "elements/header.html" %}
 
-        {% page_menu "pages/menus/jdmenu.html" %}
+            {% page_menu "pages/menus/jdmenu.html" %}
         </div> <!-- headerDiv -->
 
         <div id="contentDiv" class="clearing">
@@ -58,8 +58,6 @@
             </div> <!-- contentLeftDiv -->
             
             <div id="contentRightDiv">
-                
-                {% include "elements/twitter_feed.html" %}
                 
                 {% for item in sidebar_items %}
                     <div class="moduletable">

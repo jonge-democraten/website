@@ -20,10 +20,9 @@ def create_sidebar_items(sidebar_widgets):
             items.append(item)
         elif model_type == BlogCategory:
             blogcategory = widget.sidebar_element.get_object()
-            item = BlogCategorySidebarItem(blogcategory)
+            item = BlogCategorySidebarItem(blogcategory, widget.max_items)
             item.title = widget.title
             items.append(item)
-
     return items
 
 
@@ -45,14 +44,14 @@ class BlogPostItem(Item):
 
 
 class BlogCategorySidebarItem(Item):
-    def __init__(self, blogcategory):
+    def __init__(self, blogcategory, max_posts):
         logger.warning(blogcategory.title)
-        self.children = self.create_children(blogcategory)
+        self.children = self.create_children(blogcategory, max_posts)
 
     @staticmethod
-    def create_children(blogcategory):
+    def create_children(blogcategory, max_posts):
         children = []
-        blogposts = get_public_blogposts(blogcategory)
+        blogposts = get_public_blogposts(blogcategory)[:max_posts]
         for post in blogposts:
             children.append(BlogPostItem(post))
         return children

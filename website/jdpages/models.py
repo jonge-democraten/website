@@ -108,7 +108,7 @@ class SidebarElement(SiteRelated):
     content_object = GenericForeignKey('content_type', 'object_id')
 
     def __str__(self):
-        return str(self.content_object) + ' (' + str(self.content_type) + ')'
+        return str(self.content_type) + ': ' + str(self.content_object)
 
     def get_object(self):
         """ Returns the content object. """
@@ -178,6 +178,9 @@ class SocialMediaButtonGroup(SiteRelated):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = 'Social Media Button Group'
+
 
 class SocialMediaButton(SiteRelated):
     FACEBOOK = 'FB'
@@ -209,6 +212,9 @@ class SocialMediaButton(SiteRelated):
     def __str__(self):
         return str(type)
 
+    class Meta:
+        verbose_name = 'Sidebar Media Button'
+
 
 class SidebarBanner(SiteRelated):
     title = models.CharField(max_length=1000, blank=False, null=False, default="")
@@ -220,12 +226,18 @@ class SidebarBanner(SiteRelated):
     def __str__(self):
         return self.title + ' (' + self.url + ')'
 
+    class Meta:
+        verbose_name = 'Sidebar Banner'
+
 
 class SidebarTwitter(SiteRelated):
     title = models.CharField(max_length=1000, blank=False, null=False, default="")
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = 'Sidebar Twitter'
 
 
 def get_public_blogposts(blog_category):

@@ -9,10 +9,9 @@ from django.contrib.sites.models import Site
 from mezzanine.blog.models import BlogCategory
 
 from website.jdpages.models import ColumnElement
-from website.jdpages.models import SocialMediaButtonGroup 
-from website.jdpages.models import SidebarElement
-from website.jdpages.models import SidebarBanner
-from website.jdpages.models import SidebarTwitter
+from website.jdpages.models import SocialMediaButtonGroup
+from website.jdpages.models import Sidebar
+from website.jdpages.models import SidebarElement, SidebarBanner, SidebarTwitter
 from website.jdpages.models import create_columnelement_for_blogcategory
 from website.jdpages.models import create_sidebarelement_for_banner
 from website.jdpages.models import create_sidebarelement_for_twitter
@@ -34,7 +33,10 @@ def post_save_callback(sender, instance, created, **kwargs):
         return
 
     if sender == Site:
-        twitter_sidebar = SidebarTwitter.objects.create(title="Twitter Sidebar")
+        main_sidebar = Sidebar.objects.create(name="Main sidebar")
+        main_sidebar.site_id = instance.id
+        main_sidebar.save(update_site=False)
+        twitter_sidebar = SidebarTwitter.objects.create(title="Twitter")
         twitter_sidebar.site_id = instance.id
         twitter_sidebar.save(update_site=False)
         create_sidebarelement_for_twitter(twitter_sidebar)

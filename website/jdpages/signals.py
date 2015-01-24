@@ -56,7 +56,7 @@ def pre_delete_callback(sender, instance, **kwargs):
     if sender == BlogCategory:
         related_elements.append(ColumnElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)))
         related_elements.append(SidebarElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)))
-    elif sender == SocialMediaButtonGroup:
+    elif sender == SocialMediaButtonGroup or sender == SidebarBanner:
         related_elements = SidebarElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender))
 
     for element in related_elements:

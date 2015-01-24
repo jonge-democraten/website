@@ -7,6 +7,7 @@ from mezzanine.blog.models import BlogCategory
 
 from website.jdpages.models import ColumnElement
 from website.jdpages.models import SidebarElement
+from website.jdpages.models import SidebarBanner
 from website.jdpages.models import SocialMediaButtonGroup
 
 
@@ -85,5 +86,29 @@ class TestSidebarElement(TestCase):
         element = SidebarElement.objects.get(id=1)
         self.assertEqual(element.get_object(), blogcategory)
         blogcategory.delete()
+        self.assertEqual(SocialMediaButtonGroup.objects.count(), 0)
+        self.assertEqual(SidebarElement.objects.count(), 0)
+
+    def test_auto_create_banner(self):
+        """
+        Tests whether a SidebarElement is automatically created
+        when a SidebarBanner is created,
+        and that the element has a reference to it.
+        """
+        sidebarbanner = SidebarBanner.objects.create(title="Test Sidebar Banner")
+        self.assertEqual(SidebarElement.objects.count(), 1)
+        element = SidebarElement.objects.get(id=1)
+        self.assertEqual(element.get_object(), sidebarbanner)
+
+    def test_auto_delete_banner(self):
+        """
+        Tests whether the related SidebarElement is automatically deleted
+        when a SidebarBanner is deleted.
+        """
+        sidebarbanner = SidebarBanner.objects.create(title="Test Sidebar Banner")
+        self.assertEqual(SidebarElement.objects.count(), 1)
+        element = SidebarElement.objects.get(id=1)
+        self.assertEqual(element.get_object(), sidebarbanner)
+        sidebarbanner.delete()
         self.assertEqual(SocialMediaButtonGroup.objects.count(), 0)
         self.assertEqual(SidebarElement.objects.count(), 0)

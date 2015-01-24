@@ -5,15 +5,15 @@ from django.conf import settings
 from django.contrib import admin
 from django.utils.functional import curry
 
-from mezzanine.pages.admin import PageAdmin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
+from mezzanine.pages.admin import PageAdmin
 
-from website.jdpages.models import HomePage 
 from website.jdpages.models import ColumnElement, ColumnElementWidget
 from website.jdpages.models import DocumentListing, Document
+from website.jdpages.models import HomePage
+from website.jdpages.models import HorizontalPosition
 from website.jdpages.models import Sidebar, SidebarElement, SidebarElementWidget
 from website.jdpages.models import SocialMediaButtonGroup, SocialMediaButton
-from website.jdpages.views import HorizontalPosition
 
 
 class ColumnElementWidgetInline(TabularDynamicInlineAdmin):

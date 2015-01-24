@@ -9,6 +9,7 @@ from mezzanine.utils.sites import current_site_id
 from website.jdpages.models import get_public_blogposts
 from website.jdpages.models import Sidebar, SidebarElementWidget
 from website.jdpages.views import BlogPostItem
+from website.jdpages.views import create_sidebar_items
 
 
 def sidebar(request):
@@ -34,7 +35,7 @@ def sidebar(request):
     blogpost_info = BlogPostItem(sidebar_blogpost)
 
     sidebar_elements = SidebarElementWidget.objects.filter(sidebar=sidebar)
-    sidebar_items = SidebarElementWidget.create_widget_items(sidebar_elements)
+    sidebar_items = create_sidebar_items(sidebar_elements)
 
     return {"sidebar_blogpost": blogpost_info,
             "sidebar_items": sidebar_items,}

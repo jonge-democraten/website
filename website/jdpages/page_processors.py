@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 from mezzanine.pages.page_processors import processor_for
 
 from website.jdpages.models import HomePage, ColumnElementWidget
-from website.jdpages.views import HorizontalPosition
+from website.jdpages.models import HorizontalPosition
 
 
 @processor_for(HomePage)

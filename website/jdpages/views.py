@@ -3,20 +3,25 @@ logger = logging.getLogger(__name__)
 
 from django.utils.html import strip_tags
 
+from website.jdpages.models import SocialMediaButtonGroup
 
-class HorizontalPosition():
-    LEFT = 'Left'
-    RIGHT = 'Right'
-    POSITION_CHOICES = (
-        (LEFT, 'Left'),
-        (RIGHT, 'Right'),
-    )
+
+def create_sidebar_items(sidebar_widgets):
+    items = []
+    for widget in sidebar_widgets:
+        model_type = widget.sidebar_element.content_type.model_class()
+        if model_type == SocialMediaButtonGroup:
+            button_group = widget.sidebar_element.get_object()
+            item = SocialMediaButtonGroupItem(button_group)
+            item.title = widget.title
+            items.append(item)
+    return items
 
 
 class Item():
     def get_template_name(self):
         return "none"
-      
+
 
 class BlogPostItem(Item):
     def __init__(self, blogpost):

@@ -28,11 +28,11 @@ def filter_non_video_iframes(html, testing = False):
         # If no matcher matched, remove the iframe
         if not matched:
             iframe.extract()
-            break
+            continue
         # If iframe tag contains something, remove the iframe
         if len(iframe.contents) > 0:
             iframe.extract()
-            break
+            continue
         # Check for illegal iframe attributes
         for attr in iframe.attrs:
             # If iframe contains illegal attribute, remove the iframe

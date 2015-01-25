@@ -83,3 +83,16 @@ Als je klaar bent met het aanpassen van de pagina, klik je op save. De veranderi
 ### Newsletters
 
 ### Images and Documents
+
+Documenten toevoegen
+
+Het is mogelijk om documenten (bv. HR, Statuten) zelf te plaatsen op de website.
+Content > Pages > Add Document Listing
+Title: Naam van het submenu
+Status: 'Published' is automatisch aangevinkt
+Content: Plaats hier de inhoud van de pagina
+Meta Data: Blijf hiervan af. 
+Onderaan bij 'Documents' kun je documenten uploaden. Klik hiervoor op het icoontje onder 'Document'. Bestanden die nog niet in de Media Library staan kan je alsnog direct uploaden via de knop rechtsboven. Tekstbestanden die al in de Media Library staan kan je hier selecteren via 'Select' (het blauwe icoontje met pijltje, linksvooraan). Op dit moment zie je nog geen verandering; het bestand is echter wél geupload. Enkele vereiste is nog dat je een beschrijving van het bestand invult bij 'Description'. Deze beschrijving is uiteindelijk ook te zien op de site.
+
+Wanneer je andere bestanden wilt uploaden, klik dan op 'Add another' wat helemaal onderaan staat.
+

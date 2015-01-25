@@ -50,6 +50,32 @@ Venster: Fullscreen (handig!)
 Hyperlink invoegen
 Het invoegen van een hyperlink kan als volgt: selecteer de tekst waarvan je een link wilt maken, klik vervolgens op de het icoontje van de kettingschakel in de tekstverwerkersbalk. Vul de URL Link in bij 'General Properties' en  klik op Update. Wil je de link weer verwijderen kan dit door op 'Unlink' te klikken.
 
+
+
+Afbeeling
+
+Een afbeelding op nemen in de tekst kan op twee manieren: 
+
+1. Een afbeelding kopieren/plakken (vanaf een andere site) in het tekstvak. Deze methode is makkelijk en snel, wanneer echter de locatie van de afbeelding op de originele site verandert, is de afbeelding niet meer beschikbaar. 
+
+2. Om te zorgen dat je afbeelding in de toekomst wel beschikbaar blijft kan je de afbeelding uploaden naar de Media Library (en dus onze eigen server). Wanneer dit is gedaan kan je via Insert/Edit Image (icoontje in de tekstverwerkersbalk) een plaatje uploaden vanuit de Media Library. Naast het veld van Image URL zit de 'browse' knop om naar de Media Library te gaan.
+
+Filmpje uploaden
+
+Filmpjes uploaden via Youtube (maar ook via andere sites) is geen probleem. 
+
+- Ga naar Youtube en zoek de betreffende video. 
+- Klik onder de video op 'Delen/Share', daarna op 'Insluiten/Embed'.
+- Kopieer de code (deze HTML code lijkt hierop: <iframe width="560" height="315" src="//www.youtube.com/embed/BcsfftwLUf0" frameborder="0" allowfullscreen></iframe>)
+- Plaats in het tekstvak de cursor op de plek waar je de video wilt plaatsen en klik op het film-icoontje in de tekstverwerkersbalk. 
+- Open in het nieuwe venster de 'Source' tab en kopieer de link in het zwarte veld. 
+- Klik op 'Insert'
+
+Wanneer je dit hebt gedaan zul je de video niet in het tekstvak zien, schrik hier niet van, dit hoort zo. Wil je toch zien waar de video staat in tekstvak kan je de gehele tekst selecteren (ctrl-a).
+De video kan je na het invoegen nog verslepen in het tekstvak, dit doe je door op het de video te klikken en met de cursor te verslepen naar de gewenste plek. Wil je de video weer verwijderen uit het tekstvak dan kan je dat met delete of backspace doen. 
+
+Als je klaar bent met het aanpassen van de pagina, klik je op save. De veranderingen zullen dan zichtbaar zijn op de site. Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
+
 ### Blogposts
 
 ### Events
@@ -57,3 +83,16 @@ Het invoegen van een hyperlink kan als volgt: selecteer de tekst waarvan je een 
 ### Newsletters
 
 ### Images and Documents
+
+Documenten toevoegen
+
+Het is mogelijk om documenten (bv. HR, Statuten) zelf te plaatsen op de website.
+Content > Pages > Add Document Listing
+Title: Naam van het submenu
+Status: 'Published' is automatisch aangevinkt
+Content: Plaats hier de inhoud van de pagina
+Meta Data: Blijf hiervan af. 
+Onderaan bij 'Documents' kun je documenten uploaden. Klik hiervoor op het icoontje onder 'Document'. Bestanden die nog niet in de Media Library staan kan je alsnog direct uploaden via de knop rechtsboven. Tekstbestanden die al in de Media Library staan kan je hier selecteren via 'Select' (het blauwe icoontje met pijltje, linksvooraan). Op dit moment zie je nog geen verandering; het bestand is echter wél geupload. Enkele vereiste is nog dat je een beschrijving van het bestand invult bij 'Description'. Deze beschrijving is uiteindelijk ook te zien op de site.
+
+Wanneer je andere bestanden wilt uploaden, klik dan op 'Add another' wat helemaal onderaan staat.
+

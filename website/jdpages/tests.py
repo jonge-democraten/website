@@ -53,11 +53,11 @@ class TestSidebar(TestCase):
 
     def test_edit_sidebar_admin_view(self):
         """ Tests whether the change sidebar admin view response is OK (200). """
+        response = self.login()
+        self.assertEqual(response.status_code, 200)
         sidebars = Sidebar.objects.all()
         self.assertEquals(sidebars.count(), 1)
         sidebar = sidebars[0]
-        response = self.login()
-        self.assertEqual(response.status_code, 200)
         response = self.client.get('/admin/jdpages/sidebar/' + str(sidebar.id) + '/', follow=True)
         self.assertEqual(response.status_code, 200)
 

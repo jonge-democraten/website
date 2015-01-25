@@ -10,8 +10,8 @@ from website.jdpages.models import SidebarTwitterWidget
 from website.jdpages.models import SocialMediaButton
 from website.jdpages.views import BannerSidebarItem
 from website.jdpages.views import BlogCategorySidebarItem
-from website.jdpages.views import TwitterSidebarItem
 from website.jdpages.views import SocialMediaButtonGroupItem
+from website.jdpages.views import TwitterSidebarItem
 
 
 def sidebar(request):

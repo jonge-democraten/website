@@ -42,6 +42,7 @@ class ColumnElement(SiteRelated):
 
 
 class HorizontalPosition():
+    """ Horizontal position of a user interface object. """
     LEFT = 'Left'
     RIGHT = 'Right'
     POSITION_CHOICES = (
@@ -89,6 +90,7 @@ class ColumnElementWidget(Orderable, SiteRelated):
 
 
 class Sidebar(SiteRelated):
+    """ Site sidebar that can contain sidebar widgets. """
     name = models.CharField(max_length=200)
     active = models.BooleanField(blank=False, null=False, default=True)
 
@@ -102,6 +104,8 @@ class Sidebar(SiteRelated):
 
 class SidebarBlogCategoryWidget(SiteRelated):
     """
+    Blog category widget that can be placed on a sidebar.
+    What it shows is determined by its corresponding view item.
     """
     title = models.CharField(max_length=200, blank=False, null=False, default="")
     sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
@@ -116,6 +120,9 @@ class SidebarBlogCategoryWidget(SiteRelated):
 
 class SidebarTwitterWidget(SiteRelated):
     """
+    Twitter widget that can be placed on a sidebar.
+    The actual twitter settings can be found in the site settings.
+    This is just the element that can be placed on a sidebar.
     """
     active = models.BooleanField(default=False, blank=False, null=False)
     sidebar = models.OneToOneField(Sidebar, blank=False, null=False)
@@ -125,8 +132,7 @@ class SidebarTwitterWidget(SiteRelated):
 
 
 class SidebarBannerWidget(models.Model):
-    """
-    """
+    """ Banner that can be placed on a sidebar """
     title = models.CharField(max_length=200, blank=False, null=False, default="")
     active = models.BooleanField(blank=False, null=False, default=True)
     image = FileField(max_length=200, format="Image")
@@ -142,6 +148,8 @@ class SidebarBannerWidget(models.Model):
 
 
 class SocialMediaButton(Orderable, SiteRelated):
+    """ Social media button that can be placed on a sidebar. """
+
     FACEBOOK = 'FB'
     LINKEDIN = 'LI'
     TWITTER = 'TW'
@@ -176,7 +184,10 @@ class SocialMediaButton(Orderable, SiteRelated):
 
 
 class HomePage(Page, RichText):
-    """ Page model for the site homepage. """
+    """
+    Page model for the site homepage.
+    Only works properly when url points to the homepage '/' as url.
+    """
 
     class Meta:
         verbose_name = 'Homepage'

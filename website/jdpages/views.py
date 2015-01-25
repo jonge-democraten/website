@@ -25,7 +25,6 @@ class BlogPostItem(Item):
 
 class BlogCategorySidebarItem(Item):
     def __init__(self, blogcategory):
-        logger.warning(blogcategory.title)
         self.children = self.create_children(blogcategory)
 
     @staticmethod

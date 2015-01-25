@@ -12,9 +12,10 @@ from website.jdpages.models import ColumnElement, ColumnElementWidget
 from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import HomePage
 from website.jdpages.models import HorizontalPosition
-from website.jdpages.models import Sidebar, SidebarElement, SidebarElementWidget
-from website.jdpages.models import SidebarBanner, SidebarTwitter
-from website.jdpages.models import SocialMediaButtonGroup, SocialMediaButton
+from website.jdpages.models import Sidebar
+from website.jdpages.models import SidebarTwitterWidget
+from website.jdpages.models import SocialMediaButton
+from website.jdpages.models import SidebarBlogCategoryWidget, SidebarBannerWidget
 
 
 class ColumnElementWidgetInline(TabularDynamicInlineAdmin):
@@ -40,7 +41,8 @@ class LeftColumnElementWidgetInline(ColumnElementWidgetInline):
     def get_queryset(self, request):
         return ColumnElementWidget.objects.filter(horizontal_position=self.get_default_position())
 
-    def get_default_position(self):
+    @staticmethod
+    def get_default_position():
         return HorizontalPosition.LEFT
 
 
@@ -50,8 +52,9 @@ class RightColumnElementWidgetInline(ColumnElementWidgetInline):
     
     def get_queryset(self, request):
         return ColumnElementWidget.objects.filter(horizontal_position=self.get_default_position())
-    
-    def get_default_position(self):
+
+    @staticmethod
+    def get_default_position():
         return HorizontalPosition.RIGHT
 
 
@@ -79,27 +82,41 @@ class DocumentListingAdmin(PageAdmin):
     inlines = (DocumentInline,)
 
 
-class SidebarElementWidgetInline(TabularDynamicInlineAdmin):
-    model = SidebarElementWidget
+class SidebarBlogCategoryWidgetInline(admin.TabularInline):
+    model = SidebarBlogCategoryWidget
+    extra = 2
+    max_num = 2
+    verbose_name = "Blogs"
+    verbose_name_plural = "Blogs"
 
 
-class SidebarAdmin(admin.ModelAdmin):
-    model = Sidebar
-    inlines = (SidebarElementWidgetInline,)
-    list_display = ('name', 'active', 'site')
+class SidebarTwitterWidgetInline(admin.TabularInline):
+    model = SidebarTwitterWidget
+    verbose_name = "Twitter feed"
+    verbose_name_plural = "Twitter feed"
 
 
-class SidebarElementAdmin(admin.ModelAdmin):
-    model = SidebarElement
-    list_display = ('id', 'content_object', 'content_type', 'object_id', 'site',)
-
-
-class SidebarElementWidgetAdmin(admin.ModelAdmin):
-    list_display = ('id', 'sidebar_element', 'site')
+class SidebarBannerWidgetAdmin(admin.ModelAdmin):
+    model = SidebarBannerWidget
+    list_display = ('id', 'active', 'title', 'image', 'url', 'image')
 
 
 class SocialMediaButtonInline(TabularDynamicInlineAdmin):
     model = SocialMediaButton
+    verbose_name = "Social media buttons"
+    verbose_name_plural = "Social media buttons"
+
+
+class SidebarAdmin(admin.ModelAdmin):
+    model = Sidebar
+    inlines = (SidebarBlogCategoryWidgetInline,
+               SidebarTwitterWidgetInline,
+               SocialMediaButtonInline,)
+    list_display = ('name', 'active', 'site')
+
+
+class SidebarElementWidgetAdmin(admin.ModelAdmin):
+    list_display = ('id', 'sidebar_element', 'site')
 
 
 class SocialMediaButtonGroupAdmin(admin.ModelAdmin):
@@ -108,14 +125,10 @@ class SocialMediaButtonGroupAdmin(admin.ModelAdmin):
 
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(Sidebar, SidebarAdmin)
-admin.site.register(SidebarBanner)
-admin.site.register(SidebarTwitter)
-admin.site.register(SocialMediaButtonGroup, SocialMediaButtonGroupAdmin)
+admin.site.register(SidebarBannerWidget, SidebarBannerWidgetAdmin)
 admin.site.register(DocumentListing, DocumentListingAdmin)
 
 if settings.DEBUG:
     admin.site.register(ColumnElement, ColumnElementAdmin)
     admin.site.register(ColumnElementWidget, ColumnElementWidgetAdmin)
-    admin.site.register(SidebarElement, SidebarElementAdmin)
-    admin.site.register(SidebarElementWidget, SidebarElementWidgetAdmin)
     admin.site.register(Document, DocumentAdmin)

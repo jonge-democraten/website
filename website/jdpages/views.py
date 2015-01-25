@@ -3,37 +3,7 @@ logger = logging.getLogger(__name__)
 
 from django.utils.html import strip_tags
 
-from mezzanine.blog.models import BlogCategory
-
 from website.jdpages.models import get_public_blogposts
-from website.jdpages.models import SocialMediaButtonGroup
-from website.jdpages.models import SidebarBanner, SidebarTwitter
-
-
-def create_sidebar_items(sidebar_widgets):
-    items = []
-    for widget in sidebar_widgets:
-        model_type = widget.sidebar_element.content_type.model_class()
-        if model_type == SocialMediaButtonGroup:
-            button_group = widget.sidebar_element.get_object()
-            item = SocialMediaButtonGroupItem(button_group)
-            item.title = widget.title
-            items.append(item)
-        elif model_type == BlogCategory:
-            blogcategory = widget.sidebar_element.get_object()
-            item = BlogCategorySidebarItem(blogcategory, widget.max_items)
-            item.title = widget.title
-            items.append(item)
-        elif model_type == SidebarBanner:
-            banner = widget.sidebar_element.get_object()
-            item = BannerSidebarItem(banner)
-            item.title = widget.title
-            items.append(item)
-        elif model_type == SidebarTwitter:
-            item = TwitterSidebarItem()
-            item.title = widget.title
-            items.append(item)
-    return items
 
 
 class Item(object):
@@ -54,14 +24,14 @@ class BlogPostItem(Item):
 
 
 class BlogCategorySidebarItem(Item):
-    def __init__(self, blogcategory, max_posts):
+    def __init__(self, blogcategory):
         logger.warning(blogcategory.title)
-        self.children = self.create_children(blogcategory, max_posts)
+        self.children = self.create_children(blogcategory)
 
     @staticmethod
-    def create_children(blogcategory, max_posts):
+    def create_children(blogcategory):
         children = []
-        blogposts = get_public_blogposts(blogcategory)[:max_posts]
+        blogposts = get_public_blogposts(blogcategory)[:1]
         for post in blogposts:
             children.append(BlogPostItem(post))
         return children
@@ -71,9 +41,7 @@ class BlogCategorySidebarItem(Item):
 
 
 class SocialMediaButtonGroupItem(Item):
-    def __init__(self, group):
-        from website.jdpages.models import SocialMediaButton
-        buttons = SocialMediaButton.objects.filter(social_media_group=group)
+    def __init__(self, buttons):
         self.children = []
         for button in buttons:
             self.children.append(SocialMediaButtonItem(button))
@@ -89,10 +57,10 @@ class SocialMediaButtonItem(Item):
 
 
 class BannerSidebarItem(Item):
-    def __init__(self, banner):
-        self.image_url = banner.image.url
-        self.url = banner.url
-        self.description = banner.description
+    def __init__(self, widget):
+        self.image_url = widget.image.url
+        self.url = widget.url
+        self.description = widget.description
 
     def get_template_name(self):
         return "banner_sidebar_item.html"

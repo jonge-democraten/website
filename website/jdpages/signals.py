@@ -9,14 +9,8 @@ from django.contrib.sites.models import Site
 from mezzanine.blog.models import BlogCategory
 
 from website.jdpages.models import ColumnElement
-from website.jdpages.models import SocialMediaButtonGroup
 from website.jdpages.models import Sidebar
-from website.jdpages.models import SidebarElement, SidebarBanner, SidebarTwitter
 from website.jdpages.models import create_columnelement_for_blogcategory
-from website.jdpages.models import create_sidebarelement_for_banner
-from website.jdpages.models import create_sidebarelement_for_twitter
-from website.jdpages.models import create_sidebarelement_for_socialmediagroup
-from website.jdpages.models import create_sidebarelement_for_blogcategory
 
 
 @receiver(post_save)
@@ -36,22 +30,11 @@ def post_save_callback(sender, instance, created, **kwargs):
         main_sidebar = Sidebar.objects.create(name="Main sidebar")
         main_sidebar.site_id = instance.id
         main_sidebar.save(update_site=False)
-        twitter_sidebar = SidebarTwitter.objects.create(title="Twitter")
-        twitter_sidebar.site_id = instance.id
-        twitter_sidebar.save(update_site=False)
-        create_sidebarelement_for_twitter(twitter_sidebar)
 
     if sender == BlogCategory:
         if not ColumnElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)):  # TODO BR: move this check to create_columnelement_for_blogcategory function
             create_columnelement_for_blogcategory(instance)
-        if not SidebarElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)):  # TODO BR: move this check to create_sidebarelement_for_blogcategory function
-            create_sidebarelement_for_blogcategory(instance)
-    elif sender == SocialMediaButtonGroup:
-        if not SidebarElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)):  # TODO BR: move this check to create_sidebarelement_for_socialmediagroup function
-            create_sidebarelement_for_socialmediagroup(instance)
-    elif sender == SidebarBanner:
-        if not SidebarElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)):
-            create_sidebarelement_for_banner(instance)
+
     return
 
 
@@ -67,9 +50,6 @@ def pre_delete_callback(sender, instance, **kwargs):
     related_elements = []
     if sender == BlogCategory:
         related_elements.append(ColumnElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)))
-        related_elements.append(SidebarElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)))
-    elif sender == SocialMediaButtonGroup or sender == SidebarBanner:
-        related_elements = SidebarElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender))
 
     for element in related_elements:
         element.delete()    

@@ -95,45 +95,84 @@ class Sidebar(SiteRelated):
     def __str__(self):
         return "Sidebar"
 
-
-class SidebarElement(SiteRelated):
-    """
-    A generic sidebar element with reference to any model object.
-    Designed to be created when a supported model is created, see signals.py.
-    The SidebarElementWidget contains the information on how to display the
-    model object of this element.
-    """
-    content_type = models.ForeignKey(ContentType, blank=True, null=True)
-    object_id = models.PositiveIntegerField(blank=False, null=True, verbose_name='related object id')
-    content_object = GenericForeignKey('content_type', 'object_id')
-
-    def __str__(self):
-        return str(self.content_type) + ': ' + str(self.content_object)
-
-    def get_object(self):
-        """ Returns the content object. """
-        return self.content_type.model_class().objects.get(id=self.object_id)
-
     class Meta:
-        verbose_name = 'Sidebar element'
+        verbose_name = "Sidebar"
+        verbose_name_plural = "Sidebar"
 
 
-class SidebarElementWidget(Orderable, SiteRelated):
+class SidebarBlogCategoryWidget(SiteRelated):
     """
-    User interface object that shows some data in a html sidebar.
-    Contains a reference to some generic data represented by SidebarElement.
-    Contains an item factory for supported element types.
     """
-    title = models.CharField(max_length=1000, blank=False, null=False, default="")
+    title = models.CharField(max_length=200, blank=False, null=False, default="")
     sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
-    sidebar_element = models.ForeignKey(SidebarElement, blank=False, null=True)
-    max_items = models.PositiveIntegerField(default=3, blank=False, null=False)
+    blog_category = models.ForeignKey(BlogCategory, blank=False, null=True)
 
     def __str__(self):
-        return str(self.sidebar_element) + ' widget'
+        return str(self.blog_category) + ' widget'
 
     class Meta:
-        verbose_name = 'Sidebar widget'
+        verbose_name = 'Sidebar blogcategory'
+
+
+class SidebarTwitterWidget(SiteRelated):
+    """
+    """
+    active = models.BooleanField(default=False, blank=False, null=False)
+    sidebar = models.OneToOneField(Sidebar, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Sidebar twitter widget'
+
+
+class SidebarBannerWidget(models.Model):
+    """
+    """
+    title = models.CharField(max_length=200, blank=False, null=False, default="")
+    active = models.BooleanField(blank=False, null=False, default=True)
+    image = FileField(max_length=200, format="Image")
+    url = models.URLField(max_length=200, help_text='http://www.example.com')
+    description = models.CharField(max_length=200, blank=True, null=False, default="",
+                                   help_text='This is shown as tooltip and alt text.')
+
+    def __str__(self):
+        return str(self.title) + ' widget'
+
+    class Meta:
+        verbose_name = 'Global sidebar banner'
+
+
+class SocialMediaButton(Orderable, SiteRelated):
+    FACEBOOK = 'FB'
+    LINKEDIN = 'LI'
+    TWITTER = 'TW'
+    YOUTUBE = 'YT'
+
+    SOCIAL_MEDIA_CHOICES = (
+        (FACEBOOK, 'Facebook'),
+        (LINKEDIN, 'LinkedIn'),
+        (TWITTER, 'Twitter'),
+        (YOUTUBE, 'YouTube'),
+    )
+
+    SOCIAL_MEDIA_ICONS = {
+        FACEBOOK: 'facebook.png',
+        LINKEDIN: 'linkedin.png',
+        TWITTER: 'twitter.png',
+        YOUTUBE: 'youtube.png',
+    }
+
+    type = models.CharField(max_length=2, choices=SOCIAL_MEDIA_CHOICES)
+    url = models.URLField(max_length=200)
+    sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
+
+    def get_icon_url(self):
+        return 'images/icons/' + SocialMediaButton.SOCIAL_MEDIA_ICONS[self.type]
+
+    def __str__(self):
+        return str(type)
+
+    class Meta:
+        verbose_name = 'Social media button'
 
 
 class HomePage(Page, RichText):
@@ -169,77 +208,6 @@ class Document(Orderable):
         verbose_name_plural = "Documents"
 
 
-class SocialMediaButtonGroup(SiteRelated):
-    name = models.CharField(max_length=200, blank=False, null=False, help_text='The name is only used in the admin.')
-
-    def get_social_media_buttons(self):
-        return SocialMediaButton.objects.filter(social_media_group=self)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Social Media Button Group'
-
-
-class SocialMediaButton(SiteRelated):
-    FACEBOOK = 'FB'
-    LINKEDIN = 'LI'
-    TWITTER = 'TW'
-    YOUTUBE = 'YT'
-
-    SOCIAL_MEDIA_CHOICES = (
-        (FACEBOOK, 'Facebook'),
-        (LINKEDIN, 'LinkedIn'),
-        (TWITTER, 'Twitter'),
-        (YOUTUBE, 'YouTube'),
-    )
-
-    SOCIAL_MEDIA_ICONS = {
-        FACEBOOK: 'facebook.png',
-        LINKEDIN: 'linkedin.png',
-        TWITTER: 'twitter.png',
-        YOUTUBE: 'youtube.png',
-    }
-
-    type = models.CharField(max_length=2, choices=SOCIAL_MEDIA_CHOICES)
-    url = models.URLField(max_length=1000, help_text='http://www.example.com')
-    social_media_group = models.ForeignKey(SocialMediaButtonGroup)
-
-    def get_icon_url(self):
-        return 'images/icons/' + SocialMediaButton.SOCIAL_MEDIA_ICONS[self.type]
-
-    def __str__(self):
-        return str(type)
-
-    class Meta:
-        verbose_name = 'Sidebar Media Button'
-
-
-class SidebarBanner(SiteRelated):
-    title = models.CharField(max_length=1000, blank=False, null=False, default="")
-    image = FileField(max_length=200, format="Image")
-    url = models.URLField(max_length=1000, help_text='http://www.example.com')
-    description = models.CharField(max_length=1000, blank=True, null=False, default="",
-                                   help_text='This is shown as tooltip and alt text.')
-
-    def __str__(self):
-        return self.title + ' (' + self.url + ')'
-
-    class Meta:
-        verbose_name = 'Sidebar Banner'
-
-
-class SidebarTwitter(SiteRelated):
-    title = models.CharField(max_length=1000, blank=False, null=False, default="")
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = 'Sidebar Twitter'
-
-
 def get_public_blogposts(blog_category):
     """ Returns all blogposts for a given category that are published and not expired. """
     blog_posts = BlogPost.objects.all().filter(categories=blog_category).filter(status=CONTENT_STATUS_PUBLISHED)
@@ -254,43 +222,3 @@ def create_columnelement_for_blogcategory(blog_category):
     blog_category_element.save()  # this overrides the site_id, so we set it again below
     blog_category_element.site_id = blog_category.site_id
     blog_category_element.save(update_site=False)
-
-
-def create_sidebarelement_for_socialmediagroup(social_media_group):
-    element = SidebarElement()
-    element.title = "Social media"
-    element.content_type = ContentType.objects.get_for_model(SocialMediaButtonGroup)
-    element.object_id = social_media_group.id
-    element.save()  # this overrides the site_id, so we set it again below
-    element.site_id = social_media_group.site_id
-    element.save(update_site=False)
-
-
-def create_sidebarelement_for_blogcategory(blog_category):
-    element = SidebarElement()
-    element.title = blog_category.title
-    element.content_type = ContentType.objects.get_for_model(BlogCategory)
-    element.object_id = blog_category.id
-    element.save()  # this overrides the site_id, so we set it again below
-    element.site_id = blog_category.site_id
-    element.save(update_site=False)
-
-
-def create_sidebarelement_for_banner(sidebar_banner):
-    element = SidebarElement()
-    element.title = sidebar_banner.title
-    element.content_type = ContentType.objects.get_for_model(SidebarBanner)
-    element.object_id = sidebar_banner.id
-    element.save()  # this overrides the site_id, so we set it again below
-    element.site_id = sidebar_banner.site_id
-    element.save(update_site=False)
-
-
-def create_sidebarelement_for_twitter(sidebar_twitter):
-    element = SidebarElement()
-    element.title = sidebar_twitter.title
-    element.content_type = ContentType.objects.get_for_model(SidebarTwitter)
-    element.object_id = sidebar_twitter.id
-    element.save()  # this overrides the site_id, so we set it again below
-    element.site_id = sidebar_twitter.site_id
-    element.save(update_site=False)

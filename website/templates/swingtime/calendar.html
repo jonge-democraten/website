@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags staticfiles %}
+
+{% block meta_title %}{% trans "Calendar" %}{% endblock %}
+
+{% block extra_js %}{{ block.super }}
+<script type="text/javascript" src="{% static "js/moment.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/fullcalendar.js" %}"></script>
+
+<script type="text/javascript">
+    window.__calendar_default_date = "{{ default_date }}";
+    window.__calendar_events_url = "{{ json_uri }}";
+</script>
+
+<script type="text/javascript" src="{% static "js/calendar.js" %}"></script>
+{% endblock %}
+
+{% block extra_css %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static "css/fullcalendar.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "css/fullcalendar.print.css" %}" />
+{% endblock %}
+
+{% block main %}
+
+<div id="homeDiv">
+
+    <h2>{% trans "Calendar" %}</h2>
+    <p id="calendar-error">
+        {% trans "Hmm.. something went wrong with loading the events." %}
+    </p>
+    <p id="calendar-loading">
+        <img src="{% static "mezzanine/img/loadingAnimation.gif" %}" alt="Loading..." />
+    </p>
+
+    <div id="event-calendar">
+
+    </div>
+    
+</div>
+{% endblock %}
+
+

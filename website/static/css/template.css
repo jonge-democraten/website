@@ -1978,3 +1978,14 @@ div.jevtt_text{
 	top: 0;
 	color: #fff;
 }
+
+#event-calendar {
+    max-width: 800px;
+    padding: 10px;
+
+}
+p#calendar-error {
+    display: none;
+    color: red;
+    font-weight: bold;
+}

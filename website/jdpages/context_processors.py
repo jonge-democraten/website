@@ -3,10 +3,16 @@ logger = logging.getLogger(__name__)
 
 from mezzanine.utils.sites import current_site_id
 
-from website.jdpages.models import Sidebar, SidebarBlogCategoryWidget, SidebarTwitterWidget, SidebarBannerWidget
+from website.jdpages.models import Sidebar
+from website.jdpages.models import SidebarBannerWidget
+from website.jdpages.models import SidebarBlogCategoryWidget
+from website.jdpages.models import SidebarTwitterWidget
 from website.jdpages.models import SocialMediaButton
-from website.jdpages.views import BlogCategorySidebarItem, TwitterSidebarItem, BannerSidebarItem
+from website.jdpages.views import BannerSidebarItem
+from website.jdpages.views import BlogCategorySidebarItem
+from website.jdpages.views import TwitterSidebarItem
 from website.jdpages.views import SocialMediaButtonGroupItem
+
 
 def sidebar(request):
     """

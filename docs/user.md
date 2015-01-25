@@ -8,8 +8,6 @@ Uitleg: toegang specificeren, hoe geraak je als AS op de achterkant van de site.
 Uitleg: duidelijk onderscheid tussen MijnJD en Wolk.
 
 
-
-
 ## Managing content
 
 Dashboard, hoofdpagina, overzichtelijk. 
@@ -39,8 +37,8 @@ In het tekstvak bij Content kan je de naar believen tekst invoeren. Deze tekstve
 Uitleg over de tekstverwerker (van links naar rechts)
 
 Taakbalk teksverwerker 'content':
-B: Vetgedrukt
-I: Cursief
+B: <strong>Vetgedrukt</strong>
+I: <em>Cursief</em>
 Geschakelde ketting: Hyperlink invoegen/veranderen
 Gebroken ketting: Hyperlink verwijderen
 Scherm met plusje: Afbeeldingen invoegen/veranderen
@@ -52,14 +50,14 @@ Bulletpoints invoegen
 Nummering invoegen
 Ongedaan maken (ctrl-z)
 Herstellen (ctrl-y)
-Drop-down menu: aanpassen format van de alinea's
+Drop-down menu: bewerken format van de alinea's
 Verrekijker: Zoekfunctie
-Venster: Fullscreen (handig!)
+Venster: Fullscreen
 
-Hyperlink invoegen
+<strong>Hyperlink invoegen</strong>
 Het invoegen van een hyperlink kan als volgt: selecteer de tekst waarvan je een link wilt maken, klik vervolgens op de het icoontje van de kettingschakel in de tekstverwerkersbalk. Vul de URL Link in bij 'General Properties' en  klik op Update. Wil je de link weer verwijderen kan dit door op 'Unlink' te klikken.
 
-Afbeelding
+<strong>Afbeelding</strong>
 
 Een afbeelding op nemen in de tekst kan op twee manieren: 
 
@@ -67,7 +65,7 @@ Een afbeelding op nemen in de tekst kan op twee manieren:
 
 2. Om te zorgen dat je afbeelding in de toekomst wel beschikbaar blijft kan je de afbeelding uploaden naar de Media Library (en dus onze eigen server). Wanneer dit is gedaan kan je via Insert/Edit Image (icoontje in de tekstverwerkersbalk) een plaatje uploaden vanuit de Media Library. Naast het veld van Image URL zit de 'browse' knop om naar de Media Library te gaan.
 
-Filmpje uploaden
+<strong>Video's</strong>
 
 Filmpjes uploaden via Youtube (maar ook via andere sites) is geen probleem. 
 
@@ -81,9 +79,9 @@ Filmpjes uploaden via Youtube (maar ook via andere sites) is geen probleem.
 Wanneer je dit hebt gedaan zul je de video niet in het tekstvak zien, schrik hier niet van, dit hoort zo. Wil je toch zien waar de video staat in tekstvak kan je de gehele tekst selecteren (ctrl-a).
 De video kan je na het invoegen nog verslepen in het tekstvak, dit doe je door op het de video te klikken en met de cursor te verslepen naar de gewenste plek. Wil je de video weer verwijderen uit het tekstvak dan kan je dat met delete of backspace doen. 
 
-Als je klaar bent met het aanpassen van de pagina, klik je op save. De veranderingen zullen dan zichtbaar zijn op de site. Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
+Als je klaar bent met het bewerken van de pagina, klik je op save. De veranderingen zullen dan zichtbaar zijn op de site. Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 
-Formulier
+##### Formulier opstellen
 
 Wil je een formulier opstellen, zodat leden zich voor een activiteit kunnen aanmelden, dan kan dat. Overigens kan je met dit formulier geen betalingen invoeren of verwerken.
 Ga naar: Content > Pages > Add Form > Change Form
@@ -99,7 +97,7 @@ Vervolgens kan je gebruiker een bevestigingsmail toesturen (optioneel), vul hier
 Uiteindelijk kan je onderaan het formulier indelen via 'fields', dit kun je naar eigen inzicht doen. 
 
 
-Add Link
+##### Add Link
 
 Via deze optie is het mogelijk om van een menu een link te maken naar een andere URL. 
 Content > Pages > Add Link
@@ -108,23 +106,24 @@ Content > Pages > Add Link
 
 Als AS heb je de mogelijkheid om blogs aan te maken, aan te passen en te verwijderen. 
 
-Blog aanmaken
+<strong>Blog aanmaken</strong>
 
-- Een blog kan je aan maken door bij de admin-pagina bij Content > Blog posts te klikken.
-- Klik rechtsboven op 'Add blog posts' 
+Een blog kan je aan maken door bij de admin-pagina naar Content > Blog posts te gaan.
+Klik rechtsboven op 'Add blog posts' 
 Vul vervolgens in:
 Title: Naam van het submenu
 Categories: Vink hier de categorie aan waar je Blog bij hoort>>
 Status: 'Published' is automatisch aangevinkt
 Indien je dit wilt kun je bij 'Published from/Expires on' de data aangeven wanneer de blog zichtbaar moet zijn op de site. Laat je 'Expires on' leeg, zal de blog niet verdwijnen van de hoofdsite. Besluit je 'Expires on' wel in te stellen, dan zal de blog na deze datum van de site verdwijnen. Als admin van de site kan je wel nog steeds de blog zien, deze zal niet aan de achterkant verdwijnen.
 Content: Plaats hier de tekst van de pagina. 
-- Onder de tab 'Other posts' is het mogelijk om links van gerelateerde berichten te plaatsen onder de blog. Dit is optioneel. 
-- Onder de tab 'Meta data' is het mogelijk om nog tags toe te voegen onder de blog. Tevens is het hier mogelijk om de URL en  beschrijving aan te passen.
+Onder de tab 'Other posts' is het mogelijk om links van gerelateerde berichten te plaatsen onder de blog. Dit is optioneel. 
+Onder de tab 'Meta data' is het mogelijk om nog tags toe te voegen onder de blog. Tevens is het hier mogelijk om de URL en  beschrijving aan te passen.
 
-- 'allow comments' is automatisch aangevinkt. Echter laat de JD-site het niet toe om comments onder een blog te plaatsen. Je kan er dus voor kiezen om 'allow comments' niet aan te vinken, dit kan je naar eigen inzicht bepalen. Als je besluit dit te doen zal in het overzicht van de blogs op de site de dode link naar '0 comments' verdwijnen. (deze functie zal verdwijnen) 
-- Tot slot, klik op 'Save'
+'allow comments' is automatisch aangevinkt. Echter laat de JD-site het niet toe om comments onder een blog te plaatsen. Je kan er dus voor kiezen om 'allow comments' niet aan te vinken, dit kan je naar eigen inzicht bepalen. Als je besluit dit te doen zal in het overzicht van de blogs op de site de dode link naar '0 comments' verdwijnen. (deze functie zal verdwijnen) 
+Tot slot, klik op 'Save'
 
-Nadat een blog is ingevoerd kan je het als AS nog aanpassen. Dit doe je door onder Content > Blog posts in het overzicht op de desbetreffende blog te klikken. Je komt nu weer in het specificatie venster wat je ook zag toen je de blog aanmaakte. Je kan hier veranderingen doorvoeren. Klik vervolgens wel op 'Save'. 
+<strong>Blog bewerken/verwijderen</strong>
+Nadat een blog is ingevoerd kan je het als AS nog bewerken. Dit doe je door onder Content > Blog posts in het overzicht op de desbetreffende blog te klikken. Je komt nu weer in het specificatie venster wat je ook zag toen je de blog aanmaakte. Je kan hier veranderingen doorvoeren. Klik vervolgens wel op 'Save'. 
 
 Een blog kan je verwijderen uit het overzicht door er een vinkje voor te zetten en in het drop-down-menu erboven (waar nu nog ------ staat) op 'delete selected Blog posts' te klikken. 
 
@@ -138,7 +137,7 @@ Coming soon
 
 ### Images and Documents
 
-Media Library	
+<strong>Media Library</strong>
 
 Je kan verschillende bestanden (zoals documenten en afbeeldingen) opslaan bij de Media Library. Deze bestanden kan je uploaden onder Content > Media Library. Klik rechtsboven op de knop 'Upload', klik vervolgens op de knop 'Select'. Je kan meerdere bestanden in één keer selecteren en uploaden. 
 
@@ -149,7 +148,7 @@ Om een ellenlange lijst met bestanden te voorkomen kun je de Media Library naar 
 Gebruik de Media Library om documenten op te slaan die je op de site wilt plaatsen. Documenten die je voor intern gebruik nodig hebt kun je opslaan op de Wolk. 
 
 
-##### Documenten toevoegen
+<strong>Documenten toevoegen</strong>
 
 Het is mogelijk om documenten (bv. HR, Statuten) zelf te plaatsen op de website.
 Ga naar Content > Pages > Add Document Listing

@@ -12,10 +12,10 @@ from website.jdpages.models import ColumnElement, ColumnElementWidget
 from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import HomePage
 from website.jdpages.models import HorizontalPosition
-from website.jdpages.models import Sidebar
-from website.jdpages.models import SidebarTwitterWidget
 from website.jdpages.models import SocialMediaButton
+from website.jdpages.models import Sidebar
 from website.jdpages.models import SidebarBlogCategoryWidget, SidebarBannerWidget
+from website.jdpages.models import SidebarTwitterWidget
 
 
 class ColumnElementWidgetInline(TabularDynamicInlineAdmin):

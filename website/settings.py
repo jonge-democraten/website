@@ -512,6 +512,18 @@ RICHTEXT_SCRIPT_TAG_WHITELIST = (
     '<script type="text/javascript" src="/static/js/render.js"></script>',
 )
 
+
+##########################
+# PDF EMBEDDING SETTINGS #
+##########################
+
+# We allow the object tag in rich text fields.
+RICHTEXT_ALLOWED_TAGS += ("object",)
+
+# However, we do apply a filter to check them. Only embedding of locally 
+# hosted PDFs is allowed.
+RICHTEXT_FILTERS += ("website.utils.filters.strip_illegal_objects",)
+
 ##########################
 # MEDIA LIBRARY SETTINGS #
 ##########################

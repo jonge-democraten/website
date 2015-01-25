@@ -230,6 +230,84 @@ class TestScriptTagWhitelisting(TestCase):
             str(bs(self.boring_html, 'html.parser')))
 
 
+class TestObjectFiltering(TestCase):
+    """
+    Unit tests for PDF embedding functionality. Tests the accuracy of
+    website.utils.filters.strip_illegal_objects.
+    """
+    from mezzanine.conf import settings
+
+    evil_html1 = """
+    This is inconspicuous text that contains an evil PDF from an external website.<object data="http://ev.il/my.pdf" type="application/pdf" width="300" height="200">
+    Alt text
+    </object>"""
+
+    evil_html2 = """
+    This is inconspicuous text that contains an evil PDF from an external website.<object data="{0}my.pdf" type="application/doc" width="300" height="200">
+    Alt text
+    </object>""".format(settings.MEDIA_URL)
+
+    evil_html3 = """
+    This is inconspicuous text that contains an evil PDF from an external website.<object data="{0}my.pdf" type="application/pdf" illegal="true" width="300" height="200">
+    Alt text
+    </object>""".format(settings.MEDIA_URL)
+
+    evil_html_stripped = """
+    This is inconspicuous text that contains an evil PDF from an external website."""
+
+    good_html = """
+    This is nice text that contains an embedded local PDF.
+    <object data="{0}uploads/site-1/documents/doc.pdf" type="application/pdf" width="300" height="200">
+    alt text
+    </object>
+    """.format(settings.MEDIA_URL)
+
+    boring_html = """
+    This is nice but boring text. It contains another tag, but no objects.
+    <p>This is a separate paragraph.</p>
+    """
+
+    def test_evil_domain_is_stripped(self):
+        """ Test if an object tag to an external domain is indeed stripped. """
+        from website.utils.filters import strip_illegal_objects
+        from bs4 import BeautifulSoup as bs
+
+        self.assertEqual(strip_illegal_objects(self.evil_html1),
+            str(bs(self.evil_html_stripped, 'html.parser')))
+
+    def test_evil_filetype_is_stripped(self):
+        """ Test if an object tag with an illegal filetype is indeed stripped. """
+        from website.utils.filters import strip_illegal_objects
+        from bs4 import BeautifulSoup as bs
+
+        self.assertEqual(strip_illegal_objects(self.evil_html2),
+            str(bs(self.evil_html_stripped, 'html.parser')))
+
+    def test_evil_attribute_is_stripped(self):
+        """ Test if an object tag with an illegal attribute is indeed stripped. """
+        from website.utils.filters import strip_illegal_objects
+        from bs4 import BeautifulSoup as bs
+
+        self.assertEqual(strip_illegal_objects(self.evil_html3),
+            str(bs(self.evil_html_stripped, 'html.parser')))
+
+    def test_good_is_not_stripped(self):
+        """ Test if a legal object tag indeed passes unstripped. """
+        from website.utils.filters import strip_illegal_objects
+        from bs4 import BeautifulSoup as bs
+
+        self.assertEqual(strip_illegal_objects(self.good_html),
+            str(bs(self.good_html, 'html.parser')))
+
+    def test_boring_is_unchanged(self):
+        """ Test if an irrelevant HTML tag passes unstripped. """
+        from website.utils.filters import strip_illegal_objects
+        from bs4 import BeautifulSoup as bs
+ 
+        self.assertEqual(strip_illegal_objects(self.boring_html),
+            str(bs(self.boring_html, 'html.parser')))
+
+
 class TestJaneus(TestCase):
     """ Test Janeus integration """
 

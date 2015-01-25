@@ -14,10 +14,12 @@ from __future__ import absolute_import, unicode_literals
 # Controls the ordering and grouping of the admin menu.
 #
 ADMIN_MENU_ORDER = (
-    ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
-    ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting")),
+    ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment", ("Media Library", "fb_browse"), "jdpages.Sidebar",)),
+    ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting", "jdpages.SidebarBannerWidget",)),
     ("Users", ("auth.User", "auth.Group",)),
-    ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget", 'jdpages.Document', 'jdpages.DocumentListing',)),
+    ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget", 
+                      "jdpages.SidebarElement", "jdpages.SidebarElementWidget",
+                      "jdpages.Document", "jdpages.SidebarTwitter",)),
 )
 
 # A three item sequence, each containing a sequence of template tags
@@ -80,8 +82,6 @@ ADMIN_MENU_ORDER = (
 ####################
 
 SITE_TITLE = "Jonge Democraten"
-
-SIDEBAR_BLOG = "JD Blog"
 
 ########################
 # MAIN DJANGO SETTINGS #
@@ -282,7 +282,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "mezzanine.conf.context_processors.settings",
     "mezzanine.pages.context_processors.page",
-    "website.core.context_processors.sidebar",
+    "website.jdpages.context_processors.sidebar",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,

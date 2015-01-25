@@ -1918,6 +1918,107 @@
   "pk": 2
 },
 {
+  "fields": {
+    "site": 1,
+    "active": true,
+    "name": "Main sidebar"
+  },
+  "model": "jdpages.sidebar",
+  "pk": 1
+},
+{
+  "fields": {
+    "site": 2,
+    "active": true,
+    "name": "Main sidebar"
+  },
+  "model": "jdpages.sidebar",
+  "pk": 2
+},
+{
+  "fields": {
+    "site": 3,
+    "active": true,
+    "name": "Main sidebar"
+  },
+  "model": "jdpages.sidebar",
+  "pk": 3
+},
+{
+  "fields": {
+    "title": "JD Blog",
+    "sidebar": 1,
+    "site": 1,
+    "blog_category": 1
+  },
+  "model": "jdpages.sidebarblogcategorywidget",
+  "pk": 1
+},
+{
+  "fields": {
+    "sidebar": 1,
+    "site": 1,
+    "active": true
+  },
+  "model": "jdpages.sidebartwitterwidget",
+  "pk": 1
+},
+{
+  "fields": {
+    "title": "Word lid banner",
+    "image": "uploads/site-1/wordlid.jpg",
+    "description": "Word lid!",
+    "active": true,
+    "url": "http://www.example.com/"
+  },
+  "model": "jdpages.sidebarbannerwidget",
+  "pk": 1
+},
+{
+  "fields": {
+    "type": "FB",
+    "sidebar": 1,
+    "site": 1,
+    "url": "http://www.facebook.com/",
+    "_order": 0
+  },
+  "model": "jdpages.socialmediabutton",
+  "pk": 1
+},
+{
+  "fields": {
+    "type": "LI",
+    "sidebar": 1,
+    "site": 1,
+    "url": "http://www.linkedin.com/",
+    "_order": 1
+  },
+  "model": "jdpages.socialmediabutton",
+  "pk": 2
+},
+{
+  "fields": {
+    "type": "TW",
+    "sidebar": 1,
+    "site": 1,
+    "url": "http://www.twitter.com/",
+    "_order": 2
+  },
+  "model": "jdpages.socialmediabutton",
+  "pk": 3
+},
+{
+  "fields": {
+    "type": "YT",
+    "sidebar": 1,
+    "site": 1,
+    "url": "http://www.youtube.com/",
+    "_order": 3
+  },
+  "model": "jdpages.socialmediabutton",
+  "pk": 4
+},
+{
   "model": "conf.setting",
   "fields": {
     "site": 1,

@@ -2,9 +2,9 @@
 Models that extend mezzanine Pages and add JD specific data.
 """
 
+from datetime import datetime
 import logging
 logger = logging.getLogger(__name__)
-from datetime import datetime
 
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
@@ -22,8 +22,7 @@ from mezzanine.pages.models import Page
 class ColumnElement(SiteRelated):
     """
     A generic column element with reference to any model object.
-    Designed to be created on creation of supported objects, see signals.py.
-    Used by ColumnElementWidget to represent generic data in a html column.
+    Designed to be created when a supported model is created, see signals.py.
     The ColumnElementWidget contains the information on how to display the
     model object of this element.
     """
@@ -43,6 +42,7 @@ class ColumnElement(SiteRelated):
 
 
 class HorizontalPosition():
+    """ Horizontal position of a user interface object. """
     LEFT = 'Left'
     RIGHT = 'Right'
     POSITION_CHOICES = (
@@ -52,11 +52,11 @@ class HorizontalPosition():
 
 
 class ColumnElementWidget(Orderable, SiteRelated):
-    """ 
+    """
     User interface object that shows some data in a html column on a page.
     Contains a reference to some generic data represented by ColumnElement.
     Contains a html item factory that generates the html for the supported
-    element types. Each element contains of one or more items. 
+    element types. Each element contains of one or more items.
     """
     title = models.CharField(max_length=1000, blank=True, null=False, default="")
     column_element = models.ForeignKey(ColumnElement, blank=False, null=True)
@@ -70,11 +70,115 @@ class ColumnElementWidget(Orderable, SiteRelated):
         return str(self.column_element) + ' widget'
 
     class Meta:
-        verbose_name = 'Column element widget'
+        verbose_name = 'Column widget'
+
+
+class Sidebar(SiteRelated):
+    """ Site sidebar that can contain sidebar widgets. """
+    name = models.CharField(max_length=200)
+    active = models.BooleanField(blank=False, null=False, default=True)
+
+    def __str__(self):
+        return "Sidebar"
+
+    class Meta:
+        verbose_name = "Sidebar"
+        verbose_name_plural = "Sidebar"
+
+
+class SidebarBlogCategoryWidget(SiteRelated):
+    """
+    Blog category widget that can be placed on a sidebar.
+    What it shows is determined by its corresponding view item.
+    """
+    title = models.CharField(max_length=200, blank=False, null=False, default="")
+    sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
+    blog_category = models.ForeignKey(BlogCategory, blank=False, null=True)
+
+    def __str__(self):
+        return str(self.blog_category) + ' widget'
+
+    class Meta:
+        verbose_name = 'Sidebar blogcategory'
+
+
+class SidebarTwitterWidget(SiteRelated):
+    """
+    Twitter widget that can be placed on a sidebar.
+    The actual twitter settings can be found in the site settings.
+    This is just the element that can be placed on a sidebar.
+    """
+    active = models.BooleanField(default=False, blank=False, null=False)
+    sidebar = models.OneToOneField(Sidebar, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Sidebar twitter widget'
+
+
+class SidebarBannerWidget(models.Model):
+    """ Banner that can be placed on a sidebar """
+    title = models.CharField(max_length=200, blank=False, null=False, default="")
+    active = models.BooleanField(blank=False, null=False, default=True)
+    image = FileField(max_length=200, format="Image")
+    url = models.URLField(max_length=200, help_text='http://www.example.com')
+    description = models.CharField(max_length=200, blank=True, null=False, default="",
+                                   help_text='This is shown as tooltip and alt text.')
+
+    def __str__(self):
+        return str(self.title) + ' widget'
+
+    class Meta:
+        verbose_name = 'Global sidebar banner'
+
+
+class SocialMediaButton(Orderable, SiteRelated):
+    """ Social media button that can be placed on a sidebar. """
+
+    FACEBOOK = 'FB'
+    LINKEDIN = 'LI'
+    TWITTER = 'TW'
+    YOUTUBE = 'YT'
+
+    SOCIAL_MEDIA_CHOICES = (
+        (FACEBOOK, 'Facebook'),
+        (LINKEDIN, 'LinkedIn'),
+        (TWITTER, 'Twitter'),
+        (YOUTUBE, 'YouTube'),
+    )
+
+    SOCIAL_MEDIA_ICONS = {
+        FACEBOOK: 'facebook.png',
+        LINKEDIN: 'linkedin.png',
+        TWITTER: 'twitter.png',
+        YOUTUBE: 'youtube.png',
+    }
+
+    type = models.CharField(max_length=2, choices=SOCIAL_MEDIA_CHOICES)
+    url = models.URLField(max_length=200)
+    sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
+
+    def get_icon_url(self):
+        return 'images/icons/' + SocialMediaButton.SOCIAL_MEDIA_ICONS[self.type]
+
+    def get_type_name(self):
+        for choice in SocialMediaButton.SOCIAL_MEDIA_CHOICES:
+            if choice[0] == self.type:
+                return choice[1]
+        assert(False)  # should never come here
+        return 'undefined type'
+
+    def __str__(self):
+        return str(type)
+
+    class Meta:
+        verbose_name = 'Social media button'
 
 
 class HomePage(Page, RichText):
-    """ Page model for the site homepage. """
+    """
+    Page model for the site homepage.
+    Only works properly when url points to the homepage '/' as url.
+    """
 
     class Meta:
         verbose_name = 'Homepage'
@@ -117,6 +221,6 @@ def create_columnelement_for_blogcategory(blog_category):
     blog_category_element.title = blog_category.title
     blog_category_element.content_type = ContentType.objects.get_for_model(BlogCategory)
     blog_category_element.object_id = blog_category.id
-    blog_category_element.save() # this overrides any set site_id, so we set it again below
+    blog_category_element.save()  # this overrides the site_id, so we set it again below
     blog_category_element.site_id = blog_category.site_id
     blog_category_element.save(update_site=False)

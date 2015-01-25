@@ -52,11 +52,11 @@ Het invoegen van een hyperlink kan als volgt: selecteer de tekst waarvan je een 
 
 
 
-Afbeeling
+Afbeelding
 
 Een afbeelding op nemen in de tekst kan op twee manieren: 
 
-1. Een afbeelding kopieren/plakken (vanaf een andere site) in het tekstvak. Deze methode is makkelijk en snel, wanneer echter de locatie van de afbeelding op de originele site verandert, is de afbeelding niet meer beschikbaar. 
+1. Een afbeelding kopiëren/plakken (vanaf een andere site) in het tekstvak. Deze methode is makkelijk en snel, wanneer echter de locatie van de afbeelding op de originele site verandert, is de afbeelding niet meer beschikbaar. 
 
 2. Om te zorgen dat je afbeelding in de toekomst wel beschikbaar blijft kan je de afbeelding uploaden naar de Media Library (en dus onze eigen server). Wanneer dit is gedaan kan je via Insert/Edit Image (icoontje in de tekstverwerkersbalk) een plaatje uploaden vanuit de Media Library. Naast het veld van Image URL zit de 'browse' knop om naar de Media Library te gaan.
 
@@ -76,6 +76,27 @@ De video kan je na het invoegen nog verslepen in het tekstvak, dit doe je door o
 
 Als je klaar bent met het aanpassen van de pagina, klik je op save. De veranderingen zullen dan zichtbaar zijn op de site. Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 
+Formulier 
+
+Wil je een formulier opstellen, zodat leden zich voor een activiteit kunnen aanmelden, dan kan dat. Overigens kan je met dit formulier geen betalingen invoeren of verwerken.
+Content > Pages > Add Form > Change Form
+Title: Naam van het submenu
+Status: 'Published' is automatisch aangevinkt
+Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. 
+Content: Inleidende tekst
+Button text: staat standaard op 'Submit', dit is de text van de button waarmee je het formulier verstuurd. 
+Response: Nadat het formulier is verstuurd, zullen gebruikers de content zien die je hier plaatst. 
+
+Vervolgens kan je gebruiker een bevestigingsmail toesturen (optioneel), vul hiervoor de  benodigde velden in. 
+
+Uiteindelijk kan je onderaan het formulier indelen via 'fields', dit kun je naar eigen inzicht doen. 
+
+
+
+# Add Link
+Via deze optie is het mogelijk om van een menu een link te maken naar een andere URL. 
+Content > Pages > Add Link
+
 ### Blogposts
 
 ### Events
@@ -84,15 +105,28 @@ Als je klaar bent met het aanpassen van de pagina, klik je op save. De veranderi
 
 ### Images and Documents
 
-Documenten toevoegen
+# Media Library	
+
+Je kan verschillende bestanden (zoals documenten en afbeeldingen) opslaan bij de Media Library. Deze bestanden kan je uploaden onder Content > Media Library. Klik rechtsboven op de knop 'Upload', klik vervolgens op de knop 'Select'. Je kan meerdere bestanden in één keer selecteren en uploaden. 
+
+Onder de tab help staat welke verschillende bestandsformaten je kan uploaden. Een bestand groter dan 10mb kan niet worden geupload. Wel kan je meerdere bestanden die samen groter zijn dan 10mb uploaden.
+
+Om een ellenlange lijst met bestanden te voorkomen kun je de Media Library naar eigen inzicht onderverdelen in mappen. Daarnaast kan je bestanden sorteren op alfabetische volgorde, grootte en datum. Tevens kan je bestanden filteren op datum en type. Met de zoekfunctie kan je door je de Media Library doorzoeken.
+
+Let wel, gebruik de Media Library niet als opslag, daar hebben we de Wolk voor.
+
+
+# Documenten toevoegen
 
 Het is mogelijk om documenten (bv. HR, Statuten) zelf te plaatsen op de website.
-Content > Pages > Add Document Listing
+Ga naar Content > Pages > Add Document Listing
+Vul vervolgens in:
 Title: Naam van het submenu
 Status: 'Published' is automatisch aangevinkt
 Content: Plaats hier de inhoud van de pagina
 Meta Data: Blijf hiervan af. 
-Onderaan bij 'Documents' kun je documenten uploaden. Klik hiervoor op het icoontje onder 'Document'. Bestanden die nog niet in de Media Library staan kan je alsnog direct uploaden via de knop rechtsboven. Tekstbestanden die al in de Media Library staan kan je hier selecteren via 'Select' (het blauwe icoontje met pijltje, linksvooraan). Op dit moment zie je nog geen verandering; het bestand is echter wél geupload. Enkele vereiste is nog dat je een beschrijving van het bestand invult bij 'Description'. Deze beschrijving is uiteindelijk ook te zien op de site.
+
+Onderaan bij 'Documents' kun je documenten uploaden. Klik hiervoor op het icoontje onder 'Document'. Bestanden die nog niet in de Media Library staan kan je alsnog direct uploaden via de knop rechtsboven. Tekstbestanden die al in de Media Library staan kan je hier selecteren via 'Select' (het blauwe icoontje met pijltje, links vooraan). Op dit moment zie je nog geen verandering; het bestand is echter wél geupload. Enkele vereiste is nog dat je een beschrijving van het bestand invult bij 'Description'. Deze beschrijving is uiteindelijk ook te zien op de site.
 
 Wanneer je andere bestanden wilt uploaden, klik dan op 'Add another' wat helemaal onderaan staat.
 

@@ -2,9 +2,19 @@
 
 ## Introduction
 
+Welkom
+
+Uitleg: toegang specificeren, hoe geraak je als AS op de achterkant van de site. 
+
 ## Managing content
 
+Dashboard, hoofdpagina, overzichtelijk. 
+Uitleg: duidelijk onderscheid tussen MijnJD en Wolk. 
 
+- Voornamelijk via the backend editing, kan via in-line editing
+- Uitleg In-Line Editing (superhandig via de frontend) (wordt wellicht ook mogelijk voor Events)
+	Dus vanuit admin --> view site (Rechtsboven) --> redirect naar de site --> Rechtsboven klikken 'Edit' --> voila
+http://mezzanine.jupo.org/docs/inline-editing.html
 
 ### Pages
 
@@ -18,17 +28,19 @@ Als AS heb je de keuze tussen vier categorieën die de uiteindelijke kopjes op d
 - Nieuws
 - Politiek
 
-Deze categorieën staan vast en zijn niet aan verandering onderhevig. Onder 'horizontal position' kan je bepalen of je de Kopjes, links of rechts op de site wilt zien.
+Deze categorieën staan vast en zijn niet aan verandering onderhevig. Onder 'horizontal position' kan je bepalen of je de Kopjes links of rechts op de site wilt zien.
 
 Wanneer je een nieuw menu aanmaakt zorg dan dat bij 'Status' 'published' is aangevinkt. Veranderingen aan de site zullen dan na opslaan meteen zichtbaar zijn op de site. Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 
 Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'.
 
+Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. 
+
 In het tekstvak bij Content kan je de naar believen tekst invoeren. Deze tekstverwerker heeft verschillende opties. 
 
 Uitleg over de tekstverwerker (van links naar rechts)
 
-Taakbalk teksverwerker 'content', vergelijkbaar met MS Office Word:
+Taakbalk teksverwerker 'content':
 B: Vetgedrukt
 I: Cursief
 Geschakelde ketting: Hyperlink invoegen/veranderen
@@ -46,7 +58,6 @@ Drop-down menu: aanpassen format van de alinea's
 Verrekijker: Zoekfunctie
 Venster: Fullscreen (handig!)
 
- 
 Hyperlink invoegen
 Het invoegen van een hyperlink kan als volgt: selecteer de tekst waarvan je een link wilt maken, klik vervolgens op de het icoontje van de kettingschakel in de tekstverwerkersbalk. Vul de URL Link in bij 'General Properties' en  klik op Update. Wil je de link weer verwijderen kan dit door op 'Unlink' te klikken.
 
@@ -66,7 +77,7 @@ Filmpjes uploaden via Youtube (maar ook via andere sites) is geen probleem.
 
 - Ga naar Youtube en zoek de betreffende video. 
 - Klik onder de video op 'Delen/Share', daarna op 'Insluiten/Embed'.
-- Kopieer de code (deze HTML code lijkt hierop: <iframe width="560" height="315" src="//www.youtube.com/embed/BcsfftwLUf0" frameborder="0" allowfullscreen></iframe>)
+- Kopieer de code (deze HTML code lijkt hierop: ```<iframe width="560" height="315" src="//www.youtube.com/embed/BcsfftwLUf0" frameborder="0" allowfullscreen></iframe>``` 
 - Plaats in het tekstvak de cursor op de plek waar je de video wilt plaatsen en klik op het film-icoontje in de tekstverwerkersbalk. 
 - Open in het nieuwe venster de 'Source' tab en kopieer de link in het zwarte veld. 
 - Klik op 'Insert'
@@ -79,7 +90,7 @@ Als je klaar bent met het aanpassen van de pagina, klik je op save. De veranderi
 Formulier
 
 Wil je een formulier opstellen, zodat leden zich voor een activiteit kunnen aanmelden, dan kan dat. Overigens kan je met dit formulier geen betalingen invoeren of verwerken.
-Content > Pages > Add Form > Change Form
+Ga naar: Content > Pages > Add Form > Change Form
 Title: Naam van het submenu
 Status: 'Published' is automatisch aangevinkt
 Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. 
@@ -107,18 +118,13 @@ Blog aanmaken
 - Klik rechtsboven op 'Add blog posts' 
 - Vul de Titel, Datum en Categorie in. 
 - Indien je dit wilt kun je bij 'Published from/Expires on' de data aangeven wanneer de blog zichtbaar moet zijn op de site. Laat je 'Expires on' leeg, zal de blog niet verdwijnen van de hoofdsite. Besluit je 'Expires on' wel in te stellen, dan zal de blog na deze datum van de site verdwijnen. Als admin van de site kan je wel nog steeds de blog zien, deze zal niet aan de achterkant verdwijnen. 
-
-- bij Meta data > URL kun je bepalen welke URL de blogposts krijgt. Gebruik hierbij geen spaties maar streepjes (-).
-{?} (noodzakelijk voor een AS?)
-
 - Onder de tab 'Other posts' is het mogelijk om links van gerelateerde berichten te plaatsen onder de blog. Dit is optioneel. 
-- Onder de tab 'Meta data' is het mogelijk om nog tags toe te voegen onder de blog. Tevens is het mogelijk om de HTML-Title-tag, de URL, de beschrijving aan te passen. Deze laatste aanpassingen zijn vaak niet nodig. [?]
-- 'allow comments' is automatisch aangevinkt. Echter laat de JD-site het niet toe om comments onder een Blog te plaatsen. Je kan er dus voor kiezen om 'allow comments' niet aan te vinken, dit kan je naar eigen inzicht bepalen. Als je besluit dit te doen zal in het overzicht van de blogs op de site de dode link naar '0 comments' verdwijnen. 
-{?} (mogelijk om juist niet automatisch aan te vinken)]
+- Onder de tab 'Meta data' is het mogelijk om nog tags toe te voegen onder de blog. Tevens is het hier mogelijk om de URL en  beschrijving aan te passen.
+
+- 'allow comments' is automatisch aangevinkt. Echter laat de JD-site het niet toe om comments onder een blog te plaatsen. Je kan er dus voor kiezen om 'allow comments' niet aan te vinken, dit kan je naar eigen inzicht bepalen. Als je besluit dit te doen zal in het overzicht van de blogs op de site de dode link naar '0 comments' verdwijnen. 
+{?} (mogelijk om juist niet automatisch aan te vinken)
+
 - Tot slot, klik op 'Save'
-
-
-
 
 Nadat een blog is ingevoerd kan je het als AS nog aanpassen. Dit doe je door onder Content > Blog posts in het overzicht op de desbetreffende blog te klikken. Je komt nu weer in het specificatie venster wat je ook zag toen je de blog aanmaakte. Je kan hier veranderingen doorvoeren. Klik vervolgens wel op 'Save'. 
 
@@ -138,10 +144,10 @@ Onder de tab help staat welke verschillende bestandsformaten je kan uploaden. Ee
 
 Om een ellenlange lijst met bestanden te voorkomen kun je de Media Library naar eigen inzicht onderverdelen in mappen. Daarnaast kan je bestanden sorteren op alfabetische volgorde, grootte en datum. Tevens kan je bestanden filteren op datum en type. Met de zoekfunctie kan je door je de Media Library doorzoeken.
 
-Let wel, gebruik de Media Library niet als opslag, daar hebben we de Wolk voor.
+Gebruik de Media Library om documenten op te slaan die je op de site wilt plaatsen. Documenten die je voor intern gebruik nodig hebt kun je opslaan op de Wolk. 
 
 
-# Documenten toevoegen
+#### Documenten toevoegen
 
 Het is mogelijk om documenten (bv. HR, Statuten) zelf te plaatsen op de website.
 Ga naar Content > Pages > Add Document Listing

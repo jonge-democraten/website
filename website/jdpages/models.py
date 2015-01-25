@@ -176,6 +176,13 @@ class SocialMediaButton(Orderable, SiteRelated):
     def get_icon_url(self):
         return 'images/icons/' + SocialMediaButton.SOCIAL_MEDIA_ICONS[self.type]
 
+    def get_type_name(self):
+        for choice in SocialMediaButton.SOCIAL_MEDIA_CHOICES:
+            if choice[0] == self.type:
+                return choice[1]
+        assert(False)  # should never come here
+        return 'undefined type'
+
     def __str__(self):
         return str(type)
 

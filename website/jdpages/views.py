@@ -53,6 +53,7 @@ class SocialMediaButtonItem(Item):
     def __init__(self, button):
         self.url = button.url
         self.icon_url = button.get_icon_url()
+        self.media_type = button.get_type_name()
 
 
 class BannerSidebarItem(Item):

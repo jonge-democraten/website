@@ -24,7 +24,7 @@ def sidebar(request):
         return {}
 
     if current_sidebars.count() > 1:
-        logger.info('More than one sidebar active.')
+        assert False  # there should never be more than one sidebar per site
 
     sidebar_items = []
     blogcategory_widgets = SidebarBlogCategoryWidget.objects.filter(sidebar=current_sidebars)

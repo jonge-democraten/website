@@ -162,7 +162,7 @@ class SocialMediaButton(Orderable, SiteRelated):
         for choice in SocialMediaButton.SOCIAL_MEDIA_CHOICES:
             if choice[0] == self.type:
                 return choice[1]
-        assert(False)  # should never come here
+        assert False  # there should always be a name
         return 'undefined type'
 
     def __str__(self):

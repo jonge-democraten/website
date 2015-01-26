@@ -6,12 +6,15 @@ install:
   - "pip install -r requirements.txt"
   - "python create_local_settings.py"
   - "pip install flake8"
+  - "pip install coveralls"
 # command to run tests
 script:
   - "python -W ignore::DeprecationWarning website/manage.py createdb --nodata --noinput"
   - "python -W ignore::DeprecationWarning website/manage.py loaddata demo_data"
-  - "python -W ignore::DeprecationWarning website/manage.py test jdcore"
-  - "python -W ignore::DeprecationWarning website/manage.py test jdpages"
+  - "coverage run --source=website website/manage.py test jdcore"
+  - "coverage run --source=website website/manage.py test jdpages"
   - "flake8 website --statistics --exit-zero"
 notifications:
   email: false
+after_success:
+  coveralls

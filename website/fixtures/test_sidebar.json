@@ -108,8 +108,6 @@
 {
   "pk": 1,
   "fields": {
-    "active": true,
-    "name": "Main sidebar",
     "site": 1
   },
   "model": "jdpages.sidebar"

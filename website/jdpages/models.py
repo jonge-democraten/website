@@ -75,8 +75,6 @@ class ColumnElementWidget(Orderable, SiteRelated):
 
 class Sidebar(SiteRelated):
     """ Site sidebar that can contain sidebar widgets. """
-    name = models.CharField(max_length=200)
-    active = models.BooleanField(blank=False, null=False, default=True)
 
     def __str__(self):
         return "Sidebar"

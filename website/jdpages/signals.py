@@ -27,7 +27,7 @@ def post_save_callback(sender, instance, created, **kwargs):
         return
 
     if sender == Site:
-        main_sidebar = Sidebar.objects.create(name="Main sidebar")
+        main_sidebar = Sidebar.objects.create()
         main_sidebar.site_id = instance.id
         main_sidebar.save(update_site=False)
 

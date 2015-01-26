@@ -18,7 +18,7 @@ def sidebar(request):
     """
     Adds the sidebar elements to the context.
     """
-    current_sidebars = Sidebar.objects.filter(site_id=current_site_id(), active=True)
+    current_sidebars = Sidebar.objects.filter()
 
     if not current_sidebars.exists():
         return {}

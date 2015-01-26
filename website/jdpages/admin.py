@@ -5,6 +5,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.utils.functional import curry
 
+from mezzanine.core.admin import SingletonAdmin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
 from mezzanine.pages.admin import PageAdmin
 
@@ -108,12 +109,11 @@ class SocialMediaButtonInline(TabularDynamicInlineAdmin):
     verbose_name_plural = "Social media buttons"
 
 
-class SidebarAdmin(admin.ModelAdmin):
+class SidebarAdmin(SingletonAdmin):
     model = Sidebar
     inlines = (SidebarBlogCategoryWidgetInline,
                SidebarTwitterWidgetInline,
                SocialMediaButtonInline,)
-    list_display = ('name', 'active', 'site')
 
 
 class SidebarElementWidgetAdmin(admin.ModelAdmin):

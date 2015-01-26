@@ -1919,27 +1919,21 @@
 },
 {
   "fields": {
-    "site": 1,
-    "active": true,
-    "name": "Main sidebar"
+    "site": 1
   },
   "model": "jdpages.sidebar",
   "pk": 1
 },
 {
   "fields": {
-    "site": 2,
-    "active": true,
-    "name": "Main sidebar"
+    "site": 2
   },
   "model": "jdpages.sidebar",
   "pk": 2
 },
 {
   "fields": {
-    "site": 3,
-    "active": true,
-    "name": "Main sidebar"
+    "site": 3
   },
   "model": "jdpages.sidebar",
   "pk": 3

@@ -462,15 +462,15 @@ FORMS_EXTRA_FIELDS = [
 # Could not find a way to append to the default, so we copy the defaults here.
 # The defaults are defined in mezzanine/core/defaults.py"
 RICHTEXT_ALLOWED_TAGS = ("a", "abbr", "acronym", "address", "area", "article", "aside",
-    "b", "bdo", "big", "blockquote", "br", "button", "caption", "center",
-    "cite", "code", "col", "colgroup", "dd", "del", "dfn", "dir", "div",
-    "dl", "dt", "em", "fieldset", "figure", "font", "footer", "form",
-    "h1", "h2", "h3", "h4", "h5", "h6", "header", "hr", "i", "img",
-    "input", "ins", "kbd", "label", "legend", "li", "map", "menu",
-    "nav", "ol", "optgroup", "option", "p", "pre", "q", "s", "samp",
-    "section", "select", "small", "span", "strike", "strong",
-    "sub", "sup", "table", "tbody", "td", "textarea",
-    "tfoot", "th", "thead", "tr", "tt", "u", "ul", "var", "wbr")
+                         "b", "bdo", "big", "blockquote", "br", "button", "caption", "center",
+                         "cite", "code", "col", "colgroup", "dd", "del", "dfn", "dir", "div",
+                         "dl", "dt", "em", "fieldset", "figure", "font", "footer", "form",
+                         "h1", "h2", "h3", "h4", "h5", "h6", "header", "hr", "i", "img",
+                         "input", "ins", "kbd", "label", "legend", "li", "map", "menu",
+                         "nav", "ol", "optgroup", "option", "p", "pre", "q", "s", "samp",
+                         "section", "select", "small", "span", "strike", "strong",
+                         "sub", "sup", "table", "tbody", "td", "textarea",
+                         "tfoot", "th", "thead", "tr", "tt", "u", "ul", "var", "wbr")
 # We append iframes to allow Youtube video embedding
 RICHTEXT_ALLOWED_TAGS += ("iframe",)
 
@@ -525,8 +525,8 @@ FILEBROWSER_EXTENSIONS = {
     'Folder': [''],
     'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff'],
     'Video': ['.mov', '.wmv', '.mpeg', '.mpg', '.avi', '.rm'],
-    'Document': ['.pdf', '.doc', '.docx', '.rtf', '.txt', '.xls', '.xlsx', \
-         '.csv', '.odt', '.ods'],
+    'Document': ['.pdf', '.doc', '.docx', '.rtf', '.txt', '.xls', '.xlsx',
+                 '.csv', '.odt', '.ods'],
     'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p'],
     'Code': ['.html', '.py', '.js', '.css']
 }

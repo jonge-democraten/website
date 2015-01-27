@@ -1,8 +1,6 @@
 import logging
 logger = logging.getLogger(__name__)
 
-from mezzanine.utils.sites import current_site_id
-
 from website.jdpages.models import Sidebar
 from website.jdpages.models import SidebarBannerWidget
 from website.jdpages.models import SidebarBlogCategoryWidget
@@ -50,4 +48,4 @@ def sidebar(request):
         item = SocialMediaButtonGroupItem(buttons)
         sidebar_items.append(item)
 
-    return {"sidebar_items": sidebar_items,}
+    return {"sidebar_items": sidebar_items}

@@ -49,7 +49,9 @@ def pre_delete_callback(sender, instance, **kwargs):
     """
     related_elements = []
     if sender == BlogCategory:
-        related_elements.append(ColumnElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)))
+        blog_elements = ColumnElement.objects.filter(object_id=instance.id,
+                                                     content_type=ContentType.objects.get_for_model(sender))
+        related_elements.append(blog_elements)
 
     for element in related_elements:
         element.delete()    

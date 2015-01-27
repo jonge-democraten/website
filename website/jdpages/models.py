@@ -156,7 +156,7 @@ class SocialMediaButton(Orderable, SiteRelated):
     sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
 
     def get_icon_url(self):
-        return 'images/icons/' + SocialMediaButton.SOCIAL_MEDIA_ICONS[self.type]
+        return 'images/icons/' + SocialMediaButton.SOCIAL_MEDIA_ICONS[str(self.type)]
 
     def get_type_name(self):
         for choice in SocialMediaButton.SOCIAL_MEDIA_CHOICES:
@@ -211,7 +211,8 @@ class Document(Orderable):
 def get_public_blogposts(blog_category):
     """ Returns all blogposts for a given category that are published and not expired. """
     blog_posts = BlogPost.objects.all().filter(categories=blog_category).filter(status=CONTENT_STATUS_PUBLISHED)
-    return blog_posts.filter(publish_date__lte=datetime.now()).filter(Q(expiry_date__isnull=True) | Q(expiry_date__gte=datetime.now()))
+    return blog_posts.filter(publish_date__lte=datetime.now()).filter(Q(expiry_date__isnull=True)
+                                                                      | Q(expiry_date__gte=datetime.now()))
 
 
 def create_columnelement_for_blogcategory(blog_category):

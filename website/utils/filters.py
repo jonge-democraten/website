@@ -1,4 +1,4 @@
-def filter_non_video_iframes(html, testing = False):
+def filter_non_video_iframes(html, testing=False):
     """
     Given an HTML string, strips iframe tags that do not
     (just) contain an embedded video. 
@@ -42,6 +42,7 @@ def filter_non_video_iframes(html, testing = False):
     
     return str(dom)
 
+
 def obfuscate_email_addresses(html):
     """
     Given an HTML string, will obfuscate e-mail addresses using HTML entities.
@@ -75,6 +76,7 @@ def obfuscate_email_addresses(html):
             resulting_html += fragment
 
     return resulting_html
+
 
 def strip_scripts_not_in_whitelist(html):
     """

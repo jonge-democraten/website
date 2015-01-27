@@ -29,8 +29,7 @@ class ColumnElementWidgetInline(TabularDynamicInlineAdmin):
         Adds the initial value of the horizontal position to the formset.
         Note: does not work for the 'Add another' button in the admin.
         """
-        initial = []
-        initial.append({'horizontal_position': self.get_default_position(),})
+        initial = [{'horizontal_position': self.get_default_position()}]
         formset = super(ColumnElementWidgetInline, self).get_formset(request, obj, **kwargs)
         formset.__init__ = curry(formset.__init__, initial=initial)
         return formset
@@ -61,7 +60,7 @@ class RightColumnElementWidgetInline(ColumnElementWidgetInline):
 
 
 class HomePageAdmin(PageAdmin):
-    inlines = [LeftColumnElementWidgetInline, RightColumnElementWidgetInline,]
+    inlines = [LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
 
 
 class DocumentAdmin(admin.ModelAdmin):

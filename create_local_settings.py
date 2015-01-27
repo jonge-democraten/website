@@ -10,13 +10,16 @@ import tempfile
 LOCAL_SETTINGS_PATH = './website/local_settings.py'
 LOCAL_SETTINGS_EXAMPLE_PATH = './website/local_settings_example.py'
 
+
 def main():
     if os.path.exists(LOCAL_SETTINGS_PATH):
-        print('ERROR: ' + LOCAL_SETTINGS_PATH + ' already exists! Please remove this file manually if you intent to overwrite it.')
+        print('ERROR: ' + LOCAL_SETTINGS_PATH +
+              ' already exists! Please remove this file manually if you intent to overwrite it.')
         return
     shutil.copyfile(LOCAL_SETTINGS_EXAMPLE_PATH, LOCAL_SETTINGS_PATH)
     secret_key_random = generate_random_secret_key()
     replace(LOCAL_SETTINGS_PATH, "SECRET_KEY = ''", "SECRET_KEY = '" + secret_key_random + "'")
+
 
 def replace(source_file_path, pattern, substring):
     fh, target_file_path = tempfile.mkstemp()
@@ -28,12 +31,13 @@ def replace(source_file_path, pattern, substring):
     os.remove(source_file_path)
     shutil.move(target_file_path, source_file_path)
 
+
 def generate_random_secret_key():
     # source: https://gist.github.com/mattseymour/9205591
     # Get ascii Characters numbers and punctuation (minus quote characters as they could terminate string).
     chars = ''.join([string.ascii_letters, string.digits, string.punctuation]).replace('\'', '').replace('"', '').replace('\\', '')
-    SECRET_KEY = ''.join([random.SystemRandom().choice(chars) for i in range(50)])    
-    return SECRET_KEY 
+    secret_key = ''.join([random.SystemRandom().choice(chars) for i in range(50)])
+    return secret_key
 
 if __name__ == "__main__":
     main()

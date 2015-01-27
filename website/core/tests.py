@@ -78,8 +78,8 @@ class TestIframeStripping(TestCase):
 <p><iframe height="315" src="//www.youtube.com/embed/-Y6ImGzTF70" width="560"></iframe></p>
 <p>Vestibulum eget posuere metus, vel finibus leo. Suspendisse congue orci magna, in vestibulum lacus pulvinar a. Donec egestas, felis id feugiat tempus, orci velit ullamcorper risus, et ultricies augue arcu ullamcorper dolor. Mauris eget sollicitudin purus. Aenean a cursus risus, sit amet mattis erat. Curabitur vel venenatis sem. Cras non gravida tellus, eu egestas tellus. Morbi at lorem a turpis blandit vulputate vitae a est.</p></div>
         """
-        self.assertEqual(str(bs(field_value, 'html.parser')), \
-            filter_non_video_iframes(field_value))
+        self.assertEqual(str(bs(field_value, 'html.parser')),
+                         filter_non_video_iframes(field_value))
 
     def test_vimeo_stripped(self):
         """
@@ -100,8 +100,8 @@ class TestIframeStripping(TestCase):
 <p><a href="http://vimeo.com/114963142">IONIAN</a> from <a href="http://vimeo.com/ryanclarke">Ryan Clarke</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 <p>Vestibulum eget posuere metus, vel finibus leo. Suspendisse congue orci magna, in vestibulum lacus pulvinar a. Donec egestas, felis id feugiat tempus, orci velit ullamcorper risus, et ultricies augue arcu ullamcorper dolor. Mauris eget sollicitudin purus. Aenean a cursus risus, sit amet mattis erat. Curabitur vel venenatis sem. Cras non gravida tellus, eu egestas tellus. Morbi at lorem a turpis blandit vulputate vitae a est.</p></div>
         """
-        self.assertEqual(str(bs(field_value_stripped, 'html.parser')), \
-            filter_non_video_iframes(field_value))
+        self.assertEqual(str(bs(field_value_stripped, 'html.parser')),
+                         filter_non_video_iframes(field_value))
 
     def test_nonstandard_youtube_stripped(self):
         """
@@ -119,8 +119,8 @@ class TestIframeStripping(TestCase):
         field_value_different_src = field_value_pre + \
             """<iframe width="560" height="315" src="//www.youtub.com/embed/-Y6ImGzTF70"></iframe>""" + \
             field_value_post
-        self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')), \
-            filter_non_video_iframes(field_value_different_src))
+        self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')),
+                         filter_non_video_iframes(field_value_different_src))
 
         # Second case: embed using an attribute other than
         # the ones YouTube sets by default (width, height, src,
@@ -128,15 +128,15 @@ class TestIframeStripping(TestCase):
         field_value_different_attributes = field_value_pre + \
             """<iframe id="nonstandard" width="560" height="315" src="//www.youtube.com/embed/-Y6ImGzTF70"></iframe>""" + \
             field_value_post
-        self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')), \
-            filter_non_video_iframes(field_value_different_attributes))
+        self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')),
+                         filter_non_video_iframes(field_value_different_attributes))
 
         # Third case: iframe contains information.
         field_value_iframe_has_content = field_value_pre + \
             """<iframe width="560" height="315" src="//www.youtube.com/embed/-Y6ImGzTF70">Test Information</iframe>""" + \
             field_value_post
-        self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')), \
-            filter_non_video_iframes(field_value_iframe_has_content))
+        self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')),
+                         filter_non_video_iframes(field_value_iframe_has_content))
 
 
 class TestEmailObfuscation(TestCase):
@@ -211,7 +211,7 @@ class TestScriptTagWhitelisting(TestCase):
         from bs4 import BeautifulSoup as bs
 
         self.assertEqual(strip_scripts_not_in_whitelist(self.evil_html),
-            str(bs(self.evil_html_stripped, 'html.parser')))
+                         str(bs(self.evil_html_stripped, 'html.parser')))
 
     def test_good_is_not_stripped(self):
         """ Test if a whitelisted script tag indeed passes unstripped. """
@@ -219,7 +219,7 @@ class TestScriptTagWhitelisting(TestCase):
         from bs4 import BeautifulSoup as bs
 
         self.assertEqual(strip_scripts_not_in_whitelist(self.good_html),
-            str(bs(self.good_html, 'html.parser')))
+                         str(bs(self.good_html, 'html.parser')))
 
     def test_boring_is_unchanged(self):
         """ Test if an irrelevant HTML tag passes unstripped. """
@@ -227,7 +227,7 @@ class TestScriptTagWhitelisting(TestCase):
         from bs4 import BeautifulSoup as bs
  
         self.assertEqual(strip_scripts_not_in_whitelist(self.boring_html),
-            str(bs(self.boring_html, 'html.parser')))
+                         str(bs(self.boring_html, 'html.parser')))
 
 
 class TestJaneus(TestCase):

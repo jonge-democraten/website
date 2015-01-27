@@ -225,7 +225,7 @@ class TestScriptTagWhitelisting(TestCase):
         """ Test if an irrelevant HTML tag passes unstripped. """
         from website.utils.filters import strip_scripts_not_in_whitelist
         from bs4 import BeautifulSoup as bs
- 
+
         self.assertEqual(strip_scripts_not_in_whitelist(self.boring_html),
                          str(bs(self.boring_html, 'html.parser')))
 
@@ -246,7 +246,7 @@ class TestJaneus(TestCase):
         user = JaneusBackend().authenticate("someuser", "somepass")
         self.assertTrue(user is not None)
         self.assertTrue(user.user_permissions.count() == 0)
-        
+
     def test_permissions(self):
         from janeus.models import JaneusRole
         role = JaneusRole(role="role1")

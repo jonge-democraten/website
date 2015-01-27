@@ -42,7 +42,7 @@ def post_save_callback(sender, instance, created, **kwargs):
 def pre_delete_callback(sender, instance, **kwargs):
     """
     Called just before a model is deleted.
-    Delete related models here. 
+    Delete related models here.
     Arguments:
     sender -- the model class
     instance -- the actual instance being saved
@@ -54,6 +54,6 @@ def pre_delete_callback(sender, instance, **kwargs):
         related_elements.append(blog_elements)
 
     for element in related_elements:
-        element.delete()    
+        element.delete()
 
     return

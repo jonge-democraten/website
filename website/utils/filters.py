@@ -1,12 +1,12 @@
 def filter_non_video_iframes(html, testing=False):
     """
     Given an HTML string, strips iframe tags that do not
-    (just) contain an embedded video. 
+    (just) contain an embedded video.
 
     Returns the remaining HTML string.
     """
     from bs4 import BeautifulSoup
-    import re   
+    import re
  
     # Tuple of regexes that define allowed URL patterns
     matchers = ("^(https?:)?//www\.youtube\.com/embed/[a-zA-Z0-9-_]{8,15}$",)
@@ -39,7 +39,7 @@ def filter_non_video_iframes(html, testing=False):
             if attr not in allowed_attributes:
                 iframe.extract()
                 break
-    
+
     return str(dom)
 
 
@@ -95,7 +95,7 @@ def strip_scripts_not_in_whitelist(html):
 
     # Parse the input HTML into a DOM
     dom = BeautifulSoup(html, "html.parser")
- 
+
     # Look for all script tags and match them to the whitelist
     for script_tag in dom.findAll("script"):
         if str(script_tag) not in allowed_tags:

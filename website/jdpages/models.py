@@ -36,7 +36,7 @@ class ColumnElement(SiteRelated):
     def get_object(self):
         """ Returns the content object. """
         return self.content_type.model_class().objects.get(id=self.object_id)
-    
+
     class Meta:
         verbose_name = 'Column element'
 

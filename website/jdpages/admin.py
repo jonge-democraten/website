@@ -50,7 +50,7 @@ class LeftColumnElementWidgetInline(ColumnElementWidgetInline):
 class RightColumnElementWidgetInline(ColumnElementWidgetInline):
     """ """
     verbose_name_plural = 'Right column widgets'
-    
+
     def get_queryset(self, request):
         return ColumnElementWidget.objects.filter(horizontal_position=self.get_default_position())
 
@@ -78,7 +78,7 @@ class ColumnElementWidgetAdmin(admin.ModelAdmin):
 class DocumentInline(TabularDynamicInlineAdmin):
     model = Document
 
-    
+
 class DocumentListingAdmin(PageAdmin):
     inlines = (DocumentInline,)
 

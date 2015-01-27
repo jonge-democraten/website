@@ -17,7 +17,7 @@ ADMIN_MENU_ORDER = (
     ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment", ("Media Library", "fb_browse"), "jdpages.Sidebar",)),
     ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting", "jdpages.SidebarBannerWidget",)),
     ("Users", ("auth.User", "auth.Group",)),
-    ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget", 
+    ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget",
                       "jdpages.SidebarElement", "jdpages.SidebarElementWidget",
                       "jdpages.Document", "jdpages.SidebarTwitter",)),
 )

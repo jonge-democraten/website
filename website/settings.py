@@ -520,6 +520,21 @@ RICHTEXT_SCRIPT_TAG_WHITELIST = (
 # We allow the object tag in rich text fields.
 RICHTEXT_ALLOWED_TAGS += ("object",)
 
+# We also need the data attribute, so we copy the default list of allowed
+# attributes here and add 'data' (at the end, for clarity).
+RICHTEXT_ALLOWED_ATTRIBUTES = ("abbr", "accept", "accept-charset", "accesskey", "action",
+    "align", "alt", "axis", "border", "cellpadding", "cellspacing",
+    "char", "charoff", "charset", "checked", "cite", "class", "clear",
+    "cols", "colspan", "color", "compact", "coords", "datetime", "dir",
+    "disabled", "enctype", "for", "frame", "headers", "height", "href",
+    "hreflang", "hspace", "id", "ismap", "label", "lang", "longdesc",
+    "maxlength", "media", "method", "multiple", "name", "nohref",
+    "noshade", "nowrap", "prompt", "readonly", "rel", "rev", "rows",
+    "rowspan", "rules", "scope", "selected", "shape", "size", "span",
+    "src", "start", "style", "summary", "tabindex", "target", "title",
+    "type", "usemap", "valign", "value", "vspace", "width", "xml:lang",
+    "data")
+
 # However, we do apply a filter to check them. Only embedding of locally 
 # hosted PDFs is allowed.
 RICHTEXT_FILTERS += ("website.utils.filters.strip_illegal_objects",)

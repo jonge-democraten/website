@@ -3,6 +3,7 @@ Models that extend mezzanine Pages and add JD specific data.
 """
 
 from datetime import datetime
+from string import punctuation
 import logging
 logger = logging.getLogger(__name__)
 
@@ -11,6 +12,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
+from django.utils.encoding import force_text
 
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.fields import FileField
@@ -198,7 +200,7 @@ class Document(Orderable):
 
     document_listing = models.ForeignKey(DocumentListing, related_name="documents")
     document = FileField(_("Document"), max_length=200, format="Document")
-    description = models.CharField(_("Description"), max_length=1000)
+    description = models.CharField(_("Description"), max_length=1000, blank=True)
 
     def __str__(self):
         return self.description
@@ -206,6 +208,23 @@ class Document(Orderable):
     class Meta:
         verbose_name = "Document"
         verbose_name_plural = "Documents"
+
+    def save(self, *args, **kwargs):
+        """
+        If no description is given when created, create one from the
+        file name.
+
+        Code copied from mezzanine.galleries.models.GalleryImage
+        """
+        if not self.description:
+            name = force_text(self.document.name)
+            name = name.rsplit("/", 1)[-1].rsplit(".", 1)[0]
+            name = name.replace("'", "")
+            name = "".join([c if c not in punctuation else " " for c in name])
+            name = "".join([s.upper() if i == 0 or name[i - 1] == " " else s
+                            for i, s in enumerate(name)])
+            self.description = name
+        super(Document, self).save(*args, **kwargs)
 
 
 def get_public_blogposts(blog_category):

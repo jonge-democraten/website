@@ -1,16 +1,16 @@
 <!doctype html>
+{% load pages_tags staticfiles %}
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %} class="mobile">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
-    <meta name="author" content="{{ TODO }}" />
     <meta name="description" content="{% block meta_description %}{% endblock %}" />
     <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TAGLINE %} - {{ settings.SITE_TAGLINE }}{% endif %}</title>
-    <link rel="stylesheet" href="/modules/mod_rkr_cookiebanner/assets/rkr_cookiebanner.css" type="text/css" />
-    <link rel="stylesheet" href="/components/com_jevents/views/alternative/assets/css/modstyle.css" type="text/css" />
-    <script src="/media/system/js/mootools-core.js" type="text/javascript"></script>
-    <script src="/media/system/js/core.js" type="text/javascript"></script>
-    <script src="/media/system/js/caption.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="{% static "css/rkr_cookiebanner.css" %}" type="text/css" />
+    <link rel="stylesheet" href="{% static "css/modstyle.css" %}" type="text/css" />
+    <script src="{% static "js/mootools-core.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/core.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/caption.js" %}" type="text/javascript"></script>
     <script type="text/javascript">
         window.addEvent('load', function() {
             new JCaption('img.caption');
@@ -18,22 +18,21 @@
     </script>
 
     <meta content='initial-scale=1,width=device-width' name='viewport'/>
-    <script src="/media/system/js/mootools-more.js" type="text/javascript"></script>
-    <link rel="icon" href="/templates/jd/images/jdicon.png" type="image/png" />
-    <link rel="stylesheet" href="/templates/jd/css/template.css" type="text/css" />
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="{% static "js/mootools-more.js" %}" type="text/javascript"></script>
+    <link rel="icon" href="{% static "images/jdicon.png" %}" type="image/png" />
+    <link rel="stylesheet" href="{% static "css/template.css" %}" type="text/css" />
+    <script src="{% static "js/jquery-1.11.1.min.js" %}" type="text/javascript"></script>
 
     <meta name="twitter:card" value="summary">
-    <meta name="twitter:url" value="{{ TODO }}">
-    <meta name="twitter:title" value="{% block meta_title %}{% endblock %}{% if settings.SITE_TAGLINE %} -  {{ settings.SITE_TAGLINE }}{% endif %}">
-    <meta name="twitter:description" value="{% block meta_description %}{% endblock %}">
+    <meta name="twitter:title" value="{% block meta_title2 %}{% endblock %}{% if settings.SITE_TAGLINE %} -  {{ settings.SITE_TAGLINE }}{% endif %}">
+    <meta name="twitter:description" value="{% block meta_description2 %}{% endblock %}">
     <meta name="twitter:image" value="{{ TODO }}">
 
     <meta name="twitter:creator" value="@JongeDemocraten">
     <meta name="twitter:site" value="@JongeDemocraten">
 </head>
 
-<body class="{% body_class %}body{% endblock %}">
+<body class="{% block body_class %}body{% endblock %}">
     <div id="outerDiv">
         <div id="innerDiv">
             <div id="headerDiv">
@@ -68,7 +67,7 @@
                 </section>
 
                 <section class="collapsable blog">
-                    {{ TODO: include }}
+                    {{ TODOinclude }}
                 </section>
 
                 <script>
@@ -109,7 +108,7 @@
 
     <div id="footerDiv">
         <div class="moduletableonline">
-            {{ TODO: include }}
+            {{ TODOinclude }}
         </div> <!-- moduletableonline -->
 
         <p><a href="{{ TODO }}?nomobile">Naar de reguliere website</a></p>
@@ -156,8 +155,8 @@
     </div> <!-- footerDiv -->
 
     <!-- TABS JS -->
-    <script src="/templates/jd/javascript/jquery-1.3.2.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/templates/jd/javascript/jquery-ui-1.7.2.custom.min.js"></script>
+    <script src="{% static "js/jquery-1.3.2.min.js" %}" type="text/javascript"></script>
+    <script type="text/javascript" src="{% static "js/jquery-ui-1.7.2.custom.min.js" %}"></script>
     <script type="text/javascript">
         jQuery.noConflict();
         jQuery(function() {

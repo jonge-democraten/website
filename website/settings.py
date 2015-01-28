@@ -168,6 +168,7 @@ OWNABLE_MODELS_ALL_EDITABLE = ('blog.BlogPost',)
 # the Media Library.
 MEDIA_LIBRARY_PER_SITE = True
 
+
 #############
 # DATABASES #
 #############
@@ -234,6 +235,11 @@ ROOT_URLCONF = "%s.urls" % PROJECT_DIRNAME
 # Always use forward slashes, even on Windows.
 # Don't forget to use absolute paths, not relative paths.
 TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
+
+# This setting replaces the default TinyMCE configuration with our custom
+# one. The only difference is that the media plugin is not loaded in this
+# version.
+TINYMCE_SETUP_JS = STATIC_URL + "js/tinymce_setup.js" 
 
 
 ################

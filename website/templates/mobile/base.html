@@ -67,7 +67,13 @@
                 </section>
 
                 <section class="collapsable blog">
-                    {{ TODOinclude }}
+                    {% for item in sidebar_items %}
+                        <div class="moduletable">
+                            {% with template_name=item.get_template_name %}
+                                {% include "elements/"|add:template_name %}
+                            {% endwith %}
+                        </div> <!-- moduletable -->
+                    {% endfor %}
                 </section>
 
                 <script>

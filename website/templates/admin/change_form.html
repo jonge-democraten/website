@@ -1,0 +1,8 @@
+{% overextends "admin/change_form.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    {{ block.super }}
+    <script src="{% static "js/filebrowser_alttext.js" %}"></script>
+{% endblock content %}

@@ -56,3 +56,12 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# IDE
+.idea/
+
+# dev databases
+*.db
+
+# local settings
+local_settings.py

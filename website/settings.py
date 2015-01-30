@@ -14,10 +14,12 @@ from __future__ import absolute_import, unicode_literals
 # Controls the ordering and grouping of the admin menu.
 #
 ADMIN_MENU_ORDER = (
-    ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
-    ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting")),
+    ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment", ("Media Library", "fb_browse"), "jdpages.Sidebar",)),
+    ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting", "jdpages.SidebarBannerWidget",)),
     ("Users", ("auth.User", "auth.Group",)),
-    ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget", 'jdpages.Document', 'jdpages.DocumentListing',)),
+    ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget",
+                      "jdpages.SidebarElement", "jdpages.SidebarElementWidget",
+                      "jdpages.Document", "jdpages.SidebarTwitter",)),
 )
 
 # A three item sequence, each containing a sequence of template tags
@@ -80,8 +82,6 @@ ADMIN_MENU_ORDER = (
 ####################
 
 SITE_TITLE = "Jonge Democraten"
-
-SIDEBAR_BLOG = "JD Blog"
 
 ########################
 # MAIN DJANGO SETTINGS #
@@ -164,6 +164,11 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 # blog post by any other user of that site.
 OWNABLE_MODELS_ALL_EDITABLE = ('blog.BlogPost',)
 
+# Using this setting, we force every site to use its own directory within
+# the Media Library.
+MEDIA_LIBRARY_PER_SITE = True
+
+
 #############
 # DATABASES #
 #############
@@ -231,6 +236,11 @@ ROOT_URLCONF = "%s.urls" % PROJECT_DIRNAME
 # Don't forget to use absolute paths, not relative paths.
 TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 
+# This setting replaces the default TinyMCE configuration with our custom
+# one. The only difference is that the media plugin is not loaded in this
+# version.
+TINYMCE_SETUP_JS = STATIC_URL + "js/tinymce_setup.js" 
+
 
 ################
 # APPLICATIONS #
@@ -278,7 +288,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "mezzanine.conf.context_processors.settings",
     "mezzanine.pages.context_processors.page",
-    "website.core.context_processors.sidebar",
+    "website.jdpages.context_processors.sidebar",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -458,15 +468,15 @@ FORMS_EXTRA_FIELDS = [
 # Could not find a way to append to the default, so we copy the defaults here.
 # The defaults are defined in mezzanine/core/defaults.py"
 RICHTEXT_ALLOWED_TAGS = ("a", "abbr", "acronym", "address", "area", "article", "aside",
-    "b", "bdo", "big", "blockquote", "br", "button", "caption", "center",
-    "cite", "code", "col", "colgroup", "dd", "del", "dfn", "dir", "div",
-    "dl", "dt", "em", "fieldset", "figure", "font", "footer", "form",
-    "h1", "h2", "h3", "h4", "h5", "h6", "header", "hr", "i", "img",
-    "input", "ins", "kbd", "label", "legend", "li", "map", "menu",
-    "nav", "ol", "optgroup", "option", "p", "pre", "q", "s", "samp",
-    "section", "select", "small", "span", "strike", "strong",
-    "sub", "sup", "table", "tbody", "td", "textarea",
-    "tfoot", "th", "thead", "tr", "tt", "u", "ul", "var", "wbr")
+                         "b", "bdo", "big", "blockquote", "br", "button", "caption", "center",
+                         "cite", "code", "col", "colgroup", "dd", "del", "dfn", "dir", "div",
+                         "dl", "dt", "em", "fieldset", "figure", "font", "footer", "form",
+                         "h1", "h2", "h3", "h4", "h5", "h6", "header", "hr", "i", "img",
+                         "input", "ins", "kbd", "label", "legend", "li", "map", "menu",
+                         "nav", "ol", "optgroup", "option", "p", "pre", "q", "s", "samp",
+                         "section", "select", "small", "span", "strike", "strong",
+                         "sub", "sup", "table", "tbody", "td", "textarea",
+                         "tfoot", "th", "thead", "tr", "tt", "u", "ul", "var", "wbr")
 # We append iframes to allow Youtube video embedding
 RICHTEXT_ALLOWED_TAGS += ("iframe",)
 
@@ -508,6 +518,33 @@ RICHTEXT_SCRIPT_TAG_WHITELIST = (
     '<script type="text/javascript" src="/static/js/render.js"></script>',
 )
 
+
+##########################
+# PDF EMBEDDING SETTINGS #
+##########################
+
+# We allow the object tag in rich text fields.
+RICHTEXT_ALLOWED_TAGS += ("object",)
+
+# We also need the data attribute, so we copy the default list of allowed
+# attributes here and add 'data' (at the end, for clarity).
+RICHTEXT_ALLOWED_ATTRIBUTES = ("abbr", "accept", "accept-charset", "accesskey", "action",
+    "align", "alt", "axis", "border", "cellpadding", "cellspacing",
+    "char", "charoff", "charset", "checked", "cite", "class", "clear",
+    "cols", "colspan", "color", "compact", "coords", "datetime", "dir",
+    "disabled", "enctype", "for", "frame", "headers", "height", "href",
+    "hreflang", "hspace", "id", "ismap", "label", "lang", "longdesc",
+    "maxlength", "media", "method", "multiple", "name", "nohref",
+    "noshade", "nowrap", "prompt", "readonly", "rel", "rev", "rows",
+    "rowspan", "rules", "scope", "selected", "shape", "size", "span",
+    "src", "start", "style", "summary", "tabindex", "target", "title",
+    "type", "usemap", "valign", "value", "vspace", "width", "xml:lang",
+    "data")
+
+# However, we do apply a filter to check them. Only embedding of locally 
+# hosted PDFs is allowed.
+RICHTEXT_FILTERS += ("website.utils.filters.strip_illegal_objects",)
+
 ##########################
 # MEDIA LIBRARY SETTINGS #
 ##########################
@@ -521,8 +558,8 @@ FILEBROWSER_EXTENSIONS = {
     'Folder': [''],
     'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff'],
     'Video': ['.mov', '.wmv', '.mpeg', '.mpg', '.avi', '.rm'],
-    'Document': ['.pdf', '.doc', '.docx', '.rtf', '.txt', '.xls', '.xlsx', \
-         '.csv', '.odt', '.ods'],
+    'Document': ['.pdf', '.doc', '.docx', '.rtf', '.txt', '.xls', '.xlsx',
+                 '.csv', '.odt', '.ods'],
     'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p'],
     'Code': ['.html', '.py', '.js', '.css']
 }

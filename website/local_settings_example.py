@@ -24,6 +24,7 @@ DATABASES = {
     }
 }
 
+
 # Remove this when you set JANEUS_SERVER, JANEUS_DN and JANEUS_PASS
 def JANEUS_FAKE_LDAP(username, password):
     # user "someuser" with password "somepass" has groups "role1" and "role2"

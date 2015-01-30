@@ -22,6 +22,9 @@ class Item(object):
     def get_template_name(self):
         return "none"
 
+    def is_blog_category_sidebar_item(self):
+        return isinstance(self, BlogCategorySidebarItem)
+
 
 class BlogCategoryItem(Item):
     def __init__(self, blogcategory, max_posts):

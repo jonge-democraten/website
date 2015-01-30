@@ -68,11 +68,13 @@
 
                 <section class="collapsable blog">
                     {% for item in sidebar_items %}
-                        <div class="moduletable">
-                            {% with template_name=item.get_template_name %}
-                                {% include "elements/"|add:template_name %}
-                            {% endwith %}
-                        </div> <!-- moduletable -->
+                        {% if item.is_blog_category_sidebar_item %}
+                            <div class="moduletable">
+                                {% with template_name=item.get_template_name %}
+                                    {% include "elements/"|add:template_name %}
+                                {% endwith %}
+                            </div> <!-- moduletable -->
+                        {% endif %}
                     {% endfor %}
                 </section>
 

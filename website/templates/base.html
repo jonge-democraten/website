@@ -48,7 +48,9 @@
         <div id="headerDiv">
             {% include "elements/header.html" %}
 
-            {% page_menu "pages/menus/jdmenu.html" %}
+            <div id="menuDiv">
+                {% page_menu "pages/menus/jdmenu.html" %}
+            </div> <!-- menuDiv -->
         </div> <!-- headerDiv -->
 
         <div id="contentDiv" class="clearing">

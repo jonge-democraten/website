@@ -1,5 +1,5 @@
 {% extends "mobile/base.html" %}
-{% load mezzanine_tags keyword_tags %}
+{% load pages_tags mezzanine_tags keyword_tags %}
 
 {% block meta_title %}{{ page.meta_title }}{% endblock %}
 
@@ -47,6 +47,7 @@
             {% endblock richtext_content %}
             {% block other_page_content %}{% endblock %}
         </div> <!-- item-page -->
+        {% page_menu "mobile/pages/menus/jdmenu.html" %}
     </section> <!-- content -->
 {% endblock %}
 

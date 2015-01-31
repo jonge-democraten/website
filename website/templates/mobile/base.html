@@ -115,9 +115,11 @@
     </div> <!-- outerDiv -->
 
     <div id="footerDiv">
-        <div class="moduletableonline">
-            {{ TODOinclude }}
-        </div> <!-- moduletableonline -->
+        {% for item in sidebar_items %}
+            {% if item.is_social_media_button_group_item %}
+                {% include "mobile/elements/social_media_icons.html" %}
+            {% endif %}
+        {% endfor %}
 
         <p><a href="{{ TODO }}?nomobile">Naar de reguliere website</a></p>
         <div class="moduletable">

@@ -66,17 +66,17 @@
                     </div> <!-- moduletableagenda -->
                 </section>
 
-                <section class="collapsable blog">
-                    {% for item in sidebar_items %}
-                        {% if item.is_blog_category_sidebar_item %}
+                {% for item in sidebar_items %}
+                    {% if item.is_blog_category_sidebar_item %}
+                        <section class="collapsable blog">
                             <div class="moduletable">
                                 {% with template_name=item.get_template_name %}
                                     {% include "elements/"|add:template_name %}
                                 {% endwith %}
                             </div> <!-- moduletable -->
-                        {% endif %}
-                    {% endfor %}
-                </section>
+                        </section>
+                    {% endif %}
+                {% endfor %}
 
                 <script>
                     var slides = [];
@@ -124,11 +124,10 @@
         <p><a href="{{ TODO }}?nomobile">Naar de reguliere website</a></p>
         <div class="moduletable">
             <div class="custom">
-                <p>© {{ TODO }} Jonge Democraten</p>
+                <p>© {% now "Y" %} Jonge Democraten</p>
             </div> <!-- custom -->
         </div> <!-- moduletable -->
         <div class="moduletable">
-            <h3>RKR Cookie Banner</h3>
             <div id="cookie-message" class="cb antraciet atbottom">
                 <div class="content">
                     Deze website maakt gebruik van cookies. Lees ons <a href="http://jongedemocraten.nl/contact-mainmenu-2196.html#privacypolicy" title="privacy statement">privacy statement</a> voor meer informatie. Gaat u akkoord met het gebruik hiervan?

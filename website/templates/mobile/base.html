@@ -24,6 +24,7 @@
     <script src="{% static "js/jquery-1.11.1.min.js" %}" type="text/javascript"></script>
 
     <meta name="twitter:card" value="summary">
+    <meta name="twitter:url" value="{{ request.build_absolute_uri }}">
     <meta name="twitter:title" value="{% block meta_title2 %}{% endblock %}{% if settings.SITE_TAGLINE %} -  {{ settings.SITE_TAGLINE }}{% endif %}">
     <meta name="twitter:description" value="{% block meta_description2 %}{% endblock %}">
     <meta name="twitter:image" value="{{ TODO }}">
@@ -121,7 +122,7 @@
             {% endif %}
         {% endfor %}
 
-        <p><a href="{{ TODO }}?nomobile">Naar de reguliere website</a></p>
+        <p><a href="{{ request.build_absolute_uri }}?nomobile">Naar de reguliere website</a></p>
         <div class="moduletable">
             <div class="custom">
                 <p>© {% now "Y" %} Jonge Democraten</p>

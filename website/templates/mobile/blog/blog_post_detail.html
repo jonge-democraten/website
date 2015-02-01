@@ -1,0 +1,32 @@
+{% extends "mobile/pages/richtextpage.html" %}
+{% load mezzanine_tags keyword_tags %}
+
+{% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+    {% keywords_for blog_post as tags %}
+    {% for tag in tags %}{% if not forloop.first %}, {% endif %}{{ tag }}{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+    {{ blog_post.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+    {{ blog_post.title }}
+{% endblock %}
+
+{% block content_body %}
+    <h2><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h2>
+    {% block blog_post_detail_featured_image %}
+        {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+            <p>
+                <img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}">
+            </p>
+        {% endif %}
+    {% endblock blog_post_detail_featured_image %}
+    {% block blog_post_detail_content %}
+        {{ blog_post.content|richtext_filters|safe }}
+    {% endblock %}
+
+{% endblock content_body %}

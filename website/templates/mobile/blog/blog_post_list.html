@@ -28,6 +28,7 @@
     {% endif %}
 
     {% for blog_post in blog_posts.object_list %}
+    <div class="placehere">
     {% block blog_post_list_post_title %}
     <h2>
         <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
@@ -44,8 +45,9 @@
 
     {% block blog_post_list_post_content %}
     {{ blog_post.content|richtext_filters|safe }}
+    <div class="item-separator"></div>
     {% endblock %}
-
+    </div> <!-- placehere -->
     {% endfor %}
 
     {% pagination_for blog_posts %}

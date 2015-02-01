@@ -1,14 +1,14 @@
 <h3>{{ item.title }} </h3>
 <div class="mod_placehere">
     <div style="overflow:auto;" class="mod_placehere_leading even">
-        <div class="placehere">
         {% for child in item.children %}
+        <div class="placehere">
             <h2 class="contentheading"><a href="{{ child.url }}" class="contentpagetitle">{{ child.title }}</a></h2>
             <p class="articleinfo"><span class="createdate">{{ child.date|date:"l j F Y" }}</span></p>
             <p class="buttonheading"></p>
             {{ child.content|truncatechars:200 }}
             <p class="readmore"><a href="{{ child.url }}">Lees meer...</a></p>
-        {% endfor %}
         </div>
+        {% endfor %}
     </div>
 </div>

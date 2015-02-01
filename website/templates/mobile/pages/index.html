@@ -18,6 +18,13 @@
                     {% include "elements/"|add:template_name %}
                 {% endwith %}
             </div>
+            <div class="moduletable">
+                <div class="custom">
+                    <p>
+                        <a href="{{ item.url }}">» Meer {{ item.title }}</a>
+                    </p>
+                </div> <!-- custom -->
+            </div> <!-- moduletable -->
         </section>
     {% endfor %}
     {% for item in column_right_items %}
@@ -27,6 +34,13 @@
                     {% include "elements/"|add:template_name %}
                 {% endwith %}
             </div>
+            <div class="moduletable">
+                <div class="custom">
+                    <p>
+                        <a href="{{ item.url }}">» Meer {{ item.title }}</a>
+                    </p>
+                </div> <!-- custom -->
+            </div> <!-- moduletable -->
         </section>
     {% endfor %}
     {{ block.super }}

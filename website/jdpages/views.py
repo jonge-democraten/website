@@ -31,6 +31,7 @@ class Item(object):
 class BlogCategoryItem(Item):
     def __init__(self, blogcategory, max_posts):
         self.title = blogcategory.title
+        self.url = blogcategory.get_absolute_url()
         self.children = self.create_children(blogcategory, max_posts)
 
     @staticmethod

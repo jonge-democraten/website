@@ -22,14 +22,14 @@ urlpatterns = i18n_patterns(
 )
 
 urlpatterns += patterns('',
-    url(r'^captcha/', include('captcha.urls')),
-)
+                        url(r'^captcha/', include('captcha.urls')),
+                        )
 
 # Disable commenting functionality by redirecting all comment
 # submissions to a page_not_found (i.e. a 404 page).
 urlpatterns += patterns('',
-    url(r'^comment/', page_not_found),
-)
+                        url(r'^comment/', page_not_found),
+                        )
 
 urlpatterns += patterns(
     '',

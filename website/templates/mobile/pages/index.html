@@ -1,0 +1,48 @@
+{% extends "mobile/base.html" %}
+
+{% load mezzanine_tags staticfiles %}
+
+{% block meta_title %}Home{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block logo %}
+    <a href="/"><img src="{% static "images/logo-mobile.png" %}" alt="Jonge Democraten " /></a>
+{% endblock logo %}
+
+{% block main %}
+    {% for item in column_left_items %}
+        <section class="collapsable {{ item.title|slugify }}">
+            <div class="moduletable">
+                {% with template_name=item.get_template_name|stringformat:"s" %}
+                    {% include "elements/"|add:template_name %}
+                {% endwith %}
+            </div>
+            <div class="moduletable">
+                <div class="custom">
+                    <p>
+                        <a href="{{ item.url }}">» Meer {{ item.title }}</a>
+                    </p>
+                </div> <!-- custom -->
+            </div> <!-- moduletable -->
+        </section>
+    {% endfor %}
+    {% for item in column_right_items %}
+        <section class="collapsable {{ item.title|slugify }}">
+            <div class="moduletable">
+                {% with template_name=item.get_template_name|stringformat:"s" %}
+                    {% include "elements/"|add:template_name %}
+                {% endwith %}
+            </div>
+            <div class="moduletable">
+                <div class="custom">
+                    <p>
+                        <a href="{{ item.url }}">» Meer {{ item.title }}</a>
+                    </p>
+                </div> <!-- custom -->
+            </div> <!-- moduletable -->
+        </section>
+    {% endfor %}
+    {{ block.super }}
+{% endblock main %}
+

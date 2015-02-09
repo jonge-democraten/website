@@ -23,3 +23,19 @@ DATABASES = {
         "PORT": "",
     }
 }
+
+
+# Remove this when you set JANEUS_SERVER, JANEUS_DN and JANEUS_PASS
+def JANEUS_FAKE_LDAP(username, password):
+    # user "someuser" with password "somepass" has groups "role1" and "role2"
+    example_users = {"someuser": ("somepass", ["role1", "role2"])}
+    if username not in example_users:
+        return None
+    pwd, groups = example_users[username]
+    if password is None or password == pwd:
+        return groups
+    return None
+
+# JANEUS_SERVER = "ldap://127.0.0.1:389/"
+# JANEUS_DN = "dnoftheuser"
+# JANEUS_PASS = "thisisaverysecretpassword"

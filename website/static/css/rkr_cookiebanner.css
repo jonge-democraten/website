@@ -1,0 +1,115 @@
+.cb {
+display: inline-block;
+*display: inline;
+/* IE7 inline-block hack */
+*zoom: 1;
+padding: 4px 10px 4px;
+margin-bottom: 0;
+font-size: 13px;
+line-height: 18px;
+text-align: center;
+vertical-align: middle;
+border: 1px solid #cccccc;
+border-bottom-color: #b3b3b3;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+*margin-left: .3em;
+}
+
+.lightgray {
+color: #333333 !important;
+background-color: #f5f5f5;
+border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+}
+
+.lightgray .content a {
+color: #333333 !important;
+text-decoration: underline;
+}
+
+/* primary */
+.blue {
+color: #ffffff !important;
+background-color: #0074cc;
+border-color: #0055cc #0055cc #003580;
+}
+
+/* info */
+.bluegray {
+color: #ffffff !important;
+background-color: #49afcd;
+border-color: #2f96b4 #2f96b4 #1f6377;
+}
+
+/* success */
+.green {
+color: #ffffff !important;
+background-color: #5bb75b;
+border-color: #51a351 #51a351 #387038;
+}
+
+/* warning */
+.orange {
+color: #ffffff !important;
+background-color: #faa732;
+border-color: #f89406 #f89406 #ad6704;
+}
+
+/* danger */
+.red {
+color: #ffffff !important;
+background-color: #da4f49;
+border-color: #bd362f #bd362f #802420;
+}
+
+/* inverse */
+.antraciet {
+color: #ffffff !important;
+background-color: #414141;
+border-color: #222222 #222222 #000000;
+}
+
+.blue .content a,
+.bluegray .content a,
+.green .content a,
+.orange .content a,
+.red .content a,
+.antraciet .content a {
+color: #ffffff !important;
+text-decoration: underline;
+}
+
+.attop {
+top: 0;	
+}
+
+.atbottom {
+bottom: 0;
+}
+
+#cookie-message {
+padding: 15px 0;
+position: fixed;
+left: 0;
+width: 100%;
+z-index: 10000;
+}
+
+#cookie-message .content {
+float: left;
+padding: 5px 5px 5px 20px;
+}
+
+#cookie-message .buttons {
+float: right;
+padding-right: 15px;
+text-decoration: none !important;
+}
+
+#cookie-message .buttons a:hover {
+text-decoration: none !important;
+}

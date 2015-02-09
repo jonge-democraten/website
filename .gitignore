@@ -59,3 +59,12 @@ target/
 
 # Vim swp files
 *.swp
+#
+# IDE
+.idea/
+
+# dev databases
+*.db
+
+# local settings
+local_settings.py

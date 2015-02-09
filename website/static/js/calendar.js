@@ -17,7 +17,6 @@ jQuery(function($) {
                     data: {},
                     error: function() {
                         $('#calendar-error').show();
-                        alert("Error!");
                     }
                 }
             ],

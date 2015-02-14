@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags staticfiles %}
+
+{% block meta_title %}{% trans "Upcoming events" %}{% endblock %}
+
+{% block main %}
+<div id="homeDiv">
+    <h2>{% trans "Upcoming events" %}</h2>
+    {% for occurrence in occurrence_list %}
+        {% ifchanged occurrence.start_time.day occurrence.start_time.month occurrence.start_time.year %}
+        {% if not forloop.first %}</ul>{% endif %}
+        <h3>{{ occurrence.start_time|date:"l, d F Y" }}</h3>
+        <ul>
+        {% endifchanged %}
+
+        <li>{{ occurrence.start_time|date:"H:i" }} - {{ occurrence.title }}</li>
+
+        {% if forloop.last %}
+        </ul>
+        {% endif %}
+    {% empty %}
+    <p>
+        {% trans "There are no upcoming events." %}
+    </p>
+    {% endfor %}
+</div>
+{% endblock main %}

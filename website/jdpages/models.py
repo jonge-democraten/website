@@ -37,6 +37,7 @@ class PageHeaderSettingsWidget(SiteRelated):
     type = models.CharField(max_length=2, choices=HEADER_MODE_CHOICES, default=PARENT)
     page = models.OneToOneField(Page, blank=False, null=True)
 
+
 class PageHeaderImageWidget(SiteRelated):
     name = models.CharField(max_length=1000, blank=True, null=False, default="")
     page = models.ForeignKey(Page, blank=False, null=True)

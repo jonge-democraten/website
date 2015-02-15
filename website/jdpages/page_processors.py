@@ -24,7 +24,6 @@ def add_header_images(request, page):
 
     page_header_settings = PageHeaderSettingsWidget.objects.get(page=page)
 
-    page_header = []
     if page_header_settings.type == PageHeaderSettingsWidget.SINGLE:
         page_header = get_first_page_header(page)
     if page_header_settings.type == PageHeaderSettingsWidget.PARENT:
@@ -35,9 +34,12 @@ def add_header_images(request, page):
             homepage = HomePage.objects.all()[0]
             page_header = get_first_page_header(homepage)
     if page_header_settings.type == PageHeaderSettingsWidget.NONE:
-        page_header = []
+        page_header = None
     if page_header_settings.type == PageHeaderSettingsWidget.RANDOM:
         page_header = get_random_page_header(page)
+
+    if page_header:
+        page_header.title = page.title
     return {"page_header": page_header}
 
 

@@ -6,6 +6,19 @@
 
 {% block main %}
 
+{% if page_header %}
+<div id="homeAreaDiv">
+    <div class="moduletable">
+        <div class="custom">
+            <div id="homeImageDiv"><img src="{{ page_header.image.url }}" border="0" width="610" height="290" /></div>
+            <div id="homeLogoDiv">
+                <div id="homeLogoText">Organisatie</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 <div id="homeDiv">
     <div class="item-page">
         {% editable page.homepage.content %}

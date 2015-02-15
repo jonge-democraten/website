@@ -1980,8 +1980,8 @@ div.jevtt_text{
 }
 
 #event-calendar {
-    max-width: 800px;
-    padding: 10px;
+    margin-top: 25px;
+    max-width: 810px;
 
 }
 p#calendar-error {

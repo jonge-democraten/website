@@ -4,6 +4,7 @@ logger = logging.getLogger(__name__)
 from django.conf import settings
 from django.contrib import admin
 from django.utils.functional import curry
+from django.forms.models import ModelForm
 
 from mezzanine.core.admin import SingletonAdmin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
@@ -22,15 +23,25 @@ from website.jdpages.models import SidebarBannerWidget
 from website.jdpages.models import SidebarTwitterWidget
 
 
+class AlwaysChangedModelForm(ModelForm):
+    def has_changed(self):
+        """ Should returns True if data differs from initial.
+        By always returning true even unchanged inlines will get validated and saved."""
+        return True
+
+
 class PageHeaderImageSettingsInline(admin.TabularInline):
     model = PageHeaderSettingsWidget
+    form = AlwaysChangedModelForm
     verbose_name = "Header settings"
     verbose_name_plural = "Header settings"
+
 
 class PageHeaderImageInline(TabularDynamicInlineAdmin):
     model = PageHeaderImageWidget
     verbose_name = "Header image"
-    verbose_name_plural = "Header images (random if more than 1)"
+    verbose_name_plural = "Header images"
+
 
 class ColumnElementWidgetInline(TabularDynamicInlineAdmin):
     """ """
@@ -72,7 +83,8 @@ class RightColumnElementWidgetInline(ColumnElementWidgetInline):
 
 
 class HomePageAdmin(PageAdmin):
-    inlines = [LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
+    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline,
+               LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
 
 
 class RichtTextPageAdmin(PageAdmin):

@@ -1989,3 +1989,6 @@ p#calendar-error {
     color: red;
     font-weight: bold;
 }
+p#calendar-loading {
+    display: none;
+}

@@ -10,6 +10,7 @@ jQuery(function($) {
             defaultDate: window.__calendar_default_date,
             editable: false,
             eventLimit: true,
+            timezone: "local",
             eventSources: [
                 {
                     url: window.__calendar_events_url,

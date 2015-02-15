@@ -1,11 +1,12 @@
 {% extends "base.html" %}
-{% load i18n mezzanine_tags staticfiles %}
+{% load i18n mezzanine_tags staticfiles fullcalendar %}
 
 {% block meta_title %}{% trans "Calendar" %}{% endblock %}
 
 {% block extra_js %}{{ block.super }}
 <script type="text/javascript" src="{% static "js/moment.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/fullcalendar.js" %}"></script>
+<script type="text/javascript" src="{% static "js/lang/fullcalendar-nl.js" %}"></script>
 
 <script type="text/javascript">
     window.__calendar_default_date = "{{ default_date }}";
@@ -24,6 +25,10 @@
 <div id="homeDiv">
 
     <h2>{% trans "Calendar" %}</h2>
+    <noscript>
+        {% show_agenda limit=20 %}
+    </noscript>
+
     <p id="calendar-error">
         {% trans "Hmm.. something went wrong with loading the events." %}
     </p>

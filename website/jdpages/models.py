@@ -21,6 +21,28 @@ from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.models import Page
 
 
+class PageHeaderSettingsWidget(SiteRelated):
+    PARENT = 'PA'
+    NONE = 'NO'
+    SINGLE = 'FB'
+    RANDOM = 'RA'
+
+    HEADER_MODE_CHOICES = (
+        (PARENT, 'Parent header'),
+        (NONE, 'No header'),
+        (SINGLE, 'Single image'),
+        (RANDOM, 'Random image'),
+    )
+
+    type = models.CharField(max_length=2, choices=HEADER_MODE_CHOICES, default=PARENT)
+    page = models.OneToOneField(Page, blank=False, null=True)
+
+class PageHeaderImageWidget(SiteRelated):
+    name = models.CharField(max_length=1000, blank=True, null=False, default="")
+    page = models.ForeignKey(Page, blank=False, null=True)
+    image = FileField(max_length=200, format="Image")
+
+
 class ColumnElement(SiteRelated):
     """
     A generic column element with reference to any model object.

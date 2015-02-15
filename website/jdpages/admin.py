@@ -8,17 +8,29 @@ from django.utils.functional import curry
 from mezzanine.core.admin import SingletonAdmin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
 from mezzanine.pages.admin import PageAdmin
+from mezzanine.pages.models import RichTextPage
 
 from website.jdpages.models import ColumnElement, ColumnElementWidget
 from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import HomePage
 from website.jdpages.models import HorizontalPosition
+from website.jdpages.models import PageHeaderImageWidget, PageHeaderSettingsWidget
 from website.jdpages.models import SocialMediaButton
 from website.jdpages.models import Sidebar
 from website.jdpages.models import SidebarBlogCategoryWidget
 from website.jdpages.models import SidebarBannerWidget
 from website.jdpages.models import SidebarTwitterWidget
 
+
+class PageHeaderImageSettingsInline(admin.TabularInline):
+    model = PageHeaderSettingsWidget
+    verbose_name = "Header settings"
+    verbose_name_plural = "Header settings"
+
+class PageHeaderImageInline(TabularDynamicInlineAdmin):
+    model = PageHeaderImageWidget
+    verbose_name = "Header image"
+    verbose_name_plural = "Header images (random if more than 1)"
 
 class ColumnElementWidgetInline(TabularDynamicInlineAdmin):
     """ """
@@ -61,6 +73,10 @@ class RightColumnElementWidgetInline(ColumnElementWidgetInline):
 
 class HomePageAdmin(PageAdmin):
     inlines = [LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
+
+
+class RichtTextPageAdmin(PageAdmin):
+    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline]
 
 
 class DocumentAdmin(admin.ModelAdmin):
@@ -123,6 +139,8 @@ class SocialMediaButtonGroupAdmin(admin.ModelAdmin):
     inlines = (SocialMediaButtonInline,)
 
 
+admin.site.unregister(RichTextPage)
+admin.site.register(RichTextPage, RichtTextPageAdmin)
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(Sidebar, SidebarAdmin)
 admin.site.register(SidebarBannerWidget, SidebarBannerWidgetAdmin)

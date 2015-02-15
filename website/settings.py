@@ -567,3 +567,13 @@ FILEBROWSER_EXTENSIONS = {
     'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p'],
     'Code': ['.html', '.py', '.js', '.css']
 }
+
+#
+# Full calendar settings
+# ======================
+
+FULLCALENDAR_SITE_COLORS = {
+    1: 'black',
+    2: 'red',
+    3: ('white', 'black', 'black'),
+}

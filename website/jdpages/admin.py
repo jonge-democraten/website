@@ -33,8 +33,8 @@ class AlwaysChangedModelForm(ModelForm):
 class PageHeaderImageSettingsInline(admin.TabularInline):
     model = PageHeaderSettingsWidget
     form = AlwaysChangedModelForm
-    verbose_name = "Header settings"
-    verbose_name_plural = "Header settings"
+    verbose_name = "Header image type"
+    verbose_name_plural = "Header image type"
 
 
 class PageHeaderImageInline(TabularDynamicInlineAdmin):

@@ -28,6 +28,7 @@ class Item(object):
     def is_social_media_button_group_item(self):
         return isinstance(self, SocialMediaButtonGroupItem)
 
+
 class BlogCategoryItem(Item):
     def __init__(self, blogcategory, max_posts):
         self.title = blogcategory.title

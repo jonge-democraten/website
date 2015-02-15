@@ -30,7 +30,7 @@ def add_header_images(request, page):
     if page_header_settings.type == PageHeaderSettingsWidget.PARENT:
         parent = page.parent
         if parent:
-            page_header = get_first_page_header(parent)
+            page_header = get_parent_page_header(parent)
         else:
             homepage = HomePage.objects.all()[0]
             page_header = get_first_page_header(homepage)
@@ -54,6 +54,21 @@ def get_first_page_header(page):
     page_header = PageHeaderImageWidget.objects.filter(page=page)
     if page_header.exists():
         return page_header[0]
+    else:
+        return None
+
+
+def get_parent_page_header(parent):
+    logger.warning("get parent header")
+    page_header_settings = PageHeaderSettingsWidget.objects.get(page=parent)
+    if page_header_settings.type == PageHeaderSettingsWidget.PARENT:
+        if parent.parent:
+            get_parent_page_header(parent.parent)
+        else:
+            homepage = HomePage.objects.all()[0]
+            return get_first_page_header(homepage)
+    elif page_header_settings.type != PageHeaderSettingsWidget.NONE:
+        return get_first_page_header(parent)
     else:
         return None
 

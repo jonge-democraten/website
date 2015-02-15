@@ -109,7 +109,7 @@ ALLOWED_HOSTS = []
 TIME_ZONE = None
 
 # If you set this to True, Django will use timezone-aware datetimes.
-USE_TZ = False
+USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html

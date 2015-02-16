@@ -269,6 +269,7 @@ INSTALLED_APPS = (
     # "mezzanine.mobile",
     "debug_toolbar",
     "janeus",
+    "hemres",
 )
 
 # List of processors used by RequestContext to populate the context.

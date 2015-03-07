@@ -61,7 +61,6 @@ def get_first_page_header(page):
 
 
 def get_parent_page_header(parent):
-    logger.warning("get parent header")
     page_header_settings = PageHeaderSettingsWidget.objects.get(page=parent)
     if page_header_settings.type == PageHeaderSettingsWidget.PARENT:
         if parent.parent:

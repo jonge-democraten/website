@@ -3,8 +3,10 @@ logger = logging.getLogger(__name__)
 
 from django.test import TestCase
 from django.test import Client
+from django.conf import settings
 
 from mezzanine.blog.models import BlogCategory
+from mezzanine.pages.models import RichTextPage
 
 from website.jdpages.models import ColumnElement
 from website.jdpages.models import Sidebar
@@ -69,3 +71,82 @@ class TestSidebar(TestCase):
         self.assertTrue(type(items[0]) == BlogCategorySidebarItem)
         self.assertTrue(type(items[1]) == TwitterSidebarItem)
         self.assertTrue(type(items[2]) == SocialMediaButtonGroupItem)
+
+
+class TestPage(TestCase):
+    """ Tests the basic page structure and admin. """
+    fixtures = ['test_pages.json']
+
+    def setUp(self):
+        self.client = Client()
+
+        # Needed during tests with DEBUG=False (the default)
+        # to prevent a TemplateDoesNotExist error of a filebrowser template.
+        # Not sure what goes wrong here, but seems to work fine in manual tests.
+        settings.TEMPLATE_DEBUG = False
+
+    def login(self):
+        return self.client.post('/admin/login/?next=/admin/', {'username': 'admin', 'password': 'admin'}, follow=True)
+
+    def test_edit_richtextpage_admin_view(self):
+        response = self.login()
+        self.assertEqual(response.status_code, 200)
+        richtextpages = RichTextPage.objects.all()
+        self.assertEqual(len(richtextpages), 6)
+        for page in richtextpages:
+            response = self.client.get('/admin/pages/richtextpage/' + str(page.id) + '/', follow=False)
+            self.assertEqual(response.status_code, 200)
+
+    def test_richtextpage_view(self):
+        self.login()
+        richtextpages = RichTextPage.objects.all()
+        for page in richtextpages:
+            response = self.client.get(page.get_absolute_url(), follow=True)
+            self.assertEqual(response.status_code, 200)
+
+
+class TestPageHeaderImage(TestCase):
+    fixtures = ['test_pages.json']
+
+    def setUp(self):
+        self.client = Client()
+
+        # Needed during tests with DEBUG=False (the default)
+        # to prevent a TemplateDoesNotExist error of a filebrowser template.
+        # Not sure what goes wrong here, but seems to work fine in manual tests.
+        settings.TEMPLATE_DEBUG = False
+
+    def login(self):
+        response = self.client.post('/admin/login/?next=/admin/', {'username': 'admin', 'password': 'admin'}, follow=True)
+        self.assertEqual(response.status_code, 200)
+        return response
+
+    def test_edit_header_admin_view(self):
+        self.login()
+        richtextpages = RichTextPage.objects.all()
+        for page in richtextpages:
+            response = self.client.get('/admin/pages/richtextpage/' + str(page.id) + '/', follow=True)
+            self.assertEqual(response.status_code, 200)
+
+    def test_header_page_view(self):
+        self.login()
+        richtextpages = RichTextPage.objects.all()
+        for page in richtextpages:
+            response = self.client.get(page.get_absolute_url(), follow=True)
+            self.assertEqual(response.status_code, 200)
+            page_header_image_wiget = response.context['page_header']
+            if page.id == 4:
+                self.assertEqual(page_header_image_wiget.page.id, 2)
+                self.assertEqual(str(page_header_image_wiget.image), 'uploads/site-1/example_header.jpg')
+            if page.id == 7:
+                self.assertEqual(page_header_image_wiget, None)
+            if page.id == 3:
+                self.assertEqual(page_header_image_wiget.page.id, 2)
+                self.assertEqual(str(page_header_image_wiget.image), 'uploads/site-1/example_header.jpg')
+            if page.id == 5:
+                self.assertEqual(page_header_image_wiget, None)
+            if page.id == 6:
+                self.assertEqual(page_header_image_wiget, None)
+            if page.id == 8:
+                self.assertEqual(page_header_image_wiget.page.id, 8)
+                self.assertEqual(str(page_header_image_wiget.image), 'uploads/site-1/example_header_subpage.jpg')

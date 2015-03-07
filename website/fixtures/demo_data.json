@@ -1985,6 +1985,71 @@
   "model": "jdpages.columnelementwidget"
 },
 {
+  "model": "jdpages.pageheadersettingswidget",
+  "fields": {
+    "site": 1,
+    "type": "FB",
+    "page": 17
+  },
+  "pk": 1
+},
+{
+  "model": "jdpages.pageheadersettingswidget",
+  "fields": {
+    "site": 1,
+    "type": "FB",
+    "page": 2
+  },
+  "pk": 2
+},
+{
+  "model": "jdpages.pageheadersettingswidget",
+  "fields": {
+    "site": 1,
+    "type": "PA",
+    "page": 15
+  },
+  "pk": 3
+},
+{
+  "model": "jdpages.pageheadersettingswidget",
+  "fields": {
+    "site": 1,
+    "type": "PA",
+    "page": 3
+  },
+  "pk": 4
+},
+{
+  "model": "jdpages.pageheadersettingswidget",
+  "fields": {
+    "site": 1,
+    "type": "PA",
+    "page": 1
+  },
+  "pk": 5
+},
+{
+  "model": "jdpages.pageheaderimagewidget",
+  "fields": {
+    "site": 1,
+    "page": 17,
+    "name": "Homepage header",
+    "image": "uploads/site-1/example_header.jpg"
+  },
+  "pk": 1
+},
+{
+  "model": "jdpages.pageheaderimagewidget",
+  "fields": {
+    "site": 1,
+    "page": 2,
+    "name": "Word actief header",
+    "image": "uploads/site-1/example_header_subpage.jpg"
+  },
+  "pk": 2
+},
+{
   "fields": {
     "site": 1
   },

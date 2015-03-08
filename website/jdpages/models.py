@@ -27,6 +27,7 @@ from mezzanine.pages.models import Page
 
 
 def validate_header_image(imagepath):
+    """ Validates the resolution of a header image. """
     absolute_imagepath = os.path.join(settings.MEDIA_ROOT, str(imagepath))
     im = Image.open(absolute_imagepath)
     width, height = im.size
@@ -35,6 +36,7 @@ def validate_header_image(imagepath):
 
 
 class PageHeaderSettingsWidget(SiteRelated):
+    """ Settings of a page header image. """
 
     PARENT = 'PA'
     NONE = 'NO'
@@ -53,7 +55,7 @@ class PageHeaderSettingsWidget(SiteRelated):
 
 
 class PageHeaderImageWidget(SiteRelated):
-
+    """ Page header image. """
     name = models.CharField(max_length=1000, blank=True, null=False, default="")
     page = models.ForeignKey(Page, blank=False, null=True)
     image = FileField(max_length=200, format="Image", validators=[validate_header_image])

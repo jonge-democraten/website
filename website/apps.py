@@ -15,3 +15,9 @@ class CoreConfig(AppConfig):
     name = 'website.core'
     label = 'jdcore'  # prevent name collision with mezzanine.core
     verbose_name = "Website Core"
+
+
+class EventsConfig(AppConfig):
+    name = "swingtime"
+    label = "events"
+    verbose_name = "Events"

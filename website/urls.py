@@ -61,6 +61,9 @@ urlpatterns += patterns(
 
     url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
 
+    # URLs for events
+    url("^events/", include("fullcalendar.urls")),
+
     # HOMEPAGE FOR A BLOG-ONLY SITE
     # -----------------------------
     # This pattern points the homepage to the blog post listing page,

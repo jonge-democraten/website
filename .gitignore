@@ -57,6 +57,9 @@ docs/_build/
 # PyBuilder
 target/
 
+# Vim swp files
+*.swp
+#
 # IDE
 .idea/
 

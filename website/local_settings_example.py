@@ -1,4 +1,5 @@
 DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 # SECURITY WARNING: Make this unique, and don't share it with anybody.
 SECRET_KEY = ''

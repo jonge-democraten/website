@@ -28,6 +28,7 @@ class Item(object):
     def is_social_media_button_group_item(self):
         return isinstance(self, SocialMediaButtonGroupItem)
 
+
 class BlogCategoryItem(Item):
     def __init__(self, blogcategory, max_posts):
         self.title = blogcategory.title
@@ -90,6 +91,7 @@ class SocialMediaButtonItem(Item):
     def mobile_icon_url(self):
         parts = self.icon_url.rsplit('/', 1)
         return "/mobile/".join(parts)
+
 
 class BannerSidebarItem(Item):
     def __init__(self, widget):

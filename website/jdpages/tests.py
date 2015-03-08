@@ -15,6 +15,24 @@ from website.jdpages.views import TwitterSidebarItem
 from website.jdpages.views import SocialMediaButtonGroupItem
 
 
+class TestCaseAdminLogin(TestCase):
+    """ Test case with client and login as admin function. """
+
+    def setUp(self):
+        # Needed during tests with DEBUG=False (the default)
+        # to prevent a TemplateDoesNotExist error of a filebrowser template.
+        # Not sure what goes wrong here, but seems to work fine in manual tests.
+        settings.TEMPLATE_DEBUG = False
+        self.client = Client()
+        self.login()
+
+    def login(self):
+        """ Login as admin. """
+        response = self.client.post('/admin/login/?next=/admin/', {'username': 'admin', 'password': 'admin'}, follow=True)
+        self.assertEqual(response.status_code, 200)
+        return response
+
+
 class TestColumnElement(TestCase):
     """ ColumnElement test case. """
 
@@ -42,21 +60,12 @@ class TestColumnElement(TestCase):
         self.assertEqual(ColumnElement.objects.count(), 0)
 
 
-class TestSidebar(TestCase):
+class TestSidebar(TestCaseAdminLogin):
     """ Tests the sidebar and its widgets. """
     fixtures = ['test_sidebar.json']
 
-    def setUp(self):
-        self.client = Client()
-
-    def login(self):
-        """ Login as admin. """
-        return self.client.post('/admin/login/?next=/admin/', {'username': 'admin', 'password': 'admin'}, follow=True)
-
     def test_edit_sidebar_admin_view(self):
         """ Tests whether the change sidebar admin view response is OK (200). """
-        response = self.login()
-        self.assertEqual(response.status_code, 200)
         sidebars = Sidebar.objects.all()
         self.assertEquals(sidebars.count(), 1)
         sidebar = sidebars[0]
@@ -73,24 +82,11 @@ class TestSidebar(TestCase):
         self.assertTrue(type(items[2]) == SocialMediaButtonGroupItem)
 
 
-class TestPage(TestCase):
+class TestPage(TestCaseAdminLogin):
     """ Tests the basic page structure and admin. """
     fixtures = ['test_pages.json']
 
-    def setUp(self):
-        self.client = Client()
-
-        # Needed during tests with DEBUG=False (the default)
-        # to prevent a TemplateDoesNotExist error of a filebrowser template.
-        # Not sure what goes wrong here, but seems to work fine in manual tests.
-        settings.TEMPLATE_DEBUG = False
-
-    def login(self):
-        return self.client.post('/admin/login/?next=/admin/', {'username': 'admin', 'password': 'admin'}, follow=True)
-
     def test_edit_richtextpage_admin_view(self):
-        response = self.login()
-        self.assertEqual(response.status_code, 200)
         richtextpages = RichTextPage.objects.all()
         self.assertEqual(len(richtextpages), 6)
         for page in richtextpages:
@@ -98,38 +94,23 @@ class TestPage(TestCase):
             self.assertEqual(response.status_code, 200)
 
     def test_richtextpage_view(self):
-        self.login()
         richtextpages = RichTextPage.objects.all()
         for page in richtextpages:
             response = self.client.get(page.get_absolute_url(), follow=True)
             self.assertEqual(response.status_code, 200)
 
 
-class TestPageHeaderImage(TestCase):
+class TestPageHeaderImage(TestCaseAdminLogin):
+    """ Tests the header image of pages. """
     fixtures = ['test_pages.json']
 
-    def setUp(self):
-        self.client = Client()
-
-        # Needed during tests with DEBUG=False (the default)
-        # to prevent a TemplateDoesNotExist error of a filebrowser template.
-        # Not sure what goes wrong here, but seems to work fine in manual tests.
-        settings.TEMPLATE_DEBUG = False
-
-    def login(self):
-        response = self.client.post('/admin/login/?next=/admin/', {'username': 'admin', 'password': 'admin'}, follow=True)
-        self.assertEqual(response.status_code, 200)
-        return response
-
     def test_edit_header_admin_view(self):
-        self.login()
         richtextpages = RichTextPage.objects.all()
         for page in richtextpages:
             response = self.client.get('/admin/pages/richtextpage/' + str(page.id) + '/', follow=True)
             self.assertEqual(response.status_code, 200)
 
     def test_header_page_view(self):
-        self.login()
         richtextpages = RichTextPage.objects.all()
         for page in richtextpages:
             response = self.client.get(page.get_absolute_url(), follow=True)

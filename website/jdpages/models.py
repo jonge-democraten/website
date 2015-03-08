@@ -3,16 +3,21 @@ Models that extend mezzanine Pages and add JD specific data.
 """
 
 from datetime import datetime
+import os
 from string import punctuation
 import logging
 logger = logging.getLogger(__name__)
 
+from PIL import Image
+
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_text
+from django.conf import settings
 
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.fields import FileField
@@ -21,7 +26,16 @@ from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.models import Page
 
 
+def validate_header_image(imagepath):
+    absolute_imagepath = os.path.join(settings.MEDIA_ROOT, str(imagepath))
+    im = Image.open(absolute_imagepath)
+    width, height = im.size
+    if width != 610 or height != 290:
+        raise ValidationError('Image should be 610 x 290 pixels, selected image is %i x %i. Please resize the image.' % (width, height))
+
+
 class PageHeaderSettingsWidget(SiteRelated):
+
     PARENT = 'PA'
     NONE = 'NO'
     SINGLE = 'FB'
@@ -39,9 +53,10 @@ class PageHeaderSettingsWidget(SiteRelated):
 
 
 class PageHeaderImageWidget(SiteRelated):
+
     name = models.CharField(max_length=1000, blank=True, null=False, default="")
     page = models.ForeignKey(Page, blank=False, null=True)
-    image = FileField(max_length=200, format="Image")
+    image = FileField(max_length=200, format="Image", validators=[validate_header_image])
 
 
 class ColumnElement(SiteRelated):

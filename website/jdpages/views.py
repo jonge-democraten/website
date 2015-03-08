@@ -92,6 +92,7 @@ class SocialMediaButtonItem(Item):
         parts = self.icon_url.rsplit('/', 1)
         return "/mobile/".join(parts)
 
+
 class BannerSidebarItem(Item):
     def __init__(self, widget):
         self.image_url = widget.image.url

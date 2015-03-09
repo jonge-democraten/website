@@ -6,16 +6,20 @@ Read the mezzanine documentation for more info.
 import logging
 logger = logging.getLogger(__name__)
 
+from mezzanine.blog.views import blog_post_list
 from mezzanine.pages.page_processors import processor_for
 from mezzanine.pages.models import RichTextPage
 
-from website.jdpages.models import HomePage, ColumnElementWidget
+from website.jdpages.models import BlogPage
+from website.jdpages.models import ColumnElementWidget
+from website.jdpages.models import HomePage
 from website.jdpages.models import HorizontalPosition
 from website.jdpages.models import PageHeaderSettingsWidget, PageHeaderImageWidget
 from website.jdpages.views import create_column_items
 
 
 @processor_for(HomePage)
+@processor_for(BlogPage)
 @processor_for(RichTextPage)
 def add_header_images(request, page):
     page_header_settings = PageHeaderSettingsWidget.objects.filter(page=page)
@@ -50,6 +54,15 @@ def add_column_elements(request, page):
     element_widgets_right = ColumnElementWidget.objects.filter(horizontal_position=HorizontalPosition.RIGHT).filter(page=page.homepage)
     column_right_items = create_column_items(element_widgets_right)
     return {"column_left_items": column_left_items, "column_right_items": column_right_items}
+
+
+@processor_for(BlogPage)
+def add_blogposts(request, page):
+    template_response = blog_post_list(request, category=page.blogpage.blog_category)
+    for post in template_response.context_data["blog_posts"]:
+        logger.warning(post.title)
+
+    return {"blog_posts": template_response.context_data["blog_posts"]}
 
 
 def get_first_page_header(page):

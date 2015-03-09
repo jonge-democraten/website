@@ -11,6 +11,7 @@ from mezzanine.core.admin import TabularDynamicInlineAdmin
 from mezzanine.pages.admin import PageAdmin
 from mezzanine.pages.models import RichTextPage
 
+from website.jdpages.models import BlogPage
 from website.jdpages.models import ColumnElement, ColumnElementWidget
 from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import HomePage
@@ -25,8 +26,11 @@ from website.jdpages.models import SidebarTwitterWidget
 
 class AlwaysChangedModelForm(ModelForm):
     def has_changed(self):
-        """ Should returns True if data differs from initial.
-        By always returning true even unchanged inlines will get validated and saved."""
+        """
+        Normally returns True if data differs from initial.
+        Unchanged inlines will get validated and saved by always returning True.
+        This is needed to create initial default models for inline fields.
+        """
         return True
 
 
@@ -103,6 +107,10 @@ class ColumnElementWidgetAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'column_element', 'page', 'max_items', 'horizontal_position', 'site')
 
 
+class BlogPageAdmin(PageAdmin):
+    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline]
+
+
 class DocumentInline(TabularDynamicInlineAdmin):
     model = Document
 
@@ -154,6 +162,7 @@ class SocialMediaButtonGroupAdmin(admin.ModelAdmin):
 admin.site.unregister(RichTextPage)
 admin.site.register(RichTextPage, RichtTextPageAdmin)
 admin.site.register(HomePage, HomePageAdmin)
+admin.site.register(BlogPage, BlogPageAdmin)
 admin.site.register(Sidebar, SidebarAdmin)
 admin.site.register(SidebarBannerWidget, SidebarBannerWidgetAdmin)
 admin.site.register(DocumentListing, DocumentListingAdmin)

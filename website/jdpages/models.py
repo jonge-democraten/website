@@ -129,7 +129,7 @@ class Sidebar(SiteRelated):
 class SidebarBlogCategoryWidget(SiteRelated):
     """
     Blog category widget that can be placed on a sidebar.
-    What it shows is determined by its corresponding view item.
+    Its corresponding view item contains the template information.
     """
     title = models.CharField(max_length=200, blank=False, null=False, default="")
     sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
@@ -265,6 +265,16 @@ class Document(Orderable):
                             for i, s in enumerate(name)])
             self.description = name
         super(Document, self).save(*args, **kwargs)
+
+
+class BlogPage(Page, RichText):
+
+    blog_categories = models.ManyToManyField(BlogCategory, null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Blog Page"
+        verbose_name_plural = "Blog Pages"
+
 
 
 def get_public_blogposts(blog_category):

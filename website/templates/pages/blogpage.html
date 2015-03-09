@@ -38,6 +38,10 @@
         {{ page.blogpage.content|richtext_filters|safe }}
         {% endeditable %}
 
+        {% for post in blog_posts %}
+            <a href="{{ post.get_absolute_url }}"><h2>{{ post.title }}</h2></a>
+        {% endfor %}
+
     </div>
 </div> <!-- homeDiv -->
 

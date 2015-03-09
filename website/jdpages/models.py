@@ -269,7 +269,7 @@ class Document(Orderable):
 
 class BlogPage(Page, RichText):
 
-    blog_categories = models.ManyToManyField(BlogCategory, null=True, blank=True)
+    blog_category = models.ForeignKey(BlogCategory, null=True, blank=True)
 
     class Meta:
         verbose_name = "Blog Page"

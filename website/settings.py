@@ -22,6 +22,8 @@ ADMIN_MENU_ORDER = (
                       "jdpages.Document", "jdpages.SidebarTwitter",)),
 )
 
+BLOG_POST_PER_PAGE = 2
+
 # A three item sequence, each containing a sequence of template tags
 # used to render the admin dashboard.
 #

@@ -1,25 +1,15 @@
 {% load staticfiles %}
 
 <div class="moduletableonline">
-    <h3>Jonge Democraten Online</h3>
-    <div class="customonline"  >
+    {% block social_media_heading %}<h3>Jonge Democraten Online</h3>{% endblock %}
+    <div class="customonline">
         {% spaceless %}
         <p>
-            <a href="http://www.facebook.com/group.php?gid=2225510846" title="Facebook Group" rel="external nofollow">
-                <img src="{% static "images/icons/facebook.png" %}" border="0" alt="Facebook Group" width="32" height="32"/>
+        {% for item in item.children %}
+            <a href="{{ item.url }}" title="{{ item.media_type }}" rel="external nofollow">
+                <img src="{% block item_icon_url %}{% static item.icon_url %}{% endblock %}" border="0" alt="{{ item.media_type }}" width="32" height="32"/>
             </a>   
-            
-            <a href="http://www.linkedin.com/groups?gid=1039477" title="Linked In Group" rel="external nofollow">
-                <img src="{% static "images/icons/linkedin.png" %}" border="0" alt="LinkedIn Group" width="32" height="32"/>
-            </a>
-            
-            <a href="http://twitter.com/jongedemocraten" title="Twitter" rel="external nofollow">
-                <img src="{% static "images/icons/twitter.png" %}" border="0" alt="Twitter" width="32" height="32" />
-            </a>
-            
-            <a href="http://youtube.com/jongedemocraten" title="YouTube" rel="external nofollow">
-                <img src="{% static "images/icons/youtube.png" %}" border="0" alt="YouTube" width="32" height="32" />
-            </a>
+        {% endfor %}
         </p>
         {% endspaceless %}
     </div>

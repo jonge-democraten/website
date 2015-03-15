@@ -2,15 +2,22 @@
 Models that extend mezzanine Pages and add JD specific data.
 """
 
+from datetime import datetime
+import os
+from string import punctuation
 import logging
 logger = logging.getLogger(__name__)
-from datetime import datetime
+
+from PIL import Image
 
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
+from django.utils.encoding import force_text
+from django.conf import settings
 
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.fields import FileField
@@ -18,14 +25,46 @@ from mezzanine.core.models import Orderable, RichText, SiteRelated
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.models import Page
 
-from website.utils.containers import BlogPostItem, HorizontalPosition
+
+def validate_header_image(imagepath):
+    """ Validates the resolution of a header image. """
+    absolute_imagepath = os.path.join(settings.MEDIA_ROOT, str(imagepath))
+    im = Image.open(absolute_imagepath)
+    width, height = im.size
+    if width != 610 or height != 290:
+        raise ValidationError('Image should be 610 x 290 pixels, selected image is %i x %i. Please resize the image.' % (width, height))
+
+
+class PageHeaderSettingsWidget(SiteRelated):
+    """ Settings of a page header image. """
+
+    PARENT = 'PA'
+    NONE = 'NO'
+    SINGLE = 'FB'
+    RANDOM = 'RA'
+
+    HEADER_MODE_CHOICES = (
+        (PARENT, 'Parent header'),
+        (NONE, 'No header'),
+        (SINGLE, 'Single image'),
+        (RANDOM, 'Random image'),
+    )
+
+    type = models.CharField(max_length=2, choices=HEADER_MODE_CHOICES, default=PARENT)
+    page = models.OneToOneField(Page, blank=False, null=True)
+
+
+class PageHeaderImageWidget(SiteRelated):
+    """ Page header image. """
+    name = models.CharField(max_length=1000, blank=True, null=False, default="")
+    page = models.ForeignKey(Page, blank=False, null=True)
+    image = FileField(max_length=200, format="Image", validators=[validate_header_image])
 
 
 class ColumnElement(SiteRelated):
     """
     A generic column element with reference to any model object.
-    Designed to be created on creation of supported objects, see signals.py.
-    Used by ColumnElementWidget to represent generic data in a html column.
+    Designed to be created when a supported model is created, see signals.py.
     The ColumnElementWidget contains the information on how to display the
     model object of this element.
     """
@@ -44,12 +83,22 @@ class ColumnElement(SiteRelated):
         verbose_name = 'Column element'
 
 
+class HorizontalPosition():
+    """ Horizontal position of a user interface object. """
+    LEFT = 'Left'
+    RIGHT = 'Right'
+    POSITION_CHOICES = (
+        (LEFT, 'Left'),
+        (RIGHT, 'Right'),
+    )
+
+
 class ColumnElementWidget(Orderable, SiteRelated):
-    """ 
+    """
     User interface object that shows some data in a html column on a page.
     Contains a reference to some generic data represented by ColumnElement.
     Contains a html item factory that generates the html for the supported
-    element types. Each element contains of one or more items. 
+    element types. Each element contains of one or more items.
     """
     title = models.CharField(max_length=1000, blank=True, null=False, default="")
     column_element = models.ForeignKey(ColumnElement, blank=False, null=True)
@@ -59,55 +108,123 @@ class ColumnElementWidget(Orderable, SiteRelated):
                                            choices=HorizontalPosition.POSITION_CHOICES,
                                            default=HorizontalPosition.RIGHT)
 
-    @staticmethod
-    def add_items_to_widgets(element_widgets):
-        """
-        Adds the items to this element
-        Contains a ContentType type switch which determines
-        element_widgets --- a list of ColumnElements
-        """
-        for widget in element_widgets:
-            if widget.column_element.content_type.model_class() == BlogCategory:
-                widget.items = []
-                blogposts = get_public_blogposts(widget.column_element.get_object())[:widget.max_items]
-                for post in blogposts:
-                    widget.items.append(BlogPostItem(post))
-        return element_widgets
-
     def __str__(self):
         return str(self.column_element) + ' widget'
 
     class Meta:
-        verbose_name = 'Column element widget'
+        verbose_name = 'Column widget'
 
 
-class ContentBase(models.Model):
-    """
-    Abstract model that provides extra content to a mezzanine page.
-    Can be re-used in Page mixins.
-    """
-    header_image = models.CharField(editable=True, max_length=1000,
-                                    blank=True, null=False, default="")
+class Sidebar(SiteRelated):
+    """ Site sidebar that can contain sidebar widgets. """
+
+    def __str__(self):
+        return "Sidebar"
 
     class Meta:
-        abstract = True
+        verbose_name = "Sidebar"
+        verbose_name_plural = "Sidebar"
 
 
-class JDPage(Page, RichText, ContentBase):
-    """ Page model for general richtext pages. """
+class SidebarBlogCategoryWidget(SiteRelated):
+    """
+    Blog category widget that can be placed on a sidebar.
+    What it shows is determined by its corresponding view item.
+    """
+    title = models.CharField(max_length=200, blank=False, null=False, default="")
+    sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
+    blog_category = models.ForeignKey(BlogCategory, blank=False, null=True)
+
+    def __str__(self):
+        return str(self.blog_category) + ' widget'
 
     class Meta:
-        verbose_name = 'JD Page'
+        verbose_name = 'Sidebar blogcategory'
 
 
-class HomePage(Page, RichText, ContentBase):
-    """ Page model for the site homepage. """
+class SidebarTwitterWidget(SiteRelated):
+    """
+    Twitter widget that can be placed on a sidebar.
+    The actual twitter settings can be found in the site settings.
+    This is just the element that can be placed on a sidebar.
+    """
+    active = models.BooleanField(default=False, blank=False, null=False)
+    sidebar = models.OneToOneField(Sidebar, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Sidebar twitter widget'
+
+
+class SidebarBannerWidget(models.Model):
+    """ Banner that can be placed on a sidebar """
+    title = models.CharField(max_length=200, blank=False, null=False, default="")
+    active = models.BooleanField(blank=False, null=False, default=True)
+    image = FileField(max_length=200, format="Image")
+    url = models.URLField(max_length=200, help_text='http://www.example.com')
+    description = models.CharField(max_length=200, blank=True, null=False, default="",
+                                   help_text='This is shown as tooltip and alt text.')
+
+    def __str__(self):
+        return str(self.title) + ' widget'
+
+    class Meta:
+        verbose_name = 'Global sidebar banner'
+
+
+class SocialMediaButton(Orderable, SiteRelated):
+    """ Social media button that can be placed on a sidebar. """
+
+    FACEBOOK = 'FB'
+    LINKEDIN = 'LI'
+    TWITTER = 'TW'
+    YOUTUBE = 'YT'
+
+    SOCIAL_MEDIA_CHOICES = (
+        (FACEBOOK, 'Facebook'),
+        (LINKEDIN, 'LinkedIn'),
+        (TWITTER, 'Twitter'),
+        (YOUTUBE, 'YouTube'),
+    )
+
+    SOCIAL_MEDIA_ICONS = {
+        FACEBOOK: 'facebook.png',
+        LINKEDIN: 'linkedin.png',
+        TWITTER: 'twitter.png',
+        YOUTUBE: 'youtube.png',
+    }
+
+    type = models.CharField(max_length=2, choices=SOCIAL_MEDIA_CHOICES)
+    url = models.URLField(max_length=200)
+    sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
+
+    def get_icon_url(self):
+        return 'images/icons/' + SocialMediaButton.SOCIAL_MEDIA_ICONS[str(self.type)]
+
+    def get_type_name(self):
+        for choice in SocialMediaButton.SOCIAL_MEDIA_CHOICES:
+            if choice[0] == self.type:
+                return choice[1]
+        assert False  # there should always be a name
+        return 'undefined type'
+
+    def __str__(self):
+        return str(type)
+
+    class Meta:
+        verbose_name = 'Social media button'
+
+
+class HomePage(Page, RichText):
+    """
+    Page model for the site homepage.
+    Only works properly when url points to the homepage '/' as url.
+    """
 
     class Meta:
         verbose_name = 'Homepage'
 
 
-class DocumentListing(Page, RichText, ContentBase):
+class DocumentListing(Page, RichText):
     """
     Page model for document listing pages.
     """
@@ -123,7 +240,7 @@ class Document(Orderable):
 
     document_listing = models.ForeignKey(DocumentListing, related_name="documents")
     document = FileField(_("Document"), max_length=200, format="Document")
-    description = models.CharField(_("Description"), max_length=1000)
+    description = models.CharField(_("Description"), max_length=1000, blank=True)
 
     def __str__(self):
         return self.description
@@ -132,8 +249,36 @@ class Document(Orderable):
         verbose_name = "Document"
         verbose_name_plural = "Documents"
 
+    def save(self, *args, **kwargs):
+        """
+        If no description is given when created, create one from the
+        file name.
+
+        Code copied from mezzanine.galleries.models.GalleryImage
+        """
+        if not self.description:
+            name = force_text(self.document.name)
+            name = name.rsplit("/", 1)[-1].rsplit(".", 1)[0]
+            name = name.replace("'", "")
+            name = "".join([c if c not in punctuation else " " for c in name])
+            name = "".join([s.upper() if i == 0 or name[i - 1] == " " else s
+                            for i, s in enumerate(name)])
+            self.description = name
+        super(Document, self).save(*args, **kwargs)
+
 
 def get_public_blogposts(blog_category):
     """ Returns all blogposts for a given category that are published and not expired. """
     blog_posts = BlogPost.objects.all().filter(categories=blog_category).filter(status=CONTENT_STATUS_PUBLISHED)
-    return blog_posts.filter(publish_date__lte=datetime.now()).filter(Q(expiry_date__isnull=True) | Q(expiry_date__gte=datetime.now()))
+    return blog_posts.filter(publish_date__lte=datetime.now()).filter(Q(expiry_date__isnull=True)
+                                                                      | Q(expiry_date__gte=datetime.now()))
+
+
+def create_columnelement_for_blogcategory(blog_category):
+    blog_category_element = ColumnElement()
+    blog_category_element.title = blog_category.title
+    blog_category_element.content_type = ContentType.objects.get_for_model(BlogCategory)
+    blog_category_element.object_id = blog_category.id
+    blog_category_element.save()  # this overrides the site_id, so we set it again below
+    blog_category_element.site_id = blog_category.site_id
+    blog_category_element.save(update_site=False)

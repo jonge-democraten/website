@@ -22,14 +22,14 @@ urlpatterns = i18n_patterns(
 )
 
 urlpatterns += patterns('',
-    url(r'^captcha/', include('captcha.urls')),
-)
+                        url(r'^captcha/', include('captcha.urls')),
+                        )
 
 # Disable commenting functionality by redirecting all comment
 # submissions to a page_not_found (i.e. a 404 page).
 urlpatterns += patterns('',
-    url(r'^comment/', page_not_found),
-)
+                        url(r'^comment/', page_not_found),
+                        )
 
 urlpatterns += patterns(
     '',
@@ -60,6 +60,9 @@ urlpatterns += patterns(
     # should be used if you want to customize the homepage's template.
 
     url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
+
+    # URLs for events
+    url("^events/", include("fullcalendar.urls")),
 
     # HOMEPAGE FOR A BLOG-ONLY SITE
     # -----------------------------

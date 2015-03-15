@@ -1526,7 +1526,7 @@ div.jevtt_text{
 	margin-left: .8em;
 	width: 14px;
 	height: 9px;
-	background-image: url('../images/mobile/arrow.png');
+	background-image: url('/static/images/icons/mobile/arrow.png');
 	background-repeat: no-repeat;
 }
 .mobile #upBtn span {
@@ -1534,7 +1534,7 @@ div.jevtt_text{
 	margin-right: .6em;
 	width: 18px;
 	height: 12px;
-	background-image: url('../images/mobile/arrow2.png');
+	background-image: url('/static/images/icons/mobile/arrow2.png');
 	background-repeat: no-repeat;
 }
 .mobile #contentDiv {
@@ -1977,4 +1977,18 @@ div.jevtt_text{
 	position: static;
 	top: 0;
 	color: #fff;
+}
+
+#event-calendar {
+    margin-top: 25px;
+    max-width: 810px;
+
+}
+p#calendar-error {
+    display: none;
+    color: red;
+    font-weight: bold;
+}
+p#calendar-loading {
+    display: none;
 }

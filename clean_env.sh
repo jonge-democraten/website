@@ -1,3 +1,3 @@
 #!/bin/sh
-rm -r env
+rm -rf env
 rm website/dev.db

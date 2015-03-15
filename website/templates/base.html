@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 <meta name="description" content="{% block meta_description %}{% endblock %}">
-<title>{% if settings.SITE_TITLE %}{{ settings.SITE_TITLE }} - {% endif %}{% block meta_title %}{% endblock %}</title>
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TAGLINE %} - {{ settings.SITE_TAGLINE }}{% endif %}</title>
 <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
 {% ifinstalled mezzanine.blog %}
@@ -46,40 +46,28 @@
 <div id="outerDiv">
     <div id="innerDiv">
         <div id="headerDiv">
-        {% include "elements/header.html" %}
+            {% include "elements/header.html" %}
 
-        {% page_menu "pages/menus/jdmenu.html" %}
+            <div id="menuDiv">
+                {% page_menu "pages/menus/jdmenu.html" %}
+            </div> <!-- menuDiv -->
         </div> <!-- headerDiv -->
 
         <div id="contentDiv" class="clearing">
+
             <div id="contentLeftDiv" class="clearing">
                 {% block main %}{% endblock %}               
             </div> <!-- contentLeftDiv -->
             
             <div id="contentRightDiv">
-            
-                <div class="moduletablenieuws">
-                    <h3>JD Blog</h3>
-                          
-                    <div class="mod_placeherenieuws">
-                        <div style="overflow:auto;" class="mod_placehere_leading even">
-                            <div class="placehere">
-                                <h2 class="contentheading">
-                                    <a href="{{ sidebar_blogpost.url }}" class="contentpagetitle">{{ sidebar_blogpost.title }}</a> 
-                                </h2>
-                                <p class="buttonheading"></p>
-                                {{ sidebar_blogpost.content|truncatechars:200 }}       
-                                <p class="readmore"><a href="{{ sidebar_blogpost.url }}"> Lees meer...</a></p>
-                            </div>
-                        </div>
-                    </div>    
-                </div>
                 
-                {% include "elements/twitter_feed.html" %}
-                
-                {% include "elements/word_lid_banner.html" %}
-                
-                {% include "elements/social_media_icons.html" %}
+                {% for item in sidebar_items %}
+                    <div class="moduletable">
+                        {% with template_name=item.get_template_name %}
+                            {% include "elements/"|add:template_name %}
+                        {% endwith %}
+                    </div>
+                {% endfor %}
                 
             </div> <!-- contentRightDiv -->
             

@@ -16,14 +16,26 @@
 {% endmetablock %}{% endblock %}
 
 {% block main %}
+{% if page_header %}
+<div id="homeAreaDiv">
+    <div class="moduletable">
+        <div class="custom">
+            <div id="homeImageDiv"><img src="{{ page_header.image.url }}" border="0" width="610" height="290" /></div>
+            <div id="homeLogoDiv">
+                <div id="homeLogoText">{{ page_header.title }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
 
 <div id="homeDiv">
     <div class="item-page">
     
         <h2><a href="{{ page.get_absolute_url }}">{% editable page.title %}{{ page.title }}{% endeditable %}</a></h2>
         
-        {% editable page.jdpage.content %}
-        {{ page.jdpage.content|richtext_filters|safe }}
+        {% editable page.richtextpage.content %}
+        {{ page.richtextpage.content|richtext_filters|safe }}
         {% endeditable %}
         
     </div>

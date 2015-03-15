@@ -6,33 +6,36 @@
 
 {% block main %}
 
+{% if page_header %}
+<div id="homeAreaDiv">
+    <div class="moduletable">
+        <div class="custom">
+            <div id="homeImageDiv"><img src="{{ page_header.image.url }}" border="0" width="610" height="290" /></div>
+            <div id="homeLogoDiv">
+                <div id="homeLogoText">{{ page_header.title }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 <div id="homeDiv">
     <div class="item-page">
         {% editable page.homepage.content %}
         {{ page.homepage.content|richtext_filters|safe }}
         {% endeditable %}
-    
     </div>
-</div> <!-- homeDiv -->
-
+</div>
 
 <div id="homeLeftDiv">
-{% for element in column_elements_left %}
-    <div class="moduletable">
-        <h3>{{ element.title }} </h3>
-        <div class="mod_placehere">
-            <div style="overflow:auto;" class="mod_placehere_leading even">
-                <div class="placehere">
-                {% for item in element.items %}
-                    {% with template_name=item.get_template_name|stringformat:"s" %}
-                        {% include "elements/"|add:template_name %}
-                    {% endwith %}
-                {% endfor %}
-                </div>        
-            </div>
-        </div> 
-    </div>
-{% endfor %}
+
+    {% for item in column_left_items %}
+        <div class="moduletable">
+            {% with template_name=item.get_template_name|stringformat:"s" %}
+                {% include "elements/"|add:template_name %}
+            {% endwith %}
+        </div>
+    {% endfor %}
     
     <div class="moduletable">
         <div class="custom"  >
@@ -45,23 +48,15 @@
 </div>
 
 <div id="homeRightDiv">
-    
-{% for element in column_elements_right %}
-    <div class="moduletable">
-        <h3>{{ element.title }} </h3>
-        <div class="mod_placehere">
-            <div style="overflow:auto;" class="mod_placehere_leading even">
-                <div class="placehere">
-                {% for item in element.items %}
-                    {% with template_name=item.get_template_name|stringformat:"s" %}
-                        {% include "elements/"|add:template_name %}
-                    {% endwith %}
-                {% endfor %}
-                </div>        
-            </div>
-        </div> 
-    </div>
-{% endfor %}
+
+    {% for item in column_right_items %}
+        <div class="moduletable">
+            {% with template_name=item.get_template_name|stringformat:"s" %}
+                {% include "elements/"|add:template_name %}
+            {% endwith %}
+        </div>
+    {% endfor %}
+
     <div class="moduletable">
         <div class="custom"  >
             <p><a href="/organisatie/mededelingen">» Meer Mededelingen</a></p>

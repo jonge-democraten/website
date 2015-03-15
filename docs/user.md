@@ -4,8 +4,8 @@
 
 Welkom
 
-Uitleg: toegang specificeren, hoe geraak je als AS op de achterkant van de site. 
-Uitleg: duidelijk onderscheid tussen MijnJD en Wolk.
+- toegang specificeren, hoe geraak je als AS op de achterkant van de site. 
+- duidelijk onderscheid tussen MijnJD en Wolk.
 
 
 ## Managing content
@@ -65,6 +65,50 @@ Een afbeelding op nemen in de tekst kan op twee manieren:
 
 2. Om te zorgen dat je afbeelding in de toekomst wel beschikbaar blijft kan je de afbeelding uploaden naar de Media Library (en dus onze eigen server). Wanneer dit is gedaan kan je via Insert/Edit Image (icoontje in de tekstverwerkersbalk) een plaatje uploaden vanuit de Media Library. Naast het veld van Image URL zit de 'browse' knop om naar de Media Library te gaan.
 
+<strong>PDF bestanden</strong>
+
+PDF bestanden zoals het HR en Statuten kan je als volgt insluiten (embedden) op een pagina.
+
+1. Upload het PDF-bestand in de Media Library
+2. Open in de backend de pagina waar je het PDF wilt insluiten
+3. Ga naar het venster 'Content' en klik in de taakbalk op het HTML icoon (zevende van links)
+4. Voer in het HTML venster de onderstaande objectcode in:
+
+```<object data="/static/media/path/bestandsnaam.pdf" width="100%" height=600 type="application/pdf">Oeps, foutje. Hier hoort een document te staan</object>```
+
+5. Waar in de bovenstaande code nu "/static/media/path/bestandsnaam.pdf" staat dien je de locatiecode (tag) van het pdf-bestand te plaatsen. Dit doe je als volgt: 
+	1. ga terug naar Media Library
+	2. klik op de bestandsnaam van het desbetreffende pdf-bestand
+	3. Het pdf-bestand wordt nu geopend in een nieuw venster, in de adresbalk zie je nu de locatiecode van het pdf-bestand staan.
+	4. Kopieer deze locatiecode, let wel, de code begint met /static/media/ en eindigt met .pdf . Alles wat hiervoor of achter staat is niet noodzakelijk.
+6. Plak de locatiecode op de plek waar nu /static/media/path/bestandsnaam.pdf staat. Zorg dat de code tussen de aanhalingstekens blijft staan.
+
+
+Dit is een vrij geavanceerd proces. Ga niet zomaar rommelen aan de code. Wanneer je de locatiecode niet correct invoegt komt de volgende melding op de site te staan: 'Oeps, foutje. Hier hoort een document te staan'.
+
+
+<strong>Headers</strong>
+
+Op de HomePage and elke RichTextPage kunnen één of meerdere headers worden geplaatst. 
+
+Een header image kan je wijzigen via Admin-pagina > Content > Pages 
+
+Onderaan aan de pagina kan je bij 'Header Images' een afbeelding invoegen. 
+Header Images > klik op het diagonale pijltje (linkericoon) de afbeelding aan die je als header wilt.
+Let wel: Een header image dient 610 x 290 pixels als vereiste te hebben. Is dit niet het geval kan je de afbeelding niet invoeren.
+
+Onder 'Header image type' kun je aangeven welk type header je wilt. 
+
+'Parent header' --> de header die het hoogst in de hierarchie (HomePage) staat wordt hier weergegeven
+'No header' -- > de header wordt niet afgebeeld op de pagina
+'Single image' -- > de bovenste ingevoerde image wordt als header aangegeven
+'Random image' --> indien je meerdere header images hebt, kun je deze laten rouleren
+
+De Header image verwijderen --> klik op het kruisje (plaatje verdwijnt niet automatisch)
+
+Klik op save om je wijzigen definitief te maken. 
+
+
 <strong>Video's</strong>
 
 Filmpjes uploaden via Youtube (maar ook via andere sites) is geen probleem. 
@@ -123,13 +167,21 @@ Onder de tab 'Meta data' is het mogelijk om nog tags toe te voegen onder de blog
 Tot slot, klik op 'Save'
 
 <strong>Blog bewerken/verwijderen</strong>
+
 Nadat een blog is ingevoerd kan je het als AS nog bewerken. Dit doe je door onder Content > Blog posts in het overzicht op de desbetreffende blog te klikken. Je komt nu weer in het specificatie venster wat je ook zag toen je de blog aanmaakte. Je kan hier veranderingen doorvoeren. Klik vervolgens wel op 'Save'. 
 
 Een blog kan je verwijderen uit het overzicht door er een vinkje voor te zetten en in het drop-down-menu erboven (waar nu nog ------ staat) op 'delete selected Blog posts' te klikken. 
 
 ### Events
 
-Coming soon
+Via de admin-pagina, onder Events > events, is het mogelijk om evenement aan te maken. 
+Klik rechtsboven op 'Add event', vul vervolgens in:
+Title: Naam van het evenement
+Status: 'Published' is automatisch aangevinkt
+Published from/Expires on: Hier kan je aangeven wanneer het evenement zichtbaar moet zijn op de website. 
+Content: Tekst over het evenement
+ 
+Onderaan staat 'Occurrences', hier vul je de datum, aanvangstijd (start time) en datum, sluitingstijd (end time) in. Datumnotatie is jjjj-mm-dd. Gebruik de kekke agenda- en klokicoontjes om datum en tijd in te voeren. Onder Description (optioneel) kan je een beschrijving geven van het evenement voor je eigen administratie. Deze beschrijving is niet zichtbaar op de frontend. 
 
 ### Newsletters
 

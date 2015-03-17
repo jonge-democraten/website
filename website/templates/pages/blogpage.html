@@ -21,52 +21,62 @@
         {% include "elements/page_header_image.html" %}
     {% endif %}
 
-    {% if page and page.get_content_model.content %}
-        {% editable page.get_content_model.content %}
-        {{ page.get_content_model.content|richtext_filters|safe }}
-        {% endeditable %}
-    {% endif %}
+<div id="homeDiv">
+    <div class="blog">
 
-    {% for blog_post in blog_posts.object_list %}
-        {% block blog_post_list_post_title %}
-        {% editable blog_post.title %}
-        <h2>
-            <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
-        </h2>
-        {% endeditable %}
-        {% endblock %}
-
-        {% block blog_post_list_post_metainfo %}
-        {% editable blog_post.publish_date %}
-        <h6 class="post-meta">
-            {% trans "Posted by" %}:
-
-            {% with blog_post.user as author %}
-                <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
-            {% endwith %}
-
-            {% with blog_post.categories.all as categories %}
-            {% if categories %}
-                {% trans "in" %}
-                {% for category in categories %}
-                    <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
-                {% endfor %}
-            {% endif %}
-            {% endwith %}
-
-            {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
-        </h6>
-        {% endeditable %}
-        {% endblock %}
-
-        {% block blog_post_list_post_content %}
-            {% editable blog_post.content %}
-            {{ blog_post.content|safe }}
+        {% if page and page.get_content_model.content %}
+            {% editable page.get_content_model.content %}
+            {{ page.get_content_model.content|richtext_filters|safe }}
             {% endeditable %}
-        {% endblock %}
+        {% endif %}
 
-    {% endfor %}
+        {% for blog_post in blog_posts.object_list %}
+            {% block blog_post_list_post_title %}
+            {% editable blog_post.title %}
+            <h2>
+                <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+            </h2>
+            {% endeditable %}
+            {% endblock %}
 
-    <h3>{% pagination_for blog_posts %}</h3>
+            {% block blog_post_list_post_metainfo %}
+            {% editable blog_post.publish_date %}
+            <h6 class="post-meta">
+                {% trans "Posted by" %}:
+
+                {% with blog_post.user as author %}
+                    <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
+                {% endwith %}
+
+                {% with blog_post.categories.all as categories %}
+                {% if categories %}
+                    {% trans "in" %}
+                    {% for category in categories %}
+                        <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+                {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
+            </h6>
+            {% endeditable %}
+            {% endblock %}
+
+            {% block blog_post_list_post_content %}
+                {% editable blog_post.content %}
+                {{ blog_post.content|safe }}
+                {% endeditable %}
+            {% endblock %}
+
+            <div class="item-separator"></div>
+
+        {% endfor %}
+
+        <div class="pagination">
+            <h3>{% pagination_for blog_posts %}</h3>
+        </div>
+
+    </div>
+</div>
 
 {% endblock %}

@@ -47,10 +47,7 @@ def add_column_elements(request, page):
 
 @processor_for(BlogPage)
 def add_blogposts(request, page):
-    template_response = blog_post_list(request, category=page.blogpage.blog_category)
-    for post in template_response.context_data["blog_posts"]:
-        logger.warning(post.title)
-
+    template_response = blog_post_list(request, category=page.blogpage.blog_category.slug)
     return {"blog_posts": template_response.context_data["blog_posts"]}
 
 

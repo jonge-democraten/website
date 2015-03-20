@@ -1992,3 +1992,16 @@ p#calendar-error {
 p#calendar-loading {
     display: none;
 }
+
+p#logosubtitle {
+    position: absolute;
+    top: 58px;
+    left: 87px;
+    width: 120px;
+    padding: 0px;
+    background-color: #fff;
+    font-weight: normal;
+    font-size: 14.5px;
+    letter-spacing: 2px;
+    color: grey;
+}

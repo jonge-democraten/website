@@ -12,6 +12,11 @@ from website.jdpages.views import SocialMediaButtonGroupItem
 from website.jdpages.views import TwitterSidebarItem
 
 
+def site_properties(request):
+    site_subtitle = 'Amsterdam'
+    return {"site_subtitle": site_subtitle}
+
+
 def sidebar(request):
     """
     Adds the sidebar elements to the context.

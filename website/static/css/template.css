@@ -1992,3 +1992,9 @@ p#calendar-error {
 p#calendar-loading {
     display: none;
 }
+
+#event-map {
+    display: none; /* Hide by default, will be restored to block by javascript */
+    height: 180px;
+    max-width: 810px;
+}

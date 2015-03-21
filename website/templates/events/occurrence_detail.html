@@ -3,6 +3,18 @@
 
 {% block meta_title %}{{ occurrence.title }}{% endblock %}
 
+{% block extra_js %}{{ block.super }}
+<script type="text/javascript" src="{% static "js/leaflet.js" %}"></script>
+<script type="text/javascript">
+L.Icon.Default.imagePath = "{% static "images/leaflet/" %}";
+</script>
+<script type="text/javascript" src="{% static "js/events.js" %}"></script>
+{% endblock %}l
+
+{% block extra_css %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static "css/leaflet.css" %}" />
+{% endblock %}
+
 {% block main %}
 <div id="homeAreaDiv">
     <div id="homeImageDiv"><img src="{% static "images/congres_tafels.jpg" %}" alt="" /></div>
@@ -19,10 +31,14 @@
     {% editable occurrence.start_time occurrence.end_time occurrence.location %}
     <p>
         <strong>{% trans "When" %}:</strong> {% occurrence_duration occurrence %}<br />
-        <strong>{% trans "Where" %}:</strong> {% occurrence.location %}<br />
+        {% if occurrence.location %}
+        <strong>{% trans "Where" %}:</strong> <span id="occurrence-location">{{ occurrence.location }}</span><br />
+        {% endif %}
         <strong>{% trans "Category" %}:</strong> {{ occurrence.event.event_category }}
     </p>
     {% endeditable %}
+
+    <div id="event-map"></div>
 
     {% editable occurrence.event.content %}
     {{ occurrence.event.content|richtext_filters|safe }}

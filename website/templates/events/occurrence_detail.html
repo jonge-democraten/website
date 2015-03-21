@@ -16,9 +16,10 @@
     {% endif %}
     <hr />
 
-    {% editable occurrence.start_time occurrence.end_time occurrence.event.event_category %}
+    {% editable occurrence.start_time occurrence.end_time occurrence.location %}
     <p>
         <strong>{% trans "When" %}:</strong> {% occurrence_duration occurrence %}<br />
+        <strong>{% trans "Where" %}:</strong> {% occurrence.location %}<br />
         <strong>{% trans "Category" %}:</strong> {{ occurrence.event.event_category }}
     </p>
     {% endeditable %}

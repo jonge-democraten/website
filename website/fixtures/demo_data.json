@@ -2194,786 +2194,813 @@
 },
 {
   "fields": {
-    "site": 1,
     "name": "RATINGS_ACCOUNT_REQUIRED",
+    "site": 1,
     "value": "False"
   },
-  "pk": 1,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 1
 },
 {
   "fields": {
-    "site": 1,
     "name": "COMMENTS_DISQUS_API_SECRET_KEY",
+    "site": 1,
     "value": ""
   },
-  "pk": 2,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 2
 },
 {
   "fields": {
-    "site": 1,
     "name": "COMMENTS_REMOVED_VISIBLE",
+    "site": 1,
     "value": "True"
   },
-  "pk": 3,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 3
 },
 {
   "fields": {
-    "site": 1,
     "name": "SSL_FORCE_HOST",
+    "site": 1,
     "value": ""
   },
-  "pk": 4,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 4
 },
 {
   "fields": {
-    "site": 1,
     "name": "COMMENTS_DISQUS_API_PUBLIC_KEY",
+    "site": 1,
     "value": ""
   },
-  "pk": 5,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 5
 },
 {
   "fields": {
-    "site": 1,
     "name": "COMMENTS_NOTIFICATION_EMAILS",
+    "site": 1,
     "value": ""
   },
-  "pk": 6,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 6
 },
 {
   "fields": {
-    "site": 1,
     "name": "TWITTER_ACCESS_TOKEN_SECRET",
+    "site": 1,
     "value": ""
   },
-  "pk": 7,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 7
 },
 {
   "fields": {
-    "site": 1,
     "name": "COMMENTS_NUM_LATEST",
+    "site": 1,
     "value": "5"
   },
-  "pk": 8,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 8
 },
 {
   "fields": {
-    "site": 1,
     "name": "GOOGLE_ANALYTICS_ID",
+    "site": 1,
     "value": ""
   },
-  "pk": 9,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 9
 },
 {
   "fields": {
-    "site": 1,
     "name": "TWITTER_DEFAULT_QUERY",
+    "site": 1,
     "value": "from:stephen_mcd mezzanine"
   },
-  "pk": 10,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 10
 },
 {
   "fields": {
-    "site": 1,
     "name": "ADMIN_MENU_COLLAPSED",
+    "site": 1,
     "value": "False"
   },
-  "pk": 11,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 11
 },
 {
   "fields": {
-    "site": 1,
     "name": "MAX_PAGING_LINKS",
+    "site": 1,
     "value": "10"
   },
-  "pk": 12,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 12
 },
 {
   "fields": {
-    "site": 1,
     "name": "TAG_CLOUD_SIZES",
+    "site": 1,
     "value": "4"
   },
-  "pk": 13,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 13
 },
 {
   "fields": {
-    "site": 1,
     "name": "RICHTEXT_FILTER_LEVEL",
+    "site": 1,
     "value": "1"
   },
-  "pk": 14,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 14
 },
 {
   "fields": {
-    "site": 1,
     "name": "COMMENTS_ACCOUNT_REQUIRED",
+    "site": 1,
     "value": "False"
   },
-  "pk": 15,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 15
 },
 {
   "fields": {
-    "site": 1,
     "name": "TWITTER_CONSUMER_SECRET",
+    "site": 1,
     "value": ""
   },
-  "pk": 16,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 16
 },
 {
   "fields": {
-    "site": 1,
     "name": "SITE_TAGLINE",
+    "site": 1,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 17
+},
+{
+  "fields": {
+    "name": "BLOG_POST_PER_PAGE",
+    "site": 1,
+    "value": "5"
+  },
+  "model": "conf.setting",
+  "pk": 18
+},
+{
+  "fields": {
+    "name": "BITLY_ACCESS_TOKEN",
+    "site": 1,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 19
+},
+{
+  "fields": {
+    "name": "TWITTER_DEFAULT_NUM_TWEETS",
+    "site": 1,
+    "value": "3"
+  },
+  "model": "conf.setting",
+  "pk": 20
+},
+{
+  "fields": {
+    "name": "TWITTER_DEFAULT_QUERY_TYPE",
+    "site": 1,
+    "value": "search"
+  },
+  "model": "conf.setting",
+  "pk": 21
+},
+{
+  "fields": {
+    "name": "TWITTER_ACCESS_TOKEN_KEY",
+    "site": 1,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 22
+},
+{
+  "fields": {
+    "name": "COMMENTS_DEFAULT_APPROVED",
+    "site": 1,
+    "value": "True"
+  },
+  "model": "conf.setting",
+  "pk": 23
+},
+{
+  "fields": {
+    "name": "TWITTER_CONSUMER_KEY",
+    "site": 1,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 24
+},
+{
+  "fields": {
+    "name": "SSL_ENABLED",
+    "site": 1,
+    "value": "False"
+  },
+  "model": "conf.setting",
+  "pk": 25
+},
+{
+  "fields": {
+    "name": "COMMENTS_UNAPPROVED_VISIBLE",
+    "site": 1,
+    "value": "True"
+  },
+  "model": "conf.setting",
+  "pk": 26
+},
+{
+  "fields": {
+    "name": "COMMENTS_DISQUS_SHORTNAME",
+    "site": 1,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 27
+},
+{
+  "fields": {
+    "name": "SEARCH_PER_PAGE",
+    "site": 1,
+    "value": "10"
+  },
+  "model": "conf.setting",
+  "pk": 28
+},
+{
+  "fields": {
+    "name": "AKISMET_API_KEY",
+    "site": 1,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 29
+},
+{
+  "fields": {
+    "name": "RATINGS_ACCOUNT_REQUIRED",
+    "site": 2,
+    "value": "False"
+  },
+  "model": "conf.setting",
+  "pk": 30
+},
+{
+  "fields": {
+    "name": "COMMENTS_DISQUS_API_SECRET_KEY",
+    "site": 2,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 31
+},
+{
+  "fields": {
+    "name": "COMMENTS_REMOVED_VISIBLE",
+    "site": 2,
+    "value": "True"
+  },
+  "model": "conf.setting",
+  "pk": 32
+},
+{
+  "fields": {
+    "name": "SSL_FORCE_HOST",
+    "site": 2,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 33
+},
+{
+  "fields": {
+    "name": "COMMENTS_DISQUS_API_PUBLIC_KEY",
+    "site": 2,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 34
+},
+{
+  "fields": {
+    "name": "COMMENTS_NOTIFICATION_EMAILS",
+    "site": 2,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 35
+},
+{
+  "fields": {
+    "name": "TWITTER_ACCESS_TOKEN_SECRET",
+    "site": 2,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 36
+},
+{
+  "fields": {
+    "name": "COMMENTS_NUM_LATEST",
+    "site": 2,
+    "value": "5"
+  },
+  "model": "conf.setting",
+  "pk": 37
+},
+{
+  "fields": {
+    "name": "GOOGLE_ANALYTICS_ID",
+    "site": 2,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 38
+},
+{
+  "fields": {
+    "name": "TWITTER_DEFAULT_QUERY",
+    "site": 2,
+    "value": "from:stephen_mcd mezzanine"
+  },
+  "model": "conf.setting",
+  "pk": 39
+},
+{
+  "fields": {
+    "name": "ADMIN_MENU_COLLAPSED",
+    "site": 2,
+    "value": "False"
+  },
+  "model": "conf.setting",
+  "pk": 40
+},
+{
+  "fields": {
+    "name": "MAX_PAGING_LINKS",
+    "site": 2,
+    "value": "10"
+  },
+  "model": "conf.setting",
+  "pk": 41
+},
+{
+  "fields": {
+    "name": "TAG_CLOUD_SIZES",
+    "site": 2,
+    "value": "4"
+  },
+  "model": "conf.setting",
+  "pk": 42
+},
+{
+  "fields": {
+    "name": "RICHTEXT_FILTER_LEVEL",
+    "site": 2,
+    "value": "1"
+  },
+  "model": "conf.setting",
+  "pk": 43
+},
+{
+  "fields": {
+    "name": "COMMENTS_ACCOUNT_REQUIRED",
+    "site": 2,
+    "value": "False"
+  },
+  "model": "conf.setting",
+  "pk": 44
+},
+{
+  "fields": {
+    "name": "TWITTER_CONSUMER_SECRET",
+    "site": 2,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 45
+},
+{
+  "fields": {
+    "name": "SITE_TAGLINE",
+    "site": 2,
+    "value": "Amsterdam"
+  },
+  "model": "conf.setting",
+  "pk": 46
+},
+{
+  "fields": {
+    "name": "BLOG_POST_PER_PAGE",
+    "site": 2,
+    "value": "5"
+  },
+  "model": "conf.setting",
+  "pk": 47
+},
+{
+  "fields": {
+    "name": "BITLY_ACCESS_TOKEN",
+    "site": 2,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 48
+},
+{
+  "fields": {
+    "name": "TWITTER_DEFAULT_NUM_TWEETS",
+    "site": 2,
+    "value": "3"
+  },
+  "model": "conf.setting",
+  "pk": 49
+},
+{
+  "fields": {
+    "name": "TWITTER_DEFAULT_QUERY_TYPE",
+    "site": 2,
+    "value": "search"
+  },
+  "model": "conf.setting",
+  "pk": 50
+},
+{
+  "fields": {
+    "name": "TWITTER_ACCESS_TOKEN_KEY",
+    "site": 2,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 51
+},
+{
+  "fields": {
+    "name": "COMMENTS_DEFAULT_APPROVED",
+    "site": 2,
+    "value": "True"
+  },
+  "model": "conf.setting",
+  "pk": 52
+},
+{
+  "fields": {
+    "name": "TWITTER_CONSUMER_KEY",
+    "site": 2,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 53
+},
+{
+  "fields": {
+    "name": "SSL_ENABLED",
+    "site": 2,
+    "value": "False"
+  },
+  "model": "conf.setting",
+  "pk": 54
+},
+{
+  "fields": {
+    "name": "COMMENTS_UNAPPROVED_VISIBLE",
+    "site": 2,
+    "value": "True"
+  },
+  "model": "conf.setting",
+  "pk": 55
+},
+{
+  "fields": {
+    "name": "COMMENTS_DISQUS_SHORTNAME",
+    "site": 2,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 56
+},
+{
+  "fields": {
+    "name": "SEARCH_PER_PAGE",
+    "site": 2,
+    "value": "10"
+  },
+  "model": "conf.setting",
+  "pk": 57
+},
+{
+  "fields": {
+    "name": "AKISMET_API_KEY",
+    "site": 2,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 58
+},
+{
+  "fields": {
+    "name": "RATINGS_ACCOUNT_REQUIRED",
+    "site": 3,
+    "value": "False"
+  },
+  "model": "conf.setting",
+  "pk": 59
+},
+{
+  "fields": {
+    "name": "COMMENTS_DISQUS_API_SECRET_KEY",
+    "site": 3,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 60
+},
+{
+  "fields": {
+    "name": "COMMENTS_REMOVED_VISIBLE",
+    "site": 3,
+    "value": "True"
+  },
+  "model": "conf.setting",
+  "pk": 61
+},
+{
+  "fields": {
+    "name": "SSL_FORCE_HOST",
+    "site": 3,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 62
+},
+{
+  "fields": {
+    "name": "COMMENTS_DISQUS_API_PUBLIC_KEY",
+    "site": 3,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 63
+},
+{
+  "fields": {
+    "name": "COMMENTS_NOTIFICATION_EMAILS",
+    "site": 3,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 64
+},
+{
+  "fields": {
+    "name": "TWITTER_ACCESS_TOKEN_SECRET",
+    "site": 3,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 65
+},
+{
+  "fields": {
+    "name": "COMMENTS_NUM_LATEST",
+    "site": 3,
+    "value": "5"
+  },
+  "model": "conf.setting",
+  "pk": 66
+},
+{
+  "fields": {
+    "name": "GOOGLE_ANALYTICS_ID",
+    "site": 3,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 67
+},
+{
+  "fields": {
+    "name": "TWITTER_DEFAULT_QUERY",
+    "site": 3,
+    "value": "from:stephen_mcd mezzanine"
+  },
+  "model": "conf.setting",
+  "pk": 68
+},
+{
+  "fields": {
+    "name": "ADMIN_MENU_COLLAPSED",
+    "site": 3,
+    "value": "False"
+  },
+  "model": "conf.setting",
+  "pk": 69
+},
+{
+  "fields": {
+    "name": "MAX_PAGING_LINKS",
+    "site": 3,
+    "value": "10"
+  },
+  "model": "conf.setting",
+  "pk": 70
+},
+{
+  "fields": {
+    "name": "TAG_CLOUD_SIZES",
+    "site": 3,
+    "value": "4"
+  },
+  "model": "conf.setting",
+  "pk": 71
+},
+{
+  "fields": {
+    "name": "RICHTEXT_FILTER_LEVEL",
+    "site": 3,
+    "value": "1"
+  },
+  "model": "conf.setting",
+  "pk": 72
+},
+{
+  "fields": {
+    "name": "COMMENTS_ACCOUNT_REQUIRED",
+    "site": 3,
+    "value": "False"
+  },
+  "model": "conf.setting",
+  "pk": 73
+},
+{
+  "fields": {
+    "name": "TWITTER_CONSUMER_SECRET",
+    "site": 3,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 74
+},
+{
+  "fields": {
+    "name": "SITE_TAGLINE",
+    "site": 3,
+    "value": "Leiden-Haaglanden e.o."
+  },
+  "model": "conf.setting",
+  "pk": 75
+},
+{
+  "fields": {
+    "name": "BLOG_POST_PER_PAGE",
+    "site": 3,
+    "value": "5"
+  },
+  "model": "conf.setting",
+  "pk": 76
+},
+{
+  "fields": {
+    "name": "BITLY_ACCESS_TOKEN",
+    "site": 3,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 77
+},
+{
+  "fields": {
+    "name": "TWITTER_DEFAULT_NUM_TWEETS",
+    "site": 3,
+    "value": "3"
+  },
+  "model": "conf.setting",
+  "pk": 78
+},
+{
+  "fields": {
+    "name": "TWITTER_DEFAULT_QUERY_TYPE",
+    "site": 3,
+    "value": "search"
+  },
+  "model": "conf.setting",
+  "pk": 79
+},
+{
+  "fields": {
+    "name": "TWITTER_ACCESS_TOKEN_KEY",
+    "site": 3,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 80
+},
+{
+  "fields": {
+    "name": "COMMENTS_DEFAULT_APPROVED",
+    "site": 3,
+    "value": "True"
+  },
+  "model": "conf.setting",
+  "pk": 81
+},
+{
+  "fields": {
+    "name": "TWITTER_CONSUMER_KEY",
+    "site": 3,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 82
+},
+{
+  "fields": {
+    "name": "SSL_ENABLED",
+    "site": 3,
+    "value": "False"
+  },
+  "model": "conf.setting",
+  "pk": 83
+},
+{
+  "fields": {
+    "name": "COMMENTS_UNAPPROVED_VISIBLE",
+    "site": 3,
+    "value": "True"
+  },
+  "model": "conf.setting",
+  "pk": 84
+},
+{
+  "fields": {
+    "name": "COMMENTS_DISQUS_SHORTNAME",
+    "site": 3,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 85
+},
+{
+  "fields": {
+    "name": "SEARCH_PER_PAGE",
+    "site": 3,
+    "value": "10"
+  },
+  "model": "conf.setting",
+  "pk": 86
+},
+{
+  "fields": {
+    "name": "AKISMET_API_KEY",
+    "site": 3,
+    "value": ""
+  },
+  "model": "conf.setting",
+  "pk": 87
+},
+{
+  "fields": {
+    "name": "SITE_TITLE",
+    "site": 1,
     "value": "Jonge Democraten"
   },
-  "pk": 17,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 88
 },
 {
   "fields": {
-    "site": 1,
-    "name": "BLOG_POST_PER_PAGE",
-    "value": "5"
-  },
-  "pk": 18,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 1,
-    "name": "BITLY_ACCESS_TOKEN",
-    "value": ""
-  },
-  "pk": 19,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 1,
-    "name": "TWITTER_DEFAULT_NUM_TWEETS",
-    "value": "3"
-  },
-  "pk": 20,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 1,
-    "name": "TWITTER_DEFAULT_QUERY_TYPE",
-    "value": "search"
-  },
-  "pk": 21,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 1,
-    "name": "TWITTER_ACCESS_TOKEN_KEY",
-    "value": ""
-  },
-  "pk": 22,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 1,
-    "name": "COMMENTS_DEFAULT_APPROVED",
-    "value": "True"
-  },
-  "pk": 23,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 1,
-    "name": "TWITTER_CONSUMER_KEY",
-    "value": ""
-  },
-  "pk": 24,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 1,
-    "name": "SSL_ENABLED",
-    "value": "False"
-  },
-  "pk": 25,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 1,
-    "name": "COMMENTS_UNAPPROVED_VISIBLE",
-    "value": "True"
-  },
-  "pk": 26,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 1,
-    "name": "COMMENTS_DISQUS_SHORTNAME",
-    "value": ""
-  },
-  "pk": 27,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 1,
-    "name": "SEARCH_PER_PAGE",
-    "value": "10"
-  },
-  "pk": 28,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 1,
-    "name": "AKISMET_API_KEY",
-    "value": ""
-  },
-  "pk": 29,
-  "model": "conf.setting"
-},
-{
-  "fields": {
+    "name": "SITE_TITLE",
     "site": 2,
-    "name": "RATINGS_ACCOUNT_REQUIRED",
-    "value": "False"
+    "value": "Jonge Democraten"
   },
-  "pk": 30,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 89
 },
 {
   "fields": {
-    "site": 2,
-    "name": "COMMENTS_DISQUS_API_SECRET_KEY",
-    "value": ""
-  },
-  "pk": 31,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "COMMENTS_REMOVED_VISIBLE",
-    "value": "True"
-  },
-  "pk": 32,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "SSL_FORCE_HOST",
-    "value": ""
-  },
-  "pk": 33,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "COMMENTS_DISQUS_API_PUBLIC_KEY",
-    "value": ""
-  },
-  "pk": 34,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "COMMENTS_NOTIFICATION_EMAILS",
-    "value": ""
-  },
-  "pk": 35,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "TWITTER_ACCESS_TOKEN_SECRET",
-    "value": ""
-  },
-  "pk": 36,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "COMMENTS_NUM_LATEST",
-    "value": "5"
-  },
-  "pk": 37,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "GOOGLE_ANALYTICS_ID",
-    "value": ""
-  },
-  "pk": 38,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "TWITTER_DEFAULT_QUERY",
-    "value": "from:stephen_mcd mezzanine"
-  },
-  "pk": 39,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "ADMIN_MENU_COLLAPSED",
-    "value": "False"
-  },
-  "pk": 40,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "MAX_PAGING_LINKS",
-    "value": "10"
-  },
-  "pk": 41,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "TAG_CLOUD_SIZES",
-    "value": "4"
-  },
-  "pk": 42,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "RICHTEXT_FILTER_LEVEL",
-    "value": "1"
-  },
-  "pk": 43,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "COMMENTS_ACCOUNT_REQUIRED",
-    "value": "False"
-  },
-  "pk": 44,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "TWITTER_CONSUMER_SECRET",
-    "value": ""
-  },
-  "pk": 45,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "SITE_TAGLINE",
-    "value": "Jonge Democraten Amsterdam"
-  },
-  "pk": 46,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "BLOG_POST_PER_PAGE",
-    "value": "5"
-  },
-  "pk": 47,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "BITLY_ACCESS_TOKEN",
-    "value": ""
-  },
-  "pk": 48,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "TWITTER_DEFAULT_NUM_TWEETS",
-    "value": "3"
-  },
-  "pk": 49,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "TWITTER_DEFAULT_QUERY_TYPE",
-    "value": "search"
-  },
-  "pk": 50,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "TWITTER_ACCESS_TOKEN_KEY",
-    "value": ""
-  },
-  "pk": 51,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "COMMENTS_DEFAULT_APPROVED",
-    "value": "True"
-  },
-  "pk": 52,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "TWITTER_CONSUMER_KEY",
-    "value": ""
-  },
-  "pk": 53,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "SSL_ENABLED",
-    "value": "False"
-  },
-  "pk": 54,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "COMMENTS_UNAPPROVED_VISIBLE",
-    "value": "True"
-  },
-  "pk": 55,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "COMMENTS_DISQUS_SHORTNAME",
-    "value": ""
-  },
-  "pk": 56,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "SEARCH_PER_PAGE",
-    "value": "10"
-  },
-  "pk": 57,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 2,
-    "name": "AKISMET_API_KEY",
-    "value": ""
-  },
-  "pk": 58,
-  "model": "conf.setting"
-},
-{
-  "fields": {
+    "name": "SITE_TITLE",
     "site": 3,
-    "name": "RATINGS_ACCOUNT_REQUIRED",
-    "value": "False"
+    "value": "Jonge Democraten"
   },
-  "pk": 59,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "COMMENTS_DISQUS_API_SECRET_KEY",
-    "value": ""
-  },
-  "pk": 60,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "COMMENTS_REMOVED_VISIBLE",
-    "value": "True"
-  },
-  "pk": 61,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "SSL_FORCE_HOST",
-    "value": ""
-  },
-  "pk": 62,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "COMMENTS_DISQUS_API_PUBLIC_KEY",
-    "value": ""
-  },
-  "pk": 63,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "COMMENTS_NOTIFICATION_EMAILS",
-    "value": ""
-  },
-  "pk": 64,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "TWITTER_ACCESS_TOKEN_SECRET",
-    "value": ""
-  },
-  "pk": 65,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "COMMENTS_NUM_LATEST",
-    "value": "5"
-  },
-  "pk": 66,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "GOOGLE_ANALYTICS_ID",
-    "value": ""
-  },
-  "pk": 67,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "TWITTER_DEFAULT_QUERY",
-    "value": "from:stephen_mcd mezzanine"
-  },
-  "pk": 68,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "ADMIN_MENU_COLLAPSED",
-    "value": "False"
-  },
-  "pk": 69,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "MAX_PAGING_LINKS",
-    "value": "10"
-  },
-  "pk": 70,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "TAG_CLOUD_SIZES",
-    "value": "4"
-  },
-  "pk": 71,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "RICHTEXT_FILTER_LEVEL",
-    "value": "1"
-  },
-  "pk": 72,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "COMMENTS_ACCOUNT_REQUIRED",
-    "value": "False"
-  },
-  "pk": 73,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "TWITTER_CONSUMER_SECRET",
-    "value": ""
-  },
-  "pk": 74,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "SITE_TAGLINE",
-    "value": "Jonge Democraten Leiden-Haaglanden e.o."
-  },
-  "pk": 75,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "BLOG_POST_PER_PAGE",
-    "value": "5"
-  },
-  "pk": 76,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "BITLY_ACCESS_TOKEN",
-    "value": ""
-  },
-  "pk": 77,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "TWITTER_DEFAULT_NUM_TWEETS",
-    "value": "3"
-  },
-  "pk": 78,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "TWITTER_DEFAULT_QUERY_TYPE",
-    "value": "search"
-  },
-  "pk": 79,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "TWITTER_ACCESS_TOKEN_KEY",
-    "value": ""
-  },
-  "pk": 80,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "COMMENTS_DEFAULT_APPROVED",
-    "value": "True"
-  },
-  "pk": 81,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "TWITTER_CONSUMER_KEY",
-    "value": ""
-  },
-  "pk": 82,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "SSL_ENABLED",
-    "value": "False"
-  },
-  "pk": 83,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "COMMENTS_UNAPPROVED_VISIBLE",
-    "value": "True"
-  },
-  "pk": 84,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "COMMENTS_DISQUS_SHORTNAME",
-    "value": ""
-  },
-  "pk": 85,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "SEARCH_PER_PAGE",
-    "value": "10"
-  },
-  "pk": 86,
-  "model": "conf.setting"
-},
-{
-  "fields": {
-    "site": 3,
-    "name": "AKISMET_API_KEY",
-    "value": ""
-  },
-  "pk": 87,
-  "model": "conf.setting"
+  "model": "conf.setting",
+  "pk": 90
 },
 {
   "fields": {

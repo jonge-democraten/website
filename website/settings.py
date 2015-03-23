@@ -77,12 +77,6 @@ ADMIN_MENU_ORDER = (
 #
 # BLOG_USE_FEATURED_IMAGE = True
 
-####################
-# PROJECT SETTINGS #
-####################
-
-SITE_TITLE = "Jonge Democraten"
-
 ########################
 # MAIN DJANGO SETTINGS #
 ########################
@@ -291,6 +285,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "mezzanine.conf.context_processors.settings",
     "mezzanine.pages.context_processors.page",
     "website.jdpages.context_processors.sidebar",
+    "website.jdpages.context_processors.site_properties",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,

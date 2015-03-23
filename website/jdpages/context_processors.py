@@ -1,6 +1,8 @@
 import logging
 logger = logging.getLogger(__name__)
 
+from mezzanine.conf import settings
+
 from website.jdpages.models import Sidebar
 from website.jdpages.models import SidebarBannerWidget
 from website.jdpages.models import SidebarBlogCategoryWidget
@@ -13,8 +15,7 @@ from website.jdpages.views import TwitterSidebarItem
 
 
 def site_properties(request):
-    site_subtitle = 'Amsterdam'
-    return {"site_subtitle": site_subtitle}
+    return {"site_tagline": settings.SITE_TAGLINE}
 
 
 def sidebar(request):

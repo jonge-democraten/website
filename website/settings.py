@@ -14,7 +14,7 @@ from __future__ import absolute_import, unicode_literals
 # Controls the ordering and grouping of the admin menu.
 #
 ADMIN_MENU_ORDER = (
-    ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment", ("Media Library", "fb_browse"), "jdpages.Sidebar",)),
+    ("Content", ("pages.Page", "blog.BlogPost", ("Media Library", "fb_browse"), "jdpages.Sidebar",)),
     ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting", "jdpages.SidebarBannerWidget",)),
     ("Users", ("auth.User", "auth.Group",)),
     ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget",
@@ -22,14 +22,15 @@ ADMIN_MENU_ORDER = (
                       "jdpages.Document", "jdpages.SidebarTwitter",)),
 )
 
+
 # A three item sequence, each containing a sequence of template tags
 # used to render the admin dashboard.
 #
-# DASHBOARD_TAGS = (
-#     ("blog_tags.quick_blog", "mezzanine_tags.app_list"),
-#     ("comment_tags.recent_comments",),
-#     ("mezzanine_tags.recent_actions",),
-# )
+DASHBOARD_TAGS = (
+    ("mezzanine_tags.app_list",),
+    ("mezzanine_tags.recent_actions",),
+    (),
+)
 
 # A sequence of templates used by the ``page_menu`` template tag. Each
 # item in the sequence is a three item sequence, containing a unique ID

@@ -14,3 +14,39 @@ register_setting(
     editable=False,
     default=(),
 )
+
+
+# A list of unused Mezzanine settings that should be hidden in the admin
+HIDDEN_SETTINGS = (
+    'COMMENTS_ACCOUNT_REQUIRED',
+    'COMMENTS_DEFAULT_APPROVED',
+    'COMMENTS_DISQUS_API_PUBLIC_KEY',
+    'COMMENTS_DISQUS_API_SECRET_KEY',
+    'COMMENTS_DISQUS_SHORTNAME',
+    'COMMENTS_NOTIFICATION_EMAILS',
+    'COMMENTS_NUM_LATEST',
+    'COMMENTS_REMOVED_VISIBLE',
+    'COMMENTS_UNAPPROVED_VISIBLE',
+    'COMMENTS_USE_RATINGS',
+    'COMMENT_FILTER',
+    'AKISMET_API_KEY',
+    'BITLY_ACCESS_TOKEN',
+    'GOOGLE_ANALYTICS_ID',
+    'RATINGS_ACCOUNT_REQUIRED',
+    'TAG_CLOUD_SIZES',
+)
+
+
+def disable_settings(settings):
+    """ Disable a list of settings and hide them from the admin """
+    for setting in HIDDEN_SETTINGS:
+        register_setting(
+            name=setting,
+            label=_(setting),
+            description=_("Unused setting"),
+            editable=False,
+            default="unused",
+        )
+
+
+disable_settings(HIDDEN_SETTINGS)

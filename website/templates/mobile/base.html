@@ -134,40 +134,6 @@
                 <p>© {% now "Y" %} Jonge Democraten</p>
             </div> <!-- custom -->
         </div> <!-- moduletable -->
-        <div class="moduletable">
-            <div id="cookie-message" class="cb antraciet atbottom">
-                <div class="content">
-                    Deze website maakt gebruik van cookies. Lees ons <a href="http://jongedemocraten.nl/contact-mainmenu-2196.html#privacypolicy" title="privacy statement">privacy statement</a> voor meer informatie. Gaat u akkoord met het gebruik hiervan?
-                </div> <!-- content -->
-                <div class="buttons">
-                    <a id="set-cookie" class="cb green" href="#">Ja, ik ga akkoord</a>
-                    <a id="remove-cookie-message" class="cb red" href="#">Liever niet</a>
-                </div> <!-- buttons -->
-                <div style="clear:both;">
-                </div> <!-- -->
-            </div>
-            <script type="text/javascript">
-                jQuery(document).ready(function ($) {
-                    // Set cookies
-                    function SetCookie(c_name, value, expiredays) {
-                        var exdate = new Date();
-                        exdate.setDate(exdate.getDate() + expiredays);
-                        var c_value = escape(value) + ";path=/" + ((expiredays==null) ? "" : ";expires=" + exdate.toGMTString());
-                        document.cookie=c_name + "=" + c_value;
-                    }
-                    $("#set-cookie").click(function() {
-                        SetCookie('cb_accept_cookies', 'yes', 365 * 10);
-                        $("#cookie-message").remove();
-                        window.location.reload();
-                    });
-                    $("#remove-cookie-message").click(function() {
-                        SetCookie('cb_accept_cookies', 'no', 365 * 10);
-                        $("#cookie-message").remove();
-                        window.location.reload();
-                    });
-                });
-            </script>
-        </div> <!-- moduletable -->
     </div> <!-- footerDiv -->
 
     <!-- TABS JS -->

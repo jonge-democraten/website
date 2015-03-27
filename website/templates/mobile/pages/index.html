@@ -11,6 +11,20 @@
 {% endblock logo %}
 
 {% block main %}
+    {% if page_header %}
+    <div id="homeAreaDiv">
+        <div class="moduletable">
+            <div class="custom">
+                <div id="homeImageDiv"><img src="{{ page_header.image.url }}" border="0" width="610" height="290" /></div>
+                <div id="homeLogoDiv">
+                    <div id="homeLogoText">{{ page_header.title }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+
     {% for item in column_left_items %}
         <section class="collapsable {{ item.title|slugify }}">
             <div class="moduletable">

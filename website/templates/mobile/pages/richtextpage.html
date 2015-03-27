@@ -23,22 +23,19 @@
     <section class="content clearing">
         {% block content_heading %}
             <p class="pathway"></p>
+            {% if page_header %}
             <div id="homeAreaDiv">
                 <div class="moduletable">
-                    <div class="random_image_extended">
-                        <img src="{{ TODO }}" alt="{{ TODO }}" width="{{ TODO }}" height="{{ TODO }}" />
-                    </div> <!-- random_image_extended -->
-                </div> <!-- moduletable -->
-                <div class="moduletable">
                     <div class="custom">
+                        <div id="homeImageDiv"><img src="{{ page_header.image.url }}" border="0" width="610" height="290" /></div>
                         <div id="homeLogoDiv">
-                        </div> <!-- homeLogoDiv -->
-                        <div id="homeLogoText">
-                            {{ page.meta_title }}
-                        </div> <!-- homeLogoText -->
-                    </div> <!-- custom -->
-                </div> <!-- moduletable -->
-            </div> <!-- homeAreaDiv -->
+                            <div id="homeLogoText">{{ page_header.title }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
         {% endblock content_heading %}
         <div class="item-page">
             {% block content_body %}

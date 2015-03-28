@@ -2,8 +2,9 @@
 Documentation of the [jdwebsite](https://github.com/jonge-democraten/website) project.
 
 ### Documentation
-* **[User manual [NL]](user.md)**
-* **[Developer manual](developer.md)**
+* **[User [NL]](user.md)**
+* **[Administrator](administrator.md)**
+* **[Developer](developer.md)**
 * **[Design](design.md)**
 
 ### About

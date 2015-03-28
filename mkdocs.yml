@@ -9,7 +9,7 @@ theme: 'readthedocs'
 
 pages:
 - ['index.md', '', 'JD Website']
-- ['user.md', '', 'User manual [NL]']
+- ['user.md', '', 'User [NL]']
 - ['administrator.md', '', 'Administrator']
-- ['developer.md', '', 'Developer manual']
+- ['developer.md', '', 'Developer']
 - ['design.md', '', 'Design']

@@ -10,5 +10,6 @@ theme: 'readthedocs'
 pages:
 - ['index.md', '', 'JD Website']
 - ['user.md', '', 'User manual [NL]']
+- ['administrator.md', '', 'Administrator']
 - ['developer.md', '', 'Developer manual']
 - ['design.md', '', 'Design']

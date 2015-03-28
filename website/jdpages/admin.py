@@ -24,9 +24,15 @@ from website.jdpages.models import SidebarTwitterWidget
 
 
 class AlwaysChangedModelForm(ModelForm):
+    """
+    A django modelform that is always changed and will thus always be saved and validated.
+    To be used for inlines that should also be created with their default/initial values.
+    """
     def has_changed(self):
-        """ Should returns True if data differs from initial.
-        By always returning true even unchanged inlines will get validated and saved."""
+        """
+        Should return True if data differs from initial.
+        Unchanged inlines will also get validated and saved by always returning true here.
+        """
         return True
 
 
@@ -44,7 +50,8 @@ class PageHeaderImageInline(TabularDynamicInlineAdmin):
 
 
 class ColumnElementWidgetInline(TabularDynamicInlineAdmin):
-    """ """
+    """ Base admin class for a column element """
+
     model = ColumnElementWidget
 
     def get_formset(self, request, obj=None, **kwargs):
@@ -59,7 +66,8 @@ class ColumnElementWidgetInline(TabularDynamicInlineAdmin):
 
 
 class LeftColumnElementWidgetInline(ColumnElementWidgetInline):
-    """ """
+    """ Inline for a widget in the left column of a column page """
+
     verbose_name_plural = 'Left column widgets'
 
     def get_queryset(self, request):
@@ -71,7 +79,8 @@ class LeftColumnElementWidgetInline(ColumnElementWidgetInline):
 
 
 class RightColumnElementWidgetInline(ColumnElementWidgetInline):
-    """ """
+    """ Inline for a widget in the right column of a column page """
+
     verbose_name_plural = 'Right column widgets'
 
     def get_queryset(self, request):
@@ -158,6 +167,7 @@ admin.site.register(Sidebar, SidebarAdmin)
 admin.site.register(SidebarBannerWidget, SidebarBannerWidgetAdmin)
 admin.site.register(DocumentListing, DocumentListingAdmin)
 
+# we add some models to the admin for debugging, if we are in debug mode
 if settings.DEBUG:
     admin.site.register(ColumnElement, ColumnElementAdmin)
     admin.site.register(ColumnElementWidget, ColumnElementWidgetAdmin)

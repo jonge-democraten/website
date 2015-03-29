@@ -117,7 +117,7 @@ class DocumentInline(TabularDynamicInlineAdmin):
 
 
 class DocumentListingAdmin(PageAdmin):
-    inlines = (DocumentInline,)
+    inlines = (DocumentInline, PageHeaderImageSettingsInline, PageHeaderImageInline)
 
 
 class SidebarBlogCategoryWidgetInline(admin.TabularInline):

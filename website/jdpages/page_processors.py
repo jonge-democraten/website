@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 from mezzanine.pages.page_processors import processor_for
 from mezzanine.pages.models import RichTextPage
 
+from mezzanine.forms.models import Form
 from website.jdpages.models import HomePage, DocumentListing
 from website.jdpages.models import ColumnElementWidget
 from website.jdpages.models import HorizontalPosition
@@ -16,9 +17,10 @@ from website.jdpages.models import PageHeaderSettingsWidget, PageHeaderImageWidg
 from website.jdpages.views import create_column_items
 
 
+@processor_for(DocumentListing)
+@processor_for(Form)
 @processor_for(HomePage)
 @processor_for(RichTextPage)
-@processor_for(DocumentListing)
 def add_header_images(request, page):
     page_header_settings = PageHeaderSettingsWidget.objects.filter(page=page)
     if not page_header_settings:
@@ -38,6 +40,7 @@ def add_column_elements(request, page):
     element_widgets_right = ColumnElementWidget.objects.filter(horizontal_position=HorizontalPosition.RIGHT).filter(page=page.homepage)
     column_right_items = create_column_items(element_widgets_right)
     return {"column_left_items": column_left_items, "column_right_items": column_right_items}
+
 
 def get_first_page_header(page):
     page_header = PageHeaderImageWidget.objects.filter(page=page)

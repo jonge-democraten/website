@@ -8,6 +8,8 @@ from django.forms.models import ModelForm
 
 from mezzanine.core.admin import SingletonAdmin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
+from mezzanine.forms.models import Form
+from mezzanine.forms.admin import FormAdmin
 from mezzanine.pages.admin import PageAdmin
 from mezzanine.pages.models import RichTextPage
 
@@ -116,6 +118,12 @@ class DocumentInline(TabularDynamicInlineAdmin):
     model = Document
 
 
+class CustomFormAdmin(FormAdmin):
+    model = Form
+    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline]
+    inlines.insert(0, FormAdmin.inlines[0])
+
+
 class DocumentListingAdmin(PageAdmin):
     inlines = (DocumentInline, PageHeaderImageSettingsInline, PageHeaderImageInline)
 
@@ -162,6 +170,8 @@ class SocialMediaButtonGroupAdmin(admin.ModelAdmin):
 
 admin.site.unregister(RichTextPage)
 admin.site.register(RichTextPage, RichtTextPageAdmin)
+admin.site.unregister(Form)
+admin.site.register(Form, CustomFormAdmin)
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(Sidebar, SidebarAdmin)
 admin.site.register(SidebarBannerWidget, SidebarBannerWidgetAdmin)

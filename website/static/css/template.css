@@ -2014,8 +2014,8 @@ p#logosubtitle {
 p#logosubtitlemobile {
     position: absolute;
     top: 58px;
-    left: 110px;
-    width:200px;
+    left: 45%;
+    width: 200px;
     padding: 0px;
     font-weight: normal;
     font-size: 14.5px;

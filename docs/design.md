@@ -19,7 +19,7 @@ A view representing a SidebarWidget.
 * Contains the information need by the template.
 * Created in `context_processor.py` for each context.
 
-<h3>Example</h3>
+<h3>Example - create new sidebar widget</h3>
 This example shows how to create a SidebarWidget for a new element that you want to show in the sidebar.
 
 **Widget model**  
@@ -36,7 +36,7 @@ Crate a view item for the new widget,
 ```Python
 class ExampleSidebarItem(SiteRelated):
 
-    def __init__(self, example, max_posts):
+    def __init__(self, example):
         self.title = example.title
         
     def get_template_name(self):
@@ -76,4 +76,39 @@ Add the Inline to the SidebarAdmin inlines,
 class SidebarAdmin(SingletonAdmin):
     model = Sidebar
     inlines = (ExampleSidebarWidgetInline,)
+```
+
+## Page header image
+The page header is the image on top of each page (not site). Below the site header and menu bar.  
+Content managers can set different page header types in the admin,
+ 
+* Parent image
+* Single image
+* Random image
+* No header
+
+Multiple images can be added from the media library to function als page header image. The images need to be exactly 610 x 290 pixels to be accepted.
+Multiple images are only used in 'Random image' mode. 
+
+<h3>Example - add header to new custom page</h3>
+
+Add an inline admin field for the header type and (optional) header images to the new custom page in `jdpages/admin.py`,
+```Python
+class ExamplePageAdmin(PageAdmin):
+    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline]
+```
+This allow content managers to add a page header to the page in the page admin.
+
+Add a `add_header_images()` processor for the new custom page, derived from Mezzanine Page, in `jdpages/page_processors.py`,
+```Python
+@processor_for(ExamplePage)
+def add_header_images(request, page):
+    ...
+```
+
+Finally, include the header template in your custom page template to show the image header on the page,
+```Python
+{% if page_header %}
+    {% include "elements/page_header_image.html" %}
+{% endif %}
 ```

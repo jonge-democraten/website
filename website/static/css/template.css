@@ -2011,3 +2011,16 @@ p#logosubtitle {
     letter-spacing: 2px;
     color: grey;
 }
+
+p#logosubtitlemobile {
+    position: absolute;
+    top: 58px;
+    left: 110px;
+    width:200px;
+    padding: 0px;
+    background-color: #fff;
+    font-weight: normal;
+    font-size: 14.5px;
+    letter-spacing: 2px;
+    color: grey;
+}

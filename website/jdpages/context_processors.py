@@ -37,6 +37,11 @@ def sidebar(request):
         item.title = widget.title
         sidebar_items.append(item)
 
+    tabs_widget = SidebarTabsWidgets.objects.get(sidebar=current_sidebars, active = True)
+    item = TabsSidebarItem()
+    item.title = "Tabs"
+    sidebar_items.append(item)
+
     twitter_widgets = SidebarTwitterWidget.objects.filter(sidebar=current_sidebars, active=True)
     for widget in twitter_widgets:
         item = TwitterSidebarItem()

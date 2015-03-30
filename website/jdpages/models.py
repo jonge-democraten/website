@@ -18,6 +18,7 @@ from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_text
 from django.conf import settings
+from django.db.models.signals import post_init
 
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.fields import FileField
@@ -126,6 +127,17 @@ class Sidebar(SiteRelated):
         verbose_name_plural = "Sidebar"
 
 
+def auto_add_widgets(**kwargs):
+    """
+    When creating a sidebar, a tabs widget should automatically be added.
+    This is the callback function that is called upon post_save of Sidebar.
+    """
+    instance = kwargs.get('instance')
+    tabs_widget = SidebarTabsWidget(active = True, sidebar = instance)
+    tabs_widget.save()
+
+post_init.connect(auto_add_widgets, Sidebar)
+
 class SidebarBlogCategoryWidget(SiteRelated):
     """
     Blog category widget that can be placed on a sidebar.
@@ -141,6 +153,16 @@ class SidebarBlogCategoryWidget(SiteRelated):
     class Meta:
         verbose_name = 'Sidebar blogcategory'
 
+class SidebarTabsWidget(SiteRelated):
+    """
+    Tabs widget that can be placed on a sidebar.
+    The widget contains the upcoming events and newsletter registration tabs.
+    """
+    active = models.BooleanField(default=True, blank=False, null=False)
+    sidebar = models.OneToOneField(Sidebar, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Sidebar tabs widget'
 
 class SidebarTwitterWidget(SiteRelated):
     """

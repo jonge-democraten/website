@@ -106,3 +106,7 @@ class BannerSidebarItem(Item):
 class TwitterSidebarItem(Item):
     def get_template_name(self):
         return "twitter_feed_item.html"
+
+class TabsSidebarItem(Item):
+    def get_template_name(self):
+        return "tabs_sidebar_item.html"

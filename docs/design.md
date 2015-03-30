@@ -2,7 +2,7 @@
 The design of different components is explained in this document.  
 
 ## Sidebar
-A Sidebar model represents the information that should be shown in a sidebar on the webpage.
+A Sidebar model represents the information shown in a sidebar on the webpage.
  
 * One Sidebar per Site; a singleton within a Site.
 * A Sidebar is automatically created when a new site is created.
@@ -16,7 +16,7 @@ They can be add to a Sidebar via a TabularInline in the admin.
 A view representing a SidebarWidget.
 
 * Contains the template filename that draws this item.
-* Contains the information need by the template.
+* Contains the information needed by the template.
 * Created in `context_processor.py` for each context.
 
 <h3>Example - create new sidebar widget</h3>
@@ -32,7 +32,7 @@ class ExampleSidebarWidget(SiteRelated):
 ```
 
 **View item**  
-Crate a view item for the new widget,
+Create a view item for the new widget,
 ```Python
 class ExampleSidebarItem(SiteRelated):
 
@@ -58,10 +58,12 @@ The item is available in the template as `{{ item }}`,
 Create the items in a context request in `jdpages/context_processors.py`,
 ```Python
 def sidebar(request):
+    sidebar_items = []
     example_widgets = ExampleSidebarWidget.objects.filter(active=True)
     for widget in example_widgets:
         item = ExampleSidebarItem(widget)
         sidebar_items.append(item)
+    return {"sidebar_items": sidebar_items}
 ```
 
 **Admin interface**  
@@ -95,7 +97,8 @@ Multiple images are only used in 'Random image' mode.
 Add an inline admin field for the header type and (optional) header images to the new custom page in `jdpages/admin.py`,
 ```Python
 class ExamplePageAdmin(PageAdmin):
-    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline]
+    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline]    
+admin.site.register(Example, ExamplePageAdmin)
 ```
 This allow content managers to add a page header to the page in the page admin.
 

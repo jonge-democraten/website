@@ -18,6 +18,7 @@ from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_text
 from django.conf import settings
+from django.db.models.signals import post_init
 
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.fields import FileField
@@ -140,6 +141,18 @@ class SidebarBlogCategoryWidget(SiteRelated):
 
     class Meta:
         verbose_name = 'Sidebar blogcategory'
+
+
+class SidebarTabsWidget(SiteRelated):
+    """
+    Tabs widget that can be placed on a sidebar.
+    The widget contains the upcoming events and newsletter registration tabs.
+    """
+    active = models.BooleanField(default=True, blank=False, null=False)
+    sidebar = models.OneToOneField(Sidebar, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Sidebar tabs widget'
 
 
 class SidebarTwitterWidget(SiteRelated):

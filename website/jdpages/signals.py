@@ -9,7 +9,7 @@ from django.contrib.sites.models import Site
 from mezzanine.blog.models import BlogCategory
 
 from website.jdpages.models import ColumnElement
-from website.jdpages.models import Sidebar
+from website.jdpages.models import Sidebar, SidebarTabsWidget
 from website.jdpages.models import create_columnelement_for_blogcategory
 
 
@@ -27,9 +27,17 @@ def post_save_callback(sender, instance, created, **kwargs):
         return
 
     if sender == Site:
+        logger.info('create new sidebar for site: ' + str(instance.id) + ' (' + str(instance) + ')')
         main_sidebar = Sidebar.objects.create()
         main_sidebar.site_id = instance.id
         main_sidebar.save(update_site=False)
+        logger.info('sidebar created and saved')
+    if sender == Sidebar:
+        logger.info('create sidebar tabs widget...')
+        tabs_widget = SidebarTabsWidget.objects.create(sidebar=instance, active=True)
+        tabs_widget.site_id = instance.id
+        tabs_widget.save(update_site=False)
+        logger.info('tabs widget created and saved: ' + str(tabs_widget))
 
     if sender == BlogCategory:
         if not ColumnElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)):  # TODO BR: move this check to create_columnelement_for_blogcategory function

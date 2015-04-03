@@ -573,3 +573,14 @@ FULLCALENDAR_SITE_COLORS = {
     2: 'red',
     3: ('white', 'black', 'black'),
 }
+
+#####################
+# TEMPLATE SETTINGS #
+#####################
+
+# This is the default list of settings that are accessible to templates, 
+# because apparently Mezzanine has difficulty accessing the JQUERY_UI_FILENAME
+# setting otherwise.
+# This could be a bug in Mezzanine.
+
+TEMPLATE_ACCESSIBLE_SETTINGS = ('ACCOUNTS_APPROVAL_REQUIRED', 'ACCOUNTS_VERIFICATION_REQUIRED', 'ADMIN_MENU_COLLAPSED', 'BITLY_ACCESS_TOKEN', 'BLOG_USE_FEATURED_IMAGE', 'COMMENTS_DISQUS_SHORTNAME', 'COMMENTS_NUM_LATEST', 'COMMENTS_DISQUS_API_PUBLIC_KEY', 'COMMENTS_DISQUS_API_SECRET_KEY', 'COMMENTS_USE_RATINGS', 'DEV_SERVER', 'FORMS_USE_HTML5', 'GRAPPELLI_INSTALLED', 'GOOGLE_ANALYTICS_ID', 'JQUERY_FILENAME', 'JQUERY_UI_FILENAME', 'LOGIN_URL', 'LOGOUT_URL', 'SITE_TITLE', 'SITE_TAGLINE', 'USE_L10N')

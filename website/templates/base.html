@@ -30,6 +30,12 @@
 
 {% compress js %}
 <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+<script src="{% static "mezzanine/js/"|add:settings.JQUERY_UI_FILENAME %}"></script>
+<script>
+$(function() {
+  $( "#tabs" ).tabs();
+});
+</script>
 {% block extra_js %}{% endblock %}
 {% endcompress %}
 

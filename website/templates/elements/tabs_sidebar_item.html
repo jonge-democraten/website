@@ -1,3 +1,5 @@
+{% load fullcalendar %}
+
 <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
     <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
         <li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active"><a href="#tabs-1" class="link"><span class="text">Agenda</span></a></li>
@@ -11,20 +13,29 @@
             <div class="moduletableagenda">
                 <table class="mod_events_latest_table" cellspacing="0" cellpadding="0" border="0" align="center" width="100%">
                     <tbody>
+                    {% if settings.SIDEBAR_AGENDA_SITES == 3 %}
+                        {% get_agenda limit=10 as items %}
+                    {% elif settings.SIDEBAR_AGENDA_SITES == 2 %}
+                        {% get_site_and_main_agenda limit=10 as items %}
+                    {% else %}
+                        {% get_site_agenda limit=10 as items %}
+                    {% endif %}
+                    {% for item in items %}
                         <tr class="jevrow0">
                             <td class="mod_events_latest">
-                                <span class="mod_events_latest_date">dinsdag 31 maart 20:00</span>
+                                <span class="mod_events_latest_date">{{ item.start_time|date:"l d F H:i" }}</span>
                                 <br />
                                 <span class="mod_events_latest_content">
-                                    <a target="_top" href="link_to_content">Description</a>
+                                    <a target="_top" href="//{{ item.event.event_category.site }}{{ item.get_absolute_url }}">{{ item.title }}</a>
                                 </span>
-                                - Afdelingsnaam
+                                - {{ item.event.event_category.site.name }}
                             </td>
                         </tr>
+                    {% endfor %}
                     </tbody>
                 </table><!-- mod_events_latest_table -->
             </div><!-- moduletableagenda -->
-            <p class="helekalender"><a href="link_naar_agenda">» Bekijk volledige kalender</a></p>
+            <p class="helekalender"><a href="/events/">» Bekijk volledige kalender</a></p>
         </div><!-- panel-content -->
     </div><!-- tabs-1 -->
     <div id="tabs-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">

@@ -15,6 +15,20 @@ register_setting(
     default=(),
 )
 
+SIDEBAR_AGENDA_SETTINGS = (
+    (1, _("Just this site")),
+    (2, _("This site and the main site")),
+    (3, _("All sites")),
+)
+
+register_setting(
+    name="SIDEBAR_AGENDA_SITES",
+    description=_("For which sites should events be displayed in the sidebar "
+                  "upcoming events listing of this site?"),
+    editable=True,
+    choices=SIDEBAR_AGENDA_SETTINGS,
+    default=2,
+)
 
 # A list of unused Mezzanine settings that should be hidden in the admin
 HIDDEN_SETTINGS = (

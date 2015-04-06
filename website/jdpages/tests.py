@@ -12,6 +12,7 @@ from website.jdpages.models import ColumnElement
 from website.jdpages.models import Sidebar
 from website.jdpages.views import BlogCategorySidebarItem
 from website.jdpages.views import TwitterSidebarItem
+from website.jdpages.views import TabsSidebarItem
 from website.jdpages.views import SocialMediaButtonGroupItem
 
 
@@ -78,8 +79,9 @@ class TestSidebar(TestCaseAdminLogin):
         self.assertEqual(response.status_code, 200)
         items = response.context['sidebar_items']
         self.assertTrue(type(items[0]) == BlogCategorySidebarItem)
-        self.assertTrue(type(items[1]) == TwitterSidebarItem)
-        self.assertTrue(type(items[2]) == SocialMediaButtonGroupItem)
+        self.assertTrue(type(items[1]) == TabsSidebarItem)
+        self.assertTrue(type(items[2]) == TwitterSidebarItem)
+        self.assertTrue(type(items[3]) == SocialMediaButtonGroupItem)
 
 
 class TestPage(TestCaseAdminLogin):

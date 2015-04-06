@@ -3,6 +3,7 @@ mezzanine==3.1.10
 django-simple-captcha==0.4.3
 django_debug_toolbar==1.2.2
 python-dateutil
--e git+https://github.com/jonge-democraten/mezzanine-swingtime#egg=swingtime
+icalendar==3.8.4
+-e git+https://github.com/jonge-democraten/mezzanine-fullcalendar#egg=fullcalendar
 -e git+https://github.com/rbarrois/python-ldap@py3#egg=python-ldap
 -e git+https://github.com/jonge-democraten/janeus@mezzanine#egg=janeus

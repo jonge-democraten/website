@@ -14,7 +14,7 @@ from __future__ import absolute_import, unicode_literals
 # Controls the ordering and grouping of the admin menu.
 #
 ADMIN_MENU_ORDER = (
-    ("Content", ("pages.Page", "blog.BlogPost", "generic.ThreadedComment", ("Media Library", "fb_browse"), "jdpages.Sidebar",)),
+    ("Content", ("pages.Page", "blog.BlogPost", ("Media Library", "fb_browse"), "jdpages.Sidebar",)),
     ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting", "jdpages.SidebarBannerWidget",)),
     ("Users", ("auth.User", "auth.Group",)),
     ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget",
@@ -22,16 +22,15 @@ ADMIN_MENU_ORDER = (
                       "jdpages.Document", "jdpages.SidebarTwitter",)),
 )
 
-BLOG_POST_PER_PAGE = 2
 
 # A three item sequence, each containing a sequence of template tags
 # used to render the admin dashboard.
 #
-# DASHBOARD_TAGS = (
-#     ("blog_tags.quick_blog", "mezzanine_tags.app_list"),
-#     ("comment_tags.recent_comments",),
-#     ("mezzanine_tags.recent_actions",),
-# )
+DASHBOARD_TAGS = (
+    ("mezzanine_tags.app_list",),
+    ("mezzanine_tags.recent_actions",),
+    (),
+)
 
 # A sequence of templates used by the ``page_menu`` template tag. Each
 # item in the sequence is a three item sequence, containing a unique ID
@@ -78,12 +77,6 @@ BLOG_POST_PER_PAGE = 2
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
 # BLOG_USE_FEATURED_IMAGE = True
-
-####################
-# PROJECT SETTINGS #
-####################
-
-SITE_TITLE = "Jonge Democraten"
 
 ########################
 # MAIN DJANGO SETTINGS #
@@ -293,6 +286,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "mezzanine.conf.context_processors.settings",
     "mezzanine.pages.context_processors.page",
     "website.jdpages.context_processors.sidebar",
+    "website.jdpages.context_processors.site_properties",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -579,3 +573,16 @@ FULLCALENDAR_SITE_COLORS = {
     2: 'red',
     3: ('white', 'black', 'black'),
 }
+
+#####################
+# TEMPLATE SETTINGS #
+#####################
+
+# This is the default list of settings that are accessible to templates, 
+# because apparently Mezzanine has difficulty accessing the JQUERY_UI_FILENAME
+# setting otherwise.
+# This could be a bug in Mezzanine.
+
+TEMPLATE_ACCESSIBLE_SETTINGS = ('ACCOUNTS_APPROVAL_REQUIRED', 'ACCOUNTS_VERIFICATION_REQUIRED', 'ADMIN_MENU_COLLAPSED', 'BITLY_ACCESS_TOKEN', 'BLOG_USE_FEATURED_IMAGE', 'COMMENTS_DISQUS_SHORTNAME', 'COMMENTS_NUM_LATEST', 'COMMENTS_DISQUS_API_PUBLIC_KEY', 'COMMENTS_DISQUS_API_SECRET_KEY', 'COMMENTS_USE_RATINGS', 'DEV_SERVER', 'FORMS_USE_HTML5', 'GRAPPELLI_INSTALLED', 'GOOGLE_ANALYTICS_ID', 'JQUERY_FILENAME', 'JQUERY_UI_FILENAME', 'LOGIN_URL', 'LOGOUT_URL', 'SITE_TITLE', 'SITE_TAGLINE', 'USE_L10N')
+
+TEMPLATE_ACCESSIBLE_SETTINGS += ('SIDEBAR_AGENDA_SITES',)

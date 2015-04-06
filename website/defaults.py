@@ -14,3 +14,53 @@ register_setting(
     editable=False,
     default=(),
 )
+
+SIDEBAR_AGENDA_SETTINGS = (
+    (1, _("Just this site")),
+    (2, _("This site and the main site")),
+    (3, _("All sites")),
+)
+
+register_setting(
+    name="SIDEBAR_AGENDA_SITES",
+    description=_("For which sites should events be displayed in the sidebar "
+                  "upcoming events listing of this site?"),
+    editable=True,
+    choices=SIDEBAR_AGENDA_SETTINGS,
+    default=2,
+)
+
+# A list of unused Mezzanine settings that should be hidden in the admin
+HIDDEN_SETTINGS = (
+    'COMMENTS_ACCOUNT_REQUIRED',
+    'COMMENTS_DEFAULT_APPROVED',
+    'COMMENTS_DISQUS_API_PUBLIC_KEY',
+    'COMMENTS_DISQUS_API_SECRET_KEY',
+    'COMMENTS_DISQUS_SHORTNAME',
+    'COMMENTS_NOTIFICATION_EMAILS',
+    'COMMENTS_NUM_LATEST',
+    'COMMENTS_REMOVED_VISIBLE',
+    'COMMENTS_UNAPPROVED_VISIBLE',
+    'COMMENTS_USE_RATINGS',
+    'COMMENT_FILTER',
+    'AKISMET_API_KEY',
+    'BITLY_ACCESS_TOKEN',
+    'GOOGLE_ANALYTICS_ID',
+    'RATINGS_ACCOUNT_REQUIRED',
+    'TAG_CLOUD_SIZES',
+)
+
+
+def disable_settings(settings):
+    """ Disable a list of settings and hide them from the admin """
+    for setting in HIDDEN_SETTINGS:
+        register_setting(
+            name=setting,
+            label=_(setting),
+            description=_("Unused setting"),
+            editable=False,
+            default="unused",
+        )
+
+
+disable_settings(HIDDEN_SETTINGS)

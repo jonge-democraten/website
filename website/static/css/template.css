@@ -914,11 +914,11 @@ fieldset button {
   outline: none;
   color: #FFFFFF;
   font-weight: bold;
-  background: transparent url(/templates/jd/images/TabRight.png) no-repeat top right;
+  background: transparent url(../images/TabRight.png) no-repeat top right;
 }
 #tabs.ui-tabs ul.ui-tabs-nav li.ui-state-active a
  {
-  background: transparent url(/templates/jd/images/TabRightSelected.png) no-repeat top right;
+  background: transparent url(../images/TabRightSelected.png) no-repeat top right;
  }
 
 #tabs.ui-tabs ul.ui-tabs-nav li.ui-state-active a
@@ -1324,7 +1324,7 @@ div.jevtt_text{
 }
 
 #tabs-1, #tabs-2 {
-  background-image: url("/templates/jd/images/TabPanelBackground.png");
+  background-image: url("../images/TabPanelBackground.png");
   background-size: 100% 100%;
 }
 
@@ -1991,4 +1991,34 @@ p#calendar-error {
 }
 p#calendar-loading {
     display: none;
+}
+
+#event-map {
+    display: none; /* Hide by default, will be restored to block by javascript */
+    height: 180px;
+    max-width: 810px;
+}
+
+p#logosubtitle {
+    position: absolute;
+    top: 58px;
+    left: 87px;
+    width:200px;
+    padding: 0px;
+    font-weight: normal;
+    font-size: 14.5px;
+    letter-spacing: 2px;
+    color: grey;
+}
+
+p#logosubtitlemobile {
+    position: absolute;
+    top: 58px;
+    left: 45%;
+    width: 200px;
+    padding: 0px;
+    font-weight: normal;
+    font-size: 14.5px;
+    letter-spacing: 2px;
+    color: grey;
 }

@@ -11,13 +11,16 @@ from mezzanine.pages.page_processors import processor_for
 from mezzanine.pages.models import RichTextPage
 
 from website.jdpages.models import BlogPage
+from mezzanine.forms.models import Form
+from website.jdpages.models import HomePage, DocumentListing
 from website.jdpages.models import ColumnElementWidget
-from website.jdpages.models import HomePage
 from website.jdpages.models import HorizontalPosition
 from website.jdpages.models import PageHeaderSettingsWidget, PageHeaderImageWidget
 from website.jdpages.views import create_column_items
 
 
+@processor_for(DocumentListing)
+@processor_for(Form)
 @processor_for(HomePage)
 @processor_for(BlogPage)
 @processor_for(RichTextPage)
@@ -26,21 +29,7 @@ def add_header_images(request, page):
     if not page_header_settings:
         return
 
-    page_header_settings = PageHeaderSettingsWidget.objects.get(page=page)
-
-    if page_header_settings.type == PageHeaderSettingsWidget.SINGLE:
-        page_header = get_first_page_header(page)
-    if page_header_settings.type == PageHeaderSettingsWidget.PARENT:
-        parent = page.parent
-        if parent:
-            page_header = get_parent_page_header(parent)
-        else:
-            homepage = HomePage.objects.all()[0]
-            page_header = get_first_page_header(homepage)
-    if page_header_settings.type == PageHeaderSettingsWidget.NONE:
-        page_header = None
-    if page_header_settings.type == PageHeaderSettingsWidget.RANDOM:
-        page_header = get_random_page_header(page)
+    page_header = get_page_header(page)
 
     if page_header:
         page_header.title = page.title
@@ -73,18 +62,24 @@ def get_first_page_header(page):
         return None
 
 
-def get_parent_page_header(parent):
-    page_header_settings = PageHeaderSettingsWidget.objects.get(page=parent)
-    if page_header_settings.type == PageHeaderSettingsWidget.PARENT:
-        if parent.parent:
-            get_parent_page_header(parent.parent)
+def get_page_header(page):
+    page_header_settings = PageHeaderSettingsWidget.objects.get(page=page)
+
+    if page_header_settings.type == PageHeaderSettingsWidget.SINGLE:
+        return get_first_page_header(page)
+    elif page_header_settings.type == PageHeaderSettingsWidget.PARENT:
+        if page.parent:
+            return get_page_header(page.parent)
         else:
-            homepage = HomePage.objects.all()[0]
-            return get_first_page_header(homepage)
-    elif page_header_settings.type != PageHeaderSettingsWidget.NONE:
-        return get_first_page_header(parent)
-    else:
+            homepages = HomePage.objects.all()
+            if homepages.exists():
+                return get_page_header(homepages[0])
+            else:
+                return None
+    elif page_header_settings.type == PageHeaderSettingsWidget.NONE:
         return None
+    elif page_header_settings.type == PageHeaderSettingsWidget.RANDOM:
+        return get_random_page_header(page)
 
 
 def get_random_page_header(page):

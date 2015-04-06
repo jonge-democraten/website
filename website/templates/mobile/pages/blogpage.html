@@ -17,6 +17,10 @@
 
 {% block main %}
     <section class="content clearing">
+    {% if page_header %}
+        {% include "elements/page_header_image.html" %}
+    {% endif %}
+
     {% if page %}
         {% block blog_post_list_pagecontent %}
         {% if page.get_content_model.content %}

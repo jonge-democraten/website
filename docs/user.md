@@ -17,7 +17,10 @@ Via de admin-pagina, onder Content > Pages, is het mogelijk de menustructuur van
 <strong>1.1.1 Homepage</strong>
 
 De bovenste regel 'Home' kan je niet verwijderen. Dit is de homepage van je site en staat vast in structuur. Wanneer je op 'Home' klikt, kan je de inhoud van de pagina veranderen. Indien je dit doet zul je onder het content-venster een indeling zien van de kolommen op de homepage. 
-Met 'Left column widgets' en 'Right column widgets' kun je een indeling maken met éen of twee kolommen en x-aantal rijen. Dit kan je naar eigen inzicht indelen. Als AS heb je de keuze tussen vaste categorieën die de uiteindelijke kopjes op de Homepage zullen zijn.
+
+Met 'Left column widgets' en 'Right column widgets' kun je een indeling maken met éen of twee kolommen en x-aantal rijen. Dit kan je naar eigen inzicht indelen. 
+
+Als AS heb je de keuze tussen vaste categorieën die de uiteindelijke kopjes op de Homepage zullen zijn.
 Deze categorieën staan vast, wil je een andere titel voor je kopje dan kan je het ICT-team hiervoor mailen. Onder 'horizontal position' kan je bepalen of je de Kopjes links of rechts op de site wilt zien.
 
 Klik op 'Save' om de veranderingen door te voeren. 
@@ -87,15 +90,12 @@ PDF bestanden zoals het HR en Statuten kan je als volgt insluiten (embedden) op 
 1. Upload het PDF-bestand in de Media Library
 2. Open in de backend de pagina waar je het PDF wilt insluiten
 3. Ga naar het venster 'Content' en klik in de taakbalk op het HTML icoon (zevende van links)
-4. Voer in het HTML venster de onderstaande objectcode in:
-
-```<object data="/static/media/path/bestandsnaam.pdf" width="100%" height=600 type="application/pdf">Oeps, foutje. Hier hoort een document te staan</object>```
-
+4. Voer in het HTML venster de onderstaande objectcode in:  ```<object data="/static/media/path/bestandsnaam.pdf" width="100%" height=600 type="application/pdf">Oeps, foutje. Hier hoort een document te staan</object>``` 
 5. Waar in de bovenstaande code nu "/static/media/path/bestandsnaam.pdf" staat dien je de locatiecode (tag) van het pdf-bestand te plaatsen. Dit doe je als volgt: 
-- ga terug naar Media Library
-- klik op de bestandsnaam van het desbetreffende pdf-bestand
-- Het pdf-bestand wordt nu geopend in een nieuw venster, in de adresbalk zie je nu de locatiecode van het pdf-bestand staan.
-- Kopieer deze locatiecode, let wel, de code begint met /static/media/ en eindigt met .pdf . Alles wat hiervoor of achter staat is niet noodzakelijk.
+	- ga terug naar Media Library
+	- klik op de bestandsnaam van het desbetreffende pdf-bestand
+	- Het pdf-bestand wordt nu geopend in een nieuw venster, in de adresbalk zie je nu de locatiecode van het pdf-bestand staan.
+	- Kopieer deze locatiecode, let wel, de code begint met /static/media/ en eindigt met .pdf . Alles wat hiervoor of achter staat is niet noodzakelijk.
 6. Plak de locatiecode op de plek waar nu /static/media/path/bestandsnaam.pdf staat. Zorg dat de code tussen de aanhalingstekens blijft staan.
 
 Dit is een vrij geavanceerd proces, ga dus niet zomaar rommelen aan de code. Wanneer je de locatiecode niet correct invoegt komt de volgende melding op de site te staan: 'Oeps, foutje. Hier hoort een document te staan'.
@@ -117,23 +117,21 @@ Let wel: Een header image dient 610 x 290 pixels als vereiste te hebben. Is dit 
 
 Wil je de header image weer verwijderen, klik dan op het kruisje. Het plaatje verdwijnt dan niet automatisch uit de lijst maar hij is wel echt verwijderd.
 
-Klik op 'Save' om de veranderingen door te voeren. 
-
 <strong>2.6 Video's</strong>
 
 Filmpjes uploaden via Youtube (maar ook via andere sites) is geen probleem. 
 
 - Ga naar Youtube en zoek de betreffende video. 
 - Klik onder de video op 'Delen/Share', daarna op 'Insluiten/Embed'.
-- Kopieer de code (deze HTML code lijkt hierop: ```<iframe width="560" height="315" src="//www.youtube.com/embed/BcsfftwLUf0" frameborder="0" allowfullscreen></iframe>``` 
+- Kopieer de code, deze HTML code lijkt hierop: ```<iframe width="560" height="315" src="//www.youtube.com/embed/BcsfftwLUf0" frameborder="0" allowfullscreen></iframe>``` 
 - Plaats in het tekstvak de cursor op de plek waar je de video wilt plaatsen en klik op het film-icoontje in de tekstverwerkersbalk. 
 - Open in het nieuwe venster de 'Source' tab en kopieer de link in het zwarte veld. 
 - Klik op 'Insert'
 
-Wanneer je dit hebt gedaan zul je de video niet in het tekstvak zien, schrik hier niet van, dit hoort zo. Wil je toch zien waar de video staat in tekstvak kan je de gehele tekst selecteren (ctrl-a).
+Wanneer je dit hebt gedaan zul je de video niet in het tekstvak zien, dit hoort zo. Wil je toch zien waar de video staat in tekstvak kan je de gehele tekst selecteren (ctrl-a).
 De video kan je na het invoegen nog verslepen in het tekstvak, dit doe je door op het de video te klikken en met de cursor te verslepen naar de gewenste plek. Wil je de video weer verwijderen uit het tekstvak dan kan je dat met delete of backspace doen. 
 
-Als je klaar bent met het bewerken van de pagina, klik je op save. De veranderingen zullen dan zichtbaar zijn op de site. Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
+Als je klaar bent met het bewerken van de pagina, klik je op save. 
 
 <strong>2.7 In-line editing</strong>
 
@@ -148,12 +146,11 @@ Ga naar: Content > Pages > Add Form > Change Form
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker. 
-- Button text: staat standaard op 'Submit', dit is de text van de button waarmee je het formulier verstuurd. 
+- Button text: staat standaard op 'Submit'. Dit is de tekst van de button wanneer de gebruiker het formulier verstuurd op de frontend. 
 - Response: Nadat het formulier is verstuurd, zullen gebruikers de content zien die je hier plaatst. 
-
-Vervolgens kan je gebruiker een bevestigingsmail toesturen (optioneel), vul hiervoor de  benodigde velden in. 
-
-Uiteindelijk kan je onderaan het formulier indelen via 'fields', dit kun je naar eigen inzicht doen. 
+- Show in menus: 'Top Navigation Bar', 'Left hand tree, en 'footer' staan automatisch aangevinkt. Hier hoef je niets aan te veranderen. Vink 'Login required' niet aan. 
+- Email: Hier kan je een bevestigingsmail toesturen naar de gebruikers (optioneel). Vul hiervoor de benodigde velden in. 
+- Fields: Via deze optie kan je het uiteindelijke formulier opstellen, dit kun je naar eigen inzicht doen. 
 
 Klik op 'Save' om de veranderingen door te voeren. 
 
@@ -167,7 +164,7 @@ Als AS heb je de mogelijkheid om blogs aan te maken, aan te passen en te verwijd
 - Title: Naam van het submenu
 - Categories: Vink hier de categorie aan waar je Blog bij hoort. Je kan zelf geen nieuwe categorieën aanmaken. Indien je toch andere categorieën wilt kun je het ICT-team mailen.
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
-- Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk. Laat je 'Expires on' leeg, zal de blog niet verdwijnen van de hoofdsite. Als admin van de site kan je wel nog steeds de blog zien, deze zal niet aan de achterkant verdwijnen.
+- Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk. Laat je 'Expires on' leeg, zal de blog niet verdwijnen van de hoofdsite. Als de blog weg is op de frontend van de site, kan je als admin op de backend nog steeds de blog zien, deze zal niet aan de achterkant verdwijnen tenzij je hem zelf verwijderd.
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker.
 
 Onder de tab 'Other posts' is het mogelijk om links van gerelateerde berichten te plaatsen onder de blog. Dit is optioneel. 
@@ -192,7 +189,6 @@ Een blog kan je verwijderen uit het overzicht door er een vinkje voor te zetten 
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker.
 - Klik op 'Save' om de veranderingen door te voeren.
 
-
 ### 6 Newsletters
 
 Coming soon
@@ -201,14 +197,17 @@ Coming soon
 
 <strong>7.1 Media Library</strong>
 
-Je kan verschillende bestanden (zoals documenten en afbeeldingen) opslaan bij de Media Library. Deze bestanden kan je uploaden onder Content > Media Library. Klik rechtsboven op de knop 'Upload', klik vervolgens op de knop 'Select'. Je kan meerdere bestanden in één keer selecteren en uploaden. 
+Je kan verschillende bestanden (zoals documenten en afbeeldingen) opslaan bij de Media Library. Om bestanden te uploaden volg de volgende stappen: 
+- Ga naar Content > Media Library
+- Klik rechtsboven op de knop 'Upload'
+- Klik op de knop 'Select Files'
+- Selecteer de gewenste bestanden. Je kan meerdere bestanden in één keer selecteren en uploaden. 
 
 Onder de tab help staat welke verschillende bestandsformaten je kan uploaden. Een bestand groter dan 10mb kan niet worden geüpload. Wel kan je meerdere bestanden die samen groter zijn dan 10mb uploaden.
 
 Om een ellenlange lijst met bestanden te voorkomen kun je de Media Library naar eigen inzicht onderverdelen in mappen. Daarnaast kan je bestanden sorteren op alfabetische volgorde, grootte en datum. Tevens kan je bestanden filteren op datum en type. Met de zoekfunctie kan je door je de Media Library doorzoeken.
 
 Gebruik de Media Library om documenten op te slaan die je op de site wilt plaatsen. Documenten die je voor intern gebruik nodig hebt kun je opslaan op de Wolk. 
-
 
 <strong>7.2 Documenten toevoegen</strong>
 

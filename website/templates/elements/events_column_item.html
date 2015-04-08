@@ -1,0 +1,14 @@
+{% load fullcalendar %}
+
+<h3>{{ item.title }} </h3>
+{% get_site_agenda limit=item.max_items as events %}
+<div class="mod_placehere">
+    <div style="overflow:auto;" class="mod_placehere_leading even">
+        {% for event in events %}
+        <div class="placehere">
+            {{ event.start_time|date:"l d F H:i" }}
+            <a target="_top" href="//{{ event.event.event_category.site }}{{ event.get_absolute_url }}">{{ event.title }}</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>

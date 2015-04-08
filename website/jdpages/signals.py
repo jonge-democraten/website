@@ -6,9 +6,11 @@ from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 from django.contrib.sites.models import Site
 
+from fullcalendar.models import EventCategory
+
 from mezzanine.blog.models import BlogCategory
 
-from website.jdpages.models import ColumnElement
+from website.jdpages.models import ColumnElement, EventColumnElement
 from website.jdpages.models import Sidebar, SidebarTabsWidget
 from website.jdpages.models import create_columnelement_for_blogcategory
 
@@ -41,9 +43,30 @@ def post_save_callback(sender, instance, created, **kwargs):
 
     if sender == BlogCategory:
         if not ColumnElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)):  # TODO BR: move this check to create_columnelement_for_blogcategory function
+            logger.info('create blog column element')
             create_columnelement_for_blogcategory(instance)
+            logger.info('blog column element created')
+    if sender == Site:
+        logger.info('create new event column element for site: ' + str(instance.id) + ' (' + str(instance) + ')')
+        create_column_element_for_event(EventColumnElement.MAIN, 'Events for main site', instance.id)
+        if instance.id != 1:
+            create_column_element_for_event(EventColumnElement.SITE, 'Events for ' + str(instance), instance.id)
+            create_column_element_for_event(EventColumnElement.MAIN_AND_SITE, 'Events for main site and ' + str(instance), instance.id)
+        logger.info('event column element created')
 
     return
+
+
+def create_column_element_for_event(event_type, name, site_id):
+    event_element = EventColumnElement.objects.create(type=event_type)
+    event_element.site_id = site_id
+    event_element.save(update_site=False)
+    element = ColumnElement.objects.create()
+    element.name = name
+    element.content_type = ContentType.objects.get_for_model(event_element)
+    element.object_id = event_element.id
+    element.site_id = site_id
+    element.save(update_site=False)
 
 
 @receiver(pre_delete)

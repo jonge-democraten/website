@@ -5,6 +5,7 @@ from django.utils.html import strip_tags
 
 from mezzanine.blog.models import BlogCategory
 
+from website.jdpages.models import EventColumnElement
 from website.jdpages.models import get_public_blogposts
 
 
@@ -15,6 +16,9 @@ def create_column_items(column_widgets):
         if model_class == BlogCategory:
             blog_category = widget.column_element.get_object()
             column_items.append(BlogCategoryItem(blog_category, widget.max_items))
+        elif model_class == EventColumnElement:
+            event_element = widget.column_element.get_object()
+            column_items.append(EventColumnItem(event_element, widget.max_items))
     return column_items
 
 
@@ -54,6 +58,16 @@ class BlogPostItem(Item):
         self.date = blogpost.publish_date
         self.url = blogpost.get_absolute_url()
         self.content = strip_tags(blogpost.content)
+
+
+class EventColumnItem(Item):
+    def __init__(self, event_element, max_items):
+        # if event_element.type == EventColumnElement.MAIN:
+        self.title = 'Main site events'
+        self.max_items = max_items
+
+    def get_template_name(self):
+        return "events_column_item.html"
 
 
 class BlogCategorySidebarItem(Item):
@@ -106,6 +120,7 @@ class BannerSidebarItem(Item):
 class TwitterSidebarItem(Item):
     def get_template_name(self):
         return "twitter_feed_item.html"
+
 
 class TabsSidebarItem(Item):
     def get_template_name(self):

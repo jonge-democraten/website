@@ -48,48 +48,62 @@ Wanneer je een menu aanmaakt met 'Rich text page' creeer je een pagina op de JDs
 
 ### 2 Managing Content
 
-De tekstverwerker, het venster waar je inhoud kunt wijzingen zul je vaak gebruiken. Deze heeft verschillende opties die hieronder staan beschreven. 
+De tekstverwerker, het venster waar je inhoud kunt wijzigingen, zul je vaak gebruiken. Deze heeft verschillende opties die hieronder staan beschreven. 
 
-<strong>2.1 Taakbalk teksverwerker</strong>
+<strong>2.1 Taakbalk tekstverwerker</strong>
 
-Van links naar rechts zie je in de tekstverwerksbalk staan: 
+Van links naar rechts zie je in de taakbalk staan: 
 
 - B: vetgedrukt 
 - I: cursief 
-- Geschakelde ketting: Hyperlink invoegen/veranderen
-- Gebroken ketting: Hyperlink verwijderen
-- Scherm met plusje: Afbeeldingen invoegen/veranderen
-- Filmband: Video invoegen/veranderen (embedden)
-- Omega: Speciale tekens/symbolen invoeg en
+- Geschakelde ketting: hyperlink invoegen/veranderen
+- Gebroken ketting: hyperlink verwijderen
+- Scherm met plusje: afbeeldingen invoegen/veranderen
+- Filmband: video invoegen/veranderen (embedden)
+- Omega: speciale tekens/symbolen invoeg en
 - HTML: laat de ingevoerde content in HTML-code zien
-- Tabel: Tabel invoegen
+- Tabel: tabel invoegen
 - Bulletpoints invoegen
 - Nummering invoegen
 - Ongedaan maken (ctrl-z)
 - Herstellen (ctrl-y)
 - Drop-down menu: bewerken format van de alinea's
-- Verrekijker: Zoekfunctie
-- Venster: Fullscreen
+- Verrekijker: zoekfunctie
+- Venster: fullscreen
 
 <strong>2.2 Hyperlink invoegen</strong>
 
-Het invoegen van een hyperlink kan als volgt: selecteer de tekst waarvan je een link wilt maken, klik vervolgens op de het icoontje van de kettingschakel in de tekstverwerkersbalk. Vul de URL Link in bij 'General Properties' en  klik op Update. Wil je de link weer verwijderen kan dit door op 'Unlink' te klikken.
+Het invoegen van een hyperlink kan als volgt:
+- Selecteer de tekst waarvan je een link wilt maken
+- Klik op de het icoontje van de kettingschakel in de taakbalk
+- Vul de URL Link in bij 'General Properties' 
+- Klik op 'Update'. 
+
+Indien je de link wilt verwijderen klik je op 'Unlink'.
 
 <strong>2.3 Afbeelding</strong>
 
 Een afbeelding opnemen in de tekst kan op twee manieren: 
 
-1. Een afbeelding kopiëren/plakken (vanaf een andere site) in het tekstvak. Deze methode is makkelijk en snel, wanneer echter de locatie van de afbeelding op de originele site verandert, is de afbeelding niet meer beschikbaar. 
+1. Een afbeelding kopiëren/plakken (vanaf een andere site) in het tekstvak (bij content), deze methode is makkelijk en snel. Echter, wanneer de locatie van de afbeelding op de originele site verandert, is de afbeelding niet meer zichtbaar en krijg je een foutmelding. 
 
-2. Om te zorgen dat je afbeelding in de toekomst wel beschikbaar blijft kan je de afbeelding uploaden naar de Media Library (en dus onze eigen server). Wanneer dit is gedaan kan je via Insert/Edit Image (icoontje in de tekstverwerkersbalk) een plaatje uploaden vanuit de Media Library. Naast het veld van Image URL zit de 'browse' knop om naar de Media Library te gaan.
+2. Om te zorgen dat je afbeelding in de toekomst wel beschikbaar blijft kan je de afbeelding uploaden naar de Media Library (de afbeelding staat dan op de eigen JD server)
+- Zorg dat de afbeelding is opgeslagen in de Media Library (zie punt 7 voor meer uitleg hierover)
+- Ga naar het tekstvak 'Content' en klik in de taakbalk op het 'Instert/Edit Image' icoon (vijfde van links)
+- Een nieuw venster wordt geopend
+- Onder het tabblad 'General', naast het veld van 'Image URL' zit de 'browse' knop om naar de Media Library te gaan.
+- Selecteer de afbeelding uit de Media Libary
+- Klik op 'Insert'
+
+Wil je de afbeelding verwijderen uit het tekstvak dan kan je dat met delete of backspace doen. 
 
 <strong>2.4 PDF bestanden</strong>
 
 PDF bestanden zoals het HR en Statuten kan je als volgt insluiten (embedden) op een pagina.
 
-1. Upload het PDF-bestand in de Media Library
+1. Upload het PDF-bestand in de Media Library (zie punt 7 voor meer uitleg hierover)
 2. Open in de backend de pagina waar je het PDF wilt insluiten
-3. Ga naar het venster 'Content' en klik in de taakbalk op het HTML icoon (zevende van links)
+3. Ga naar het tekstvak 'Content' en klik in de taakbalk op het HTML icoon (zevende van links)
 4. Voer in het HTML venster de onderstaande objectcode in:  ```<object data="/static/media/path/bestandsnaam.pdf" width="100%" height=600 type="application/pdf">Oeps, foutje. Hier hoort een document te staan</object>``` 
 5. Waar in de bovenstaande code nu "/static/media/path/bestandsnaam.pdf" staat dien je de locatiecode (tag) van het pdf-bestand te plaatsen. Dit doe je als volgt: 
 	- ga terug naar Media Library
@@ -110,7 +124,7 @@ Op de HomePage and elke RichTextPage kunnen één of meerdere headers worden gep
 - Klik onder image op het icoontje. Een nieuw venster van de Media Library wordt automatisch geopend. Klik op het diagonale pijltje (linker-icoon) de afbeelding aan die je als header wilt.
 Let wel: Een header image dient 610 x 290 pixels als vereiste te hebben. Is dit niet het geval kan je de afbeelding niet invoeren.
 - Onder 'Header image type' kun je aangeven welk type header je wilt:
-	- Parent header: de header die het hoogst in de hierarchie (HomePage) staat wordt hier weergegeven
+	- Parent header: de header die het hoogst in de hierarchie (dus de HomePage) staat wordt hier weergegeven
 	- No header: de header wordt niet afgebeeld op de pagina
 	- Single image: de ingevoerde image die bovenaan de lijst staat wordt als header aangegeven
 	- Random image: indien je meerdere header images hebt, kun je deze willekeurig laten rouleren
@@ -124,14 +138,12 @@ Filmpjes uploaden via Youtube (maar ook via andere sites) is geen probleem.
 - Ga naar Youtube en zoek de betreffende video. 
 - Klik onder de video op 'Delen/Share', daarna op 'Insluiten/Embed'.
 - Kopieer de code, deze HTML code lijkt hierop: ```<iframe width="560" height="315" src="//www.youtube.com/embed/BcsfftwLUf0" frameborder="0" allowfullscreen></iframe>``` 
-- Plaats in het tekstvak de cursor op de plek waar je de video wilt plaatsen en klik op het film-icoontje in de tekstverwerkersbalk. 
+- Plaats in het tekstvak de cursor op de plek waar je de video wilt plaatsen en klik op het film-icoontje in de taakbalk. 
 - Open in het nieuwe venster de 'Source' tab en kopieer de link in het zwarte veld. 
 - Klik op 'Insert'
 
 Wanneer je dit hebt gedaan zul je de video niet in het tekstvak zien, dit hoort zo. Wil je toch zien waar de video staat in tekstvak kan je de gehele tekst selecteren (ctrl-a).
 De video kan je na het invoegen nog verslepen in het tekstvak, dit doe je door op het de video te klikken en met de cursor te verslepen naar de gewenste plek. Wil je de video weer verwijderen uit het tekstvak dan kan je dat met delete of backspace doen. 
-
-Als je klaar bent met het bewerken van de pagina, klik je op save. 
 
 <strong>2.7 In-line editing</strong>
 
@@ -141,7 +153,7 @@ Een website kent een voorkant (front end) en een achterkant (back end). De 'fron
 
 Wil je een formulier opstellen, zodat leden zich voor een activiteit kunnen aanmelden, dan kan dat met de nieuwe backend. Overigens kan je met dit formulier geen betalingen invoeren of verwerken.
 
-Ga naar: Content > Pages > Add Form > Change Form
+Ga naar: Content > Pages > Add... > Form
 - Title: Naam van het submenu
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
@@ -161,7 +173,7 @@ Als AS heb je de mogelijkheid om blogs aan te maken, aan te passen en te verwijd
 <strong>Blog aanmaken</strong>
 
 - Ga naar: Content > Blog posts > Klik rechtsboven op 'Add blog posts' 
-- Title: Naam van het submenu
+- Title: Naam van het Blog
 - Categories: Vink hier de categorie aan waar je Blog bij hoort. Je kan zelf geen nieuwe categorieën aanmaken. Indien je toch andere categorieën wilt kun je het ICT-team mailen.
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk. Laat je 'Expires on' leeg, zal de blog niet verdwijnen van de hoofdsite. Als de blog weg is op de frontend van de site, kan je als admin op de backend nog steeds de blog zien, deze zal niet aan de achterkant verdwijnen tenzij je hem zelf verwijderd.
@@ -187,7 +199,8 @@ Een blog kan je verwijderen uit het overzicht door er een vinkje voor te zetten 
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker.
-- Klik op 'Save' om de veranderingen door te voeren.
+
+Klik op 'Save' om de veranderingen door te voeren.
 
 ### 6 Newsletters
 
@@ -212,8 +225,8 @@ Gebruik de Media Library om documenten op te slaan die je op de site wilt plaats
 <strong>7.2 Documenten toevoegen</strong>
 
 Het is mogelijk om documenten (bv. HR, Statuten) zelf te plaatsen op de website.
-- Ga naar Content > Pages > Add Document Listing
-- Title: Naam van het submenu
+- Ga naar Content > Pages > Add... > Add Document Listing
+- Title: Naam van het menu
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker.
@@ -222,5 +235,6 @@ Het is mogelijk om documenten (bv. HR, Statuten) zelf te plaatsen op de website.
 - Onderaan bij 'Documents' kun je documenten uploaden. Klik hiervoor op het icoontje onder 'Document'. Bestanden die nog niet in de Media Library staan kan je alsnog direct uploaden via de knop rechtsboven. Tekstbestanden die al in de Media Library staan kan je hier selecteren via 'Select' (het blauwe icoontje met pijltje, links vooraan). Wanneer het bestand succesvol is geupload zal er een knop komen met 'document selected'. Als je hierop klikt kan je het geselecteerde document openen. Enkele vereiste is nog dat je een beschrijving van het bestand invult bij 'Description'. Deze beschrijving is uiteindelijk ook te zien op de site.
 - Klik op 'Add another' indien je een extra bestand wilt uploaden.
 - Voer naar eigen inzicht een header image in. Zie 2.5 voor uitleg over headers. 
-- Klik op 'Save' om de veranderingen door te voeren.
+
+Klik op 'Save' om de veranderingen door te voeren.
 

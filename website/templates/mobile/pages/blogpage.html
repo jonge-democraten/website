@@ -4,11 +4,8 @@
 {% block meta_title %}{% if page %}{{ page.meta_title }}{% endif %}{% endblock %}
 
 {% block meta_keywords %}{% metablock %}
-{% keywords_for page as keywords %}
-{% for keyword in keywords %}
-    {% if not forloop.first %}, {% endif %}
-    {{ keyword }}
-{% endfor %}
+    {% keywords_for blog_post as tags %}
+    {% for tag in tags %}{% if not forloop.first %}, {% endif %}{{ tag }}{% endfor %}
 {% endmetablock %}{% endblock %}
 
 {% block meta_description %}{% metablock %}
@@ -16,53 +13,49 @@
 {% endmetablock %}{% endblock %}
 
 {% block main %}
-
 <section class="content clearing">
 
     <p class="pathway"></p>
 
     {% if page_header %}
-        {% include "elements/page_header_image.html" %}
-    {% endif %}
-
+    {% include "elements/page_header_image.html" %}
     <div class="item-page">
-
     <h2>
         <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
     </h2>
-
-    {% if page.get_content_model.content %}
-        {{ page.get_content_model.content|richtext_filters|safe }}
+    {% else %}
+    <h2>
+        <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+    </h2>
+    <div class="item-page">
     {% endif %}
 
+        {% if page.get_content_model.content %}
+            {{ page.get_content_model.content|richtext_filters|safe }}
+        {% endif %}
 
-    {% for blog_post in blog_posts.object_list %}
-    <h2>
-    <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
-    </h2>
+        {% for blog_post in blog_posts.object_list %}
+            <h2>
+                <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+            </h2>
 
-    <dl class="article-info">
-        Geschreven door
-        {% with blog_post.user as author %}
-            {{ author.get_full_name|default:author.username }}
-        {% endwith %}
-        <br/>
-        {{ blog_post.publish_date|date:"d M Y" }}
-    </dl>
+            <p>
+                Geschreven door
+                {% with blog_post.user as author %}
+                    {{ author.get_full_name|default:author.username }}
+                {% endwith %}
+                <br/>
+                {{ blog_post.publish_date|date:"d M Y" }}
+            </p>
 
-    {{ blog_post.content|richtext_filters|safe }}
+            {{ blog_post.content|richtext_filters|safe }}
 
-    <div class="item-separator"></div>
-    {% endfor %}
+            <div class="item-separator"></div>
+        {% endfor %}
 
-    {% pagination_for blog_posts %}
+        {% pagination_for blog_posts %}
 
     </div> <!-- item-page -->
 
 </section> <!-- content -->
-
-{% endblock %}
-
-{% block right_panel %}
-{% include "blog/includes/filter_panel.html" %}
 {% endblock %}

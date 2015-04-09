@@ -41,6 +41,15 @@
     <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
     </h2>
 
+    <dl class="article-info">
+        Geschreven door
+        {% with blog_post.user as author %}
+            {{ author.get_full_name|default:author.username }}
+        {% endwith %}
+        <br/>
+        {{ blog_post.publish_date|date:"d M Y" }}
+    </dl>
+
     {{ blog_post.content|richtext_filters|safe }}
 
     <div class="item-separator"></div>

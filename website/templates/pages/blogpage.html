@@ -41,24 +41,17 @@
 
             {% block blog_post_list_post_metainfo %}
             {% editable blog_post.publish_date %}
-            <h6 class="post-meta">
-                {% trans "Posted by" %}:
+            <dl class="article-info">
+                <dd class="createdby">
+                {% trans "Geschreven door" %}
 
                 {% with blog_post.user as author %}
-                    <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
+                    {{ author.get_full_name|default:author.username }}
                 {% endwith %}
-
-                {% with blog_post.categories.all as categories %}
-                {% if categories %}
-                    {% trans "in" %}
-                    {% for category in categories %}
-                        <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
-                    {% endfor %}
-                {% endif %}
-                {% endwith %}
-
-                {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
-            </h6>
+                <br/>
+                {{ blog_post.publish_date|date:"d M Y" }}
+                </dd>
+            </dl>
             {% endeditable %}
             {% endblock %}
 

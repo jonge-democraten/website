@@ -1,4 +1,4 @@
-{% extends "mobile/pages/richtextpage.html" %}
+{% extends "mobile/base.html" %}
 {% load mezzanine_tags keyword_tags %}
 
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
@@ -12,21 +12,28 @@
     {{ blog_post.description }}
 {% endmetablock %}{% endblock %}
 
-{% block title %}
-    {{ blog_post.title }}
-{% endblock %}
+{% block main %}
+<section class="content clearing">
 
-{% block content_body %}
-    <h2><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h2>
-    {% block blog_post_detail_featured_image %}
-        {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-            <p>
-                <img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}">
-            </p>
-        {% endif %}
-    {% endblock blog_post_detail_featured_image %}
-    {% block blog_post_detail_content %}
+    <p class="pathway"></p>
+    <h2>
+        <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+    </h2>
+
+    <div class="item-page">
+
+        <p>
+            Geschreven door
+            {% with blog_post.user as author %}
+                {{ author.get_full_name|default:author.username }}
+            {% endwith %}
+            <br/>
+            {{ blog_post.publish_date|date:"d M Y" }}
+        </p>
+
         {{ blog_post.content|richtext_filters|safe }}
-    {% endblock %}
 
-{% endblock content_body %}
+    </div> <!-- item-page -->
+
+</section> <!-- content -->
+{% endblock main %}

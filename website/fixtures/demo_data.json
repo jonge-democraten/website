@@ -1139,6 +1139,21 @@
         "homepage"
       ],
       [
+        "add_blogpage",
+        "jdpages",
+        "blogpage"
+      ],
+      [
+        "change_blogpage",
+        "jdpages",
+        "blogpage"
+      ],
+      [
+        "delete_blogpage",
+        "jdpages",
+        "blogpage"
+      ],
+      [
         "change_sidebar",
         "jdpages",
         "sidebar"
@@ -1490,6 +1505,21 @@
         "delete_formentry",
         "forms",
         "formentry"
+      ],
+      [
+        "add_blogpage",
+        "jdpages",
+        "blogpage"
+      ],
+      [
+        "change_blogpage",
+        "jdpages",
+        "blogpage"
+      ],
+      [
+        "delete_blogpage",
+        "jdpages",
+        "blogpage"
       ],
       [
         "add_gallery",

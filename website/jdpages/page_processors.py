@@ -69,7 +69,7 @@ def get_page_header(page):
             return get_page_header(page.parent)
         else:
             homepages = HomePage.objects.all()
-            if homepages.exists():
+            if homepages.exists() and PageHeaderSettingsWidget.objects.filter(page=homepages[0]):
                 return get_page_header(homepages[0])
             else:
                 return None

@@ -2,15 +2,23 @@ jQuery(function($) {
     $(document).ready(function() {
         // Search for lat-long coordinates of the given location
         $.ajax({
-            url: location.protocol + "//nominatim.openstreetmap.org/search",
+            url: location.protocol + "//maps.google.com/maps/api/geocode/json",
             dataType: "json",
             data: {
-                "q": $('#occurrence-location').text(),
-                "format": "json"
+                "address": $('#occurrence-location').text(),
+                "sensor": "false"
+            },
+            xhrFields: {
+                withCredentials: true
             },
             success: function(data) {
+                console.log(data);
                 if(data.length == 0) {
-                    return 
+                    return;
+                }
+
+                if(data.results.length == 0) {
+                    return;
                 }
 
                 $('#event-map').css({
@@ -25,7 +33,10 @@ jQuery(function($) {
                     maxZoom: 18
                 }).addTo(map);
 
-                var marker = L.marker([data[0].lat, data[0].lon]).addTo(map);
+                var marker = L.marker([
+                    data.results[0].geometry.location.lat, 
+                    data.results[0].geometry.location.lon
+                ]).addTo(map);
             },
         });
     });

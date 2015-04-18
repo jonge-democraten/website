@@ -1,9 +1,10 @@
 import logging
 logger = logging.getLogger(__name__)
 
+from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
 from django.test import TestCase
 from django.test import Client
-from django.conf import settings
 
 from mezzanine.blog.models import BlogCategory
 from mezzanine.pages.models import RichTextPage
@@ -40,11 +41,11 @@ class TestColumnElement(TestCase):
     def test_auto_create(self):
         """
         Tests whether a ColumnElement is automatically created
-        when a BlogCategory is created, and that the element has a to it.
+        when a BlogCategory is created, and that the element contains a reference to the category object.
         """
         category = BlogCategory.objects.create(title="Test Blog")
-        self.assertEqual(ColumnElement.objects.count(), 1)
-        element = ColumnElement.objects.get(id=1)
+        content_type = ContentType.objects.get(model="blogcategory")
+        element = ColumnElement.objects.get(object_id=category.id, content_type=content_type)
         self.assertEqual(element.get_object(), category)
 
     def test_auto_delete(self):
@@ -53,12 +54,13 @@ class TestColumnElement(TestCase):
         when a BlogCategory is deleted.
         """
         category = BlogCategory.objects.create(title="Test Blog")
-        self.assertEqual(ColumnElement.objects.count(), 1)
-        element = ColumnElement.objects.get(id=1)
+        content_type = ContentType.objects.get(model="blogcategory")
+        element = ColumnElement.objects.get(object_id=category.id, content_type=content_type)
         self.assertEqual(element.get_object(), category)
+        catid = category.id
         category.delete()
         self.assertEqual(BlogCategory.objects.count(), 0)
-        self.assertEqual(ColumnElement.objects.count(), 0)
+        self.assertEqual(ColumnElement.objects.filter(object_id=catid, content_type=content_type).exists(), False)
 
 
 class TestSidebar(TestCaseAdminLogin):

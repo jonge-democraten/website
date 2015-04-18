@@ -69,10 +69,12 @@ def get_page_header(page):
             return get_page_header(page.parent)
         else:
             homepages = HomePage.objects.all()
-            if homepages.exists() and PageHeaderSettingsWidget.objects.filter(page=homepages[0]):
-                return get_page_header(homepages[0])
-            else:
+            if not homepages.exists():
                 return None
+            elif page == homepages[0]:  # prevent infinite recursion in case homepage is set to PARENT
+                return None
+            elif PageHeaderSettingsWidget.objects.filter(page=homepages[0]):
+                return get_page_header(homepages[0])
     elif page_header_settings.type == PageHeaderSettingsWidget.NONE:
         return None
     elif page_header_settings.type == PageHeaderSettingsWidget.RANDOM:

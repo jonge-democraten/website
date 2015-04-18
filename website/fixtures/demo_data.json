@@ -1918,80 +1918,8 @@
 },
 {
   "fields": {
-    "site": 1,
-    "object_id": 1,
-    "content_type": [
-      "blog",
-      "blogcategory"
-    ]
-  },
-  "pk": 1,
-  "model": "jdpages.columnelement"
-},
-{
-  "fields": {
-    "site": 1,
-    "object_id": 2,
-    "content_type": [
-      "blog",
-      "blogcategory"
-    ]
-  },
-  "pk": 2,
-  "model": "jdpages.columnelement"
-},
-{
-  "fields": {
-    "site": 3,
-    "object_id": 3,
-    "content_type": [
-      "blog",
-      "blogcategory"
-    ]
-  },
-  "pk": 3,
-  "model": "jdpages.columnelement"
-},
-{
-  "fields": {
-    "site": 3,
-    "object_id": 4,
-    "content_type": [
-      "blog",
-      "blogcategory"
-    ]
-  },
-  "pk": 4,
-  "model": "jdpages.columnelement"
-},
-{
-  "fields": {
-    "site": 1,
-    "object_id": 5,
-    "content_type": [
-      "blog",
-      "blogcategory"
-    ]
-  },
-  "pk": 5,
-  "model": "jdpages.columnelement"
-},
-{
-  "fields": {
-    "site": 1,
-    "object_id": 6,
-    "content_type": [
-      "blog",
-      "blogcategory"
-    ]
-  },
-  "pk": 6,
-  "model": "jdpages.columnelement"
-},
-{
-  "fields": {
     "page": 17,
-    "column_element": 1,
+    "column_element": 9,
     "site": 1,
     "_order": 0,
     "max_items": 3,
@@ -2004,7 +1932,7 @@
 {
   "fields": {
     "page": 17,
-    "column_element": 5,
+    "column_element": 13,
     "site": 1,
     "_order": 0,
     "max_items": 3,
@@ -2012,6 +1940,19 @@
     "title": "Politiek"
   },
   "pk": 2,
+  "model": "jdpages.columnelementwidget"
+},
+{
+  "fields": {
+    "page": 17,
+    "column_element": 2,
+    "site": 1,
+    "_order": 1,
+    "max_items": 15,
+    "horizontal_position": "Left",
+    "title": "Events"
+  },
+  "pk": 3,
   "model": "jdpages.columnelementwidget"
 },
 {
@@ -2803,9 +2744,9 @@
     "status": 2,
     "expiry_date": null,
     "event_category": 1,
-    "publish_date": "2015-02-15T11:56:24Z",
+    "publish_date": "2015-06-15T11:56:24Z",
     "short_url": null,
-    "created": "2015-02-15T11:56:24.899Z",
+    "created": "2015-06-15T11:56:24.899Z",
     "site": 1,
     "_meta_title": "",
     "title": "Programmeermiddag bij Pieter",
@@ -2847,9 +2788,9 @@
     "status": 2,
     "expiry_date": null,
     "event_category": 3,
-    "publish_date": "2015-02-15T15:38:57.415Z",
+    "publish_date": "2015-10-15T15:38:57.415Z",
     "short_url": null,
-    "created": "2015-02-15T15:38:57.428Z",
+    "created": "2015-10-15T15:38:57.428Z",
     "site": 2,
     "_meta_title": "",
     "title": "COM-avond Internationaal: Verkiezingen VN-Veiligheidsraad",
@@ -2861,10 +2802,32 @@
 },
 {
   "fields": {
+    "slug": "alpha-testing",
+    "keywords_string": "",
+    "site": 1,
+    "title": "Alpha testing",
+    "short_url": null,
+    "status": 2,
+    "gen_description": true,
+    "updated": "2015-04-16T22:51:55.166Z",
+    "_meta_title": "",
+    "description": "Project demonstration and testing.",
+    "publish_date": "2015-04-16T22:50:42Z",
+    "in_sitemap": true,
+    "event_category": 1,
+    "expiry_date": null,
+    "created": "2015-04-16T22:50:42.924Z",
+    "content": "<p>Project demonstration and testing.</p>"
+  },
+  "pk": 4,
+  "model": "events.event"
+},
+{
+  "fields": {
     "description": "",
     "event": 1,
-    "end_time": "2015-03-15T22:00:00Z",
-    "start_time": "2015-03-15T11:00:00Z"
+    "end_time": "2015-06-15T22:00:00Z",
+    "start_time": "2015-06-15T11:00:00Z"
   },
   "pk": 1,
   "model": "events.occurrence"
@@ -2873,8 +2836,8 @@
   "fields": {
     "description": "",
     "event": 1,
-    "end_time": "2015-02-15T22:00:00Z",
-    "start_time": "2015-02-15T11:00:00Z"
+    "end_time": "2015-07-15T22:00:00Z",
+    "start_time": "2015-07-15T11:00:00Z"
   },
   "pk": 2,
   "model": "events.occurrence"
@@ -2883,8 +2846,8 @@
   "fields": {
     "description": "",
     "event": 2,
-    "end_time": "2015-02-17T21:30:00Z",
-    "start_time": "2015-02-17T18:30:00Z"
+    "end_time": "2015-08-17T21:30:00Z",
+    "start_time": "2015-08-17T18:30:00Z"
   },
   "pk": 3,
   "model": "events.occurrence"
@@ -2893,10 +2856,21 @@
   "fields": {
     "description": "",
     "event": 3,
-    "end_time": "2015-02-24T21:30:00Z",
-    "start_time": "2015-02-24T18:30:00Z"
+    "end_time": "2015-08-24T21:30:00Z",
+    "start_time": "2015-08-24T18:30:00Z"
   },
   "pk": 4,
+  "model": "events.occurrence"
+},
+{
+  "fields": {
+    "location": "Tweede kamer",
+    "start_time": "2015-04-19T09:00:00Z",
+    "event": 4,
+    "description": "Alpha testing of the project",
+    "end_time": "2015-04-19T15:00:00Z"
+  },
+  "pk": 5,
   "model": "events.occurrence"
 },
 {

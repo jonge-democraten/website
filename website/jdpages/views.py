@@ -5,6 +5,7 @@ from django.utils.html import strip_tags
 
 from mezzanine.blog.models import BlogCategory
 
+from website.jdpages.models import EventColumnElement
 from website.jdpages.models import get_public_blogposts
 
 
@@ -14,7 +15,10 @@ def create_column_items(column_widgets):
         model_class = widget.column_element.content_type.model_class()
         if model_class == BlogCategory:
             blog_category = widget.column_element.get_object()
-            column_items.append(BlogCategoryItem(blog_category, widget.max_items))
+            column_items.append(BlogCategoryItem(blog_category, widget))
+        elif model_class == EventColumnElement:
+            event_element = widget.column_element.get_object()
+            column_items.append(EventColumnItem(event_element, widget))
     return column_items
 
 
@@ -30,10 +34,10 @@ class Item(object):
 
 
 class BlogCategoryItem(Item):
-    def __init__(self, blogcategory, max_posts):
-        self.title = blogcategory.title
+    def __init__(self, blogcategory, widget):
+        self.title = widget.title
         self.url = blogcategory.get_absolute_url()
-        self.children = self.create_children(blogcategory, max_posts)
+        self.children = self.create_children(blogcategory, widget.max_items)
 
     @staticmethod
     def create_children(blogcategory, max_items):
@@ -54,6 +58,16 @@ class BlogPostItem(Item):
         self.date = blogpost.publish_date
         self.url = blogpost.get_absolute_url()
         self.content = strip_tags(blogpost.content)
+
+
+class EventColumnItem(Item):
+    def __init__(self, event_element, widget):
+        self.title = widget.title
+        self.type = event_element.type
+        self.max_items = widget.max_items
+
+    def get_template_name(self):
+        return "events_column_item.html"
 
 
 class BlogCategorySidebarItem(Item):
@@ -106,6 +120,7 @@ class BannerSidebarItem(Item):
 class TwitterSidebarItem(Item):
     def get_template_name(self):
         return "twitter_feed_item.html"
+
 
 class TabsSidebarItem(Item):
     def get_template_name(self):

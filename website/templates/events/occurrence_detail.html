@@ -34,7 +34,9 @@ L.Icon.Default.imagePath = "{% static "images/leaflet/" %}";
         {% if occurrence.location %}
         <strong>{% trans "Where" %}:</strong> <span id="occurrence-location">{{ occurrence.location }}</span><br />
         {% endif %}
+        {% if occurrence.event.event_category %}
         <strong>{% trans "Category" %}:</strong> {{ occurrence.event.event_category }}
+        {% endif %}
     </p>
     {% endeditable %}
 

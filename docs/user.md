@@ -4,8 +4,6 @@
 
 Voor je ligt de handleiding voor de nieuwe achterkant van de JD-site. Een website kent een voorkant (front end) en een achterkant (back end). De 'front end' is datgene wat de bezoekers van een site zien. Deze handleiding dient als uitleg voor de 'back end' van de site. Het is de bedoeling dat je via de achterkant aanpassingen doet aan site.
 
-- toegang specificeren, hoe geraak je als AS op de achterkant van de site. 
-
 Het is overigens niet de bedoeling dat je via de nieuwe achterkant allerlei bestanden gaat opslaan, de Wolk blijft voor massaopslag het primaire middel. 
 
 ### 1 Pages
@@ -34,7 +32,7 @@ Klik op 'Save' om de veranderingen door te voeren.
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker. 
 - Klik op 'Save' om de veranderingen door te voeren. 
 
-1.1.3. Add Link
+<strong>1.1.3. Add Link</strong>
 
 Wanneer je een menu aanmaakt met 'Rich text page' creeer je een pagina op de JDsite zelf. Echter is het ook mogelijk om een menu naar een andere pagina door te laten linken.
 

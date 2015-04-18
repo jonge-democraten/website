@@ -15,10 +15,10 @@ def create_column_items(column_widgets):
         model_class = widget.column_element.content_type.model_class()
         if model_class == BlogCategory:
             blog_category = widget.column_element.get_object()
-            column_items.append(BlogCategoryItem(blog_category, widget.max_items))
+            column_items.append(BlogCategoryItem(blog_category, widget))
         elif model_class == EventColumnElement:
             event_element = widget.column_element.get_object()
-            column_items.append(EventColumnItem(event_element, widget.max_items))
+            column_items.append(EventColumnItem(event_element, widget))
     return column_items
 
 
@@ -34,10 +34,10 @@ class Item(object):
 
 
 class BlogCategoryItem(Item):
-    def __init__(self, blogcategory, max_posts):
-        self.title = blogcategory.title
+    def __init__(self, blogcategory, widget):
+        self.title = widget.title
         self.url = blogcategory.get_absolute_url()
-        self.children = self.create_children(blogcategory, max_posts)
+        self.children = self.create_children(blogcategory, widget.max_items)
 
     @staticmethod
     def create_children(blogcategory, max_items):
@@ -61,10 +61,10 @@ class BlogPostItem(Item):
 
 
 class EventColumnItem(Item):
-    def __init__(self, event_element, max_items):
-        # if event_element.type == EventColumnElement.MAIN:
-        self.title = 'Main site events'
-        self.max_items = max_items
+    def __init__(self, event_element, widget):
+        self.title = widget.title
+        self.type = event_element.type
+        self.max_items = widget.max_items
 
     def get_template_name(self):
         return "events_column_item.html"

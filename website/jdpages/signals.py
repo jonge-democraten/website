@@ -48,9 +48,9 @@ def post_save_callback(sender, instance, created, **kwargs):
             logger.info('blog column element created')
     if sender == Site:
         logger.info('create new event column element for site: ' + str(instance.id) + ' (' + str(instance) + ')')
-        create_column_element_for_event(EventColumnElement.MAIN, 'Events for main site', instance.id)
+        create_column_element_for_event(EventColumnElement.ALL, 'Events for all sites', instance.id)
+        create_column_element_for_event(EventColumnElement.SITE, 'Events for ' + str(instance), instance.id)
         if instance.id != 1:
-            create_column_element_for_event(EventColumnElement.SITE, 'Events for ' + str(instance), instance.id)
             create_column_element_for_event(EventColumnElement.MAIN_AND_SITE, 'Events for main site and ' + str(instance), instance.id)
         logger.info('event column element created')
 

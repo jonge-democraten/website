@@ -285,12 +285,12 @@ from django.contrib.contenttypes.models import ContentType
 
 class EventColumnElement(SiteRelated):
     SITE = 'SI'
-    MAIN = 'MA'
+    ALL = 'AL'
     MAIN_AND_SITE = 'SM'
 
     EVENT_CHOICES = (
         (SITE, 'Site'),
-        (MAIN, 'Main'),
+        (ALL, 'All'),
         (MAIN_AND_SITE, 'Main and site'),
     )
 

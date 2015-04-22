@@ -10,7 +10,7 @@ from mezzanine.blog.views import blog_post_list
 from mezzanine.pages.page_processors import processor_for
 from mezzanine.pages.models import RichTextPage
 
-from website.jdpages.models import BlogPage
+from website.jdpages.models import BlogCategoryPage
 from mezzanine.forms.models import Form
 from website.jdpages.models import HomePage, DocumentListing
 from website.jdpages.models import ColumnElementWidget
@@ -22,7 +22,7 @@ from website.jdpages.views import create_column_items
 @processor_for(DocumentListing)
 @processor_for(Form)
 @processor_for(HomePage)
-@processor_for(BlogPage)
+@processor_for(BlogCategoryPage)
 @processor_for(RichTextPage)
 def add_header_images(request, page):
     page_header_settings = PageHeaderSettingsWidget.objects.filter(page=page)
@@ -45,7 +45,7 @@ def add_column_elements(request, page):
     return {"column_left_items": column_left_items, "column_right_items": column_right_items}
 
 
-@processor_for(BlogPage)
+@processor_for(BlogCategoryPage)
 def add_blogposts(request, page):
     template_response = blog_post_list(request, category=page.blogpage.blog_category.slug)
     return {"blog_posts": template_response.context_data["blog_posts"]}

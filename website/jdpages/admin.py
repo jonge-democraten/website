@@ -13,7 +13,7 @@ from mezzanine.forms.admin import FormAdmin
 from mezzanine.pages.admin import PageAdmin
 from mezzanine.pages.models import RichTextPage
 
-from website.jdpages.models import BlogPage
+from website.jdpages.models import BlogCategoryPage
 from website.jdpages.models import ColumnElement, ColumnElementWidget
 from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import HomePage
@@ -178,7 +178,7 @@ admin.site.register(RichTextPage, RichtTextPageAdmin)
 admin.site.unregister(Form)
 admin.site.register(Form, CustomFormAdmin)
 admin.site.register(HomePage, HomePageAdmin)
-admin.site.register(BlogPage, BlogPageAdmin)
+admin.site.register(BlogCategoryPage, BlogPageAdmin)
 admin.site.register(Sidebar, SidebarAdmin)
 admin.site.register(SidebarBannerWidget, SidebarBannerWidgetAdmin)
 admin.site.register(DocumentListing, DocumentListingAdmin)

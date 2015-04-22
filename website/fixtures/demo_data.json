@@ -248,7 +248,7 @@
 },
 {
   "fields": {
-    "content_model": "blogpage",
+    "content_model": "blogcategorypage",
     "_meta_title": "",
     "publish_date": "2015-04-10T17:37:25.100Z",
     "created": "2015-04-10T17:37:25.110Z",
@@ -734,7 +734,7 @@
     "in_sitemap": true,
     "in_menus": "1,2,3",
     "parent": 3,
-    "content_model": "blogpage",
+    "content_model": "blogcategorypage",
     "gen_description": true,
     "keywords_string": "",
     "expiry_date": null
@@ -760,7 +760,7 @@
     "in_sitemap": true,
     "in_menus": "1,2,3",
     "parent": 3,
-    "content_model": "blogpage",
+    "content_model": "blogcategorypage",
     "gen_description": true,
     "keywords_string": "",
     "expiry_date": null
@@ -786,7 +786,7 @@
     "in_sitemap": true,
     "in_menus": "1,2,3",
     "parent": null,
-    "content_model": "blogpage",
+    "content_model": "blogcategorypage",
     "gen_description": true,
     "keywords_string": "",
     "expiry_date": null
@@ -812,7 +812,7 @@
     "in_sitemap": true,
     "in_menus": "1,2,3",
     "parent": null,
-    "content_model": "blogpage",
+    "content_model": "blogcategorypage",
     "gen_description": true,
     "keywords_string": "",
     "expiry_date": null
@@ -1139,19 +1139,19 @@
         "homepage"
       ],
       [
-        "add_blogpage",
+        "add_blogcategorypage",
         "jdpages",
-        "blogpage"
+        "blogcategorypage"
       ],
       [
-        "change_blogpage",
+        "change_blogcategorypage",
         "jdpages",
-        "blogpage"
+        "blogcategorypage"
       ],
       [
-        "delete_blogpage",
+        "delete_blogcategorypage",
         "jdpages",
-        "blogpage"
+        "blogcategorypage"
       ],
       [
         "change_sidebar",
@@ -1507,19 +1507,19 @@
         "formentry"
       ],
       [
-        "add_blogpage",
+        "add_blogcategorypage",
         "jdpages",
-        "blogpage"
+        "blogcategorypage"
       ],
       [
-        "change_blogpage",
+        "change_blogcategorypage",
         "jdpages",
-        "blogpage"
+        "blogcategorypage"
       ],
       [
-        "delete_blogpage",
+        "delete_blogcategorypage",
         "jdpages",
-        "blogpage"
+        "blogcategorypage"
       ],
       [
         "add_gallery",
@@ -3135,7 +3135,7 @@
 },
 {
   "pk": 1,
-  "model": "jdpages.blogpage",
+  "model": "jdpages.blogcategorypage",
   "fields": {
     "blog_category": 1,
     "content": "<p>This is an example jdpages blog page.\u00a0</p>"
@@ -3143,7 +3143,7 @@
 },
 {
   "pk": 25,
-  "model": "jdpages.blogpage",
+  "model": "jdpages.blogcategorypage",
   "fields": {
     "blog_category": 1,
     "content": "<p>Dit is een algemeen blog.</p>"
@@ -3151,7 +3151,7 @@
 },
 {
   "pk": 26,
-  "model": "jdpages.blogpage",
+  "model": "jdpages.blogcategorypage",
   "fields": {
     "blog_category": 2,
     "content": "<p>Hier vind je alle persberichten.</p>"
@@ -3159,7 +3159,7 @@
 },
 {
   "pk": 27,
-  "model": "jdpages.blogpage",
+  "model": "jdpages.blogcategorypage",
   "fields": {
     "blog_category": 4,
     "content": "<p>Al het nieuws van de afdeling.</p>"
@@ -3167,7 +3167,7 @@
 },
 {
   "pk": 28,
-  "model": "jdpages.blogpage",
+  "model": "jdpages.blogcategorypage",
   "fields": {
     "blog_category": 3,
     "content": "<p>Een weblog van de afdelingen.</p>"

@@ -300,13 +300,13 @@ class EventColumnElement(SiteRelated):
         return "Events for " + str(self.type)
 
 
-class BlogPage(Page, RichText):
+class BlogCategoryPage(Page, RichText):
 
     blog_category = models.ForeignKey(BlogCategory, null=False, blank=False)
 
     class Meta:
-        verbose_name = "Blog Page"
-        verbose_name_plural = "Blog Pages"
+        verbose_name = "Blog category page"
+        verbose_name_plural = "Blog category pages"
 
 
 

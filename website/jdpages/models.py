@@ -302,7 +302,7 @@ class EventColumnElement(SiteRelated):
 
 class BlogPage(Page, RichText):
 
-    blog_category = models.ForeignKey(BlogCategory, null=True, blank=True)
+    blog_category = models.ForeignKey(BlogCategory, null=False, blank=False)
 
     class Meta:
         verbose_name = "Blog Page"

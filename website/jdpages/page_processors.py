@@ -33,10 +33,11 @@ def add_header_images(request, page):
 
 
 @processor_for(HomePage)
+@processor_for(RichTextPage)
 def add_column_elements(request, page):
-    element_widgets_left = ColumnElementWidget.objects.filter(horizontal_position=HorizontalPosition.LEFT).filter(page=page.homepage)
+    element_widgets_left = ColumnElementWidget.objects.filter(horizontal_position=HorizontalPosition.LEFT).filter(page=page)
     column_left_items = create_column_items(element_widgets_left)
-    element_widgets_right = ColumnElementWidget.objects.filter(horizontal_position=HorizontalPosition.RIGHT).filter(page=page.homepage)
+    element_widgets_right = ColumnElementWidget.objects.filter(horizontal_position=HorizontalPosition.RIGHT).filter(page=page)
     column_right_items = create_column_items(element_widgets_right)
     return {"column_left_items": column_left_items, "column_right_items": column_right_items}
 

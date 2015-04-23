@@ -290,7 +290,6 @@ class BlogCategoryPage(Page, RichText):
         verbose_name_plural = "Blog category pages"
 
 
-
 def get_public_blogposts(blog_category):
     """ Returns all blogposts for a given category that are published and not expired. """
     blog_posts = BlogPost.objects.all().filter(categories=blog_category).filter(status=CONTENT_STATUS_PUBLISHED)

@@ -88,12 +88,11 @@ class RightColumnElementWidgetInline(ColumnElementWidgetInline):
 
 
 class HomePageAdmin(PageAdmin):
-    inlines = [PageHeaderImageInline,
-               LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
+    inlines = [PageHeaderImageInline, LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
 
 
 class RichtTextPageAdmin(PageAdmin):
-    inlines = [PageHeaderImageInline]
+    inlines = [PageHeaderImageInline, LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
 
 
 class DocumentAdmin(admin.ModelAdmin):

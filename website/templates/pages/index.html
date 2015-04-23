@@ -18,31 +18,7 @@
     </div>
 </div>
 
-<div id="homeLeftDiv">
-
-    {% for item in column_left_items %}
-        <div class="moduletable">
-            {% with template_name=item.get_template_name|stringformat:"s" %}
-                {% include "elements/"|add:template_name %}
-            {% endwith %}
-        </div>
-        <br/>
-    {% endfor %}
-    
-</div>
-
-<div id="homeRightDiv">
-
-    {% for item in column_right_items %}
-        <div class="moduletable">
-            {% with template_name=item.get_template_name|stringformat:"s" %}
-                {% include "elements/"|add:template_name %}
-            {% endwith %}
-        </div>
-        <br/>
-    {% endfor %}
-    
-</div>
+{% include "elements/two_columns.html" %}
 
 {{ block.super }}
 {% endblock %}

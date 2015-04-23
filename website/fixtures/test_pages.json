@@ -235,69 +235,6 @@
   "pk": 1,
   "fields": {
     "page": 2,
-    "site": 1,
-    "type": "FB"
-  },
-  "model": "jdpages.pageheadersettingswidget"
-},
-{
-  "pk": 2,
-  "fields": {
-    "page": 3,
-    "site": 1,
-    "type": "PA"
-  },
-  "model": "jdpages.pageheadersettingswidget"
-},
-{
-  "pk": 3,
-  "fields": {
-    "page": 4,
-    "site": 1,
-    "type": "PA"
-  },
-  "model": "jdpages.pageheadersettingswidget"
-},
-{
-  "pk": 4,
-  "fields": {
-    "page": 5,
-    "site": 1,
-    "type": "NO"
-  },
-  "model": "jdpages.pageheadersettingswidget"
-},
-{
-  "pk": 5,
-  "fields": {
-    "page": 6,
-    "site": 1,
-    "type": "NO"
-  },
-  "model": "jdpages.pageheadersettingswidget"
-},
-{
-  "pk": 6,
-  "fields": {
-    "page": 7,
-    "site": 1,
-    "type": "PA"
-  },
-  "model": "jdpages.pageheadersettingswidget"
-},
-{
-  "pk": 7,
-  "fields": {
-    "page": 8,
-    "site": 1,
-    "type": "FB"
-  },
-  "model": "jdpages.pageheadersettingswidget"
-},
-{
-  "pk": 1,
-  "fields": {
-    "page": 2,
     "image": "uploads/site-1/example_header.jpg",
     "site": 1,
     "name": "Example"

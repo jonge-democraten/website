@@ -15,7 +15,7 @@ from mezzanine.forms.models import Form
 from website.jdpages.models import HomePage, DocumentListing
 from website.jdpages.models import ColumnElementWidget
 from website.jdpages.models import HorizontalPosition
-from website.jdpages.models import PageHeaderSettingsWidget, PageHeaderImageWidget
+from website.jdpages.models import PageHeaderImageWidget
 from website.jdpages.views import create_column_items
 
 
@@ -25,10 +25,6 @@ from website.jdpages.views import create_column_items
 @processor_for(BlogCategoryPage)
 @processor_for(RichTextPage)
 def add_header_images(request, page):
-    page_header_settings = PageHeaderSettingsWidget.objects.filter(page=page)
-    if not page_header_settings:
-        return
-
     page_header = get_page_header(page)
 
     if page_header:
@@ -60,24 +56,23 @@ def get_first_page_header(page):
 
 
 def get_page_header(page):
-    page_header_settings = PageHeaderSettingsWidget.objects.get(page=page)
+    page_header_images = PageHeaderImageWidget.objects.filter(page=page)
 
-    if page_header_settings.type == PageHeaderSettingsWidget.SINGLE:
+    n_images = page_header_images.count()
+    if n_images == 1:
         return get_first_page_header(page)
-    elif page_header_settings.type == PageHeaderSettingsWidget.PARENT:
+    elif n_images == 0:
         if page.parent:
             return get_page_header(page.parent)
         else:
             homepages = HomePage.objects.all()
             if not homepages.exists():
                 return None
-            elif page == homepages[0]:  # prevent infinite recursion in case homepage is set to PARENT
+            elif page == homepages[0]:  # prevent infinite recursion
                 return None
-            elif PageHeaderSettingsWidget.objects.filter(page=homepages[0]):
+            elif PageHeaderImageWidget.objects.filter(page=homepages[0]):
                 return get_page_header(homepages[0])
-    elif page_header_settings.type == PageHeaderSettingsWidget.NONE:
-        return None
-    elif page_header_settings.type == PageHeaderSettingsWidget.RANDOM:
+    elif n_images > 1:
         return get_random_page_header(page)
 
 

@@ -119,19 +119,13 @@ class TestPageHeaderImage(TestCaseAdminLogin):
         for page in richtextpages:
             response = self.client.get(page.get_absolute_url(), follow=True)
             self.assertEqual(response.status_code, 200)
-            page_header_image_wiget = response.context['page_header']
+            page_header_image_widget = response.context['page_header']
             if page.id == 4:
-                self.assertEqual(page_header_image_wiget.page.id, 2)
-                self.assertEqual(str(page_header_image_wiget.image), 'uploads/site-1/example_header.jpg')
-            if page.id == 7:
-                self.assertEqual(page_header_image_wiget, None)
+                self.assertEqual(page_header_image_widget.page.id, 2)
+                self.assertEqual(str(page_header_image_widget.image), 'uploads/site-1/example_header.jpg')
             if page.id == 3:
-                self.assertEqual(page_header_image_wiget.page.id, 2)
-                self.assertEqual(str(page_header_image_wiget.image), 'uploads/site-1/example_header.jpg')
-            if page.id == 5:
-                self.assertEqual(page_header_image_wiget, None)
-            if page.id == 6:
-                self.assertEqual(page_header_image_wiget, None)
+                self.assertEqual(page_header_image_widget.page.id, 2)
+                self.assertEqual(str(page_header_image_widget.image), 'uploads/site-1/example_header.jpg')
             if page.id == 8:
-                self.assertEqual(page_header_image_wiget.page.id, 8)
-                self.assertEqual(str(page_header_image_wiget.image), 'uploads/site-1/example_header_subpage.jpg')
+                self.assertEqual(page_header_image_widget.page.id, 8)
+                self.assertEqual(str(page_header_image_widget.image), 'uploads/site-1/example_header_subpage.jpg')

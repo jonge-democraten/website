@@ -97,7 +97,7 @@ Multiple images are only used in 'Random image' mode.
 Add an inline admin field for the header type and (optional) header images to the new custom page in `jdpages/admin.py`,
 ```Python
 class ExamplePageAdmin(PageAdmin):
-    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline]    
+    inlines = [PageHeaderImageInline]    
 admin.site.register(Example, ExamplePageAdmin)
 ```
 This allow content managers to add a page header to the page in the page admin.

@@ -18,7 +18,7 @@ from website.jdpages.models import ColumnElement, ColumnElementWidget
 from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import HomePage
 from website.jdpages.models import HorizontalPosition
-from website.jdpages.models import PageHeaderImageWidget, PageHeaderSettingsWidget
+from website.jdpages.models import PageHeaderImageWidget
 from website.jdpages.models import SocialMediaButton
 from website.jdpages.models import Sidebar
 from website.jdpages.models import SidebarBlogCategoryWidget
@@ -37,13 +37,6 @@ class AlwaysChangedModelForm(ModelForm):
         Unchanged inlines will also get validated and saved by always returning true here.
         """
         return True
-
-
-class PageHeaderImageSettingsInline(admin.TabularInline):
-    model = PageHeaderSettingsWidget
-    form = AlwaysChangedModelForm
-    verbose_name = "Header image type"
-    verbose_name_plural = "Header image type"
 
 
 class PageHeaderImageInline(TabularDynamicInlineAdmin):
@@ -95,12 +88,12 @@ class RightColumnElementWidgetInline(ColumnElementWidgetInline):
 
 
 class HomePageAdmin(PageAdmin):
-    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline,
+    inlines = [PageHeaderImageInline,
                LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
 
 
 class RichtTextPageAdmin(PageAdmin):
-    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline]
+    inlines = [PageHeaderImageInline]
 
 
 class DocumentAdmin(admin.ModelAdmin):
@@ -116,7 +109,7 @@ class ColumnElementWidgetAdmin(admin.ModelAdmin):
 
 
 class BlogPageAdmin(PageAdmin):
-    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline]
+    inlines = [PageHeaderImageInline]
 
 
 class DocumentInline(TabularDynamicInlineAdmin):
@@ -125,12 +118,12 @@ class DocumentInline(TabularDynamicInlineAdmin):
 
 class CustomFormAdmin(FormAdmin):
     model = Form
-    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline]
+    inlines = [PageHeaderImageInline]
     inlines.insert(0, FormAdmin.inlines[0])
 
 
 class DocumentListingAdmin(PageAdmin):
-    inlines = (DocumentInline, PageHeaderImageSettingsInline, PageHeaderImageInline)
+    inlines = (DocumentInline, PageHeaderImageInline)
 
 
 class SidebarBlogCategoryWidgetInline(admin.TabularInline):

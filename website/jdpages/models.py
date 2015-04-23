@@ -36,25 +36,6 @@ def validate_header_image(imagepath):
         raise ValidationError('Image should be 610 x 290 pixels, selected image is %i x %i. Please resize the image.' % (width, height))
 
 
-class PageHeaderSettingsWidget(SiteRelated):
-    """ Settings of a page header image. """
-
-    PARENT = 'PA'
-    NONE = 'NO'
-    SINGLE = 'FB'
-    RANDOM = 'RA'
-
-    HEADER_MODE_CHOICES = (
-        (PARENT, 'Parent header'),
-        (NONE, 'No header'),
-        (SINGLE, 'Single image'),
-        (RANDOM, 'Random image'),
-    )
-
-    type = models.CharField(max_length=2, choices=HEADER_MODE_CHOICES, default=PARENT)
-    page = models.OneToOneField(Page, blank=False, null=True)
-
-
 class PageHeaderImageWidget(SiteRelated):
     """ Page header image. """
     name = models.CharField(max_length=1000, blank=True, null=False, default="")

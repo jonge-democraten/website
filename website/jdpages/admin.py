@@ -23,6 +23,7 @@ from website.jdpages.models import SocialMediaButton
 from website.jdpages.models import Sidebar
 from website.jdpages.models import SidebarBlogCategoryWidget
 from website.jdpages.models import SidebarBannerWidget
+from website.jdpages.models import SidebarTabsWidget
 from website.jdpages.models import SidebarTwitterWidget
 
 
@@ -139,6 +140,12 @@ class SidebarTwitterWidgetInline(admin.TabularInline):
     verbose_name_plural = "Twitter feed"
 
 
+class SidebarTabsWidgetInline(admin.TabularInline):
+    model = SidebarTabsWidget
+    verbose_name = "Events and newsletter tabs"
+    verbose_name_plural = "Events and newsletter tabs"
+
+
 class SidebarBannerWidgetAdmin(admin.ModelAdmin):
     model = SidebarBannerWidget
     list_display = ('id', 'active', 'title', 'image', 'url')
@@ -154,6 +161,7 @@ class SidebarAdmin(SingletonAdmin):
     model = Sidebar
     inlines = (SidebarBlogCategoryWidgetInline,
                SidebarTwitterWidgetInline,
+               SidebarTabsWidgetInline,
                SocialMediaButtonInline,)
 
 

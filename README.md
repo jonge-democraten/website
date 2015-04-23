@@ -5,8 +5,10 @@ A website application and content management system in development for the [Jong
 Based on Python, Django and [Mezzanine](http://mezzanine.jupo.org/). Open-source and under the MIT-licence. 
 
 #### Documentation
-* **[User manual](http://jdwebsite.readthedocs.org/en/latest/user/)**
-* **[Developer manual](http://jdwebsite.readthedocs.org/en/latest/developer/)**
+* **[User](http://jdwebsite.readthedocs.org/en/latest/user/)**
+* **[Administrator](http://jdwebsite.readthedocs.org/en/latest/administrator/)**
+* **[Developer](http://jdwebsite.readthedocs.org/en/latest/developer/)**
+* **[Design](http://jdwebsite.readthedocs.org/en/latest/design/)**
 
 #### Quick install
 1. `$ ./clean_env.sh`
@@ -14,5 +16,5 @@ Based on Python, Django and [Mezzanine](http://mezzanine.jupo.org/). Open-source
 1. `$ source ./env/bin/activate`  
 1. `$ python create_local_settings.py`
 1. `$ website/manage.py createdb`
-1. `$ website/manage.py loaddata demo_data` #Optional, loads demo data (login: admin/admin)
+1. `$ website/manage.py loaddata demo_data` *optional, loads demo data (login: admin/admin)*
 1. `$ website/manage.py runserver`  

@@ -4,6 +4,8 @@
 
 Voor je ligt de handleiding voor de nieuwe achterkant van de JD-site. Een website kent een voorkant (front end) en een achterkant (back end). De 'front end' is datgene wat de bezoekers van een site zien. Deze handleiding dient als uitleg voor de 'back end' van de site. Het is de bedoeling dat je via de achterkant aanpassingen doet aan site.
 
+Je komt op de achterkant door naar www.jd.nl te gaan en op 'inloggen' te klikken. 
+
 Het is overigens niet de bedoeling dat je via de nieuwe achterkant allerlei bestanden gaat opslaan, de Wolk blijft voor massaopslag het primaire middel. 
 
 ### 1 Pages
@@ -39,7 +41,7 @@ Wanneer je een menu aanmaakt met 'Rich text page' creeer je een pagina op de JDs
 - Ga naar: Content > Pages > Add... > Link
 - Title: Naam van het menu
 - URL: de link van de pagina waar het menu naar door moet linken
-- Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin.  
+- Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
 - 'Top Navigation Bar', 'Left hand tree, en 'footer' staan automatisch aangevinkt. Hier hoef je niets aan te veranderen.  
 - Klik op 'Save' om de veranderingen door te voeren. 
@@ -102,7 +104,7 @@ PDF bestanden zoals het HR en Statuten kan je als volgt insluiten (embedden) op 
 1. Upload het PDF-bestand in de Media Library (zie punt 7 voor meer uitleg hierover)
 2. Open in de backend de pagina waar je het PDF wilt insluiten
 3. Ga naar het tekstvak 'Content' en klik in de taakbalk op het HTML icoon (zevende van links)
-4. Voer in het HTML venster de onderstaande objectcode in:  ```<object data="/static/media/path/bestandsnaam.pdf" width="100%" height=600 type="application/pdf">Oeps, foutje. Hier hoort een document te staan</object>``` 
+4. Voer in het HTML venster de onderstaande objectcode in:  ```<object data="/static/media/path/bestandsnaam.pdf" width="100%" height=600 type="application/pdf"></object>``` 
 5. Waar in de bovenstaande code nu "/static/media/path/bestandsnaam.pdf" staat dien je de locatiecode (tag) van het pdf-bestand te plaatsen. Dit doe je als volgt: 
 	- ga terug naar Media Library
 	- klik op de bestandsnaam van het desbetreffende pdf-bestand
@@ -110,7 +112,7 @@ PDF bestanden zoals het HR en Statuten kan je als volgt insluiten (embedden) op 
 	- Kopieer deze locatiecode, let wel, de code begint met /static/media/ en eindigt met .pdf . Alles wat hiervoor of achter staat is niet noodzakelijk.
 6. Plak de locatiecode op de plek waar nu /static/media/path/bestandsnaam.pdf staat. Zorg dat de code tussen de aanhalingstekens blijft staan.
 
-Dit is een vrij geavanceerd proces, ga dus niet zomaar rommelen aan de code. Wanneer je de locatiecode niet correct invoegt komt de volgende melding op de site te staan: 'Oeps, foutje. Hier hoort een document te staan'.
+Dit is een vrij geavanceerd proces, ga dus niet zomaar rommelen aan de code. Wanneer je de locatiecode niet correct kopieert, wordt er geen PDF bestand zichtbaar op de site.  
 
 <strong>2.5 Headers</strong>
 
@@ -119,13 +121,10 @@ Op de HomePage and elke RichTextPage kunnen één of meerdere headers worden gep
 - Ga naar Content > Pages 
 - Klik op de pagina die je wilt veranderen
 - Onderaan aan de pagina kan je bij 'Header Images' een afbeelding invoegen.
-- Klik onder image op het icoontje. Een nieuw venster van de Media Library wordt automatisch geopend. Klik op het diagonale pijltje (linker-icoon) de afbeelding aan die je als header wilt.
+- Klik onder image op het icoontje (venster met loepje). Een nieuw venster van de Media Library wordt automatisch geopend. Klik op het diagonale pijltje (meest linker-icoon) de afbeelding aan die je als header wilt.
 Let wel: Een header image dient 610 x 290 pixels als vereiste te hebben. Is dit niet het geval kan je de afbeelding niet invoeren.
-- Onder 'Header image type' kun je aangeven welk type header je wilt:
-	- Parent header: de header die het hoogst in de hierarchie (dus de HomePage) staat wordt hier weergegeven
-	- No header: de header wordt niet afgebeeld op de pagina
-	- Single image: de ingevoerde image die bovenaan de lijst staat wordt als header aangegeven
-	- Random image: indien je meerdere header images hebt, kun je deze willekeurig laten rouleren
+- Als je geen header invoegt op een pagina dan is er nog steeds wel een header zichtbaar op die desbetreffende pagina. Dit zal dan namelijk de header zijn die je ook ziet op de homepage. Verander je de header op de homepage, dan verandert deze ook de andere pagina's waar geen specifieke header is ingesteld.
+- Indien je twee of meerdere headers invoegt, dan zullen deze willekeurig rouleren.  
 
 Wil je de header image weer verwijderen, klik dan op het kruisje. Het plaatje verdwijnt dan niet automatisch uit de lijst maar hij is wel echt verwijderd.
 
@@ -160,13 +159,14 @@ Ga naar: Content > Pages > Add... > Form
 - Response: Nadat het formulier is verstuurd, zullen gebruikers de content zien die je hier plaatst. 
 - Show in menus: 'Top Navigation Bar', 'Left hand tree, en 'footer' staan automatisch aangevinkt. Hier hoef je niets aan te veranderen. Vink 'Login required' niet aan. 
 - Email: Hier kan je een bevestigingsmail toesturen naar de gebruikers (optioneel). Vul hiervoor de benodigde velden in. 
-- Fields: Via deze optie kan je het uiteindelijke formulier opstellen, dit kun je naar eigen inzicht doen. 
+- Fields: Via deze optie kan je het uiteindelijke formulier opstellen, dit kun je naar eigen inzicht doen. Zorg voor de veiligheid wel dat je een CAPTCHA in je formulier zet!!! Een CAPTCHA kom je vaak tegen op het internet, het is namelijk dat welbekende plaatje met een tekenreeks, die je moet intypen om te bevestigen dat je een mens bent en geen computer. De CAPTCHA fungeert zo oa als een spamfilter.
 
 Klik op 'Save' om de veranderingen door te voeren. 
 
 ### 4 Blogposts
 
-Als AS heb je de mogelijkheid om blogs aan te maken, aan te passen en te verwijderen. 
+Als AS heb je de mogelijkheid om blogs aan te maken, aan te passen en te verwijderen.
+- verschil tussen blog categorie, blog posts en blog page.  
 
 <strong>Blog aanmaken</strong>
 
@@ -223,12 +223,14 @@ Gebruik de Media Library om documenten op te slaan die je op de site wilt plaats
 <strong>7.2 Documenten toevoegen</strong>
 
 Het is mogelijk om documenten (bv. HR, Statuten) zelf te plaatsen op de website.
+
 - Ga naar Content > Pages > Add... > Add Document Listing
 - Title: Naam van het menu
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker.
-- Show in menus: 'Top Navigation Bar', 'Left hand tree, en 'footer' staan automatisch aangevinkt. Hier hoef je niets aan te veranderen. Vink 'Login required' niet aan. 
+
+- Show in menus: 'Top Navigation Bar', 'Left hand tree, en 'footer' staan automatisch aangevinkt. Hier hoef je niets aan te veranderen. Vink 'Login required' niet aan.
 - Meta Data: Onder deze tab is het mogelijk om nog tags toe te voegen bij de Documenten. Tevens is het hier mogelijk om de URL en  beschrijving aan te passen.
 - Onderaan bij 'Documents' kun je documenten uploaden. Klik hiervoor op het icoontje onder 'Document'. Bestanden die nog niet in de Media Library staan kan je alsnog direct uploaden via de knop rechtsboven. Tekstbestanden die al in de Media Library staan kan je hier selecteren via 'Select' (het blauwe icoontje met pijltje, links vooraan). Wanneer het bestand succesvol is geupload zal er een knop komen met 'document selected'. Als je hierop klikt kan je het geselecteerde document openen. Enkele vereiste is nog dat je een beschrijving van het bestand invult bij 'Description'. Deze beschrijving is uiteindelijk ook te zien op de site.
 - Klik op 'Add another' indien je een extra bestand wilt uploaden.

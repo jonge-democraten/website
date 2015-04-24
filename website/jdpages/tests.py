@@ -1,9 +1,10 @@
 import logging
 logger = logging.getLogger(__name__)
 
+from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
 from django.test import TestCase
 from django.test import Client
-from django.conf import settings
 
 from mezzanine.blog.models import BlogCategory
 from mezzanine.pages.models import RichTextPage
@@ -12,6 +13,7 @@ from website.jdpages.models import ColumnElement
 from website.jdpages.models import Sidebar
 from website.jdpages.views import BlogCategorySidebarItem
 from website.jdpages.views import TwitterSidebarItem
+from website.jdpages.views import TabsSidebarItem
 from website.jdpages.views import SocialMediaButtonGroupItem
 
 
@@ -39,11 +41,11 @@ class TestColumnElement(TestCase):
     def test_auto_create(self):
         """
         Tests whether a ColumnElement is automatically created
-        when a BlogCategory is created, and that the element has a to it.
+        when a BlogCategory is created, and that the element contains a reference to the category object.
         """
         category = BlogCategory.objects.create(title="Test Blog")
-        self.assertEqual(ColumnElement.objects.count(), 1)
-        element = ColumnElement.objects.get(id=1)
+        content_type = ContentType.objects.get(model="blogcategory")
+        element = ColumnElement.objects.get(object_id=category.id, content_type=content_type)
         self.assertEqual(element.get_object(), category)
 
     def test_auto_delete(self):
@@ -52,12 +54,13 @@ class TestColumnElement(TestCase):
         when a BlogCategory is deleted.
         """
         category = BlogCategory.objects.create(title="Test Blog")
-        self.assertEqual(ColumnElement.objects.count(), 1)
-        element = ColumnElement.objects.get(id=1)
+        content_type = ContentType.objects.get(model="blogcategory")
+        element = ColumnElement.objects.get(object_id=category.id, content_type=content_type)
         self.assertEqual(element.get_object(), category)
+        catid = category.id
         category.delete()
         self.assertEqual(BlogCategory.objects.count(), 0)
-        self.assertEqual(ColumnElement.objects.count(), 0)
+        self.assertEqual(ColumnElement.objects.filter(object_id=catid, content_type=content_type).exists(), False)
 
 
 class TestSidebar(TestCaseAdminLogin):
@@ -78,8 +81,9 @@ class TestSidebar(TestCaseAdminLogin):
         self.assertEqual(response.status_code, 200)
         items = response.context['sidebar_items']
         self.assertTrue(type(items[0]) == BlogCategorySidebarItem)
-        self.assertTrue(type(items[1]) == TwitterSidebarItem)
-        self.assertTrue(type(items[2]) == SocialMediaButtonGroupItem)
+        self.assertTrue(type(items[1]) == TabsSidebarItem)
+        self.assertTrue(type(items[2]) == TwitterSidebarItem)
+        self.assertTrue(type(items[3]) == SocialMediaButtonGroupItem)
 
 
 class TestPage(TestCaseAdminLogin):
@@ -115,19 +119,13 @@ class TestPageHeaderImage(TestCaseAdminLogin):
         for page in richtextpages:
             response = self.client.get(page.get_absolute_url(), follow=True)
             self.assertEqual(response.status_code, 200)
-            page_header_image_wiget = response.context['page_header']
+            page_header_image_widget = response.context['page_header']
             if page.id == 4:
-                self.assertEqual(page_header_image_wiget.page.id, 2)
-                self.assertEqual(str(page_header_image_wiget.image), 'uploads/site-1/example_header.jpg')
-            if page.id == 7:
-                self.assertEqual(page_header_image_wiget, None)
+                self.assertEqual(page_header_image_widget.page.id, 2)
+                self.assertEqual(str(page_header_image_widget.image), 'uploads/site-1/example_header.jpg')
             if page.id == 3:
-                self.assertEqual(page_header_image_wiget.page.id, 2)
-                self.assertEqual(str(page_header_image_wiget.image), 'uploads/site-1/example_header.jpg')
-            if page.id == 5:
-                self.assertEqual(page_header_image_wiget, None)
-            if page.id == 6:
-                self.assertEqual(page_header_image_wiget, None)
+                self.assertEqual(page_header_image_widget.page.id, 2)
+                self.assertEqual(str(page_header_image_widget.image), 'uploads/site-1/example_header.jpg')
             if page.id == 8:
-                self.assertEqual(page_header_image_wiget.page.id, 8)
-                self.assertEqual(str(page_header_image_wiget.image), 'uploads/site-1/example_header_subpage.jpg')
+                self.assertEqual(page_header_image_widget.page.id, 8)
+                self.assertEqual(str(page_header_image_widget.image), 'uploads/site-1/example_header_subpage.jpg')

@@ -8,33 +8,36 @@ from django.forms.models import ModelForm
 
 from mezzanine.core.admin import SingletonAdmin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
+from mezzanine.forms.models import Form
+from mezzanine.forms.admin import FormAdmin
 from mezzanine.pages.admin import PageAdmin
 from mezzanine.pages.models import RichTextPage
 
+from website.jdpages.models import BlogCategoryPage
 from website.jdpages.models import ColumnElement, ColumnElementWidget
 from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import HomePage
 from website.jdpages.models import HorizontalPosition
-from website.jdpages.models import PageHeaderImageWidget, PageHeaderSettingsWidget
+from website.jdpages.models import PageHeaderImageWidget
 from website.jdpages.models import SocialMediaButton
 from website.jdpages.models import Sidebar
 from website.jdpages.models import SidebarBlogCategoryWidget
 from website.jdpages.models import SidebarBannerWidget
+from website.jdpages.models import SidebarTabsWidget
 from website.jdpages.models import SidebarTwitterWidget
 
 
 class AlwaysChangedModelForm(ModelForm):
+    """
+    A django modelform that is always changed and will thus always be saved and validated.
+    To be used for inlines that should also be created with their default/initial values.
+    """
     def has_changed(self):
-        """ Should returns True if data differs from initial.
-        By always returning true even unchanged inlines will get validated and saved."""
+        """
+        Should return True if data differs from initial.
+        Unchanged inlines will also get validated and saved by always returning true here.
+        """
         return True
-
-
-class PageHeaderImageSettingsInline(admin.TabularInline):
-    model = PageHeaderSettingsWidget
-    form = AlwaysChangedModelForm
-    verbose_name = "Header image type"
-    verbose_name_plural = "Header image type"
 
 
 class PageHeaderImageInline(TabularDynamicInlineAdmin):
@@ -44,7 +47,8 @@ class PageHeaderImageInline(TabularDynamicInlineAdmin):
 
 
 class ColumnElementWidgetInline(TabularDynamicInlineAdmin):
-    """ """
+    """ Base admin class for a column element """
+
     model = ColumnElementWidget
 
     def get_formset(self, request, obj=None, **kwargs):
@@ -59,7 +63,8 @@ class ColumnElementWidgetInline(TabularDynamicInlineAdmin):
 
 
 class LeftColumnElementWidgetInline(ColumnElementWidgetInline):
-    """ """
+    """ Inline for a widget in the left column of a column page """
+
     verbose_name_plural = 'Left column widgets'
 
     def get_queryset(self, request):
@@ -71,7 +76,8 @@ class LeftColumnElementWidgetInline(ColumnElementWidgetInline):
 
 
 class RightColumnElementWidgetInline(ColumnElementWidgetInline):
-    """ """
+    """ Inline for a widget in the right column of a column page """
+
     verbose_name_plural = 'Right column widgets'
 
     def get_queryset(self, request):
@@ -83,12 +89,11 @@ class RightColumnElementWidgetInline(ColumnElementWidgetInline):
 
 
 class HomePageAdmin(PageAdmin):
-    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline,
-               LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
+    inlines = [PageHeaderImageInline, LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
 
 
 class RichtTextPageAdmin(PageAdmin):
-    inlines = [PageHeaderImageSettingsInline, PageHeaderImageInline]
+    inlines = [PageHeaderImageInline, LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
 
 
 class DocumentAdmin(admin.ModelAdmin):
@@ -103,12 +108,22 @@ class ColumnElementWidgetAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'column_element', 'page', 'max_items', 'horizontal_position', 'site')
 
 
+class BlogPageAdmin(PageAdmin):
+    inlines = [PageHeaderImageInline]
+
+
 class DocumentInline(TabularDynamicInlineAdmin):
     model = Document
 
 
+class CustomFormAdmin(FormAdmin):
+    model = Form
+    inlines = [PageHeaderImageInline]
+    inlines.insert(0, FormAdmin.inlines[0])
+
+
 class DocumentListingAdmin(PageAdmin):
-    inlines = (DocumentInline,)
+    inlines = (DocumentInline, PageHeaderImageInline)
 
 
 class SidebarBlogCategoryWidgetInline(admin.TabularInline):
@@ -123,6 +138,12 @@ class SidebarTwitterWidgetInline(admin.TabularInline):
     model = SidebarTwitterWidget
     verbose_name = "Twitter feed"
     verbose_name_plural = "Twitter feed"
+
+
+class SidebarTabsWidgetInline(admin.TabularInline):
+    model = SidebarTabsWidget
+    verbose_name = "Events and newsletter tabs"
+    verbose_name_plural = "Events and newsletter tabs"
 
 
 class SidebarBannerWidgetAdmin(admin.ModelAdmin):
@@ -140,6 +161,7 @@ class SidebarAdmin(SingletonAdmin):
     model = Sidebar
     inlines = (SidebarBlogCategoryWidgetInline,
                SidebarTwitterWidgetInline,
+               SidebarTabsWidgetInline,
                SocialMediaButtonInline,)
 
 
@@ -153,11 +175,15 @@ class SocialMediaButtonGroupAdmin(admin.ModelAdmin):
 
 admin.site.unregister(RichTextPage)
 admin.site.register(RichTextPage, RichtTextPageAdmin)
+admin.site.unregister(Form)
+admin.site.register(Form, CustomFormAdmin)
 admin.site.register(HomePage, HomePageAdmin)
+admin.site.register(BlogCategoryPage, BlogPageAdmin)
 admin.site.register(Sidebar, SidebarAdmin)
 admin.site.register(SidebarBannerWidget, SidebarBannerWidgetAdmin)
 admin.site.register(DocumentListing, DocumentListingAdmin)
 
+# we add some models to the admin for debugging, if we are in debug mode
 if settings.DEBUG:
     admin.site.register(ColumnElement, ColumnElementAdmin)
     admin.site.register(ColumnElementWidget, ColumnElementWidgetAdmin)

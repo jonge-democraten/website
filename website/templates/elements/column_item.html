@@ -1,0 +1,5 @@
+<div class="moduletable">
+    {% with template_name=item.get_template_name|stringformat:"s" %}
+        {% include "elements/"|add:template_name %}
+    {% endwith %}
+</div>

@@ -16,17 +16,9 @@
 {% endmetablock %}{% endblock %}
 
 {% block main %}
+
 {% if page_header %}
-<div id="homeAreaDiv">
-    <div class="moduletable">
-        <div class="custom">
-            <div id="homeImageDiv"><img src="{{ page_header.image.url }}" border="0" width="610" height="290" /></div>
-            <div id="homeLogoDiv">
-                <div id="homeLogoText">{{ page_header.title }}</div>
-            </div>
-        </div>
-    </div>
-</div>
+    {% include "elements/page_header_image.html" %}
 {% endif %}
 
 <div id="homeDiv">
@@ -40,5 +32,7 @@
         
     </div>
 </div> <!-- homeDiv -->
+
+{% include "elements/two_columns.html" %}
 
 {% endblock %}

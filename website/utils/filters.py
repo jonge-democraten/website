@@ -107,6 +107,7 @@ def strip_scripts_not_in_whitelist(html):
 
     return str(dom)
 
+
 def strip_illegal_objects(html):
     """
     Given an HTML string, will strip all object tags that do not embed

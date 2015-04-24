@@ -18,6 +18,7 @@ from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_text
 from django.conf import settings
+from django.db.models.signals import post_init
 
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.fields import FileField
@@ -35,25 +36,6 @@ def validate_header_image(imagepath):
         raise ValidationError('Image should be 610 x 290 pixels, selected image is %i x %i. Please resize the image.' % (width, height))
 
 
-class PageHeaderSettingsWidget(SiteRelated):
-    """ Settings of a page header image. """
-
-    PARENT = 'PA'
-    NONE = 'NO'
-    SINGLE = 'FB'
-    RANDOM = 'RA'
-
-    HEADER_MODE_CHOICES = (
-        (PARENT, 'Parent header'),
-        (NONE, 'No header'),
-        (SINGLE, 'Single image'),
-        (RANDOM, 'Random image'),
-    )
-
-    type = models.CharField(max_length=2, choices=HEADER_MODE_CHOICES, default=PARENT)
-    page = models.OneToOneField(Page, blank=False, null=True)
-
-
 class PageHeaderImageWidget(SiteRelated):
     """ Page header image. """
     name = models.CharField(max_length=1000, blank=True, null=False, default="")
@@ -68,12 +50,13 @@ class ColumnElement(SiteRelated):
     The ColumnElementWidget contains the information on how to display the
     model object of this element.
     """
+    name = models.CharField(max_length=1000, blank=True, null=False, default="")
     content_type = models.ForeignKey(ContentType, blank=True, null=True)
     object_id = models.PositiveIntegerField(blank=False, null=True, verbose_name='related object id')
     content_object = GenericForeignKey('content_type', 'object_id')
 
     def __str__(self):
-        return str(self.content_object) + ' (' + str(self.content_type) + ')'
+        return str(self.name) + ' (' + str(self.content_type) + ')'
 
     def get_object(self):
         """ Returns the content object. """
@@ -129,7 +112,7 @@ class Sidebar(SiteRelated):
 class SidebarBlogCategoryWidget(SiteRelated):
     """
     Blog category widget that can be placed on a sidebar.
-    What it shows is determined by its corresponding view item.
+    Its corresponding view item contains the template information.
     """
     title = models.CharField(max_length=200, blank=False, null=False, default="")
     sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
@@ -140,6 +123,18 @@ class SidebarBlogCategoryWidget(SiteRelated):
 
     class Meta:
         verbose_name = 'Sidebar blogcategory'
+
+
+class SidebarTabsWidget(SiteRelated):
+    """
+    Tabs widget that can be placed on a sidebar.
+    The widget contains the upcoming events and newsletter registration tabs.
+    """
+    active = models.BooleanField(default=True, blank=False, null=False)
+    sidebar = models.OneToOneField(Sidebar, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Sidebar tabs widget'
 
 
 class SidebarTwitterWidget(SiteRelated):
@@ -266,6 +261,34 @@ class Document(Orderable):
             self.description = name
         super(Document, self).save(*args, **kwargs)
 
+from django.contrib.contenttypes.models import ContentType
+
+
+class EventColumnElement(SiteRelated):
+    SITE = 'SI'
+    ALL = 'AL'
+    MAIN_AND_SITE = 'SM'
+
+    EVENT_CHOICES = (
+        (SITE, 'Site'),
+        (ALL, 'All'),
+        (MAIN_AND_SITE, 'Main and site'),
+    )
+
+    type = models.CharField(max_length=2, choices=EVENT_CHOICES)
+
+    def __str__(self):
+        return "Events for " + str(self.type)
+
+
+class BlogCategoryPage(Page, RichText):
+
+    blog_category = models.ForeignKey(BlogCategory, null=False, blank=False)
+
+    class Meta:
+        verbose_name = "Blog category page"
+        verbose_name_plural = "Blog category pages"
+
 
 def get_public_blogposts(blog_category):
     """ Returns all blogposts for a given category that are published and not expired. """
@@ -275,10 +298,9 @@ def get_public_blogposts(blog_category):
 
 
 def create_columnelement_for_blogcategory(blog_category):
-    blog_category_element = ColumnElement()
-    blog_category_element.title = blog_category.title
+    blog_category_element = ColumnElement.objects.create()
+    blog_category_element.name = blog_category.title
     blog_category_element.content_type = ContentType.objects.get_for_model(BlogCategory)
     blog_category_element.object_id = blog_category.id
-    blog_category_element.save()  # this overrides the site_id, so we set it again below
     blog_category_element.site_id = blog_category.site_id
     blog_category_element.save(update_site=False)

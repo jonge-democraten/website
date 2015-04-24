@@ -7,16 +7,7 @@
 {% block main %}
 
 {% if page_header %}
-<div id="homeAreaDiv">
-    <div class="moduletable">
-        <div class="custom">
-            <div id="homeImageDiv"><img src="{{ page_header.image.url }}" border="0" width="610" height="290" /></div>
-            <div id="homeLogoDiv">
-                <div id="homeLogoText">{{ page_header.title }}</div>
-            </div>
-        </div>
-    </div>
-</div>
+    {% include "elements/page_header_image.html" %}
 {% endif %}
 
 <div id="homeDiv">
@@ -27,43 +18,7 @@
     </div>
 </div>
 
-<div id="homeLeftDiv">
-
-    {% for item in column_left_items %}
-        <div class="moduletable">
-            {% with template_name=item.get_template_name|stringformat:"s" %}
-                {% include "elements/"|add:template_name %}
-            {% endwith %}
-        </div>
-    {% endfor %}
-    
-    <div class="moduletable">
-        <div class="custom"  >
-            <p><a href="/media/persberichten.html">» Archief Persberichten</a></p>
-            <p><a href="/media/actuele-publiciteit.html">» Archief JD in de Media</a></p>
-            <p><a href="/politiek">» Archief Politiek</a></p>
-        </div>
-    </div>
-    
-</div>
-
-<div id="homeRightDiv">
-
-    {% for item in column_right_items %}
-        <div class="moduletable">
-            {% with template_name=item.get_template_name|stringformat:"s" %}
-                {% include "elements/"|add:template_name %}
-            {% endwith %}
-        </div>
-    {% endfor %}
-
-    <div class="moduletable">
-        <div class="custom"  >
-            <p><a href="/organisatie/mededelingen">» Meer Mededelingen</a></p>
-        </div>
-    </div>
-    
-</div>
+{% include "elements/two_columns.html" %}
 
 {{ block.super }}
 {% endblock %}

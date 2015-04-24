@@ -1,15 +1,23 @@
 import logging
 logger = logging.getLogger(__name__)
 
+from mezzanine.conf import settings
+
 from website.jdpages.models import Sidebar
 from website.jdpages.models import SidebarBannerWidget
 from website.jdpages.models import SidebarBlogCategoryWidget
 from website.jdpages.models import SidebarTwitterWidget
+from website.jdpages.models import SidebarTabsWidget
 from website.jdpages.models import SocialMediaButton
 from website.jdpages.views import BannerSidebarItem
 from website.jdpages.views import BlogCategorySidebarItem
 from website.jdpages.views import SocialMediaButtonGroupItem
 from website.jdpages.views import TwitterSidebarItem
+from website.jdpages.views import TabsSidebarItem
+
+
+def site_properties(request):
+    return {"site_tagline": settings.SITE_TAGLINE}
 
 
 def sidebar(request):
@@ -29,6 +37,12 @@ def sidebar(request):
     for widget in blogcategory_widgets:
         item = BlogCategorySidebarItem(widget.blog_category)
         item.title = widget.title
+        sidebar_items.append(item)
+
+    tabs_widgets = SidebarTabsWidget.objects.filter(sidebar=current_sidebars, active=True)
+    for widget in tabs_widgets:
+        item = TabsSidebarItem()
+        item.title = "Tabs"
         sidebar_items.append(item)
 
     twitter_widgets = SidebarTwitterWidget.objects.filter(sidebar=current_sidebars, active=True)

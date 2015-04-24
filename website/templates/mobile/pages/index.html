@@ -7,10 +7,19 @@
 {% block body_class %}home{% endblock %}
 
 {% block logo %}
-    <a href="/"><img src="{% static "images/logo-mobile.png" %}" alt="Jonge Democraten " /></a>
+    <a href="/"><img src="{% static "images/logo-mobile.png" %}" alt="Jonge Democraten"/></a>
+    <p id="logosubtitlemobile">
+        {{ site_tagline }}
+    </p>
 {% endblock logo %}
 
 {% block main %}
+
+    {% if page_header %}
+        {% include "elements/page_header_image.html" %}
+    {% endif %}
+
+
     {% for item in column_left_items %}
         <section class="collapsable {{ item.title|slugify }}">
             <div class="moduletable">

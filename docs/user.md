@@ -216,7 +216,11 @@ Je kan verschillende bestanden (zoals documenten en afbeeldingen) opslaan bij de
 
 Onder de tab help staat welke verschillende bestandsformaten je kan uploaden. Een bestand groter dan 10mb kan niet worden geüpload. Wel kan je meerdere bestanden die samen groter zijn dan 10mb uploaden.
 
-Om een ellenlange lijst met bestanden te voorkomen kun je de Media Library naar eigen inzicht onderverdelen in mappen. Daarnaast kan je bestanden sorteren op alfabetische volgorde, grootte en datum. Tevens kan je bestanden filteren op datum en type. Met de zoekfunctie kan je door je de Media Library doorzoeken.
+Let wel, wanneer je een bestand upload, dan kan je daarna dat bestand niet meer verplaatsen binnen de Media Library. Je kan het bestand nog wel hernoemen (via het potloodje). Hernoem het bestand alleen wanneer het nog niet op de site wordt gebruikt. Als je toch een bestand hernoemt dan verander je namelijk de locatie en krijg je dus een foutmelding. 
+
+Omdat je een bestand niet meer kan verplaatsen in de Media Library is het ten sterkste aan te raden om gestructureerd te werk te gaan. Maak dus gebruik van de mappen. Creeer in deze mappen ook weer submappen (bv jaarmappen) zodat je het ook overzichtelijk houdt voor je opvolger (denk aan de karmapunten).
+
+Daarnaast kan je bestanden sorteren op alfabetische volgorde, grootte en datum. Tevens kan je bestanden filteren op datum en type. Met de zoekfunctie kan je door je de Media Library doorzoeken.
 
 Gebruik de Media Library om documenten op te slaan die je op de site wilt plaatsen. Documenten die je voor intern gebruik nodig hebt kun je opslaan op de Wolk. 
 
@@ -229,7 +233,6 @@ Het is mogelijk om documenten (bv. HR, Statuten) zelf te plaatsen op de website.
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker.
-
 - Show in menus: 'Top Navigation Bar', 'Left hand tree, en 'footer' staan automatisch aangevinkt. Hier hoef je niets aan te veranderen. Vink 'Login required' niet aan.
 - Meta Data: Onder deze tab is het mogelijk om nog tags toe te voegen bij de Documenten. Tevens is het hier mogelijk om de URL en  beschrijving aan te passen.
 - Onderaan bij 'Documents' kun je documenten uploaden. Klik hiervoor op het icoontje onder 'Document'. Bestanden die nog niet in de Media Library staan kan je alsnog direct uploaden via de knop rechtsboven. Tekstbestanden die al in de Media Library staan kan je hier selecteren via 'Select' (het blauwe icoontje met pijltje, links vooraan). Wanneer het bestand succesvol is geupload zal er een knop komen met 'document selected'. Als je hierop klikt kan je het geselecteerde document openen. Enkele vereiste is nog dat je een beschrijving van het bestand invult bij 'Description'. Deze beschrijving is uiteindelijk ook te zien op de site.

@@ -16,9 +16,9 @@ def create_column_items(column_widgets):
         if model_class == BlogCategory:
             blog_category = widget.column_element.get_object()
             if widget.column_element.subtype == ColumnElement.COMPACT:
-                column_items.append(BlogCategoryHeadlineItem(blog_category, widget))
+                column_items.append(BlogCategoryHeadlineColumnItem(blog_category, widget))
             else:
-                column_items.append(BlogCategoryItem(blog_category, widget))
+                column_items.append(BlogCategoryColumnItem(blog_category, widget))
         elif model_class == EventColumnElement:
             event_element = widget.column_element.get_object()
             column_items.append(EventColumnItem(event_element, widget))
@@ -39,9 +39,9 @@ class Item(object):
         return isinstance(self, SocialMediaButtonGroupItem)
 
 
-class BlogCategoryItem(Item):
+class BlogCategoryColumnItem(Item):
     def __init__(self, blogcategory, widget):
-        super(BlogCategoryItem, self).__init__(widget.title)
+        super(BlogCategoryColumnItem, self).__init__(widget.title)
         self.url = blogcategory.get_absolute_url()
         self.children = self.create_children(blogcategory, widget.max_items)
 
@@ -57,9 +57,9 @@ class BlogCategoryItem(Item):
         return "blogcategory_column_item.html"
 
 
-class BlogCategoryHeadlineItem(BlogCategoryItem):
+class BlogCategoryHeadlineColumnItem(BlogCategoryColumnItem):
     def __init__(self, blogcategory, widget):
-        super(BlogCategoryHeadlineItem, self).__init__(blogcategory, widget)
+        super(BlogCategoryHeadlineColumnItem, self).__init__(blogcategory, widget)
 
     def get_template_name(self):
         return "blogcategory_compact_column_item.html"

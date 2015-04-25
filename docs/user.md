@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Voor je ligt de handleiding voor de nieuwe achterkant van de JD-site. Een website kent een voorkant (front end) en een achterkant (back end). De 'front end' is datgene wat de bezoekers van een site zien. Deze handleiding dient als uitleg voor de 'back end' van de site. Het is de bedoeling dat je via de achterkant aanpassingen doet aan site.
+Voor je ligt de handleiding oor de nieuwe achterkant van de JD-site. Een website kent een voorkant (front end) en een achterkant (back end). De 'front end' is datgene wat de bezoekers van een site zien. Deze handleiding dient als uitleg voor de 'back end' van de site. Het is de bedoeling dat je via de achterkant aanpassingen doet aan site.
 
 Je komt op de achterkant door naar www.jd.nl te gaan en op 'inloggen' te klikken. 
 

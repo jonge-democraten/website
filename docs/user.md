@@ -77,7 +77,7 @@ Het invoegen van een hyperlink kan als volgt:
 - Selecteer de tekst waarvan je een link wilt maken
 - Klik op de het icoontje van de kettingschakel in de taakbalk
 - Vul de URL Link in bij 'General Properties' 
-- Klik op 'Update'. 
+- Klik op 'Insert'. 
 
 Indien je de link wilt verwijderen klik je op 'Unlink'.
 
@@ -197,7 +197,7 @@ Daarnaast is mogelijk om een aparte pagina aan te maken waarop je alle blogs zie
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin.
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker.
-- Onder content staat 'Blog category'. Hier kan je via het drop-down menu de blogcategorie kiezen.  
+- Onder content staat 'Blog category'. Hier kan je via het drop-down menu de blogcategorie kiezen. 
 - Klik op 'Save' om de veranderingen door te voeren. 
 
 Je hebt nu een pagina gemaakt waarop alle blogs van één dezelfde categorie staan. 
@@ -214,7 +214,11 @@ Een blog kan je verwijderen uit het overzicht door er een vinkje voor te zetten 
 - Title: Naam van het evenement
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
+- Event Category: is verplicht (verdwijnt weer)
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker.
+- Meta data: Wanneer je op deze blauwe balk klikt, wordt er een venster uitgeklapt waar je oa. de URL van de pagina kan veranderen. Dit is niet noodzakelijk en deze stap kan je dus overslaan. 
+- Occurences: Hier kan je alle data invoeren voor het evenement. Klik op Occurence #1 en vul respectievelijk de noodzakelijke velden in.
+- Wil je meerdere evenementen aanmaken, dan doe je dit via 'add another'. 
 
 Klik op 'Save' om de veranderingen door te voeren.
 

@@ -44,7 +44,8 @@ def post_save_callback(sender, instance, created, **kwargs):
     if sender == BlogCategory:
         if not ColumnElement.objects.filter(object_id=instance.id, content_type=ContentType.objects.get_for_model(sender)):  # TODO BR: move this check to create_columnelement_for_blogcategory function
             logger.info('create blog column element')
-            create_columnelement_for_blogcategory(instance)
+            create_columnelement_for_blogcategory(instance, False)
+            create_columnelement_for_blogcategory(instance, True)
             logger.info('blog column element created')
     if sender == Site:
         logger.info('create new event column element for site: ' + str(instance.id) + ' (' + str(instance) + ')')

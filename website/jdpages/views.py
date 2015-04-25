@@ -5,7 +5,7 @@ from django.utils.html import strip_tags
 
 from mezzanine.blog.models import BlogCategory
 
-from website.jdpages.models import EventColumnElement
+from website.jdpages.models import ColumnElement, EventColumnElement
 from website.jdpages.models import get_public_blogposts
 
 
@@ -15,7 +15,10 @@ def create_column_items(column_widgets):
         model_class = widget.column_element.content_type.model_class()
         if model_class == BlogCategory:
             blog_category = widget.column_element.get_object()
-            column_items.append(BlogCategoryItem(blog_category, widget))
+            if widget.column_element.subtype == ColumnElement.COMPACT:
+                column_items.append(BlogCategoryHeadlineItem(blog_category, widget))
+            else:
+                column_items.append(BlogCategoryItem(blog_category, widget))
         elif model_class == EventColumnElement:
             event_element = widget.column_element.get_object()
             column_items.append(EventColumnItem(event_element, widget))
@@ -23,6 +26,9 @@ def create_column_items(column_widgets):
 
 
 class Item(object):
+    def __init__(self, title=""):
+        self.title = title
+
     def get_template_name(self):
         return "none"
 
@@ -35,7 +41,7 @@ class Item(object):
 
 class BlogCategoryItem(Item):
     def __init__(self, blogcategory, widget):
-        self.title = widget.title
+        super(BlogCategoryItem, self).__init__(widget.title)
         self.url = blogcategory.get_absolute_url()
         self.children = self.create_children(blogcategory, widget.max_items)
 
@@ -51,9 +57,17 @@ class BlogCategoryItem(Item):
         return "blogcategory_column_item.html"
 
 
+class BlogCategoryHeadlineItem(BlogCategoryItem):
+    def __init__(self, blogcategory, widget):
+        super(BlogCategoryHeadlineItem, self).__init__(blogcategory, widget)
+
+    def get_template_name(self):
+        return "blogcategory_compact_column_item.html"
+
+
 class BlogPostItem(Item):
     def __init__(self, blogpost):
-        self.title = blogpost.title
+        super(BlogPostItem, self).__init__(blogpost.title)
         self.author = blogpost.user
         self.date = blogpost.publish_date
         self.url = blogpost.get_absolute_url()
@@ -62,7 +76,7 @@ class BlogPostItem(Item):
 
 class EventColumnItem(Item):
     def __init__(self, event_element, widget):
-        self.title = widget.title
+        super(EventColumnItem, self).__init__(widget.title)
         self.type = event_element.type
         self.max_items = widget.max_items
 
@@ -72,6 +86,7 @@ class EventColumnItem(Item):
 
 class BlogCategorySidebarItem(Item):
     def __init__(self, blogcategory):
+        super(BlogCategorySidebarItem, self).__init__()
         self.children = self.create_children(blogcategory)
 
     @staticmethod
@@ -88,6 +103,7 @@ class BlogCategorySidebarItem(Item):
 
 class SocialMediaButtonGroupItem(Item):
     def __init__(self, buttons):
+        super(SocialMediaButtonGroupItem, self).__init__()
         self.children = []
         for button in buttons:
             self.children.append(SocialMediaButtonItem(button))
@@ -98,6 +114,7 @@ class SocialMediaButtonGroupItem(Item):
 
 class SocialMediaButtonItem(Item):
     def __init__(self, button):
+        super(SocialMediaButtonItem, self).__init__()
         self.url = button.url
         self.icon_url = button.get_icon_url()
         self.media_type = button.get_type_name()
@@ -109,6 +126,7 @@ class SocialMediaButtonItem(Item):
 
 class BannerSidebarItem(Item):
     def __init__(self, widget):
+        super(BannerSidebarItem, self).__init__()
         self.image_url = widget.image.url
         self.url = widget.url
         self.description = widget.description

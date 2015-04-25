@@ -50,10 +50,17 @@ class ColumnElement(SiteRelated):
     The ColumnElementWidget contains the information on how to display the
     model object of this element.
     """
+    COMPACT = 'CP'
+
+    SUBTYPES = (
+        (COMPACT, 'Compact'),
+    )
+
     name = models.CharField(max_length=1000, blank=True, null=False, default="")
     content_type = models.ForeignKey(ContentType, blank=True, null=True)
     object_id = models.PositiveIntegerField(blank=False, null=True, verbose_name='related object id')
     content_object = GenericForeignKey('content_type', 'object_id')
+    subtype = models.CharField(max_length=2, choices=SUBTYPES, blank=True, null=False, default="")
 
     def __str__(self):
         return str(self.name) + ' (' + str(self.content_type) + ')'
@@ -297,10 +304,14 @@ def get_public_blogposts(blog_category):
                                                                       | Q(expiry_date__gte=datetime.now()))
 
 
-def create_columnelement_for_blogcategory(blog_category):
+def create_columnelement_for_blogcategory(blog_category, compact_view):
     blog_category_element = ColumnElement.objects.create()
     blog_category_element.name = blog_category.title
+    if compact_view:
+        blog_category_element.name += ' Headlines'
     blog_category_element.content_type = ContentType.objects.get_for_model(BlogCategory)
     blog_category_element.object_id = blog_category.id
     blog_category_element.site_id = blog_category.site_id
+    if compact_view:
+        blog_category_element.subtype = ColumnElement.COMPACT
     blog_category_element.save(update_site=False)

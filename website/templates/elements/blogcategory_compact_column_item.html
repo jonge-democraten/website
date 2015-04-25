@@ -1,0 +1,17 @@
+{% load staticfiles %}
+
+<h3> {{ item.title }} </h3>
+<div class="mod_placehere">
+    <div style="overflow:auto;" class="mod_placehere_leading even">
+        {% for child in item.children %}
+            <tr>
+                <td style="padding:5px 5px 5px 5px;">
+                    <img src="{% static "images/icons/headline.png" %}"/>
+                </td>
+                <td>
+                    <a href="{{ child.url }}" style="color: black;">{{ child.title }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </div>
+</div>

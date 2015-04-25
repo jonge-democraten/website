@@ -115,3 +115,83 @@ Finally, include the header template in your custom page template to show the im
     {% include "elements/page_header_image.html" %}
 {% endif %}
 ```
+
+## Page columns
+
+Every HomePage, RichTextPage, or any other Page that is configured, can contain column widgets.  
+Column widgets display a generic site element in a small column on a page.  
+All models that can be displayed in a column widget have a related ColumnElement model.  
+This ColumnElement stores a reference to a generic Django ContentType model, and can be selected in a column widget in the admin.
+
+The column widget has a column element, a title, and the number of items to show.
+
+This structure allows to add generic content elements in a page column, and order them.  
+However, it does not allow to customize individual elements from the admin, since they are all generic ColumnElementWidgets.
+
+<h3>Example - add a new column element type</h3>
+
+In this example, we show how to display a BlogCategory model on a column page.
+
+First, we want to create a single ColumnElement for each BlogCategory that is created.
+This can be done in `def post_save_callback()` in `signals.py`,
+```Python
+if sender == BlogCategory:
+    element = ColumnElement.objects.create()
+    element.content_type = ContentType.objects.get_for_model(BlogCategory)
+    element.object_id = blog_category.id
+    element.site_id = blog_category.site_id
+    element.save(update_site=False)
+```
+
+The created ColumnElements can now be added, via the admin, in column widgets on Page types that supports columns. 
+
+To actually show the new element type on a template, create a new class, derived from Item, and let it return a template file, in `views.py`,
+```Python
+class BlogCategoryColumnItem(object):
+    def __init__(self, title=""):
+        self.title = title
+
+    def get_template_name(self):
+        return "blogcategory_column_item.html"
+```
+
+Create the view item for the widget in `create_column_items()`.
+This is where we have to determine the type of model that was selected in the widget and create a corresponding view item,
+
+```Python
+def create_column_items(column_widgets):
+    ...
+    if model_class == BlogCategory:
+        blog_category = widget.column_element.get_object()
+        column_items.append(BlogCategoryItem(blog_category, widget))
+    ...
+```
+
+And create the actual template `blogcategory_column_item.html`, optionally using child items,
+
+```html
+<h3> {{ item.title }} </h3>
+<div>
+    {% for child in item.children %}
+        <a href="{{ child.url }}">{{ child.title }}</a> 
+    {% endfor %}
+</div>
+```
+This template should now be rendered in the column on the page it is selected. That's it! 
+
+<h3>Example - add column widgets to a new Page type</h3>
+
+To allow column elements to be selected in the admin of NewPage, we have to add a right and left ColumnElementWidgetInline to the Page admin inlines,
+```Python
+class NewPageAdmin(PageAdmin):
+    inlines = [LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
+    ...
+```
+
+And to actually add the column items to a page processor on the `def add_column_elements()` function for the NewPageAdmin in `page_processors.py`, 
+
+```Python
+@processor_for(NewPage)
+def add_column_elements(request, page):
+    ...
+```

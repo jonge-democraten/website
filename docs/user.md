@@ -4,7 +4,7 @@
 
 Voor je ligt de handleiding voor de nieuwe achterkant van de JD-site. Een website kent een voorkant (front end) en een achterkant (back end). De 'front end' is datgene wat de bezoekers van een site zien. Deze handleiding dient als uitleg voor de 'back end' van de site. Het is de bedoeling dat je via de achterkant aanpassingen doet aan site.
 
-Je komt op de achterkant door naar www.jd.nl te gaan en op 'inloggen' te klikken. 
+Je komt op de achterkant door naar www.jd.nl te gaan en op 'inloggen' te klikken. Je logt in op de website met jouw persoonlijke MijnJD-account. Indien je geen MijnJD-account hebt met bijbehorende rechten, kun je deze aanvragen via de Landelijk Algemeen Secretaris.
 
 Het is overigens niet de bedoeling dat je via de nieuwe achterkant allerlei bestanden gaat opslaan, de Wolk blijft voor massaopslag het primaire middel. 
 
@@ -16,12 +16,13 @@ Via de admin-pagina, onder Content > Pages, is het mogelijk de menustructuur van
 
 <strong>1.1.1 Homepage</strong>
 
-De bovenste regel 'Home' kan je niet verwijderen. Dit is de homepage van je site en staat vast in structuur. Wanneer je op 'Home' klikt, kan je de inhoud van de pagina veranderen. Indien je dit doet zul je onder het content-venster een indeling zien van de kolommen op de homepage. 
+De bovenste regel 'Home' kun je niet verwijderen. Dit is namelijk standaard de landingspagina van de (sub)site. Wanneer je op 'Home' klikt, kan je de inhoud van de pagina veranderen. Indien je dit doet zul je onder het content-venster een indeling zien van de kolommen op de homepage. 
 
-Met 'Left column widgets' en 'Right column widgets' kun je een indeling maken met éen of twee kolommen en x-aantal rijen. Dit kan je naar eigen inzicht indelen. 
+Als je naar beneden scrollt, kun je onder Metadata de widgets aanpassen. Widgets zijn kleine applicaties die op beperkte schaal de functionaliteit van de website bevorderen. In dit geval leiden de widgets ertoe dan vanaf de homepage gemakkelijk naar andere pagina's doorverwezen kan worden, bijvoorbeeld naar blog-items. De widgets zijn ingedeeld in twee kolommen en zijn terug te vinden onderaan de homepagina. Met 'Left column widgets' en 'Right column widgets' kun je een indeling maken met éen of twee kolommen en x-aantal rijen. Dit kan je naar eigen inzicht indelen. 
 
-Als AS heb je de keuze tussen vaste categorieën die de uiteindelijke kopjes op de Homepage zullen zijn.
-Deze categorieën staan vast, wil je een andere titel voor je kopje dan kan je het ICT-team hiervoor mailen. Onder 'horizontal position' kan je bepalen of je de Kopjes links of rechts op de site wilt zien.
+Als Algemeen Secretaris heb je  voor de widgets de keuze tussen vaste categorieën die de uiteindelijke kopjes op de Homepage zullen zijn.
+
+Deze categorieën staan vast, wil je een andere titel voor je kopje dan kan je het ICT-team hiervoor mailen. Onder 'horizontal position' kan je bepalen of je de kopjes links of rechts op de site wilt zien.
 
 Klik op 'Save' om de veranderingen door te voeren. 
 
@@ -29,7 +30,7 @@ Klik op 'Save' om de veranderingen door te voeren.
 
 - Ga naar: Content > Pages > Add... > Rich text page
 - Title: Naam van het menu
-- Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin.
+- Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin.  
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker. 
 - Klik op 'Save' om de veranderingen door te voeren. 
@@ -43,7 +44,7 @@ Wanneer je een menu aanmaakt met 'Rich text page' creeer je een pagina op de JDs
 - URL: de link van de pagina waar het menu naar door moet linken
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
-- 'Top Navigation Bar', 'Left hand tree, en 'footer' staan automatisch aangevinkt. Hier hoef je niets aan te veranderen.
+- 'Top Navigation Bar', 'Left hand tree, en 'footer' staan automatisch aangevinkt. Hier hoef je niets aan te veranderen.  
 - Klik op 'Save' om de veranderingen door te voeren. 
 
 ### 2 Managing Content
@@ -77,13 +78,13 @@ Het invoegen van een hyperlink kan als volgt:
 - Selecteer de tekst waarvan je een link wilt maken
 - Klik op de het icoontje van de kettingschakel in de taakbalk
 - Vul de URL Link in bij 'General Properties' 
-- Klik op 'Insert'. 
+- Klik op 'Update'. 
 
 Indien je de link wilt verwijderen klik je op 'Unlink'.
 
 <strong>2.3 Afbeelding</strong>
 
-Een afbeelding opnemen in de tekst kan op twee manieren:
+Een afbeelding opnemen in de tekst kan op twee manieren: 
 
 1. Een afbeelding kopiëren/plakken (vanaf een andere site) in het tekstvak (bij content), deze methode is makkelijk en snel. Echter, wanneer de locatie van de afbeelding op de originele site verandert, is de afbeelding niet meer zichtbaar en krijg je een foutmelding. 
 
@@ -112,7 +113,7 @@ PDF bestanden zoals het HR en Statuten kan je als volgt insluiten (embedden) op 
 	- Kopieer deze locatiecode, let wel, de code begint met /static/media/ en eindigt met .pdf . Alles wat hiervoor of achter staat is niet noodzakelijk.
 6. Plak de locatiecode op de plek waar nu /static/media/path/bestandsnaam.pdf staat. Zorg dat de code tussen de aanhalingstekens blijft staan.
 
-Dit is een vrij geavanceerd proces, ga dus niet zomaar rommelen aan de code. Wanneer je de locatiecode niet correct kopieert, wordt er geen PDF bestand zichtbaar op de site.
+Dit is een vrij geavanceerd proces, ga dus niet zomaar rommelen aan de code. Wanneer je de locatiecode niet correct kopieert, wordt er geen PDF bestand zichtbaar op de site.  
 
 <strong>2.5 Headers</strong>
 
@@ -124,7 +125,7 @@ Op de HomePage and elke RichTextPage kunnen één of meerdere headers worden gep
 - Klik onder image op het icoontje (venster met loepje). Een nieuw venster van de Media Library wordt automatisch geopend. Klik op het diagonale pijltje (meest linker-icoon) de afbeelding aan die je als header wilt.
 Let wel: Een header image dient 610 x 290 pixels als vereiste te hebben. Is dit niet het geval kan je de afbeelding niet invoeren.
 - Als je geen header invoegt op een pagina dan is er nog steeds wel een header zichtbaar op die desbetreffende pagina. Dit zal dan namelijk de header zijn die je ook ziet op de homepage. Verander je de header op de homepage, dan verandert deze ook de andere pagina's waar geen specifieke header is ingesteld.
-- Indien je twee of meerdere headers invoegt, dan zullen deze willekeurig rouleren.
+- Indien je twee of meerdere headers invoegt, dan zullen deze willekeurig rouleren.  
 
 Wil je de header image weer verwijderen, klik dan op het kruisje. Het plaatje verdwijnt dan niet automatisch uit de lijst maar hij is wel echt verwijderd.
 
@@ -184,24 +185,6 @@ Onder de tab 'Meta data' is het mogelijk om nog tags toe te voegen onder de blog
 
 Klik op 'Save' om de veranderingen door te voeren.
 
-<strong>Verschil Blogposts, Blog Category en Blog Category Page</strong>
-
-In de achterkant kan je onderscheid maken tussen 'Blogposts', 'Blog Category' en 'Blog Category Page'.
-Via blogposts (onder Content) kun je blogs aanmaken. 
-Elke blogposts kan een blog category krijgen (bv 'JD Blog', 'Nieuws', 'Mededelingen' en 'Politiek'). Zo kun je de blogs structureren en indelen.
-
-Daarnaast is mogelijk om een aparte pagina aan te maken waarop je alle blogs ziet die één specifieke blog category hebben. Dit doe je via 'blog category page', deze pagina kan je als volgt aanmaken:
-
-- Ga naar: Content > Pages > Add... > Blog category page
-- Title: Naam van het menu
-- Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin.
-- Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
-- Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker.
-- Onder content staat 'Blog category'. Hier kan je via het drop-down menu de blogcategorie kiezen. 
-- Klik op 'Save' om de veranderingen door te voeren. 
-
-Je hebt nu een pagina gemaakt waarop alle blogs van één dezelfde categorie staan. 
-
 <strong>Blog bewerken/verwijderen</strong>
 
 Nadat een blog is ingevoerd kan je het als AS nog bewerken. Dit doe je door onder Content > Blog posts in het overzicht op de desbetreffende blog te klikken. Je komt nu weer in het specificatie venster wat je ook zag toen je de blog aanmaakte. Je kan hier veranderingen doorvoeren. Vergeet niet op 'Save' te klikken. 
@@ -214,11 +197,7 @@ Een blog kan je verwijderen uit het overzicht door er een vinkje voor te zetten 
 - Title: Naam van het evenement
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
-- Event Category: is verplicht (verdwijnt weer)
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker.
-- Meta data: Wanneer je op deze blauwe balk klikt, wordt er een venster uitgeklapt waar je oa. de URL van de pagina kan veranderen. Dit is niet noodzakelijk en deze stap kan je dus overslaan. 
-- Occurences: Hier kan je alle data invoeren voor het evenement. Klik op Occurence #1 en vul respectievelijk de noodzakelijke velden in.
-- Wil je meerdere evenementen aanmaken, dan doe je dit via 'add another'. 
 
 Klik op 'Save' om de veranderingen door te voeren.
 
@@ -230,15 +209,15 @@ Coming soon
 
 <strong>7.1 Media Library</strong>
 
-Je kan verschillende bestanden (zoals documenten en afbeeldingen) opslaan bij de Media Library. Om bestanden te uploaden volg de volgende stappen:
+Je kan verschillende bestanden (zoals documenten en afbeeldingen) opslaan bij de Media Library. Om bestanden te uploaden volg de volgende stappen: 
 - Ga naar Content > Media Library
 - Klik rechtsboven op de knop 'Upload'
 - Klik op de knop 'Select Files'
-- Selecteer de gewenste bestanden. Je kan meerdere bestanden in één keer selecteren en uploaden.
+- Selecteer de gewenste bestanden. Je kan meerdere bestanden in één keer selecteren en uploaden. 
 
 Onder de tab help staat welke verschillende bestandsformaten je kan uploaden. Een bestand groter dan 10mb kan niet worden geüpload. Wel kan je meerdere bestanden die samen groter zijn dan 10mb uploaden.
 
-Let wel, wanneer je een bestand upload, dan kan je daarna dat bestand niet meer verplaatsen binnen de Media Library. Je kan het bestand nog wel hernoemen (via het potloodje). Hernoem het bestand alleen wanneer het nog niet op de site wordt gebruikt. Als je toch een bestand hernoemt dat al gebruikt wordt dan verander je namelijk ook de locatie en krijg je dus een foutmelding op de site. 
+Let wel, wanneer je een bestand upload, dan kan je daarna dat bestand niet meer verplaatsen binnen de Media Library. Je kan het bestand nog wel hernoemen (via het potloodje). Hernoem het bestand alleen wanneer het nog niet op de site wordt gebruikt. Als je toch een bestand hernoemt dan verander je namelijk de locatie en krijg je dus een foutmelding. 
 
 Omdat je een bestand niet meer kan verplaatsen in de Media Library is het ten sterkste aan te raden om gestructureerd te werk te gaan. Maak dus gebruik van de mappen. Creeer in deze mappen ook weer submappen (bv jaarmappen) zodat je het ook overzichtelijk houdt voor je opvolger (denk aan de karmapunten).
 

@@ -62,7 +62,7 @@ Van links naar rechts zie je in de taakbalk staan:
 - Scherm met plusje: afbeeldingen invoegen/veranderen
 - Filmband: video invoegen/veranderen (embedden)
 - Omega: speciale tekens/symbolen invoeg en
-- HTML: laat de ingevoerde content in HTML-code zien
+- HTML: opent een nieuw venster zodat je de website in HTML-code kan zien en veranderen. Het is niet eng. HTML-code is simpelweg de taal waarin de opmaak van de site is geschreven. 
 - Tabel: tabel invoegen
 - Bulletpoints invoegen
 - Nummering invoegen
@@ -105,12 +105,12 @@ PDF bestanden zoals het HR en Statuten kan je als volgt insluiten (embedden) op 
 1. Upload het PDF-bestand in de Media Library (zie punt 7 voor meer uitleg hierover)
 2. Open in de backend de pagina waar je het PDF wilt insluiten
 3. Ga naar het tekstvak 'Content' en klik in de taakbalk op het HTML icoon (zevende van links)
-4. Voer in het HTML venster de onderstaande objectcode in:  ```<object data="/static/media/path/bestandsnaam.pdf" width="100%" height=600 type="application/pdf"></object>``` 
+4. Kopieer in het HTML venster de onderstaande objectcode:  ```<object data="/static/media/path/bestandsnaam.pdf" width="100%" height=600 type="application/pdf"></object>``` 
 5. Waar in de bovenstaande code nu "/static/media/path/bestandsnaam.pdf" staat dien je de locatiecode (tag) van het pdf-bestand te plaatsen. Dit doe je als volgt: 
-	- ga terug naar Media Library
-	- klik op de bestandsnaam van het desbetreffende pdf-bestand
-	- Het pdf-bestand wordt nu geopend in een nieuw venster, in de adresbalk zie je nu de locatiecode van het pdf-bestand staan.
-	- Kopieer deze locatiecode, let wel, de code begint met /static/media/ en eindigt met .pdf . Alles wat hiervoor of achter staat is niet noodzakelijk.
+	- open in een nieuw tabblad de Media Library
+	- klik op de bestandsnaam van het pdf-bestand welke je wilt insluiten
+	- Het pdf-bestand wordt nu geopend in een ander tabblad, in die adresbalk zie je nu de locatiecode van het pdf-bestand staan.
+	- Kopieer deze locatiecode, let wel, de code begint met /static/media/ en eindigt met .pdf . Alles wat hiervoor of achter staat heb je niet nodig.
 6. Plak de locatiecode op de plek waar nu /static/media/path/bestandsnaam.pdf staat. Zorg dat de code tussen de aanhalingstekens blijft staan.
 
 Dit is een vrij geavanceerd proces, ga dus niet zomaar rommelen aan de code. Wanneer je de locatiecode niet correct kopieert, wordt er geen PDF bestand zichtbaar op de site.  
@@ -146,6 +146,19 @@ De video kan je na het invoegen nog verslepen in het tekstvak, dit doe je door o
 <strong>2.7 In-line editing</strong>
 
 Een website kent een voorkant (front end) en een achterkant (back end). De 'front end' is datgene wat de bezoekers van een site zien. Deze User Manual dient als uitleg voor de 'back end' van de site. Het is de bedoeling dat je via de achterkant aanpassingen doet aan site. Wanneer je als admin bent ingelogd is het ook mogelijk om via de voorkant kleinere aanpassingen te doen (in-line editing) aan de de titel en een blog post. Login bij de admin-omgeving > ga terug naar de site. Je ziet linksboven een klein gele tab met een pijltje, klap deze uit en je ziet waar wijzigingen kan aanbrengen met 'Edit'. 
+
+<strong>2.8 Sidebar</strong>
+
+Het is mogelijk om de sidebar aan te passen.
+
+Ga naar: Content > Sidebar
+Blogs: Hier kan je instellen welke blog categorie zichtbaar zijn op in de sidebar. 
+Twitter feed: staat automatisch aangevinkt
+Events and newsletters tabs: staat automatisch aangevinkt. 
+Social media buttons: Hier staan de vier links naar sociale media waar de Jonge Democraten actief zijn. Je kunt hier ook de link veranderen naar de social media pagina's van je eigen afdeling. 
+
+
+
 
 ### 3 Formulier opstellen
 

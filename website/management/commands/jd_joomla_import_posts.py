@@ -1,8 +1,11 @@
 import pymysql
 
+import os
+
 from optparse import make_option
 from urllib.parse import urlparse, parse_qs
 from django.core.management.base import BaseCommand, CommandError
+from django.contrib.sites.models import Site
 
 from mezzanine.pages.models import RichTextPage
 from mezzanine.blog.management.base import BaseImporterCommand
@@ -64,32 +67,46 @@ class Command(BaseImporterCommand):
         cur = db.cursor()
         # Get all menu types
         cur.execute('SELECT * FROM '+options.get('tableprefix')+'_menu_types;')
+        print("Beschikbare sites:")
+        sites = dict()
         for menutype in cur.fetchall():
-            print('+ %s (id=%d)' % (menutype[1], menutype[0]))
-            if not menutype[0] in menutype2site:
-                print("| === Skipping menutype %s: Conversion to site id is unknown. ===" % (menutype[1],))
-                continue
-            # TODO Change SITE_ID
-            cur.execute('SELECT * FROM '+options.get('tableprefix')+'_menu WHERE menutype=%s;', (menutype[1],))
-            for menu in cur.fetchall():
-                url = urlparse(menu[6])
-                qs = parse_qs(url.query)
-                if 'id' in qs:
-                    print('| + ' + menu[5]+' => '+ qs['id'][0])
-                    # _content.state  has the following values
-                    #  0 = unpublished
-                    #  1 = published
-                    # -1 = archived
-                    # -2 = marked for deletion
-                    cur.execute('SELECT * FROM '+options.get('tableprefix')+'_content WHERE catid=%s and state=1;', (qs['id'][0],))
-                    for page in cur.fetchall():
-                        self.add_page(  title=page[2], 
-                                        content=page[5]+page[6],
-                                        old_url=get_post_url(cur, options.get('tableprefix'),page[0]),
-                                        old_id=page[0])#,
-                                        #old_parent_id=menu[0])
-                        print('| | | '+page[3])
-                else:
-                    print('| | ' + menu[5])
+            print('%d\t%s' % (menutype[0], menutype[1]))
+            sites[menutype[0]]= menutype[1]
+        while True:
+            menuid = input("Site id om te migreren: ")
+            if int(menuid) in sites:
+                menuid = int(menuid)
+                break
+            else:
+                print("Ongeldige keuze")
+        print("Maak Mezzanine site aan:")
+        domain = input("\tDomein naam:\t")
+        name = input("\tNaam:\t")
+        site = Site(domain=domain, name=name)
+        site.save()
+        os.environ["MEZZANINE_SITE_ID"] = str(site.id)
+        
+        # Get all content for the specified site
+        cur.execute('SELECT * FROM '+options.get('tableprefix')+'_menu WHERE menutype=%s;', sites[menuid])
+        for menu in cur.fetchall():
+            url = urlparse(menu[6])
+            qs = parse_qs(url.query)
+            if 'id' in qs:
+                print('| + ' + menu[5]+' => '+ qs['id'][0])
+                # _content.state  has the following values
+                #  0 = unpublished
+                #  1 = published
+                # -1 = archived
+                # -2 = marked for deletion
+                cur.execute('SELECT * FROM '+options.get('tableprefix')+'_content WHERE catid=%s and state=1;', (qs['id'][0],))
+                for page in cur.fetchall():
+                    self.add_page(  title=page[2], 
+                                    content=page[5]+page[6],
+                                    old_url=get_post_url(cur, options.get('tableprefix'),page[0]),
+                                    old_id=page[0])#,
+                                    #old_parent_id=menu[0])
+                    print('| | | '+page[3])
+            else:
+                print('| | ' + menu[5])
 
 

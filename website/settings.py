@@ -421,6 +421,8 @@ LOGGING = {
 # ignored in your version control system allowing for settings to be
 # defined per machine.
 try:
+    from .local_settings import *
+except SystemError as e:  # relative imports do not work when using `manage.py runserver`: (Parent module '' not loaded, cannot perform relative import)
     from local_settings import *
 except ImportError as e:
     if "local_settings" not in str(e):

@@ -118,9 +118,9 @@ Finally, include the header template in your custom page template to show the im
 
 ## Page columns
 
-Every HomePage, RichTextPage, or any other Page that is configured, can contain column widgets.  
-Column widgets display a generic site element in a small column on a page.  
-All models that can be displayed in a column widget have a related ColumnElement model.  
+Every Page can contain column widgets.
+Column widgets display a generic element on a page.  
+All models that can be displayed in a column widget need a related ColumnElement model.  
 This ColumnElement stores a reference to a generic Django ContentType model, and can be selected in a column widget in the admin.
 
 The column widget has a column element, a title, and the number of items to show.
@@ -143,7 +143,7 @@ if sender == BlogCategory:
     element.save(update_site=False)
 ```
 
-The created ColumnElements can now be added, via the admin, in column widgets on Page types that supports columns. 
+The created ColumnElements can now be added, via the admin, in column widgets on Page types that supports columns (for example, all RichTextPages). 
 
 To actually show the new element type on a template, create a new class, derived from Item, and let it return a template file, in `views.py`,
 ```Python

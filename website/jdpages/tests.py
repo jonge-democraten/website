@@ -40,23 +40,25 @@ class TestColumnElement(TestCase):
 
     def test_auto_create(self):
         """
-        Tests whether a ColumnElement is automatically created
-        when a BlogCategory is created, and that the element contains a reference to the category object.
+        Tests whether two ColumnElements are created when a BlogCategory is created,
+        and that the elements contain a reference to the category object.
         """
         category = BlogCategory.objects.create(title="Test Blog")
         content_type = ContentType.objects.get(model="blogcategory")
-        element = ColumnElement.objects.get(object_id=category.id, content_type=content_type)
-        self.assertEqual(element.get_object(), category)
+        elements = ColumnElement.objects.filter(object_id=category.id, content_type=content_type)
+        for element in elements:
+            self.assertEqual(element.get_object(), category)
 
     def test_auto_delete(self):
         """
-        Tests whether a ColumnElement is automatically deleted
+        Tests whether the related ColumnElements are automatically deleted
         when a BlogCategory is deleted.
         """
         category = BlogCategory.objects.create(title="Test Blog")
         content_type = ContentType.objects.get(model="blogcategory")
-        element = ColumnElement.objects.get(object_id=category.id, content_type=content_type)
-        self.assertEqual(element.get_object(), category)
+        elements = ColumnElement.objects.filter(object_id=category.id, content_type=content_type)
+        for element in elements:
+            self.assertEqual(element.get_object(), category)
         catid = category.id
         category.delete()
         self.assertEqual(BlogCategory.objects.count(), 0)

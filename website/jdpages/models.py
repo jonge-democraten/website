@@ -18,7 +18,6 @@ from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_text
 from django.conf import settings
-from django.db.models.signals import post_init
 
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.fields import FileField
@@ -267,8 +266,6 @@ class Document(Orderable):
                             for i, s in enumerate(name)])
             self.description = name
         super(Document, self).save(*args, **kwargs)
-
-from django.contrib.contenttypes.models import ContentType
 
 
 class EventColumnElement(SiteRelated):

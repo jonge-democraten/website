@@ -6,8 +6,6 @@ from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 from django.contrib.sites.models import Site
 
-from fullcalendar.models import EventCategory
-
 from mezzanine.blog.models import BlogCategory
 
 from website.jdpages.models import ColumnElement, EventColumnElement

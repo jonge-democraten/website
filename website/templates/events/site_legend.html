@@ -1,0 +1,7 @@
+<ul class="events-legend">
+    {% for site_name, colors in legend.items %}
+    <li style="color: {{ colors.textColor }}; background-color: {{ colors.backgroundColor }}; border: 1px solid {{ colors.borderColor }};">{{ site_name }}</li>
+    {% endfor %}
+</ul>
+
+<p>Site ID: {{ current_site_id }}</p>

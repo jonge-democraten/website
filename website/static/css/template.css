@@ -1999,6 +1999,17 @@ p#calendar-loading {
     max-width: 810px;
 }
 
+ul.events-legend {
+    padding: 0px;
+}
+
+ul.events-legend li {
+    display: inline-block;
+    list-style: none;
+    padding: 5px;
+    margin: 0px 5px;
+}
+
 p#logosubtitle {
     position: absolute;
     top: 58px;

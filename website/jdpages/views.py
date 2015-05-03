@@ -6,6 +6,8 @@ from django.utils.html import strip_tags
 from mezzanine.blog.models import BlogCategory
 
 from website.jdpages.models import ColumnElement, EventColumnElement
+from website.jdpages.models import HomePage
+from website.jdpages.models import PageHeaderImageWidget
 from website.jdpages.models import get_public_blogposts
 
 
@@ -143,3 +145,39 @@ class TwitterSidebarItem(Item):
 class TabsSidebarItem(Item):
     def get_template_name(self):
         return "tabs_sidebar_item.html"
+
+
+def get_page_header(page):
+    page_header_images = PageHeaderImageWidget.objects.filter(page=page)
+
+    n_images = page_header_images.count()
+    if n_images == 1:
+        return get_first_page_header(page)
+    elif n_images == 0:
+        if page.parent:
+            return get_page_header(page.parent)
+        else:
+            homepages = HomePage.objects.all()
+            if not homepages.exists():
+                return None
+            elif page == homepages[0]:  # prevent infinite recursion
+                return None
+            elif PageHeaderImageWidget.objects.filter(page=homepages[0]):
+                return get_page_header(homepages[0])
+    elif n_images > 1:
+        return get_random_page_header(page)
+
+
+def get_first_page_header(page):
+    page_header = PageHeaderImageWidget.objects.filter(page=page)
+    if page_header.exists():
+        return page_header[0]
+    else:
+        return None
+
+
+def get_random_page_header(page):
+    page_header = PageHeaderImageWidget.objects.filter(page=page)
+    if page_header.exists():
+        return PageHeaderImageWidget.objects.filter(page=page).order_by('?')[0]
+    return None

@@ -19,6 +19,12 @@
 
 {% block main %}
 
+{% if homepage_header %}
+    {% with homepage_header as page_header %}
+        {% include "elements/page_header_image.html" %}
+    {% endwith %}
+{% endif %}
+
 <div id="homeDiv">
     <div class="item-page">
     

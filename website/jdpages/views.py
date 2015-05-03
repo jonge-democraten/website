@@ -181,3 +181,13 @@ def get_random_page_header(page):
     if page_header.exists():
         return PageHeaderImageWidget.objects.filter(page=page).order_by('?')[0]
     return None
+
+
+def get_homepage_header():
+    """ Returns the page header image of the homepage """
+    homepages = HomePage.objects.all()
+    if not homepages.exists():
+        return None
+    elif PageHeaderImageWidget.objects.filter(page=homepages[0]):
+        return get_page_header(homepages[0])
+    return None

@@ -15,6 +15,8 @@ from website.jdpages.views import SocialMediaButtonGroupItem
 from website.jdpages.views import TwitterSidebarItem
 from website.jdpages.views import TabsSidebarItem
 
+from website.jdpages.views import get_homepage_header
+
 
 def site_properties(request):
     return {"site_tagline": settings.SITE_TAGLINE}
@@ -63,3 +65,7 @@ def sidebar(request):
         sidebar_items.append(item)
 
     return {"sidebar_items": sidebar_items}
+
+
+def homepage_header(request):
+    return {"homepage_header": get_homepage_header()}

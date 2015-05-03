@@ -288,6 +288,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "mezzanine.pages.context_processors.page",
     "website.jdpages.context_processors.sidebar",
     "website.jdpages.context_processors.site_properties",
+    "website.jdpages.context_processors.homepage_header",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,

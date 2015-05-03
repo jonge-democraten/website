@@ -190,3 +190,16 @@ And to actually add the column items to a page processor on the `def add_column_
 def add_column_elements(request, page):
     ...
 ```
+
+## Blog
+
+The Mezzanine blog categories and posts models are used without modifications. 
+The views and templates are modified to remove functionality for the frontend user, and to modify the style. 
+
+There are blog categories and blog posts in the Mezzanine blog application. 
+Always make clear which of the two you mean when talking about blog related functionality.
+
+There are two blog related views and templates: one for a blog category page, and one for a single blog post,
+
+* A BlogCategoryPage page type shows all blog posts in a blog category on a single page. The page is shown in the menu. Its blog category and header can be set in the admin.
+* A single blog posts is shown using the Mezzanine blog detail view function, in combination with a custom template that includes the page header image of the homepage.

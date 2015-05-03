@@ -1,5 +1,5 @@
 <h1>Design</h1>
-The design of different components is explained in this document.  
+The design of different jdwebsite components is explained in this document.
 
 ## Sidebar
 A Sidebar model represents the information shown in a sidebar on the webpage.
@@ -81,16 +81,11 @@ class SidebarAdmin(SingletonAdmin):
 ```
 
 ## Page header image
-The page header is the image on top of each page (not site). Below the site header and menu bar.  
-Content managers can set different page header types in the admin,
- 
-* Parent image
-* Single image
-* Random image
-* No header
+The page header is the image on top of each page (not site). Below the site header and menu bar.
 
 Multiple images can be added from the media library to function als page header image. The images need to be exactly 610 x 290 pixels to be accepted.
-Multiple images are only used in 'Random image' mode. 
+In case multiple images are set, a random image will be selected on each page request. 
+In case no image is set, the homepage image will be used. 
 
 <h3>Example - add header to new custom page</h3>
 

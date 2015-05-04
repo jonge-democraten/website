@@ -2,6 +2,7 @@ django==1.7.1
 mezzanine==3.1.10
 django-simple-captcha==0.4.3
 django_debug_toolbar==1.2.2
+django-rq==0.8.0
 PyMySQL==0.6.3
 python-dateutil
 icalendar==3.8.4

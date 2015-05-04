@@ -199,7 +199,7 @@ class SocialMediaButton(Orderable, SiteRelated):
     sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
 
     def get_icon_url(self):
-        return 'images/icons/' + SocialMediaButton.SOCIAL_MEDIA_ICONS[str(self.type)]
+        return 'website/images/icons/' + SocialMediaButton.SOCIAL_MEDIA_ICONS[str(self.type)]
 
     def get_type_name(self):
         for choice in SocialMediaButton.SOCIAL_MEDIA_CHOICES:

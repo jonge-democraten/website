@@ -13,7 +13,7 @@
     {% for event in events %}
         <tr>
             <td style="padding:5px 5px 5px 5px;">
-                <img src="{% static "images/icons/calendar.png" %}"/>
+                <img src="{% static "website/images/icons/calendar.png" %}"/>
             </td>
             <td>
                 <a href="{{ event.get_absolute_url }}" style="font-weight: bold; color: black;">{{ event.title }}</a>

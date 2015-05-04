@@ -53,8 +53,8 @@ svg.append("path")
 	.attr("d", mappath);
 
 queue()
-	.defer(d3.json, "/static/json/gemeenten_2013.topo.json")
-	.defer(d3.json, "/static/json/afdelingen.json")
+	.defer(d3.json, "/static/website/json/gemeenten_2013.topo.json")
+	.defer(d3.json, "/static/website/json/afdelingen.json")
 	.await(ready);
 
 }

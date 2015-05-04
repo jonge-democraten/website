@@ -216,7 +216,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = STATIC_URL + "media/"
+MEDIA_URL = STATIC_URL + "website/media/"
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
@@ -519,7 +519,7 @@ RICHTEXT_SCRIPT_TAG_WHITELIST = (
     '<script type="text/javascript" src="http://d3js.org/queue.v1.min.js"></script>',
     '<script type="text/javascript" src="http://d3js.org/d3.geo.projection.v0.min.js"></script>',
     '<script type="text/javascript" src="http://d3js.org/topojson.v0.min.js"></script>',
-    '<script type="text/javascript" src="/static/js/render.js"></script>',
+    '<script type="text/javascript" src="/static/website/js/render.js"></script>',
 )
 
 

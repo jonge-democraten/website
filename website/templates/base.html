@@ -9,7 +9,7 @@
 <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 <meta name="description" content="{% block meta_description %}{% endblock %}">
 <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} - {{ settings.SITE_TITLE }}{% endif %}</title>
-<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+<link rel="shortcut icon" href="{% static "website/img/favicon.ico" %}">
 
 {% ifinstalled mezzanine.blog %}
 {% blog_categories as categories %}
@@ -24,7 +24,7 @@
 {% endifinstalled %}
 
 {% compress css %}
-<link rel="stylesheet" href="{% static "css/template.css" %}" type="text/css" />
+<link rel="stylesheet" href="{% static "website/css/template.css" %}" type="text/css" />
 {% block extra_css %}{% endblock %}
 {% endcompress %}
 
@@ -40,8 +40,8 @@ $(function() {
 {% endcompress %}
 
 <!--[if lt IE 9]>
-<script src="{% static "js/html5shiv.js" %}"></script>
-<script src="{% static "js/respond.min.js" %}"></script>
+<script src="{% static "website/js/html5shiv.js" %}"></script>
+<script src="{% static "website/js/respond.min.js" %}"></script>
 <![endif]-->
 
 {% block extra_head %}{% endblock %}

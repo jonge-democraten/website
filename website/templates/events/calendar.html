@@ -4,25 +4,25 @@
 {% block meta_title %}{% trans "Calendar" %}{% endblock %}
 
 {% block extra_js %}{{ block.super }}
-<script type="text/javascript" src="{% static "js/moment.min.js" %}"></script>
-<script type="text/javascript" src="{% static "js/fullcalendar.js" %}"></script>
-<script type="text/javascript" src="{% static "js/lang/fullcalendar-nl.js" %}"></script>
+<script type="text/javascript" src="{% static "website/js/moment.min.js" %}"></script>
+<script type="text/javascript" src="{% static "website/js/fullcalendar.js" %}"></script>
+<script type="text/javascript" src="{% static "website/js/lang/fullcalendar-nl.js" %}"></script>
 
 <script type="text/javascript">
     window.__calendar_default_date = "{{ default_date }}";
     window.__calendar_events_url = "{{ json_uri }}";
 </script>
 
-<script type="text/javascript" src="{% static "js/calendar.js" %}"></script>
+<script type="text/javascript" src="{% static "website/js/calendar.js" %}"></script>
 {% endblock %}
 
 {% block extra_css %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static "css/fullcalendar.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "website/css/fullcalendar.css" %}" />
 {% endblock %}
 
 {% block main %}
 <div id="homeAreaDiv">
-    <div id="homeImageDiv"><img src="{% static "images/congres_tafels.jpg" %}" alt="" /></div>
+    <div id="homeImageDiv"><img src="{% static "website/images/congres_tafels.jpg" %}" alt="" /></div>
     <div id="homeLogoDiv"></div>
 </div>
 

@@ -40,14 +40,3 @@ def JANEUS_FAKE_LDAP(username, password):
 # JANEUS_SERVER = "ldap://127.0.0.1:389/"
 # JANEUS_DN = "dnoftheuser"
 # JANEUS_PASS = "thisisaverysecretpassword"
-
-# Redis queues for Hemres. Hemres uses "default" queue for sending newsletters.
-RQ_QUEUES = {
-    'default': {
-        'HOST': 'localhost',
-        'PORT': 6379,
-        'DB': 0,
-        'PASSWORD': '',
-        'DEFAULT_TIMEOUT': 360,
-    },
-}

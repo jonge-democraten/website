@@ -1,0 +1,56 @@
+{% extends "mobile/pages/richtextpage.html" %}
+{% load i18n mezzanine_tags staticfiles fullcalendar %}
+
+{% block meta_title %}{{ occurrence.title }}{% endblock %}
+
+{% block extra_js %}{{ block.super }}
+<script type="text/javascript" src="{% static "website/js/leaflet.js" %}"></script>
+<script type="text/javascript">
+L.Icon.Default.imagePath = "{% static "website/images/leaflet/" %}";
+</script>
+<script type="text/javascript" src="{% static "website/js/events.js" %}"></script>
+{% endblock %}l
+
+{% block extra_css %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static "website/css/leaflet.css" %}" />
+{% endblock %}
+
+{% block main %}
+<div id="homeAreaDiv">
+    <div id="homeImageDiv"><img src="{% static "website/images/congres_tafels.jpg" %}" alt="" /></div>
+    <div id="homeLogoDiv"></div>
+</div>
+
+<div id="homeDiv">
+    {% editable occurrence.event.title %}<h2>{{ occurrence.event.title }}</h2>{% endeditable %}
+    {% if occurrence.description %}
+    {% editable occurrence.description %}<h3>{{ occurrence.description }}</h3>{% endeditable %}
+    {% endif %}
+    <hr />
+
+    {% editable occurrence.start_time occurrence.end_time occurrence.location %}
+    <p>
+        <strong>{% trans "When" %}:</strong> {% occurrence_duration occurrence %}<br />
+        {% if occurrence.location %}
+        <strong>{% trans "Where" %}:</strong> <span id="occurrence-location">{{ occurrence.location }}</span><br />
+        {% endif %}
+        {% if occurrence.event.event_category %}
+        <strong>{% trans "Category" %}:</strong> {{ occurrence.event.event_category }}
+        {% endif %}
+    </p>
+    {% endeditable %}
+
+    <div id="event-map"></div>
+
+    {% editable occurrence.event.content %}
+
+    {{ occurrence.event.content|richtext_filters|safe }}
+    {% endeditable %}
+
+    <p>
+        <a href="{% url "fullcalendar-monthly-view" occurrence.start_time.year occurrence.start_time.month %}">&laquo; {% trans "Back to calendar" %}</a>
+    </p>
+
+</div>
+{% endblock %}
+

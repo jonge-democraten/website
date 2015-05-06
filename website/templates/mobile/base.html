@@ -22,6 +22,8 @@
     <link rel="icon" href="{% static "website/images/jdicon.png" %}" type="image/png" />
     <link rel="stylesheet" href="{% static "website/css/template.css" %}" type="text/css" />
     <script src="{% static "website/js/jquery-1.11.1.min.js" %}" type="text/javascript"></script>
+{% block extra_js %}{% endblock %}
+{% block extra_css %}{% endblock %}
 
     <meta name="twitter:card" value="summary">
     <meta name="twitter:url" value="{{ request.build_absolute_uri }}">

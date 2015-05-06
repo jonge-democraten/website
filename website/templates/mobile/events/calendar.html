@@ -1,0 +1,51 @@
+{% extends "mobile/pages/richtextpage.html" %}
+{% load i18n mezzanine_tags staticfiles fullcalendar %}
+
+{% block meta_title %}{% trans "Calendar" %}{% endblock %}
+
+{% block extra_js %}{{ block.super }}
+<script type="text/javascript" src="{% static "website/js/moment.min.js" %}"></script>
+<script type="text/javascript" src="{% static "website/js/fullcalendar.js" %}"></script>
+<script type="text/javascript" src="{% static "website/js/lang/fullcalendar-nl.js" %}"></script>
+
+<script type="text/javascript">
+    window.__calendar_default_date = "{{ default_date }}";
+    window.__calendar_events_url = "{{ json_uri }}";
+</script>
+
+<script type="text/javascript" src="{% static "website/js/calendar.js" %}"></script>
+{% endblock %}
+
+{% block extra_css %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static "website/css/fullcalendar.css" %}" />
+{% endblock %}
+
+{% block main %}
+<div id="homeAreaDiv">
+    <div id="homeImageDiv"><img src="{% static "website/images/congres_tafels.jpg" %}" alt="" /></div>
+    <div id="homeLogoDiv"></div>
+</div>
+
+<div id="homeDiv">
+
+    <h2>{% trans "Calendar" %}</h2>
+    <noscript>
+        {% show_agenda %}
+    </noscript>
+
+    <p id="calendar-error">
+        {% trans "Hmm.. something went wrong with loading the events." %}
+    </p>
+
+    <div id="event-calendar">
+
+    </div>
+    {% events_site_legend %}
+
+    <p id="calendar-loading">
+        <img src="{% static "mezzanine/img/loadingAnimation.gif" %}" alt="Loading..." />
+    </p>
+
+</div>
+{% endblock %}
+

@@ -516,10 +516,10 @@ RICHTEXT_FILTERS += ("website.utils.filters.strip_scripts_not_in_whitelist",)
 # Rationale behing whitelist:
 # Lines 1-5: department map 'Afdelingen'
 RICHTEXT_SCRIPT_TAG_WHITELIST = (
-    '<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>',
-    '<script type="text/javascript" src="http://d3js.org/queue.v1.min.js"></script>',
-    '<script type="text/javascript" src="http://d3js.org/d3.geo.projection.v0.min.js"></script>',
-    '<script type="text/javascript" src="http://d3js.org/topojson.v0.min.js"></script>',
+    '<script type="text/javascript" src="/static/website/js/topojson.v0.min.js"></script>',
+    '<script type="text/javascript" src="/static/website/js/d3.v3.min.js"></script>',
+    '<script type="text/javascript" src="/static/website/js/queue.v1.min.js"></script>',
+    '<script type="text/javascript" src="/static/website/js/d3.geo.projection.v0.min.js"></script>',
     '<script type="text/javascript" src="/static/website/js/render.js"></script>',
 )
 

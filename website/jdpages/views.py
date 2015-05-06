@@ -81,6 +81,7 @@ class EventColumnItem(Item):
         super(EventColumnItem, self).__init__(widget.title)
         self.type = event_element.type
         self.max_items = widget.max_items
+        self.url = "/events/"
 
     def get_template_name(self):
         return "events_column_item.html"

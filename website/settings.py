@@ -521,6 +521,7 @@ RICHTEXT_SCRIPT_TAG_WHITELIST = (
     '<script type="text/javascript" src="/static/website/js/queue.v1.min.js"></script>',
     '<script type="text/javascript" src="/static/website/js/d3.geo.projection.v0.min.js"></script>',
     '<script type="text/javascript" src="/static/website/js/render.js"></script>',
+    '<script type="text/javascript" src="/static/website/js/jdshowhide.js"></script>',
 )
 
 

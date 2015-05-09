@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load i18n future mezzanine_tags blog_tags keyword_tags disqus_tags %}
+
+{% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Blog" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block main %}
+
+{% if page_header %}
+    {% include "elements/page_header_image.html" %}
+{% endif %}
+
+<div id="homeDiv">
+    <div class="blog">
+
+        {% if page and page.get_content_model.content %}
+            {% editable page.get_content_model.content %}
+            {{ page.get_content_model.content|richtext_filters|safe }}
+            {% endeditable %}
+        {% endif %}
+
+        {% for blog_post in blog_posts.object_list %}
+            {% block blog_post_list_post_title %}
+            {% editable blog_post.title %}
+            <h2>
+                <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+            </h2>
+            {% endeditable %}
+            {% endblock %}
+
+            {% block blog_post_list_post_metainfo %}
+            {% editable blog_post.publish_date %}
+            <dl class="article-info">
+                <dd class="createdby">
+                {% trans "Geschreven door" %}
+
+                {% with blog_post.user as author %}
+                    {{ author.get_full_name|default:author.username }}
+                {% endwith %}
+                <br/>
+                {{ blog_post.publish_date|date:"d M Y" }}
+                </dd>
+            </dl>
+            {% endeditable %}
+            {% endblock %}
+
+            {% block blog_post_list_post_content %}
+                {% editable blog_post.content %}
+                {{ blog_post.content|safe }}
+                {% endeditable %}
+            {% endblock %}
+
+            <div class="item-separator"></div>
+
+        {% endfor %}
+
+        <div class="pagination">
+            <h3>{% pagination_for blog_posts %}</h3>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

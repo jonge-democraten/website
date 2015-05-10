@@ -286,8 +286,13 @@ class EventColumnElement(SiteRelated):
 
 
 class BlogCategoryPage(Page, RichText):
+    """
+    Model for a page that displays a list of posts in a single blog category.
+    """
 
     blog_category = models.ForeignKey(BlogCategory, null=False, blank=False)
+    show_excerpt = models.BooleanField(default=False, null=False, blank=False,
+                                       help_text='Show only the first paragraph of a blog post.')
 
     class Meta:
         verbose_name = "Blog category page"

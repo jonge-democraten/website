@@ -57,7 +57,7 @@
 
             {% block blog_post_list_post_content %}
                 {% editable blog_post.content %}
-                {{ blog_post.content|safe }}
+                {{ blog_post.content|richtext_filters|safe }}
                 {% endeditable %}
             {% endblock %}
 

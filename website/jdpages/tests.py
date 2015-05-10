@@ -145,3 +145,11 @@ class TestBlogCategoryPage(TestCaseAdminLogin):
         html = str(response.content)
         self.assertTrue('<a href="/blogcategory1page/">BlogCategory1Page</a>' in html)
         self.assertTrue('<a href="/blogcategory2page/">BlogCategory2Page</a>' in html)
+
+    def test_blogpost_titles(self):
+        """  Tests whether the blog post titles are shown on a blog category page. """
+        response = self.client.get('/blogcategory1page/', follow=True)
+        html = str(response.content)
+        self.assertTrue('<a href="/blog/blogpost3category1/">BlogPost3Category1</a>' in html)
+        self.assertTrue('<a href="/blog/blogpost2category1/">BlogPost2Category1</a>' in html)
+

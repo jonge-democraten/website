@@ -12,11 +12,6 @@
 {{ blog_post.description }}
 {% endmetablock %}{% endblock %}
 
-{% block title %}
-{% editable blog_post.title %}{{ blog_post.title }}{% endeditable %}
-{% endblock %}
-
-
 {% block main %}
 
 {% if homepage_header %}
@@ -29,7 +24,7 @@
     <div class="item-page">
     
         <h2><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h2>
-            {% block blog_post_list_post_metainfo %}
+        {% block blog_post_list_post_metainfo %}
             {% editable blog_post.publish_date %}
             <dl class="article-info">
                 <dd class="createdby">
@@ -43,17 +38,7 @@
                 </dd>
             </dl>
             {% endeditable %}
-            {% endblock %}
-                
-        {% block blog_post_detail_featured_image %}
-        {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-        <p><img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}"></p>
-        {% endif %}
         {% endblock %}
-        
-        {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-        {% include "generic/includes/disqus_counts.html" %}
-        {% endif %}
         
         {% block blog_post_detail_content %}
         {% editable blog_post.content %}
@@ -61,23 +46,9 @@
         {% endeditable %}
         {% endblock %}
         
-        {% block blog_post_detail_keywords %}
-        {% keywords_for blog_post as tags %}
-        {% if tags %}
-        {% spaceless %}
-        <ul>
-            <li>{% trans "Tags" %}:</li>
-            {% for tag in tags %}
-            <li><a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a></li>
-            {% endfor %}
-        </ul>
-        {% endspaceless %}
-        {% endif %}
-        {% endblock %}
-        
         {% block blog_post_detail_sharebuttons %}
         {% set_short_url_for blog_post %}
-        
+
         <div class="itp-social-buttons-box">
             <div class="itp-sbb-nl">
                   <div class="itp-sb-right" align="right">
@@ -85,15 +56,15 @@
                       <a href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}" title="Submit to Facebook" target="blank" >
                       <img src="{% static "website/images/icons/facebook_bw.png" %}" alt="Submit to Facebook" />
                       </a>
-                      
+
                       <a href="http://www.google.com/bookmarks/mark?op=edit&amp;bkmk={{ request.build_absolute_uri }}" title="Submit to Google Bookmarks" target="blank" >
                       <img src="{% static "website/images/icons/google_bw.png" %}" alt="Submit to Google Bookmarks" />
                       </a>
-                      
+
                       <a href="http://twitter.com/home?status={{ blog_post.short_url|urlencode }}%20{{ blog_post.title|urlencode }}" title="Submit to Twitter" target="blank" >
                       <img src="{% static "website/images/icons/twitter_bw.png" %}" alt="Submit to Twitter"/>
                       </a>
-                  {% endspaceless %}    
+                  {% endspaceless %}
                   </div>
             </div>
         </div>
@@ -117,19 +88,6 @@
         {% endif %}
         {% endwith %}
         </ul>
-        {% endblock %}
-        
-        {% block blog_post_detail_related_posts %}
-        {% if blog_post.related_posts.all %}
-        <div>
-        <h3>{% trans 'Related posts' %}</h3>
-        <ul>
-        {% for post in blog_post.related_posts.all %}
-             <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-        {% endfor %}
-        </ul>
-        </div>
-        {% endif %}
         {% endblock %}
 
     </div>

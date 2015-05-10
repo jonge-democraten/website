@@ -1,0 +1,562 @@
+[
+{
+  "pk": 2,
+  "fields": {
+    "in_sitemap": true,
+    "title": "Home",
+    "expiry_date": null,
+    "keywords_string": "",
+    "slug": "/",
+    "_meta_title": "",
+    "in_menus": "1,2,3",
+    "_order": 0,
+    "publish_date": "2015-05-09T17:35:27Z",
+    "short_url": null,
+    "content_model": "homepage",
+    "titles": "Home",
+    "parent": null,
+    "status": 2,
+    "login_required": false,
+    "created": "2015-05-09T17:35:27.416Z",
+    "site": 1,
+    "gen_description": true,
+    "description": "This is a test homepage.",
+    "updated": "2015-05-09T20:03:25.021Z"
+  },
+  "model": "pages.page"
+},
+{
+  "pk": 3,
+  "fields": {
+    "in_sitemap": true,
+    "title": "BlogCategory1Page",
+    "expiry_date": null,
+    "keywords_string": "",
+    "slug": "blogcategory1page",
+    "_meta_title": "",
+    "in_menus": "1,2,3",
+    "_order": 1,
+    "publish_date": "2015-05-09T17:40:25.307Z",
+    "short_url": null,
+    "content_model": "blogcategorypage",
+    "titles": "BlogCategory1Page",
+    "parent": null,
+    "status": 2,
+    "login_required": false,
+    "created": "2015-05-09T17:40:25.312Z",
+    "site": 1,
+    "gen_description": true,
+    "description": "Content...",
+    "updated": "2015-05-09T17:40:25.312Z"
+  },
+  "model": "pages.page"
+},
+{
+  "pk": 4,
+  "fields": {
+    "in_sitemap": true,
+    "title": "BlogCategory2Page",
+    "expiry_date": null,
+    "keywords_string": "",
+    "slug": "blogcategory2page",
+    "_meta_title": "",
+    "in_menus": "1,2,3",
+    "_order": 2,
+    "publish_date": "2015-05-09T17:40:47.829Z",
+    "short_url": null,
+    "content_model": "blogcategorypage",
+    "titles": "BlogCategory2Page",
+    "parent": null,
+    "status": 2,
+    "login_required": false,
+    "created": "2015-05-09T17:40:47.833Z",
+    "site": 1,
+    "gen_description": true,
+    "description": "Example.",
+    "updated": "2015-05-09T17:40:47.833Z"
+  },
+  "model": "pages.page"
+},
+{
+  "pk": 1,
+  "fields": {
+    "domain": "example.com",
+    "name": "example.com"
+  },
+  "model": "sites.site"
+},
+{
+  "pk": 1,
+  "fields": {
+    "title": "Category1",
+    "site": 1,
+    "slug": "category1"
+  },
+  "model": "blog.blogcategory"
+},
+{
+  "pk": 2,
+  "fields": {
+    "title": "Category2",
+    "site": 1,
+    "slug": "category2"
+  },
+  "model": "blog.blogcategory"
+},
+{
+  "pk": 1,
+  "fields": {
+    "page": 2,
+    "site": 1,
+    "name": "",
+    "image": "uploads/site-1/example_header.jpg"
+  },
+  "model": "jdpages.pageheaderimagewidget"
+},
+{
+  "pk": 1,
+  "fields": {
+    "subtype": "",
+    "site": 1,
+    "object_id": 1,
+    "name": "Events for all sites",
+    "content_type": [
+      "jdpages",
+      "eventcolumnelement"
+    ]
+  },
+  "model": "jdpages.columnelement"
+},
+{
+  "pk": 2,
+  "fields": {
+    "subtype": "",
+    "site": 1,
+    "object_id": 2,
+    "name": "Events for example.com",
+    "content_type": [
+      "jdpages",
+      "eventcolumnelement"
+    ]
+  },
+  "model": "jdpages.columnelement"
+},
+{
+  "pk": 3,
+  "fields": {
+    "subtype": "",
+    "site": 1,
+    "object_id": 1,
+    "name": "Category1",
+    "content_type": [
+      "blog",
+      "blogcategory"
+    ]
+  },
+  "model": "jdpages.columnelement"
+},
+{
+  "pk": 4,
+  "fields": {
+    "subtype": "CP",
+    "site": 1,
+    "object_id": 1,
+    "name": "Category1 Headlines",
+    "content_type": [
+      "blog",
+      "blogcategory"
+    ]
+  },
+  "model": "jdpages.columnelement"
+},
+{
+  "pk": 5,
+  "fields": {
+    "subtype": "",
+    "site": 1,
+    "object_id": 2,
+    "name": "Category2",
+    "content_type": [
+      "blog",
+      "blogcategory"
+    ]
+  },
+  "model": "jdpages.columnelement"
+},
+{
+  "pk": 6,
+  "fields": {
+    "subtype": "CP",
+    "site": 1,
+    "object_id": 2,
+    "name": "Category2 Headlines",
+    "content_type": [
+      "blog",
+      "blogcategory"
+    ]
+  },
+  "model": "jdpages.columnelement"
+},
+{
+  "pk": 1,
+  "fields": {
+    "site": 1
+  },
+  "model": "jdpages.sidebar"
+},
+{
+  "pk": 1,
+  "fields": {
+    "sidebar": 1,
+    "site": 1,
+    "active": true
+  },
+  "model": "jdpages.sidebartabswidget"
+},
+{
+  "pk": 2,
+  "fields": {
+    "content": "<p>This is a test homepage.</p>"
+  },
+  "model": "jdpages.homepage"
+},
+{
+  "pk": 1,
+  "fields": {
+    "site": 1,
+    "type": "AL"
+  },
+  "model": "jdpages.eventcolumnelement"
+},
+{
+  "pk": 2,
+  "fields": {
+    "site": 1,
+    "type": "SI"
+  },
+  "model": "jdpages.eventcolumnelement"
+},
+{
+  "pk": 3,
+  "fields": {
+    "content": "<p>Content...</p>",
+    "blog_category": 1
+  },
+  "model": "jdpages.blogcategorypage"
+},
+{
+  "pk": 4,
+  "fields": {
+    "content": "<p>Example.</p>",
+    "blog_category": 2
+  },
+  "model": "jdpages.blogcategorypage"
+},
+{
+  "pk": 1,
+  "fields": {
+    "value": "2",
+    "site": 1,
+    "name": "SIDEBAR_AGENDA_SITES"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 2,
+  "fields": {
+    "value": "search",
+    "site": 1,
+    "name": "TWITTER_DEFAULT_QUERY_TYPE"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 3,
+  "fields": {
+    "value": "",
+    "site": 1,
+    "name": "TWITTER_ACCESS_TOKEN_SECRET"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 4,
+  "fields": {
+    "value": "1",
+    "site": 1,
+    "name": "RICHTEXT_FILTER_LEVEL"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 5,
+  "fields": {
+    "value": "Mezzanine",
+    "site": 1,
+    "name": "SITE_TITLE"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 6,
+  "fields": {
+    "value": "",
+    "site": 1,
+    "name": "TWITTER_ACCESS_TOKEN_KEY"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 7,
+  "fields": {
+    "value": "False",
+    "site": 1,
+    "name": "ADMIN_MENU_COLLAPSED"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 8,
+  "fields": {
+    "value": "An open source content management platform.",
+    "site": 1,
+    "name": "SITE_TAGLINE"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 9,
+  "fields": {
+    "value": "",
+    "site": 1,
+    "name": "TWITTER_CONSUMER_KEY"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 10,
+  "fields": {
+    "value": "2",
+    "site": 1,
+    "name": "BLOG_POST_PER_PAGE"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 11,
+  "fields": {
+    "value": "",
+    "site": 1,
+    "name": "TWITTER_CONSUMER_SECRET"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 12,
+  "fields": {
+    "value": "from:stephen_mcd mezzanine",
+    "site": 1,
+    "name": "TWITTER_DEFAULT_QUERY"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 13,
+  "fields": {
+    "value": "",
+    "site": 1,
+    "name": "SSL_FORCE_HOST"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 14,
+  "fields": {
+    "value": "10",
+    "site": 1,
+    "name": "MAX_PAGING_LINKS"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 15,
+  "fields": {
+    "value": "False",
+    "site": 1,
+    "name": "SSL_ENABLED"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 16,
+  "fields": {
+    "value": "10",
+    "site": 1,
+    "name": "SEARCH_PER_PAGE"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 17,
+  "fields": {
+    "value": "3",
+    "site": 1,
+    "name": "TWITTER_DEFAULT_NUM_TWEETS"
+  },
+  "model": "conf.setting"
+},
+{
+  "pk": 1,
+  "fields": {
+    "user_permissions": [],
+    "date_joined": "2015-05-09T17:33:11.365Z",
+    "groups": [],
+    "last_login": "2015-05-09T17:34:25.727Z",
+    "first_name": "",
+    "is_staff": true,
+    "username": "admin",
+    "password": "pbkdf2_sha256$12000$LVd7lwFtcjIC$XTcHKbW8/xQPuwGabJKcUWG9PzNBM+JpJ2Ngxusrak8=",
+    "is_active": true,
+    "is_superuser": true,
+    "last_name": "",
+    "email": "admin@admin.com"
+  },
+  "model": "auth.user"
+},
+{
+  "pk": 1,
+  "fields": {
+    "title": "BlogPost1Category1",
+    "related_posts": [],
+    "created": "2015-05-09T17:38:15.263Z",
+    "publish_date": "2015-05-09T17:38:15.258Z",
+    "rating_count": 0,
+    "content": "<p>Example.</p>",
+    "comments_count": 0,
+    "rating_sum": 0,
+    "description": "Example.",
+    "expiry_date": null,
+    "in_sitemap": true,
+    "updated": "2015-05-09T17:38:15.263Z",
+    "categories": [
+      1
+    ],
+    "keywords_string": "",
+    "slug": "blogpost1category1",
+    "_meta_title": "",
+    "rating_average": 0.0,
+    "short_url": null,
+    "status": 2,
+    "user": [
+      "admin"
+    ],
+    "allow_comments": true,
+    "featured_image": null,
+    "site": 1,
+    "gen_description": true
+  },
+  "model": "blog.blogpost"
+},
+{
+  "pk": 2,
+  "fields": {
+    "title": "BlogPost2Category1",
+    "related_posts": [],
+    "created": "2015-05-09T17:38:28.292Z",
+    "publish_date": "2015-05-09T17:38:28.287Z",
+    "rating_count": 0,
+    "content": "<p>Example.</p>",
+    "comments_count": 0,
+    "rating_sum": 0,
+    "description": "Example.",
+    "expiry_date": null,
+    "in_sitemap": true,
+    "updated": "2015-05-09T17:38:28.292Z",
+    "categories": [
+      1
+    ],
+    "keywords_string": "",
+    "slug": "blogpost2category1",
+    "_meta_title": "",
+    "rating_average": 0.0,
+    "short_url": null,
+    "status": 2,
+    "user": [
+      "admin"
+    ],
+    "allow_comments": true,
+    "featured_image": null,
+    "site": 1,
+    "gen_description": true
+  },
+  "model": "blog.blogpost"
+},
+{
+  "pk": 3,
+  "fields": {
+    "title": "BlogPost3Category1",
+    "related_posts": [],
+    "created": "2015-05-09T17:38:45.691Z",
+    "publish_date": "2015-05-09T17:38:45.686Z",
+    "rating_count": 0,
+    "content": "<p>Example.</p>",
+    "comments_count": 0,
+    "rating_sum": 0,
+    "description": "Example.",
+    "expiry_date": null,
+    "in_sitemap": true,
+    "updated": "2015-05-09T20:02:52.447Z",
+    "categories": [
+      1
+    ],
+    "keywords_string": "",
+    "slug": "blogpost3category1",
+    "_meta_title": "",
+    "rating_average": 0.0,
+    "short_url": "http://example.com/blog/blogpost3category1/",
+    "status": 2,
+    "user": [
+      "admin"
+    ],
+    "allow_comments": true,
+    "featured_image": null,
+    "site": 1,
+    "gen_description": true
+  },
+  "model": "blog.blogpost"
+},
+{
+  "pk": 4,
+  "fields": {
+    "title": "BlogPost1Category2",
+    "related_posts": [],
+    "created": "2015-05-09T17:39:03.966Z",
+    "publish_date": "2015-05-09T17:39:03.961Z",
+    "rating_count": 0,
+    "content": "<p>Example.</p>",
+    "comments_count": 0,
+    "rating_sum": 0,
+    "description": "Example.",
+    "expiry_date": null,
+    "in_sitemap": true,
+    "updated": "2015-05-09T17:39:03.966Z",
+    "categories": [
+      2
+    ],
+    "keywords_string": "",
+    "slug": "blogpost1category2",
+    "_meta_title": "",
+    "rating_average": 0.0,
+    "short_url": null,
+    "status": 2,
+    "user": [
+      "admin"
+    ],
+    "allow_comments": true,
+    "featured_image": null,
+    "site": 1,
+    "gen_description": true
+  },
+  "model": "blog.blogpost"
+}
+]

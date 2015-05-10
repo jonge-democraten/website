@@ -131,3 +131,17 @@ class TestPageHeaderImage(TestCaseAdminLogin):
             if page.id == 8:
                 self.assertEqual(page_header_image_widget.page.id, 8)
                 self.assertEqual(str(page_header_image_widget.image), 'uploads/site-1/example_header_subpage.jpg')
+
+
+class TestBlogCategoryPage(TestCaseAdminLogin):
+    """ Tests the blog category page rendering """
+    fixtures = ['test_blog.json']
+    blog_cat_1 = 'BlogCategory1'
+    blog_cat_2 = 'BlogCategory2'
+
+    def test_active_in_menu(self):
+        """ Tests whether the page is part of the menu. """
+        response = self.client.get('/')
+        html = str(response.content)
+        self.assertTrue('<a href="/blogcategory1page/">BlogCategory1Page</a>' in html)
+        self.assertTrue('<a href="/blogcategory2page/">BlogCategory2Page</a>' in html)

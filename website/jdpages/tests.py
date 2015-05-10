@@ -160,3 +160,13 @@ class TestBlogCategoryPage(TestCaseAdminLogin):
         self.assertTrue('<p>Example content 3.</p>' in html)
         self.assertTrue('<p>Example content 2.</p>' in html)
 
+    def test_blogpage_pagination(self):
+        """ Tests whether only a limited number of posts are shown on a page and pagination links are available. """
+        response = self.client.get('/blogcategory1page/', follow=True)
+        html = str(response.content)
+        # the number of posts per pages is set to 2 in the fixtures
+        self.assertFalse('<a href="/blog/blogpost1category1/">BlogPost1Category1</a>' in html)
+        blog_posts = response.context['blog_posts']
+        self.assertEqual(len(blog_posts), 2)
+        self.assertTrue('<span>Page 1 of 2</span>' in html)
+

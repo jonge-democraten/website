@@ -51,3 +51,11 @@ RQ_QUEUES = {
         'DEFAULT_TIMEOUT': 360,
     },
 }
+
+#######################
+# PIWIK CONFIGURATION #
+#######################
+
+# Piwik URL, including trailing slash
+# this is where your piwik instance is running
+PIWIK_URL = '127.0.0.1/piwik/'

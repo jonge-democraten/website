@@ -289,6 +289,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "mezzanine.pages.context_processors.page",
     "website.jdpages.context_processors.sidebar",
     "website.jdpages.context_processors.site_properties",
+    "website.jdpages.context_processors.piwik",
     "website.jdpages.context_processors.homepage_header",
 )
 
@@ -334,7 +335,7 @@ OPTIONAL_APPS = (
 )
 
 #########################
-# LOGGING CONFIGUATION  #
+# LOGGING CONFIGURATION #
 #########################
 
 # Directory of the logfiles
@@ -592,3 +593,4 @@ FULLCALENDAR_SITE_COLORS = {
 TEMPLATE_ACCESSIBLE_SETTINGS = ('ACCOUNTS_APPROVAL_REQUIRED', 'ACCOUNTS_VERIFICATION_REQUIRED', 'ADMIN_MENU_COLLAPSED', 'BITLY_ACCESS_TOKEN', 'BLOG_USE_FEATURED_IMAGE', 'COMMENTS_DISQUS_SHORTNAME', 'COMMENTS_NUM_LATEST', 'COMMENTS_DISQUS_API_PUBLIC_KEY', 'COMMENTS_DISQUS_API_SECRET_KEY', 'COMMENTS_USE_RATINGS', 'DEV_SERVER', 'FORMS_USE_HTML5', 'GRAPPELLI_INSTALLED', 'GOOGLE_ANALYTICS_ID', 'JQUERY_FILENAME', 'JQUERY_UI_FILENAME', 'LOGIN_URL', 'LOGOUT_URL', 'SITE_TITLE', 'SITE_TAGLINE', 'USE_L10N')
 
 TEMPLATE_ACCESSIBLE_SETTINGS += ('SIDEBAR_AGENDA_SITES',)
+TEMPLATE_ACCESSIBLE_SETTINGS += ('PIWIK_SITE_ID',)

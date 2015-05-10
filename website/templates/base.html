@@ -86,7 +86,9 @@ $(function() {
 
 {% include "includes/footer_scripts.html" %}
 
-{% include "elements/piwik_tracking_code.html" %}
+{% if piwik_url %}
+    {% include "elements/piwik_tracking_code.html" %}
+{% endif %}
 
 </body>
 </html>

@@ -56,6 +56,6 @@ RQ_QUEUES = {
 # PIWIK CONFIGURATION #
 #######################
 
-# Piwik URL, including trailing slash
-# this is where your piwik instance is running
+# The Piwik URL, including trailing slash, this is where your Piwik instance is running.
+# Remove/comment this setting, or set an empty URL, to disable Piwik tracking.
 PIWIK_URL = '127.0.0.1/piwik/'

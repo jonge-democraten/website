@@ -23,7 +23,10 @@ def site_properties(request):
 
 
 def piwik(request):
-    return {"piwik_url": settings.PIWIK_URL, "piwik_site_id": settings.PIWIK_SITE_ID}
+    if hasattr(settings, 'PIWIK_URL') and settings.PIWIK_URL != '':
+        return {"piwik_url": settings.PIWIK_URL, "piwik_site_id": settings.PIWIK_SITE_ID}
+    else:
+        return {}
 
 
 def sidebar(request):

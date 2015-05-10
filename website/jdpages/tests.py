@@ -7,6 +7,7 @@ from django.test import TestCase
 from django.test import Client
 
 from mezzanine.blog.models import BlogCategory
+from mezzanine.blog.models import BlogPost
 from mezzanine.pages.models import RichTextPage
 
 from website.jdpages.models import ColumnElement
@@ -170,3 +171,29 @@ class TestBlogCategoryPage(TestCaseAdminLogin):
         self.assertEqual(len(blog_posts), 2)
         self.assertTrue('<span>Page 1 of 2</span>' in html)
 
+
+class TestBlogListView(TestCaseAdminLogin):
+    """ Tests the blog post list view. """
+    fixtures = ['test_blog.json']
+    blog_cat_1 = 'BlogCategory1'
+    blog_cat_2 = 'BlogCategory2'
+    posts_per_page = 2
+
+    def test_blogpost_titles(self):
+        """ Tests whether the titles of the last 2 blog posts are shown on the page. """
+        blog_categories = BlogCategory.objects.all()
+        for category in blog_categories:
+            url = category.get_absolute_url()
+            response = self.client.get(url)
+            html = str(response.content)
+            posts = BlogPost.objects.filter(categories=category)
+            counter = 0
+            for post in posts:
+                post_title_html = '<a href="' + post.get_absolute_url() + '">' + post.title + '</a>'
+                logger.info(post_title_html)
+                if counter < self.posts_per_page:
+                    self.assertTrue(post_title_html in html)
+                else:
+                    self.assertFalse(post_title_html in html)
+                logger.info(url)
+                counter += 1

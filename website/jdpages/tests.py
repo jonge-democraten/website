@@ -131,3 +131,42 @@ class TestPageHeaderImage(TestCaseAdminLogin):
             if page.id == 8:
                 self.assertEqual(page_header_image_widget.page.id, 8)
                 self.assertEqual(str(page_header_image_widget.image), 'uploads/site-1/example_header_subpage.jpg')
+
+
+class TestBlogCategoryPage(TestCaseAdminLogin):
+    """ Tests the blog category page rendering """
+    fixtures = ['test_blog.json']
+    blog_cat_1 = 'BlogCategory1'
+    blog_cat_2 = 'BlogCategory2'
+
+    def test_active_in_menu(self):
+        """ Tests whether the page is part of the menu. """
+        response = self.client.get('/')
+        html = str(response.content)
+        self.assertTrue('<a href="/blogcategory1page/">BlogCategory1Page</a>' in html)
+        self.assertTrue('<a href="/blogcategory2page/">BlogCategory2Page</a>' in html)
+
+    def test_blogpost_titles(self):
+        """  Tests whether the blog post titles are shown on a blog category page. """
+        response = self.client.get('/blogcategory1page/', follow=True)
+        html = str(response.content)
+        self.assertTrue('<a href="/blog/blogpost3category1/">BlogPost3Category1</a>' in html)
+        self.assertTrue('<a href="/blog/blogpost2category1/">BlogPost2Category1</a>' in html)
+
+    def test_blogpost_contents(self):
+        """ Tests whether the blog post contents are shown on the page. """
+        response = self.client.get('/blogcategory1page/', follow=True)
+        html = str(response.content)
+        self.assertTrue('<p>Example content 3.</p>' in html)
+        self.assertTrue('<p>Example content 2.</p>' in html)
+
+    def test_blogpage_pagination(self):
+        """ Tests whether only a limited number of posts are shown on a page and pagination links are available. """
+        response = self.client.get('/blogcategory1page/', follow=True)
+        html = str(response.content)
+        # the number of posts per pages is set to 2 in the fixtures
+        self.assertFalse('<a href="/blog/blogpost1category1/">BlogPost1Category1</a>' in html)
+        blog_posts = response.context['blog_posts']
+        self.assertEqual(len(blog_posts), 2)
+        self.assertTrue('<span>Page 1 of 2</span>' in html)
+

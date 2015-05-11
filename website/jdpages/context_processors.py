@@ -24,7 +24,7 @@ def site_properties(request):
     main_site_url = '/'
     main_site = Site.objects.filter(id=1)
     if main_site.exists():
-        main_site_url = main_site[0].domain
+        main_site_url = 'http://' + main_site[0].domain
 
     properties = {
         "site_tagline": settings.SITE_TAGLINE,

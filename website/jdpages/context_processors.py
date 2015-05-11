@@ -1,6 +1,8 @@
 import logging
 logger = logging.getLogger(__name__)
 
+from django.contrib.sites.models import Site
+
 from mezzanine.conf import settings
 
 from website.jdpages.models import Sidebar
@@ -19,7 +21,16 @@ from website.jdpages.views import get_homepage_header
 
 
 def site_properties(request):
-    return {"site_tagline": settings.SITE_TAGLINE}
+    main_site_url = '/'
+    main_site = Site.objects.filter(id=1)
+    if main_site.exists():
+        main_site_url = main_site[0].domain
+
+    properties = {
+        "site_tagline": settings.SITE_TAGLINE,
+        "main_site_url": main_site_url
+    }
+    return properties
 
 
 def piwik(request):

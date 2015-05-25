@@ -136,12 +136,11 @@ Filmpjes uploaden via Youtube (maar ook via andere sites) is geen probleem.
 - Ga naar Youtube en zoek de betreffende video. 
 - Klik onder de video op 'Delen/Share', daarna op 'Insluiten/Embed'.
 - Kopieer de code, deze HTML code lijkt hierop: ```<iframe width="560" height="315" src="//www.youtube.com/embed/BcsfftwLUf0" frameborder="0" allowfullscreen></iframe>``` 
-- Plaats in het tekstvak de cursor op de plek waar je de video wilt plaatsen en klik op het film-icoontje in de taakbalk. 
-- Open in het nieuwe venster de 'Source' tab en kopieer de link in het zwarte veld. 
-- Klik op 'Insert'
+- Klik boven het tekstvak waar je de video wilt plaatsen op de blauwe 'HTML'-knop. De HTML-code van het tekstvak wordt geopend.
+- Plak de code die je van Youtube hebt gekopieerd op de gewenste plaats in de HTML-code van het tekstvak.
+- Klik op 'Update'.
 
-Wanneer je dit hebt gedaan zul je de video niet in het tekstvak zien, dit hoort zo. Wil je toch zien waar de video staat in tekstvak kan je de gehele tekst selecteren (ctrl-a).
-De video kan je na het invoegen nog verslepen in het tekstvak, dit doe je door op het de video te klikken en met de cursor te verslepen naar de gewenste plek. Wil je de video weer verwijderen uit het tekstvak dan kan je dat met delete of backspace doen. 
+Wil je de video nog verplaatsen, open dan de HTML-code weer en verplaats de iframe-code. Wil je de video weer verwijderen uit het tekstvak dan kan je dat met backspace doen in het tekstvak of door de iframe-code uit de HTML-code te verwijderen. 
 
 <strong>2.7 In-line editing</strong>
 

@@ -1,6 +1,5 @@
 <h1>Developer manual</h1>
-This page contains information for jdwebsite developers.  
-Please improve me!
+This page contains information for jdwebsite developers.
 
 ## Installation
 Installation is easy on a Linux-like operating system.  
@@ -116,7 +115,7 @@ The file `.travis.yml` contains the Travis commands to install and test the proj
 
 -----
 ## Logging
-The Python logging module is used for logging. Add and commit plenty of useful log statements. This support effective debugging. 
+The Python logging module is used for logging. 
 
 <h3>Example</h3>
 To add log statements, simply add the following at the top of your Python file,
@@ -140,7 +139,10 @@ Five log levels are available: `debug(), info(), warning(), error()` and `critic
 The log statements for the applications are written to the console, if `DEBUG=True`, and always to `debug.log` and `error.log`. Django errors can be found in `django.log`.
 
 <h3>Configuration</h3>
-Logging is configured in the Django `settings.py` `LOGGING` variables. Information about configuration can be found [here](https://docs.djangoproject.com/en/1.7/topics/logging/). New applications have to be added before logging becomes active for those applications. 
+Logging is configured in the Django `settings.py` `LOGGING` variables. Information about configuration can be found [here](https://docs.djangoproject.com/en/1.7/topics/logging/). New applications have to be added before logging becomes active for those applications.
+
+<h3>Email error notifications</h3>
+All admins, as defined in the ADMINS setting, will receive email notifications of all ERROR level log messages.
 
 <h3>Confidential information</h3>
 Confidential information should not be logged. During initial development, logging of confidential information is allowed if marked with a `CONF` tag,

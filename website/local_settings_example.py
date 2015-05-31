@@ -1,5 +1,17 @@
+########################
+# MAIN DJANGO SETTINGS #
+########################
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+# People who get code error notifications.
+# In the format (('Full Name', 'email@example.com'),
+#                ('Full Name', 'anotheremail@example.com'))
+ADMINS = (
+    # ('Your Name', 'your_email@domain.com'),
+)
+MANAGERS = ADMINS
 
 # SECURITY WARNING: Make this unique, and don't share it with anybody.
 SECRET_KEY = ''
@@ -59,3 +71,18 @@ RQ_QUEUES = {
 # The Piwik URL, including trailing slash, this is where your Piwik instance is running.
 # Remove/comment this setting, or set an empty URL, to disable Piwik tracking.
 PIWIK_URL = '127.0.0.1/piwik/'
+
+#########
+# EMAIL #
+#########
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.domain.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+
+# Default email address to use for various automated correspondence from the site manager(s).
+DEFAULT_FROM_EMAIL = 'info@domain.com'
+# The email address that error messages come from, such as those sent to ADMINS and MANAGERS.
+SERVER_EMAIL = 'error@domain.com'

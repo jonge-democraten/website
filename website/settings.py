@@ -82,14 +82,6 @@ DASHBOARD_TAGS = (
 # MAIN DJANGO SETTINGS #
 ########################
 
-# People who get code error notifications.
-# In the format (('Full Name', 'email@example.com'),
-#                ('Full Name', 'anotheremail@example.com'))
-ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
-)
-MANAGERS = ADMINS
-
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
@@ -396,20 +388,25 @@ LOGGING = {
             'backupCount': LOGFILE_BACKUP_COUNT,
             'formatter': 'verbose'
         },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'verbose'
+        }
     },
     'loggers': {
         'django': {
-            'handlers': ['file_django', 'console'],
+            'handlers': ['file_django', 'console', 'mail_admins'],
             'propagate': True,
             'level': 'ERROR',
         },
         'website': {
-            'handlers': ['file_debug', 'file_error', 'console'],
+            'handlers': ['file_debug', 'file_error', 'console', 'mail_admins'],
             'propagate': True,
             'level': 'DEBUG',
         },
         'janeus': {
-            'handlers': ['file_debug', 'file_error', 'console'],
+            'handlers': ['file_debug', 'file_error', 'console', 'mail_admins'],
             'propagate': True,
             'level': 'DEBUG',
         },

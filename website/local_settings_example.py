@@ -37,6 +37,9 @@ DATABASES = {
     }
 }
 
+###################
+# JANEUS SETTINGS #
+###################
 
 # Remove this when you set JANEUS_SERVER, JANEUS_DN and JANEUS_PASS
 def JANEUS_FAKE_LDAP(username, password):
@@ -52,6 +55,10 @@ def JANEUS_FAKE_LDAP(username, password):
 # JANEUS_SERVER = "ldap://127.0.0.1:389/"
 # JANEUS_DN = "dnoftheuser"
 # JANEUS_PASS = "thisisaverysecretpassword"
+
+###################
+# HEMRES SETTINGS #
+###################
 
 # Redis queues for Hemres. Hemres uses "default" queue for sending newsletters.
 RQ_QUEUES = {

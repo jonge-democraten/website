@@ -81,8 +81,9 @@ EMAIL_HOST = 'smtp.domain.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
-
 # Default email address to use for various automated correspondence from the site manager(s).
 DEFAULT_FROM_EMAIL = 'info@domain.com'
 # The email address that error messages come from, such as those sent to ADMINS and MANAGERS.
 SERVER_EMAIL = 'error@domain.com'
+# Subject-line prefix for email messages sent with django.core.mail.mail_admins or django.core.mail.mail_managers.
+EMAIL_SUBJECT_PREFIX = '[jdwebsite error] '

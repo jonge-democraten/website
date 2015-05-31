@@ -190,10 +190,8 @@ class TestBlogListView(TestCaseAdminLogin):
             counter = 0
             for post in posts:
                 post_title_html = '<a href="' + post.get_absolute_url() + '">' + post.title + '</a>'
-                logger.info(post_title_html)
                 if counter < self.posts_per_page:
                     self.assertTrue(post_title_html in html)
                 else:
                     self.assertFalse(post_title_html in html)
-                logger.info(url)
                 counter += 1

@@ -5,7 +5,7 @@ The design of different jdwebsite components is explained in this document.
 The project is build on [Mezzanine](http://mezzanine.jupo.org/) and [Django](https://www.djangoproject.com/).  
 To understand the design, and to work with the code, it is essential to have a basic understanding of both Django and Mezzanine.
 
-## Multitenancy
+<h3>Multitenancy</h3>
 Mezzanine makes use of Django’s sites app to support multiple sites in a single project. 
 [[doc](http://mezzanine.jupo.org/docs/multi-tenancy.html)] 
 

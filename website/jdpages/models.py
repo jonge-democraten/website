@@ -269,6 +269,7 @@ class Document(Orderable):
 
 
 class EventColumnElement(SiteRelated):
+    """ Column Element model for an Event """
     SITE = 'SI'
     ALL = 'AL'
     MAIN_AND_SITE = 'SM'
@@ -307,6 +308,7 @@ def get_public_blogposts(blog_category):
 
 
 def create_columnelement_for_blogcategory(blog_category, compact_view):
+    """ Creates a column element model for a (new) blog category """
     blog_category_element = ColumnElement.objects.create()
     blog_category_element.name = blog_category.title
     if compact_view:

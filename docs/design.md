@@ -5,6 +5,19 @@ The design of different jdwebsite components is explained in this document.
 The project is build on [Mezzanine](http://mezzanine.jupo.org/) and [Django](https://www.djangoproject.com/).  
 To understand the design, and to work with the code, it is essential to have a basic understanding of both Django and Mezzanine.
 
+## Multitenancy
+Mezzanine makes use of Django’s sites app to support multiple sites in a single project. 
+[[doc](http://mezzanine.jupo.org/docs/multi-tenancy.html)] 
+
+* Multitenancy is used to create indpendent Site instances for local departments.  
+* Departments can have a customized website with default elements. 
+* Forces a consistent look among the department sites.
+* Department sites have indepenent permissions.
+* There is only a single Django instance and database to setup and maintain.
+
+The SiteRelated Mezzanine class is used to create site related models of which the scope is automatically limited
+ to its site. 
+
 # jdpages
 The jpdages module contains models and views for website elements such as header, sidebar and pages.
 These elements based on Mezzanine SiteRelated and Page objects. 

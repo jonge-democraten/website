@@ -92,6 +92,25 @@ You can remove the virtual environment and database with,
 * Push feature branch commits often to communicate what you are working on.
 * Read more about this workflow [here](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
 
+-----
+## Versioning
+
+Version numbers are of the form,
+
+| 1.3.9 | N.N.N | major.minor.micro |
+| ------|:-----:| -----:|
+
+* **major** release for everthing worth a new number
+* **minor** release for all functional and model (database) changes
+* **micro** release for bugfixes and minor view/template modifications 
+
+Pre-releases get a suffix ,
+
+|1.3.9a1| N.N.N(a/b/rc)N |alpha/beta/release-candidate |
+|-------------|:----:|----:|
+
+[PEP0440](https://www.python.org/dev/peps/pep-0440/) is used as a basis for the version scheme.
+
 
 -----
 ## Testing

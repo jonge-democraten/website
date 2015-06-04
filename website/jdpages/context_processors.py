@@ -21,6 +21,7 @@ from website.jdpages.views import get_homepage_header
 
 
 def site_properties(request):
+    """ :returns: basic site properties """
     main_site_url = '/'
     main_site = Site.objects.filter(id=1)
     if main_site.exists():
@@ -34,6 +35,7 @@ def site_properties(request):
 
 
 def piwik(request):
+    """ :returns: the the Piwik analytics URL and SITE_ID """
     if hasattr(settings, 'PIWIK_URL') and settings.PIWIK_URL != '':
         return {"piwik_url": settings.PIWIK_URL, "piwik_site_id": settings.PIWIK_SITE_ID}
     else:
@@ -41,9 +43,7 @@ def piwik(request):
 
 
 def sidebar(request):
-    """
-    Adds the sidebar elements to the context.
-    """
+    """ :returns: the sidebar items """
     current_sidebars = Sidebar.objects.filter()
 
     if not current_sidebars.exists():

@@ -93,26 +93,6 @@ You can remove the virtual environment and database with,
 * Read more about this workflow [here](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
 
 -----
-## Versioning
-
-Version numbers are of the form,
-
-| 1.3.9 | N.N.N | major.minor.micro |
-| ------|:-----:| -----:|
-
-* **major** release for everthing worth a new number
-* **minor** release for all functional and model (database) changes
-* **micro** release for bugfixes and minor view/template modifications 
-
-Pre-releases get a suffix ,
-
-|1.3.9a1| N.N.N(a/b/rc)N |alpha/beta/release-candidate |
-|-------------|:----:|----:|
-
-[PEP0440](https://www.python.org/dev/peps/pep-0440/) is used as a basis for the version scheme.
-
-
------
 ## Testing
 All application logic code is to be unit tested. Unit tests are ideally created before development of functionality.
 It supports development and documents, in real code instead of text, what classes and functions are supposed to do.
@@ -249,3 +229,22 @@ This fixture may be loaded when initialising the development environment (see [I
 <h3>Caveat</h3>
 
 For some reason, the categories of blog posts in Blogs on non-default Sites are not exported correctly. To include this information, you have to add it by hand.
+
+-----
+## Versioning
+
+Version numbers are of the form,
+
+| 1.3.9 | N.N.N | major.minor.micro |
+| ------|:-----:| -----:|
+
+* **major** release for everthing worth a new number
+* **minor** release for all functional and model (database) changes
+* **micro** release for bugfixes and minor view/template modifications 
+
+Pre-releases get a suffix ,
+
+|1.3.9a1| N.N.N(a/b/rc)N |alpha/beta/release-candidate |
+|-------------|:----:|----:|
+
+[PEP0440](https://www.python.org/dev/peps/pep-0440/) is used as a basis for the version scheme.

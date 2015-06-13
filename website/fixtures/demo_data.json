@@ -3081,18 +3081,18 @@
     "event_category": 1,
     "in_sitemap": true,
     "short_url": null,
-    "updated": "2015-02-15T11:56:42.614Z",
-    "created": "2015-06-15T11:56:24.899Z",
+    "updated": "2015-04-16T22:51:55.166Z",
+    "created": "2015-04-16T22:50:42.924Z",
     "_meta_title": "",
-    "publish_date": "2015-06-15T11:56:24Z",
-    "content": "<p>Hacken bij Pieter thuis</p>",
+    "publish_date": "2015-04-16T22:50:42Z",
+    "content": "<p>Project testing.</p>",
     "expiry_date": null,
-    "description": "Hacken bij Pieter thuis",
+    "description": "Project milestones",
     "status": 2,
-    "title": "Programmeermiddag bij Pieter",
+    "title": "Project milestones",
     "gen_description": true,
     "keywords_string": "",
-    "slug": "programmeermiddag-bij-pieter"
+    "slug": "project-milestones"
   },
   "pk": 1,
   "model": "events.event"
@@ -3166,10 +3166,10 @@
 {
   "fields": {
     "location": null,
-    "end_time": "2015-06-15T22:00:00Z",
-    "description": "",
+    "end_time": "2015-06-01T19:00:00Z",
+    "description": "Stabilize code",
     "event": 1,
-    "start_time": "2015-06-15T11:00:00Z"
+    "start_time": "2015-06-01T09:00:00Z"
   },
   "pk": 1,
   "model": "events.occurrence"
@@ -3177,10 +3177,10 @@
 {
   "fields": {
     "location": null,
-    "end_time": "2015-07-15T22:00:00Z",
-    "description": "",
+    "end_time": "2015-07-4T20:00:00Z",
+    "description": "Deploy project",
     "event": 1,
-    "start_time": "2015-07-15T11:00:00Z"
+    "start_time": "2015-07-4T11:00:00Z"
   },
   "pk": 2,
   "model": "events.occurrence"

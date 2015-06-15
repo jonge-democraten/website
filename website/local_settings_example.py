@@ -94,3 +94,13 @@ DEFAULT_FROM_EMAIL = 'info@domain.com'
 SERVER_EMAIL = 'error@domain.com'
 # Subject-line prefix for email messages sent with django.core.mail.mail_admins or django.core.mail.mail_managers.
 EMAIL_SUBJECT_PREFIX = '[jdwebsite error] '
+
+#########################
+# FULLCALENDAR SETTINGS #
+#########################
+
+FULLCALENDAR_SITE_COLORS = {
+    1: 'black',
+    2: 'red',
+    3: ('white', 'black', 'black'),
+}

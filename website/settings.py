@@ -566,16 +566,6 @@ FILEBROWSER_EXTENSIONS = {
     'Code': ['.html', '.py', '.js', '.css']
 }
 
-#
-# Full calendar settings
-# ======================
-
-FULLCALENDAR_SITE_COLORS = {
-    1: 'black',
-    2: 'red',
-    3: ('white', 'black', 'black'),
-}
-
 #####################
 # TEMPLATE SETTINGS #
 #####################

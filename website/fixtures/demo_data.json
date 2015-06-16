@@ -3047,179 +3047,6 @@
 },
 {
   "fields": {
-    "description": "Hackathons met ICT Team",
-    "color": "#FF9900",
-    "name": "Hackathon",
-    "site": 1
-  },
-  "pk": 1,
-  "model": "events.eventcategory"
-},
-{
-  "fields": {
-    "description": "Algemene activiteiten",
-    "color": "red",
-    "name": "Activiteit",
-    "site": 3
-  },
-  "pk": 2,
-  "model": "events.eventcategory"
-},
-{
-  "fields": {
-    "description": "Verschillende commissies organiseren verschillende activiteiten!",
-    "color": "green",
-    "name": "Commissie-avond",
-    "site": 2
-  },
-  "pk": 3,
-  "model": "events.eventcategory"
-},
-{
-  "fields": {
-    "site": 1,
-    "event_category": 1,
-    "in_sitemap": true,
-    "short_url": null,
-    "updated": "2015-04-16T22:51:55.166Z",
-    "created": "2015-04-16T22:50:42.924Z",
-    "_meta_title": "",
-    "publish_date": "2015-04-16T22:50:42Z",
-    "content": "<p>Project testing.</p>",
-    "expiry_date": null,
-    "description": "Project milestones",
-    "status": 2,
-    "title": "Project milestones",
-    "gen_description": true,
-    "keywords_string": "",
-    "slug": "project-milestones"
-  },
-  "pk": 1,
-  "model": "events.event"
-},
-{
-  "fields": {
-    "site": 3,
-    "event_category": 2,
-    "in_sitemap": true,
-    "short_url": null,
-    "updated": "2015-02-15T12:00:55.719Z",
-    "created": "2015-02-15T12:00:55.719Z",
-    "_meta_title": "",
-    "publish_date": "2015-02-15T12:00:55.713Z",
-    "content": "<p>Van oorsprong hoort de media de burger op een objectieve manier ge\u00efnformeerd te houden over wat de overheid allemaal doet. Daarbij komt ook dat het kritisch is en misstanden aan de kaak stelt. Maar in conflicten zien we toch al snel dat de overheid de media gebruikt als manier om de burger te be\u00efnvloeden. Zo ook in het Oekra\u00efne conflict.<br><br>Op 17 Februari zullen verschillende gastprekers ons een wat bij leren over hoe de overheid de media <br>op een effectieve manier kan gebruiken om de burger een vertekend beeld te geven. Hierbij zullen <br>we het conflict in Oekra\u00efne als case gebruiken en zowel aan de kant van Rusland alsook het \u2018Westen\u2019 <br>kijken hoe (en of) de media wordt gebruikt.<br><br>Dus wil jij weten wat je nog niet weet? Kom dan vooral langs!</p>",
-    "expiry_date": null,
-    "description": "Van oorsprong hoort de media de burger op een objectieve manier ge\u00efnformeerd te houden over wat de overheid allemaal doet. Daarbij komt ook dat het kritisch is en misstanden aan de kaak stelt. Maar in conflicten zien we toch al snel dat de overheid de media gebruikt als manier om de burger te be\u00efnvloeden. Zo ook in het Oekra\u00efne conflict.Op 17 Februari zullen verschillende gastprekers ons een wat bij leren over hoe de overheid de media op een effectieve manier kan gebruiken om de burger een vertekend beeld te geven. Hierbij zullen we het conflict in Oekra\u00efne als case gebruiken en zowel aan de kant van Rusland alsook het \u2018Westen\u2019 kijken hoe (en of) de media wordt gebruikt.Dus wil jij weten wat je nog niet weet? Kom dan vooral langs!",
-    "status": 2,
-    "title": "De media, kritische kijker of hondje van de overheid?",
-    "gen_description": true,
-    "keywords_string": "",
-    "slug": "de-media-kritische-kijker-of-hondje-van-de-overheid"
-  },
-  "pk": 2,
-  "model": "events.event"
-},
-{
-  "fields": {
-    "site": 2,
-    "event_category": 3,
-    "in_sitemap": true,
-    "short_url": null,
-    "updated": "2015-02-15T15:38:57.428Z",
-    "created": "2015-10-15T15:38:57.428Z",
-    "_meta_title": "",
-    "publish_date": "2015-10-15T15:38:57.415Z",
-    "content": "<p>De COM-avond van de JD Amsterdam wordt in februari georganiseerd door niemand minder dan de commissie Internationaal. In oktober 2016 zijn er verkiezingen voor een zetel in de VN Veiligheidsraad en Nederland dingt mee naar een plek. Directe tegenstanders zijn Itali\u00eb en Zweden. De campagne is al van start en zal in de maanden tot de verkiezingen alleen maar intensiveren. Dit is een mooi moment om de Nederlandse buitenlandse politiek nog eens goed te heroverwegen en de belangrijkste speerpunten te formuleren.<br>Tijdens deze avond zullen twee moderators van de commissie in debat met een medewerker van Buitenlandse Zaken \u00e9n iemand van Clingendeal. Aan de hand van stellingen polsen we hun mening over allerlei aspecten van de VN, de Veiligheidsraad en de toekomst van internationaal recht en internationale politiek.\u00a0</p>\n<p>Het tweede uur is interactief van aard. Nadat jullie de nodige kennis hebben opgedaan en goed ingewerkt zijn, gaan jullie in groepjes brainstormen over j\u00fallie belangrijkste speerpunt. Uiteindelijk presenteren jullie plan waarin je uitlegt wat volgens jullie het belangrijkste speerpunt van Nederland in deze verkiezingen van de VN-Veiligheidsraad zou moeten zijn. De avond sluiten we vanzelfsprekend af met een gezellige borrel.</p>",
-    "expiry_date": null,
-    "description": "De COM-avond van de JD Amsterdam wordt in februari georganiseerd door niemand minder dan de commissie Internationaal. In oktober 2016 zijn er verkiezingen voor een zetel in de VN Veiligheidsraad en Nederland dingt mee naar een plek. Directe tegenstanders zijn Itali\u00eb en Zweden. De campagne is al van start en zal in de maanden tot de verkiezingen alleen maar intensiveren. Dit is een mooi moment om de Nederlandse buitenlandse politiek nog eens goed te heroverwegen en de belangrijkste speerpunten te formuleren.Tijdens deze avond zullen twee moderators van de commissie in debat met een medewerker van Buitenlandse Zaken \u00e9n iemand van Clingendeal. Aan de hand van stellingen polsen we hun mening over allerlei aspecten van de VN, de Veiligheidsraad en de toekomst van internationaal recht en internationale politiek.\u00a0",
-    "status": 2,
-    "title": "COM-avond Internationaal: Verkiezingen VN-Veiligheidsraad",
-    "gen_description": true,
-    "keywords_string": "",
-    "slug": "com-avond-internationaal-verkiezingen-vn-veiligheidsraad"
-  },
-  "pk": 3,
-  "model": "events.event"
-},
-{
-  "fields": {
-    "site": 1,
-    "event_category": 1,
-    "in_sitemap": true,
-    "short_url": null,
-    "updated": "2015-04-16T22:51:55.166Z",
-    "created": "2015-04-16T22:50:42.924Z",
-    "_meta_title": "",
-    "publish_date": "2015-04-16T22:50:42Z",
-    "content": "<p>Project demonstration and testing.</p>",
-    "expiry_date": null,
-    "description": "Project demonstration and testing.",
-    "status": 2,
-    "title": "Alpha testing",
-    "gen_description": true,
-    "keywords_string": "",
-    "slug": "alpha-testing"
-  },
-  "pk": 4,
-  "model": "events.event"
-},
-{
-  "fields": {
-    "location": null,
-    "end_time": "2015-06-01T19:00:00Z",
-    "description": "Stabilize code",
-    "event": 1,
-    "start_time": "2015-06-01T09:00:00Z"
-  },
-  "pk": 1,
-  "model": "events.occurrence"
-},
-{
-  "fields": {
-    "location": null,
-    "end_time": "2015-07-4T20:00:00Z",
-    "description": "Deploy project",
-    "event": 1,
-    "start_time": "2015-07-4T11:00:00Z"
-  },
-  "pk": 2,
-  "model": "events.occurrence"
-},
-{
-  "fields": {
-    "location": null,
-    "end_time": "2015-08-17T21:30:00Z",
-    "description": "",
-    "event": 2,
-    "start_time": "2015-08-17T18:30:00Z"
-  },
-  "pk": 3,
-  "model": "events.occurrence"
-},
-{
-  "fields": {
-    "location": null,
-    "end_time": "2015-08-24T21:30:00Z",
-    "description": "",
-    "event": 3,
-    "start_time": "2015-08-24T18:30:00Z"
-  },
-  "pk": 4,
-  "model": "events.occurrence"
-},
-{
-  "fields": {
-    "location": "Tweede kamer",
-    "end_time": "2015-04-19T15:00:00Z",
-    "description": "Alpha testing of the project",
-    "event": 4,
-    "start_time": "2015-04-19T09:00:00Z"
-  },
-  "pk": 5,
-  "model": "events.occurrence"
-},
-{
-  "fields": {
     "password": "pbkdf2_sha256$12000$7lZdKvhp8rSo$/iSJHxO1UrsFsoCK9Gzx69/5q8d6COJYjvbAoNqt8IQ=",
     "groups": [],
     "is_superuser": true,
@@ -3477,5 +3304,191 @@
   },
   "pk": 6,
   "model": "blog.blogpost"
+},
+{
+  "pk": 1,
+  "fields": {
+    "publish_date": "2015-06-16T21:16:53Z",
+    "short_url": null,
+    "site": 1,
+    "event_category": null,
+    "gen_description": true,
+    "created": "2015-06-16T21:18:14.383Z",
+    "updated": "2015-06-16T21:19:54.943Z",
+    "content": "<p>This is a example event on the main site.</p>",
+    "title": "Example event",
+    "description": "This is a example event on the main site.",
+    "_meta_title": "",
+    "status": 2,
+    "in_sitemap": true,
+    "slug": "example-event",
+    "keywords_string": "",
+    "expiry_date": null
+  },
+  "model": "events.event"
+},
+{
+  "pk": 2,
+  "fields": {
+    "publish_date": "2015-06-16T21:29:04Z",
+    "short_url": null,
+    "site": 3,
+    "event_category": null,
+    "gen_description": true,
+    "created": "2015-06-16T21:30:39.069Z",
+    "updated": "2015-06-16T21:30:39.069Z",
+    "content": "<p>Example Leiden-Haaglanden event.</p>",
+    "title": "LH event",
+    "description": "Example Leiden-Haaglanden event.",
+    "_meta_title": "",
+    "status": 2,
+    "in_sitemap": true,
+    "slug": "lh-event",
+    "keywords_string": "",
+    "expiry_date": null
+  },
+  "model": "events.event"
+},
+{
+  "pk": 3,
+  "fields": {
+    "publish_date": "2015-06-16T21:31:34Z",
+    "short_url": null,
+    "site": 1,
+    "event_category": null,
+    "gen_description": true,
+    "created": "2015-06-16T21:32:25.660Z",
+    "updated": "2015-06-16T21:32:25.660Z",
+    "content": "<p>jdwebsite project milestones</p>",
+    "title": "Project milestones",
+    "description": "jdwebsite project milestones",
+    "_meta_title": "",
+    "status": 2,
+    "in_sitemap": true,
+    "slug": "project-milestones",
+    "keywords_string": "",
+    "expiry_date": null
+  },
+  "model": "events.event"
+},
+{
+  "pk": 1,
+  "fields": {
+    "publish_date": "2015-06-16T21:16:53Z",
+    "short_url": null,
+    "site": 1,
+    "start_time": "2015-08-01T07:00:00Z",
+    "gen_description": false,
+    "created": "2015-06-16T21:18:14.390Z",
+    "updated": "2015-06-16T21:19:54.952Z",
+    "location": "Utrecht",
+    "end_time": "2015-08-01T12:00:00Z",
+    "title": "Example event (Tweede bijeenkomst)",
+    "description": "Tweede bijeenkomst",
+    "event": 1,
+    "_meta_title": null,
+    "status": 2,
+    "in_sitemap": true,
+    "slug": "example-event-eerste-bijeenkomst",
+    "keywords_string": "",
+    "expiry_date": null
+  },
+  "model": "events.occurrence"
+},
+{
+  "pk": 2,
+  "fields": {
+    "publish_date": "2015-06-16T21:16:53Z",
+    "short_url": null,
+    "site": 1,
+    "start_time": "2015-07-01T07:00:00Z",
+    "gen_description": false,
+    "created": "2015-06-16T21:18:14.392Z",
+    "updated": "2015-06-16T21:19:54.951Z",
+    "location": "Amsterdam",
+    "end_time": "2015-07-01T12:00:00Z",
+    "title": "Example event (Eerste bijeenkomst)",
+    "description": "Eerste bijeenkomst",
+    "event": 1,
+    "_meta_title": null,
+    "status": 2,
+    "in_sitemap": true,
+    "slug": "example-event-tweede-bijeenkomst",
+    "keywords_string": "",
+    "expiry_date": null
+  },
+  "model": "events.occurrence"
+},
+{
+  "pk": 3,
+  "fields": {
+    "publish_date": "2015-06-16T21:29:04Z",
+    "short_url": null,
+    "site": 3,
+    "start_time": "2015-07-16T07:00:00Z",
+    "gen_description": false,
+    "created": "2015-06-16T21:30:39.100Z",
+    "updated": "2015-06-16T21:30:39.100Z",
+    "location": "Leiden",
+    "end_time": "2015-07-16T17:00:00Z",
+    "title": "LH event (Sightseeing Den Haag)",
+    "description": "Sightseeing Den Haag",
+    "event": 2,
+    "_meta_title": null,
+    "status": 2,
+    "in_sitemap": true,
+    "slug": "lh-event-sightseeing-den-haag",
+    "keywords_string": "",
+    "expiry_date": null
+  },
+  "model": "events.occurrence"
+},
+{
+  "pk": 4,
+  "fields": {
+    "publish_date": "2015-06-16T21:29:04Z",
+    "short_url": null,
+    "site": 3,
+    "start_time": "2015-08-16T08:00:00Z",
+    "gen_description": false,
+    "created": "2015-06-16T21:30:39.117Z",
+    "updated": "2015-06-16T21:30:39.117Z",
+    "location": "Den Haag",
+    "end_time": "2015-08-16T18:00:00Z",
+    "title": "LH event (Sightseeing Den Haag)",
+    "description": "Sightseeing Den Haag",
+    "event": 2,
+    "_meta_title": null,
+    "status": 2,
+    "in_sitemap": true,
+    "slug": "lh-event-sightseeing-den-haag-1",
+    "keywords_string": "",
+    "expiry_date": null
+  },
+  "model": "events.occurrence"
+},
+{
+  "pk": 5,
+  "fields": {
+    "publish_date": "2015-06-16T21:31:34Z",
+    "short_url": null,
+    "site": 1,
+    "start_time": "2015-07-04T09:00:00Z",
+    "gen_description": false,
+    "created": "2015-06-16T21:32:25.667Z",
+    "updated": "2015-06-16T21:32:25.667Z",
+    "location": "TBD",
+    "end_time": "2015-07-04T20:00:00Z",
+    "title": "Project milestones (Deploy)",
+    "description": "Deploy",
+    "event": 3,
+    "_meta_title": null,
+    "status": 2,
+    "in_sitemap": true,
+    "slug": "project-milestones-deploy",
+    "keywords_string": "",
+    "expiry_date": null
+  },
+  "model": "events.occurrence"
 }
 ]

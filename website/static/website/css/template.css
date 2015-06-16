@@ -764,7 +764,7 @@ ul.pagination a:active
   width: 183px;
   height: 20px;
   padding: 1px;
-  background-image: url('/templates/jd/images/Search2.png');
+  background-image: url('../images/search_form_background.png');
 }
 
 #menuDiv

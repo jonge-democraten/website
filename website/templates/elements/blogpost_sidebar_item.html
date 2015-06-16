@@ -1,6 +1,6 @@
 <div class="moduletablenieuws">
     <h3>{{ item.title }}</h3>
-
+    {% if item.children %}
     {% for blogpost in item.children %}
         <div class="mod_placeherenieuws">
             <div style="overflow:auto;" class="mod_placehere_leading even">
@@ -15,5 +15,16 @@
             </div>
         </div>
     {% endfor %}
+    {% else %}
+        <div class="mod_placeherenieuws">
+            <div style="overflow:auto;" class="mod_placehere_leading even">
+                <div class="placehere">
+                    <h2 class="contentheading">
+                        This blog has no blog posts to show.
+                    </h2>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 
 </div>

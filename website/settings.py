@@ -76,6 +76,9 @@ PAGE_MENU_TEMPLATES = (
 #
 # BLOG_USE_FEATURED_IMAGE = True
 
+# Models that are included in a search
+SEARCH_MODEL_CHOICES = ('pages.Page', 'blog.BlogPost', 'events.Event')
+
 ########################
 # MAIN DJANGO SETTINGS #
 ########################

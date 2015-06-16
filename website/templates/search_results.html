@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load i18n future mezzanine_tags %}
+
+{% block meta_title %}{% trans "Search Results" %}{% endblock %}
+{% block title %}{% trans "Search Results" %}{% endblock %}
+{% block extra_head %}
+<meta name="robots" content="noindex">
+{% endblock %}
+
+{% block breadcrumb_menu %}
+<li>
+    <a href="{% url "home" %}">{% trans "Home" %}</a>
+</li>
+<li class="active">{% trans "Search Results" %}</li>
+{% endblock %}
+
+{% block main %}
+
+{% with "Zoek" as custom_title %}
+{% include "elements/page_header_image.html" %}
+{% endwith %}
+
+<div id="homeDiv">
+
+    <p>
+    {% if results.paginator.count == 0 %}
+    {% blocktrans %}
+    <h2>Geen resultaten voor '{{ query }}'</h2>
+    {% endblocktrans %}
+    {% else %}
+    {% blocktrans with start=results.start_index end=results.end_index total=results.paginator.count %}
+    <h2>{{ total }} pagina's gevonden voor '{{ query }}'</h2>
+    {% endblocktrans %}
+    {% endif %}
+    </p>
+
+    <div id="search-results">
+        {% for result in results.object_list %}
+        <h4><a href="{{ result.get_absolute_url }}">{{ result }}</a></h4>
+        <p>{{ result.description|truncatewords_html:20|safe }}
+        <a href="{{ result.get_absolute_url }}">{% trans "read more" %}</a></p>
+        {% endfor %}
+    </div>
+
+    {% pagination_for results %}
+
+</div>
+
+{% endblock %}

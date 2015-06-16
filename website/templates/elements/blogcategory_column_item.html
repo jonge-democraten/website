@@ -1,6 +1,7 @@
 <h3>{{ item.title }} </h3>
 <div class="mod_placehere">
     <div style="overflow:auto;" class="mod_placehere_leading even">
+        {% if item.children %}
         {% for child in item.children %}
         <div class="placehere">
             <h2 class="contentheading"><a href="{{ child.url }}" class="contentpagetitle">{{ child.title }}</a></h2>
@@ -10,5 +11,10 @@
             <p class="readmore"><a href="{{ child.url }}">Lees meer...</a></p>
         </div>
         {% endfor %}
+        {% else %}
+        <div class="placehere">
+            <h2 class="contentheading">This blog has no blog posts to show.</h2>
+        </div>
+        {% endif %}
     </div>
 </div>

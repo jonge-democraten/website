@@ -100,7 +100,7 @@ EMAIL_SUBJECT_PREFIX = '[jdwebsite error] '
 #########################
 
 FULLCALENDAR_SITE_COLORS = {
-    1: 'black',
+    1: 'green',
     2: 'red',
     3: ('white', 'black', 'black'),
 }

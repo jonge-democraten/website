@@ -247,3 +247,6 @@ The event sidebar and page column widgets can be set, via the admin, to show eve
 
 The calendar on the main site shows events for all sites (departments). The color for each site can be set in `local_settings.py` with the `FULLCALENDAR_SITE_COLORS` variable.
 A legend with site name and colour is then shown in the calendar view.
+
+[mezzanine-fullcalendar](https://github.com/jonge-democraten/mezzanine-fullcalendar) was forked to be used by jdwebsite.  
+Improve and maintain mezzanine-fullcalendar.

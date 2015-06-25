@@ -112,6 +112,11 @@ Run the unit tests,
 [Travis](https://travis-ci.org/jonge-democraten/website) is used to automatically install the environment and run tests on changes in the project.  
 The file `.travis.yml` contains the Travis commands to install and test the project.
 
+<h3>Performance</h3>
+[Locust](https://github.com/locustio/locust) can be used for load testing. 
+It simulates users and provides a web UI to monitor the test.
+Easy to install and configure. Read the locust documentation. 
+    
 -----
 ## Logging
 The Python logging module is used for logging. 
@@ -206,8 +211,6 @@ class ExampleClass(Example):
 
 -----
 ## Database
-
-<h3>Introduction</h3>
 
 <h3>Migrations</h3>
 A [database migration](https://docs.djangoproject.com/en/1.7/topics/migrations/) needs to be created after database structure changes in `models.py`,

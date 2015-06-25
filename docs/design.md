@@ -31,7 +31,7 @@ A Sidebar model represents the information shown in a sidebar on the webpage.
 
 <h3>Sidebar widgets</h3>
 SidebarWidget models are configurable elements of a Sidebar.  
-They can be add to a Sidebar via a TabularInline in the admin.
+They can be added to a Sidebar via a TabularInline in the admin.
 
 <h3>Sidebar items</h3>
 A view representing a SidebarWidget.
@@ -230,3 +230,20 @@ And to actually add the column items to a page processor on the `def add_column_
 def add_column_elements(request, page):
     ...
 ```
+
+## Events
+
+The [jonge-democraten/mezzanine-fullcalendar](https://github.com/jonge-democraten/mezzanine-fullcalendar) app is used for events.
+
+An Event has Occurrences. 
+Events and Occurrences can be created and modified in the Mezzanine admin.
+Templates using the fullcalendar template tags are used to create event views customized for jdwebsite.
+
+The event sidebar and page column widgets can be set, via the admin, to show events for,
+ 
+* All sites
+* Current site
+* Current and main site
+
+The calendar on the main site shows events for all sites (departments). The color for each site can be set in `local_settings.py` with the `FULLCALENDAR_SITE_COLORS` variable.
+A legend with site name and colour is then shown in the calendar view.

@@ -17,6 +17,7 @@ from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_text
+from django.utils import timezone
 from django.conf import settings
 
 from mezzanine.blog.models import BlogCategory, BlogPost
@@ -229,6 +230,7 @@ class DocumentListing(Page, RichText):
     """
     Page model for document listing pages.
     """
+
     class Meta:
         verbose_name = "Document Listing"
         verbose_name_plural = "Document Listings"
@@ -303,8 +305,8 @@ class BlogCategoryPage(Page, RichText):
 def get_public_blogposts(blog_category):
     """ Returns all blogposts for a given category that are published and not expired. """
     blog_posts = BlogPost.objects.all().filter(categories=blog_category).filter(status=CONTENT_STATUS_PUBLISHED)
-    return blog_posts.filter(publish_date__lte=datetime.now()).filter(Q(expiry_date__isnull=True)
-                                                                      | Q(expiry_date__gte=datetime.now()))
+    return blog_posts.filter(publish_date__lte=timezone.now()).filter(Q(expiry_date__isnull=True)
+                                                                      | Q(expiry_date__gte=timezone.now()))
 
 
 def create_columnelement_for_blogcategory(blog_category, compact_view):

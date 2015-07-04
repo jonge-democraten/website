@@ -47,7 +47,7 @@ Wanneer je een menu aanmaakt met 'Rich text page' creeer je een pagina op de JDs
 
 ### 2 Managing Content
 
-De tekstverwerker, het venster waar je inhoud kunt wijzigingen, zul je vaak gebruiken. Deze heeft verschillende opties die hieronder staan beschreven. 
+Door middel van de tekstverwerker kun je de inhoud wijzigen. De verschillende functies staan hieronder beschreven.
 
 <strong>2.1 Taakbalk tekstverwerker</strong>
 
@@ -73,36 +73,36 @@ Van links naar rechts zie je in de taakbalk staan:
 <strong>2.2 Hyperlink invoegen</strong>
 
 Het invoegen van een hyperlink kan als volgt:
-- Selecteer de tekst waarvan je een link wilt maken
-- Klik op de het icoontje van de kettingschakel in de taakbalk
-- Vul de URL Link in bij 'General Properties' 
+- Selecteer de tekst waarvan je een link wilt maken;
+- Klik op de het icoontje van de kettingschakel in de taakbalk. Via dit icoon kun je de hyperlink later ook aanpassen;
+- Vul de URL Link in bij 'General Properties'; 
 - Klik op 'Update'. 
 
-Indien je de link wilt verwijderen klik je op 'Unlink'.
+Indien je de link wilt verwijderen, klik je op 'Unlink' (de gebroken schakel).
 
 <strong>2.3 Afbeelding</strong>
 
 Een afbeelding opnemen in de tekst kan op twee manieren: 
 
-1. Een afbeelding kopiëren/plakken (vanaf een andere site) in het tekstvak (bij content), deze methode is makkelijk en snel. Echter, wanneer de locatie van de afbeelding op de originele site verandert, is de afbeelding niet meer zichtbaar en krijg je een foutmelding. 
+1. Een afbeelding kopiëren/plakken (vanaf een andere site) in het tekstvak (bij content). Deze methode is makkelijk en snel. Echter, wanneer de locatie van de afbeelding op de originele site verandert, is de afbeelding niet meer zichtbaar en krijg je een foutmelding. 
 
 2. Om te zorgen dat je afbeelding in de toekomst wel beschikbaar blijft kan je de afbeelding uploaden naar de Media Library (de afbeelding staat dan op de eigen JD server)
 - Zorg dat de afbeelding is opgeslagen in de Media Library (zie punt 7 voor meer uitleg hierover)
 - Ga naar het tekstvak 'Content' en klik in de taakbalk op het 'Instert/Edit Image' icoon (vijfde van links)
-- Een nieuw venster wordt geopend
-- Onder het tabblad 'General', naast het veld van 'Image URL' zit de 'browse' knop om naar de Media Library te gaan.
-- Selecteer de afbeelding uit de Media Libary
-- Klik op 'Insert'
+- Een nieuw venster opent;
+- Onder het tabblad 'General', naast het veld van 'Image URL' zit de 'browse' knop om naar de Media Library te gaan;
+- Selecteer de afbeelding uit de Media Libary;
+- Klik op 'Insert'.
 
-Wil je de afbeelding verwijderen uit het tekstvak dan kan je dat met delete of backspace doen. 
+Wil je de afbeelding verwijderen uit het tekstvak, dan kan je dat met delete of backspace doen. 
 
-<strong>2.4 PDF bestanden</strong>
+<strong>2.4 PDF-bestanden</strong>
 
-PDF bestanden zoals het HR en Statuten kan je als volgt insluiten (embedden) op een pagina.
+PDF bestanden, zoals het HR en Statuten, kun je als volgt insluiten (embedden) op een pagina.
 
 1. Upload het PDF-bestand in de Media Library (zie punt 7 voor meer uitleg hierover)
 2. Open in de backend de pagina waar je het PDF wilt insluiten
-3. Ga naar het tekstvak 'Content' en klik in de taakbalk op het HTML icoon (zevende van links)
+3. Ga naar het tekstvak 'Content' en klik in de taakbalk op het HTML-icoon (zevende van links)
 4. Kopieer in het HTML venster de onderstaande objectcode:  ```<object data="/static/media/path/bestandsnaam.pdf" width="100%" height=600 type="application/pdf"></object>``` 
 5. Waar in de bovenstaande code nu "/static/media/path/bestandsnaam.pdf" staat dien je de locatiecode (tag) van het pdf-bestand te plaatsen. Dit doe je als volgt: 
 	- open in een nieuw tabblad de Media Library

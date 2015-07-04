@@ -91,7 +91,7 @@ class Command(BaseImporterCommand):
             print("[%d]\t'%s'" % (k, categories[k]))
         while True:
             cat = input("Events categorie om te migreren:")
-            if cat.isdigit() and int(cat) == -1:
+            if cat == "-1":
                 break
             if cat.isdigit() and int(cat) in categories:
                 break

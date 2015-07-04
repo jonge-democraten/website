@@ -1,0 +1,14 @@
+<div id="homeAreaDiv">
+    <div class="moduletable">
+        <div class="custom">
+            <div id="homeImageDiv"><img src="{{ page_header.image.url }}" border="0" width="610" height="290" /></div>
+            <div id="homeLogoDiv">
+                {% if custom_title %}
+                    <div id="homeLogoText">{{ custom_title }}</div>
+                {% else %}
+                    <div id="homeLogoText">{{ page_header.title }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

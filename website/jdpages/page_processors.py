@@ -15,8 +15,7 @@ from mezzanine.forms.models import Form
 from website.jdpages.models import HomePage, DocumentListing
 from website.jdpages.models import ColumnElementWidget
 from website.jdpages.models import HorizontalPosition
-from website.jdpages.models import PageHeaderImageWidget
-from website.jdpages.views import create_column_items
+from website.jdpages.views import create_column_items, get_page_header
 
 
 @processor_for(DocumentListing)
@@ -46,39 +45,3 @@ def add_column_elements(request, page):
 def add_blogposts(request, page):
     template_response = blog_post_list(request, category=page.blogcategorypage.blog_category.slug)
     return {"blog_posts": template_response.context_data["blog_posts"]}
-
-
-def get_first_page_header(page):
-    page_header = PageHeaderImageWidget.objects.filter(page=page)
-    if page_header.exists():
-        return page_header[0]
-    else:
-        return None
-
-
-def get_page_header(page):
-    page_header_images = PageHeaderImageWidget.objects.filter(page=page)
-
-    n_images = page_header_images.count()
-    if n_images == 1:
-        return get_first_page_header(page)
-    elif n_images == 0:
-        if page.parent:
-            return get_page_header(page.parent)
-        else:
-            homepages = HomePage.objects.all()
-            if not homepages.exists():
-                return None
-            elif page == homepages[0]:  # prevent infinite recursion
-                return None
-            elif PageHeaderImageWidget.objects.filter(page=homepages[0]):
-                return get_page_header(homepages[0])
-    elif n_images > 1:
-        return get_random_page_header(page)
-
-
-def get_random_page_header(page):
-    page_header = PageHeaderImageWidget.objects.filter(page=page)
-    if page_header.exists():
-        return PageHeaderImageWidget.objects.filter(page=page).order_by('?')[0]
-    return None

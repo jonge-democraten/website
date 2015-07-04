@@ -764,7 +764,7 @@ ul.pagination a:active
   width: 183px;
   height: 20px;
   padding: 1px;
-  background-image: url('/templates/jd/images/Search2.png');
+  background-image: url('../images/search_form_background.png');
 }
 
 #menuDiv
@@ -1526,7 +1526,7 @@ div.jevtt_text{
 	margin-left: .8em;
 	width: 14px;
 	height: 9px;
-	background-image: url('/static/images/icons/mobile/arrow.png');
+	background-image: url('/static/website/images/icons/mobile/arrow.png');
 	background-repeat: no-repeat;
 }
 .mobile #upBtn span {
@@ -1534,7 +1534,7 @@ div.jevtt_text{
 	margin-right: .6em;
 	width: 18px;
 	height: 12px;
-	background-image: url('/static/images/icons/mobile/arrow2.png');
+	background-image: url('/static/website/images/icons/mobile/arrow2.png');
 	background-repeat: no-repeat;
 }
 .mobile #contentDiv {
@@ -1997,6 +1997,17 @@ p#calendar-loading {
     display: none; /* Hide by default, will be restored to block by javascript */
     height: 180px;
     max-width: 810px;
+}
+
+ul.events-legend {
+    padding: 0px;
+}
+
+ul.events-legend li {
+    display: inline-block;
+    list-style: none;
+    padding: 5px;
+    margin: 0px 5px;
 }
 
 p#logosubtitle {

@@ -7,6 +7,7 @@ from django.test import TestCase
 from django.test import Client
 
 from mezzanine.blog.models import BlogCategory
+from mezzanine.blog.models import BlogPost
 from mezzanine.pages.models import RichTextPage
 
 from website.jdpages.models import ColumnElement
@@ -40,23 +41,25 @@ class TestColumnElement(TestCase):
 
     def test_auto_create(self):
         """
-        Tests whether a ColumnElement is automatically created
-        when a BlogCategory is created, and that the element contains a reference to the category object.
+        Tests whether two ColumnElements are created when a BlogCategory is created,
+        and that the elements contain a reference to the category object.
         """
         category = BlogCategory.objects.create(title="Test Blog")
         content_type = ContentType.objects.get(model="blogcategory")
-        element = ColumnElement.objects.get(object_id=category.id, content_type=content_type)
-        self.assertEqual(element.get_object(), category)
+        elements = ColumnElement.objects.filter(object_id=category.id, content_type=content_type)
+        for element in elements:
+            self.assertEqual(element.get_object(), category)
 
     def test_auto_delete(self):
         """
-        Tests whether a ColumnElement is automatically deleted
+        Tests whether the related ColumnElements are automatically deleted
         when a BlogCategory is deleted.
         """
         category = BlogCategory.objects.create(title="Test Blog")
         content_type = ContentType.objects.get(model="blogcategory")
-        element = ColumnElement.objects.get(object_id=category.id, content_type=content_type)
-        self.assertEqual(element.get_object(), category)
+        elements = ColumnElement.objects.filter(object_id=category.id, content_type=content_type)
+        for element in elements:
+            self.assertEqual(element.get_object(), category)
         catid = category.id
         category.delete()
         self.assertEqual(BlogCategory.objects.count(), 0)
@@ -129,3 +132,66 @@ class TestPageHeaderImage(TestCaseAdminLogin):
             if page.id == 8:
                 self.assertEqual(page_header_image_widget.page.id, 8)
                 self.assertEqual(str(page_header_image_widget.image), 'uploads/site-1/example_header_subpage.jpg')
+
+
+class TestBlogCategoryPage(TestCaseAdminLogin):
+    """ Tests the blog category page rendering """
+    fixtures = ['test_blog.json']
+    blog_cat_1 = 'BlogCategory1'
+    blog_cat_2 = 'BlogCategory2'
+
+    def test_active_in_menu(self):
+        """ Tests whether the page is part of the menu. """
+        response = self.client.get('/')
+        html = str(response.content)
+        self.assertTrue('<a href="/blogcategory1page/">BlogCategory1Page</a>' in html)
+        self.assertTrue('<a href="/blogcategory2page/">BlogCategory2Page</a>' in html)
+
+    def test_blogpost_titles(self):
+        """  Tests whether the blog post titles are shown on a blog category page. """
+        response = self.client.get('/blogcategory1page/', follow=True)
+        html = str(response.content)
+        self.assertTrue('<a href="/blog/blogpost3category1/">BlogPost3Category1</a>' in html)
+        self.assertTrue('<a href="/blog/blogpost2category1/">BlogPost2Category1</a>' in html)
+
+    def test_blogpost_contents(self):
+        """ Tests whether the blog post contents are shown on the page. """
+        response = self.client.get('/blogcategory1page/', follow=True)
+        html = str(response.content)
+        self.assertTrue('<p>Example content 3.</p>' in html)
+        self.assertTrue('<p>Example content 2.</p>' in html)
+
+    def test_blogpage_pagination(self):
+        """ Tests whether only a limited number of posts are shown on a page and pagination links are available. """
+        response = self.client.get('/blogcategory1page/', follow=True)
+        html = str(response.content)
+        # the number of posts per pages is set to 2 in the fixtures
+        self.assertFalse('<a href="/blog/blogpost1category1/">BlogPost1Category1</a>' in html)
+        blog_posts = response.context['blog_posts']
+        self.assertEqual(len(blog_posts), 2)
+        self.assertTrue('<span>Page 1 of 2</span>' in html)
+
+
+class TestBlogListView(TestCaseAdminLogin):
+    """ Tests the blog post list view. """
+    fixtures = ['test_blog.json']
+    blog_cat_1 = 'BlogCategory1'
+    blog_cat_2 = 'BlogCategory2'
+    posts_per_page = 2
+
+    def test_blogpost_titles(self):
+        """ Tests whether the titles of the last 2 blog posts are shown on the page. """
+        blog_categories = BlogCategory.objects.all()
+        for category in blog_categories:
+            url = category.get_absolute_url()
+            response = self.client.get(url)
+            html = str(response.content)
+            posts = BlogPost.objects.filter(categories=category)
+            counter = 0
+            for post in posts:
+                post_title_html = '<a href="' + post.get_absolute_url() + '">' + post.title + '</a>'
+                if counter < self.posts_per_page:
+                    self.assertTrue(post_title_html in html)
+                else:
+                    self.assertFalse(post_title_html in html)
+                counter += 1

@@ -4,20 +4,20 @@
 {% block meta_title %}{{ occurrence.title }}{% endblock %}
 
 {% block extra_js %}{{ block.super }}
-<script type="text/javascript" src="{% static "js/leaflet.js" %}"></script>
+<script type="text/javascript" src="{% static "website/js/leaflet.js" %}"></script>
 <script type="text/javascript">
-L.Icon.Default.imagePath = "{% static "images/leaflet/" %}";
+L.Icon.Default.imagePath = "{% static "website/images/leaflet/" %}";
 </script>
-<script type="text/javascript" src="{% static "js/events.js" %}"></script>
+<script type="text/javascript" src="{% static "website/js/events.js" %}"></script>
 {% endblock %}l
 
 {% block extra_css %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static "css/leaflet.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "website/css/leaflet.css" %}" />
 {% endblock %}
 
 {% block main %}
 <div id="homeAreaDiv">
-    <div id="homeImageDiv"><img src="{% static "images/congres_tafels.jpg" %}" alt="" /></div>
+    <div id="homeImageDiv"><img src="{% static "website/images/congres_tafels.jpg" %}" alt="" /></div>
     <div id="homeLogoDiv"></div>
 </div>
 

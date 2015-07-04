@@ -39,11 +39,9 @@ DASHBOARD_TAGS = (
 # menus a page should appear in. Note that if a menu template is used
 # that doesn't appear in this setting, all pages will appear in it.
 
-# PAGE_MENU_TEMPLATES = (
-#     (1, "Top navigation bar", "pages/menus/dropdown.html"),
-#     (2, "Left-hand tree", "pages/menus/tree.html"),
-#     (3, "Footer", "pages/menus/footer.html"),
-# )
+PAGE_MENU_TEMPLATES = (
+    (1, "Top navigation bar", "pages/menus/jdmenu.html"),
+)
 
 # A sequence of fields that will be injected into Mezzanine's (or any
 # library's) models. Each item in the sequence is a four item sequence.
@@ -78,17 +76,12 @@ DASHBOARD_TAGS = (
 #
 # BLOG_USE_FEATURED_IMAGE = True
 
+# Models that are included in a search
+SEARCH_MODEL_CHOICES = ('pages.Page', 'blog.BlogPost', 'events.Event')
+
 ########################
 # MAIN DJANGO SETTINGS #
 ########################
-
-# People who get code error notifications.
-# In the format (('Full Name', 'email@example.com'),
-#                ('Full Name', 'anotheremail@example.com'))
-ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
-)
-MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -216,7 +209,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = STATIC_URL + "media/"
+MEDIA_URL = STATIC_URL + "website/media/"
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
@@ -234,7 +227,7 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 # This setting replaces the default TinyMCE configuration with our custom
 # one. The only difference is that the media plugin is not loaded in this
 # version.
-TINYMCE_SETUP_JS = STATIC_URL + "js/tinymce_setup.js"
+TINYMCE_SETUP_JS = STATIC_URL + "website/js/tinymce_setup.js"
 
 
 ################
@@ -270,6 +263,7 @@ INSTALLED_APPS = (
     "debug_toolbar",
     "janeus",
     "hemres",
+    "django_rq",
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -288,6 +282,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "mezzanine.pages.context_processors.page",
     "website.jdpages.context_processors.sidebar",
     "website.jdpages.context_processors.site_properties",
+    "website.jdpages.context_processors.piwik",
+    "website.jdpages.context_processors.homepage_header",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -332,7 +328,7 @@ OPTIONAL_APPS = (
 )
 
 #########################
-# LOGGING CONFIGUATION  #
+# LOGGING CONFIGURATION #
 #########################
 
 # Directory of the logfiles
@@ -393,20 +389,25 @@ LOGGING = {
             'backupCount': LOGFILE_BACKUP_COUNT,
             'formatter': 'verbose'
         },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'verbose'
+        }
     },
     'loggers': {
         'django': {
-            'handlers': ['file_django', 'console'],
+            'handlers': ['file_django', 'console', 'mail_admins'],
             'propagate': True,
             'level': 'ERROR',
         },
         'website': {
-            'handlers': ['file_debug', 'file_error', 'console'],
+            'handlers': ['file_debug', 'file_error', 'console', 'mail_admins'],
             'propagate': True,
             'level': 'DEBUG',
         },
         'janeus': {
-            'handlers': ['file_debug', 'file_error', 'console'],
+            'handlers': ['file_debug', 'file_error', 'console', 'mail_admins'],
             'propagate': True,
             'level': 'DEBUG',
         },
@@ -514,11 +515,12 @@ RICHTEXT_FILTERS += ("website.utils.filters.strip_scripts_not_in_whitelist",)
 # Rationale behing whitelist:
 # Lines 1-5: department map 'Afdelingen'
 RICHTEXT_SCRIPT_TAG_WHITELIST = (
-    '<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>',
-    '<script type="text/javascript" src="http://d3js.org/queue.v1.min.js"></script>',
-    '<script type="text/javascript" src="http://d3js.org/d3.geo.projection.v0.min.js"></script>',
-    '<script type="text/javascript" src="http://d3js.org/topojson.v0.min.js"></script>',
-    '<script type="text/javascript" src="/static/js/render.js"></script>',
+    '<script type="text/javascript" src="/static/website/js/topojson.v0.min.js"></script>',
+    '<script type="text/javascript" src="/static/website/js/d3.v3.min.js"></script>',
+    '<script type="text/javascript" src="/static/website/js/queue.v1.min.js"></script>',
+    '<script type="text/javascript" src="/static/website/js/d3.geo.projection.v0.min.js"></script>',
+    '<script type="text/javascript" src="/static/website/js/render.js"></script>',
+    '<script type="text/javascript" src="/static/website/js/jdshowhide.js"></script>',
 )
 
 
@@ -567,16 +569,6 @@ FILEBROWSER_EXTENSIONS = {
     'Code': ['.html', '.py', '.js', '.css']
 }
 
-#
-# Full calendar settings
-# ======================
-
-FULLCALENDAR_SITE_COLORS = {
-    1: 'black',
-    2: 'red',
-    3: ('white', 'black', 'black'),
-}
-
 #####################
 # TEMPLATE SETTINGS #
 #####################
@@ -589,3 +581,4 @@ FULLCALENDAR_SITE_COLORS = {
 TEMPLATE_ACCESSIBLE_SETTINGS = ('ACCOUNTS_APPROVAL_REQUIRED', 'ACCOUNTS_VERIFICATION_REQUIRED', 'ADMIN_MENU_COLLAPSED', 'BITLY_ACCESS_TOKEN', 'BLOG_USE_FEATURED_IMAGE', 'COMMENTS_DISQUS_SHORTNAME', 'COMMENTS_NUM_LATEST', 'COMMENTS_DISQUS_API_PUBLIC_KEY', 'COMMENTS_DISQUS_API_SECRET_KEY', 'COMMENTS_USE_RATINGS', 'DEV_SERVER', 'FORMS_USE_HTML5', 'GRAPPELLI_INSTALLED', 'GOOGLE_ANALYTICS_ID', 'JQUERY_FILENAME', 'JQUERY_UI_FILENAME', 'LOGIN_URL', 'LOGOUT_URL', 'SITE_TITLE', 'SITE_TAGLINE', 'USE_L10N')
 
 TEMPLATE_ACCESSIBLE_SETTINGS += ('SIDEBAR_AGENDA_SITES',)
+TEMPLATE_ACCESSIBLE_SETTINGS += ('PIWIK_SITE_ID',)

@@ -17,9 +17,7 @@
 
 {% block main %}
 
-{% if page_header %}
-    {% include "elements/page_header_image.html" %}
-{% endif %}
+{% include "elements/page_header_image.html" %}
 
 <div id="homeDiv">
     <div class="blog">
@@ -57,7 +55,12 @@
 
             {% block blog_post_list_post_content %}
                 {% editable blog_post.content %}
-                {{ blog_post.content|safe }}
+                {% if page.blogcategorypage.show_excerpt %}
+                    {{ blog_post.description_from_content|richtext_filters|safe }}
+                    <p><b><a href="{{ blog_post.get_absolute_url }}">Lees meer...</a></b></p>
+                {% else %}
+                    {{ blog_post.content|richtext_filters|safe }}
+                {% endif %}
                 {% endeditable %}
             {% endblock %}
 

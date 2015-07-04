@@ -48,7 +48,12 @@
                 {{ blog_post.publish_date|date:"d M Y" }}
             </p>
 
-            {{ blog_post.content|richtext_filters|safe }}
+            {% if page.blogcategorypage.show_excerpt %}
+                {{ blog_post.description_from_content|richtext_filters|safe }}
+                <p><b><a href="{{ blog_post.get_absolute_url }}">Lees meer...</a></b></p>
+            {% else %}
+                {{ blog_post.content|richtext_filters|safe }}
+            {% endif %}
 
             <div class="item-separator"></div>
         {% endfor %}

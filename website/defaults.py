@@ -30,6 +30,13 @@ register_setting(
     default=2,
 )
 
+register_setting(
+    name="PIWIK_SITE_ID",
+    description=_("The Piwik site ID. This is the ID that is set in Piwik to track this site."),
+    editable=True,
+    default=1,
+)
+
 # A list of unused Mezzanine settings that should be hidden in the admin
 HIDDEN_SETTINGS = (
     'COMMENTS_ACCOUNT_REQUIRED',

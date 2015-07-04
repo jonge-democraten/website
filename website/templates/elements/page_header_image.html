@@ -1,10 +1,7 @@
-<div id="homeAreaDiv">
-    <div class="moduletable">
-        <div class="custom">
-            <div id="homeImageDiv"><img src="{{ page_header.image.url }}" border="0" width="610" height="290" /></div>
-            <div id="homeLogoDiv">
-                <div id="homeLogoText">{{ page_header.title }}</div>
-            </div>
-        </div>
-    </div>
-</div>
+{% if page_header %}
+    {% include "elements/page_header_image_div.html" %}
+{% elif homepage_header %}
+    {% with homepage_header as page_header %}
+    {% include "elements/page_header_image_div.html" %}
+    {% endwith %}
+{% endif %}

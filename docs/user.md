@@ -16,13 +16,11 @@ Via de admin-pagina, onder Content > Pages, is het mogelijk de menustructuur van
 
 <strong>1.1.1 Homepage</strong>
 
-De bovenste regel 'Home' kun je niet verwijderen. Dit is namelijk standaard de landingspagina van de (sub)site. Wanneer je op 'Home' klikt, kan je de inhoud van de pagina veranderen. Indien je dit doet zul je onder het content-venster een indeling zien van de kolommen op de homepage. 
+Het menu 'Home' is de landingspagina van de (sub)website en deze kun je niet verwijderen. Wanneer je op 'Home' klikt, kun je wel de inhoud en indeling van de pagina veranderen. Indien je dit doet zul je onder het content-venster een indeling zien van de kolommen op de homepage. 
 
-Als je naar beneden scrollt, kun je onder Metadata de widgets aanpassen. Widgets zijn kleine applicaties die op beperkte schaal de functionaliteit van de website bevorderen. In dit geval leiden de widgets ertoe dan vanaf de homepage gemakkelijk naar andere pagina's doorverwezen kan worden, bijvoorbeeld naar blog-items. De widgets zijn ingedeeld in twee kolommen en zijn terug te vinden onderaan de homepagina. Met 'Left column widgets' en 'Right column widgets' kun je een indeling maken met éen of twee kolommen en x-aantal rijen. Dit kan je naar eigen inzicht indelen. 
+Onder 'Metadata' kun je de widgets aanpassen. Widgets zijn kleine applicaties die op beperkte schaal de functionaliteit van de website bevorderen. In dit geval zorgen de widgets ervoor dan vanaf de homepage gemakkelijk naar andere pagina's doorverwezen kan worden, bijvoorbeeld naar blog-items. De widgets zijn ingedeeld in twee kolommen en zijn terug te vinden onderaan de homepagina. Met 'Left column widgets' en 'Right column widgets' kun je een indeling maken met éen of twee kolommen en x-aantal rijen. Dit kun je naar eigen inzicht indelen. 
 
-Als Algemeen Secretaris heb je  voor de widgets de keuze tussen vaste categorieën die de uiteindelijke kopjes op de Homepage zullen zijn.
-
-Deze categorieën staan vast, wil je een andere titel voor je kopje dan kan je het ICT-team hiervoor mailen. Onder 'horizontal position' kan je bepalen of je de kopjes links of rechts op de site wilt zien.
+Bij Metadata staan standaard categorieën, die je naar eigen inzicht kunt toevoegen aan de pagina. Deze categorieën staan vast. Wil je een andere titel voor je kopje dan kan je het ICT-team hiervoor mailen. Onder 'horizontal position' kun je bepalen of de kopjes links of rechts komen.
 
 Klik op 'Save' om de veranderingen door te voeren. 
 
@@ -30,26 +28,26 @@ Klik op 'Save' om de veranderingen door te voeren.
 
 - Ga naar: Content > Pages > Add... > Rich text page
 - Title: Naam van het menu
-- Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin.  
+- Status: 'Published' is automatisch aangevinkt. Hierdoor zijn veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen in eerste instantie alleen zichtbaar wil maken voor de admin, kun je 'Draft' aanklikken. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker. 
 - Klik op 'Save' om de veranderingen door te voeren. 
 
 <strong>1.1.3. Add Link</strong>
 
-Wanneer je een menu aanmaakt met 'Rich text page' creeer je een pagina op de JDsite zelf. Echter is het ook mogelijk om een menu naar een andere pagina door te laten linken.
+Wanneer je een menu aanmaakt met 'Rich text page' creeer je een pagina op de JDsite zelf. Echter is het ook mogelijk om een menu naar een andere pagina te laten verwijzen.
 
 - Ga naar: Content > Pages > Add... > Link
 - Title: Naam van het menu
-- URL: de link van de pagina waar het menu naar door moet linken
-- Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
+- URL: de link van de pagina waar het menu naar moet verwijzen.
+- Status: 'Published' is automatisch aangevinkt. Hierdoor zijn veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen in eerste instantie alleen zichtbaar wil maken voor de admin, kun je 'Draft' aanklikken. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
 - 'Top Navigation Bar', 'Left hand tree, en 'footer' staan automatisch aangevinkt. Hier hoef je niets aan te veranderen.  
 - Klik op 'Save' om de veranderingen door te voeren. 
 
 ### 2 Managing Content
 
-De tekstverwerker, het venster waar je inhoud kunt wijzigingen, zul je vaak gebruiken. Deze heeft verschillende opties die hieronder staan beschreven. 
+Door middel van de tekstverwerker kun je de inhoud wijzigen. De verschillende functies staan hieronder beschreven.
 
 <strong>2.1 Taakbalk tekstverwerker</strong>
 
@@ -75,36 +73,36 @@ Van links naar rechts zie je in de taakbalk staan:
 <strong>2.2 Hyperlink invoegen</strong>
 
 Het invoegen van een hyperlink kan als volgt:
-- Selecteer de tekst waarvan je een link wilt maken
-- Klik op de het icoontje van de kettingschakel in de taakbalk
-- Vul de URL Link in bij 'General Properties' 
+- Selecteer de tekst waarvan je een link wilt maken;
+- Klik op de het icoontje van de kettingschakel in de taakbalk. Via dit icoon kun je de hyperlink later ook aanpassen;
+- Vul de URL Link in bij 'General Properties'; 
 - Klik op 'Update'. 
 
-Indien je de link wilt verwijderen klik je op 'Unlink'.
+Indien je de link wilt verwijderen, klik je op 'Unlink' (de gebroken schakel).
 
 <strong>2.3 Afbeelding</strong>
 
 Een afbeelding opnemen in de tekst kan op twee manieren: 
 
-1. Een afbeelding kopiëren/plakken (vanaf een andere site) in het tekstvak (bij content), deze methode is makkelijk en snel. Echter, wanneer de locatie van de afbeelding op de originele site verandert, is de afbeelding niet meer zichtbaar en krijg je een foutmelding. 
+1. Een afbeelding kopiëren/plakken (vanaf een andere site) in het tekstvak (bij content). Deze methode is makkelijk en snel. Echter, wanneer de locatie van de afbeelding op de originele site verandert, is de afbeelding niet meer zichtbaar en krijg je een foutmelding. 
 
 2. Om te zorgen dat je afbeelding in de toekomst wel beschikbaar blijft kan je de afbeelding uploaden naar de Media Library (de afbeelding staat dan op de eigen JD server)
 - Zorg dat de afbeelding is opgeslagen in de Media Library (zie punt 7 voor meer uitleg hierover)
 - Ga naar het tekstvak 'Content' en klik in de taakbalk op het 'Instert/Edit Image' icoon (vijfde van links)
-- Een nieuw venster wordt geopend
-- Onder het tabblad 'General', naast het veld van 'Image URL' zit de 'browse' knop om naar de Media Library te gaan.
-- Selecteer de afbeelding uit de Media Libary
-- Klik op 'Insert'
+- Een nieuw venster opent;
+- Onder het tabblad 'General', naast het veld van 'Image URL' zit de 'browse' knop om naar de Media Library te gaan;
+- Selecteer de afbeelding uit de Media Libary;
+- Klik op 'Insert'.
 
-Wil je de afbeelding verwijderen uit het tekstvak dan kan je dat met delete of backspace doen. 
+Wil je de afbeelding verwijderen uit het tekstvak, dan kan je dat met delete of backspace doen. 
 
-<strong>2.4 PDF bestanden</strong>
+<strong>2.4 PDF-bestanden</strong>
 
-PDF bestanden zoals het HR en Statuten kan je als volgt insluiten (embedden) op een pagina.
+PDF bestanden, zoals het HR en Statuten, kun je als volgt insluiten (embedden) op een pagina.
 
 1. Upload het PDF-bestand in de Media Library (zie punt 7 voor meer uitleg hierover)
 2. Open in de backend de pagina waar je het PDF wilt insluiten
-3. Ga naar het tekstvak 'Content' en klik in de taakbalk op het HTML icoon (zevende van links)
+3. Ga naar het tekstvak 'Content' en klik in de taakbalk op het HTML-icoon (zevende van links)
 4. Kopieer in het HTML venster de onderstaande objectcode:  ```<object data="/static/media/path/bestandsnaam.pdf" width="100%" height=600 type="application/pdf"></object>``` 
 5. Waar in de bovenstaande code nu "/static/media/path/bestandsnaam.pdf" staat dien je de locatiecode (tag) van het pdf-bestand te plaatsen. Dit doe je als volgt: 
 	- open in een nieuw tabblad de Media Library

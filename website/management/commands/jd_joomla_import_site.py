@@ -12,13 +12,6 @@ from mezzanine.blog.management.base import BaseImporterCommand
 # from website.jdpages.models import JDPage
 
 
-menutype2site = {
-    1: 2,  # Amsterdam
-    17: 1, # Landelijk
-    5: 3,  # Leiden-Haaglanden
-}
-
-
 def get_post_url(cur, table_prefix, post_id):
     cur.execute('SELECT * FROM '+table_prefix+'_content WHERE id=%s;',
                 (post_id,))
@@ -86,8 +79,30 @@ class Command(BaseImporterCommand):
         site.save()
         os.environ["MEZZANINE_SITE_ID"] = str(site.id)
         
-        # Get all content for the specified site
-        cur.execute('SELECT * FROM '+options.get('tableprefix')+'_menu WHERE menutype=%s;', sites[menuid])
+        #######################################################################
+        # Get all events for the specified site
+        #######################################################################
+        print("### MIGRATING EVENTS ###")
+        categories = {}
+        cur.execute('SELECT assets.title, assets.name FROM '+options.get('tableprefix')+'_categories as cat JOIN '+options.get('tableprefix')+'_assets as assets ON cat.asset_id = assets.id WHERE cat.extension = "com_jevents";')
+        for c in cur.fetchall():
+            categories[int(c[1].split(".")[-1])] = c[0]
+        for k in categories:
+            print("[%d]\t'%s'" % (k, categories[k]))
+        while True:
+            cat = input("Events categorie om te migreren:")
+            if cat.isdigit() and int(cat) in categories:
+                break
+            else:
+                print("Ongeldige keuze")
+        
+        
+        return
+        #######################################################################
+        # Get all pages for the specified site
+        #######################################################################
+        print("### MIGRATING PAGES ###")
+        cur.execute('SELECT * FROM '+options.get('tableprefix')+'_menu WHERE menutype=%s;', sites[menuid] )
         for menu in cur.fetchall():
             url = urlparse(menu[6])
             qs = parse_qs(url.query)
@@ -108,5 +123,7 @@ class Command(BaseImporterCommand):
                     print('| | | '+page[3])
             else:
                 print('| | ' + menu[5])
+
+        
 
 

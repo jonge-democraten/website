@@ -16,13 +16,11 @@ Via de admin-pagina, onder Content > Pages, is het mogelijk de menustructuur van
 
 <strong>1.1.1 Homepage</strong>
 
-De bovenste regel 'Home' kun je niet verwijderen. Dit is namelijk standaard de landingspagina van de (sub)site. Wanneer je op 'Home' klikt, kan je de inhoud van de pagina veranderen. Indien je dit doet zul je onder het content-venster een indeling zien van de kolommen op de homepage. 
+Het menu 'Home' is de landingspagina van de (sub)website en deze kun je niet verwijderen. Wanneer je op 'Home' klikt, kun je wel de inhoud en indeling van de pagina veranderen. Indien je dit doet zul je onder het content-venster een indeling zien van de kolommen op de homepage. 
 
-Als je naar beneden scrollt, kun je onder Metadata de widgets aanpassen. Widgets zijn kleine applicaties die op beperkte schaal de functionaliteit van de website bevorderen. In dit geval leiden de widgets ertoe dan vanaf de homepage gemakkelijk naar andere pagina's doorverwezen kan worden, bijvoorbeeld naar blog-items. De widgets zijn ingedeeld in twee kolommen en zijn terug te vinden onderaan de homepagina. Met 'Left column widgets' en 'Right column widgets' kun je een indeling maken met éen of twee kolommen en x-aantal rijen. Dit kan je naar eigen inzicht indelen. 
+Onder 'Metadata' kun je de widgets aanpassen. Widgets zijn kleine applicaties die op beperkte schaal de functionaliteit van de website bevorderen. In dit geval zorgen de widgets ervoor dan vanaf de homepage gemakkelijk naar andere pagina's doorverwezen kan worden, bijvoorbeeld naar blog-items. De widgets zijn ingedeeld in twee kolommen en zijn terug te vinden onderaan de homepagina. Met 'Left column widgets' en 'Right column widgets' kun je een indeling maken met éen of twee kolommen en x-aantal rijen. Dit kun je naar eigen inzicht indelen. 
 
-Als Algemeen Secretaris heb je  voor de widgets de keuze tussen vaste categorieën die de uiteindelijke kopjes op de Homepage zullen zijn.
-
-Deze categorieën staan vast, wil je een andere titel voor je kopje dan kan je het ICT-team hiervoor mailen. Onder 'horizontal position' kan je bepalen of je de kopjes links of rechts op de site wilt zien.
+Bij Metadata staan standaard categorieën, die je naar eigen inzicht kunt toevoegen aan de pagina. Deze categorieën staan vast. Wil je een andere titel voor je kopje dan kan je het ICT-team hiervoor mailen. Onder 'horizontal position' kun je bepalen of de kopjes links of rechts komen.
 
 Klik op 'Save' om de veranderingen door te voeren. 
 
@@ -30,19 +28,19 @@ Klik op 'Save' om de veranderingen door te voeren.
 
 - Ga naar: Content > Pages > Add... > Rich text page
 - Title: Naam van het menu
-- Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin.  
+- Status: 'Published' is automatisch aangevinkt. Hierdoor zijn veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen in eerste instantie alleen zichtbaar wil maken voor de admin, kun je 'Draft' aanklikken. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
 - Content: hier zie je een tekstverwerker waar naar believen tekst, afbeeldingen en video invoeren. Zie 2.1 voor uitleg over de tekstverwerker. 
 - Klik op 'Save' om de veranderingen door te voeren. 
 
 <strong>1.1.3. Add Link</strong>
 
-Wanneer je een menu aanmaakt met 'Rich text page' creeer je een pagina op de JDsite zelf. Echter is het ook mogelijk om een menu naar een andere pagina door te laten linken.
+Wanneer je een menu aanmaakt met 'Rich text page' creeer je een pagina op de JDsite zelf. Echter is het ook mogelijk om een menu naar een andere pagina te laten verwijzen.
 
 - Ga naar: Content > Pages > Add... > Link
 - Title: Naam van het menu
-- URL: de link van de pagina waar het menu naar door moet linken
-- Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
+- URL: de link van de pagina waar het menu naar moet verwijzen.
+- Status: 'Published' is automatisch aangevinkt. Hierdoor zijn veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen in eerste instantie alleen zichtbaar wil maken voor de admin, kun je 'Draft' aanklikken. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
 - 'Top Navigation Bar', 'Left hand tree, en 'footer' staan automatisch aangevinkt. Hier hoef je niets aan te veranderen.  
 - Klik op 'Save' om de veranderingen door te voeren. 

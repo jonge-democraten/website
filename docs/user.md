@@ -87,12 +87,12 @@ Een afbeelding opnemen in de tekst kan op twee manieren:
 1. Een afbeelding kopiëren/plakken (vanaf een andere site) in het tekstvak (bij content). Deze methode is makkelijk en snel. Echter, wanneer de locatie van de afbeelding op de originele site verandert, is de afbeelding niet meer zichtbaar en krijg je een foutmelding. 
 
 2. Om te zorgen dat je afbeelding in de toekomst wel beschikbaar blijft kan je de afbeelding uploaden naar de Media Library (de afbeelding staat dan op de eigen JD server)
-- Zorg dat de afbeelding is opgeslagen in de Media Library (zie punt 7 voor meer uitleg hierover)
-- Ga naar het tekstvak 'Content' en klik in de taakbalk op het 'Instert/Edit Image' icoon (vijfde van links)
-- Een nieuw venster opent;
-- Onder het tabblad 'General', naast het veld van 'Image URL' zit de 'browse' knop om naar de Media Library te gaan;
-- Selecteer de afbeelding uit de Media Libary;
-- Klik op 'Insert'.
+    - Zorg dat de afbeelding is opgeslagen in de Media Library (zie punt 7 voor meer uitleg hierover)
+    - Ga naar het tekstvak 'Content' en klik in de taakbalk op het 'Instert/Edit Image' icoon (vijfde van links)
+    - Een nieuw venster opent;
+    - Onder het tabblad 'General', naast het veld van 'Image URL' zit de 'browse' knop om naar de Media Library te gaan;
+    - Selecteer de afbeelding uit de Media Libary;
+    - Klik op 'Insert'.
 
 Wil je de afbeelding verwijderen uit het tekstvak, dan kan je dat met delete of backspace doen. 
 
@@ -100,16 +100,16 @@ Wil je de afbeelding verwijderen uit het tekstvak, dan kan je dat met delete of 
 
 PDF bestanden, zoals het HR en Statuten, kun je als volgt insluiten (embedden) op een pagina.
 
-1. Upload het PDF-bestand in de Media Library (zie punt 7 voor meer uitleg hierover)
-2. Open in de backend de pagina waar je het PDF wilt insluiten
-3. Ga naar het tekstvak 'Content' en klik in de taakbalk op het HTML-icoon (zevende van links)
-4. Kopieer in het HTML venster de onderstaande objectcode:  ```<object data="/static/media/path/bestandsnaam.pdf" width="100%" height=600 type="application/pdf"></object>``` 
-5. Waar in de bovenstaande code nu "/static/media/path/bestandsnaam.pdf" staat dien je de locatiecode (tag) van het pdf-bestand te plaatsen. Dit doe je als volgt: 
+- Upload het PDF-bestand in de Media Library (zie punt 7 voor meer uitleg hierover)
+- Open in de backend de pagina waar je het PDF wilt insluiten
+- Ga naar het tekstvak 'Content' en klik in de taakbalk op het HTML-icoon (zevende van links)
+- Kopieer in het HTML venster de onderstaande objectcode:  ```<object data="/static/media/path/bestandsnaam.pdf" width="100%" height=600 type="application/pdf"></object>``` 
+- Waar in de bovenstaande code nu "/static/media/path/bestandsnaam.pdf" staat dien je de locatiecode (tag) van het pdf-bestand te plaatsen. Dit doe je als volgt: 
 	- open in een nieuw tabblad de Media Library
 	- klik op de bestandsnaam van het pdf-bestand welke je wilt insluiten
 	- Het pdf-bestand wordt nu geopend in een ander tabblad, in die adresbalk zie je nu de locatiecode van het pdf-bestand staan.
 	- Kopieer deze locatiecode, let wel, de code begint met /static/media/ en eindigt met .pdf . Alles wat hiervoor of achter staat heb je niet nodig.
-6. Plak de locatiecode op de plek waar nu /static/media/path/bestandsnaam.pdf staat. Zorg dat de code tussen de aanhalingstekens blijft staan.
+- Plak de locatiecode op de plek waar nu /static/media/path/bestandsnaam.pdf staat. Zorg dat de code tussen de aanhalingstekens blijft staan.
 
 Dit is een vrij geavanceerd proces, ga dus niet zomaar rommelen aan de code. Wanneer je de locatiecode niet correct kopieert, wordt er geen PDF bestand zichtbaar op de site.  
 
@@ -148,20 +148,18 @@ Een website kent een voorkant (front end) en een achterkant (back end). De 'fron
 
 Het is mogelijk om de sidebar aan te passen.
 
-Ga naar: Content > Sidebar
-Blogs: Hier kan je instellen welke blog categorie zichtbaar zijn op in de sidebar. 
-Twitter feed: staat automatisch aangevinkt
-Events and newsletters tabs: staat automatisch aangevinkt. 
-Social media buttons: Hier staan de vier links naar sociale media waar de Jonge Democraten actief zijn. Je kunt hier ook de link veranderen naar de social media pagina's van je eigen afdeling. 
-
-
+- Ga naar: Content > Sidebar
+- Blogs: Hier kan je instellen welke blog categorie zichtbaar zijn op in de sidebar. 
+- Twitter feed: staat automatisch aangevinkt
+- Events and newsletters tabs: staat automatisch aangevinkt. 
+- Social media buttons: Hier staan de vier links naar sociale media waar de Jonge Democraten actief zijn. Je kunt hier ook de link veranderen naar de social media pagina's van je eigen afdeling. 
 
 
 ### 3 Formulier opstellen
 
 Wil je een formulier opstellen, zodat leden zich voor een activiteit kunnen aanmelden, dan kan dat met de nieuwe backend. Overigens kan je met dit formulier geen betalingen invoeren of verwerken.
 
-Ga naar: Content > Pages > Add... > Form
+- Ga naar: Content > Pages > Add... > Form
 - Title: Naam van het submenu
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 
 - Published from/Expires on: Hier kan je aangeven wanneer het formulier zichtbaar moet zijn op de website. Klik bij 'Published from' op 'today' en daarnaast bij 'Time' op 'now'. Als je wilt aangeven tot wanneer de content zichtbaar moet zijn op de site kan je een uiterste datum aangeven bij 'Expires on'. Dit is niet noodzakelijk.
@@ -177,11 +175,12 @@ Klik op 'Save' om de veranderingen door te voeren.
 ### 4 Blogposts
 
 Als AS heb je de mogelijkheid om blogs aan te maken, aan te passen en te verwijderen.
-- verschil tussen blog categorie, blog posts en blog page.  
+
+TODO: verschil tussen blog categorie, blog posts en blog page.  
 
 <strong>Blog aanmaken</strong>
 
-- Ga naar: Content > Blog posts > Klik rechtsboven op 'Add blog posts' 
+- Ga naar: Content > Blog posts > Klik rechtsboven op 'Add blog posts'
 - Title: Naam van het Blog
 - Categories: Vink hier de categorie aan waar je Blog bij hoort. Je kan zelf geen nieuwe categorieën aanmaken. Indien je toch andere categorieën wilt kun je het ICT-team mailen.
 - Status: 'Published' is automatisch aangevinkt. Hierdoor zullen veranderingen aan de site na opslaan meteen zichtbaar op de site.  Wanneer je je veranderingen nog niet aan de buitenwereld wilt tonen kun je ervoor kiezen om bovenaan 'Draft' aan te vinken. De veranderingen zullen dan alleen zichtbaar zijn voor de admin. 

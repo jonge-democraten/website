@@ -200,7 +200,7 @@ class TestBlogListView(TestCaseAdminLogin):
                 counter += 1
 
 
-class TestEvent(TestCase):
+class TestEvent(object):
     """
     Tests the integration with the fullcalendar app.
     Tests the events column and sidebar widget, and the individual occurrence page.
@@ -208,15 +208,7 @@ class TestEvent(TestCase):
      * Events from all sites in column element
      * Events from this site in column element
      * Events from this site and main site in column element
-    Tests the draft/published status visibility in widgets and of occurrence page for,
-     * user (draft hidden)
-     * TODO BR: admin (draft visible)
     """
-
-    fixtures = ['test_events.json']
-
-    def setUp(self):
-        self.client = Client()
 
     def get_html(self, url):
         response = self.client.get(url)
@@ -231,7 +223,7 @@ class TestEvent(TestCase):
         url = '/'
         html = self.get_html(url)
         occurrences = Occurrence.objects.all()
-        self.check_occurrence_user_visibility(occurrences, html)
+        self.check_occurrence_visibility(occurrences, html, self.is_admin())
 
     def test_this_site_events_visibility_user(self):
         """
@@ -241,7 +233,7 @@ class TestEvent(TestCase):
         url = '/eventsthissite/'
         html = self.get_html(url)
         occurrences = Occurrence.site_related.all()
-        self.check_occurrence_user_visibility(occurrences, html)
+        self.check_occurrence_visibility(occurrences, html, self.is_admin())
 
     def test_this_site_and_main_events_visibility_user(self):
         """
@@ -253,20 +245,20 @@ class TestEvent(TestCase):
         html = self.get_html(url)
         sites = {1, 2}
         occurrences = Occurrence.site_related.filter(site_id__in=sites)
-        self.check_occurrence_user_visibility(occurrences, html)
+        self.check_occurrence_visibility(occurrences, html, self.is_admin())
         occurrences_site_3 = Occurrence.objects.filter(site_id=3)
         for occurrence in occurrences_site_3:
             self.assertFalse(str(occurrence.event.title) in html)
         settings.SITE_ID = 1  # back to main site
 
-    def check_occurrence_user_visibility(self, occurrences, html):
+    def check_occurrence_visibility(self, occurrences, html, is_admin):
         """
         Tests that draft occurrences are not shown in columns, and that their pages are hidden.
         :param occurrences: the occurrences to check for visibility based on published status
         :param html: the html of the page
         """
         for occurrence in occurrences:
-            if occurrence.status == CONTENT_STATUS_DRAFT:
+            if occurrence.status == CONTENT_STATUS_DRAFT and not is_admin:
                 self.assertFalse(str(occurrence.event.title) in html)
                 response = self.client.get(occurrence.get_absolute_url())
                 self.assertEqual(response.status_code, 404)
@@ -274,3 +266,33 @@ class TestEvent(TestCase):
                 self.assertTrue(str(occurrence.event.title) in html)
                 response = self.client.get(occurrence.get_absolute_url())
                 self.assertEqual(response.status_code, 200)
+
+
+class TestEventAdmin(TestCase, TestEvent):
+    """
+    Tests the draft/published status visibility in widgets and the occurrence page, for a normal user (draft hidden).
+    see TestEvent for actual tests
+    """
+    fixtures = ['test_events.json']
+
+    def setUp(self):
+        self.client = Client()
+        response = self.client.post('/admin/login/?next=/admin/', {'username': 'admin', 'password': 'admin'}, follow=True)
+        self.assertEqual(response.status_code, 200)
+
+    def is_admin(self):
+        return True
+
+
+class TestEventUser(TestCase, TestEvent):
+    """
+    Tests the draft/published status visibility in widgets and occurrence page, for an admin (draft visible)
+    see TestEvent for actual tests
+    """
+    fixtures = ['test_events.json']
+
+    def setUp(self):
+        self.client = Client()
+
+    def is_admin(self):
+        return False

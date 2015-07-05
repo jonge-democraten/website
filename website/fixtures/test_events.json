@@ -1,0 +1,1006 @@
+[
+{
+  "fields": {
+    "created": "2015-07-04T18:34:54.661Z",
+    "site": 1,
+    "description": "This is a test homepage.\u00a0",
+    "slug": "/",
+    "_meta_title": "",
+    "status": 2,
+    "updated": "2015-07-05T08:43:06.667Z",
+    "content_model": "homepage",
+    "titles": "Home",
+    "title": "Home",
+    "keywords_string": "",
+    "expiry_date": null,
+    "parent": null,
+    "in_sitemap": true,
+    "in_menus": "1",
+    "publish_date": "2015-07-04T18:34:54Z",
+    "login_required": false,
+    "_order": 0,
+    "gen_description": true,
+    "short_url": null
+  },
+  "pk": 2,
+  "model": "pages.page"
+},
+{
+  "fields": {
+    "created": "2015-07-04T18:35:24.832Z",
+    "site": 1,
+    "description": "This is a test page.\u00a0",
+    "slug": "eventsthissite",
+    "_meta_title": "",
+    "status": 2,
+    "updated": "2015-07-05T08:42:32.212Z",
+    "content_model": "richtextpage",
+    "titles": "EventsThisSite",
+    "title": "EventsThisSite",
+    "keywords_string": "",
+    "expiry_date": null,
+    "parent": null,
+    "in_sitemap": true,
+    "in_menus": "1",
+    "publish_date": "2015-07-04T18:35:24Z",
+    "login_required": false,
+    "_order": 0,
+    "gen_description": true,
+    "short_url": null
+  },
+  "pk": 3,
+  "model": "pages.page"
+},
+{
+  "fields": {
+    "created": "2015-07-04T18:43:06.316Z",
+    "site": 2,
+    "description": "Test homepage for a department site. \u00a0",
+    "slug": "/",
+    "_meta_title": "",
+    "status": 2,
+    "updated": "2015-07-05T19:42:56.090Z",
+    "content_model": "homepage",
+    "titles": "LH Home",
+    "title": "LH Home",
+    "keywords_string": "",
+    "expiry_date": null,
+    "parent": null,
+    "in_sitemap": true,
+    "in_menus": "1",
+    "publish_date": "2015-07-04T18:43:06Z",
+    "login_required": false,
+    "_order": 0,
+    "gen_description": true,
+    "short_url": null
+  },
+  "pk": 4,
+  "model": "pages.page"
+},
+{
+  "fields": {
+    "created": "2015-07-04T18:44:13.468Z",
+    "site": 2,
+    "description": "Test page for the a department site.\u00a0",
+    "slug": "lh-test-page",
+    "_meta_title": "",
+    "status": 2,
+    "updated": "2015-07-04T18:44:13.468Z",
+    "content_model": "richtextpage",
+    "titles": "LH test page",
+    "title": "LH test page",
+    "keywords_string": "",
+    "expiry_date": null,
+    "parent": null,
+    "in_sitemap": true,
+    "in_menus": "1",
+    "publish_date": "2015-07-04T18:44:13.464Z",
+    "login_required": false,
+    "_order": 1,
+    "gen_description": true,
+    "short_url": null
+  },
+  "pk": 5,
+  "model": "pages.page"
+},
+{
+  "fields": {
+    "created": "2015-07-05T07:50:59.383Z",
+    "site": 3,
+    "description": "This is a test homepage for a site.\u00a0",
+    "slug": "/",
+    "_meta_title": "",
+    "status": 2,
+    "updated": "2015-07-05T07:50:59.383Z",
+    "content_model": "homepage",
+    "titles": "AMS Home",
+    "title": "AMS Home",
+    "keywords_string": "",
+    "expiry_date": null,
+    "parent": null,
+    "in_sitemap": true,
+    "in_menus": "1",
+    "publish_date": "2015-07-05T07:50:59.356Z",
+    "login_required": false,
+    "_order": 0,
+    "gen_description": true,
+    "short_url": null
+  },
+  "pk": 6,
+  "model": "pages.page"
+},
+{
+  "fields": {
+    "content": "<p>This is a test page.\u00a0</p>"
+  },
+  "pk": 3,
+  "model": "pages.richtextpage"
+},
+{
+  "fields": {
+    "content": "<p>Test page for the a department site.\u00a0</p>"
+  },
+  "pk": 5,
+  "model": "pages.richtextpage"
+},
+{
+  "fields": {
+    "name": "jd.local",
+    "domain": "jd.local:8000"
+  },
+  "pk": 1,
+  "model": "sites.site"
+},
+{
+  "fields": {
+    "name": "lh.jd.local",
+    "domain": "lh.jd.local:8000"
+  },
+  "pk": 2,
+  "model": "sites.site"
+},
+{
+  "fields": {
+    "name": "ams.jd.local",
+    "domain": "ams.jd.local:8000"
+  },
+  "pk": 3,
+  "model": "sites.site"
+},
+{
+  "fields": {
+    "object_id": 1,
+    "content_type": [
+      "jdpages",
+      "eventcolumnelement"
+    ],
+    "site": 1,
+    "subtype": "",
+    "name": "Events for all sites"
+  },
+  "pk": 1,
+  "model": "jdpages.columnelement"
+},
+{
+  "fields": {
+    "object_id": 2,
+    "content_type": [
+      "jdpages",
+      "eventcolumnelement"
+    ],
+    "site": 1,
+    "subtype": "",
+    "name": "Events for example.com"
+  },
+  "pk": 2,
+  "model": "jdpages.columnelement"
+},
+{
+  "fields": {
+    "object_id": 3,
+    "content_type": [
+      "jdpages",
+      "eventcolumnelement"
+    ],
+    "site": 2,
+    "subtype": "",
+    "name": "Events for all sites"
+  },
+  "pk": 3,
+  "model": "jdpages.columnelement"
+},
+{
+  "fields": {
+    "object_id": 4,
+    "content_type": [
+      "jdpages",
+      "eventcolumnelement"
+    ],
+    "site": 2,
+    "subtype": "",
+    "name": "Events for ams.jd.nl"
+  },
+  "pk": 4,
+  "model": "jdpages.columnelement"
+},
+{
+  "fields": {
+    "object_id": 5,
+    "content_type": [
+      "jdpages",
+      "eventcolumnelement"
+    ],
+    "site": 2,
+    "subtype": "",
+    "name": "Events for main site and ams.jd.nl"
+  },
+  "pk": 5,
+  "model": "jdpages.columnelement"
+},
+{
+  "fields": {
+    "object_id": 6,
+    "content_type": [
+      "jdpages",
+      "eventcolumnelement"
+    ],
+    "site": 3,
+    "subtype": "",
+    "name": "Events for all sites"
+  },
+  "pk": 6,
+  "model": "jdpages.columnelement"
+},
+{
+  "fields": {
+    "object_id": 7,
+    "content_type": [
+      "jdpages",
+      "eventcolumnelement"
+    ],
+    "site": 3,
+    "subtype": "",
+    "name": "Events for ams.jd.local"
+  },
+  "pk": 7,
+  "model": "jdpages.columnelement"
+},
+{
+  "fields": {
+    "object_id": 8,
+    "content_type": [
+      "jdpages",
+      "eventcolumnelement"
+    ],
+    "site": 3,
+    "subtype": "",
+    "name": "Events for main site and ams.jd.local"
+  },
+  "pk": 8,
+  "model": "jdpages.columnelement"
+},
+{
+  "fields": {
+    "max_items": 10,
+    "site": 1,
+    "page": 2,
+    "horizontal_position": "Left",
+    "_order": 0,
+    "title": "All events",
+    "column_element": 1
+  },
+  "pk": 1,
+  "model": "jdpages.columnelementwidget"
+},
+{
+  "fields": {
+    "max_items": 10,
+    "site": 1,
+    "page": 3,
+    "horizontal_position": "Left",
+    "_order": 0,
+    "title": "Main Events",
+    "column_element": 2
+  },
+  "pk": 2,
+  "model": "jdpages.columnelementwidget"
+},
+{
+  "fields": {
+    "max_items": 3,
+    "site": 2,
+    "page": 4,
+    "horizontal_position": "Left",
+    "_order": 0,
+    "title": "Main and department events",
+    "column_element": 5
+  },
+  "pk": 3,
+  "model": "jdpages.columnelementwidget"
+},
+{
+  "fields": {
+    "site": 1
+  },
+  "pk": 1,
+  "model": "jdpages.sidebar"
+},
+{
+  "fields": {
+    "site": 2
+  },
+  "pk": 2,
+  "model": "jdpages.sidebar"
+},
+{
+  "fields": {
+    "site": 3
+  },
+  "pk": 3,
+  "model": "jdpages.sidebar"
+},
+{
+  "fields": {
+    "site": 1,
+    "active": false,
+    "sidebar": 1
+  },
+  "pk": 1,
+  "model": "jdpages.sidebartabswidget"
+},
+{
+  "fields": {
+    "site": 2,
+    "active": false,
+    "sidebar": 2
+  },
+  "pk": 2,
+  "model": "jdpages.sidebartabswidget"
+},
+{
+  "fields": {
+    "site": 3,
+    "active": true,
+    "sidebar": 3
+  },
+  "pk": 3,
+  "model": "jdpages.sidebartabswidget"
+},
+{
+  "fields": {
+    "content": "<p>This is a test homepage for a site.\u00a0</p>"
+  },
+  "pk": 6,
+  "model": "jdpages.homepage"
+},
+{
+  "fields": {
+    "content": "<p>This is a test homepage.\u00a0</p>"
+  },
+  "pk": 2,
+  "model": "jdpages.homepage"
+},
+{
+  "fields": {
+    "content": "<p>Test homepage for a department site. \u00a0</p>"
+  },
+  "pk": 4,
+  "model": "jdpages.homepage"
+},
+{
+  "fields": {
+    "site": 1,
+    "type": "AL"
+  },
+  "pk": 1,
+  "model": "jdpages.eventcolumnelement"
+},
+{
+  "fields": {
+    "site": 1,
+    "type": "SI"
+  },
+  "pk": 2,
+  "model": "jdpages.eventcolumnelement"
+},
+{
+  "fields": {
+    "site": 2,
+    "type": "AL"
+  },
+  "pk": 3,
+  "model": "jdpages.eventcolumnelement"
+},
+{
+  "fields": {
+    "site": 2,
+    "type": "SI"
+  },
+  "pk": 4,
+  "model": "jdpages.eventcolumnelement"
+},
+{
+  "fields": {
+    "site": 2,
+    "type": "SM"
+  },
+  "pk": 5,
+  "model": "jdpages.eventcolumnelement"
+},
+{
+  "fields": {
+    "site": 3,
+    "type": "AL"
+  },
+  "pk": 6,
+  "model": "jdpages.eventcolumnelement"
+},
+{
+  "fields": {
+    "site": 3,
+    "type": "SI"
+  },
+  "pk": 7,
+  "model": "jdpages.eventcolumnelement"
+},
+{
+  "fields": {
+    "site": 3,
+    "type": "SM"
+  },
+  "pk": 8,
+  "model": "jdpages.eventcolumnelement"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "ADMIN_MENU_COLLAPSED",
+    "value": "False"
+  },
+  "pk": 1,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "SEARCH_PER_PAGE",
+    "value": "10"
+  },
+  "pk": 2,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "BLOG_POST_PER_PAGE",
+    "value": "5"
+  },
+  "pk": 3,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "PIWIK_SITE_ID",
+    "value": "1"
+  },
+  "pk": 4,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "SSL_ENABLED",
+    "value": "False"
+  },
+  "pk": 5,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "TWITTER_DEFAULT_NUM_TWEETS",
+    "value": "3"
+  },
+  "pk": 6,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "TWITTER_DEFAULT_QUERY_TYPE",
+    "value": "search"
+  },
+  "pk": 7,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "SSL_FORCE_HOST",
+    "value": ""
+  },
+  "pk": 8,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "TWITTER_DEFAULT_QUERY",
+    "value": "from:stephen_mcd mezzanine"
+  },
+  "pk": 9,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "TWITTER_CONSUMER_SECRET",
+    "value": ""
+  },
+  "pk": 10,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "SITE_TITLE",
+    "value": "Jonge Democraten"
+  },
+  "pk": 11,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "TWITTER_ACCESS_TOKEN_SECRET",
+    "value": ""
+  },
+  "pk": 12,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "TWITTER_CONSUMER_KEY",
+    "value": ""
+  },
+  "pk": 13,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "SIDEBAR_AGENDA_SITES",
+    "value": "2"
+  },
+  "pk": 14,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "SITE_TAGLINE",
+    "value": ""
+  },
+  "pk": 15,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "TWITTER_ACCESS_TOKEN_KEY",
+    "value": ""
+  },
+  "pk": 16,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "MAX_PAGING_LINKS",
+    "value": "10"
+  },
+  "pk": 17,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 1,
+    "name": "RICHTEXT_FILTER_LEVEL",
+    "value": "1"
+  },
+  "pk": 18,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "ADMIN_MENU_COLLAPSED",
+    "value": "False"
+  },
+  "pk": 19,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "SEARCH_PER_PAGE",
+    "value": "10"
+  },
+  "pk": 20,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "BLOG_POST_PER_PAGE",
+    "value": "5"
+  },
+  "pk": 21,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "PIWIK_SITE_ID",
+    "value": "1"
+  },
+  "pk": 22,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "SSL_ENABLED",
+    "value": "False"
+  },
+  "pk": 23,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "TWITTER_DEFAULT_NUM_TWEETS",
+    "value": "3"
+  },
+  "pk": 24,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "TWITTER_DEFAULT_QUERY_TYPE",
+    "value": "search"
+  },
+  "pk": 25,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "SSL_FORCE_HOST",
+    "value": ""
+  },
+  "pk": 26,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "TWITTER_DEFAULT_QUERY",
+    "value": "from:stephen_mcd mezzanine"
+  },
+  "pk": 27,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "TWITTER_CONSUMER_SECRET",
+    "value": ""
+  },
+  "pk": 28,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "SITE_TITLE",
+    "value": "JD Leiden Haaglanden"
+  },
+  "pk": 29,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "TWITTER_ACCESS_TOKEN_SECRET",
+    "value": ""
+  },
+  "pk": 30,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "TWITTER_CONSUMER_KEY",
+    "value": ""
+  },
+  "pk": 31,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "SIDEBAR_AGENDA_SITES",
+    "value": "2"
+  },
+  "pk": 32,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "SITE_TAGLINE",
+    "value": "Leiden Haaglanden"
+  },
+  "pk": 33,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "TWITTER_ACCESS_TOKEN_KEY",
+    "value": ""
+  },
+  "pk": 34,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "MAX_PAGING_LINKS",
+    "value": "10"
+  },
+  "pk": 35,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "site": 2,
+    "name": "RICHTEXT_FILTER_LEVEL",
+    "value": "1"
+  },
+  "pk": 36,
+  "model": "conf.setting"
+},
+{
+  "fields": {
+    "created": "2015-07-04T18:56:54.388Z",
+    "site": 1,
+    "description": "Test jd event.",
+    "slug": "jd-event",
+    "_meta_title": "",
+    "status": 2,
+    "updated": "2015-07-04T18:56:54.388Z",
+    "event_category": null,
+    "title": "JD event",
+    "keywords_string": "",
+    "expiry_date": null,
+    "in_sitemap": true,
+    "content": "<p>Test jd event.</p>",
+    "publish_date": "2015-07-04T18:56:54.359Z",
+    "gen_description": true,
+    "short_url": null
+  },
+  "pk": 1,
+  "model": "events.event"
+},
+{
+  "fields": {
+    "created": "2015-07-04T18:58:59.362Z",
+    "site": 2,
+    "description": "This is a test department meeting.",
+    "slug": "leiden-haaglanden-meeting",
+    "_meta_title": "",
+    "status": 2,
+    "updated": "2015-07-05T08:43:49.815Z",
+    "event_category": null,
+    "title": "Leiden Haaglanden meeting",
+    "keywords_string": "",
+    "expiry_date": null,
+    "in_sitemap": true,
+    "content": "<p>This is a test department meeting.</p>",
+    "publish_date": "2015-07-04T18:58:59Z",
+    "gen_description": true,
+    "short_url": null
+  },
+  "pk": 2,
+  "model": "events.event"
+},
+{
+  "fields": {
+    "created": "2015-07-05T09:36:31.623Z",
+    "site": 1,
+    "description": "JD draft event",
+    "slug": "jd-draft-event",
+    "_meta_title": "",
+    "status": 1,
+    "updated": "2015-07-05T09:36:31.623Z",
+    "event_category": null,
+    "title": "JD draft event",
+    "keywords_string": "",
+    "expiry_date": null,
+    "in_sitemap": true,
+    "content": "",
+    "publish_date": "2015-07-05T09:36:31.621Z",
+    "gen_description": true,
+    "short_url": null
+  },
+  "pk": 3,
+  "model": "events.event"
+},
+{
+  "fields": {
+    "created": "2015-07-04T18:56:54.397Z",
+    "site": 1,
+    "description": "First occurrence",
+    "slug": "jd-event-first-occurrence",
+    "_meta_title": null,
+    "end_time": "2020-07-04T18:00:00Z",
+    "status": 2,
+    "updated": "2015-07-04T18:56:54.397Z",
+    "event": 1,
+    "title": "JD event (First occurrence)",
+    "keywords_string": "",
+    "expiry_date": null,
+    "in_sitemap": true,
+    "publish_date": "2015-07-04T18:56:54.359Z",
+    "start_time": "2020-07-04T09:00:00Z",
+    "location": "Utrecht",
+    "gen_description": false,
+    "short_url": null
+  },
+  "pk": 1,
+  "model": "events.occurrence"
+},
+{
+  "fields": {
+    "created": "2015-07-04T18:56:54.400Z",
+    "site": 1,
+    "description": "Second occurrence",
+    "slug": "jd-event-second-occurrence",
+    "_meta_title": null,
+    "end_time": "2020-07-11T18:00:00Z",
+    "status": 2,
+    "updated": "2015-07-04T18:56:54.400Z",
+    "event": 1,
+    "title": "JD event (Second occurrence)",
+    "keywords_string": "",
+    "expiry_date": null,
+    "in_sitemap": true,
+    "publish_date": "2015-07-04T18:56:54.359Z",
+    "start_time": "2020-07-11T09:00:00Z",
+    "location": "Amsterdam",
+    "gen_description": false,
+    "short_url": null
+  },
+  "pk": 2,
+  "model": "events.occurrence"
+},
+{
+  "fields": {
+    "created": "2015-07-04T18:58:59.371Z",
+    "site": 2,
+    "description": "First occurrence",
+    "slug": "leiden-haaglanden-meeting-first-occurrence",
+    "_meta_title": null,
+    "end_time": "2020-07-05T16:00:00Z",
+    "status": 2,
+    "updated": "2015-07-05T08:43:49.818Z",
+    "event": 2,
+    "title": "Leiden Haaglanden meeting (First occurrence)",
+    "keywords_string": "",
+    "expiry_date": null,
+    "in_sitemap": true,
+    "publish_date": "2015-07-04T18:58:59Z",
+    "start_time": "2020-07-05T15:00:00Z",
+    "location": "Leiden",
+    "gen_description": false,
+    "short_url": null
+  },
+  "pk": 3,
+  "model": "events.occurrence"
+},
+{
+  "fields": {
+    "created": "2015-07-04T18:59:39.298Z",
+    "site": 2,
+    "description": "Second occurrence",
+    "slug": "leiden-haaglanden-meeting",
+    "_meta_title": null,
+    "end_time": "2020-07-12T16:00:00Z",
+    "status": 2,
+    "updated": "2015-07-05T08:43:49.827Z",
+    "event": 2,
+    "title": "Leiden Haaglanden meeting (Second occurrence)",
+    "keywords_string": "",
+    "expiry_date": null,
+    "in_sitemap": true,
+    "publish_date": "2015-07-04T18:58:59Z",
+    "start_time": "2020-07-12T15:00:00Z",
+    "location": "Den Haag",
+    "gen_description": false,
+    "short_url": null
+  },
+  "pk": 4,
+  "model": "events.occurrence"
+},
+{
+  "fields": {
+    "created": "2015-07-05T09:36:31.632Z",
+    "site": 1,
+    "description": "First occurrence",
+    "slug": "jd-draft-event-first-occurrence",
+    "_meta_title": null,
+    "end_time": "2020-07-06T10:00:00Z",
+    "status": 1,
+    "updated": "2015-07-05T09:36:31.632Z",
+    "event": 3,
+    "title": "JD draft event (First occurrence)",
+    "keywords_string": "",
+    "expiry_date": null,
+    "in_sitemap": true,
+    "publish_date": "2015-07-05T09:36:31.621Z",
+    "start_time": "2020-07-06T09:00:00Z",
+    "location": "Amsterdam",
+    "gen_description": false,
+    "short_url": null
+  },
+  "pk": 5,
+  "model": "events.occurrence"
+},
+{
+  "fields": {
+    "created": "2015-07-05T09:36:31.635Z",
+    "site": 1,
+    "description": "Second occurrence",
+    "slug": "jd-draft-event-second-occurrence",
+    "_meta_title": null,
+    "end_time": "2020-07-08T10:00:00Z",
+    "status": 1,
+    "updated": "2015-07-05T09:36:31.635Z",
+    "event": 3,
+    "title": "JD draft event (Second occurrence)",
+    "keywords_string": "",
+    "expiry_date": null,
+    "in_sitemap": true,
+    "publish_date": "2015-07-05T09:36:31.621Z",
+    "start_time": "2020-07-08T09:00:00Z",
+    "location": "Amsterdam",
+    "gen_description": false,
+    "short_url": null
+  },
+  "pk": 6,
+  "model": "events.occurrence"
+},
+{
+  "fields": {
+    "username": "admin",
+    "groups": [],
+    "last_login": "2015-07-05T19:27:03.109Z",
+    "last_name": "",
+    "first_name": "",
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$15000$a7lvPZCqrZNr$Bs8WrBxUt0gnaJrK/MOttAm8NuZfkQh2qpE4D8GTPLM=",
+    "is_active": true,
+    "is_superuser": true,
+    "date_joined": "2015-07-04T18:33:52.173Z",
+    "email": "admin@admin.com",
+    "is_staff": true
+  },
+  "pk": 1,
+  "model": "auth.user"
+}
+]

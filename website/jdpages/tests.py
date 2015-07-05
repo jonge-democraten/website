@@ -8,7 +8,10 @@ from django.test import Client
 
 from mezzanine.blog.models import BlogCategory
 from mezzanine.blog.models import BlogPost
+from mezzanine.core.models import CONTENT_STATUS_PUBLISHED, CONTENT_STATUS_DRAFT
 from mezzanine.pages.models import RichTextPage
+
+from fullcalendar.models import Occurrence
 
 from website.jdpages.models import ColumnElement
 from website.jdpages.models import Sidebar
@@ -195,3 +198,101 @@ class TestBlogListView(TestCaseAdminLogin):
                 else:
                     self.assertFalse(post_title_html in html)
                 counter += 1
+
+
+class TestEvent(object):
+    """
+    Tests the integration with the fullcalendar app.
+    Tests the events column and sidebar widget, and the individual occurrence page.
+    Tests whether the events from the chosen (in the admin) sites are shown,
+     * Events from all sites in column element
+     * Events from this site in column element
+     * Events from this site and main site in column element
+    """
+
+    def get_html(self, url):
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        return str(response.content)
+
+    def test_all_site_events_visibility__user(self):
+        """
+        Tests whether the events column elements, that is set to show events from all sites,
+        actually shows these events,and whether the draft status of events is respected and thus not shown,
+        """
+        url = '/'
+        html = self.get_html(url)
+        occurrences = Occurrence.objects.all()
+        self.check_occurrence_visibility(occurrences, html, self.is_admin())
+
+    def test_this_site_events_visibility_user(self):
+        """
+        Tests whether the events column elements, that is set to show events from this site only,
+        actually shows only these events, and whether the draft status of events is respected and thus not shown,
+        """
+        url = '/eventsthissite/'
+        html = self.get_html(url)
+        occurrences = Occurrence.site_related.all()
+        self.check_occurrence_visibility(occurrences, html, self.is_admin())
+
+    def test_this_site_and_main_events_visibility_user(self):
+        """
+        Tests whether the events column elements, that is set to show events from this and main site,
+        actually shows only these events, and whether the draft status of events is respected and thus not shown,
+        """
+        settings.SITE_ID = 2  # set to a department site
+        url = '/'
+        html = self.get_html(url)
+        sites = {1, 2}
+        occurrences = Occurrence.site_related.filter(site_id__in=sites)
+        self.check_occurrence_visibility(occurrences, html, self.is_admin())
+        occurrences_site_3 = Occurrence.objects.filter(site_id=3)
+        for occurrence in occurrences_site_3:
+            self.assertFalse(str(occurrence.event.title) in html)
+        settings.SITE_ID = 1  # back to main site
+
+    def check_occurrence_visibility(self, occurrences, html, is_admin):
+        """
+        Tests that draft occurrences are not shown in columns, and that their pages are hidden.
+        :param occurrences: the occurrences to check for visibility based on published status
+        :param html: the html of the page
+        """
+        for occurrence in occurrences:
+            if occurrence.status == CONTENT_STATUS_DRAFT and not is_admin:
+                self.assertFalse(str(occurrence.event.title) in html)
+                response = self.client.get(occurrence.get_absolute_url())
+                self.assertEqual(response.status_code, 404)
+            elif occurrence.status == CONTENT_STATUS_PUBLISHED:
+                self.assertTrue(str(occurrence.event.title) in html)
+                response = self.client.get(occurrence.get_absolute_url())
+                self.assertEqual(response.status_code, 200)
+
+
+class TestEventAdmin(TestCase, TestEvent):
+    """
+    Tests the draft/published status visibility in widgets and the occurrence page, for a normal user (draft hidden).
+    see TestEvent for actual tests
+    """
+    fixtures = ['test_events.json']
+
+    def setUp(self):
+        self.client = Client()
+        response = self.client.post('/admin/login/?next=/admin/', {'username': 'admin', 'password': 'admin'}, follow=True)
+        self.assertEqual(response.status_code, 200)
+
+    def is_admin(self):
+        return True
+
+
+class TestEventUser(TestCase, TestEvent):
+    """
+    Tests the draft/published status visibility in widgets and occurrence page, for an admin (draft visible)
+    see TestEvent for actual tests
+    """
+    fixtures = ['test_events.json']
+
+    def setUp(self):
+        self.client = Client()
+
+    def is_admin(self):
+        return False

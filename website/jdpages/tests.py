@@ -207,7 +207,7 @@ class TestEvent(TestCase):
     Tests whether the events from the chosen (in the admin) sites are shown,
      * Events from all sites in column element
      * Events from this site in column element
-     * TODO BR: Events from this site and main site in column element
+     * Events from this site and main site in column element
     Tests the draft/published status visibility in widgets and of occurrence page for,
      * user (draft hidden)
      * TODO BR: admin (draft visible)
@@ -242,6 +242,22 @@ class TestEvent(TestCase):
         html = self.get_html(url)
         occurrences = Occurrence.site_related.all()
         self.check_occurrence_user_visibility(occurrences, html)
+
+    def test_this_site_and_main_events_visibility_user(self):
+        """
+        Tests whether the events column elements, that is set to show events from this and main site,
+        actually shows only these events, and whether the draft status of events is respected and thus not shown,
+        """
+        settings.SITE_ID = 2  # set to a department site
+        url = '/'
+        html = self.get_html(url)
+        sites = {1, 2}
+        occurrences = Occurrence.site_related.filter(site_id__in=sites)
+        self.check_occurrence_user_visibility(occurrences, html)
+        occurrences_site_3 = Occurrence.objects.filter(site_id=3)
+        for occurrence in occurrences_site_3:
+            self.assertFalse(str(occurrence.event.title) in html)
+        settings.SITE_ID = 1  # back to main site
 
     def check_occurrence_user_visibility(self, occurrences, html):
         """

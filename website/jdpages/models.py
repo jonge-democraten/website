@@ -284,8 +284,16 @@ class EventColumnElement(SiteRelated):
 
     type = models.CharField(max_length=2, choices=EVENT_CHOICES)
 
+    def get_name(self):
+        if self.type == self.MAIN_AND_SITE:
+            return 'Events for current and main site'
+        elif self.type == self.ALL:
+            return 'Events for all sites'
+        elif self.type == self.SITE:
+            return 'Events for current site'
+
     def __str__(self):
-        return "Events for " + str(self.type)
+        return self.get_name()
 
 
 class BlogCategoryPage(Page, RichText):

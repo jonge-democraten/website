@@ -47,22 +47,22 @@ def post_save_callback(sender, instance, created, **kwargs):
             logger.info('blog column element created')
     if sender == Site:
         logger.info('create new event column element for site: ' + str(instance.id) + ' (' + str(instance) + ')')
-        create_column_element_for_event(EventColumnElement.ALL, 'Events for all sites', instance.id)
-        create_column_element_for_event(EventColumnElement.SITE, 'Events for ' + str(instance), instance.id)
+        create_column_element_for_event(EventColumnElement.ALL, instance.id)
+        create_column_element_for_event(EventColumnElement.SITE, instance.id)
         if instance.id != 1:  # not the main site
-            create_column_element_for_event(EventColumnElement.MAIN_AND_SITE, 'Events for main site and ' + str(instance), instance.id)
+            create_column_element_for_event(EventColumnElement.MAIN_AND_SITE, instance.id)
         logger.info('event column element created')
 
     return
 
 
-def create_column_element_for_event(event_type, name, site_id):
+def create_column_element_for_event(event_type, site_id):
     """ Creates a column element model for a (new) event """
     event_element = EventColumnElement.objects.create(type=event_type)
     event_element.site_id = site_id
     event_element.save(update_site=False)
     element = ColumnElement.objects.create()
-    element.name = name
+    element.name = event_element.get_name()
     element.content_type = ContentType.objects.get_for_model(event_element)
     element.object_id = event_element.id
     element.site_id = site_id

@@ -15,16 +15,29 @@ For Windows and Mac, we advise to create a Linux virtual machine. Instructions a
     $ python website/manage.py runserver
 
 <h3>Requirements</h3>
-**Linux**  
+**Linux**
+
 Installation of the full project, and running a test server, can be done in a few minutes on any Linux machine. Just follow the steps under 'detailed instructions'. There is no need for manual configuration.
 
-**Windows and Mac**  
+Depending on your Linux distribution, you may need to install some system-level development packages. A list of these dependencies for Ubuntu is given below.
+
+***Ubuntu (15.04) packages***
+
+The following packages are required:
+*python-virtualenv, python3-dev, libldap2-dev, libsasl2-dev, libxml2-dev, libxslt1-dev, zlib1g-dev*
+
+Install these using the command,
+
+    $ sudo apt-get install python-virtualenv python3-dev libldap2-dev libsasl2-dev libxml2-dev libxslt1-dev zlib1g-dev
+
+**Windows and Mac**
+
 For Windows and Mac users, it is advised to install a Linux virtual machine and use this to install the project.
 
 * Follow the [instructions](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox) and install Ubuntu on VirtualBox.
 * Start Ubuntu in a VirtualBox, open the program called "Terminal" and install some required applications by entering the command,
 
-        $ sudo apt-get install git python-virtualenv python3-dev
+        $ sudo apt-get install python-virtualenv python3-dev libldap2-dev libsasl2-dev libxml2-dev libxslt1-dev zlib1g-dev
 
 <h3>Detailed instructions</h3>
 **Get the code**  

@@ -24,11 +24,11 @@ Depending on your Linux distribution, you may need to install some system-level 
 ***Ubuntu (15.04) packages***
 
 The following packages are required:
-*python-virtualenv, python3-dev, libldap2-dev, libsasl2-dev, libxml2-dev, libxslt1-dev, zlib1g-dev*
+*python-virtualenv, python3-dev, libldap2-dev, libsasl2-dev, libxml2-dev, libxslt1-dev, zlib1g-dev, libjpeg-dev*
 
 Install these using the command,
 
-    $ sudo apt-get install python-virtualenv python3-dev libldap2-dev libsasl2-dev libxml2-dev libxslt1-dev zlib1g-dev
+    $ sudo apt-get install python-virtualenv python3-dev libldap2-dev libsasl2-dev libxml2-dev libxslt1-dev zlib1g-dev libjpeg-dev
 
 **Windows and Mac**
 
@@ -37,7 +37,7 @@ For Windows and Mac users, it is advised to install a Linux virtual machine and 
 * Follow the [instructions](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox) and install Ubuntu on VirtualBox.
 * Start Ubuntu in a VirtualBox, open the program called "Terminal" and install some required applications by entering the command,
 
-        $ sudo apt-get install python-virtualenv python3-dev libldap2-dev libsasl2-dev libxml2-dev libxslt1-dev zlib1g-dev
+        $ sudo apt-get install python-virtualenv python3-dev libldap2-dev libsasl2-dev libxml2-dev libxslt1-dev zlib1g-dev libjpeg-dev
 
 <h3>Detailed instructions</h3>
 **Get the code**  

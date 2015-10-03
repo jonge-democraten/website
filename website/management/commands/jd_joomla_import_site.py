@@ -126,7 +126,7 @@ class Command(BaseImporterCommand):
                         # -2 = marked for deletion
                         cur.execute('SELECT content.id, content.title, content.introtext, content.fulltext, assets.parent_id ' \
                                     'FROM '+options.get('tableprefix')+'_content AS content,' \
-                                    options.get('tableprefix')+'_assets as assets LEFT JOIN content.asset_id = assets.id ' \
+                                    +options.get('tableprefix')+'_assets as assets LEFT JOIN content.asset_id = assets.id ' \
                                     'WHERE content.catid=%s and content.state=1;', (menu[0],))
                         for page in cur.fetchall():
                             self.add_page(  title=page[1], 

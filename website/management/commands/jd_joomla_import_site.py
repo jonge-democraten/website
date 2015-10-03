@@ -107,7 +107,7 @@ class Command(BaseImporterCommand):
         for menu in cur.fetchall():
             url = urlparse(menu[6])
             qs = parse_qs(url.query)
-            ifblog = False
+            isblog = False
             if 'view' in qs and qs['view'][0] == 'category' and 'layout' in qs and qs['layout'][0] == 'blog':
                 isblog = True
             if 'id' in qs:

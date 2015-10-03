@@ -122,15 +122,12 @@ class Command(BaseImporterCommand):
                     if isblog:
                         self.add_post(title=page[2], 
                                     content=page[5]+page[6],
-                                    old_url=get_post_url(cur, options.get('tableprefix'),page[0]),
-                                    #old_id=page[0])#,
-                                    #old_parent_id=menu[0]))
+                                    old_url=get_post_url(cur, options.get('tableprefix'),page[0]))
                     else:
-                        self.add_page(  title=page[2], 
+                        self.add_page(title=page[2], 
                                     content=page[5]+page[6],
                                     old_url=get_post_url(cur, options.get('tableprefix'),page[0]),
-                                    old_id=page[0])#
-                                    #old_parent_id=menu[0])
+                                    old_id=page[0])
                     print('| | | '+page[3])
             else:
                 print('| | ' + menu[5])

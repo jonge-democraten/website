@@ -19,7 +19,7 @@ ADMIN_MENU_ORDER = (
     ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting", "jdpages.SidebarBannerWidget",)),
     ("Users", ("auth.User", "auth.Group", "janeus.JaneusUser", "janeus.JaneusRole", )),
 
-    ("Newsletter templating", ("hemres.NewsletterFile", "hemres.NewsletterTemplate")),
+    ("Newsletter templating", ("hemres.NewsletterTemplate")),
     ("Newsletter subscriptions", ("hemres.MailingList", "hemres.EmailSubscriber", "hemres.JaneusSubscriber")),
     ("Sending newsletters", ("hemres.NewsletterToList", "hemres.NewsletterToSubscriber")),
 

@@ -10,7 +10,7 @@ from django.contrib.sites.models import Site
 from mezzanine.pages.models import RichTextPage, Link
 from mezzanine.blog.management.base import BaseImporterCommand
 # from website.jdpages.models import JDPage
-from fullcalendar.models import Event, Occurence, create_event
+from fullcalendar.models import create_event
 
 
 

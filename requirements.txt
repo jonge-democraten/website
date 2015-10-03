@@ -9,5 +9,5 @@ icalendar==3.8.4
 -e git+https://github.com/jonge-democraten/mezzanine-fullcalendar@v0.6.4#egg=fullcalendar
 -e git+https://github.com/jonge-democraten/python-ldap@py3#egg=python-ldap
 -e git+https://github.com/jonge-democraten/janeus@1.2-mezzanine#egg=janeus
--e git+https://github.com/jonge-democraten/hemres@0.5#egg=hemres
+-e git+https://github.com/jonge-democraten/hemres@0.6#egg=hemres
 inlinestyler==0.2.0

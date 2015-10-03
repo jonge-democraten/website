@@ -107,6 +107,9 @@ class Command(BaseImporterCommand):
         for menu in cur.fetchall():
             url = urlparse(menu[6])
             qs = parse_qs(url.query)
+            ifblog. = False
+            if 'view' in qs and qs['view'][0] == 'category' and 'layout' in qs and qs['layout'][0] == 'blog':
+                isblog = True
             if 'id' in qs:
                 print('| + ' + menu[5]+' => '+ qs['id'][0])
                 # _content.state  has the following values
@@ -114,12 +117,19 @@ class Command(BaseImporterCommand):
                 #  1 = published
                 # -1 = archived
                 # -2 = marked for deletion
-                cur.execute('SELECT * FROM '+options.get('tableprefix')+'_content WHERE catid=%s and state=1;', (qs['id'][0],))
+                cur.execute('SELECT * FROM '+options.get('tableprefix')+'_content WHERE catid=%s and state=1 AND asset_id;', (qs['id'][0],))
                 for page in cur.fetchall():
-                    self.add_page(  title=page[2], 
+                    if isblog:
+                        self.add_post(title=page[2], 
                                     content=page[5]+page[6],
                                     old_url=get_post_url(cur, options.get('tableprefix'),page[0]),
-                                    old_id=page[0])#,
+                                    #old_id=page[0])#,
+                                    #old_parent_id=menu[0]))
+                    else:
+                        self.add_page(  title=page[2], 
+                                    content=page[5]+page[6],
+                                    old_url=get_post_url(cur, options.get('tableprefix'),page[0]),
+                                    old_id=page[0])#
                                     #old_parent_id=menu[0])
                     print('| | | '+page[3])
             else:

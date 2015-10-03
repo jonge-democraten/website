@@ -125,7 +125,7 @@ class Command(BaseImporterCommand):
                         #  1 = published
                         # -1 = archived
                         # -2 = marked for deletion
-                        cur.execute('SELECT content.id, content.title, content.introtext, content.fulltext, assets.parent_id ' \
+                        cur.execute('SELECT assets.id, content.title, content.introtext, content.fulltext, assets.parent_id ' \
                                     'FROM '+options.get('tableprefix')+'_content AS content LEFT JOIN ' \
                                     +options.get('tableprefix')+'_assets AS assets ON content.asset_id = assets.id ' \
                                     'WHERE content.catid=%s and content.state=1;', (menu[0],))

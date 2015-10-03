@@ -75,7 +75,8 @@ class Command(BaseImporterCommand):
         print("Maak Mezzanine site aan:")
         domain = input("\tDomein naam:\t")
         name = input("\tNaam:\t")
-        site, created = Site.objects.get_or_create(domain=domain, name=name)
+        site, created = Site.objects.get_or_create(domain=domain)
+        site.name = name
         site.save()
         os.environ["MEZZANINE_SITE_ID"] = str(site.id)
         

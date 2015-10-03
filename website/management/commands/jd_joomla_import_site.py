@@ -1,7 +1,7 @@
 import pymysql
 
 import os
-import datetime
+from datetime import datetime
 
 from optparse import make_option
 from urllib.parse import urlparse, parse_qs

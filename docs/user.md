@@ -212,7 +212,17 @@ Klik op 'Save' om de veranderingen door te voeren.
 
 ### 6 Newsletters
 
-Coming soon
+- Ga naar: Content > Newsletters > Klik rechtsboven op 'Add newsletter' 
+- Templates: Selecteer de template.
+- Subject: Geef hier het onderwerp van de nieuwsbrief aan.
+- Content: Vul hier de inhoud van je nieuwsbrief in. 
+- Newsletter attachements: hier kun je eventueel bijlagen toevoegen
+- Klik op 'Save' om de veranderingen door te voeren.
+
+Laat aan de Algemeen Secretaris weten dat je nieuwsbrief klaar staat zodat deze kan worden verstuurd.
+ 
+
+
 
 ### 7 Images and Documents
 

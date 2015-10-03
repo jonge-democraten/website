@@ -133,7 +133,7 @@ class Command(BaseImporterCommand):
                                             content=page[2]+page[3],
                                             old_url=get_post_url(cur, options.get('tableprefix'), page[0]),
                                             old_id=page[0],
-                                            parent_id=page[4])
+                                            old_parent_id=page[4])
                             # TODO: uitzoeken hoe hierarchie uitgewerkt is
                     if 'view' in qs and qs['view'][0] == 'category' and 'layout' in qs and qs['layout'][0] == 'blog':
                         # Blogpost

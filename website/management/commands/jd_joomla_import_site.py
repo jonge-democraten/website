@@ -124,12 +124,16 @@ class Command(BaseImporterCommand):
                         #  1 = published
                         # -1 = archived
                         # -2 = marked for deletion
-                        cur.execute('SELECT * FROM '+options.get('tableprefix')+'_content WHERE catid=%s and state=1;', (menu[0],))
+                        cur.execute('SELECT content.id, content.title, content.introtext, content.fulltext, assets.parent_id ' \
+                                    'FROM '+options.get('tableprefix')+'_content AS content,' \
+                                    options.get('tableprefix')+'_assets as assets LEFT JOIN content.asset_id = assets.id ' \
+                                    'WHERE content.catid=%s and content.state=1;', (menu[0],))
                         for page in cur.fetchall():
-                            self.add_page(  title=page[2], 
-                                            content=page[5]+page[6],
-                                            old_url=get_post_url(cur, options.get('tableprefix'),page[0]),
-                                            old_id=page[0])
+                            self.add_page(  title=page[1], 
+                                            content=page[2]+page[3],
+                                            old_url=get_post_url(cur, options.get('tableprefix'), page[0]),
+                                            old_id=page[0],
+                                            parent_id=page[4])
                             # TODO: uitzoeken hoe hierarchie uitgewerkt is
                     if 'view' in qs and qs['view'][0] == 'category' and 'layout' in qs and qs['layout'][0] == 'blog':
                         # Blogpost

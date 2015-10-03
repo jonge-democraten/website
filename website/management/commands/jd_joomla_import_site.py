@@ -117,7 +117,7 @@ class Command(BaseImporterCommand):
                 #  1 = published
                 # -1 = archived
                 # -2 = marked for deletion
-                cur.execute('SELECT * FROM '+options.get('tableprefix')+'_content WHERE catid=%s and state=1 AND asset_id;', (qs['id'][0],))
+                cur.execute('SELECT * FROM '+options.get('tableprefix')+'_content WHERE catid=%s and state=1;', (qs['id'][0],))
                 for page in cur.fetchall():
                     if isblog:
                         self.add_post(title=page[2], 

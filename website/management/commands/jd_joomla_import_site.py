@@ -1,6 +1,7 @@
 import pymysql
 
 import os
+import datetime
 
 from optparse import make_option
 from urllib.parse import urlparse, parse_qs
@@ -106,7 +107,7 @@ class Command(BaseImporterCommand):
                     'LEFT JOIN joomla.2gWw_jevents_vevdetail AS vevdetail ON vevent.detail_id = vevdetail.evdet_id ' \
                     'WHERE vevent.catid = %s;', (cat,))
         for event in cur.fetchall():
-            e = create_event(event[0], None, event[1], int(event[2]), int(event[3]))
+            e = create_event(event[0], None, event[1], datetime.fromtimestamp(int(event[2])), datetime.fromtimestamp(int(event[3])))
             e.save()
             occurrences = e.occurrence_set.all()
             for o in occurrences:

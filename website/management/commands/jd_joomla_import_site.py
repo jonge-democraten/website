@@ -105,33 +105,48 @@ class Command(BaseImporterCommand):
         print("### MIGRATING PAGES ###")
         cur.execute('SELECT * FROM '+options.get('tableprefix')+'_menu WHERE menutype=%s;', sites[menuid] )
         for menu in cur.fetchall():
-            url = urlparse(menu[6])
-            qs = parse_qs(url.query)
-            isblog = False
-            if 'view' in qs and qs['view'][0] == 'category' and 'layout' in qs and qs['layout'][0] == 'blog':
-                isblog = True
-            if 'id' in qs:
-                print('| + ' + menu[5]+' => '+ qs['id'][0])
-                # _content.state  has the following values
-                #  0 = unpublished
-                #  1 = published
-                # -1 = archived
-                # -2 = marked for deletion
-                cur.execute('SELECT * FROM '+options.get('tableprefix')+'_content WHERE catid=%s and state=1;', (qs['id'][0],))
-                for page in cur.fetchall():
-                    if isblog:
-                        self.add_post(title=page[2], 
+            menutype = menu[7]
+            if menutype == "url":
+                # TODO: migreer links
+                print("Link")
+            elif menutype == "alias":
+                # TODO: Migreer hoofdpagina
+                print("Alias")
+            elif menutype == "component":
+                url = urlparse(menu[6])
+                qs = parse_qs(url.query)
+                if 'option' in qs and qs['option'][0] == 'com_content':
+                    # Blogpost or page
+                    if 'view' in qs and qs['view'][0] == 'article':
+                        # Page 
+                        # _content.state  has the following values
+                        #  0 = unpublished
+                        #  1 = published
+                        # -1 = archived
+                        # -2 = marked for deletion
+                        cur.execute('SELECT * FROM '+options.get('tableprefix')+'_content WHERE catid=%s and state=1;', (menu[0],))
+                        for page in cur.fetchall():
+                            self.add_page(  title=page[2], 
+                                            content=page[5]+page[6],
+                                            old_url=get_post_url(cur, options.get('tableprefix'),page[0]),
+                                            old_id=page[0])
+                            # TODO: uitzoeken hoe hierarchie uitgewerkt is
+                    if 'view' in qs and qs['view'][0] == 'category' and 'layout' in qs and qs['layout'][0] == 'blog':
+                        # Blogpost
+                        # _content.state  has the following values
+                        #  0 = unpublished
+                        #  1 = published
+                        # -1 = archived
+                        # -2 = marked for deletion
+                        cur.execute('SELECT * FROM '+options.get('tableprefix')+'_content WHERE catid=%s and state=1;', (menu[0],))
+                        for page in cur.fetchall():
+                            self.add_post(title=page[2], 
                                     content=page[5]+page[6],
                                     old_url=get_post_url(cur, options.get('tableprefix'),page[0]))
-                    else:
-                        self.add_page(title=page[2], 
-                                    content=page[5]+page[6],
-                                    old_url=get_post_url(cur, options.get('tableprefix'),page[0]),
-                                    old_id=page[0])
-                    print('| | | '+page[3])
+                print("Component")
             else:
-                print('| | ' + menu[5])
-
+                print("Unknown: ", menu[0])
+            continue
         
 
 

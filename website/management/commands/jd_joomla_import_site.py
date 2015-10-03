@@ -112,6 +112,7 @@ class Command(BaseImporterCommand):
             occurrences = e.occurrence_set.all()
             for o in occurrences:
                 o.location = event[4]
+                o.save()
             e.save()
         
         

@@ -151,17 +151,18 @@ class Command(BaseImporterCommand):
                                                 old_url=get_post_url(cur, options.get('tableprefix'), page[0]),
                                                 old_id=menu[0],
                                                 old_parent_id=menu[9])
-                    if 'view' in qs and qs['view'][0] == 'category' and 'layout' in qs and qs['layout'][0] == 'blog':
+                    if 'view' in qs and qs['view'][0] == 'category' and 'layout' in qs and qs['layout'][0] == 'blog' and 'id' in qs:
                         # Blogpost
                         # _content.state  has the following values
                         #  0 = unpublished
                         #  1 = published
                         # -1 = archived
                         # -2 = marked for deletion
-                        cur.execute('SELECT * FROM '+options.get('tableprefix')+'_content WHERE catid=%s and state=1;', (menu[0],))
+                        cur.execute('SELECT content.*, category.title FROM '+options.get('tableprefix')+'_content as content LEFT JOIN '+options.get('tableprefix')+'_categories as category ON content.catid = category.id WHERE content.catid=%s and content.state=1;', (qs['id'][0],))
                         for page in cur.fetchall():
                             self.add_post(title=page[2], 
                                     content=page[5]+page[6],
+                                    categories=(page[34],),
                                     old_url=get_post_url(cur, options.get('tableprefix'),page[0]))
                 print("Component")
             else:

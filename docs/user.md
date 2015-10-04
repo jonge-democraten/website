@@ -221,9 +221,6 @@ Klik op 'Save' om de veranderingen door te voeren.
 
 Laat aan de Algemeen Secretaris weten dat je nieuwsbrief klaar staat zodat deze kan worden verstuurd.
  
-
-
-
 ### 7 Images and Documents
 
 <strong>7.1 Media Library</strong>

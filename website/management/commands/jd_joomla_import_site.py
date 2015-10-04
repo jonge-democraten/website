@@ -120,7 +120,7 @@ class Command(BaseImporterCommand):
         # Get all pages for the specified site
         #######################################################################
         print("### MIGRATING PAGES ###")
-        cur.execute('SELECT * FROM '+options.get('tableprefix')+'_menu WHERE menutype=%s;', sites[menuid] )
+        cur.execute('SELECT * FROM '+options.get('tableprefix')+'_menu WHERE menutype=%s and published=1;', sites[menuid] )
         for menu in cur.fetchall():
             menutype = menu[7]
             if menutype == "url":

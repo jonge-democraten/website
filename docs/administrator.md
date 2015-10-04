@@ -16,6 +16,10 @@ This document has three purposes:
 ## Deployment
 
 
+### Timezone tables
+
+Make sure the database contains the timezone tables, needed by the calendar app. 
+For MySQL, see [http://dev.mysql.com/doc/refman/5.6/en/mysql-tzinfo-to-sql.html](http://dev.mysql.com/doc/refman/5.6/en/mysql-tzinfo-to-sql.html).
 
 ## Importing data from Joomla
 

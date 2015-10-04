@@ -1,15 +1,18 @@
 import pymysql
 
 import os
+from datetime import datetime
 
 from optparse import make_option
 from urllib.parse import urlparse, parse_qs
 from django.core.management.base import BaseCommand, CommandError
 from django.contrib.sites.models import Site
 
-from mezzanine.pages.models import RichTextPage
+from mezzanine.pages.models import RichTextPage, Link
 from mezzanine.blog.management.base import BaseImporterCommand
 # from website.jdpages.models import JDPage
+from fullcalendar.models import create_event
+
 
 
 def get_post_url(cur, table_prefix, post_id):
@@ -98,6 +101,19 @@ class Command(BaseImporterCommand):
                 break
             else:
                 print("Ongeldige keuze")
+        cur.execute('SELECT vevdetail.summary, vevdetail.description, vevdetail.dtstart, vevdetail.dtend, vevdetail.location ' \
+                    'FROM joomla.2gWw_jevents_catmap AS catmap ' \
+                    'LEFT JOIN joomla.2gWw_jevents_vevent AS vevent ON catmap.evid = vevent.ev_id ' \
+                    'LEFT JOIN joomla.2gWw_jevents_vevdetail AS vevdetail ON vevent.detail_id = vevdetail.evdet_id ' \
+                    'WHERE vevent.catid = %s;', (cat,))
+        for event in cur.fetchall():
+            e = create_event(event[0], None, event[1], datetime.fromtimestamp(int(event[2])), datetime.fromtimestamp(int(event[3])))
+            e.save()
+            occurrences = e.occurrence_set.all()
+            for o in occurrences:
+                o.location = event[4]
+                o.save()
+            e.save()
         
         
         #######################################################################
@@ -108,7 +124,7 @@ class Command(BaseImporterCommand):
         for menu in cur.fetchall():
             menutype = menu[7]
             if menutype == "url":
-                # TODO: migreer links
+                # TODO: handmatig migreren
                 print("Link")
             elif menutype == "alias":
                 # TODO: Migreer hoofdpagina

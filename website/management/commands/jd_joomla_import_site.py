@@ -160,7 +160,8 @@ class Command(BaseImporterCommand):
                         # -2 = marked for deletion
                         cur.execute('SELECT content.*, category.title FROM '+options.get('tableprefix')+'_content as content LEFT JOIN '+options.get('tableprefix')+'_categories as category ON content.catid = category.id WHERE content.catid=%s and content.state=1;', (qs['id'][0],))
                         for page in cur.fetchall():
-                            self.add_post(title=page[2], 
+                            self.add_post(title=page[2],
+                                    pub_date=page[18],
                                     content=page[5]+page[6],
                                     categories=(page[34],),
                                     old_url=get_post_url(cur, options.get('tableprefix'),page[0]))

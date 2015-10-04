@@ -125,17 +125,16 @@ class Command(BaseImporterCommand):
                         #  1 = published
                         # -1 = archived
                         # -2 = marked for deletion
-                        cur.execute('SELECT content.id, content.title, content.introtext, content.fulltext, assets.parent_id ' \
-                                    'FROM '+options.get('tableprefix')+'_content AS content LEFT JOIN ' \
-                                    +options.get('tableprefix')+'_assets AS assets ON content.asset_id = assets.id ' \
-                                    'WHERE content.catid=%s and content.state=1;', (menu[0],))
-                        for page in cur.fetchall():
-                            self.add_page(  title=page[1], 
-                                            content=page[2]+page[3],
-                                            old_url=get_post_url(cur, options.get('tableprefix'), page[0]),
-                                            old_id=page[0],
-                                            old_parent_id=page[4])
-                            # TODO: uitzoeken hoe hierarchie uitgewerkt is
+                        if 'id' in qs:
+                            cur.execute('SELECT id, title, introtext, `fulltext` ' \
+                                        'FROM '+options.get('tableprefix')+'_content ' \
+                                        'WHERE id=' + qs['id'][0] + ' and state=1;')
+                            for page in cur.fetchall():
+                                self.add_page(  title=menu[2],
+                                                content=page[2]+page[3],
+                                                old_url=get_post_url(cur, options.get('tableprefix'), page[0]),
+                                                old_id=menu[0],
+                                                old_parent_id=menu[9])
                     if 'view' in qs and qs['view'][0] == 'category' and 'layout' in qs and qs['layout'][0] == 'blog':
                         # Blogpost
                         # _content.state  has the following values

@@ -122,7 +122,10 @@ class Command(BaseCommand):
             save_setting('RICHTEXT_FILTER_LEVEL', '1', domain)
             save_setting('PIWIK_SITE_ID', site_id, domain)
             save_setting('SEARCH_PER_PAGE', '10', domain)
-            save_setting('SIDEBAR_AGENDA_SITES', '2', domain)
+            if (domain == 'website.jongedemocraten.nl'):
+                save_setting('SIDEBAR_AGENDA_SITES', '3', domain)
+            else:
+                save_setting('SIDEBAR_AGENDA_SITES', '2', domain)
 
         save_group('Administrators')
         save_group('Master Content Managers')

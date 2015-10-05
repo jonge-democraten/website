@@ -12,7 +12,7 @@ from mezzanine.pages.models import RichTextPage, Link
 from mezzanine.blog.management.base import BaseImporterCommand
 # from website.jdpages.models import JDPage
 from fullcalendar.models import create_event
-
+from website.jdpages.models import HomePage
 
 
 def get_post_url(cur, table_prefix, post_id):
@@ -126,9 +126,6 @@ class Command(BaseImporterCommand):
             if menutype == "url":
                 # TODO: handmatig migreren
                 print("Link")
-            elif menutype == "alias":
-                # TODO: Migreer hoofdpagina
-                print("Alias")
             elif menutype == "component":
                 url = urlparse(menu[6])
                 qs = parse_qs(url.query)
@@ -145,12 +142,25 @@ class Command(BaseImporterCommand):
                             cur.execute('SELECT id, title, introtext, `fulltext` ' \
                                         'FROM '+options.get('tableprefix')+'_content ' \
                                         'WHERE id=' + qs['id'][0] + ' and state=1;')
-                            for page in cur.fetchall():
-                                self.add_page(  title=menu[2],
-                                                content=page[2]+page[3],
-                                                old_url=get_post_url(cur, options.get('tableprefix'), page[0]),
-                                                old_id=menu[0],
-                                                old_parent_id=menu[9])
+                            if menu[2].startswith('Home'):
+                                # Homepage
+                                page = cur.fetchall()[0]
+                                h = HomePage()
+                                h.title = menu[2]
+                                h.content = page[2] + page[3]
+                                h.save()
+                                h.set_slug('/')
+                                h.save()
+                                print("Imported homepage")
+                            else:
+                                # Regular page
+                                for page in cur.fetchall():
+                                    self.add_page(  title=menu[2],
+                                                    content=page[2]+page[3],
+                                                    old_url=get_post_url(cur, options.get('tableprefix'), page[0]),
+                                                    old_id=menu[0],
+                                                    old_parent_id=menu[9])
+
                     if 'view' in qs and qs['view'][0] == 'category' and 'layout' in qs and qs['layout'][0] == 'blog' and 'id' in qs:
                         # Blogpost
                         # _content.state  has the following values

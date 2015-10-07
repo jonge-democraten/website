@@ -54,7 +54,7 @@ def activate_twitter_widget():
 
 def force_create_uploads_directory():
     uploadDir = os.path.join(settings.MEDIA_ROOT,
-                             fb_settings.DIRECTORY
+                             fb_settings.DIRECTORY,
                              'site-{0}'.format(current_site_id()))
     os.makedirs(uploadDir, exist_ok = True)
     os.chmod(uploadDir, 0o755)
@@ -81,17 +81,19 @@ def set_headers():
     headerDir = os.path.join(settings.PROJECT_ROOT, '..', '..', 'new-headers')
     dirList = os.listdir(headerDir)
     uploadDirRel = os.path.join(settings.MEDIA_URL,
-                             fb_settings.DIRECTORY
+                             fb_settings.DIRECTORY,
                              'site-{0}'.format(current_site_id()))
     uploadDirAbs = os.path.join(settings.PROJECT_ROOT, uploadDirRel.lstrip('/'))
     for headerSubDir in dirList:
         if headerSubDir.startswith(prefix + '-'):
             slug = headerSubDir.split('-', 1)[1]
+            if slug == '*':
+                slug = '/'
             for image in os.listdir(os.path.join(headerDir, headerSubDir)):
                 copy(os.path.join(headerDir, headerSubDir, image),
                      os.path.join(uploadDirAbs, 'headers'))
                 os.chmod(os.path.join(uploadDirAbs, 'headers', image), 0o644)
-                set_header_image(slug, os.path.join(uploadDirRel, 'headers', image)
+                set_header_image(slug, os.path.join(uploadDirRel, 'headers', image))
 
 def create_page_for_each_blog_category():
     categories = BlogCategory.objects.all()

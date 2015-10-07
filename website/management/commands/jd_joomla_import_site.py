@@ -142,7 +142,7 @@ class Command(BaseImporterCommand):
                             cur.execute('SELECT id, title, introtext, `fulltext` ' \
                                         'FROM '+options.get('tableprefix')+'_content ' \
                                         'WHERE id=' + qs['id'][0] + ' and state=1;')
-                            if menu[2].startswith('Home') or menu[2].startswith('Wjelk':
+                            if menu[2].startswith('Home') or menu[2].startswith('Wjelk'):
                                 # Homepage
                                 page = cur.fetchall()[0]
                                 h = HomePage()

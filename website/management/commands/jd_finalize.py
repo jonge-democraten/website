@@ -68,9 +68,9 @@ def force_create_uploads_directory():
 def set_header_image(slug, image_url):
     pages = Page.objects.filter(slug = slug)
     if len(pages) == 0:
-        print ("Page not found with slug %s".format(slug))
+        print ("Page not found with slug {0}".format(slug))
     elif len(pages) > 1:
-        print ("Several pages found with slug %s".format(slug))
+        print ("Several pages found with slug {0}".format(slug))
     else:
         p = pages[0]
         w = PageHeaderImageWidget(name = p.site.name+"-"+slug, page = p, image = image_url)

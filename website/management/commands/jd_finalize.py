@@ -2,6 +2,7 @@ import os
 
 from django.core.management.base import BaseCommand, CommandError
 from mezzanine.conf.models import Setting
+from mezzanine.blog.models import BlogCategory
 from mezzanine.pages.models import Page
 from mezzanine.utils.sites import current_site_id
 from mezzanine.conf import settings
@@ -9,7 +10,7 @@ from django.contrib.auth.models import User, Group, Permission
 from django.contrib.sites.models import Site
 from janeus.models import JaneusRole
 from optparse import make_option
-from website.jdpages.models import Sidebar, SidebarTwitterWidget, PageHeaderImageWidget
+from website.jdpages.models import Sidebar, SidebarTwitterWidget, PageHeaderImageWidget, BlogCategoryPage
 from filebrowser_safe import settings as fb_settings
 
 def save_setting(name, value, domain):
@@ -73,6 +74,13 @@ def set_header_image(slug, image_url):
         p = pages[0]
         w = PageHeaderImageWidget(name = p.site.name+"-"+slug, page = p, image = image_url)
         w.save()
+
+def create_page_for_each_blog_category():
+    categories = BlogCategory.objects.all()
+    for c in categories:
+        b, created = BlogCategoryPage.objects.get_or_create(slug=c.slug, blog_category = c)
+        if created:
+            b.save()
 
 def twitter_query_for_domain(domain):
     if (domain == 'website.jongedemocraten.nl'):
@@ -162,6 +170,7 @@ class Command(BaseCommand):
             else:
                 save_setting('SIDEBAR_AGENDA_SITES', '2', domain)
 
+            create_page_for_each_blog_category()
             activate_twitter_widget()
             force_create_uploads_directory()
 

@@ -93,6 +93,7 @@ def set_headers():
                 copy(os.path.join(headerDir, headerSubDir, image),
                      os.path.join(uploadDirAbs, 'headers'))
                 os.chmod(os.path.join(uploadDirAbs, 'headers', image), 0o644)
+                print("Setting header {0} for {1} - {2}".format(image, prefix, slug))
                 set_header_image(slug, os.path.join(uploadDirRel, 'headers', image))
 
 def create_page_for_each_blog_category():
@@ -194,6 +195,7 @@ class Command(BaseCommand):
             create_page_for_each_blog_category()
             activate_twitter_widget()
             force_create_uploads_directory()
+            set_headers()
 
         save_group('Administrators')
         save_group('Master Content Managers')

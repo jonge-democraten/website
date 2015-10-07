@@ -78,8 +78,9 @@ def set_header_image(slug, image_url):
 def create_page_for_each_blog_category():
     categories = BlogCategory.objects.all()
     for c in categories:
-        b, created = BlogCategoryPage.objects.get_or_create(slug=c.slug, blog_category = c)
+        b, created = BlogCategoryPage.objects.get_or_create(slug = c.slug, blog_category = c)
         if created:
+            b.title = c.title
             b.save()
 
 def twitter_query_for_domain(domain):

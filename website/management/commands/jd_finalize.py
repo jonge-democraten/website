@@ -146,7 +146,7 @@ class Command(BaseCommand):
             else:
                 save_setting('SIDEBAR_AGENDA_SITES', '2', domain)
 
-        activate_twitter_widget()
+            activate_twitter_widget()
 
         save_group('Administrators')
         save_group('Master Content Managers')

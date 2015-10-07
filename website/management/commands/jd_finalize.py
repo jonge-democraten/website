@@ -42,7 +42,9 @@ def save_janeus_role(role, groupnames, sites):
 
 def activate_twitter_widget():
     s = Sidebar.objects.all()[0]
-    widget, created = SidebarTwitterWidget.objects.get_or_create(active = True, sidebar = s)
+    widget, created = SidebarTwitterWidget.objects.get_or_create(sidebar = s)
+    widget.active = True
+    widget.save()
 
 def twitter_query_for_domain(domain):
     if (domain == 'website.jongedemocraten.nl'):

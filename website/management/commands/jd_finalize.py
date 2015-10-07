@@ -3,11 +3,14 @@ import os
 from django.core.management.base import BaseCommand, CommandError
 from mezzanine.conf.models import Setting
 from mezzanine.pages.models import Page
+from mezzanine.utils.sites import current_site_id
+from mezzanine.conf import settings
 from django.contrib.auth.models import User, Group, Permission
 from django.contrib.sites.models import Site
 from janeus.models import JaneusRole
 from optparse import make_option
 from website.jdpages.models import Sidebar, SidebarTwitterWidget, PageHeaderImageWidget
+from filebrowser_safe import settings as fb_settings
 
 def save_setting(name, value, domain):
     s = Setting()
@@ -46,6 +49,19 @@ def activate_twitter_widget():
     widget, created = SidebarTwitterWidget.objects.get_or_create(sidebar = s)
     widget.active = True
     widget.save()
+
+def force_create_uploads_directory():
+    uploadDir = os.path.join(settings.MEDIA_ROOT,
+                        fb_settings.DIRECTORY,
+                        'site-{0}'.format(current_site_id()))
+    os.makedirs(uploadDir, exist_ok = True)
+    os.chmod(uploadDir, 0o755)
+    os.makedirs(os.path.join(uploadDir, 'headers'), exist_ok = True)
+    os.chmod(os.path.join(uploadDir, 'headers'), 0o755)
+    os.makedirs(os.path.join(uploadDir, 'blogs-pages'), exist_ok = True)
+    os.chmod(os.path.join(uploadDir, 'blogs-pages'), 0o755)
+    os.makedirs(os.path.join(uploadDir, 'documents'), exist_ok = True)
+    os.chmod(os.path.join(uploadDir, 'documents'), 0o755)
 
 def set_header_image(slug, image_url):
     pages = Page.objects.filter(slug = slug)
@@ -147,6 +163,7 @@ class Command(BaseCommand):
                 save_setting('SIDEBAR_AGENDA_SITES', '2', domain)
 
             activate_twitter_widget()
+            force_create_uploads_directory()
 
         save_group('Administrators')
         save_group('Master Content Managers')

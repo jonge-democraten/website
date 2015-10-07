@@ -2,11 +2,12 @@ import os
 
 from django.core.management.base import BaseCommand, CommandError
 from mezzanine.conf.models import Setting
+from mezzanine.pages.models import Page
 from django.contrib.auth.models import User, Group, Permission
 from django.contrib.sites.models import Site
 from janeus.models import JaneusRole
 from optparse import make_option
-from website.jdpages.models import Sidebar, SidebarTwitterWidget
+from website.jdpages.models import Sidebar, SidebarTwitterWidget, PageHeaderImageWidget
 
 def save_setting(name, value, domain):
     s = Setting()
@@ -45,6 +46,17 @@ def activate_twitter_widget():
     widget, created = SidebarTwitterWidget.objects.get_or_create(sidebar = s)
     widget.active = True
     widget.save()
+
+def set_header_image(slug, image_url):
+    pages = Page.objects.filter(slug = slug)
+    if len(pages) == 0:
+        print ("Page not found with slug %s".format(slug))
+    elif len(pages) > 1:
+        print ("Several pages found with slug %s".format(slug))
+    else:
+        p = pages[0]
+        w = PageHeaderImageWidget(name = p.site.name+"-"+slug, page = p, image = image_url)
+        w.save()
 
 def twitter_query_for_domain(domain):
     if (domain == 'website.jongedemocraten.nl'):

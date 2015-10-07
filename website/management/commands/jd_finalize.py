@@ -6,6 +6,7 @@ from django.contrib.auth.models import User, Group, Permission
 from django.contrib.sites.models import Site
 from janeus.models import JaneusRole
 from optparse import make_option
+from website.jdpages.models import Sidebar, SidebarTwitterWidget
 
 def save_setting(name, value, domain):
     s = Setting()
@@ -38,6 +39,10 @@ def save_janeus_role(role, groupnames, sites):
         s = Site.objects.get(domain = site)
         j.sites.add(s)
     j.save()
+
+def activate_twitter_widget():
+    s = Sidebar.objects.all()[0]
+    widget, created = SidebarTwitterWidget.objects.get_or_create(active = True, sidebar = s)
 
 def twitter_query_for_domain(domain):
     if (domain == 'website.jongedemocraten.nl'):
@@ -126,6 +131,8 @@ class Command(BaseCommand):
                 save_setting('SIDEBAR_AGENDA_SITES', '3', domain)
             else:
                 save_setting('SIDEBAR_AGENDA_SITES', '2', domain)
+
+        activate_twitter_widget()
 
         save_group('Administrators')
         save_group('Master Content Managers')

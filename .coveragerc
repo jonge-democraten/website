@@ -8,4 +8,5 @@ omit =
     website/local_settings.py
     website/wsgi.py
     website/manage.py
-
+    website/management/commands/jd_finalize.py
+    website/management/commands/jd_joomla_import_site.py

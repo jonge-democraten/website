@@ -106,7 +106,7 @@ def create_column_element_widget(slug, hp, title, columnElement, numItems):
     else:
         hp = HorizontalPosition.RIGHT
     p = Page.objects.get(slug = slug)
-    cew = ColumnElementWidget(column_element = ce, page = p)
+    cew = ColumnElementWidget(column_element = columnElement, page = p)
     cew.title = title
     cew.horizontal_position = hp
     cew.max_items = numItems

@@ -11,7 +11,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 from janeus.models import JaneusRole
 from optparse import make_option
-from website.jdpages.models import Sidebar, SidebarTwitterWidget, PageHeaderImageWidget, BlogCategoryPage, HorizontalPosition, ColumnElement, ColumnElementWidget, EventColumnElement
+from website.jdpages.models import Sidebar, SidebarTwitterWidget, SidebarBlogCategoryWidget, PageHeaderImageWidget, BlogCategoryPage, HorizontalPosition, ColumnElement, ColumnElementWidget, EventColumnElement
 from filebrowser_safe import settings as fb_settings
 from shutil import copy
 

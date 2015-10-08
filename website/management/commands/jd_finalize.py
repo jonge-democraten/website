@@ -10,7 +10,8 @@ from django.contrib.auth.models import User, Group, Permission
 from django.contrib.sites.models import Site
 from janeus.models import JaneusRole
 from optparse import make_option
-from website.jdpages.models import Sidebar, SidebarTwitterWidget, PageHeaderImageWidget, BlogCategoryPage
+from website.jdpages.models import Sidebar, SidebarTwitterWidget, PageHeaderImageWidget, BlogCategoryPage,
+                                   HorizontalPosition, ColumnElement, ColumnElementWidget
 from filebrowser_safe import settings as fb_settings
 from shutil import copy
 
@@ -95,6 +96,72 @@ def set_headers():
                 os.chmod(os.path.join(uploadDirAbs, 'headers', image), 0o644)
                 print("Setting header {0} for {1} - {2}".format(image, prefix, slug))
                 set_header_image(slug, os.path.join(uploadDirRel, 'headers', image))
+
+def create_blog_category_column_element_widget(slug, category, hp, title = None, st = "", numItems = 3):
+    """
+    Add a ColumnElementWidget to a Page with slug 'slug' for BlogCategory with name category at
+    horizontal position hp (one of 'l' or 'r') with title 'title', subtype st (default "")
+    and number of items numItems (default 3).
+
+    (str, str, HorizontalPosition, str, str, int) -> None
+    """
+    p = Page.objects.get(slug = slug)
+    cat = BlogCategory.objects.get(title = category)
+    if title is None:
+        title = category
+    if hp = 'l':
+        hp = HorizontalPosition.LEFT
+    else:
+        hp = HorizontalPosition.RIGHT
+    ce = ColumnElement.objects.get(object_id = cat.id, subtype = st)
+    cew = ColumnElementWidget(column_element = ce, page = p)
+    cew.title = title
+    cew.horizontal_position = hp
+    cew.max_items = numItems
+    cew.save()
+
+def create_column_element_widgets(domain):
+    if (domain == 'website.jongedemocraten.nl'):
+        create_blog_category_column_element_widget('/', "Politieke opinie", 'l', "Politiek")
+        create_blog_category_column_element_widget('/', "Mededelingen", 'r', 'Mededelingen')
+        create_blog_category_column_element_widget('media', "Persberichten", 'l', numItems = 5)
+        create_blog_category_column_element_widget('media', "JD in de Media", 'r', 'JD in de media', numItems = 5)
+    if (domain == 'amsterdam.jongedemocraten.nl'):
+        create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws Amsterdam", st = 'CP', numItems = 5)
+        create_blog_category_column_element_widget('/', "Opinie", 'r', "De Druppel: Recente artikelen", st = 'CP', numItems = 5)
+        create_blog_category_column_element_widget('de-druppel', "Opinie", 'l', "Meest recente artikelen", numItems = 5)
+        create_blog_category_column_element_widget('de-druppel', "Activiteiten", 'r', st = 'CP')
+        create_blog_category_column_element_widget('de-druppel', "Reportages", 'r', st = 'CP')
+        create_blog_category_column_element_widget('de-druppel', "Interviews", 'r', st = 'CP')
+        create_blog_category_column_element_widget('de-druppel', "Opinie", 'r', st = 'CP')
+        create_blog_category_column_element_widget('de-druppel', "Column", 'r', st = 'CP')
+    if (domain == 'rotterdam.jongedemocraten.nl'):
+        create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws Rotterdam", st = 'CP', numItems = 5)
+        create_blog_category_column_element_widget('oh-ja-joh', "Oh ja joh?", 'l', "Meest recente artikelen", numItems = 5)
+    if (domain == 'arnhemnijmegen.jongedemocraten.nl'):
+        pass
+    if (domain == 'brabant.jongedemocraten.nl'):
+        create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws Brabant", st = 'CP', numItems = 5)
+    if (domain == 'groningen.jongedemocraten.nl'):
+        create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws Groningen", st = 'CP', numItems = 5)
+        create_blog_category_column_element_widget('/', "Weblog", 'r', "Weblogs", st = 'CP', numItems = 5)
+    if (domain == 'leidenhaaglanden.jongedemocraten.nl'):
+        create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws", st = 'CP', numItems = 5)
+        create_blog_category_column_element_widget('/', "Weblog", 'r', "Weblogs", st = 'CP', numItems = 5)
+    if (domain == 'twente.jongedemocraten.nl'):
+        create_blog_category_column_element_widget('/', "Nieuws", 'r', 'Laatste nieuws Twente', st = 'CP', numItems = 5)
+        # TODO: Check op geen activiteiten beschikbaar zodra EventColumnElements toegevoegd zijn
+    if (domain == 'friesland.jongedemocraten.nl'):
+        pass
+    if (domain == 'fryslan.jongedemocraten.nl'):
+        pass
+    if (domain == 'internationaal.jongedemocraten.nl'):
+        pass
+    if (domain == 'limburg.jongedemocraten.nl'):
+        create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws Limburg", st = 'CP', numItems = 5)
+    if (domain == 'utrecht.jongedemocraten.nl'):
+        create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws", st = 'CP', numItems = 5)
+        create_blog_category_column_element_widget('/', "Weblog", 'r', "Weblogs", st = 'CP', numItems = 5)
 
 def create_page_for_each_blog_category():
     categories = BlogCategory.objects.all()
@@ -196,6 +263,7 @@ class Command(BaseCommand):
             activate_twitter_widget()
             force_create_uploads_directory()
             set_headers()
+            create_column_element_widgets(domain)
 
         save_group('Administrators')
         save_group('Master Content Managers')

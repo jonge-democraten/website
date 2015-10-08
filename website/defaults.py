@@ -19,6 +19,7 @@ SIDEBAR_AGENDA_SETTINGS = (
     (1, _("Just this site")),
     (2, _("This site and the main site")),
     (3, _("All sites")),
+    (4, _("Main site")),
 )
 
 register_setting(

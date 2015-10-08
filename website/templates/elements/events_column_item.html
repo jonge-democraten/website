@@ -6,6 +6,8 @@
     {% get_agenda limit=item.max_items as events %}
 {% elif item.type == "SI" %}
     {% get_site_agenda limit=item.max_items as events %}
+{% elif item.type == "MA" %}
+    {% get_main_agenda limit=item.max_items as events %}
 {% elif item.type == "SM" %}
     {% get_site_and_main_agenda limit=item.max_items as events %}
 {% endif %}

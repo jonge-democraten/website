@@ -2200,6 +2200,34 @@
 },
 {
   "fields": {
+    "content_type": [
+      "jdpages",
+      "eventcolumnelement"
+    ],
+    "subtype": "",
+    "object_id": 5,
+    "name": "Events for main site",
+    "site": 2
+  },
+  "pk": 21,
+  "model": "jdpages.columnelement"
+},
+{
+  "fields": {
+    "content_type": [
+      "jdpages",
+      "eventcolumnelement"
+    ],
+    "subtype": "",
+    "object_id": 5,
+    "name": "Events for main site",
+    "site": 3
+  },
+  "pk": 22,
+  "model": "jdpages.columnelement"
+},
+{
+  "fields": {
     "page": 17,
     "max_items": 3,
     "_order": 0,
@@ -2482,6 +2510,22 @@
     "site": 3
   },
   "pk": 8,
+  "model": "jdpages.eventcolumnelement"
+},
+{
+  "fields": {
+    "type": "MA",
+    "site": 2
+  },
+  "pk": 21,
+  "model": "jdpages.eventcolumnelement"
+},
+{
+  "fields": {
+    "type": "MA",
+    "site": 3
+  },
+  "pk": 22,
   "model": "jdpages.eventcolumnelement"
 },
 {

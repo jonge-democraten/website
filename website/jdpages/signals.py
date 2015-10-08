@@ -51,6 +51,7 @@ def post_save_callback(sender, instance, created, **kwargs):
         create_column_element_for_event(EventColumnElement.SITE, instance.id)
         if instance.id != 1:  # not the main site
             create_column_element_for_event(EventColumnElement.MAIN_AND_SITE, instance.id)
+            create_column_element_for_event(EventColumnElement.MAIN, instance.id)
         logger.info('event column element created')
 
     return

@@ -73,6 +73,8 @@
                                     {% get_agenda limit=3 as items %}
                                 {% elif settings.SIDEBAR_AGENDA_SITES == 2 %}
                                     {% get_site_and_main_agenda limit=3 as items %}
+                                {% elif settings.SIDEBAR_AGENDA_SITES == 4 %}
+                                    {% get_main_agenda limit=10 as items %}
                                 {% else %}
                                     {% get_site_agenda limit=3 as items %}
                                 {% endif %}

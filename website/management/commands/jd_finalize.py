@@ -213,6 +213,47 @@ def create_page_for_each_blog_category():
             b.title = c.title
             b.save()
 
+def set_sidebar_blog(category, title = None):
+    if title is None:
+        title = category
+    sb = Sidebar.objects.get()
+    cat = BlogCategory.objects.get(title = category)
+    w = SidebarBlogCategoryWidget(title = title, sidebar = sb, blog_category = cat)
+    w.save()
+
+def set_sidebar_blogs_for_domain(domain):
+    if (domain == 'website.jongedemocraten.nl'):
+        set_sidebar_blog("Weblog", "JD Blog")
+    if (domain == 'amsterdam.jongedemocraten.nl'):
+        set_sidebar_blog("Nieuws")
+        set_sidebar_blog("Opinie", "De Druppel")
+    if (domain == 'arnhemnijmegen.jongedemocraten.nl'):
+        set_sidebar_blog("Nieuws")
+        set_sidebar_blog("Weblog")
+    if (domain == 'brabant.jongedemocraten.nl'):
+        set_sidebar_blog("Nieuws")
+        set_sidebar_blog("Weblog")
+    if (domain == 'groningen.jongedemocraten.nl'):
+        set_sidebar_blog("Nieuws")
+        set_sidebar_blog("Weblog")
+    if (domain == 'leidenhaaglanden.jongedemocraten.nl'):
+        set_sidebar_blog("Nieuws")
+        set_sidebar_blog("Weblog")
+    if (domain == 'rotterdam.jongedemocraten.nl'):
+        set_sidebar_blog("Nieuws")
+        set_sidebar_blog("Oh ja joh?")
+    if (domain == 'twente.jongedemocraten.nl'):
+        set_sidebar_blog("Nieuws")
+    if (domain == 'friesland.jongedemocraten.nl'):
+        set_sidebar_blog("Nieuws")
+    if (domain == 'internationaal.jongedemocraten.nl'):
+        set_sidebar_blog("Weblog", "Weblog Internationaal")
+    if (domain == 'limburg.jongedemocraten.nl'):
+        set_sidebar_blog("Nieuws")
+    if (domain == 'utrecht.jongedemocraten.nl'):
+        set_sidebar_blog("Nieuws")
+        set_sidebar_blog("Weblog")
+
 def twitter_query_for_domain(domain):
     if (domain == 'website.jongedemocraten.nl'):
         return 'jongedemocraten'
@@ -306,6 +347,7 @@ class Command(BaseCommand):
             force_create_uploads_directory()
             set_headers()
             create_column_element_widgets(domain)
+            set_sidebar_blogs_for_domain(domain)
 
         save_group('Administrators')
         save_group('Master Content Managers')

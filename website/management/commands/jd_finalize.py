@@ -7,6 +7,7 @@ from mezzanine.pages.models import Page
 from mezzanine.utils.sites import current_site_id
 from mezzanine.conf import settings
 from django.contrib.auth.models import User, Group, Permission
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 from janeus.models import JaneusRole
 from optparse import make_option
@@ -96,6 +97,34 @@ def set_headers():
                 print("Setting header {0} for {1} - {2}".format(image, prefix, slug))
                 set_header_image(slug, os.path.join(uploadDirRel, 'headers', image))
 
+def create_column_element_widget(slug, hp, title, columnElement, numItems):
+    """
+    Function to create column elements. Should only be called through create_*_column_element_widget functions.
+    """
+    if hp == 'l':
+        hp = HorizontalPosition.LEFT
+    else:
+        hp = HorizontalPosition.RIGHT
+    p = Page.objects.get(slug = slug)
+    cew = ColumnElementWidget(column_element = ce, page = p)
+    cew.title = title
+    cew.horizontal_position = hp
+    cew.max_items = numItems
+    cew.save()
+    print("Imported column element {0} on {1} ({2}).".format(title, slug, current_site_id()))
+
+def create_events_column_element_widget(slug, calendars, hp, title, numItems = 5):
+    """
+    Add a ColumnElementWidget to a Page with slug 'slug' for Events calendar calendars (one of
+    EventColumnElement.EVENT_CHOICES), horizontal position hp (one of 'l' or 'r') with title 'title'
+    and number of items numItems (default 5).
+
+    (str, str, str, str, str, int) -> None
+    """
+    ece = EventColumnElement.objects.get(type = calendars)
+    ce = ColumnElement.objects.get(object_id = ece.id, content_type = ContentType.objects.get_for_model(ece))
+    create_column_element_widget(slug, hp, title, ce, numItems)
+
 def create_blog_category_column_element_widget(slug, category, hp, title = None, st = "", numItems = 3):
     """
     Add a ColumnElementWidget to a Page with slug 'slug' for BlogCategory with name category at
@@ -104,21 +133,11 @@ def create_blog_category_column_element_widget(slug, category, hp, title = None,
 
     (str, str, HorizontalPosition, str, str, int) -> None
     """
-    p = Page.objects.get(slug = slug)
     cat = BlogCategory.objects.get(title = category)
     if title is None:
         title = category
-    if hp == 'l':
-        hp = HorizontalPosition.LEFT
-    else:
-        hp = HorizontalPosition.RIGHT
-    ce = ColumnElement.objects.get(object_id = cat.id, subtype = st)
-    cew = ColumnElementWidget(column_element = ce, page = p)
-    cew.title = title
-    cew.horizontal_position = hp
-    cew.max_items = numItems
-    cew.save()
-    print("Imported column element {0} on {1} ({2}).".format(title, slug, current_site_id()))
+    ce = ColumnElement.objects.get(object_id = cat.id, content_type = ContentType.objects.get_for_model(cat), subtype = st)
+    create_column_element_widget(slug, hp, title, ce, numItems)
 
 def create_column_element_widgets(domain):
     if (domain == 'website.jongedemocraten.nl'):

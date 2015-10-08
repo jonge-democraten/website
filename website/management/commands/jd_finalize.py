@@ -10,8 +10,7 @@ from django.contrib.auth.models import User, Group, Permission
 from django.contrib.sites.models import Site
 from janeus.models import JaneusRole
 from optparse import make_option
-from website.jdpages.models import Sidebar, SidebarTwitterWidget, PageHeaderImageWidget, BlogCategoryPage,
-                                   HorizontalPosition, ColumnElement, ColumnElementWidget
+from website.jdpages.models import Sidebar, SidebarTwitterWidget, PageHeaderImageWidget, BlogCategoryPage, HorizontalPosition, ColumnElement, ColumnElementWidget
 from filebrowser_safe import settings as fb_settings
 from shutil import copy
 
@@ -109,7 +108,7 @@ def create_blog_category_column_element_widget(slug, category, hp, title = None,
     cat = BlogCategory.objects.get(title = category)
     if title is None:
         title = category
-    if hp = 'l':
+    if hp == 'l':
         hp = HorizontalPosition.LEFT
     else:
         hp = HorizontalPosition.RIGHT
@@ -119,6 +118,7 @@ def create_blog_category_column_element_widget(slug, category, hp, title = None,
     cew.horizontal_position = hp
     cew.max_items = numItems
     cew.save()
+    print("Imported column element {0} on {1} ({2}).".format(title, slug, current_site_id()))
 
 def create_column_element_widgets(domain):
     if (domain == 'website.jongedemocraten.nl'):
@@ -166,6 +166,11 @@ def create_column_element_widgets(domain):
 def create_page_for_each_blog_category():
     categories = BlogCategory.objects.all()
     for c in categories:
+        try:
+            p = Page.objects.get(slug = c.slug)
+            return
+        except Page.DoesNotExist:
+            pass
         b, created = BlogCategoryPage.objects.get_or_create(slug = c.slug, blog_category = c)
         if created:
             b.title = c.title

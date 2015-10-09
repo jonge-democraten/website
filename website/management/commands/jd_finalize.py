@@ -5,7 +5,7 @@ from datetime import datetime
 from django.core.management.base import BaseCommand, CommandError
 from mezzanine.conf.models import Setting
 from mezzanine.blog.models import BlogCategory
-from mezzanine.pages.models import Page
+from mezzanine.pages.models import Page, Link
 from mezzanine.utils.sites import current_site_id
 from mezzanine.conf import settings
 from django.contrib.auth.models import User, Group, Permission
@@ -338,6 +338,12 @@ def create_mailinglists_and_templates(domain, host, user, password, database, pr
                 date = datetime.fromtimestamp(int(mailing[13])))
             nltl.save()
 
+
+def create_link(title, link):
+    l = Link()
+    l.title = title
+    l.slug = link
+    l.save()
 
 def twitter_query_for_domain(domain):
     if (domain == 'website.jongedemocraten.nl'):

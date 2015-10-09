@@ -147,8 +147,7 @@ def create_column_element_widgets(domain):
         create_blog_category_column_element_widget('media', "JD in de Media", 'r', 'JD in de media', numItems = 5)
     if (domain == 'amsterdam.jongedemocraten.nl'):
         create_events_column_element_widget('/', 'SI', 'l', "Geplande activiteiten Amsterdam")
-        # TODO: change the next to new type 'only main'
-        create_events_column_element_widget('/', 'AL', 'l', "Geplande activiteiten landelijk")
+        create_events_column_element_widget('/', 'MA', 'l', "Geplande activiteiten landelijk")
         create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws Amsterdam", st = 'CP', numItems = 5)
         create_blog_category_column_element_widget('/', "Opinie", 'r', "De Druppel: Recente artikelen", st = 'CP', numItems = 5)
         create_blog_category_column_element_widget('de-druppel', "Opinie", 'l', "Meest recente artikelen", numItems = 5)
@@ -158,7 +157,7 @@ def create_column_element_widgets(domain):
         create_blog_category_column_element_widget('de-druppel', "Opinie", 'r', st = 'CP')
         create_blog_category_column_element_widget('de-druppel', "Column", 'r', st = 'CP')
     if (domain == 'rotterdam.jongedemocraten.nl'):
-        create_events_column_element_widget('/', 'SI', 'l', "Geplande activiteiten Rotterdam")
+        create_events_column_element_widget('/', 'SM', 'l', "Geplande activiteiten Rotterdam")
         create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws Rotterdam", st = 'CP', numItems = 5)
         create_blog_category_column_element_widget('oh-ja-joh', "Oh ja joh?", 'l', "Meest recente artikelen", numItems = 5)
     if (domain == 'arnhemnijmegen.jongedemocraten.nl'):
@@ -168,20 +167,17 @@ def create_column_element_widgets(domain):
         create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws Brabant", st = 'CP', numItems = 5)
     if (domain == 'groningen.jongedemocraten.nl'):
         create_events_column_element_widget('/', 'SI', 'l', "Geplande activiteiten Groningen")
-        # TODO: change the next to new type 'only main'
-        create_events_column_element_widget('/', 'AL', 'l', "Geplande activiteiten landelijk")
+        create_events_column_element_widget('/', 'MA', 'l', "Geplande activiteiten landelijk")
         create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws Groningen", st = 'CP', numItems = 5)
         create_blog_category_column_element_widget('/', "Weblog", 'r', "Weblogs", st = 'CP', numItems = 5)
     if (domain == 'leidenhaaglanden.jongedemocraten.nl'):
         create_events_column_element_widget('/', 'SI', 'l', "Activiteiten Leiden-Haaglanden")
-        # TODO: change the next to new type 'only main'
-        create_events_column_element_widget('/', 'AL', 'l', "Geplande activiteiten landelijk")
+        create_events_column_element_widget('/', 'MA', 'l', "Geplande activiteiten landelijk")
         create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws", st = 'CP', numItems = 5)
         create_blog_category_column_element_widget('/', "Weblog", 'r', "Weblogs", st = 'CP', numItems = 5)
     if (domain == 'twente.jongedemocraten.nl'):
         create_events_column_element_widget('/', 'SI', 'l', "Geplande activiteiten Twente")
         create_blog_category_column_element_widget('/', "Nieuws", 'r', 'Laatste nieuws Twente', st = 'CP', numItems = 5)
-        # TODO: Check op geen activiteiten beschikbaar zodra EventColumnElements toegevoegd zijn
     if (domain == 'friesland.jongedemocraten.nl'):
         pass
     if (domain == 'fryslan.jongedemocraten.nl'):
@@ -190,13 +186,11 @@ def create_column_element_widgets(domain):
         pass
     if (domain == 'limburg.jongedemocraten.nl'):
         create_events_column_element_widget('/', 'SI', 'l', "Geplande activiteiten Limburg")
-        # TODO: change the next to new type 'only main'
-        create_events_column_element_widget('/', 'AL', 'l', "Geplande activiteiten landelijk")
+        create_events_column_element_widget('/', 'MA', 'l', "Geplande activiteiten landelijk")
         create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws Limburg", st = 'CP', numItems = 5)
     if (domain == 'utrecht.jongedemocraten.nl'):
         create_events_column_element_widget('/', 'SI', 'l', "Geplande activiteiten Utrecht")
-        # TODO: change the next to new type 'only main'
-        create_events_column_element_widget('/', 'AL', 'l', "Geplande activiteiten landelijk")
+        create_events_column_element_widget('/', 'MA', 'l', "Geplande activiteiten landelijk")
         create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws", st = 'CP', numItems = 5)
         create_blog_category_column_element_widget('/', "Weblog", 'r', "Weblogs", st = 'CP', numItems = 5)
 

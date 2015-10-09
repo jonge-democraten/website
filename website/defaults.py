@@ -57,18 +57,3 @@ HIDDEN_SETTINGS = (
     'RATINGS_ACCOUNT_REQUIRED',
     'TAG_CLOUD_SIZES',
 )
-
-
-def disable_settings(settings):
-    """ Disable a list of settings and hide them from the admin """
-    for setting in HIDDEN_SETTINGS:
-        register_setting(
-            name=setting,
-            label=_(setting),
-            description=_("Unused setting"),
-            editable=False,
-            default="unused",
-        )
-
-
-disable_settings(HIDDEN_SETTINGS)

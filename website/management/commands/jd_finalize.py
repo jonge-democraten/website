@@ -365,11 +365,38 @@ def create_newsletter_templates():
         with open(os.path.join(templateDir, templateName), "r") as templateFile:
             create_newsletter_template(templateName, templateFile.read())
 
-def create_link(title, link):
+def create_link(title, link, parentSlug = ''):
     l = Link()
     l.title = title
     l.slug = link
+    try:
+        p = Page.objects.get(parentSlug)
+        l.parent = p
+    except p.DoesNotExist:
+        pass
     l.save()
+
+def create_extra_content(domain):
+    if (domain == "website.jongedemocraten.nl"):
+        create_link("Amsterdam", "//amsterdam.jongedemocraten.nl", "afdelingen")
+        create_link("Arnhem-Nijmegen", "//arnhemnijmegen.jongedemocraten.nl", "afdelingen")
+        create_link("Brabant", "//brabant.jongedemocraten.nl", "afdelingen")
+        create_link("Friesland / Fryslân", "//friesland.jongedemocraten.nl", "afdelingen")
+        create_link("Groningen", "//groningen.jongedemocraten.nl", "afdelingen")
+        create_link("Leiden-Haaglanden", "//.jongedemocraten.nl", "afdelingen")
+        create_link("Limburg", "//limburg.jongedemocraten.nl", "afdelingen")
+        create_link("Rotterdam", "//Rotterdam.jongedemocraten.nl", "afdelingen")
+        create_link("Twente", "//twente.jongedemocraten.nl", "afdelingen")
+        create_link("Utrecht", "//utrecht.jongedemocraten.nl", "afdelingen")
+        create_link("Internationaal", "//internationaal.jongedemocraten.nl")
+        create_link("Nieuwsbrieven", "/nieuwsbrief/list", "media")
+    if (domain == "friesland.jongedemocraten.nl"):
+        create_link("Frysk", "//fryslan.jongedemocraten.nl", "/")
+    if (domain == "fryslan.jongedemocraten.nl"):
+        create_link("Nederlands", "//friesland.jongedemocraten.nl", "/")
+    if (domain == "internationaal.jongedemocraten.nl"):
+        create_link("LYMEC", "http://www.lymec.org", "koepelorganisaties")
+        create_link("IFLRY", "http://www.iflry.org", "koepelorganisaties")
 
 def create_social_media_button(buttonType, url):
     sb = Sidebar.objects.get()
@@ -535,7 +562,7 @@ class Command(BaseCommand):
             create_column_element_widgets(domain)
             set_sidebar_blogs_for_domain(domain)
             set_social_media_buttons(domain)
-
+            create_extra_content(domain)
             create_mailinglists_and_templates(domain,
                 options.get('host'),
                 options.get('user'),

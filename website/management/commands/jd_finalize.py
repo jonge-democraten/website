@@ -335,7 +335,7 @@ def create_mailinglists_and_templates(domain, host, user, password, database, pr
                 newsletter = nl,
                 target_list = l,
                 subscriptions_url = '',
-                send = True,
+                sent = True,
                 date = datetime.fromtimestamp(int(mailing[13])))
             nltl.save()
         # Migreer subscribers

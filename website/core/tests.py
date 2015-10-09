@@ -336,4 +336,4 @@ class TestJaneus(TestCase):
         from janeus.backend import JaneusBackend
         user = JaneusBackend().authenticate("someuser", "somepass")
         self.assertTrue(user is not None)
-        self.assertTrue(user.user_permissions.count() == Permission.objects.count())
+        self.assertTrue(len(user.get_all_permissions()) == Permission.objects.count())

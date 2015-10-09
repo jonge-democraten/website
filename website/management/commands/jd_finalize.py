@@ -340,7 +340,7 @@ def create_mailinglists_and_templates(domain, host, user, password, database, pr
             nltl.save()
         # Migreer subscribers
         cur.execute('SELECT * FROM '+prefix+'_jnews_subscribers AS sub ' \
-                    'LEFT JOIN '+prefix+'_jnews_listssubscribers AS lsub' \
+                    'LEFT JOIN '+prefix+'_jnews_listssubscribers AS lsub ' \
                     'ON sub.id = lsub.subscriber_id WHERE sub.confirmed=1 ' \
                     'AND lsub.unsubscribe=0 AND lsub.list_id=%s;', (l_id, ))
         for sub in cur.fetchall():

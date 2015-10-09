@@ -372,7 +372,7 @@ def create_link(title, link, parentSlug = ''):
     try:
         p = Page.objects.get(slug = parentSlug)
         l.parent = p
-    except p.DoesNotExist:
+    except Page.DoesNotExist:
         pass
     l.save()
 
@@ -402,7 +402,7 @@ def delete_page(slug):
     try:
         p = Page.objects.get(slug = slug)
         p.delete()
-    except p.DoesNotExist:
+    except Page.DoesNotExist:
         print("Page with slug {0} does not exist".format(slug))
 
 def create_social_media_button(buttonType, url):

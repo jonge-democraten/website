@@ -322,7 +322,7 @@ def create_mailinglists_and_templates(domain, host, user, password, database, pr
         l = create_mailinglist(slugify('Nieuwsbrief Zwolle'), 'Nieuwsbrief Zwolle')
         lists.append((3,l))
     for lid, l in lists:
-        cur execute('SELECT * FROM '+prefix+'_jnews_mailings WHERE list_id = %s;', (lid, ))
+        cur.execute('SELECT * FROM '+prefix+'_jnews_mailings WHERE list_id = %s;', (lid, ))
         for mailing in cur.fetchall():
             nl = Newsletter(
                 subject = mailing[5],

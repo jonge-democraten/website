@@ -493,6 +493,8 @@ class Command(BaseCommand):
             options.get('database'),
             options.get('tableprefix'))
         
+        create_newsletter_templates()
+
         save_group('Administrators')
         save_group('Master Content Managers')
         save_group('Content Managers')

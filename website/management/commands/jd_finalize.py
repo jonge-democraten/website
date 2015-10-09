@@ -390,6 +390,7 @@ def create_extra_content(domain):
         create_link("Utrecht", "//utrecht.jongedemocraten.nl", "afdelingen")
         create_link("Internationaal", "//internationaal.jongedemocraten.nl")
         create_link("Nieuwsbrieven", "/nieuwsbrief/list", "media")
+        # TODO: Create document lists as needed
     if (domain == "friesland.jongedemocraten.nl"):
         create_link("Frysk", "//fryslan.jongedemocraten.nl", "/")
     if (domain == "fryslan.jongedemocraten.nl"):
@@ -404,6 +405,55 @@ def delete_page(slug):
         p.delete()
     except Page.DoesNotExist:
         print("Page with slug {0} does not exist".format(slug))
+
+def remove_from_menu(slug):
+    try:
+        p = Page.objects.get(slug = slug)
+        p.in_menus = []
+        p.save()
+    except Page.DoesNotExist:
+        print("Page with slug {0} does not exist".format(slug))
+
+def delete_extraneous_content(domain):
+    if (domain == "website.jongedemocraten.nl"):
+        delete_page('blog')
+        remove_from_menu('contact')
+    if (domain == "utrecht.jongedemocraten.nl"):
+        remove_from_menu('werkgroepen')
+        remove_from_menu('contact')
+
+def page_new_parent(pageSlug, parentSlug):
+    try:
+        p = Page.objects.get(slug = pageSlug)
+    except Page.DoesNotExist:
+        print("Page with slug {0} does not exist".format(slug))
+        return
+    try:
+        pp = Page.objects.get(slug = parentSlug)
+    except Page.DoesNotExist:
+        pp = None
+    p.parent = pp
+    p.save()
+
+def modify_miscellaneous_content(domain):
+    if (domain == "website.jongedemocraten.nl"):
+        page_new_parent('mededelingen', 'organisatie')
+        page_new_parent('jd-in-de-media', 'media')
+        page_new_parent('persberichten', 'media')
+        page_new_parent('politieke-opinie', 'media')
+        page_new_parent('weblog', 'media')
+        # TODO: Set form in word-lid
+    if (domain == "amsterdam.jongedemocraten.nl"):
+        page_new_parent('column', 'de-druppel')
+        page_new_parent('activiteiten', 'de-druppel')
+        page_new_parent('reportages', 'de-druppel')
+        page_new_parent('interviews', 'de-druppel')
+        page_new_parent('opinie', 'de-druppel')
+    if (domain == "brabant.jongedemocraten.nl"):
+        page_new_parent('regionaal-politiek-programma-rpp', 'politiek')
+    if (domain == "internationaal.jongedemocraten.nl"):
+        page_new_parent('young-democrats-english', '/')
+        page_new_parent('studiereizen', 'activiteiten')
 
 def create_social_media_button(buttonType, url):
     sb = Sidebar.objects.get()

@@ -339,6 +339,13 @@ def create_mailinglists_and_templates(domain, host, user, password, database, pr
             nltl.save()
 
 
+def create_newsletter_templates():
+    templateDir = os.path.join(settings.PROJECT_ROOT, '..', '..', 'newsletter-templates')
+    dirList = os.listdir(templateDir)
+    for templateName in dirList:
+        with open(os.path.join(templateDir, templateName), "r") as templateFile:
+            create_newsletter_template(templateName, templateFile.read())
+
 def create_link(title, link):
     l = Link()
     l.title = title

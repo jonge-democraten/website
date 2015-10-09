@@ -1,4 +1,6 @@
 import os
+import pymysql
+from datetime import datetime
 
 from django.core.management.base import BaseCommand, CommandError
 from mezzanine.conf.models import Setting
@@ -9,10 +11,11 @@ from mezzanine.conf import settings
 from django.contrib.auth.models import User, Group, Permission
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
+from django.utils.text import slugify
 from janeus.models import JaneusRole
 from optparse import make_option
 from website.jdpages.models import Sidebar, SidebarTwitterWidget, SidebarBlogCategoryWidget, PageHeaderImageWidget, BlogCategoryPage, HorizontalPosition, ColumnElement, ColumnElementWidget, EventColumnElement
-from hemres.models import NewsletterTemplate, MailingList
+from hemres.models import NewsletterTemplate, MailingList, NewsletterToList, Newsletter
 from filebrowser_safe import settings as fb_settings
 from shutil import copy
 
@@ -254,15 +257,87 @@ def create_mailinglist(label, name):
     m.label = label
     m.name = name
     m.save()
+    return m
 
 def create_newsletter_template(title, template):
     n = NewsletterTemplate()
     n.title = title
     n.template = template
     n.save()
+    return n
 
-def create_mailinglists_and_templates():
-    pass
+def create_mailinglists_and_templates(domain, host, user, password, database, prefix):
+    try:
+        db = pymysql.connect(host=host, user=user, password=password, database=database)
+    except pymysql.err.OperationalError as e:
+        raise CommandError(e)
+    cur = db.cursor()
+    lists = []
+    if (domain == 'website.jongedemocraten.nl'):
+        l = create_mailinglist(slugify('Digizine'), 'Digizine')
+        lists.append((1,l))
+        l = create_mailinglist(slugify('Jonge Democraten Kadernieuwsbrief'), 'Jonge Democraten Kadernieuwsbrief')
+        lists.append((14,l))
+        l = create_mailinglist(slugify('Digizine via Mailman'), 'Digizine via Mailman')
+        lists.append((18,l))
+        l = create_mailinglist(slugify('Nieuwsbrief INCO'), 'Nieuwsbrief INCO')
+        lists.append((19,l))
+        l = create_mailinglist(slugify('Digitale Demo'), 'Digitale Demo')
+        lists.append((22,l))
+        l = create_mailinglist(slugify('Nieuwsbrief Buitenland'), 'Nieuwsbrief Buitenland')
+        lists.append((23,l))
+    if (domain == 'amsterdam.jongedemocraten.nl'):
+        l = create_mailinglist(slugify('Nieuwsbrief Amsterdam'), 'Nieuwsbrief Amsterdam')
+        lists.append((3,l))
+    if (domain == 'arnhemnijmegen.jongedemocraten.nl'):
+        l = create_mailinglist(slugify('Nieuwsbrief Arnhem-Nijmegen'), 'Nieuwsbrief Arnhem-Nijmegen')
+        lists.append((4,l))
+    if (domain == 'brabant.jongedemocraten.nl'):
+        l = create_mailinglist(slugify('Nieuwsbrief Brabant'), 'Nieuwsbrief Brabant')
+        lists.append((5,l))
+    if (domain == 'groningen.jongedemocraten.nl'):
+        l = create_mailinglist(slugify('Nieuwsbrief Groningen'), 'Nieuwsbrief Groningen')
+        lists.append((7,l))
+    if (domain == 'leidenhaaglanden.jongedemocraten.nl'):
+        l = create_mailinglist(slugify('Nieuwsbrief Leiden-Haaglanden'), 'Nieuwsbrief Leiden-Haaglanden')
+        lists.append((8,l))
+    if (domain == 'rotterdam.jongedemocraten.nl'):
+        l = create_mailinglist(slugify('Nieuwsbrief Rotterdam'), 'Nieuwsbrief Rotterdam')
+        lists.append((10,l))
+    if (domain == 'twente.jongedemocraten.nl'):
+        l = create_mailinglist(slugify('Nieuwsbrief Twente'), 'Nieuwsbrief Twente')
+        lists.append((11,l))
+    if (domain == 'friesland.jongedemocraten.nl'):
+        l = create_mailinglist(slugify('Nieuwsbrief Friesland'), 'Nieuwsbrief Friesland')
+        lists.append((6,l))
+    if (domain == 'internationaal.jongedemocraten.nl'):
+        pass
+    if (domain == 'limburg.jongedemocraten.nl'):
+        l = create_mailinglist(slugify('Nieuwsbrief Limburg'), 'Nieuwsbrief Limburg')
+        lists.append((9,l))
+    if (domain == 'utrecht.jongedemocraten.nl'):
+        l = create_mailinglist(slugify('Nieuwsbrief Utrecht'), 'Nieuwsbrief Utrecht')
+        lists.append((2,l))
+    if (domain == 'zwolle.jongedemocraten.nl'):
+        l = create_mailinglist(slugify('Nieuwsbrief Zwolle'), 'Nieuwsbrief Zwolle')
+        lists.append((3,l))
+    for lid, l in lists:
+        cur execute('SELECT * FROM '+prefix+'_jnews_mailings WHERE list_id = %s;', (lid, ))
+        for mailing in cur.fetchall():
+            nl = Newsletter(
+                subject = mailing[5],
+                content = mailing[9],
+                public = True if lid != 14 else False, # Public, behalve bij kader
+                date = datetime.fromtimestamp(int(mailing[18])))
+            nl.save()
+            nltl = NewsletterToList(
+                newsletter = nl,
+                target_list = l,
+                subscriptions_url = '',
+                send = True,
+                date = datetime.fromtimestamp(int(mailing[13])))
+            nltl.save()
+
 
 def twitter_query_for_domain(domain):
     if (domain == 'website.jongedemocraten.nl'):
@@ -310,7 +385,27 @@ class Command(BaseCommand):
         make_option('--twitteraccesstokensecret',
                     dest='twitteraccesstokensecret',
                     default='',
-                    help='TWITTER_ACCESS_TOKEN_SECRET')
+                    help='TWITTER_ACCESS_TOKEN_SECRET'),
+        make_option('--host',
+                    dest='host',
+                    default='localhost',
+                    help='MySQL host'),
+        make_option('--user',
+                    dest='user',
+                    default='mysql',
+                    help='MySQL user'),
+        make_option('--password',
+                    dest='password',
+                    default='password',
+                    help='MySQL password'),
+        make_option('--database',
+                    dest='database',
+                    default='database',
+                    help='MySQL database'),
+        make_option('--tableprefix',
+                    dest='tableprefix',
+                    default='2gWw',
+                    help='Joomla table prefix')
     )
 
 
@@ -359,7 +454,12 @@ class Command(BaseCommand):
             create_column_element_widgets(domain)
             set_sidebar_blogs_for_domain(domain)
 
-        create_mailinglists_and_templates()
+        create_mailinglists_and_templates(domain,
+            options.get('host'),
+            options.get('user'),
+            options.get('password'),
+            options.get('database'),
+            options.get('tableprefix'))
         
         save_group('Administrators')
         save_group('Master Content Managers')

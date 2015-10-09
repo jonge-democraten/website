@@ -370,7 +370,7 @@ def create_link(title, link, parentSlug = ''):
     l.title = title
     l.slug = link
     try:
-        p = Page.objects.get(parentSlug)
+        p = Page.objects.get(slug = parentSlug)
         l.parent = p
     except p.DoesNotExist:
         pass
@@ -397,6 +397,13 @@ def create_extra_content(domain):
     if (domain == "internationaal.jongedemocraten.nl"):
         create_link("LYMEC", "http://www.lymec.org", "koepelorganisaties")
         create_link("IFLRY", "http://www.iflry.org", "koepelorganisaties")
+
+def delete_page(slug):
+    try:
+        p = Page.objects.get(slug = slug)
+        p.delete()
+    except p.DoesNotExist:
+        print("Page with slug {0} does not exist".format(slug))
 
 def create_social_media_button(buttonType, url):
     sb = Sidebar.objects.get()

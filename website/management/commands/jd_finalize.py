@@ -486,13 +486,12 @@ class Command(BaseCommand):
             create_column_element_widgets(domain)
             set_sidebar_blogs_for_domain(domain)
 
-        create_mailinglists_and_templates(domain,
-            options.get('host'),
-            options.get('user'),
-            options.get('password'),
-            options.get('database'),
-            options.get('tableprefix'))
-        
+            create_mailinglists_and_templates(domain,
+                options.get('host'),
+                options.get('user'),
+                options.get('password'),
+                options.get('database'),
+                options.get('tableprefix'))
         create_newsletter_templates()
 
         save_group('Administrators')

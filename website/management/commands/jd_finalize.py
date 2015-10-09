@@ -12,6 +12,7 @@ from django.contrib.sites.models import Site
 from janeus.models import JaneusRole
 from optparse import make_option
 from website.jdpages.models import Sidebar, SidebarTwitterWidget, SidebarBlogCategoryWidget, PageHeaderImageWidget, BlogCategoryPage, HorizontalPosition, ColumnElement, ColumnElementWidget, EventColumnElement
+from hemres.models import NewsletterTemplate, MailingList
 from filebrowser_safe import settings as fb_settings
 from shutil import copy
 
@@ -248,6 +249,21 @@ def set_sidebar_blogs_for_domain(domain):
         set_sidebar_blog("Nieuws")
         set_sidebar_blog("Weblog")
 
+def create_mailinglist(label, name):
+    m = MailingList()
+    m.label = label
+    m.name = name
+    m.save()
+
+def create_newsletter_template(title, template):
+    n = NewsletterTemplate()
+    n.title = title
+    n.template = template
+    n.save()
+
+def create_mailinglists_and_templates():
+    pass
+
 def twitter_query_for_domain(domain):
     if (domain == 'website.jongedemocraten.nl'):
         return 'jongedemocraten'
@@ -343,6 +359,8 @@ class Command(BaseCommand):
             create_column_element_widgets(domain)
             set_sidebar_blogs_for_domain(domain)
 
+        create_mailinglists_and_templates()
+        
         save_group('Administrators')
         save_group('Master Content Managers')
         save_group('Content Managers')

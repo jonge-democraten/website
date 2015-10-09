@@ -15,9 +15,6 @@
 
 <div id="headerLinkDiv">
     <ul class="menu" id="headerLinkList">
-        {% if user.is_authenticated %}
-        <li><a href="{{ main_site_url }}/kaderpagina">Kaderpagina</a></li>
-        {% endif %}
         <li><a href="{{ main_site_url }}/contact">Contact</a></li>
         {% if user.is_authenticated %}
         <li><b><a href="/admin">Admin</a></b>

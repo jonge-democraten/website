@@ -12,10 +12,11 @@ from django.contrib.auth.models import User, Group, Permission
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 from django.utils.text import slugify
+from janeus import Janeus
 from janeus.models import JaneusRole
 from optparse import make_option
 from website.jdpages.models import Sidebar, SidebarTwitterWidget, SidebarBlogCategoryWidget, PageHeaderImageWidget, BlogCategoryPage, HorizontalPosition, ColumnElement, ColumnElementWidget, EventColumnElement
-from hemres.models import NewsletterTemplate, MailingList, NewsletterToList, Newsletter
+from hemres.models import NewsletterTemplate, MailingList, NewsletterToList, Newsletter, EmailSubscriber, JaneusSubscriber
 from filebrowser_safe import settings as fb_settings
 from shutil import copy
 
@@ -321,13 +322,13 @@ def create_mailinglists_and_templates(domain, host, user, password, database, pr
     if (domain == 'zwolle.jongedemocraten.nl'):
         l = create_mailinglist(slugify('Nieuwsbrief Zwolle'), 'Nieuwsbrief Zwolle')
         lists.append((3,l))
-    for lid, l in lists:
-        cur.execute('SELECT * FROM '+prefix+'_jnews_mailings WHERE list_id = %s;', (lid, ))
+    for l_id, l in lists:
+        cur.execute('SELECT * FROM '+prefix+'_jnews_mailings WHERE list_id = %s;', (l_id, ))
         for mailing in cur.fetchall():
             nl = Newsletter(
                 subject = mailing[5],
                 content = mailing[9],
-                public = True if lid != 14 else False, # Public, behalve bij kader
+                public = True if l_id != 14 else False, # Public, behalve bij kader
                 date = datetime.fromtimestamp(int(mailing[18])))
             nl.save()
             nltl = NewsletterToList(
@@ -337,6 +338,24 @@ def create_mailinglists_and_templates(domain, host, user, password, database, pr
                 send = True,
                 date = datetime.fromtimestamp(int(mailing[13])))
             nltl.save()
+        # Migreer subscribers
+        cur.execute('SELECT * FROM '+prefix+'_jnews_subscribers AS sub ' \
+                    'LEFT JOIN '+prefix+'_jnews_listssubscribers AS lsub' \
+                    'ON sub.id = lsub.subscriber_id WHERE sub.confirmed=1 ' \
+                    'AND lsub.unsubscribe=0 AND lsub.list_id=%s;', (l_id, ))
+        for sub in cur.fetchall():
+            in_ldap = False
+            for lidnummer, naam in Janeus().lidnummers(sub[3]):
+                in_ldap = True
+                s, created = JaneusSubscriber.objects.get_or_create(member_id=lidnummer)
+                if created:
+                    s.name = naam
+                s.subscriptions.add(l)
+                s.save()
+            if not in_ldap:
+                s, created = EmailSubscriber.objects.get_or_create(name=sub[2], email=sub[3])
+                s.subscriptions.add(l)
+                s.save()
 
 
 def create_newsletter_templates():

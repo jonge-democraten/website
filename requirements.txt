@@ -1,9 +1,10 @@
-django==1.7.8
-mezzanine==3.1.10
+django==1.8.5
+mezzanine==4.0.1
 grappelli-safe==0.3.13
 django-simple-captcha==0.4.3
-django_debug_toolbar==1.2.2
+django_debug_toolbar==1.4
 django-rq==0.8.0
+django-formtools==1.0
 PyMySQL==0.6.3
 python-dateutil
 icalendar==3.8.4

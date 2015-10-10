@@ -1348,41 +1348,6 @@
         "captchastore"
       ],
       [
-        "add_comment",
-        "comments",
-        "comment"
-      ],
-      [
-        "can_moderate",
-        "comments",
-        "comment"
-      ],
-      [
-        "change_comment",
-        "comments",
-        "comment"
-      ],
-      [
-        "delete_comment",
-        "comments",
-        "comment"
-      ],
-      [
-        "add_commentflag",
-        "comments",
-        "commentflag"
-      ],
-      [
-        "change_commentflag",
-        "comments",
-        "commentflag"
-      ],
-      [
-        "delete_commentflag",
-        "comments",
-        "commentflag"
-      ],
-      [
         "add_setting",
         "conf",
         "setting"

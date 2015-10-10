@@ -620,6 +620,8 @@ class Command(BaseCommand):
             set_sidebar_blogs_for_domain(domain)
             set_social_media_buttons(domain)
             create_extra_content(domain)
+            delete_extraneous_content(domain)
+            modify_miscellaneous_content(domain)
             create_mailinglists_and_templates(domain,
                 options.get('host'),
                 options.get('user'),

@@ -4,7 +4,7 @@ from datetime import datetime
 
 from django.core.management.base import BaseCommand, CommandError
 from mezzanine.conf.models import Setting
-from mezzanine.blog.models import BlogCategory, BlogPost
+from mezzanine.blog.models import BlogCategory
 from mezzanine.pages.models import Page, Link
 from mezzanine.utils.sites import current_site_id
 from mezzanine.conf import settings
@@ -154,6 +154,8 @@ def create_column_element_widgets(domain):
         create_events_column_element_widget('/', 'SI', 'l', "Geplande activiteiten Amsterdam")
         create_events_column_element_widget('/', 'MA', 'l', "Geplande activiteiten landelijk")
         create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws Amsterdam", st = 'CP', numItems = 5)
+        create_blog_category_column_element_widget('/', "Opinie", 'r', "De Druppel: Recente artikelen", st = 'CP', numItems = 5)
+        create_blog_category_column_element_widget('de-druppel', "Opinie", 'l', "Meest recente artikelen", numItems = 5)
         create_blog_category_column_element_widget('de-druppel', "Activiteiten", 'r', st = 'CP')
         create_blog_category_column_element_widget('de-druppel', "Reportages", 'r', st = 'CP')
         create_blog_category_column_element_widget('de-druppel', "Interviews", 'r', st = 'CP')
@@ -447,15 +449,6 @@ def modify_miscellaneous_content(domain):
         page_new_parent('reportages', 'de-druppel')
         page_new_parent('interviews', 'de-druppel')
         page_new_parent('opinie', 'de-druppel')
-        drup = BlogCategory()
-        drup.title = "De Druppel"
-        drup.slug = "de-druppel"
-        drup.save()
-        for post in BlogPost.objects.all().exclude(categories__title="Nieuws"):
-            post.categories.add(drup)
-            post.save()
-        create_blog_category_column_element_widget('/', "De Druppel", 'r', "De Druppel: Recente artikelen", st = 'CP', numItems = 5)
-        create_blog_category_column_element_widget('de-druppel', "De Druppel", 'l', "Meest recente artikelen", numItems = 5)
     if (domain == "brabant.jongedemocraten.nl"):
         page_new_parent('regionaal-politiek-programma-rpp', 'politiek')
     if (domain == "internationaal.jongedemocraten.nl"):

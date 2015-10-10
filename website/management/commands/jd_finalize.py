@@ -328,6 +328,7 @@ def create_mailinglists_and_templates(domain, host, user, password, database, pr
             nl = Newsletter(
                 subject = mailing[5],
                 content = mailing[9],
+                template = "{{ content }}",
                 public = True if l_id != 14 else False, # Public, behalve bij kader
                 date = datetime.fromtimestamp(int(mailing[18])))
             nl.save()

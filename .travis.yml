@@ -12,7 +12,7 @@ install:
 script:
   - "python -W ignore::DeprecationWarning website/manage.py createdb --nodata --noinput"
   - "python -W ignore::DeprecationWarning website/manage.py loaddata demo_data"
-  - "coverage run website/manage.py test jdcore jdpages"
+  - "coverage run website/manage.py test website.core website.jdpages"
   - "flake8 website --statistics --exit-zero"
 notifications:
   email: false

@@ -119,7 +119,7 @@ Higher level user interface actions are tested manually.
 
 Run the unit tests,
 
-    (env) $ python website/manage.py test <app_label>
+    (env) $ python website/manage.py test website.core website.jdpages
  
 <h3>Automated testing</h3>
 [Travis](https://travis-ci.org/jonge-democraten/website) is used to automatically install the environment and run tests on changes in the project.  

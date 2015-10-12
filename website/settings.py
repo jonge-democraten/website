@@ -230,6 +230,11 @@ ROOT_URLCONF = "%s.urls" % PROJECT_DIRNAME
 # Don't forget to use absolute paths, not relative paths.
 TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 
+# This setting replaces the default TinyMCE configuration with our custom
+# one. The only difference is that the media plugin is not loaded in this
+# version.
+TINYMCE_SETUP_JS = STATIC_URL + "website/js/tinymce_setup.js"
+
 
 ################
 # APPLICATIONS #

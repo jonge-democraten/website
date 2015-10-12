@@ -101,13 +101,14 @@ class Command(BaseImporterCommand):
                 break
             else:
                 print("Ongeldige keuze")
-        cur.execute('SELECT vevdetail.summary, vevdetail.description, vevdetail.dtstart, vevdetail.dtend, vevdetail.location ' \
+        cur.execute('SELECT vevdetail.summary, vevdetail.description, vevdetail.dtstart, vevdetail.dtend, vevdetail.location, vevent.created ' \
                     'FROM joomla.2gWw_jevents_catmap AS catmap ' \
                     'LEFT JOIN joomla.2gWw_jevents_vevent AS vevent ON catmap.evid = vevent.ev_id ' \
                     'LEFT JOIN joomla.2gWw_jevents_vevdetail AS vevdetail ON vevent.detail_id = vevdetail.evdet_id ' \
                     'WHERE vevent.catid = %s;', (cat,))
         for event in cur.fetchall():
             e = create_event(event[0], None, event[1], datetime.fromtimestamp(int(event[2])), datetime.fromtimestamp(int(event[3])))
+            e.publish_date = event[5]
             e.save()
             occurrences = e.occurrence_set.all()
             for o in occurrences:

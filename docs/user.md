@@ -53,32 +53,33 @@ Door middel van de tekstverwerker kun je de inhoud wijzigen. De verschillende fu
 
 Van links naar rechts zie je in de taakbalk staan: 
 
-- B: vetgedrukt 
-- I: cursief 
-- Geschakelde ketting: hyperlink invoegen/veranderen
-- Gebroken ketting: hyperlink verwijderen
-- Scherm met plusje: afbeeldingen invoegen/veranderen
-- Filmband: video invoegen/veranderen (embedden)
-- Omega: speciale tekens/symbolen invoeg en
-- HTML: opent een nieuw venster zodat je de website in HTML-code kan zien en veranderen. Het is niet eng. HTML-code is simpelweg de taal waarin de opmaak van de site is geschreven. 
-- Tabel: tabel invoegen
-- Bulletpoints invoegen
-- Nummering invoegen
 - Ongedaan maken (ctrl-z)
 - Herstellen (ctrl-y)
-- Drop-down menu: bewerken format van de alinea's
-- Verrekijker: zoekfunctie
-- Venster: fullscreen
+- Formats-menu: bewerken format van de alinea's
+- B: vetgedrukt 
+- I: cursief 
+- Links uitlijnen
+- Centreren
+- Rechts uitlijnen
+- Uitvullen
+- Bulletpoints invoegen
+- Nummering invoegen
+- Minder inspringen
+- Meer inspringen
+- Geschakelde ketting: hyperlink invoegen/veranderen
+- Fotootje: afbeeldingen invoegen/veranderen
+- Filmband: video invoegen/veranderen (embedden)
+- Tabel: tabel invoegen
+- Punthaken: opent een nieuw venster zodat je de website in HTML-code kan zien en veranderen. Het is niet eng. HTML-code is simpelweg de taal waarin de opmaak van de site is geschreven. 
+- Vier pijlen: fullscreen
 
 <strong>2.2 Hyperlink invoegen</strong>
 
 Het invoegen van een hyperlink kan als volgt:
 - Selecteer de tekst waarvan je een link wilt maken;
-- Klik op de het icoontje van de kettingschakel in de taakbalk. Via dit icoon kun je de hyperlink later ook aanpassen;
-- Vul de URL Link in bij 'General Properties'; 
-- Klik op 'Update'. 
-
-Indien je de link wilt verwijderen, klik je op 'Unlink' (de gebroken schakel).
+- Klik op de het icoontje van de kettingschakel in de taakbalk. Via dit icoon kun je de hyperlink later ook aanpassen of verwijderen;
+- Vul de URL Link in bij 'URL'; 
+- Klik op 'OK'. 
 
 <strong>2.3 Afbeelding</strong>
 
@@ -134,11 +135,11 @@ Filmpjes uploaden via Youtube (maar ook via andere sites) is geen probleem.
 - Ga naar Youtube en zoek de betreffende video. 
 - Klik onder de video op 'Delen/Share', daarna op 'Insluiten/Embed'.
 - Kopieer de code, deze HTML code lijkt hierop: ```<iframe width="560" height="315" src="//www.youtube.com/embed/BcsfftwLUf0" frameborder="0" allowfullscreen></iframe>``` 
-- Klik boven het tekstvak waar je de video wilt plaatsen op de blauwe 'HTML'-knop. De HTML-code van het tekstvak wordt geopend.
-- Plak de code die je van Youtube hebt gekopieerd op de gewenste plaats in de HTML-code van het tekstvak.
-- Klik op 'Update'.
+- Klik boven het tekstvak waar je de video wilt plaatsen op de filmrol-knop (insert/edit video) en kies de tab 'Embed'. 
+- Plak de code die je van Youtube hebt gekopieerd in het tekstvak.
+- Klik op 'OK'.
 
-Wil je de video nog verplaatsen, open dan de HTML-code weer en verplaats de iframe-code. Wil je de video weer verwijderen uit het tekstvak dan kan je dat met backspace doen in het tekstvak of door de iframe-code uit de HTML-code te verwijderen. 
+Wil je de video nog verplaatsen, dan kun je dat doen door het grijze vak te klikken en te verslepen. Wil je de video weer verwijderen uit het tekstvak dan kan je dat met backspace doen in het tekstvak. 
 
 <strong>2.7 In-line editing</strong>
 

@@ -522,6 +522,14 @@ def restore_redirects(domain):
             r.new_path = "https://{0}{1}".format(domain, r.new_path)
             r.save()
 
+def set_sidebar_banner():
+    sbw = SidebarBannerWidget()
+    sbw.title = "Word lid"
+    sbw.image = "/static/website/images/wordlid.jpg"
+    sbw.url = "https://jongedemocraten.nl/word-actief/"
+    sbw.description = "Word lid van de Jonge Democraten!"
+    sbw.save()
+
 def twitter_query_for_domain(domain):
     if (domain == 'website.jongedemocraten.nl'):
         return 'jongedemocraten'
@@ -647,6 +655,8 @@ class Command(BaseCommand):
                 options.get('database'),
                 options.get('tableprefix'))
             restore_redirects(domain)
+
+        set_sidebar_banner()
         create_newsletter_templates()
 
         save_group('Administrators')

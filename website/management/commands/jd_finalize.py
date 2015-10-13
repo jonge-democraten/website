@@ -334,14 +334,14 @@ def create_mailinglists_and_templates(domain, host, user, password, database, pr
                 content = mailing[9],
                 template = "{{ content }}",
                 public = True if l_id != 14 else False, # Public, behalve bij kader
-                date = datetime.fromtimestamp(int(mailing[18])))
+                date = datetime.fromtimestamp(max(int(mailing[18]),int(mailing[13])))
             nl.save()
             nltl = NewsletterToList(
                 newsletter = nl,
                 target_list = l,
                 subscriptions_url = '',
                 sent = True,
-                date = datetime.fromtimestamp(int(mailing[13])))
+                date = datetime.fromtimestamp(max(int(mailing[18]),int(mailing[13])))
             nltl.save()
         # Migreer subscribers
         cur.execute('SELECT * FROM '+prefix+'_jnews_subscribers AS sub ' \

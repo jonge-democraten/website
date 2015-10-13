@@ -270,6 +270,7 @@ INSTALLED_APPS = (
     "janeus",
     "hemres",
     "django_rq",
+    "robots",
 )
 
 # List of processors used by RequestContext to populate the context.

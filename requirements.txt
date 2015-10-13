@@ -12,3 +12,4 @@ icalendar==3.8.4
 -e git+https://github.com/jonge-democraten/janeus@1.4#egg=janeus
 -e git+https://github.com/jonge-democraten/hemres@0.8#egg=hemres
 inlinestyler==0.2.0
+git+git://github.com/jezdez/django-robots.git@e73d62abed3c5b2e3be5d795a6cb26cce4d441fc

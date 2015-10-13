@@ -276,54 +276,57 @@ def create_mailinglists_and_templates(domain, host, user, password, database, pr
     lists = []
     if (domain == 'website.jongedemocraten.nl'):
         l = create_mailinglist(slugify('Digizine'), 'Digizine')
-        lists.append((1,l))
+        lists.append((1, l, ['[JD Digizine]', '[JD Landelijk]']))
         l = create_mailinglist(slugify('Jonge Democraten Kadernieuwsbrief'), 'Jonge Democraten Kadernieuwsbrief')
-        lists.append((14,l))
+        lists.append((14,l, ['[JD Kader]']))
         l = create_mailinglist(slugify('Digizine via Mailman'), 'Digizine via Mailman')
-        lists.append((18,l))
+        lists.append((18,l, []))
         l = create_mailinglist(slugify('Nieuwsbrief INCO'), 'Nieuwsbrief INCO')
-        lists.append((19,l))
+        lists.append((19,l, ['[JD Inco]', '[JD Internationaal]']))
         l = create_mailinglist(slugify('Digitale Demo'), 'Digitale Demo')
-        lists.append((22,l))
+        lists.append((22,l, []))
         l = create_mailinglist(slugify('Nieuwsbrief Buitenland'), 'Nieuwsbrief Buitenland')
-        lists.append((23,l))
+        lists.append((23,l, []))
     if (domain == 'amsterdam.jongedemocraten.nl'):
         l = create_mailinglist(slugify('Nieuwsbrief Amsterdam'), 'Nieuwsbrief Amsterdam')
-        lists.append((3,l))
+        lists.append((3,l, ['[JD Amsterdam]']))
     if (domain == 'arnhemnijmegen.jongedemocraten.nl'):
         l = create_mailinglist(slugify('Nieuwsbrief Arnhem-Nijmegen'), 'Nieuwsbrief Arnhem-Nijmegen')
-        lists.append((4,l))
+        lists.append((4,l, ['[JD Arnhem-Nijmegen]']))
     if (domain == 'brabant.jongedemocraten.nl'):
         l = create_mailinglist(slugify('Nieuwsbrief Brabant'), 'Nieuwsbrief Brabant')
-        lists.append((5,l))
+        lists.append((5,l, ['[JD Brabant]']))
     if (domain == 'groningen.jongedemocraten.nl'):
         l = create_mailinglist(slugify('Nieuwsbrief Groningen'), 'Nieuwsbrief Groningen')
-        lists.append((7,l))
+        lists.append((7,l, ['[JD Groningen]']))
     if (domain == 'leidenhaaglanden.jongedemocraten.nl'):
         l = create_mailinglist(slugify('Nieuwsbrief Leiden-Haaglanden'), 'Nieuwsbrief Leiden-Haaglanden')
-        lists.append((8,l))
+        lists.append((8,l, ['[JD Leiden-Haaglanden]']))
     if (domain == 'rotterdam.jongedemocraten.nl'):
         l = create_mailinglist(slugify('Nieuwsbrief Rotterdam'), 'Nieuwsbrief Rotterdam')
-        lists.append((10,l))
+        lists.append((10,l, ['[JD Rotterdam]']))
     if (domain == 'twente.jongedemocraten.nl'):
         l = create_mailinglist(slugify('Nieuwsbrief Twente'), 'Nieuwsbrief Twente')
-        lists.append((11,l))
+        lists.append((11,l, ['[JD Twente]']))
     if (domain == 'friesland.jongedemocraten.nl'):
         l = create_mailinglist(slugify('Nieuwsbrief Friesland'), 'Nieuwsbrief Friesland')
-        lists.append((6,l))
+        lists.append((6,l, ['[JD Friesland]']))
     if (domain == 'internationaal.jongedemocraten.nl'):
         pass
     if (domain == 'limburg.jongedemocraten.nl'):
         l = create_mailinglist(slugify('Nieuwsbrief Limburg'), 'Nieuwsbrief Limburg')
-        lists.append((9,l))
+        lists.append((9,l, ['[JD Limburg]', '[JD Maastricht]']))
     if (domain == 'utrecht.jongedemocraten.nl'):
         l = create_mailinglist(slugify('Nieuwsbrief Utrecht'), 'Nieuwsbrief Utrecht')
-        lists.append((2,l))
+        lists.append((2,l, ['[JD Utrecht]']))
     if (domain == 'zwolle.jongedemocraten.nl'):
         l = create_mailinglist(slugify('Nieuwsbrief Zwolle'), 'Nieuwsbrief Zwolle')
-        lists.append((3,l))
-    for l_id, l in lists:
-        cur.execute('SELECT * FROM '+prefix+'_jnews_mailings WHERE list_id = %s;', (l_id, ))
+        lists.append((12,l, []))
+    for l_id, l, l_search in lists:
+        appendQuery = ""
+        for extraQuery in l_search:
+            appendQuery += " OR (list_id = 0 AND subject LIKE '{0}%')".format(extraQuery)
+        cur.execute('SELECT * FROM '+prefix+'_jnews_mailings WHERE list_id = %s' + appendQuery +';', (l_id, ))
         for mailing in cur.fetchall():
             nl = Newsletter(
                 subject = mailing[5],

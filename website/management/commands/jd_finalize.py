@@ -326,7 +326,8 @@ def create_mailinglists_and_templates(domain, host, user, password, database, pr
         appendQuery = ""
         for extraQuery in l_search:
             appendQuery += " OR (list_id = 0 AND subject LIKE '{0}%')".format(extraQuery)
-        cur.execute('SELECT * FROM '+prefix+'_jnews_mailings WHERE list_id = %s' + appendQuery +';', (l_id, ))
+        query = "SELECT * FROM "+prefix+"_jnews_mailings WHERE list_id = {0}".format(l_id) + appendQuery + ";"
+        cur.execute(query)
         for mailing in cur.fetchall():
             nl = Newsletter(
                 subject = mailing[5],

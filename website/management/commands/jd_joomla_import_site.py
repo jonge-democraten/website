@@ -15,7 +15,7 @@ from fullcalendar.models import create_event
 from website.jdpages.models import HomePage
 
 
-def get_post_url(cur, table_prefix, post_id):
+def get_post_url(cur, table_prefix, post_id, site_id = 1):
     cur.execute('SELECT * FROM '+table_prefix+'_content WHERE id=%s;',
                 (post_id,))
     post = cur.fetchone()
@@ -23,7 +23,7 @@ def get_post_url(cur, table_prefix, post_id):
     cur.execute('SELECT * FROM '+table_prefix+'_categories WHERE id=%s;',
                 (post[10],))
     cat = cur.fetchone()
-    return '/'+cat[9]+'/'+name+'/'
+    return str(site_id)+'/'+cat[9]+'/'+name+'/'
 
 
 class Command(BaseImporterCommand):
@@ -158,11 +158,11 @@ class Command(BaseImporterCommand):
                                 for page in cur.fetchall():
                                     self.add_page(  title=menu[2],
                                                     content=page[2]+page[3],
-                                                    old_url=get_post_url(cur, options.get('tableprefix'), page[0]),
+                                                    old_url=get_post_url(cur, options.get('tableprefix'), page[0], site.id),
                                                     old_id=menu[0],
                                                     old_parent_id=menu[9])
 
-                    if 'view' in qs and qs['view'][0] == 'category' and 'layout' in qs and qs['layout'][0] == 'blog' and 'id' in qs:
+                    if 'view' in qs and qs['view'][0] == 'category' and 'layout' in qs and qs['layout'][0] == 'blog' and 'id' in qs and qs['id'][0] != '2': # 2 = uncategorised
                         # Blogpost
                         # _content.state  has the following values
                         #  0 = unpublished
@@ -175,7 +175,7 @@ class Command(BaseImporterCommand):
                                     pub_date=page[18],
                                     content=page[5]+page[6],
                                     categories=(page[34],),
-                                    old_url=get_post_url(cur, options.get('tableprefix'),page[0]))
+                                    old_url=get_post_url(cur, options.get('tableprefix'),page[0], site.id))
                 print("Component")
             else:
                 print("Unknown: ", menu[0])

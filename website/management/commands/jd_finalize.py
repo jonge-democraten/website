@@ -10,6 +10,7 @@ from mezzanine.utils.sites import current_site_id
 from mezzanine.conf import settings
 from django.contrib.auth.models import User, Group, Permission
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.redirects.models import Redirect
 from django.contrib.sites.models import Site
 from django.utils.text import slugify
 from janeus import Janeus
@@ -511,6 +512,16 @@ def set_social_media_buttons(domain):
         create_social_media_button('FB', "//facebook.com/group.php?gid=93502459706")
         create_social_media_button('TW', "//twitter.com/JDUtrecht")
 
+def restore_redirects(domain):
+    if (domain == 'website.jongedemocraten.nl'):
+        redirects = Redirect.objects.all()
+        for r in redirects:
+            site_id = int(r.old_path.split('/', 1)[0])
+            domain = Site.objects.get(id = site_id).domain
+            r.old_path = '/' + r.old_path.split('/', 1)[1]
+            r.new_path = "https://{0}{1}".format(domain, r.new_path)
+            r.save()
+
 def twitter_query_for_domain(domain):
     if (domain == 'website.jongedemocraten.nl'):
         return 'jongedemocraten'
@@ -635,6 +646,7 @@ class Command(BaseCommand):
                 options.get('password'),
                 options.get('database'),
                 options.get('tableprefix'))
+            restore_redirects(domain)
         create_newsletter_templates()
 
         save_group('Administrators')

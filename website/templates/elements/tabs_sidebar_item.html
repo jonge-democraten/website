@@ -14,13 +14,13 @@
                 <table class="mod_events_latest_table" cellspacing="0" cellpadding="0" border="0" align="center" width="100%">
                     <tbody>
                     {% if settings.SIDEBAR_AGENDA_SITES == 3 %}
-                        {% get_agenda limit=10 as items %}
+                        {% get_agenda limit=8 as items %}
                     {% elif settings.SIDEBAR_AGENDA_SITES == 2 %}
-                        {% get_site_and_main_agenda limit=10 as items %}
+                        {% get_site_and_main_agenda limit=8 as items %}
                     {% elif settings.SIDEBAR_AGENDA_SITES == 4 %}
-                        {% get_main_agenda limit=10 as items %}
+                        {% get_main_agenda limit=8 as items %}
                     {% else %}
-                        {% get_site_agenda limit=10 as items %}
+                        {% get_site_agenda limit=8 as items %}
                     {% endif %}
                     {% for item in items %}
                         <tr class="jevrow0">

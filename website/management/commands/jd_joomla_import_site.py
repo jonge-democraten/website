@@ -23,7 +23,7 @@ def get_post_url(cur, table_prefix, post_id):
     cur.execute('SELECT * FROM '+table_prefix+'_categories WHERE id=%s;',
                 (post[10],))
     cat = cur.fetchone()
-    return cat[9]+'/'+name
+    return '/'+cat[9]+'/'+name+'/'
 
 
 class Command(BaseImporterCommand):

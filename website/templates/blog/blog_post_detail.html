@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 {% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags staticfiles %}
 
-{% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
+{% block meta_title %}{% block meta_title2 %}{{ blog_post.meta_title }}{% endblock %}{% endblock %}
 
 {% block meta_keywords %}{% metablock %}
 {% keywords_for blog_post as tags %}
 {% for tag in tags %}{% if not forloop.first %}, {% endif %}{{ tag }}{% endfor %}
 {% endmetablock %}{% endblock %}
 
-{% block meta_description %}{% metablock %}
+{% block meta_description %}{% block meta_description2 %}{% metablock %}
 {{ blog_post.description }}
-{% endmetablock %}{% endblock %}
+{% endmetablock %}{% endblock %}{% endblock %}
 
 {% block main %}
 

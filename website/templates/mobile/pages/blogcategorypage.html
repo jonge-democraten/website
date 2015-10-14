@@ -1,16 +1,16 @@
 {% extends "mobile/base.html" %}
 {% load i18n future mezzanine_tags blog_tags keyword_tags disqus_tags %}
 
-{% block meta_title %}{% if page %}{{ page.meta_title }}{% endif %}{% endblock %}
+{% block meta_title %}{% block meta_title2 %}{% if page %}{{ page.meta_title }}{% endif %}{% endblock %}{% endblock %}
 
 {% block meta_keywords %}{% metablock %}
     {% keywords_for blog_post as tags %}
     {% for tag in tags %}{% if not forloop.first %}, {% endif %}{{ tag }}{% endfor %}
 {% endmetablock %}{% endblock %}
 
-{% block meta_description %}{% metablock %}
+{% block meta_description %}{% block meta_description2 %}{% metablock %}
 {{ page.description }}
-{% endmetablock %}{% endblock %}
+{% endmetablock %}{% endblock %}{% endblock %}
 
 {% block main %}
 <section class="content clearing">

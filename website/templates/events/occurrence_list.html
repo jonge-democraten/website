@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n mezzanine_tags staticfiles %}
 
-{% block meta_title %}{% trans "Upcoming events" %}{% endblock %}
+{% block meta_title %}{% block meta_title2 %}{% trans "Upcoming events" %}{% endblock %}{% endblock %}
 
 {% block main %}
 <div id="homeDiv">

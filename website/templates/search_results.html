@@ -2,7 +2,7 @@
 
 {% load i18n future mezzanine_tags %}
 
-{% block meta_title %}{% trans "Search Results" %}{% endblock %}
+{% block meta_title %}{% block meta_title2 %}{% trans "Search Results" %}{% endblock %}{% endblock %}
 {% block title %}{% trans "Search Results" %}{% endblock %}
 {% block extra_head %}
 <meta name="robots" content="noindex">

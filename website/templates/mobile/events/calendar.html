@@ -1,7 +1,7 @@
 {% extends "mobile/pages/richtextpage.html" %}
 {% load i18n mezzanine_tags staticfiles fullcalendar %}
 
-{% block meta_title %}{% trans "Calendar" %}{% endblock %}
+{% block meta_title %}{% block meta_title2 %}{% trans "Calendar" %}{% endblock %}{% endblock %}
 
 {% block extra_js %}{{ block.super }}
 <script type="text/javascript" src="{% static "website/js/moment.min.js" %}"></script>

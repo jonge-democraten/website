@@ -460,44 +460,44 @@ def create_social_media_button(buttonType, url):
 
 def set_social_media_buttons(domain):
     if (domain == 'website.jongedemocraten.nl'):
-        create_social_media_button('FB', "//facebook.com/group.php?gid=2225510846")
-        create_social_media_button('LI', "//linkedin.com/groups?gid=1039477")
-        create_social_media_button('TW', "//twitter.com/jongedemocraten")
-        create_social_media_button('YT', "//youtube.com/jongedemocraten")
+        create_social_media_button('FB', "https://www.facebook.com/jongedemocraten")
+        create_social_media_button('LI', "https://linkedin.com/groups?gid=1039477")
+        create_social_media_button('TW', "https://twitter.com/jongedemocraten")
+        create_social_media_button('YT', "https://youtube.com/jongedemocraten")
     if (domain == 'amsterdam.jongedemocraten.nl'):
-        create_social_media_button('FB', "//facebook.com/pages/Jonge-Democraten-Amsterdam/163556367006942")
-        create_social_media_button('TW', "//twitter.com/JDAmsterdam")
-        create_social_media_button('YT', "//youtube.com/JongeDemocratenAdam")
+        create_social_media_button('FB', "https://facebook.com/pages/Jonge-Democraten-Amsterdam/163556367006942")
+        create_social_media_button('TW', "https://twitter.com/JDAmsterdam")
+        create_social_media_button('YT', "https://youtube.com/JongeDemocratenAdam")
     if (domain == 'arnhemnijmegen.jongedemocraten.nl'):
-        create_social_media_button('FB', "//facebook.com/groups/225827921166/")
-        create_social_media_button('TW', "//twitter.com/JDArnhmNijmgn")
+        create_social_media_button('FB', "https://facebook.com/groups/225827921166/")
+        create_social_media_button('TW', "https://twitter.com/JDArnhmNijmgn")
     if (domain == 'brabant.jongedemocraten.nl'):
-        create_social_media_button('FB', "//facebook.com/groups/170404404717/")
-        create_social_media_button('TW', "//twitter.com/JD_Brabant")
+        create_social_media_button('FB', "https://facebook.com/groups/170404404717/")
+        create_social_media_button('TW', "https://twitter.com/JD_Brabant")
     if (domain == 'groningen.jongedemocraten.nl'):
-        create_social_media_button('FB', "//facebook.com/group.php?gid=112050632172284")
-        create_social_media_button('TW', "//twitter.com/JD_Groningen")
+        create_social_media_button('FB', "https://facebook.com/group.php?gid=112050632172284")
+        create_social_media_button('TW', "https://twitter.com/JD_Groningen")
     if (domain == 'leidenhaaglanden.jongedemocraten.nl'):
-        create_social_media_button('FB', "//facebook.com/JD.Leiden.Haaglanden")
-        create_social_media_button('LI', "//linkedin.com/groups/Jonge-Democraten-JD-Leiden-Haaglanden-4535613")
-        create_social_media_button('TW', "//twitter.com/JDLeiDenHaageo")
+        create_social_media_button('FB', "https://facebook.com/JD.Leiden.Haaglanden")
+        create_social_media_button('LI', "https://linkedin.com/groups/Jonge-Democraten-JD-Leiden-Haaglanden-4535613")
+        create_social_media_button('TW', "https://twitter.com/JDLeiDenHaageo")
     if (domain == 'rotterdam.jongedemocraten.nl'):
-        create_social_media_button('FB', "//facebook.com/groups/75732134487/")
-        create_social_media_button('TW', "//twitter.com/jd_rotterdam")
+        create_social_media_button('FB', "https://facebook.com/groups/75732134487/")
+        create_social_media_button('TW', "https://twitter.com/jd_rotterdam")
     if (domain == 'twente.jongedemocraten.nl'):
-        create_social_media_button('FB', "//facebook.com/JDTwente/")
-        create_social_media_button('TW', "//twitter.com/JDTwente")
+        create_social_media_button('FB', "https://facebook.com/JDTwente/")
+        create_social_media_button('TW', "https://twitter.com/JDTwente")
     if (domain == 'friesland.jongedemocraten.nl'):
-        create_social_media_button('FB', "//facebook.com/groups/210664798975018/")
-        create_social_media_button('TW', "//twitter.com/JDFryslan")
+        create_social_media_button('FB', "https://facebook.com/groups/210664798975018/")
+        create_social_media_button('TW', "https://twitter.com/JDFryslan")
     if (domain == 'internationaal.jongedemocraten.nl'):
         pass
     if (domain == 'limburg.jongedemocraten.nl'):
-        create_social_media_button('FB', "//facebook.com/groups/jongedemocratenmaastricht/")
-        create_social_media_button('TW', "//twitter.com/jdmaastricht")
+        create_social_media_button('FB', "https://facebook.com/groups/jongedemocratenmaastricht/")
+        create_social_media_button('TW', "https://twitter.com/jdmaastricht")
     if (domain == 'utrecht.jongedemocraten.nl'):
-        create_social_media_button('FB', "//facebook.com/group.php?gid=93502459706")
-        create_social_media_button('TW', "//twitter.com/JDUtrecht")
+        create_social_media_button('FB', "https://facebook.com/group.php?gid=93502459706")
+        create_social_media_button('TW', "https://twitter.com/JDUtrecht")
 
 def restore_redirects(domain):
     if (domain == 'website.jongedemocraten.nl'):

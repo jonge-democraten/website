@@ -46,6 +46,27 @@ L.Icon.Default.imagePath = "{% static "website/images/leaflet/" %}";
     {{ occurrence.event.content|richtext_filters|safe }}
     {% endeditable %}
 
+        <div class="itp-social-buttons-box">
+            <div class="itp-sbb-nl">
+                  <div class="itp-sb-right" align="right">
+                  {% spaceless %}
+                      <a href="https://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}" title="Submit to Facebook" target="_blank" >
+                      <img src="{% static "website/images/icons/facebook_bw.png" %}" alt="Submit to Facebook" />
+                      </a>
+
+                      <a href="https://plus.google.com/share?url={{ request.build_absolute_uri }}" title="Submit to Google+" target="_blank">
+                      <img src="{% static "website/images/icons/google_bw.png" %}" alt="Submit to Google Bookmarks" />
+                      </a>
+
+                      <a href="http://twitter.com/home?status={{ blog_post.title|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" title="Submit to Twitter" target="_blank" >
+                      <img src="{% static "website/images/icons/twitter_bw.png" %}" alt="Submit to Twitter"/>
+                      </a>
+                  {% endspaceless %}
+                  </div>
+            </div>
+        </div>
+
+
     <p>
         <a href="{% url "fullcalendar-monthly-view" occurrence.start_time.year occurrence.start_time.month %}">&laquo; {% trans "Back to calendar" %}</a>
     </p>

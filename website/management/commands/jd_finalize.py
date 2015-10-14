@@ -516,6 +516,20 @@ def set_sidebar_banner():
     sbw.description = "Word lid van de Jonge Democraten!"
     sbw.save()
 
+def create_redirect(old_path, new_path):
+    r = Redirect.objects.get_or_create(old_path = old_path)
+    r.new_path = new_path
+    r.save()
+
+def import_redirects(domain):
+    """
+    We will manually import the most recent month of URLs as redirects. 
+    """
+    if (domain == 'website.jongedemocraten.nl'):
+        # Example:
+        # create_redirect('/old/url/ends/with/slash/', 'https://amsterdam.jongedemocraten.nl/new/full/URL/')
+        pass
+
 def twitter_query_for_domain(domain):
     if (domain == 'website.jongedemocraten.nl'):
         return 'jongedemocraten'

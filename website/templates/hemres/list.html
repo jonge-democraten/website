@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<p>De volgende nieuwsbrieven zijn het afgelopen jaar verzonden:</p>
+
+<p>
+{% for l in letters %}
+<a href="{% url 'view_newsletter' l.id %}">{{l.subject}}</a> ({{l.date|date:'j F Y'}}) <br/>
+{% endfor %}
+</p>
+
+{% endblock main %} 

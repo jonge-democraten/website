@@ -4,4 +4,6 @@
     <a href="//{{ data.siteDomain }}{% url 'fullcalendar-calendar' %}"><li style="color: {{ data.textColor }}; background-color: {{ data.backgroundColor }}; border: 1px solid {{ data.borderColor }};">{{ site_name }}</li></a>
     {% endfor %}
 </ul>
+{% else %}
+<a href="//{{ main_site_url }}{% url 'fullcalendar-calendar' %}">Terug naar landelijke kalender</a>
 {% endif %}

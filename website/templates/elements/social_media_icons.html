@@ -6,7 +6,7 @@
         {% spaceless %}
         <p>
         {% for item in item.children %}
-            <a href="{{ item.url }}" title="{{ item.media_type }}" rel="external nofollow">
+            <a href="{{ item.url }}" title="{{ item.media_type }}" target="_blank" rel="external nofollow">
                 <img src="{% block item_icon_url %}{% static item.icon_url %}{% endblock %}" border="0" alt="{{ item.media_type }}" width="32" height="32"/>
             </a>   
         {% endfor %}

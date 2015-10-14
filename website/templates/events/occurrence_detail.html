@@ -50,7 +50,7 @@ L.Icon.Default.imagePath = "{% static "website/images/leaflet/" %}";
             <div class="itp-sbb-nl">
                   <div class="itp-sb-right" align="right">
                   {% spaceless %}
-                      <a href="https://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}" title="Submit to Facebook" target="_blank" >
+                      <a href="https://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ occurrence.event.title|urlencode }}" title="Submit to Facebook" target="_blank" >
                       <img src="{% static "website/images/icons/facebook_bw.png" %}" alt="Submit to Facebook" />
                       </a>
 
@@ -58,7 +58,7 @@ L.Icon.Default.imagePath = "{% static "website/images/leaflet/" %}";
                       <img src="{% static "website/images/icons/google_bw.png" %}" alt="Submit to Google Bookmarks" />
                       </a>
 
-                      <a href="http://twitter.com/home?status={{ blog_post.title|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" title="Submit to Twitter" target="_blank" >
+                      <a href="http://twitter.com/home?status={{ occurrence.event.title|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" title="Submit to Twitter" target="_blank" >
                       <img src="{% static "website/images/icons/twitter_bw.png" %}" alt="Submit to Twitter"/>
                       </a>
                   {% endspaceless %}

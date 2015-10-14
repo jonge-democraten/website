@@ -78,7 +78,14 @@ class TestIframeStripping(TestCase):
 <p><iframe height="315" src="//www.youtube.com/embed/-Y6ImGzTF70" width="560"></iframe></p>
 <p>Vestibulum eget posuere metus, vel finibus leo. Suspendisse congue orci magna, in vestibulum lacus pulvinar a. Donec egestas, felis id feugiat tempus, orci velit ullamcorper risus, et ultricies augue arcu ullamcorper dolor. Mauris eget sollicitudin purus. Aenean a cursus risus, sit amet mattis erat. Curabitur vel venenatis sem. Cras non gravida tellus, eu egestas tellus. Morbi at lorem a turpis blandit vulputate vitae a est.</p></div>
         """
-        self.assertEqual(str(bs(field_value, 'html.parser')),
+        field_value_post = """
+        <div id="test">
+<p>Wit amet interdum dolor felis ut ante. Morbi a facilisis ante, in lobortis urna. Etiam ut nunc quis libero interdum aliquam eu at magna. Nunc vehicula risus eleifend molestie vulputate. Mauris diam odio, congue eget lorem id, finibus imperdiet sem.</p>
+<p><iframe height="315" src="https://www.youtube-nocookie.com/embed/-Y6ImGzTF70" width="560"></iframe></p>
+<p>Vestibulum eget posuere metus, vel finibus leo. Suspendisse congue orci magna, in vestibulum lacus pulvinar a. Donec egestas, felis id feugiat tempus, orci velit ullamcorper risus, et ultricies augue arcu ullamcorper dolor. Mauris eget sollicitudin purus. Aenean a cursus risus, sit amet mattis erat. Curabitur vel venenatis sem. Cras non gravida tellus, eu egestas tellus. Morbi at lorem a turpis blandit vulputate vitae a est.</p></div>
+        """
+
+        self.assertEqual(str(bs(field_value_post, 'html.parser')),
                          filter_non_video_iframes(field_value))
 
     def test_vimeo_stripped(self):

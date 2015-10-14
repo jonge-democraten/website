@@ -23,6 +23,8 @@ def filter_non_video_iframes(html, testing=False):
         for matcher in matchers:
             exp = re.compile(matcher)
             if exp.match(src):
+                # Replace YouTube embed links with privacy-friendly alternative
+                iframe['src'] = re.sub(r"(https?:)?//www\.youtube\.com/", "https://www.youtube-nocookie.com/", src)
                 matched = True
                 break
         # If no matcher matched, remove the iframe

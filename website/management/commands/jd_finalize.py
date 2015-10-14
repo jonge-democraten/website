@@ -219,7 +219,6 @@ def set_sidebar_blogs_for_domain(domain):
         set_sidebar_blog("Weblog", "JD Blog")
     if (domain == 'amsterdam.jongedemocraten.nl'):
         set_sidebar_blog("Nieuws")
-        set_sidebar_blog("Opinie", "De Druppel")
     if (domain == 'arnhemnijmegen.jongedemocraten.nl'):
         set_sidebar_blog("Nieuws")
         set_sidebar_blog("Weblog")

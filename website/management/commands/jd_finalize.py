@@ -155,13 +155,6 @@ def create_column_element_widgets(domain):
         create_events_column_element_widget('/', 'SI', 'l', "Geplande activiteiten Amsterdam")
         create_events_column_element_widget('/', 'MA', 'l', "Geplande activiteiten landelijk")
         create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws Amsterdam", st = 'CP', numItems = 5)
-        create_blog_category_column_element_widget('/', "Opinie", 'r', "De Druppel: Recente artikelen", st = 'CP', numItems = 5)
-        create_blog_category_column_element_widget('de-druppel', "Opinie", 'l', "Meest recente artikelen", numItems = 5)
-        create_blog_category_column_element_widget('de-druppel', "Activiteiten", 'r', st = 'CP')
-        create_blog_category_column_element_widget('de-druppel', "Reportages", 'r', st = 'CP')
-        create_blog_category_column_element_widget('de-druppel', "Interviews", 'r', st = 'CP')
-        create_blog_category_column_element_widget('de-druppel', "Opinie", 'r', st = 'CP')
-        create_blog_category_column_element_widget('de-druppel', "Column", 'r', st = 'CP')
     if (domain == 'rotterdam.jongedemocraten.nl'):
         create_events_column_element_widget('/', 'SM', 'l', "Geplande activiteiten Rotterdam")
         create_blog_category_column_element_widget('/', "Nieuws", 'r', "Laatste nieuws Rotterdam", st = 'CP', numItems = 5)
@@ -451,12 +444,6 @@ def modify_miscellaneous_content(domain):
         page_new_parent('politieke-opinie', 'media')
         page_new_parent('weblog', 'media')
         # TODO: Set form in word-lid
-    if (domain == "amsterdam.jongedemocraten.nl"):
-        page_new_parent('column', 'de-druppel')
-        page_new_parent('activiteiten', 'de-druppel')
-        page_new_parent('reportages', 'de-druppel')
-        page_new_parent('interviews', 'de-druppel')
-        page_new_parent('opinie', 'de-druppel')
     if (domain == "brabant.jongedemocraten.nl"):
         page_new_parent('regionaal-politiek-programma-rpp', 'politiek')
     if (domain == "internationaal.jongedemocraten.nl"):

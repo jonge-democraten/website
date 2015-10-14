@@ -59,7 +59,7 @@
                       <img src="{% static "website/images/icons/google_bw.png" %}" alt="Submit to Google Bookmarks" />
                       </a>
 
-                      <a href="http://twitter.com/home?status={{ blog_post.short_url|urlencode }}%20{{ blog_post.title|urlencode }}" title="Submit to Twitter" target="blank" >
+                      <a href="http://twitter.com/home?status={{ request.build_absolute_uri|urlencode }}%20{{ blog_post.title|urlencode }}" title="Submit to Twitter" target="blank" >
                       <img src="{% static "website/images/icons/twitter_bw.png" %}" alt="Submit to Twitter"/>
                       </a>
                   {% endspaceless %}

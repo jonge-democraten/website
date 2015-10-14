@@ -44,6 +44,14 @@ $(function() {
 <script src="{% static "website/js/respond.min.js" %}"></script>
 <![endif]-->
 
+<meta name="twitter:card" value="summary">
+<meta name="twitter:creator" value="@JongeDemocraten">
+<meta name="twitter:site" value="@JongeDemocraten">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:title" content="{% block meta_title2 %}{% endblock %}{% if settings.SITE_TAGLINE %} -  {{ settings.SITE_TAGLINE }}{% endif %}">
+<meta property="og:description" content="{% block meta_description2 %}{% endblock %}">
+<meta property="og:image" content="{{ TODO }}">
+
 {% block extra_head %}{% endblock %}
 </head>
 

@@ -1,0 +1,10 @@
+{% overextends "admin/login.html" %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <style>       
+        p#forgot-password {
+            display: none;
+        }
+    </style>       
+{% endblock %}

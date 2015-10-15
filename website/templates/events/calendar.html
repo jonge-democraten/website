@@ -40,6 +40,9 @@
     <div id="event-calendar">
 
     </div>
+    {% if not is_main_site %}
+    <a href="{{ main_site_url }}{% url 'fullcalendar-calendar' %}">Terug naar landelijke kalender</a>
+    {% endif %}
     {% events_site_legend %}
 
     <p id="calendar-loading">

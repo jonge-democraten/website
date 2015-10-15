@@ -24,11 +24,11 @@ Depending on your Linux distribution, you may need to install some system-level 
 ***Ubuntu (15.04) packages***
 
 The following packages are required:
-*python-virtualenv, python3-dev, libldap2-dev, libsasl2-dev, libxml2-dev, libxslt1-dev, zlib1g-dev, libjpeg-dev*
+*python-virtualenv, python3-dev, libldap2-dev, libsasl2-dev, libxml2-dev, libxslt1-dev, zlib1g-dev, libjpeg-dev, libfreetype6-dev*
 
 Install these using the command,
 
-    $ sudo apt-get install python-virtualenv python3-dev libldap2-dev libsasl2-dev libxml2-dev libxslt1-dev zlib1g-dev libjpeg-dev
+    $ sudo apt-get install python-virtualenv python3-dev libldap2-dev libsasl2-dev libxml2-dev libxslt1-dev zlib1g-dev libjpeg-dev libfreetype6-dev
 
 **Windows and Mac**
 

@@ -125,7 +125,7 @@ class Command(BaseImporterCommand):
         for menu in cur.fetchall():
             menutype = menu[7]
             if menutype == "url":
-                # TODO: handmatig migreren
+                # Wordt handmatig gemigreerd
                 print("Link")
             elif menutype == "component":
                 url = urlparse(menu[6])

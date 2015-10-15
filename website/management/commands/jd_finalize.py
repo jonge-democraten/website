@@ -1102,7 +1102,6 @@ def modify_miscellaneous_content(domain):
         page_new_parent('persberichten', 'media')
         page_new_parent('politieke-opinie', 'media')
         page_new_parent('weblog', 'media')
-        # TODO: Set form in word-lid
     if (domain == "brabant.jongedemocraten.nl"):
         page_new_parent('regionaal-politiek-programma-rpp', 'politiek')
     if (domain == "internationaal.jongedemocraten.nl"):

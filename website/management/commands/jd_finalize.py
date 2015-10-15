@@ -390,6 +390,26 @@ def create_extra_content(domain):
         create_link("Utrecht", "//utrecht.jongedemocraten.nl", "afdelingen")
         create_link("Internationaal", "//internationaal.jongedemocraten.nl")
         create_link("Nieuwsbrieven", "/nieuwsbrief/list", "media")
+        p = RichTextPage.objects.get(slug = 'afdelingen')
+        p.content = """
+<p>Naast een landelijke organisatie heeft de Jonge Democraten ook lokale afdelingen. Deze afdelingen vormen in feite het hart van de vereniging en organiseren iedere maand talloze activiteiten in een stad of regio. De activiteiten vari&euml;ren van inhoudelijke avonden met sprekers, debatten en trainingen tot gezellige borrels. Op de websites van de afdelingen vind je meer informatie over activiteiten die de afdeling bij jou in de omgeving organiseert.</p>
+<h2>Overzichtskaart afdelingsgrenzen 2014</h2>
+<div id="afdelingskaart">
+<div class="infobox">
+<h2>Afdeling</h2>
+<h3>Gemeente</h3>
+</div>
+</div>
+<script src="/static/website/js/d3.v3.min.js" type="text/javascript"></script>
+<script src="/static/website/js/queue.v1.min.js" type="text/javascript"></script>
+<script src="/static/website/js/d3.geo.projection.v0.min.js" type="text/javascript"></script>
+<script src="/static/website/js/topojson.v0.min.js" type="text/javascript"></script>
+<script src="/static/website/js/render.js" type="text/javascript"></script>
+<p><em>Op basis van de afdelingsgrenzen en gemeentelijke indeling van januari 2013.</em></p>
+<h1>De JD in jouw regio</h1>
+<p>Op dit moment zijn er tien afdelingen van de Jonge Democraten door het gehele land. Kijk hierboven bij het overzicht tot welke afdeling de regio behoort waar jij woont. Kijk vervolgens op de afdelingspaginas om te zien wat die afdeling in jouw regio doet, bijvoorbeeld onder het kopje activiteiten of commissies.</p>
+<p>Doet de afdeling op dit moment nog niets met jouw regio? Dan kun jij daar verandering in brengen! De JD heeft namelijk verschillende regiocommissies die onder de afdelingen vallen. Wellicht kun jij een regiocommissie opstarten bij jou in de buurt! Neem contact op met de landelijk secretaris op <a href="mailto:info@jongedemocraten.nl">info@jongedemocraten.nl</a>. Hij zal je in contact brengen met de betreffende afdeling en de mogelijkheden tot het oprichten van een regiocommissie samen met je onderzoeken.</p>"""
+        p.save()
         # TODO: Create document lists as needed
     if (domain == "friesland.jongedemocraten.nl"):
         create_link("Frysk", "//fryslan.jongedemocraten.nl", "/")

@@ -14,7 +14,6 @@ from django.contrib.auth.models import User, Group, Permission
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.redirects.models import Redirect
 from django.contrib.sites.models import Site
-from django.forms import IntegerField
 from django.utils.text import slugify
 from janeus import Janeus
 from janeus.models import JaneusRole
@@ -23,7 +22,6 @@ from website.jdpages.models import *
 from hemres.models import NewsletterTemplate, MailingList, NewsletterToList, Newsletter, EmailSubscriber, JaneusSubscriber
 from filebrowser_safe import settings as fb_settings
 from shutil import copy
-from captcha.fields import CaptchaField
 
 def save_setting(name, value, domain):
     s = Setting()
@@ -421,6 +419,7 @@ def create_extra_content(domain):
         form.parent = oldForm.parent
         oldForm.delete()
         form.title = "Word lid!"
+        form.slug = 'word-lid'
         form.content = """
 <p>Voor meer informatie over het aamelden en opzeggen van het lidmaatchap van de Jonge Democraten klik <a href="/lidmaatschap/">hier.</a> </p>
 <p>Van een Nederlands rekeningnummer vind u <a href="https://omnummertool.overopiban.nl/" target="_blank">hier</a> de bijbehorende IBAN.</p>
@@ -429,8 +428,8 @@ def create_extra_content(domain):
         form.response = "<p>Bedankt voor je inschrijving. Je ontvangt een bevestigingsmail op het emailadres dat je hebt opgegeven.</p>"
         form.send_email = True
         form.email_from = "noreply@jongedemocraten.nl"
-        form.email_copy = "ledenadministratie@jongedemocraten.nl"
-        form.email_subect = "Bevestiging van inschrijving"
+        form.email_copies = "ledenadministratie@jongedemocraten.nl"
+        form.email_subject = "Bevestiging van inschrijving"
         form.email_message = """Beste aanmelder,
 
 Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die je hebt ingevoerd."""
@@ -442,9 +441,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.RADIO_MULTIPLE
         f.required = True
         f.visible = True
-        choices = "Man, Vrouw"
-        default = "Man"
-        help_text = ""
+        f.choices = "Man, Vrouw"
+        f.default = "Man"
+        f.help_text = " "
         f.save()
         # Roepnaam
         f = Field()
@@ -453,9 +452,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.TEXT
         f.required = True
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
         # Voorletters
         f = Field()
@@ -464,9 +463,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.TEXT
         f.required = True
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
         # Tussenvoegsels
         f = Field()
@@ -475,9 +474,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.TEXT
         f.required = False
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
         # Achternaam
         f = Field()
@@ -486,9 +485,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.TEXT
         f.required = True
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
         # Telefoonnummer
         f = Field()
@@ -497,9 +496,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.TEXT
         f.required = True
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
         # E-mailadres
         f = Field()
@@ -508,9 +507,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.EMAIL
         f.required = True
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
         # Straat
         f = Field()
@@ -519,20 +518,20 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.TEXT
         f.required = True
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
         # Huisnummer
         f = Field()
         f.form = form
         f.label = "Huisnummer"
-        f.field_type = IntegerField
+        f.field_type = 100 # IntegerField
         f.required = True
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
         # Toevoeging
         f = Field()
@@ -541,9 +540,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.TEXT
         f.required = False
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
         # Postcode
         f = Field()
@@ -552,9 +551,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.TEXT
         f.required = True
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
         # Woonplaats
         f = Field()
@@ -563,9 +562,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.TEXT
         f.required = True
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
         # International Bank Account Number (IBAN)
         f = Field()
@@ -574,9 +573,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.TEXT
         f.required = True
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = "Van een Nederlands rekeningnummer vind u de bijbehorende IBAN op https://omnummertool.overopiban.nl/."
+        f.choices = ""
+        f.default = ""
+        f.help_text = "Van een Nederlands rekeningnummer vind u de bijbehorende IBAN op https://omnummertool.overopiban.nl/."
         f.save()
         # Geboortedatum
         f = Field()
@@ -585,9 +584,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.DOB
         f.required = True
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
         # Type lidmaatschap
         f = Field()
@@ -596,9 +595,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.SELECT
         f.required = True
         f.visible = True
-        choices = "€25: combilid JD & D66 (tussen 12 en 27 jaar), €17,50: alleen JD (tussen 12 en 27 jaar), €25: alleen JD (ouder dan 27 jaar)"
-        default = "€25: combilid JD & D66 (tussen 12 en 27 jaar)"
-        help_text = ""
+        f.choices = "€25: combilid JD & D66 (tussen 12 en 27 jaar), €17,50: alleen JD (tussen 12 en 27 jaar), €25: alleen JD (ouder dan 27 jaar)"
+        f.default = "€25: combilid JD & D66 (tussen 12 en 27 jaar)"
+        f.help_text = " "
         f.save()
         # DEMO Magazine
         f = Field()
@@ -607,9 +606,9 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.RADIO_MULTIPLE
         f.required = True
         f.visible = True
-        choices = "Alleen digitaal ontvangen, Per post ontvangen"
-        default = "Alleen digitaal ontvangen"
-        help_text = ""
+        f.choices = "Alleen digitaal ontvangen, Per post ontvangen"
+        f.default = "Alleen digitaal ontvangen"
+        f.help_text = " "
         f.save()
         # Opmerkingen
         f = Field()
@@ -618,20 +617,20 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.TEXTAREA
         f.required = False
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
         # CAPTCHA
         f = Field()
         f.form = form
         f.label = "CAPTCHA"
-        f.field_type = CaptchaField
+        f.field_type = 101 # CaptchaField
         f.required = True
         f.visible = True
-        choices = ""
-        default = ""
-        help_text = ""
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
         f.save()
 
     if (domain == "friesland.jongedemocraten.nl"):
@@ -884,13 +883,13 @@ class Command(BaseCommand):
             create_page_for_each_blog_category()
             activate_twitter_widget()
             force_create_uploads_directory()
-            set_headers()
             create_column_element_widgets(domain)
             set_sidebar_blogs_for_domain(domain)
             set_social_media_buttons(domain)
             create_extra_content(domain)
             delete_extraneous_content(domain)
             modify_miscellaneous_content(domain)
+            set_headers()
             create_mailinglists_and_templates(domain,
                 options.get('host'),
                 options.get('user'),

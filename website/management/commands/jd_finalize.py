@@ -392,7 +392,7 @@ def create_extra_content(domain):
         create_link("Utrecht", "//utrecht.jongedemocraten.nl", "afdelingen")
         create_link("Internationaal", "//internationaal.jongedemocraten.nl")
         create_link("Nieuwsbrieven", "/nieuwsbrief/list", "media")
-        # Set afdelingen page
+        ## Set afdelingen page
         p = RichTextPage.objects.get(slug = 'afdelingen')
         p.content = """
 <p>Naast een landelijke organisatie heeft de Jonge Democraten ook lokale afdelingen. Deze afdelingen vormen in feite het hart van de vereniging en organiseren iedere maand talloze activiteiten in een stad of regio. De activiteiten vari&euml;ren van inhoudelijke avonden met sprekers, debatten en trainingen tot gezellige borrels. Op de websites van de afdelingen vind je meer informatie over activiteiten die de afdeling bij jou in de omgeving organiseert.</p>
@@ -413,7 +413,7 @@ def create_extra_content(domain):
 <p>Op dit moment zijn er tien afdelingen van de Jonge Democraten door het gehele land. Kijk hierboven bij het overzicht tot welke afdeling de regio behoort waar jij woont. Kijk vervolgens op de afdelingspaginas om te zien wat die afdeling in jouw regio doet, bijvoorbeeld onder het kopje activiteiten of commissies.</p>
 <p>Doet de afdeling op dit moment nog niets met jouw regio? Dan kun jij daar verandering in brengen! De JD heeft namelijk verschillende regiocommissies die onder de afdelingen vallen. Wellicht kun jij een regiocommissie opstarten bij jou in de buurt! Neem contact op met de landelijk secretaris op <a href="mailto:info@jongedemocraten.nl">info@jongedemocraten.nl</a>. Hij zal je in contact brengen met de betreffende afdeling en de mogelijkheden tot het oprichten van een regiocommissie samen met je onderzoeken.</p>"""
         p.save()
-        # Set word lid form
+        ## Set word lid form
         form = Form()
         oldForm = Page.objects.get(slug = 'word-lid')
         form.parent = oldForm.parent
@@ -632,7 +632,203 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.default = ""
         f.help_text = " "
         f.save()
+        ## Set training aanvragen form
+        form = Form()
+        oldForm = Page.objects.get(slug = 'training-aanvragen')
+        form.parent = oldForm.parent
+        oldForm.delete()
+        form.title = "Training aanvragen"
+        form.slug = 'training-aanvragen'
+        form.content = """
+<p>Wil je als afdeling, team, werkgroep of commissie een training aanvragen? Vul dan dit formulier in. Voor meer informatie over de trainingen en trainers verwijzen we je graag naar de andere pagina's in het Portal.</p>
+<p>Neem voor meer informatie contact op met de Secretaris Scholing en Vorming in het Landelijk Bestuur (<a href="mailto:scholing@jd.nl">scholing@jd.nl</a>).</p>"""
+        form.button_text = "Verstuur"
+        form.response = "<p>Bedankt voor je aanvraag. Je ontvangt een bevestigingsmail op het emailadres dat je hebt opgegeven.</p>"
+        form.send_email = True
+        form.email_from = "noreply@jongedemocraten.nl"
+        form.email_copies = "scholing@jongedemocraten.nl"
+        form.email_subject = "Bevestiging van trainingsaanvraag"
+        form.email_message = """Beste aanvrager,
 
+Bedankt voor je aanvraag. Hieronder vind je een overzicht van de gegevens die je hebt ingevoerd."""
+        form.save()
+        # Naam 
+        f = Field()
+        f.form = form
+        f.label = "Naam"
+        f.field_type = fields.TEXT
+        f.required = True
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        # Emailadres
+        f = Field()
+        f.form = form
+        f.label = "Emailadres"
+        f.field_type = fields.EMAIL
+        f.required = True
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        # Telefoonnummer
+        f = Field()
+        f.form = form
+        f.label = "Telefoonnummer"
+        f.field_type = fields.TEXT
+        f.required = True
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        # Namens
+        f = Field()
+        f.form = form
+        f.label = "Namens"
+        f.field_type = fields.SELECT
+        f.required = True
+        f.visible = True
+        f.choices = "Afdeling, Orgaan in afdeling, Landelijk team"
+        f.default = "Afdeling"
+        f.help_text = " "
+        f.save()
+        # Specificeer
+        f = Field()
+        f.form = form
+        f.label = "Specificeer"
+        f.field_type = fields.TEXT
+        f.required = True
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        # Welke training wil je aanvragen?
+        f = Field()
+        f.form = form
+        f.label = "Welke training wil je aanvragen?"
+        f.field_type = fields.SELECT
+        f.required = True
+        f.visible = True
+        f.choices = "Bestuurstraining, Debat Beginners, Debat Gevorderden, Speechen, Presenteren, Opiniërend schrijven, Manipulatie, Framing, Liberalisme, Pragmatisme, Duurzaamheid, Ontwikkelingssamenwerking, Europa, Onderhandelen, Campagne en Strategie, Congressimulatie, Ledenactivering, Organiseren, Formatiespel, Anders"
+        f.default = "Bestuurstraining"
+        f.help_text = " "
+        f.save()
+        # Indien anders, welke?
+        f = Field()
+        f.form = form
+        f.label = "Indien anders, welke?"
+        f.field_type = fields.TEXT
+        f.required = False
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        # Voor hoeveel mensen is de training?
+        f = Field()
+        f.form = form
+        f.label = "Voor hoeveel mensen is de training?"
+        f.field_type = fields.TEXT
+        f.required = False
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        # Heb je een voorkeur qua trainer?
+        f = Field()
+        f.form = form
+        f.label = "Heb je een voorkeur qua trainer?"
+        f.field_type = fields.TEXT
+        f.required = False
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        # Eerste optie datum
+        f = Field()
+        f.form = form
+        f.label = "Eerste optie datum"
+        f.field_type = fields.DATE
+        f.required = True
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        # Tweede optie datum
+        f = Field()
+        f.form = form
+        f.label = "Tweede optie datum"
+        f.field_type = fields.DATE
+        f.required = False
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        # Derde optie datum
+        f = Field()
+        f.form = form
+        f.label = "Derde optie datum"
+        f.field_type = fields.DATE
+        f.required = False
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        # Tijdstip
+        f = Field()
+        f.form = form
+        f.label = "Tijdstip"
+        f.field_type = fields.TEXT
+        f.required = True
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        # Locatie
+        f = Field()
+        f.form = form
+        f.label = "Locatie"
+        f.field_type = fields.TEXT
+        f.required = False
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        # Opmerkingen
+        f = Field()
+        f.form = form
+        f.label = "Opmerkingen"
+        f.field_type = fields.TEXTAREA
+        f.required = False
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        # Vul deze captcha in!
+        f = Field()
+        f.form = form
+        f.label = "Vul deze captcha in!"
+        f.field_type = 101 # CaptchaField
+        f.required = True
+        f.visible = True
+        f.choices = ""
+        f.default = ""
+        f.help_text = " "
+        f.save()
+        
     if (domain == "friesland.jongedemocraten.nl"):
         create_link("Frysk", "//fryslan.jongedemocraten.nl", "/")
     if (domain == "fryslan.jongedemocraten.nl"):

@@ -644,7 +644,7 @@ def create_extra_content(domain):
         form.slug = 'word-lid'
         form.content = """
 <p>Voor meer informatie over het aamelden en opzeggen van het lidmaatchap van de Jonge Democraten klik <a href="/lidmaatschap/">hier.</a> </p>
-<p>Van een Nederlands rekeningnummer vind u <a href="https://omnummertool.overopiban.nl/" target="_blank">hier</a> de bijbehorende IBAN.</p>
+<p>Van een Nederlands rekeningnummer vindt u <a href="https://omnummertool.overopiban.nl/" target="_blank">hier</a> de bijbehorende IBAN.</p>
 <p>Voor vragen kan je altijd een mailtje sturen naar <a href="mailto:info@jongedemocraten.nl">info@jongedemocraten.nl</a>!</p>"""
         form.button_text = "Aanmelden!"
         form.response = "<p>Bedankt voor je inschrijving. Je ontvangt een bevestigingsmail op het emailadres dat je hebt opgegeven.</p>"
@@ -797,7 +797,7 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.visible = True
         f.choices = ""
         f.default = ""
-        f.help_text = "Van een Nederlands rekeningnummer vind u de bijbehorende IBAN op https://omnummertool.overopiban.nl/."
+        f.help_text = 'Van een Nederlands rekeningnummer vindt u de bijbehorende IBAN <a href"=https://omnummertool.overopiban.nl/">hier</a>'
         f.save()
         # Geboortedatum
         f = Field()

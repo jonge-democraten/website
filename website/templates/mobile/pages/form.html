@@ -1,6 +1,23 @@
 {% extends "mobile/pages/richtextpage.html" %}
 {% load mezzanine_tags %}
 
+{% block extra_css %}
+{{ block.super }}
+<style>
+label.control-label {
+    width: 45%;
+    float: left;
+    padding-right: 5px;
+}
+form.mezzanine-form>div.choicefield>ul>li {
+    display: inline;
+}
+form.mezzanine-form>div.charfield>textarea {
+    width: 50%;
+}
+</style>
+{% endblock %}
+
 {% block richtext_content %}
 {{ block.super }}
 {% if request.GET.sent %}

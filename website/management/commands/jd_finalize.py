@@ -5,6 +5,8 @@ from datetime import datetime
 from django.core.management.base import BaseCommand, CommandError
 from mezzanine.conf.models import Setting
 from mezzanine.blog.models import BlogCategory
+from mezzanine.forms.models import Form, Field
+from mezzanine.forms import fields
 from mezzanine.pages.models import Page, Link, RichTextPage
 from mezzanine.utils.sites import current_site_id
 from mezzanine.conf import settings
@@ -12,6 +14,7 @@ from django.contrib.auth.models import User, Group, Permission
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.redirects.models import Redirect
 from django.contrib.sites.models import Site
+from django.forms import IntegerField
 from django.utils.text import slugify
 from janeus import Janeus
 from janeus.models import JaneusRole
@@ -20,6 +23,7 @@ from website.jdpages.models import *
 from hemres.models import NewsletterTemplate, MailingList, NewsletterToList, Newsletter, EmailSubscriber, JaneusSubscriber
 from filebrowser_safe import settings as fb_settings
 from shutil import copy
+from captcha.fields import CaptchaField
 
 def save_setting(name, value, domain):
     s = Setting()
@@ -390,6 +394,7 @@ def create_extra_content(domain):
         create_link("Utrecht", "//utrecht.jongedemocraten.nl", "afdelingen")
         create_link("Internationaal", "//internationaal.jongedemocraten.nl")
         create_link("Nieuwsbrieven", "/nieuwsbrief/list", "media")
+        # Set afdelingen page
         p = RichTextPage.objects.get(slug = 'afdelingen')
         p.content = """
 <p>Naast een landelijke organisatie heeft de Jonge Democraten ook lokale afdelingen. Deze afdelingen vormen in feite het hart van de vereniging en organiseren iedere maand talloze activiteiten in een stad of regio. De activiteiten vari&euml;ren van inhoudelijke avonden met sprekers, debatten en trainingen tot gezellige borrels. Op de websites van de afdelingen vind je meer informatie over activiteiten die de afdeling bij jou in de omgeving organiseert.</p>
@@ -410,7 +415,225 @@ def create_extra_content(domain):
 <p>Op dit moment zijn er tien afdelingen van de Jonge Democraten door het gehele land. Kijk hierboven bij het overzicht tot welke afdeling de regio behoort waar jij woont. Kijk vervolgens op de afdelingspaginas om te zien wat die afdeling in jouw regio doet, bijvoorbeeld onder het kopje activiteiten of commissies.</p>
 <p>Doet de afdeling op dit moment nog niets met jouw regio? Dan kun jij daar verandering in brengen! De JD heeft namelijk verschillende regiocommissies die onder de afdelingen vallen. Wellicht kun jij een regiocommissie opstarten bij jou in de buurt! Neem contact op met de landelijk secretaris op <a href="mailto:info@jongedemocraten.nl">info@jongedemocraten.nl</a>. Hij zal je in contact brengen met de betreffende afdeling en de mogelijkheden tot het oprichten van een regiocommissie samen met je onderzoeken.</p>"""
         p.save()
-        # TODO: Create document lists as needed
+        # Set word lid form
+        form = Form()
+        oldForm = Page.objects.get(slug = 'word-lid')
+        form.parent = oldForm.parent
+        oldForm.delete()
+        form.title = "Word lid!"
+        form.content = """
+<p>Voor meer informatie over het aamelden en opzeggen van het lidmaatchap van de Jonge Democraten klik <a href="/lidmaatschap/">hier.</a> </p>
+<p>Van een Nederlands rekeningnummer vind u <a href="https://omnummertool.overopiban.nl/" target="_blank">hier</a> de bijbehorende IBAN.</p>
+<p>Voor vragen kan je altijd een mailtje sturen naar <a href="mailto:info@jongedemocraten.nl">info@jongedemocraten.nl</a>!</p>"""
+        form.button_text = "Aanmelden!"
+        form.response = "<p>Bedankt voor je inschrijving. Je ontvangt een bevestigingsmail op het emailadres dat je hebt opgegeven.</p>"
+        form.send_email = True
+        form.email_from = "noreply@jongedemocraten.nl"
+        form.email_copy = "ledenadministratie@jongedemocraten.nl"
+        form.email_subect = "Bevestiging van inschrijving"
+        form.email_message = """Beste aanmelder,
+
+Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die je hebt ingevoerd."""
+        form.save()
+        # Geslacht
+        f = Field()
+        f.form = form
+        f.label = "Geslacht"
+        f.field_type = fields.RADIO_MULTIPLE
+        f.required = True
+        f.visible = True
+        choices = "Man, Vrouw"
+        default = "Man"
+        help_text = ""
+        f.save()
+        # Roepnaam
+        f = Field()
+        f.form = form
+        f.label = "Roepnaam"
+        f.field_type = fields.TEXT
+        f.required = True
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+        # Voorletters
+        f = Field()
+        f.form = form
+        f.label = "Voorletters"
+        f.field_type = fields.TEXT
+        f.required = True
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+        # Tussenvoegsels
+        f = Field()
+        f.form = form
+        f.label = "Tussenvoegsels"
+        f.field_type = fields.TEXT
+        f.required = False
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+        # Achternaam
+        f = Field()
+        f.form = form
+        f.label = "Achternaam"
+        f.field_type = fields.TEXT
+        f.required = True
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+        # Telefoonnummer
+        f = Field()
+        f.form = form
+        f.label = "Telefoonnummer"
+        f.field_type = fields.TEXT
+        f.required = True
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+        # E-mailadres
+        f = Field()
+        f.form = form
+        f.label = "E-mailadres"
+        f.field_type = fields.EMAIL
+        f.required = True
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+        # Straat
+        f = Field()
+        f.form = form
+        f.label = "Straat"
+        f.field_type = fields.TEXT
+        f.required = True
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+        # Huisnummer
+        f = Field()
+        f.form = form
+        f.label = "Huisnummer"
+        f.field_type = IntegerField
+        f.required = True
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+        # Toevoeging
+        f = Field()
+        f.form = form
+        f.label = "Toevoeging"
+        f.field_type = fields.TEXT
+        f.required = False
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+        # Postcode
+        f = Field()
+        f.form = form
+        f.label = "Postcode"
+        f.field_type = fields.TEXT
+        f.required = True
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+        # Woonplaats
+        f = Field()
+        f.form = form
+        f.label = "Woonplaats"
+        f.field_type = fields.TEXT
+        f.required = True
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+        # International Bank Account Number (IBAN)
+        f = Field()
+        f.form = form
+        f.label = "International Bank Account Number (IBAN)"
+        f.field_type = fields.TEXT
+        f.required = True
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = "Van een Nederlands rekeningnummer vind u de bijbehorende IBAN op https://omnummertool.overopiban.nl/."
+        f.save()
+        # Geboortedatum
+        f = Field()
+        f.form = form
+        f.label = "Geboortedatum"
+        f.field_type = fields.DOB
+        f.required = True
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+        # Type lidmaatschap
+        f = Field()
+        f.form = form
+        f.label = "Type lidmaatschap"
+        f.field_type = fields.SELECT
+        f.required = True
+        f.visible = True
+        choices = "€25: combilid JD & D66 (tussen 12 en 27 jaar), €17,50: alleen JD (tussen 12 en 27 jaar), €25: alleen JD (ouder dan 27 jaar)"
+        default = "€25: combilid JD & D66 (tussen 12 en 27 jaar)"
+        help_text = ""
+        f.save()
+        # DEMO Magazine
+        f = Field()
+        f.form = form
+        f.label = "DEMO Magazine"
+        f.field_type = fields.RADIO_MULTIPLE
+        f.required = True
+        f.visible = True
+        choices = "Alleen digitaal ontvangen, Per post ontvangen"
+        default = "Alleen digitaal ontvangen"
+        help_text = ""
+        f.save()
+        # Opmerkingen
+        f = Field()
+        f.form = form
+        f.label = "Opmerkingen"
+        f.field_type = fields.TEXTAREA
+        f.required = False
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+        # CAPTCHA
+        f = Field()
+        f.form = form
+        f.label = "CAPTCHA"
+        f.field_type = CaptchaField
+        f.required = True
+        f.visible = True
+        choices = ""
+        default = ""
+        help_text = ""
+        f.save()
+
     if (domain == "friesland.jongedemocraten.nl"):
         create_link("Frysk", "//fryslan.jongedemocraten.nl", "/")
     if (domain == "fryslan.jongedemocraten.nl"):

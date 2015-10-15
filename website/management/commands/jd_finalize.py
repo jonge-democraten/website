@@ -413,6 +413,228 @@ def create_extra_content(domain):
 <p>Op dit moment zijn er tien afdelingen van de Jonge Democraten door het gehele land. Kijk hierboven bij het overzicht tot welke afdeling de regio behoort waar jij woont. Kijk vervolgens op de afdelingspaginas om te zien wat die afdeling in jouw regio doet, bijvoorbeeld onder het kopje activiteiten of commissies.</p>
 <p>Doet de afdeling op dit moment nog niets met jouw regio? Dan kun jij daar verandering in brengen! De JD heeft namelijk verschillende regiocommissies die onder de afdelingen vallen. Wellicht kun jij een regiocommissie opstarten bij jou in de buurt! Neem contact op met de landelijk secretaris op <a href="mailto:info@jongedemocraten.nl">info@jongedemocraten.nl</a>. Hij zal je in contact brengen met de betreffende afdeling en de mogelijkheden tot het oprichten van een regiocommissie samen met je onderzoeken.</p>"""
         p.save()
+        ## Set trainers page
+        p = RichTextPage.objects.get(slug = 'trainers')
+        p.content = """<p>
+<script src="/static/website/js/jdshowhide.js" type="text/javascript"></script>
+</p>
+<p>De trainingen van de Jonge Democraten kunnen niet worden aangeboden zonder de trainers die hele hele land doorreizen om hun trainingen te geven. Op deze pagina stellen de trainers zich voor en vertellen ze wat hun specialiteiten zijn.</p>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Annelieke Bergink (Maastricht)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-29%20om%2023.50.12.png" alt="" width="80" height="108" border="0" />Ik ben sinds 2012 trainer bij de JD en heb daarnaast ervaring als trainer bij IFLRY, afdelingsbestuurder en congresvoorzitter. Ik geef graag bestuurstrainingen, waarbij ik het van belang vindt om de training in overleg met het bestuur vorm te geven. De training moet immers het bestuur in staat stellen het nog beter te doen! Hierbij kunnen onderdelen als vergadertraining, gedragsstijlen, communicatie en feedback, opstellen van een beleidsplan en teambuilding aan bod komen.</p>
+<p><a id="jdtoggle-1" href="#"><strong>Leer meer/minder</strong></a></p>
+<div id="A1" style="padding-left: 0px; display: none;"><br />Daarnaast vind ik het erg leuk om leden in staat te stellen nog beter mee te doen aan het politiek debat; dat kan via het formatiespel, een congressimulatie of debattrainingen. Ik ben flexibel in het opzetten van trainingen, dus neem vooral contact met me op zodat we samen kunnen kijken welke training het beste bij jouw ontwikkelbehoefte past. Ik werk fulltime in Maastricht, en op doordeweekse dagen reis ik max. 2 uur voor een training. In het weekend, indien tijdig aangegeven, kom ik overal!
+<p><strong>Trainingen</strong></p>
+<ul>
+<li>Bestuurstraining</li>
+<li>Organisatorische trainingen (congressimulatie, organiseren)</li>
+<li>Politieke vaardigheden (presentatietraining, debattraining, formatiespel)</li>
+</ul>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Arend Meijer (Breda)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-29%20om%2023.58.09.png" alt="" width="82" height="93" border="0" /> Ik ben al een langere tijd binnen de vereniging actief, ben zowel lokaal bestuur, portefeuillehouder en Landelijk Bestuur geweest. Kortom, I know my way around de JD. Mijn kick is om met besturen aan de slag te gaan om een succes van hun periode te maken. Je steekt er veel tijd in, dus het moet ook iets opleveren. Zowel voor jezelf als voor de vereniging. Daarnaast vind ik het leuk om met de inhoudelijke vorming van leden aan de gang te zijn. Dus wil je de beginselen van de JD doorgronden, dan help ik je graag!</p>
+<p><strong><a id="jdtoggle-2" href="#">Lees meer/minder</a></strong></p>
+<div id="A2" style="padding-left: 0px; display: none;">
+<p>Ik combineer trainingen met mijn fulltime baan, dus hoop dat jullie me tijdig een seintje geven als je een training van mij willen.</p>
+<p><strong> Trainingen</strong></p>
+<ul>
+<li>Filosofie / Grondslagen</li>
+<li>Bestuur</li>
+</ul>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Ayla Schneiders (Utrecht)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-29%20om%2023.57.43.png" alt="" width="80" height="122" border="0" />Mijn naam is Ayla Schneiders en tussen 2011 en 2014 ben ik actief geweest als bestuurslid bij de afdeling Utrecht. Als bestuurslid pers &amp; promotie en daarna als voorzitter van de afdeling heb ik vooral ervaring binnen de JD opgedaan in samenwerking, leiderschap en het stellen en behalen van doelen. Daarnaast zijn er een aantal thema's waar ik me in heb verdiept en waar ik graag met JD-ers de komende jaren ervaringen en kennis deel en zo eventueel discussies meer verdieping kan geven bijvoorbeeld over onderwijs, cultuur &amp; bestuur. Sinds maart 2015 ben ik Statenlid in de Provincie Utrecht.</p>
+<p><strong><a id="jdtoggle-3" href="#">Lees meer/minder</a></strong></p>
+<div id="A3" style="padding-left: 0px; display: none;">
+<p>Als trainer bij de JD wil ik vooral ook gebruik maken van mijn trainingsvaardigheden buiten de JD en deze toepassen op de ervaring die ik heb binnen de JD. In 2011 ben ik afgestudeerd als toneelschrijver en voor en na die tijd heb ik veel workshops, trainingen en lessen gegeven die vooral te maken hebben met het juist vormgeven van een boodschap. Om me te ontwikkelen in talentontwikkeling en kennisoverdracht ben ik vorig jaar begonnen met de academische lerarenopleiding primair onderwijs.</p>
+<p>Centraal bij de trainingen die ik geef, zal in eerste instantie het verzoek staan. Wat is de behoefte voor deze training en hoe kunnen we die het beste vormgeven? Met ook atypische werkvormen komen we uiteindelijk in overleg tot een mooie trainingsprogramma.</p>
+<p>Ik verwacht van de deelnemers een actieve en open houding en in sommige gevallen voorbereiding. Wat je daarvoor terug krijgt is een trainingservaring, waar aandacht is voor jou als persoon binnen en buiten je functie bij de Jonge Democraten.</p>
+<p>Het allerleukste is natuurlijk dat iedereen wat kan leren van zon training, ik misschien soms nog wel meer dan de deelnemers aan de training. Ik hoop dat ik velen van jullie kan voorzien van een leerzame en leuke trainingservaring!</p>
+<p><strong>Trainingen</strong></p>
+<ul>
+<li>Bestuur &amp; Team</li>
+<li>Promotie</li>
+<li>Organisatie</li>
+<li>Visie &amp; Doel</li>
+<li>Project (organisatie &amp; ontwikkeling)</li>
+<li>Leiderschap</li>
+<li>Kennisthema's: o.a. Onderwijs, cultuur &amp; bestuur (Provinciale Staten)</li>
+</ul>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">David Gitard (Antwerpen)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/10481879_1511370872448842_2457126653942474303_n.jpg" alt="" width="118" height="92" border="0" />Eerst maar een korte introductie. Ik ben David, ik kom uit Arnhem en heb in Nijmegen de lerarenopleiding Frans gevolgd. Daar heb ik al enige ervaring met het geven van lessen opgedaan. Tevens geef ik al enkele jaren priv&eacute;lessen, Nederlands en Frans. Dat heb ik altijd met veel plezier gedaan, ik vind het heel leuk en waardevol om mensen dingen te leren en te zien hoe ze groeien. Bij de JD heb ik een paar keer geassisteerd met trainingen in Tunis, door die te tolken.</p>
+<p><strong><a id="jdtoggle-4" href="#">Lees meer/minder</a></strong></p>
+<div id="A4" style="padding-left: 0px; display: none;">Momenteel woon ik in Antwerpen, daar studeer ik Toegepaste Taalkunde. Ondanks de afstand wil ik graag actief blijven bij de JD. Dit door het geven van activerende, leuke trainingen waar mensen wat bij leren.&lt;/p&gt; &lt;p&gt;Ik hou ervan op een interactieve en actieve manier te werken, het liefst zo persoonlijk mogelijk. Ik maak graag gebruik van visueel materiaal en bouw het liefst voort op voorkennis die deelnemers al hebben.
+<p><strong>Trainingen</strong></p>
+<ul>
+<ul>
+<li>In overleg</li>
+</ul>
+</ul>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Eva van Sloten (Amsterdam en Utrecht)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-29%20om%2023.57.20.png" alt="" width="90" height="91" border="0" />Samenwerken gaat niet vanzelf, dat leer ik bij mijn studie politicologie (richting organisatiewetenschappen), vrijwilligerswerk en natuurlijk ook bij de JD.&lt;/p&gt; &lt;p&gt;Het is erg handig om een training in samenwerking te krijgen omdat je zaken dan bespreekbaar maakt, en allemaal gaat werken vanuit hetzelfde kader. Daarbij zijn er gewoon een aantal handige tips en truuks die je gewoon een keer geleerd moet hebben. Ik vind het erg leuk om trainingen te geven dus bel of mail me gerust.</p>
+<p><strong><a id="jdtoggle-5" href="#">Lees meer/minder</a></strong></p>
+<div id="A5" style="padding-left: 0px; display: none;">Trainingen&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Organisatorisch (time management, samenwerken, motivatie, bestuurstraining)
+<p>&nbsp;</p>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Erik Vandewall (Tilburg)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-29%20om%2023.46.30.png" alt="" width="127" height="90" border="0" />Ik ben Erik en ik kom graag een training geven. Binnen de vereniging heb ik nu redelijk wat functietjes bekleed en ik mag dan ook graag vanaf het pluche roepen wat er moet gebeuren, maar eigenlijk wil ik u leren om met uw eigen mening naar voren te komen.De scholingstak van de JD vind ik persoonlijk erg waardevol en ik heb dan ook veel geleerd van alle activiteiten die via dit kanaal worden aangeboden. Vandaar dat ik er best trots op ben om nu trainingen te geven aan u!</p>
+<p><strong><a id="jdtoggle-6" href="#">Lees meer/minder</a></strong></p>
+<div id="A6" style="padding-left: 0px; display: none;">Mijn sterkte ligt bij het trainen van uw overtuigingskracht en meningsvorming. Marketing en communicatie in een politiek jasje zeg maar.
+<p><strong>Trainingen</strong></p>
+<ul>
+<li>Meningsvorming</li>
+<li>Overtuigingstechnieken</li>
+<li>Manipulatie / Framing</li>
+</ul>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Ivanka Bloom (Utrecht)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-29%20om%2023.57.02.png" alt="" width="85" height="81" border="0" />Als trainer bij de JD vind ik het mooi dat leden de kans krijgen om in een hele veilige omgeving kunnen experimenteren met het actief ontwikkelen van hun vaardigheden, en trainers een platform krijgen om vol creativiteit deze ontwikkeling te faciliteren.</p>
+<p><strong><a id="jdtoggle-7" href="#">Lees meer/minder</a></strong></p>
+<div id="A7" style="padding-left: 0px; display: none;">Zelf heb ik binnen en buiten de JD veel ervaring met het werken in teams en het organiseren van evenementen (JD afdelingsbestuur als secretaris scholing en internationaal, advieswerk in teams en nu werkzaam binnen HR). Ik specialiseer me daarom in bestuurstrainingen, organisatorische trainingen en trainingen over de JD Internationaal. Andere onderwerpen aanpakken met een andere ervaren trainer vind ik echter ook erg leuk!&lt;/p&gt; &lt;p&gt;Ik mik erop om mijn trainingen zo interactief mogelijk te laten zijn, zodat de deelnemers zelf kunnen oefenen met de theorie, actief kijken naar zichzelf en anderen en feedback op hun input krijgen. Soms mag daar ook zelfs een beetje huiswerk bij komen. Maar bovenal vind ik het belangrijk dat de training aansluit op de behoefte van de afdeling / het bestuur, dus daar zoek ik graag vooraf goed contact over!
+<p><strong>Trainingen</strong></p>
+<ul>
+<li>Bestuurstraining (o.a. vergadering, beleidsplan, overdracht, feedback)</li>
+<li>Organisatorische trainingen</li>
+<li>Trainingen gericht op JD Internationaal</li>
+</ul>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Leon Ploegstra (Groningen)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-29%20om%2023.48.47.png" alt="" width="80" height="119" border="0" />Ik ben Leon Ploegstra en inmiddels al vier jaar actief lid bij de Jonge Democraten. Eerst heb ik twee jaar deel uitgemaakt van het afdelingsbestuur in Groningen, als Algemeen Secretaris en Voorzitter. Ook ben ik in die tijd naar een groot aantal IFLRY en LYMEC Congressen geweest en was ik voorzitter van het Team Straatsburgreis. Ten slotte ben ik in 2013-2013 ben Internationaal Secretaris geweest in het Landelijk Bestuur.</p>
+<p><strong><a id="jdtoggle-8" href="#">Lees meer/minder</a></strong></p>
+<div id="A8" style="padding-left: 0px; display: none;">Op dit moment zet ik me nog steeds in voor de JD, onder meer als actief lid van de Werkgroep Buitenlandse Zaken en binnenkort ook als trainer. Ook bezoek ik nog steeds geregeld de congressen van IFLRY en LYMEC. Trainingen: Nader in te vullen
+<p>&nbsp;</p>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Malu Pasman (Amsterdam)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/_MG_4648.jpg" alt="" width="80" height="80" border="0" /> Topbestuurders, vlijmscherpe debaters, organisatorische talenten en echte campagnetijgers: je komt ze bij de JD allemaal tegen. En dit is niet voor niets, de JD is een omgeving waarbinnen leden alle ruimte krijgen om zich te ontwikkelen en om hun kennis te delen met andere leden.</p>
+<p><strong><a id="jdtoggle-9" href="#">Lees meer/minder</a></strong></p>
+<div id="A9" style="padding-left: 0px; display: none;">
+<p>Ik ben het meest ge&iuml;nteresseerd in de 'randvoorwaarden' van politiek succes en mijn trainingen zijn dan ook vooral op organisatorisch vlak. Het volgen van een bestuurstraining, het leren hoe je teams aanstuurt of oefenen met het opzetten van een campagne zijn allemaal zaken die bij kunnen dragen aan het behalen van (politieke) resultaten. Dit probeer ik te bewerkstelligen in een interactieve, informele en open sfeer: trainingen moeten naast nuttig namelijk vooral leuk zijn!</p>
+<p>Dan nog kort over mijzelf: ik ben 24 jaar en woonachtig in Amsterdam. Onlangs heb ik mijn Master Communication Science afgerond en inmiddels ben ik werkzaam als IT-Consultant. Binnen de JD ben ik in 2013-2014 Landelijk Algemeen Secretaris en Vicevoorzitter geweest en deze functie heb ik het jaar ervoor ook binnen de afdeling Amsterdam vervuld. Tegenwoordig ben ik vooral op de achtergrond actief binnen het ICT-Team en de DEMO-Redactie en vind je me nog vaak op activiteiten bij mijn 'thuisafdeling' Amsterdam.</p>
+<p><strong>Trainingen</strong></p>
+<ul>
+<li>Bestuurstraining</li>
+<li>Organisatorische trainingen (teams aansturen, ledenactivering, missie- en visieontwikkeling, etc.).</li>
+<li>Presenteren</li>
+<li>Campagne</li>
+</ul>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Melvin Adjiembaks (Den Haag)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-30%20om%2000.36.32.png" alt="" width="80" height="99" border="0" />Het aanschouwen van een fantastische toespraak krijgt mij op het puntje van mijn stoel. Mensen kunnen mij ongelooflijk inspireren, en ik ben dan ook gefascineerd door de vraag hoe dat kan. Maar wat motiveert jou? Welke uitdagingen zie jij voor jezelf en de maatschappij om je heen? Welke rol zou je willen hebben en waarom?</p>
+<p><strong><a id="jdtoggle-10" href="#">Lees meer/minder</a></strong></p>
+<div id="A10" style="padding-left: 0px; display: none;">
+<p>In mijn trainingen sta jij altijd centraal. Het ontwikkelen van vaardigheden en het opdoen van nieuwe kennis is namelijk het leukst als jij zelf de richting kan bepalen. Vind je dat nog even lastig, dan zal ik natuurlijk wat meer iniatief nemen. In een bestuurstraining gaan we samen op zoek naar de dynamiek binnen jullie groep. Ik begeleid jullie in het optimaliseren van jullie ontwikkelingsproces om van je bestuursperiode een leuke en productieve tijd te maken.</p>
+<p>Presenteren is een vak op zich. Het is iets wat je altijd kan blijven ontwikkelen, ongeacht het feit of je onervaren bent en zenuwen hebt of juist heel ervaren bent, maar iets nieuws wilt leren. In mijn presentatietraining reik ik enkele trucs aan die je zullen helpen in het verbeteren van je presentatie.</p>
+<p><strong>Trainingen</strong></p>
+<ul>
+<li>Bestuurstraining</li>
+<li>Presentatietraining</li>
+</ul>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Nikolai Jacobs (Amsterdam)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-29%20om%2023.56.40.png" alt="" width="80" height="80" border="0" /> Ik ben Nikolai, 24 jaar. Sinds vorig jaar september werk ik voor het Rijk als trainee. Ik heb gestudeerd in Amsterdam (UvA, BSc planologie) en in Rotterdam (EUR, MSc bestuurskunde). Tijdens mijn studie ben ik actief geweest in medezeggenschap van de UvA en heb ik stage gelopen bij Berenschot. In de JD ben ik actief geweest in het afdelingsbestuur van Amsterdam, in het landelijk bestuur, als trainer en als congresvoorzitter. Verder schrijf ik zo nu en dan wat voor de DEMO.</p>
+<p><strong><a id="jdtoggle-11" href="#">Lees meer/minder</a></strong></p>
+<div id="A11" style="padding-left: 0px; display: none;">
+<p><strong>Trainingen</strong></p>
+<ul>
+<li>Vergaderen.</li>
+<li>Technisch voorzitten.</li>
+<li>Teambuilding.</li>
+<li>Beleidsontwikkeling- en evaluatie.</li>
+<li>Feedback.</li>
+</ul>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Pauline Kastermans (Rotterdam)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-30%20om%2000.36.05.png" alt="" width="156" height="103" border="0" /> Het leukste vind ik het om als facilitator het leerproces van een enthousiaste groep te begeleiden. Dit kan op veel verschillende onderwerpen, maar mijn passie ligt bij het Europese en internationale door mijn ervaring binnen de JD Internationaal. Dit kan vari&euml;ren van een training Europese besluitvorming tot een onderhandelingssimulatie gebaseerd op de ontwikkelingen tijdens de Arabische lente. Ook internationale congressimulaties of het begeleiden van een twinning team binnen de afdeling behoren tot de mogelijkheden.</p>
+<p><strong><a id="jdtoggle-12" href="#">Lees meer/minder</a></strong></p>
+<div id="A12" style="padding-left: 0px; display: none;">
+<p>Tijdens de Europese verkiezingen van 2014 was ik kandidaat voor D66, waardoor ik veel praktijkervaring heb opgedaan met campagne voeren, debatteren en media.</p>
+<p>Naast ervaring bij de JD, heb ik veel internationale trainingen gegeven over het opzetten van jongerenorganisaties, campagne voeren en politieke filosofie. Ook heb ik in 2014 de Train-de-Trainer in Mensenrechteneducatie van de Raad van Europa gevolgd.</p>
+<p><strong>Trainingen</strong></p>
+<ul>
+<li>Internationaal (simulatiespel onderhandelen in internationale situatie).</li>
+<li>Europa (algemeen, Europese besluitvorming, LYMEC, Raad van Europa).</li>
+<li>Bestuur.</li>
+<li>Campagne.</li>
+<li>Politieke filosofie  liberalisme in internationaal perspectief.</li>
+<li>Ledenactivering.</li>
+</ul>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Puck Sanders (Nijmegen)</h3>
+<p><img style="float: left;" src="http://jongedemocraten.nl/images/PS.jpg" alt="" width="80" border="0" /></p>
+<p>Wat betekent kennis als je het niet kunt delen met anderen? Niets! Ik krijg er energie van om samen met anderen kennis interactief naar een hoger niveau te brengen. Toepassing van kennis en kennis in de praktijk is daarbij net zo belangrijk. Daarom ben ik trainer geworden voor de JD.</p>
+<p><span style="font-size: 12px;">Bij mijn trainingen, probeer ik jou op het puntje van je stoel te krijgen. Niet door te luisteren wat ik te vertellen heb, maar door te doen! Daarbij probeer ik jou dingen die we behandelen vanuit meerdere perspectieven te laten bekijken.</span></p>
+<p><strong><a id="jdtoggle-13" href="#">Lees meer/minder</a></strong></p>
+<div id="A13" style="padding-left: 0px; display: none;">
+<p><span style="font-size: 12px;">Mijn achtergrond als verenigingsbestuurder, campaigner, kandidaat en assistent-raadslid in de lokale politiek zorgen ervoor dat ik oefeningen tijdens trainingen kan illustreren met voorbeelden uit de praktijk. Plezier is daarbij heel belangrijk vind ik, en dat is denk ik ook in de geest van de JD.</span></p>
+<p>Kan ik jou komen trainen? Wil je nog iets meer weten over mij of mijn trainingen? Neem gerust contact met me op of bekijk alvast mijn Linkedin-profiel (zie hieronder).</p>
+<p><strong>Trainingen</strong></p>
+<ul>
+<li>Politiek en Strategische Communicatie (Presentatietraining, debattraining, framing)</li>
+<li>Teambuilding/groepsvorming</li>
+<li>Bestuur en Beleid voor verenigingsbestuurders</li>
+</ul>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Samira Rafaela (Amsterdam)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-29%20om%2023.52.07.png" alt="" width="80" height="90" border="0" /> Ik ben Samira Rafaela en voor de Jonge Democraten actief als portefeuillehouder Diversiteit en Participatie en trainer. Naast de Jonge Democraten heb ik ervaring als trainer via onder andere de Nationale Jeugdraad en via mijn eigen onderneming. Mijn passie voor het trainen is ontstaan toen ik ervoer hoeveel profijt anderen kunnen hebben van je eigen ervaringen en kennis als trainer. Ik train op regelmatige basis jongeren en begeleid ze bij hun carri&egrave;re pad. Als overheidstrainee heb ik zelf veel trainingen gehad die gericht zijn op de persoonlijke ontwikkeling en individuele rol binnen groepsverband. Ik beschik over veel kennis en theorie om te delen en wil dat graag overbrengen aan mijn JD-collegas.</p>
+<p><strong><a id="jdtoggle-14" href="#">Lees meer/minder</a></strong></p>
+<div id="A14" style="padding-left: 0px; display: none;">
+<p>Ik haal veel energie uit het trainersvak door te ervaren hoe bepaalde technieken anderen verder kunnen helpen. Ik vind het geweldig om te zien hoe deelnemers aan het einde van een training kunnen veranderen en met goede hoop de uitdaging aangaan door de training die ze hebben ontvangen!</p>
+<p>Als trainer pas ik altijd verschillende niveaus toe bij het ontwerpen van de trainingen. Ik houd rekening met het kennisniveau van de doelgroep en ga daarin gericht te werk. Ik werk gericht toe naar het uiteindelijk kunnen toepassen van de methodieken. Op basis van de successpiraal, probeer ik de deelnemers enthousiast te houden, te motiveren om te blijven doorzetten en uiteindelijk het succes te ervaren. Belangrijk vind ik dat deelnemers zich veilig voelen om zich te uiten en dat er een goede sfeer/dynamiek wordt gecre&euml;erd om iedereen te laten floreren en dat er gelachen kan worden... Anticiperen en participeren staan centraal bij mijn trainingen.</p>
+<p><strong>Trainingen</strong></p>
+<ul>
+<li>Bestuurstraining</li>
+<li>Politieke inhoud en presenteren ( visieformulering, personal branding, presenteren, gespreksleider)</li>
+<li>Samenwerken en onderhandelen</li>
+</ul>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Sjoerd Wannet (Arnhem-Nijmegen)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-30%20om%2000.35.43.png" alt="" width="80" height="120" border="0" /> Mijn naam is Sjoerd Wannet en in het dagelijks leven ben ik pre-master student bestuurskunde aan de Radboud universiteit en fractievoorzitter van D66 Lingewaard (gemeente tussen Arnhem en Nijmegen).</p>
+<p><strong><a id="jdtoggle-15" href="#">Lees meer/minder</a></strong></p>
+<div id="A15" style="padding-left: 0px; display: none;">
+<p>Het geven van trainingen in groepen geeft mij veel energie. Het is mooi om als trainer een groep te stimuleren het beste uit zichzelf te halen. Bij bestuurstrainingen kun je als trainer het verschil maken. Zolang je maar de juiste energie in de groep weet los te maken. Mijn devies is dan ook altijd: de groep zoveel mogelijk zelf laten doen. Als trainer begeleid je het proces maar is het uiteindelijk het bestuur die de klus moet klaren. Vandaar dat mijn bestuurstrainingen heel interactief zijn met een grote inbreng vanuit de groep en nadruk op de groep.</p>
+<p>Tevens ben ik afgestudeerd docent geschiedenis maar heb ik besloten niet te gaan werken in het voortgezet onderwijs. Toch kribbelt het docentschap nog hier en daar en dat vindt een mooie uitweg in het trainerschap, of het nu een inhoudelijke training/activiteit is over (parlementaire) geschiedenis of een bloemlezing van mijn ervaring uit de lokale politiek. Dat is vaak een mix van een college met een interactief gedeelte, zeer geschikt als afdelingsactiviteit.</p>
+<p>In mijn trainingen neem ik de ervaring mee die ik in meerdere jaren rondlopen bij de Jonge Democraten heb opgedaan. Als secretaris promotie van JD ArnhemNijmegen tot secretaris scholing en vorming in het landelijk bestuur. Daarnaast ben ik sinds maart 2010 verkozen in de gemeenteraad van Lingewaard.</p>
+<p><strong>Trainingen</strong></p>
+<ul>
+<li>Bestuurstrainingen <em>(Nadruk op verwachtingsmanagement, groepsprocessen en beleidsdoelen).</em></li>
+<li>Politieke vaardigheden <em>(Debat, politiek onderhandelen, werking van de lokale democratie).</em></li>
+<li>Inhoudelijke trainingen over democratie en (parlementaire) geschiedenis.</li>
+</ul>
+</div>
+<p>&nbsp;</p>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Susanne Schilderman (Utrecht)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-29%20om%2023.56.17.png" alt="" width="80" height="96" border="0" /> Om mee te beginnen ik vind het prachtig om training te geven omdat ik het mooi vind om mensen te helpen om bepaalde vaardigheden (verder) te ontwikkelen, te zien dat mensen dingen leren en ook om mezelf te ontwikkelen als trainer. Daarom geef ik ook heel veel verschillende trainingen zowel op het vlak van bestuur, als organisatie als politiek en presentatie.</p>
+<p><strong><a id="jdtoggle-16" href="#">Lees meer/minder</a></strong></p>
+<div id="A16" style="padding-left: 0px; display: none;">
+<p>Mijn trainingen zijn altijd erg interactief. Ik probeer me zoveel mogelijk te richten op het trainen van vaardigheden en kennisoverdracht doe ik tussendoor. Ik wil mensen altijd zelf iets laten ervaren en ik moedig iedereen aan om zelf kritisch te kijken naar theorie, zichzelf en elkaar. Daarnaast vind ik dat er altijd gelachen moeten worden, ook tijdens een debattraining.</p>
+<p>In mijn trainingen neem ik de ervaring mee die ik in meerdere jaren op gedaan het bij de Jonge Democraten zowel in het landelijk bestuur (organisatie), het afdelingsbestuur (promotie), en in werkgroepen en teams. Ook ben ik D66 Utrecht lokaal actief.</p>
+<p><strong>Trainingen</strong></p>
+<ul>
+<li>Bestuurstraining</li>
+<li>Organisatorische trainingen (Congressimulatie, campagne en organisatie)</li>
+<li>Politiek en presentatie (Presentatietraining, debattraining, brainstorm en visietraining)</li>
+</ul>
+</div>
+<h3 style="background-color: #578439; background-image: url('https://jongedemocraten.nl/templates/jd/images/TitleBackground.png'); background-repeat: repeat-x; color: white; font-size: 14px; line-height: 20px; font-weight: bold; padding: 2px 0px 2px 10px; margin: 0; vertical-align: middle;">Tom Kunzler (Utrecht)</h3>
+<p><img style="float: left;" src="https://jongedemocraten.nl/images/landelijk/Schermafbeelding%202014-09-29%20om%2023.55.57.png" alt="" width="80" height="104" border="0" /> Allereerst vind ik het enorm leuk om voor een groep te staan en kennis te kunnen overbrengen. Naast een jong sociaal-liberaal geluid te laten horen in de Nederlandse politiek is de belangrijkste taak van de Jonge Democraten scholing en vorming van de eigen leden. Er is veel kennis aanwezig onder oud-kaderleden en het is jammer als het wiel opnieuw uitgevonden moet worden.</p>
+<p><strong><a id="jdtoggle-17" href="#">Lees meer/minder</a></strong></p>
+<div id="A17" style="padding-left: 0px; display: none;">
+<p>Ik zet graag mijn ervaring in die ik opgedaan heb als oud-afdelingsvoorzitter van de Jonge Democraten Arnhem-Nijmegen, congresvoorzitter, stem en notulencommissielid, kasco-lid en ervaring met het organiseren van activiteiten en twinnings.</p>
+<p>Verder heb ik 2,5 jaar lang bij ProDemos gewerkt waar ik educatieve programmas gaf aan jongeren die het Binennhof bezochten. En geef ik momenteel nog elk jaar een gastcollege aan de Universiteit Utrecht over de geschiedenis en werking van het Nederlandse politieke bestel.</p>
+<p><strong>Trainingen</strong></p>
+<ul>
+<li>Training/masterclass Nederlandse politiek en Nederlandse politieke geschiedenis (1750 - nu).</li>
+<li>Training over de Provinciale politiek.</li>
+<li>Het geven van debattrainingen en het leiden van simulaties van Kamerdebatten (rollenspel)</li>
+<li>Verder kan ik besturen trainingen geven over het organiseren en uitvoeren van PJO-scholenprojecten.</li>
+<li>Bestuurstrainingen over het opstellen van een afdelingsreglement.</li>
+<li>Perstraining, hoe schrijf ik een goed persbericht en hoe kom ik in de lokale pers.</li>
+<li>Algemene bestuurstrainingen, opstellen van beleidsplan en effici&euml;nt samenwerken.</li>
+</ul>
+</div>
+"""
+        p.save()
         ## Set word lid form
         form = Form()
         oldForm = Page.objects.get(slug = 'word-lid')

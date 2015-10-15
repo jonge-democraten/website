@@ -5,7 +5,7 @@ from datetime import datetime
 from django.core.management.base import BaseCommand, CommandError
 from mezzanine.conf.models import Setting
 from mezzanine.blog.models import BlogCategory
-from mezzanine.pages.models import Page, Link
+from mezzanine.pages.models import Page, Link, RichTextPage
 from mezzanine.utils.sites import current_site_id
 from mezzanine.conf import settings
 from django.contrib.auth.models import User, Group, Permission

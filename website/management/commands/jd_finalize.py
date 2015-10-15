@@ -797,7 +797,7 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.visible = True
         f.choices = ""
         f.default = ""
-        f.help_text = 'Van een Nederlands rekeningnummer vindt u de bijbehorende IBAN <a href"=https://omnummertool.overopiban.nl/">hier</a>'
+        f.help_text = 'Rekeningnummer omzetten naar IBAN: https://omnummertool.overopiban.nl/'
         f.save()
         # Geboortedatum
         f = Field()

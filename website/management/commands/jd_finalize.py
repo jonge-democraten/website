@@ -595,7 +595,7 @@ Bedankt voor je aanmelding. Hieronder vind je een overzicht van de gegevens die 
         f.field_type = fields.SELECT
         f.required = True
         f.visible = True
-        f.choices = "€25: combilid JD & D66 (tussen 12 en 27 jaar), €17,50: alleen JD (tussen 12 en 27 jaar), €25: alleen JD (ouder dan 27 jaar)"
+        f.choices = "€25: combilid JD & D66 (tussen 12 en 27 jaar), `€17,50: alleen JD (tussen 12 en 27 jaar)`, €25: alleen JD (ouder dan 27 jaar)"
         f.default = "€25: combilid JD & D66 (tussen 12 en 27 jaar)"
         f.help_text = " "
         f.save()

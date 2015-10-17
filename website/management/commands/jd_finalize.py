@@ -2093,6 +2093,11 @@ class Command(BaseCommand):
             ['friesland.jongedemocraten.nl']
         )
 
+        save_janeus_role('role-as-friesland',
+            ['Content Managers'],
+            ['fryslan.jongedemocraten.nl']
+        )
+
         save_janeus_role('role-as-twente',
             ['Content Managers'],
             ['twente.jongedemocraten.nl']
@@ -2146,6 +2151,11 @@ class Command(BaseCommand):
         save_janeus_role('role-bestuur-friesland',
             ['Publishers'],
             ['friesland.jongedemocraten.nl']
+        )
+
+        save_janeus_role('role-bestuur-friesland',
+            ['Publishers'],
+            ['fryslan.jongedemocraten.nl']
         )
 
         save_janeus_role('role-bestuur-twente',

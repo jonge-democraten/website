@@ -1176,9 +1176,9 @@ def set_sidebar_banner():
     sbw.save()
 
 def create_redirect(old_path, new_path):
-    r = Redirect.objects.get_or_create(old_path = old_path)
-    r.new_path = new_path
-    r.save()
+    r = Redirect.objects.get_or_create(old_path = old_path, site_id = 1)
+    r[0].new_path = new_path
+    r[0].save()
 
 def import_redirects(domain):
     """

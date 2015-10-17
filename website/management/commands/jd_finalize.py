@@ -1324,6 +1324,7 @@ class Command(BaseCommand):
                 options.get('database'),
                 options.get('tableprefix'))
             restore_redirects(domain)
+            import_redirects(domain)
 
         set_sidebar_banner()
         create_newsletter_templates()

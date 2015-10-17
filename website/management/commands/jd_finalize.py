@@ -1185,9 +1185,19 @@ def import_redirects(domain):
     We will manually import the most recent month of URLs as redirects. 
     """
     if (domain == 'website.jongedemocraten.nl'):
+        # Redirects to make department map work
+        create_redirect('/afdelingen/Groningen/', '//groningen.jongedemocraten.nl')
+        create_redirect('/afdelingen/Friesland/', '//friesland.jongedemocraten.nl')
+        create_redirect('/afdelingen/Twente/', '//twente.jongedemocraten.nl')
+        create_redirect('/afdelingen/Arnhem-Nijmegen/', '//arnhemnijmegen.jongedemocraten.nl')
+        create_redirect('/afdelingen/Utrecht/', '//utrecht.jongedemocraten.nl')
+        create_redirect('/afdelingen/Amsterdam/', '//amsterdam.jongedemocraten.nl')
+        create_redirect('/afdelingen/Limburg/', '//limburg.jongedemocraten.nl')
+        create_redirect('/afdelingen/Brabant/', '//brabant.jongedemocraten.nl')
+        create_redirect('/afdelingen/Leiden-Haaglanden/', '//leidenhaaglanden.jongedemocraten.nl')
+        create_redirect('/afdelingen/Rotterdam/', '//rotterdam.jongedemocraten.nl')
         # Example:
         # create_redirect('/old/url/ends/with/slash/', 'https://amsterdam.jongedemocraten.nl/new/full/URL/')
-        pass
 
 def twitter_query_for_domain(domain):
     if (domain == 'website.jongedemocraten.nl'):

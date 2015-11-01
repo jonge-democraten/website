@@ -74,7 +74,7 @@ jQuery(function($) {
             convert_urls: false,
             menubar: false,
             statusbar: false,
-            toolbar: ("insertfile undo redo | styleselect | bold italic | " +
+            toolbar: ("insertfile undo redo | cut copy paste | styleselect | bold italic | " +
                       "alignleft aligncenter alignright alignjustify | " +
                       "bullist numlist outdent indent | link image media table | " +
                       "code fullscreen"),

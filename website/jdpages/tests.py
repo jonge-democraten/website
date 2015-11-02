@@ -100,7 +100,7 @@ class TestPage(TestCaseAdminLogin):
         richtextpages = RichTextPage.objects.all()
         self.assertEqual(len(richtextpages), 6)
         for page in richtextpages:
-            response = self.client.get('/admin/pages/richtextpage/' + str(page.id) + '/', follow=False)
+            response = self.client.get('/admin/pages/richtextpage/' + str(page.id) + '/', follow=True)
             self.assertEqual(response.status_code, 200)
 
     def test_richtextpage_view(self):
@@ -260,7 +260,7 @@ class TestEvent(object):
         for occurrence in occurrences:
             if occurrence.status == CONTENT_STATUS_DRAFT and not is_admin:
                 self.assertFalse(str(occurrence.event.title) in html)
-                response = self.client.get(occurrence.get_absolute_url())
+                response = self.client.get(occurrence.get_absolute_url(), follow=True)
                 self.assertEqual(response.status_code, 404)
             elif occurrence.status == CONTENT_STATUS_PUBLISHED:
                 self.assertTrue(str(occurrence.event.title) in html)

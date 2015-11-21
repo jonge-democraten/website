@@ -98,7 +98,8 @@ In order to run acceptance tests, it may be nice to run a second version of the 
 New code is introduced by pulling it from GitHub.
 
 1. Change to user website: `su -s/bin/bash website`.
-1. Pull the new code from GitHub: `git pull`.
+1. Fetch the new code from GitHub: `git fetch`.
+1. Checkout the new version tag: `git checkout <version_tag_name>`.
 1. Source the virtualenv: `source env/bin/activate`.
 1. Upgrade any packages based on the requirements file: `pip3 install -r requirements.txt`.
 1. Apply migrations if necessary: `website/manage.py migrate`.

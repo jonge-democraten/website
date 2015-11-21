@@ -37,6 +37,9 @@ DATABASES = {
     }
 }
 
+USE_L10N = True
+LANGUAGE_CODE = "nl-NL"
+
 ###################
 # JANEUS SETTINGS #
 ###################

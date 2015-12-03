@@ -23,7 +23,7 @@
     <div class="item-page">
 
         <p>
-            Geschreven door
+            Geplaatst door
             {% with blog_post.user as author %}
                 {{ author.get_full_name|default:author.username }}
             {% endwith %}

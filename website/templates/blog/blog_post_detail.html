@@ -26,7 +26,7 @@
             {% editable blog_post.publish_date %}
             <dl class="article-info">
                 <dd class="createdby">
-                {% trans "Geschreven door" %}
+                {% trans "Geplaatst door" %}
 
                 {% with blog_post.user as author %}
                     {{ author.get_full_name|default:author.username }}

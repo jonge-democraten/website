@@ -22,14 +22,16 @@ from website.jdpages.views import get_homepage_header
 
 def site_properties(request):
     """ :returns: basic site properties """
-    main_site_url = '/'
-    main_site = Site.objects.filter(id=1)
-    if main_site.exists():
-        main_site_url = 'http://' + main_site[0].domain
+    if not hasattr(request, '__main_site_url'):
+        try:
+            dom = Site.objects.values_list('domain', flat=True).get(pk=1)
+            request.__main_site_url = 'http://' + dom
+        except Site.DoesNotExist:
+            return {}
 
     properties = {
         "site_tagline": settings.SITE_TAGLINE,
-        "main_site_url": main_site_url
+        "main_site_url": request.__main_site_url
     }
     return properties
 
@@ -44,13 +46,18 @@ def piwik(request):
 
 def sidebar(request):
     """ :returns: the sidebar items """
-    current_sidebars = Sidebar.objects.filter()
 
-    if not current_sidebars.exists():
+    if hasattr(request, '__sidebar_items'):
+        return {"sidebar_items": request.__sidebar_items}
+
+    current_sidebars = Sidebar.objects.values_list('id', flat=True)
+    if len(current_sidebars) == 0:
         return {}
 
-    if current_sidebars.count() > 1:
+    if len(current_sidebars) != 1:
         assert False  # there should never be more than one sidebar per site
+
+    current_sidebars = current_sidebars[0]
 
     sidebar_items = []
     blogcategory_widgets = SidebarBlogCategoryWidget.objects.filter(sidebar=current_sidebars)
@@ -82,8 +89,11 @@ def sidebar(request):
         item = SocialMediaButtonGroupItem(buttons)
         sidebar_items.append(item)
 
+    request.__sidebar_items = sidebar_items
     return {"sidebar_items": sidebar_items}
 
 
 def homepage_header(request):
-    return {"homepage_header": get_homepage_header()}
+    if not hasattr(request, '__homepage_header'):
+        request.__homepage_header = get_homepage_header()
+    return {"homepage_header": request.__homepage_header}

@@ -178,51 +178,32 @@ def get_page_header(page):
     Top parent is the HomePage.
     None when there is no Hompage or when the HomePage has no header.
     """
-    page_header_images = PageHeaderImageWidget.objects.filter(page=page)
 
-    n_images = page_header_images.count()
-    if n_images == 1:
-        return get_first_page_header(page)
-    elif n_images == 0:
-        if page.parent:
-            return get_page_header(page.parent)
-        else:
-            homepages = HomePage.objects.all()
-            if not homepages.exists():
-                return None
-            elif page == homepages[0]:  # prevent infinite recursion
-                return None
-            elif PageHeaderImageWidget.objects.filter(page=homepages[0]):
-                return get_page_header(homepages[0])
-    elif n_images > 1:
-        return get_random_page_header(page)
+    # Get a random page header, or the first one if there is only one
+    image = PageHeaderImageWidget.objects.filter(page=page).order_by('?').first()
+    if image is not None:
+        return image
 
-
-def get_first_page_header(page):
-    """
-    :returns: the page header for a given page, None if the page has no header.
-    Does not look for headers of parent pages.
-    """
-    page_header = PageHeaderImageWidget.objects.filter(page=page)
-    if page_header.exists():
-        return page_header[0]
-    else:
+    # No image found! If we received an integer, then do not search further
+    if isinstance(page, int):
         return None
 
+    # Try from parent
+    if page.parent:
+        return get_page_header(page.parent)
 
-def get_random_page_header(page):
-    """ :return: a random page header widget, None if no widgets exist. """
-    page_header = PageHeaderImageWidget.objects.filter(page=page)
-    if page_header.exists():
-        return PageHeaderImageWidget.objects.filter(page=page).order_by('?')[0]
+    # Try from first homepage
+    homepage = HomePage.objects.values_list('id').first()
+    if len(homepage) != 0:
+        # Since we give get_page_header an integer, there is no infinite recursion here...
+        return get_page_header(homepage[0])
+
     return None
 
 
 def get_homepage_header():
     """ Returns the page header image of the homepage """
-    homepages = HomePage.objects.all()
-    if not homepages.exists():
+    homepage = HomePage.objects.values_list('id').first()
+    if len(homepage) == 0:
         return None
-    elif PageHeaderImageWidget.objects.filter(page=homepages[0]):
-        return get_page_header(homepages[0])
-    return None
+    return get_page_header(homepage[0])

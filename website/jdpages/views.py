@@ -56,11 +56,8 @@ class BlogCategoryColumnItem(Item):
 
     @staticmethod
     def create_children(blogcategory, max_items):
-        children = []
-        blogposts = get_public_blogposts(blogcategory)[:max_items]
-        for post in blogposts:
-            children.append(BlogPostItem(post))
-        return children
+        blogposts = get_public_blogposts(blogcategory).select_related('user')[:max_items]
+        return [BlogPostItem(post) for post in blogposts]
 
     def get_template_name(self):
         return "blogcategory_column_item.html"
@@ -112,11 +109,8 @@ class BlogCategorySidebarItem(Item):
 
     @staticmethod
     def create_children(blogcategory):
-        children = []
-        blogposts = get_public_blogposts(blogcategory)[:1]
-        for post in blogposts:
-            children.append(BlogPostItem(post))
-        return children
+        blogposts = get_public_blogposts(blogcategory).select_related('user')[:1]
+        return [BlogPostItem(post) for post in blogposts]
 
     def get_template_name(self):
         return "blogpost_sidebar_item.html"

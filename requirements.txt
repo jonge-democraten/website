@@ -10,6 +10,6 @@ python-dateutil
 icalendar==3.9.2
 -e git+https://github.com/jonge-democraten/mezzanine-fullcalendar@0.6.13#egg=fullcalendar
 -e git+https://github.com/jonge-democraten/janeus@1.4#egg=janeus
--e git+https://github.com/jonge-democraten/hemres@0.11#egg=hemres
+-e git+https://github.com/jonge-democraten/hemres@0.12#egg=hemres
 inlinestyler==0.2.3
 django-robots==1.1

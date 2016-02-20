@@ -437,73 +437,6 @@ p.readmore {
   margin-top: .1em;
 }
 
-/********************
-*          *
-*    Campagne    *
-*          *
-********************/
-
-.moduletablecampagne
-{
-  background: url("/templates/jd/images/TabPanelBackground.png") repeat scroll 0 0 transparent;
-  background-size: 100% 100%;
-  padding: 10px;
-  font-size: 12px;
-  color: #000000;
-  margin-bottom: 10px;
-}
-
-.moduletablecampagne h3
-{
-  background-color: #EBEBEB;
-  background-repeat: repeat-x;
-  margin: 0px;
-  padding: 2px 5px;
-  vertical-align: middle;
-  color: black;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: bold;
-  display: inline;
-}
-
-.moduletablecampagne .mod_placeherecampagne
-{
-  background-color: #EBEBEB;
-  margin-top: 10px;
-  padding: 5px 10px 10px;
-}
-
-.moduletablecampagne .createdate
-{
-  padding-left: 10px;
-  font-size: 10px;
-  color: #99B44A;
-}
-
-.moduletablecampagne h2,
-.moduletablecampagne h2 a:link,
-.moduletablecampagne h2 a:visited
-{
-  font-size: 14px;
-  line-height: 20px;
-  color: #000000;
-  font-weight: bold;
-}
-
-.moduletablecampagne h2 a:hover,
-.moduletablecampagne h2 a:active
-{
-  text-decoration: underline;
-}
-
-.moduletablecampagne .articleinfo 
-{
-  font-style: italic;
-  font-size: 10px;
-}
-
-
 
 /* pagination */
 .pagination ul {
@@ -1073,38 +1006,6 @@ display: none;
  margin-bottom: 0px; 
  }
 
-/************************
-*            *
-*  Module Nieuwsbrief  *
-*            *
-************************/
-#tabs.ui-tabs .moduletablenieuwsbrief .pretextnieuwsbrief
-{
-  display: inline-block;
-  padding-bottom: 7px;
-}
-
-#tabs.ui-tabs .moduletablenieuwsbrief .inputbox
-{
-  margin-bottom: 7px;
-  vertical-align: text-top;
-}
-
-#tabs.ui-tabs .moduletablenieuwsbrief .button
-{
-  border: none;
-  background: transparent url('/templates/jd/images/Inschrijven.png') no-repeat 0 0px;
-  color: white;
-  width: 83px;
-  padding: 2px 0;
-  outline: none;
-  height: 24px;
-}
-
-#tabs.ui-tabs .moduletablenieuwsbrief .button:active
-{
-  outline: none;
-}
 
 /********************
 *          *
@@ -1112,46 +1013,6 @@ display: none;
 *          *
 ********************/
 
-/*
-.moduletabletwitter
-{
-        background-image: url("/templates/jd/images/TabPanelBackground.png");
-  background-size: 100% 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-  font-size: 12px;
-  color: #000000;
-}
-*/
-
-/*
-.moduletabletwitter h3
-{
-        background-color: #EBEBEB;
-        margin: 0px;
-        padding: 2px 10px;
-        vertical-align: middle;
-        color: black;
-        font-size: 14px;
-        font-weight: bold;
-        display: inline;
-}
-
-.moduletabletwitter .twitterfeedrsstwitter a
-{
-        font-weight: bold;
-}
-
-.moduletabletwitter #twitterfeedfollowmediv
-{
-  font-size: 10px;
-}
-
-.moduletabletwitter #twitterfeedpoweredbylink
-{
-  display: none !important;
-}
-*/
 /* Correctie op foutive margin van module variabele intro-afbeelding */
 .random_image_extended {
   margin: 0px !important;
@@ -1354,55 +1215,6 @@ div.jevtt_text{
 /**
  * Afdelingsspecifieke styles
  */
-
-/* FP activiteiten/nieuws/weblog */
-.afdeling #homeRightDiv h3, .afdeling #homeLeftDiv h3 {
-  background: url("../images/TitleBackground.png") repeat-x #578439;
-  border-bottom: 1px solid #38683d;
-  color: #fff;
-  padding: 0 5px;
-  font-size: 14px;
-  margin: 8px 0;
-  text-align: left;
-}
-
-.afdeling table.mod_events_latest_table {
-  text-align: left;
-}
-.afdeling #homeLeftDiv td {
-  font-size: 11px;
-  background: url('../images/calendar.png') no-repeat 0% 50%;
-  padding-left: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-.afdeling.utrecht #homeLeftDiv td {
-  background: url('../../jd-utrecht/images/calendar.gif') no-repeat 0% 50% #ffffff;
-}
-.afdeling #homeLeftDiv a {
-  color: #000;
-  font-weight: 700;
-  text-decoration: underline;
-}
-.afdeling #contentLeftDiv .mod_events_latest_first {
-  text-align: left;
-}
-.afdeling #homeRightDiv .latestnews {
-  list-style-image: url('../images/news.png');
-  list-style-position: inside;
-  padding-left: 0;
-}
-.afdeling.utrecht #homeRightDiv .latestnews {
-  list-style-image: url('../../jd-utrecht/images/item.gif');
-}
-.afdeling #homeRightDiv .latestnews li {
-  margin: 5px 0;
-  text-align: left;
-}
-.afdeling #homeRightDiv .latestnews li a {
-  color: #000;
-  text-decoration: underline;
-}
 
 #homeRightDiv h2.contentheading, #homeLeftDiv h2.contentheading {
   font-size: 16px;

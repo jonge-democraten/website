@@ -1,4 +1,4 @@
-django==1.8.5
+django==1.8.9
 mezzanine==4.1.0
 grappelli-safe==0.4.2
 django-simple-captcha==0.5.1

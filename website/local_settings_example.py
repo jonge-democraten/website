@@ -3,7 +3,6 @@
 ########################
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 # People who get code error notifications.
 # In the format (('Full Name', 'email@example.com'),

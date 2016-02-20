@@ -44,42 +44,6 @@ def filter_non_video_iframes(html, testing=False):
 
     return str(dom)
 
-
-def obfuscate_email_addresses(html):
-    """
-    Given an HTML string, will obfuscate e-mail addresses using HTML entities.
-    Works on mailto links and plain e-mail addresses.
-
-    Returns the HTML string with obfuscated e-mail addresses.
-    """
-    from bs4 import BeautifulSoup
-    import re
-
-    # Parse the input HTML into a DOM
-    dom = BeautifulSoup(html, "html.parser")
-
-    # First, look for mailto: links and obfuscate them
-    for link in dom.findAll("a"):
-        href = link.get("href", "")
-        if href.startswith("mailto:"):
-            link['href'] = "".join(['&#%i;' % ord(char) for char in href])
-
-    # The intermediate HTML has all mailto: links obfuscated. Plaintext
-    # e-mail addresses are next.
-    intermediate_html = str(dom)
-
-    email_seeker = re.compile("([\w._%+-]+@[\w.-]+\.[A-Za-z]{2,4})")
-
-    resulting_html = ""
-    for index, fragment in enumerate(email_seeker.split(intermediate_html)):
-        if index % 2 != 0:
-            resulting_html += "".join(['&#%i;' % ord(char) for char in fragment])
-        else:
-            resulting_html += fragment
-
-    return resulting_html
-
-
 def strip_scripts_not_in_whitelist(html):
     """
     Given an HTML string, will strip all script tags that do not conform to

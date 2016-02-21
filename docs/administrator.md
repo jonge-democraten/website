@@ -31,6 +31,44 @@ Make sure the database contains the timezone tables, needed by the calendar app.
 
 For MySQL, see [http://dev.mysql.com/doc/refman/5.6/en/mysql-tzinfo-to-sql.html](http://dev.mysql.com/doc/refman/5.6/en/mysql-tzinfo-to-sql.html).
 
+## Day-to-day administration
+
+Some tasks come up during day-to-day administration of the website. Here is how to perform them.
+
+### Set up a development version of the website
+
+In order to run acceptance tests, it may be nice to run a second version of the website in parallel from the first.
+
+1. Make a full copy of the MySQL database into another database. Create a user with full access to this secondary database.
+1. 
+
+### Deploy new code
+
+New code is introduced by pulling it from GitHub.
+
+1. Change to user website: `su -s/bin/bash website`.
+1. Fetch the new code from GitHub: `git fetch`.
+1. Checkout the new version tag: `git checkout <version_tag_name>`.
+1. Source the virtualenv: `source env/bin/activate`.
+1. Upgrade any packages based on the requirements file: `pip3 install -r requirements.txt`.
+1. Apply migrations if necessary: `website/manage.py migrate`.
+1. Redeploy static files, if necessary: `umask 022 && website/manage.py collectstatic`.
+1. Reload the WSGI server: `# pkill -HUP -u website uwsgi`.
+
+### Create a full backup
+
+Backing up is done by making a copy of the following data:
+
+* The full database
+* The `local_settings.py` file.
+* The `website/static/website/media` directory.
+
+### Restore a full backup
+
+Restoring a backup is done by overwriting the current data with the data from the backup.
+
+Be sure to run the restored data on the same version of the website codebase as the one used when backing it up.
+
 ## Importing data from Joomla
 
 When deploying the website for production, you will not want to use the demo data. Instead, you want to import data from an existing website. For our existing Joomla installation, we have provided migration scripts.
@@ -81,41 +119,3 @@ The import process happens on a site-by-site basis. `migrate.sh` calls `jd_jooml
 **jd_finalize.py**
 
 Even though `jd_joomla_import_site.py` handles most content, there are some things that it cannot do. Therefore, it is necessary to have an additional step, after importing all sites and their content. `jd_finalize.py` provides this step. It is run only once. It sets all configuration options for all sites, such as Twitter search queries, sidebar blogs, menu layout, group permissions, column elements and many other things. It also migrates the newsletters and their subscribers.
-
-## Day-to-day administration
-
-Some tasks come up during day-to-day administration of the website. Here is how to perform them.
-
-### Set up a development version of the website
-
-In order to run acceptance tests, it may be nice to run a second version of the website in parallel from the first.
-
-1. Make a full copy of the MySQL database into another database. Create a user with full access to this secondary database.
-1. 
-
-### Deploy new code
-
-New code is introduced by pulling it from GitHub.
-
-1. Change to user website: `su -s/bin/bash website`.
-1. Fetch the new code from GitHub: `git fetch`.
-1. Checkout the new version tag: `git checkout <version_tag_name>`.
-1. Source the virtualenv: `source env/bin/activate`.
-1. Upgrade any packages based on the requirements file: `pip3 install -r requirements.txt`.
-1. Apply migrations if necessary: `website/manage.py migrate`.
-1. Redeploy static files, if necessary: `umask 022 && website/manage.py collectstatic`.
-1. Reload the WSGI server: `# pkill -HUP -u website uwsgi`.
-
-### Create a full backup
-
-Backing up is done by making a copy of the following data:
-
-* The full database
-* The `local_settings.py` file.
-* The `website/static/website/media` directory.
-
-### Restore a full backup
-
-Restoring a backup is done by overwriting the current data with the data from the backup.
-
-Be sure to run the restored data on the same version of the website codebase as the one used when backing it up.

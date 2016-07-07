@@ -85,7 +85,7 @@
                                                 {{ item.start_time|date:"l d F H:i" }}
                                             </span>
                                             <span class="mod_events_latest_content">
-                                                <a target="_top" href="//{{ item.event.event_category.site }}{{ item.get_absolute_url }}">{{ item.title }}</a>
+                                                <a target="_top" href="//{{ item.event.site }}{{ item.get_absolute_url }}">{{ item.title }}</a>
                                             </span>
                                             - {{ item.event.event_category.site.name }}
                                         </td> <!-- mod_events_latest -->

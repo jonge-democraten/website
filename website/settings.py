@@ -413,6 +413,11 @@ LOGGING = {
             'propagate': True,
             'level': 'DEBUG',
         },
+        'hemres': {
+            'handlers': ['file_debug', 'file_error', 'console', 'mail_admins'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
     },
 }
 

@@ -6,12 +6,12 @@ from django.contrib import admin
 from django.utils.functional import curry
 from django.forms.models import ModelForm
 
-from mezzanine.core.admin import SingletonAdmin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
 from mezzanine.forms.models import Form
 from mezzanine.forms.admin import FormAdmin
 from mezzanine.pages.admin import PageAdmin
 from mezzanine.pages.models import RichTextPage
+from mezzanine.utils.admin import SingletonAdmin
 
 from website.jdpages.models import BlogCategoryPage
 from website.jdpages.models import ColumnElement, ColumnElementWidget

@@ -141,11 +141,25 @@ Filmpjes uploaden via Youtube (maar ook via andere sites) is geen probleem.
 
 Wil je de video nog verplaatsen, dan kun je dat doen door het grijze vak te klikken en te verslepen. Wil je de video weer verwijderen uit het tekstvak dan kan je dat met backspace doen in het tekstvak. 
 
-<strong>2.7 In-line editing</strong>
+<strong>2.7 Maps</strong>
+
+Kaarten met markers kun je invoegen vanuit OpenStreetMap. Je kunt een kaart aanmaken op https://umap.openstreetmap.fr/en/.
+
+Om de kaart in te voegen in een post of pagina:
+
+1. Klik links op 'Embed and share this map'.
+2. Klik eventueel op 'iframe export options' om opties aan te passen van het kaartje voor je het invoegt.
+3. Kopieer de HTML-code in het vakje rechts bovenin (onder 'Embed the map').
+4. Ga in de beheeromgeving van de JD-website naar de plaats waar je het kaartje wilt embedden (pagina of post).
+5. Klik onder 'Inhoud' op de 'Source code'-knop (twee punthaken, tweede van rechts).
+6. Plak de code op de gewenste plaats in het vak.
+7. Klik OK en sla de pagina of post op. 
+
+<strong>2.8 In-line editing</strong>
 
 Een website kent een voorkant (front end) en een achterkant (back end). De 'front end' is datgene wat de bezoekers van een site zien. Deze User Manual dient als uitleg voor de 'back end' van de site. Het is de bedoeling dat je via de achterkant aanpassingen doet aan site. Wanneer je als admin bent ingelogd is het ook mogelijk om via de voorkant kleinere aanpassingen te doen (in-line editing) aan de de titel en een blog post. Login bij de admin-omgeving > ga terug naar de site. Je ziet linksboven een klein gele tab met een pijltje, klap deze uit en je ziet waar wijzigingen kan aanbrengen met 'Edit'. 
 
-<strong>2.8 Sidebar</strong>
+<strong>2.9 Sidebar</strong>
 
 Het is mogelijk om de sidebar aan te passen.
 

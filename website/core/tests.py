@@ -69,7 +69,7 @@ class TestIframeStripping(TestCase):
         video is indeed not stripped when passed through the filter.
         """
         from bs4 import BeautifulSoup as bs
-        from website.utils.filters import filter_non_video_iframes
+        from website.utils.filters import filter_iframes
 
         self.maxDiff = None
         field_value = """
@@ -86,7 +86,7 @@ class TestIframeStripping(TestCase):
         """
 
         self.assertEqual(str(bs(field_value_post, 'html.parser')),
-                         filter_non_video_iframes(field_value))
+                         filter_iframes(field_value))
 
     def test_vimeo_stripped(self):
         """
@@ -94,7 +94,7 @@ class TestIframeStripping(TestCase):
         when passed through the filter.
         """
         from bs4 import BeautifulSoup as bs
-        from website.utils.filters import filter_non_video_iframes
+        from website.utils.filters import filter_iframes
         field_value = """
         <div id="test">
 <p>Wit amet interdum dolor felis ut ante. Morbi a facilisis ante, in lobortis urna. Etiam ut nunc quis libero interdum aliquam eu at magna. Nunc vehicula risus eleifend molestie vulputate. Mauris diam odio, congue eget lorem id, finibus imperdiet sem.</p>
@@ -108,7 +108,7 @@ class TestIframeStripping(TestCase):
 <p>Vestibulum eget posuere metus, vel finibus leo. Suspendisse congue orci magna, in vestibulum lacus pulvinar a. Donec egestas, felis id feugiat tempus, orci velit ullamcorper risus, et ultricies augue arcu ullamcorper dolor. Mauris eget sollicitudin purus. Aenean a cursus risus, sit amet mattis erat. Curabitur vel venenatis sem. Cras non gravida tellus, eu egestas tellus. Morbi at lorem a turpis blandit vulputate vitae a est.</p></div>
         """
         self.assertEqual(str(bs(field_value_stripped, 'html.parser')),
-                         filter_non_video_iframes(field_value))
+                         filter_iframes(field_value))
 
     def test_nonstandard_youtube_stripped(self):
         """
@@ -116,7 +116,7 @@ class TestIframeStripping(TestCase):
         the standard options gets stripped as well.
         """
         from bs4 import BeautifulSoup as bs
-        from website.utils.filters import filter_non_video_iframes
+        from website.utils.filters import filter_iframes
         self.maxDiff = None
         field_value_pre = """<div id="test">
 <p>Wit amet interdum dolor felis ut ante. Morbi a facilisis ante, in lobortis urna. Etiam ut nunc quis libero interdum aliquam eu at magna. Nunc vehicula risus eleifend molestie vulputate. Mauris diam odio, congue eget lorem id, finibus imperdiet sem.</p>"""
@@ -127,7 +127,7 @@ class TestIframeStripping(TestCase):
             """<iframe width="560" height="315" src="//www.youtub.com/embed/-Y6ImGzTF70"></iframe>""" + \
             field_value_post
         self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')),
-                         filter_non_video_iframes(field_value_different_src))
+                         filter_iframes(field_value_different_src))
 
         # Second case: embed using an attribute other than
         # the ones YouTube sets by default (width, height, src,
@@ -136,14 +136,14 @@ class TestIframeStripping(TestCase):
             """<iframe id="nonstandard" width="560" height="315" src="//www.youtube.com/embed/-Y6ImGzTF70"></iframe>""" + \
             field_value_post
         self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')),
-                         filter_non_video_iframes(field_value_different_attributes))
+                         filter_iframes(field_value_different_attributes))
 
         # Third case: iframe contains information.
         field_value_iframe_has_content = field_value_pre + \
             """<iframe width="560" height="315" src="//www.youtube.com/embed/-Y6ImGzTF70">Test Information</iframe>""" + \
             field_value_post
         self.assertEqual(str(bs(field_value_pre + field_value_post, 'html.parser')),
-                         filter_non_video_iframes(field_value_iframe_has_content))
+                         filter_iframes(field_value_iframe_has_content))
 
 
 class TestScriptTagWhitelisting(TestCase):

@@ -491,12 +491,12 @@ RICHTEXT_ALLOWED_TAGS = (
 # We append iframes to allow Youtube video embedding
 RICHTEXT_ALLOWED_TAGS += ("iframe",)
 
-# We disallow all iframes that are not an embedded YouTube video.
+# We disallow all iframes that do not include acceptable content. 
 # We first copy the default value (defined in mezzanine/core/defaults.py).
 RICHTEXT_FILTERS = ("mezzanine.utils.html.thumbnails",)
 # We append a function that strips iframes that do not follow the default format
-# for an embedded YouTube video.
-RICHTEXT_FILTERS += ("website.utils.filters.filter_non_video_iframes",)
+# for an embedded YouTube video, an OpenStreetMap or other content.
+RICHTEXT_FILTERS += ("website.utils.filters.filter_iframes",)
 
 
 ####################################

@@ -1,17 +1,56 @@
-def filter_non_video_iframes(html, testing=False):
+def youtube_video_whitelist(iframe_tag):
+    """
+    Given an HTML iframe element, pass it through the filters we impose on
+    embedded YouTube video.
+
+    Returns the HTML iframe element as a string, which can be reinserted
+    at the position of the element that was passed.
+    """
+    from bs4 import BeautifulSoup
+    import re
+
+    # Replace YouTube embed links with privacy-friendly alternative
+    src = iframe_tag.get("src", "")
+    iframe_tag['src'] = re.sub(r"(https?:)?//www\.youtube\.com/", "https://www.youtube-nocookie.com/", src)
+
+    return iframe_tag
+
+def umap_osm_whitelist(iframe_tag):
+    """
+    Given an HTML iframe element, pass it through the filters we impose on
+    embedded OpenStreetMaps (umap.openstreetmap.fr).
+
+    Returns the HTML iframe element as a string, which can be reinserted
+    at the position of the element that was passed.
+    """
+    return iframe_tag
+
+def filter_iframes(html, testing=False):
     """
     Given an HTML string, strips iframe tags that do not
-    (just) contain an embedded video.
+    (just) contain an embedded video, OpenStreetMap or any
+    other content we deem acceptable.
+
+    In order to extend this list:
+    1. Write a processing function that acceptably processes an iframe
+       element of a given form.
+    2. Add a matcher below that contains this function, as well as a
+       regex that matches the desired src attribute as narrowly as
+       possible.
 
     Returns the remaining HTML string.
     """
     from bs4 import BeautifulSoup
     import re
  
-    # Tuple of regexes that define allowed URL patterns
-    matchers = ("^(https?:)?//www\.youtube\.com/embed/[a-zA-Z0-9-_]{8,15}$",)
+    # Tuple of tuples (regex, function) that define allowed URL patterns and their handling
+    # functions. If an src tag of an iframe matches the regex, the iframe will be passed
+    # to the function for further processing. Functions should allow one argument, the
+    # iframe element to process.
+    matchers = (("^(https?:)?//www\.youtube\.com/embed/[a-zA-Z0-9-_]{8,15}$", youtube_video_whitelist),
+                ("^(https?:)?//umap\.openstreetmap\.fr/en/map/[a-zA-Z0-9-_]*\?", umap_osm_whitelist))
     # Tuple of allowed attributes in an iframe
-    allowed_attributes = ('height', 'src', 'width')
+    allowed_attributes = ('height', 'src', 'width', 'frameBorder')
 
     # Parse the input HTML into a DOM
     dom = BeautifulSoup(html, "html.parser")
@@ -20,11 +59,10 @@ def filter_non_video_iframes(html, testing=False):
         src = iframe.get("src", "")
         matched = False
         # Check whether any one matcher matches
-        for matcher in matchers:
-            exp = re.compile(matcher)
+        for (expression, whitelist_function) in matchers:
+            exp = re.compile(expression)
             if exp.match(src):
-                # Replace YouTube embed links with privacy-friendly alternative
-                iframe['src'] = re.sub(r"(https?:)?//www\.youtube\.com/", "https://www.youtube-nocookie.com/", src)
+                iframe = whitelist_function(iframe)
                 matched = True
                 break
         # If no matcher matched, remove the iframe

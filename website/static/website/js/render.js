@@ -12,19 +12,18 @@ if (width < 600)
 	d3.select('#afdelingskaart').style('padding-top','95px');
 scale = Math.floor(width * 25.16);
 
-var color = d3.scale.category10();
 
 var afdColors = {
-	"Amsterdam": 0,
-	"Leiden-Haaglanden": 1,
-	"Rotterdam": 2,
-	"Utrecht": 3,
-	"Brabant": 4,
-	"Arnhem-Nijmegen": 5,
-	"Limburg": 6,
-	"Twente": 7,
-	"Groningen": 8,
-	"Friesland": 9
+	"Amsterdam": "#faa61a",
+	"Leiden-Haaglanden": "#cddc38",
+	"Rotterdam": "#5f7e8c",
+	"Utrecht": "#009789",
+	"Brabant": "#ef4481",
+	"Arnhem-Nijmegen": "#98c93c",
+	"Limburg": "#37a5dd",
+	"Overijssel": "#903f98",
+	"Groningen": "#4555a5",
+	"Friesland": "#f05355"
 };
 
 var projection = d3.geo.albers()
@@ -89,7 +88,7 @@ function ready(error, nl, afdelingen) {
 				var a = getAfdeling(d.id);
 				if (a != '') {
 					d3.select(".infobox h2").text(a);
-					d3.select(".infobox").style('background', color(afdColors[a]));
+					d3.select(".infobox").style('background', afdColors[a]);
 				} else {
 					d3.select(".infobox h2").html('<i>Niet ingedeeld</i>');
 					d3.select(".infobox").style('background', null);
@@ -103,7 +102,7 @@ function ready(error, nl, afdelingen) {
 			.style("fill", function(d, i) {
 				var a = getAfdeling(d.id);
 				if (a != '')
-					return color(afdColors[a]);
+					return afdColors[a];
 			});
 
 	//drawMarker({'latitude':52.633,'longitude':7.042});

@@ -68,3 +68,7 @@ target/
 
 # local settings
 local_settings.py
+
+# folder containing test images
+website/static/website/media/uploads/gallery/
+

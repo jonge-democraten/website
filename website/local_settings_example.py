@@ -17,7 +17,7 @@ SECRET_KEY = ''
 
 TIME_ZONE = "Europe/Amsterdam"
 
-ALLOWED_HOSTS = ['127.0.0.1', 'jd.local', 'lh.jd.local', 'ams.jd.local']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'jd.local', 'lh.jd.local', 'ams.jd.local']
 
 DATABASES = {
     "default": {

@@ -246,7 +246,7 @@ TEMPLATES = [{'APP_DIRS': True,
                           'debug': DEBUG}}]
 
 # This setting replaces the default TinyMCE configuration with our custom
-# one. The only difference is that the media plugin is not loaded in this
+# one. The only difference is that the media plugin is not loaded in default
 # version.
 TINYMCE_SETUP_JS = STATIC_URL + "website/js/tinymce_setup.js"
 

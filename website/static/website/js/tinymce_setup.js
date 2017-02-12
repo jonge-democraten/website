@@ -12,13 +12,13 @@ var language_codes = {
     'es': 'es',
     'et': 'et',
     'fa': 'fa',
-    'fa_IR': 'fa_IR',
+    'fa-ir': 'fa_IR',
     'fi': 'fi',
     'fr': 'fr_FR',
-    'hr_HR': 'hr',
+    'hr-hr': 'hr',
     'hu': 'hu_HU',
-    'id_ID': 'id',
-    'is_IS': 'is_IS',
+    'id-id': 'id',
+    'is-is': 'is_IS',
     'it': 'it',
     'ja': 'ja',
     'ko': 'ko_KR',
@@ -26,17 +26,19 @@ var language_codes = {
     'nb': 'nb_NO',
     'nl': 'nl',
     'pl': 'pl',
-    'pt_BR': 'pt_BR',
-    'pt_PT': 'pt_PT',
+    'pt-br': 'pt_BR',
+    'pt-pt': 'pt_PT',
     'ru': 'ru',
     'sk': 'sk',
-    'sr': 'sr_Latn',
+    'sr': 'sr',
     'sv': 'sv_SE',
     'tr': 'tr',
     'uk': 'uk_UA',
     'vi': 'vi',
-    'zh_CN': 'zh_CN',
-    'zh_TW': 'zh_TW'
+    'zh-cn': 'zh_CN',
+    'zh-tw': 'zh_TW',
+    'zh-hant': 'zh_TW',
+    'zh-hans': 'zh_CN'
 };
 
 function custom_file_browser(field_name, url, type, win) {
@@ -69,7 +71,7 @@ jQuery(function($) {
                 "searchreplace visualblocks code fullscreen",
                 "insertdatetime media table contextmenu paste"
             ],
-            link_list: '/displayable_links.js',
+            link_list: window.__link_list_url,
             relative_urls: false,
             convert_urls: false,
             menubar: false,
@@ -79,7 +81,8 @@ jQuery(function($) {
                       "bullist numlist outdent indent | link image media table | " +
                       "code fullscreen"),
             file_browser_callback: custom_file_browser,
-            content_css: window.__tinymce_css
+            content_css: window.__tinymce_css,
+            valid_elements: "*[*]"  // Don't strip anything since this is handled by bleach.
         });
 
     }

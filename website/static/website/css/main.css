@@ -1,0 +1,23 @@
+@import url("fonts.css");
+@import url("components/icons.css");
+@import url("components/pagination.css");
+
+@import url("general.css");
+@import url("base.css");
+
+@import url("components/action-banner.css");
+@import url("components/agenda.css");
+@import url("components/bestuur.css");
+@import url("components/contact.css");
+@import url("components/doemee.css");
+@import url("components/nieuws.css");
+@import url("components/organisatie.css");
+@import url("components/search.css");
+@import url("components/standpunten.css");
+
+@import url("components/navigation.css");
+@import url("components/header.css");
+@import url("components/sidebar.css");
+@import url("components/footer.css");
+
+@import url("responsive.css");

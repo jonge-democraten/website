@@ -1,0 +1,5 @@
+.doemee.basic-container { margin-bottom: 0; }
+.doemee .basic-content { padding: 20px 30px; }
+
+.doemee ul { padding: 0; list-style: none; }
+.doemee ul li { background-image: url(../../img/iconmonstr-check-mark-10.png); background-repeat: no-repeat; background-position: left 2px; background-size: 12px auto; padding-left: 30px; margin: 15px 0; }

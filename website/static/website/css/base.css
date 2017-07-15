@@ -1,0 +1,40 @@
+.collection-content { background-color: #ffffff; padding-top: 30px; }
+
+.collection-item:first-child { margin-top: 0px; }
+.collection-item figure img {width: 100%; }
+
+.collection-item-content > * { margin: 10px 0 0; }
+.collection-item h2{font-weight:bold;font-size: 20px;}
+.collection-item-content.large h2 { margin: 0; }
+.collection-item h3{ color:#90c340; font-size: 14px; margin-bottom: 10px; font-family: 'alegreya_sansregular'; }
+.collection-item figcaption {position: absolute;bottom: 1px;left: 10px;right: 10px;padding: 3px;background-color: #ffffff;box-shadow: 0px 1px 1px #cccccc;text-align: center;font-weight: bold;font-size: 14px;color: #474747;text-transform: uppercase;font-family: 'alegreya_sansextrabold';}
+.collection-description > h2:first-of-type { margin-bottom: 10px; }
+
+.standpuntent .collection-item figure, .standpuntent .collection-item figure {padding: 0px !important;overflow: hidden;}
+.organisatie .collection-item figure img, .standpunten .collection-item figure img {width: 100%; transition: 0.5s;  transform: scale(1); -moz-transform: scale(1); -o-transform: scale(1); -ms-transform: scale(1); -webkit-transform: scale(1); }
+.organisatie .collection-item:hover figure img, .standpunten .collection-item:hover figure img { transform: scale(1.05); -ms-transform: scale(1.05); -o-transform: scale(1.05); -moz-transform: scale(1.05); -webkit-transform: scale(1.05);}
+
+.collection-item > a, .sidebar-item > a { color: inherit; text-decoration: none; }
+.collection-item > a.button { color: #ffffff; }
+
+.list-item h3, .detail-item h3 { color: #90c340; }
+
+.basic-content { padding: 30px; background-color: #ffffff; }
+.basic-container { margin-bottom: 30px; }
+.basic-content > h2:first-child { margin-bottom: 15px; }
+
+
+.category-container { margin-top: 15px; }
+.category-container > * {margin-right: 5px;}
+
+.social-container { margin-top: 15px; }
+a.social-item { display: inline-block; font-size: 26px; text-indent: -999999px; line-height: 1; }
+a.social-item i { text-indent: 0; display: block; margin-top: -1em; }
+
+
+.standard.detail-container { margin-top: 30px; }
+.detail-item > h2:first-child { margin-bottom: 15px; }
+.detail-content { padding: 30px; background-color: #ffffff; }
+
+.content-container { margin-top: 30px; }
+

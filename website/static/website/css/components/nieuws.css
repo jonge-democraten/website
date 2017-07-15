@@ -1,0 +1,20 @@
+.news.collection-container { float: left; margin-top: 30px; }
+.news .collection-item { margin-top: 30px; }
+
+.news .collection-content { padding: 30px; }
+.news .collection-content h2 { margin: 0; }
+.news .collection-content h3 { margin: 5px 0 10px; }
+.news .collection-content p { margin: 0px 0 0; }
+
+.news.list-container, .news.detail-container  { margin-top: 30px; }
+
+.news .collection-item:first-child { margin: 0; }
+
+.collection-item-content.small h2 { margin-top: -0.5em; }
+.news .collection-item h3 > i { margin-right: 10px; }
+
+.news .list-item > h3, .news .detail-item > h3 {margin: 5px 0 10px;font-size: 14px;font-family: 'alegreya_sansregular';}
+.news .list-item h3 > i, .news .detail-item h3 > i { margin-right: 8px; vertical-align: sub; }
+.news .list-item > p, .news .detail-item > p { margin: 5px 0 10px; }
+
+.news article.list-item { background-color: #ffffff; padding: 30px; margin-bottom: 30px; }

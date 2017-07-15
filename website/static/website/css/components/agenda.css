@@ -1,0 +1,6 @@
+.agenda.detail-container { margin-top: 30px; }
+.agenda .detail-item h3 { margin-bottom: 15px; }
+.button.signin { margin: 15px 0 30px; }
+
+.maps { width:100%; height:250px; margin-bottom: 15px; }
+.maps > iframe{ width: 100%; height:100%; }

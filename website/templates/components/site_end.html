@@ -1,7 +1,9 @@
+{% load static %}
+
      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
       <script>window.jQuery || document.write('<script src="resources/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-      <script src="resources/js/vendor/bootstrap.min.js"></script>
-      <script src="resources/js/main.js"></script>
+      <script src="{% static 'website/js/vendor/bootstrap.min.js' %}"></script>
+      <script src="{% static 'website/js/main.js' %}"></script>
         <!-- SET Google Analytics code (UA-XXXXX-X) -->
       <script>
         (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

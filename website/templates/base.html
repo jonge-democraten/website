@@ -1,105 +1,12 @@
-<!doctype html>
-<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
-{% load pages_tags mezzanine_tags i18n future staticfiles %}
-{% ifinstalled mezzanine.blog %}{% load blog_tags %}{% endifinstalled %}
-
-<head>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
-<meta name="description" content="{% block meta_description %}{% endblock %}">
-<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} - {{ settings.SITE_TITLE }}{% endif %}</title>
-<link rel="shortcut icon" href="{% static "website/images/jdicon.png" %}">
-
-{% ifinstalled mezzanine.blog %}
-{% blog_categories as categories %}
-<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
-<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
-{% if categories %}
-{% for category in categories %}
-<link rel="alternate" type="application/rss+xml" title="{{ category }} RSS" href="{% url "blog_post_feed_category" category.slug "rss" %}">
-<link rel="alternate" type="application/atom+xml" title="{{ category }} Atom" href="{% url "blog_post_feed_category" category.slug "atom" %}">
-{% endfor %}
-{% endif %}
-{% endifinstalled %}
-
-{% compress css %}
-<link rel="stylesheet" href="{% static "website/css/template.css" %}" type="text/css" />
-{% block extra_css %}{% endblock %}
-{% endcompress %}
-
-{% compress js %}
-<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
-<script src="{% static "mezzanine/js/"|add:settings.JQUERY_UI_FILENAME %}"></script>
-<script>
-$(function() {
-  $( "#tabs" ).tabs();
-});
-</script>
-{% block extra_js %}{% endblock %}
-{% endcompress %}
-
-<!--[if lt IE 9]>
-<script src="{% static "website/js/html5shiv.js" %}"></script>
-<script src="{% static "website/js/respond.min.js" %}"></script>
-<![endif]-->
-
-<meta name="twitter:card" value="summary">
-<meta name="twitter:creator" value="@JongeDemocraten">
-<meta name="twitter:site" value="@JongeDemocraten">
-<meta property="og:url" content="{{ request.build_absolute_uri }}">
-<meta property="og:title" content="{% block meta_title2 %}{% endblock %}{% if settings.SITE_TITLE %} - {{ settings.SITE_TITLE }}{% endif %}">
-<meta property="og:description" content="{% block meta_description2 %}{% endblock %}">
-<meta property="og:image" content="{% static "/static/website/images/logo.png" %}">
-
-{% block extra_head %}{% endblock %}
-</head>
-
-<body id="{% block body_id %}body{% endblock %}">
-
-<div id="outerDiv">
-    <div id="innerDiv">
-        <div id="headerDiv">
-            {% include "elements/header.html" %}
-
-            <div id="menuDiv">
-                {% page_menu "pages/menus/jdmenu.html" %}
-            </div> <!-- menuDiv -->
-
-        {% search_form %}
-
-        </div> <!-- headerDiv -->
-
-        <div id="contentDiv" class="clearing">
-
-            <div id="contentLeftDiv" class="clearing">
-                {% block main %}{% endblock %}               
-            </div> <!-- contentLeftDiv -->
-
-            <div id="contentRightDiv">
-                
-                {% for item in sidebar_items %}
-                    <div class="moduletable">
-                        {% with template_name=item.get_template_name %}
-                            {% include "elements/"|add:template_name %}
-                        {% endwith %}
-                    </div>
-                {% endfor %}
-                
-            </div> <!-- contentRightDiv -->
-            
-        </div> <!-- contentDiv -->
-
-    </div> <!-- innerDiv -->
-</div> <!-- outerDiv -->
-
-{% include "elements/footer.html" %}
-
-{% include "includes/footer_scripts.html" %}
+{% include "components/site_start.html" %}
+{% include "components/nav.html" %}
+{% include "components/header_default.html" %}
+{% include "components/site_wrapper_start" %}
 
 {% if piwik_url %}
     {% include "elements/piwik_tracking_code.html" %}
 {% endif %}
 
-</body>
-</html>
+{% include "components/site_wrapper_end.html" %}
+{% include "components/footer.html" %}
+{% include "components/site_end.html" %}

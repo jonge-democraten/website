@@ -3,7 +3,6 @@
 {% spaceless %}
 {% for page in page_branch %}
     {% if page.in_menu %}
-    {% if page.is_current_child or page.is_current_sibling %}        
     {% if not page.is_primary and page.parent.is_primary %}
 
     {% if forloop.first %}
@@ -19,7 +18,6 @@
     {% endif %}
 
     {% endif %}        
-    {% endif %}
     {% endif %}
     
 {% endfor %}

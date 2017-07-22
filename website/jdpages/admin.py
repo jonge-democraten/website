@@ -16,10 +16,6 @@ from website.jdpages.models import BlogCategoryPage
 from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import HomePage
 from website.jdpages.models import PageHeaderImageWidget
-from website.jdpages.models import Sidebar
-from website.jdpages.models import SidebarBlogCategoryWidget
-from website.jdpages.models import SidebarBannerWidget
-from website.jdpages.models import SidebarTwitterWidget
 
 
 class AlwaysChangedModelForm(ModelForm):
@@ -71,43 +67,12 @@ class DocumentListingAdmin(PageAdmin):
     inlines = (DocumentInline, PageHeaderImageInline)
 
 
-class SidebarBlogCategoryWidgetInline(admin.TabularInline):
-    model = SidebarBlogCategoryWidget
-    extra = 2
-    max_num = 2
-    verbose_name = "Blogs"
-    verbose_name_plural = "Blogs"
-
-
-class SidebarTwitterWidgetInline(admin.TabularInline):
-    model = SidebarTwitterWidget
-    verbose_name = "Twitter feed"
-    verbose_name_plural = "Twitter feed"
-
-
-class SidebarBannerWidgetAdmin(admin.ModelAdmin):
-    model = SidebarBannerWidget
-    list_display = ('id', 'active', 'title', 'image', 'url')
-
-
-class SidebarAdmin(SingletonAdmin):
-    model = Sidebar
-    inlines = (SidebarBlogCategoryWidgetInline,
-               SidebarTwitterWidgetInline)
-
-
-class SidebarElementWidgetAdmin(admin.ModelAdmin):
-    list_display = ('id', 'sidebar_element', 'site')
-
-
 admin.site.unregister(RichTextPage)
 admin.site.register(RichTextPage, RichtTextPageAdmin)
 admin.site.unregister(Form)
 admin.site.register(Form, CustomFormAdmin)
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(BlogCategoryPage, BlogPageAdmin)
-admin.site.register(Sidebar, SidebarAdmin)
-admin.site.register(SidebarBannerWidget, SidebarBannerWidgetAdmin)
 admin.site.register(DocumentListing, DocumentListingAdmin)
 
 # we add some models to the admin for debugging, if we are in debug mode

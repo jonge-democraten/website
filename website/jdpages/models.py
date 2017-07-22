@@ -43,62 +43,6 @@ class PageHeaderImageWidget(SiteRelated):
     image = FileField(max_length=200, format="Image", validators=[validate_header_image])
 
 
-class Sidebar(SiteRelated):
-    """ Site sidebar that can contain sidebar widgets. """
-
-    def __str__(self):
-        return "Sidebar"
-
-    class Meta:
-        verbose_name = "Sidebar"
-        verbose_name_plural = "Sidebar"
-
-
-class SidebarBlogCategoryWidget(SiteRelated):
-    """
-    Blog category widget that can be placed on a sidebar.
-    Its corresponding view item contains the template information.
-    """
-    title = models.CharField(max_length=200, blank=False, null=False, default="")
-    sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
-    blog_category = models.ForeignKey(BlogCategory, blank=False, null=True)
-
-    def __str__(self):
-        return str(self.blog_category) + ' widget'
-
-    class Meta:
-        verbose_name = 'Sidebar blogcategory'
-
-
-class SidebarTwitterWidget(SiteRelated):
-    """
-    Twitter widget that can be placed on a sidebar.
-    The actual twitter settings can be found in the site settings.
-    This is just the element that can be placed on a sidebar.
-    """
-    active = models.BooleanField(default=False, blank=False, null=False)
-    sidebar = models.OneToOneField(Sidebar, blank=False, null=False)
-
-    class Meta:
-        verbose_name = 'Sidebar twitter widget'
-
-
-class SidebarBannerWidget(models.Model):
-    """ Banner that can be placed on a sidebar """
-    title = models.CharField(max_length=200, blank=False, null=False, default="")
-    active = models.BooleanField(blank=False, null=False, default=True)
-    image = FileField(max_length=200, format="Image")
-    url = models.URLField(max_length=200, help_text='http://www.example.com')
-    description = models.CharField(max_length=200, blank=True, null=False, default="",
-                                   help_text='This is shown as tooltip and alt text.')
-
-    def __str__(self):
-        return str(self.title) + ' widget'
-
-    class Meta:
-        verbose_name = 'Global sidebar banner'
-
-
 class HomePage(Page, RichText):
     """
     Page model for the site homepage.

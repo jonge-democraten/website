@@ -13,8 +13,6 @@ from mezzanine.pages.models import RichTextPage
 
 from fullcalendar.models import Occurrence
 
-from website.jdpages.models import Sidebar
-
 
 class TestCaseAdminLogin(TestCase):
     """ Test case with client and login as admin function. """
@@ -32,19 +30,6 @@ class TestCaseAdminLogin(TestCase):
         response = self.client.post('/admin/login/?next=/admin/', {'username': 'admin', 'password': 'admin'}, follow=True)
         self.assertEqual(response.status_code, 200)
         return response
-
-
-class TestSidebar(TestCaseAdminLogin):
-    """ Tests the sidebar and its widgets. """
-    fixtures = ['test_sidebar.json']
-
-    def test_edit_sidebar_admin_view(self):
-        """ Tests whether the change sidebar admin view response is OK (200). """
-        sidebars = Sidebar.objects.all()
-        self.assertEquals(sidebars.count(), 1)
-        sidebar = sidebars[0]
-        response = self.client.get('/admin/jdpages/sidebar/' + str(sidebar.id) + '/', follow=True)
-        self.assertEqual(response.status_code, 200)
 
 
 class TestPage(TestCaseAdminLogin):

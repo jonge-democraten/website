@@ -5,8 +5,6 @@ from django.contrib.sites.models import Site
 
 from mezzanine.conf import settings
 
-from website.jdpages.models import Sidebar
-
 from website.jdpages.views import get_homepage_header
 
 
@@ -32,26 +30,6 @@ def piwik(request):
         return {"piwik_url": settings.PIWIK_URL, "piwik_site_id": settings.PIWIK_SITE_ID}
     else:
         return {}
-
-
-def sidebar(request):
-    """ :returns: the sidebar items """
-
-    if hasattr(request, '__sidebar_items'):
-        return {"sidebar_items": request.__sidebar_items}
-
-    current_sidebars = Sidebar.objects.values_list('id', flat=True)
-    if len(current_sidebars) == 0:
-        return {}
-
-    if len(current_sidebars) != 1:
-        assert False  # there should never be more than one sidebar per site
-
-    current_sidebars = current_sidebars[0]
-
-    sidebar_items = []
-    request.__sidebar_items = sidebar_items
-    return {"sidebar_items": sidebar_items}
 
 
 def homepage_header(request):

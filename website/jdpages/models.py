@@ -22,6 +22,7 @@ from django.conf import settings
 
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.fields import FileField
+from mezzanine.core.fields import RichTextField
 from mezzanine.core.models import Orderable, RichText, SiteRelated
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.models import Page
@@ -41,6 +42,71 @@ class PageHeaderImageWidget(SiteRelated):
     name = models.CharField(max_length=1000, blank=True, null=False, default="")
     page = models.ForeignKey(Page, blank=False, null=True)
     image = FileField(max_length=200, format="Image", validators=[validate_header_image])
+
+
+class SidebarItem(SiteRelated):
+    page = models.ForeignKey(Page)
+    visible = models.BooleanField(default=False)
+
+    class Meta:
+        abstract = True
+
+
+class SidebarAgenda(SidebarItem):
+    SITE = 'SI'
+    ALL = 'AL'
+    MAIN = 'MA'
+    MAIN_AND_SITE = 'SM'
+
+    EVENT_CHOICES = (
+        (SITE, 'Site'),
+        (ALL, 'All'),
+        (MAIN, 'Main site'),
+        (MAIN_AND_SITE, 'Main and site'),
+    )
+
+    type = models.CharField(max_length=2, choices=EVENT_CHOICES)
+
+    class Meta:
+        verbose_name = "Sidebar Agenda Item"
+
+    def get_name(self):
+        if self.type == self.MAIN_AND_SITE:
+            return 'Events for current and main site'
+        elif self.type == self.ALL:
+            return 'Events for all sites'
+        elif self.type == self.SITE:
+            return 'Events for current site'
+        elif self.type == self.MAIN:
+            return 'Events for main site'
+        assert False
+
+    def __str__(self):
+        return self.get_name()
+
+
+class SidebarTwitter(SidebarItem):
+
+    class Meta:
+        verbose_name = "Sidebar Twitter Item"
+
+
+class SidebarSocial(SidebarItem):
+
+    class Meta:
+        verbose_name = "Sidebar Social Media Item"
+
+
+class SidebarRichText(SidebarItem):
+    content = RichTextField()
+
+    class Meta:
+        verbose_name = "Sidebar RichText Item"
+
+
+class SidebarLink(SidebarItem, Orderable):
+    title = models.CharField(max_length=100, blank=True, default="")
+    url = models.CharField(max_length=500, blank=True, default="")
 
 
 class HomePage(Page, RichText):

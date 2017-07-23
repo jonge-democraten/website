@@ -4,6 +4,7 @@ logger = logging.getLogger(__name__)
 from django.conf import settings
 from django.contrib import admin
 from django.forms.models import ModelForm
+from django.contrib.admin import TabularInline
 
 from mezzanine.core.admin import TabularDynamicInlineAdmin
 from mezzanine.forms.models import Form
@@ -16,6 +17,11 @@ from website.jdpages.models import BlogCategoryPage
 from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import HomePage
 from website.jdpages.models import PageHeaderImageWidget
+from website.jdpages.models import SidebarAgenda
+from website.jdpages.models import SidebarSocial
+from website.jdpages.models import SidebarTwitter
+from website.jdpages.models import SidebarLink
+from website.jdpages.models import SidebarRichText
 
 
 class AlwaysChangedModelForm(ModelForm):
@@ -37,12 +43,50 @@ class PageHeaderImageInline(TabularDynamicInlineAdmin):
     verbose_name_plural = "Header images"
 
 
+class SidebarAgendaInline(TabularDynamicInlineAdmin):
+    model = SidebarAgenda
+    extra = 0
+    verbose_name = "Sidebar agenda"
+    verbose_name_plural = "Sidebar agenda"
+
+
+class SidebarSocialInline(TabularDynamicInlineAdmin):
+    model = SidebarSocial
+    extra = 0
+    verbose_name = "Sidebar social"
+    verbose_name_plural = "Sidebar social"
+
+
+class SidebarTwitterInline(TabularDynamicInlineAdmin):
+    model = SidebarTwitter
+    extra = 0
+    verbose_name = "Sidebar twitter"
+    verbose_name_plural = "Sidebar twitter"
+
+
+class SidebarLinkInline(TabularDynamicInlineAdmin):
+    model = SidebarLink
+    extra = 0
+    verbose_name = "Sidebar links"
+    verbose_name_plural = "Sidebar links"
+
+
+class SidebarRichTextInline(TabularDynamicInlineAdmin):
+    model = SidebarRichText
+    extra = 0
+    verbose_name = "Sidebar content"
+    verbose_name_plural = "Sidebar content"
+
+
 class HomePageAdmin(PageAdmin):
     inlines = [PageHeaderImageInline]
 
 
 class RichtTextPageAdmin(PageAdmin):
-    inlines = [PageHeaderImageInline]
+    inlines = [
+        PageHeaderImageInline, SidebarAgendaInline, SidebarSocialInline,
+        SidebarTwitterInline, SidebarLinkInline, SidebarRichTextInline
+    ]
 
 
 class DocumentAdmin(admin.ModelAdmin):

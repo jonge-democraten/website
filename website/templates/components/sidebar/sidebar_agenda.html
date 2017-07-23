@@ -1,17 +1,29 @@
+{% load fullcalendar %}
+
 <aside class="sidebar agenda collections-sidebar-container row">
 	<div class="collections-sidebar col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<h2 class="sidebar-title"><i class="gd gd-agenda"></i> Agenda</h2>
 		<div class="sidebar-content">
-			<!-- START LOOP through 6 upcomming agenda items -->
 				<div class="sidebar-item">
-					<!-- SET href agenda item url -->
-					<a href="#">
-						<h3>23 Februari 2017</h3>
-						<p>Lorem ipsum dolor sit amet de ipsum</p>
+
+					{% if settings.SIDEBAR_AGENDA_SITES == 3 %}
+                        {% get_agenda limit=6 as items %}
+                    {% elif settings.SIDEBAR_AGENDA_SITES == 2 %}
+                        {% get_site_and_main_agenda limit=6 as items %}
+                    {% elif settings.SIDEBAR_AGENDA_SITES == 4 %}
+                        {% get_main_agenda limit=6 as items %}
+                    {% else %}
+                        {% get_site_agenda limit=6 as items %}
+                    {% endif %}
+
+                    {% for item in items %}
+					<a href="//{{ item.event.site }}{{ item.get_absolute_url }}">
+						<h3>{{ item.start_time|date:"j F Y" }}</h3>
+						<p>{{ item.title }}</p>
 					</a>
+                    {% endfor %}
+
 				</div>
-			<!-- END LOOP -->
-			<!-- SET href agenda overview -->
 			<a class="sidebar-link" href="#">Alle activiteiten <i class="gd gd-arrow-right-o"></i></a>
 		</div>
 	</div>

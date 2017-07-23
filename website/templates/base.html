@@ -1,11 +1,13 @@
 {% include "components/site_start.html" %}
 {% include "components/nav.html" %}
 {% include "components/header_default.html" %}
-{% include "components/site_wrapper_start" %}
+{% include "components/site_wrapper_start.html" %}
 
 {% if piwik_url %}
     {% include "elements/piwik_tracking_code.html" %}
 {% endif %}
+
+{% block main %}{% endblock %}
 
 {% include "components/site_wrapper_end.html" %}
 {% include "components/footer.html" %}

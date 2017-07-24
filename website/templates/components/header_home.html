@@ -2,7 +2,7 @@
 
 <header class="large-view">
   <figure>
-  <img src="{% static 'website/img/headerhome.png' %}" alt="#" />
+  <img src="{{ page_header.image.url }}" alt="#" />
   	<figcaption class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
   		<h2>{{ page.homepage.header_title }}</h2>
   		<h3>{{ page.homepage.header_subtitle }}</h3>

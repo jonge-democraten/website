@@ -2,7 +2,9 @@
 
 <header class="small-view">
   <figure>
-  <img src="{% static 'website/img/headerhome.png' %}" alt="#" />
+    {% if page_header.image %}
+        <img src="{{ page_header.image.url }}" alt="#" />
+    {% endif %}
   	<figcaption class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
   		<h2>{{ page.title }}</h2>
   	</figcaption>

@@ -163,37 +163,6 @@ class Document(Orderable):
         super(Document, self).save(*args, **kwargs)
 
 
-class EventColumnElement(SiteRelated):
-    """ Column Element model for an Event """
-    SITE = 'SI'
-    ALL = 'AL'
-    MAIN = 'MA'
-    MAIN_AND_SITE = 'SM'
-
-    EVENT_CHOICES = (
-        (SITE, 'Site'),
-        (ALL, 'All'),
-        (MAIN, 'Main site'),
-        (MAIN_AND_SITE, 'Main and site'),
-    )
-
-    type = models.CharField(max_length=2, choices=EVENT_CHOICES)
-
-    def get_name(self):
-        if self.type == self.MAIN_AND_SITE:
-            return 'Events for current and main site'
-        elif self.type == self.ALL:
-            return 'Events for all sites'
-        elif self.type == self.SITE:
-            return 'Events for current site'
-        elif self.type == self.MAIN:
-            return 'Events for main site'
-        assert False
-
-    def __str__(self):
-        return self.get_name()
-
-
 class BlogCategoryPage(Page, RichText):
     """
     Model for a page that displays a list of posts in a single blog category.

@@ -124,6 +124,11 @@ class HomePage(Page, RichText):
     """
     header_title = models.CharField(max_length=300, blank=True, default="")
     header_subtitle = models.CharField(max_length=500, blank=True, default="")
+    news_category = models.ForeignKey(BlogCategory, null=True, blank=True)
+
+    @property
+    def blog_posts(self):
+        return get_public_blogposts(self.news_category)
 
     class Meta:
         verbose_name = 'Homepage'

@@ -3,6 +3,8 @@
 		<figure>
 			{% if vision_page.get_content_model.image %}
 			<img src="{{ vision_page.get_content_model.image.url }}" alt="#" />
+			{% else %}
+			<img src="" alt="#" />
 			{% endif %}
 			<figcaption>{{ vision_page.get_content_model.title }}</figcaption>
 		</figure>

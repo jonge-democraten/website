@@ -1,15 +1,19 @@
+{% load mezzanine_tags %}
+
 <article class="collection-item col-lg-4 col-md-4 col-sm-12 col-xs-12">
-	<!-- SET href news item url -->
-	<a href="#">
+	<a href="{{ blog_post.get_absolute_url }}">
 		<figure class="list">
-			<img src="resources/img/item.jpg" alt="#" />
+			<img src="resources/img/item.jpg" alt="#"/>
 		</figure>
 		<div class="collection-item-content small">
-				<h2>Lorem ipsum dolor sit amet, econsectetur adipiscing elit.</h2>
-				<h3 class="hidden-xs"><i class="gd gd-clock"></i>17 februari 2017 </h3>
+				<h2>{{ blog_post.title }}</h2>
+				<h3 class="hidden-xs"><i class="gd gd-clock"></i>{{ blog_post.publish_date|date:"j F Y" }}</h3>
 				<p class="hidden-xs">
-					Lorem ipsum dolor sit amet, consectetur eadipiscing elit. Nunc varius lacinia justo, vitae scelerisque nunc auctor vitae.  
+					{{ blog_post.description_from_content|richtext_filters|safe }}
 				</p>
 		</div>
 	</a>
 </article>
+
+
+

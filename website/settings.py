@@ -76,7 +76,7 @@ PAGE_MENU_TEMPLATES = (
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
-# BLOG_USE_FEATURED_IMAGE = True
+BLOG_USE_FEATURED_IMAGE = True
 
 # Models that are included in a search
 SEARCH_MODEL_CHOICES = ('pages.Page', 'blog.BlogPost', 'events.Occurrence')

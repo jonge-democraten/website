@@ -268,7 +268,6 @@ INSTALLED_APPS = (
     "mezzanine.forms",
     "mezzanine.pages",
     "mezzanine.galleries",
-    "mezzanine.twitter",
     "captcha",
     "website",
     "website.core",
@@ -576,6 +575,7 @@ TEMPLATE_ACCESSIBLE_SETTINGS = ('ACCOUNTS_APPROVAL_REQUIRED', 'ACCOUNTS_VERIFICA
 
 TEMPLATE_ACCESSIBLE_SETTINGS += ('SIDEBAR_AGENDA_SITES',)
 TEMPLATE_ACCESSIBLE_SETTINGS += ('PIWIK_SITE_ID',)
+TEMPLATE_ACCESSIBLE_SETTINGS += ('TWITTER_NAME',)
 
 ###################
 # JANEUS SETTINGS #

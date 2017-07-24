@@ -1,11 +1,12 @@
+{% load mezzanine_tags %}
+
 <article class="action-banner-container">
 	<figure>
-		<img src="resources/img/action-banner.jpg" alt="#"/>
+		<img src="{{ action_banner.image.url }}" alt="#"/>
 		<figcaption>
-			<h2>ONZE AFDELINGEN, DE KERN VAN ONZE VERENIGING</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fringilla odio nec velit ultrices lobortis. Quisque et lorem id diam vulputate vehicula fermentum a quam. Fusce porta bibendum lectus. Aenean vel venenatis velit, in commodo metus. Aenean ultricies mollis.</p>
-			<!-- SET href to action url -->
-			<a href="afdeling.php" class="button">Alle afdelingen</a>
+			<h2>{{ action_banner.title }}</h2>
+			{{ action_banner.content|richtext_filters|safe }}
+			<a href="{{ action_banner.button_url }}" class="button">{{ action_banner.button_title }}</a>
 		</figcaption>
 	</figure>
 </article>

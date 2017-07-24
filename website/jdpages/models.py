@@ -117,10 +117,20 @@ class ActionBanner(PageItem):
     button_url = models.CharField(max_length=500, blank=True, default="")
 
 
+def validate_vision_image(imagepath):
+    """ Validates the aspect ratio of a vision image. """
+    absolute_imagepath = os.path.join(settings.MEDIA_ROOT, str(imagepath))
+    im = Image.open(absolute_imagepath)
+    width, height = im.size
+    aspect_ratio = width/height
+    if abs(aspect_ratio-1.5) > 0.1:
+        raise ValidationError('Image aspect ratio should be 1.5 (for example 300x200px or 600x400px), selected image is %i x %i. Please resize the image.' % (width, height))
+
+
 class VisionPage(Page, RichText):
     """
     """
-    image = FileField(max_length=300, format="Image", blank=True, default="")
+    image = FileField(max_length=300, format="Image", blank=True, default="", validators=[validate_vision_image])
 
     class Meta:
         verbose_name = 'VisionPage'

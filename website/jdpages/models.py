@@ -114,6 +114,8 @@ class HomePage(Page, RichText):
     Page model for the site homepage.
     Only works properly when url points to the homepage '/' as url.
     """
+    header_title = models.CharField(max_length=300, blank=True, default="")
+    header_subtitle = models.CharField(max_length=500, blank=True, default="")
 
     class Meta:
         verbose_name = 'Homepage'

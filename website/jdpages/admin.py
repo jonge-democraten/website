@@ -88,7 +88,7 @@ class SidebarRichTextInline(TabularDynamicInlineAdmin):
 
 
 class HomePageAdmin(PageAdmin):
-    inlines = [PageHeaderImageInline, ActionBannerInline]
+    inlines = [PageHeaderImageInline, ActionBannerInline, SidebarAgendaInline]
 
 
 class RichtTextPageAdmin(PageAdmin):

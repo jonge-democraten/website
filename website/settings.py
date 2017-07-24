@@ -14,7 +14,7 @@ from __future__ import absolute_import, unicode_literals
 # Controls the ordering and grouping of the admin menu.
 #
 ADMIN_MENU_ORDER = (
-    ("Content", ("pages.Page", "blog.BlogPost", "events.Event",
+    ("Content", ("pages.Page", "blog.BlogPost", "events.Event", "jdpages.Footer",
         ("Media Library", "fb_browse"), "hemres.Newsletter")),
     ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting", "jdpages.SidebarBannerWidget",)),
     ("Users", ("auth.User", "auth.Group", "janeus.JaneusUser", "janeus.JaneusRole", )),

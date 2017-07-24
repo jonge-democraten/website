@@ -96,12 +96,12 @@ class HomePageAdmin(PageAdmin):
 
 class VisionsPageAdmin(PageAdmin):
     model = VisionsPage
-    inlines = [PageHeaderImageInline, ActionBannerInline, SidebarAgendaInline, SidebarTwitterInline, SidebarSocialInline]
+    inlines = [PageHeaderImageInline, SidebarTwitterInline]
 
 
 class VisionPageAdmin(PageAdmin):
     model = VisionPage
-    inlines = [PageHeaderImageInline]
+    inlines = [PageHeaderImageInline, SidebarTwitterInline]
 
 
 class RichtTextPageAdmin(PageAdmin):

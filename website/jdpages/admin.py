@@ -15,6 +15,10 @@ from mezzanine.pages.models import RichTextPage
 from mezzanine.utils.admin import SingletonAdmin
 
 from website.jdpages.models import BlogCategoryPage
+from website.jdpages.models import Footer
+from website.jdpages.models import FooterLink
+from website.jdpages.models import FooterLinks
+from website.jdpages.models import FooterInfo
 from website.jdpages.models import HomePage
 from website.jdpages.models import VisionPage
 from website.jdpages.models import VisionsPage
@@ -38,6 +42,15 @@ class AlwaysChangedModelForm(ModelForm):
         Unchanged inlines will also get validated and saved by always returning true here.
         """
         return True
+
+
+class FooterLinkInline(TabularDynamicInlineAdmin):
+    model = FooterLink
+
+
+class FooterLinksAdmin(admin.ModelAdmin):
+    model = FooterLinks
+    inlines = [FooterLinkInline]
 
 
 class PageHeaderImageInline(TabularDynamicInlineAdmin):
@@ -110,10 +123,6 @@ class RichtTextPageAdmin(PageAdmin):
     ]
 
 
-class DocumentAdmin(admin.ModelAdmin):
-    list_display = ('description', 'document', 'document_listing')
-
-
 class BlogPageAdmin(PageAdmin):
     inlines = [PageHeaderImageInline]
 
@@ -124,11 +133,23 @@ class CustomFormAdmin(FormAdmin):
     inlines.insert(0, FormAdmin.inlines[0])
 
 
+class FooterAdmin(SingletonAdmin):
+    model = Footer
+    verbose_name = "Footer"
+    verbose_name_plural = "Footer"
+
+
 admin.site.unregister(RichTextPage)
 admin.site.register(RichTextPage, RichtTextPageAdmin)
+
 admin.site.unregister(Form)
 admin.site.register(Form, CustomFormAdmin)
+
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(VisionPage, VisionPageAdmin)
 admin.site.register(VisionsPage, VisionsPageAdmin)
 admin.site.register(BlogCategoryPage, BlogPageAdmin)
+
+admin.site.register(Footer, FooterAdmin)
+admin.site.register(FooterInfo)
+admin.site.register(FooterLinks, FooterLinksAdmin)

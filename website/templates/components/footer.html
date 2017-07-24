@@ -1,33 +1,28 @@
+{% load mezzanine_tags %}
+
 <footer  class="container-fluid">
     <div class="row">
 	    <div class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
 	    	<div class="row">
-	    		<!-- OUTPUT footer content box -->
 		    	<div class="widget col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		    		<h2>Jonge Democraten</h2>
+		    		<h2>{{ footer.links_left.title }}</h2>
 		    		<ul>
-		    			<li><a href="#">Over de Jonge Democraten</a></li>
-						<li><a href="#">Geschiedenis</a></li>
-						<li><a href="#">Landelijk bestuur</a></li>
-						<li><a href="#">Standpunten</a></li>
-						<li><a href="#">Contactinformatie</a></li>
+						{% for link in footer.links_left.footerlink_set.all %}
+		    				<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+						{% endfor %}
 		    		</ul>
 		    	</div>
-		    	<!-- OUTPUT footer content box -->
 		    	<div class="widget col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		    		<h2>Jonge Democraten</h2>
+		    		<h2>{{ footer.links_middle.title }}</h2>
 		    		<ul>
-		    			<li><a href="#">Over de Jonge Democraten</a></li>
-						<li><a href="#">Geschiedenis</a></li>
-						<li><a href="#">Landelijk bestuur</a></li>
-						<li><a href="#">Standpunten</a></li>
-						<li><a href="#">Contactinformatie</a></li>
+						{% for link in footer.links_middle.footerlink_set.all %}
+		    				<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+						{% endfor %}
 		    		</ul>
 		    	</div>
-		    	<!-- OUTPUT footer content box -->
 		    	<div class="widget col-lg-6 col-md-6 col-sm-12 col-xs-12">
-		    		<h2>Over de Jonge Democraten</h2>
-		    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean leo turpis, dignissim et euismod eget, vehicula sed est. Praesent porttitor sed turpis vel ultrices. Aenean posuere massa vitae mi varius, euismod vestibulum massa placerat. Mauris velit orci, rutrum sagittis est ac, aliquam pellentesque arcu. </p>
+		    		<h2>{{ footer.info_right.title }}</h2>
+		    		{{ footer.info_right.content|richtext_filters|safe }}
 		    	</div>
 		    </div>
 	    </div>

@@ -117,6 +117,24 @@ class ActionBanner(PageItem):
     button_url = models.CharField(max_length=500, blank=True, default="")
 
 
+class VisionPage(Page, RichText):
+    """
+    """
+    image = FileField(max_length=300, format="Image", blank=True, default="")
+
+    class Meta:
+        verbose_name = 'VisionPage'
+
+
+class VisionsPage(Page, RichText):
+    """
+    """
+    vision_pages = models.ManyToManyField(VisionPage)
+
+    class Meta:
+        verbose_name = 'VisionsPage'
+
+
 class HomePage(Page, RichText):
     """
     Page model for the site homepage.
@@ -125,6 +143,7 @@ class HomePage(Page, RichText):
     header_title = models.CharField(max_length=300, blank=True, default="")
     header_subtitle = models.CharField(max_length=500, blank=True, default="")
     news_category = models.ForeignKey(BlogCategory, null=True, blank=True)
+    vision_pages = models.ManyToManyField(VisionPage)
 
     @property
     def blog_posts(self):
@@ -132,6 +151,7 @@ class HomePage(Page, RichText):
 
     class Meta:
         verbose_name = 'Homepage'
+
 
 
 class DocumentListing(Page, RichText):

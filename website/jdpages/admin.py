@@ -7,6 +7,7 @@ from django.forms.models import ModelForm
 from django.contrib.admin import TabularInline
 
 from mezzanine.core.admin import TabularDynamicInlineAdmin
+from mezzanine.core.admin import StackedDynamicInlineAdmin
 from mezzanine.forms.models import Form
 from mezzanine.forms.admin import FormAdmin
 from mezzanine.pages.admin import PageAdmin
@@ -16,6 +17,7 @@ from mezzanine.utils.admin import SingletonAdmin
 from website.jdpages.models import BlogCategoryPage
 from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import HomePage
+from website.jdpages.models import ActionBanner
 from website.jdpages.models import PageHeaderImageWidget
 from website.jdpages.models import SidebarAgenda
 from website.jdpages.models import SidebarSocial
@@ -41,6 +43,13 @@ class PageHeaderImageInline(TabularDynamicInlineAdmin):
     model = PageHeaderImageWidget
     verbose_name = "Header image"
     verbose_name_plural = "Header images"
+
+
+class ActionBannerInline(StackedDynamicInlineAdmin):
+    model = ActionBanner
+    extra = 1
+    verbose_name = "Action banner"
+    verbose_name_plural = "Action banner"
 
 
 class SidebarAgendaInline(TabularDynamicInlineAdmin):
@@ -79,7 +88,7 @@ class SidebarRichTextInline(TabularDynamicInlineAdmin):
 
 
 class HomePageAdmin(PageAdmin):
-    inlines = [PageHeaderImageInline]
+    inlines = [PageHeaderImageInline, ActionBannerInline]
 
 
 class RichtTextPageAdmin(PageAdmin):

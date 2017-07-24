@@ -28,6 +28,40 @@ from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.models import Page
 
 
+class FooterLinks(SiteRelated):
+    title = models.CharField(max_length=100, blank=True, default="")
+
+    def __str__(self):
+        return self.title
+
+
+class FooterLink(SiteRelated, Orderable):
+    title = models.CharField(max_length=100, blank=True, default="")
+    url = models.CharField(max_length=500, blank=True, default="")
+    footer_links = models.ForeignKey(FooterLinks, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+
+class FooterInfo(SiteRelated):
+    title = models.CharField(max_length=100, blank=True, default="")
+    content = RichTextField()
+
+    def __str__(self):
+        return self.title
+
+
+class Footer(SiteRelated):
+    links_left = models.OneToOneField(FooterLinks, auto_created=True, related_name="links_left")
+    links_middle = models.OneToOneField(FooterLinks, auto_created=True, related_name="links_right")
+    info_right = models.OneToOneField(FooterInfo, auto_created=True)
+
+    class Meta:
+        verbose_name = "Footer"
+        verbose_name_plural = "Footer"
+
+
 def validate_header_image(imagepath):
     """ Validates the resolution of a header image. """
     absolute_imagepath = os.path.join(settings.MEDIA_ROOT, str(imagepath))

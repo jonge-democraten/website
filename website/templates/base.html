@@ -1,6 +1,10 @@
 {% include "components/site_start.html" %}
 {% include "components/nav.html" %}
-{% include "components/header_default.html" %}
+{% if page.homepage %}
+    {% include "components/header_home.html" %}
+{% else %}
+    {% include "components/header_default.html" %}
+{% endif %}
 {% include "components/site_wrapper_start.html" %}
 
 {% if piwik_url %}

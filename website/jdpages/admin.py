@@ -17,6 +17,8 @@ from mezzanine.utils.admin import SingletonAdmin
 from website.jdpages.models import BlogCategoryPage
 from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import HomePage
+from website.jdpages.models import VisionPage
+from website.jdpages.models import VisionsPage
 from website.jdpages.models import ActionBanner
 from website.jdpages.models import PageHeaderImageWidget
 from website.jdpages.models import SidebarAgenda
@@ -88,7 +90,18 @@ class SidebarRichTextInline(TabularDynamicInlineAdmin):
 
 
 class HomePageAdmin(PageAdmin):
+    model = HomePage
     inlines = [PageHeaderImageInline, ActionBannerInline, SidebarAgendaInline, SidebarTwitterInline, SidebarSocialInline]
+
+
+class VisionsPageAdmin(PageAdmin):
+    model = VisionsPage
+    inlines = [PageHeaderImageInline, ActionBannerInline, SidebarAgendaInline, SidebarTwitterInline, SidebarSocialInline]
+
+
+class VisionPageAdmin(PageAdmin):
+    model = VisionPage
+    inlines = [PageHeaderImageInline]
 
 
 class RichtTextPageAdmin(PageAdmin):
@@ -125,6 +138,8 @@ admin.site.register(RichTextPage, RichtTextPageAdmin)
 admin.site.unregister(Form)
 admin.site.register(Form, CustomFormAdmin)
 admin.site.register(HomePage, HomePageAdmin)
+admin.site.register(VisionPage, VisionPageAdmin)
+admin.site.register(VisionsPage, VisionsPageAdmin)
 admin.site.register(BlogCategoryPage, BlogPageAdmin)
 admin.site.register(DocumentListing, DocumentListingAdmin)
 

@@ -6,6 +6,7 @@ from django.contrib.sites.models import Site
 from mezzanine.conf import settings
 
 from website.jdpages.views import get_homepage_header
+from website.jdpages.models import Footer
 
 
 def site_properties(request):
@@ -17,9 +18,14 @@ def site_properties(request):
         except Site.DoesNotExist:
             return {}
 
+    footer = None
+    if Footer.objects.exists():
+        footer = Footer.objects.all()[0]
+
     properties = {
         "site_tagline": settings.SITE_TAGLINE,
-        "main_site_url": request.__main_site_url
+        "main_site_url": request.__main_site_url,
+        "footer": footer
     }
     return properties
 

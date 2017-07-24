@@ -67,8 +67,12 @@ def validate_header_image(imagepath):
     absolute_imagepath = os.path.join(settings.MEDIA_ROOT, str(imagepath))
     im = Image.open(absolute_imagepath)
     width, height = im.size
-    if width != 610 or height != 290:
-        raise ValidationError('Image should be 610 x 290 pixels, selected image is %i x %i. Please resize the image.' % (width, height))
+    aspect_ratio = width/height
+    if aspect_ratio < 2.0:
+        raise ValidationError('Image aspect ratio should be at least 2 (for example 2000x1000px). The selected image is %i x %i. Please resize the image.' % (width, height))
+    if width < 1000:
+        raise ValidationError('Image resolution is too low. It should be at least 1000px wide. The selected image is %i x %i. Please find a larger image.' % (width, height))
+
 
 
 class PageHeaderImageWidget(SiteRelated):

@@ -74,8 +74,7 @@ def validate_header_image(imagepath):
         raise ValidationError('Image resolution is too low. It should be at least 1000px wide. The selected image is %i x %i. Please find a larger image.' % (width, height))
 
 
-
-class PageHeaderImageWidget(SiteRelated):
+class PageHeaderImage(SiteRelated):
     """ Page header image. """
     name = models.CharField(max_length=1000, blank=True, null=False, default="")
     page = models.ForeignKey(Page, blank=False, null=True)

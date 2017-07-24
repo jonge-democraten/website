@@ -23,7 +23,7 @@ from website.jdpages.models import HomePage
 from website.jdpages.models import VisionPage
 from website.jdpages.models import VisionsPage
 from website.jdpages.models import ActionBanner
-from website.jdpages.models import PageHeaderImageWidget
+from website.jdpages.models import PageHeaderImage
 from website.jdpages.models import SidebarAgenda
 from website.jdpages.models import SidebarSocial
 from website.jdpages.models import SidebarTwitter
@@ -54,7 +54,7 @@ class FooterLinksAdmin(admin.ModelAdmin):
 
 
 class PageHeaderImageInline(TabularDynamicInlineAdmin):
-    model = PageHeaderImageWidget
+    model = PageHeaderImage
     verbose_name = "Header image"
     verbose_name_plural = "Header images"
 

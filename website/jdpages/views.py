@@ -2,7 +2,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 from website.jdpages.models import HomePage
-from website.jdpages.models import PageHeaderImageWidget
+from website.jdpages.models import PageHeaderImage
 
 
 def get_page_header(page):
@@ -14,7 +14,7 @@ def get_page_header(page):
     """
 
     # Get a random page header, or the first one if there is only one
-    image = PageHeaderImageWidget.objects.filter(page=page).order_by('?').first()
+    image = PageHeaderImage.objects.filter(page=page).order_by('?').first()
     if image is not None:
         return image
 

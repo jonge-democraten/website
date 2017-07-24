@@ -44,15 +44,15 @@ class PageHeaderImageWidget(SiteRelated):
     image = FileField(max_length=200, format="Image", validators=[validate_header_image])
 
 
-class SidebarItem(SiteRelated):
-    page = models.ForeignKey(Page)
+class PageItem(SiteRelated):
+    page = models.ForeignKey(Page, blank=False, null=True)
     visible = models.BooleanField(default=False)
 
     class Meta:
         abstract = True
 
 
-class SidebarAgenda(SidebarItem):
+class SidebarAgenda(PageItem):
     SITE = 'SI'
     ALL = 'AL'
     MAIN = 'MA'
@@ -85,28 +85,36 @@ class SidebarAgenda(SidebarItem):
         return self.get_name()
 
 
-class SidebarTwitter(SidebarItem):
+class SidebarTwitter(PageItem):
 
     class Meta:
         verbose_name = "Sidebar Twitter Item"
 
 
-class SidebarSocial(SidebarItem):
+class SidebarSocial(PageItem):
 
     class Meta:
         verbose_name = "Sidebar Social Media Item"
 
 
-class SidebarRichText(SidebarItem):
+class SidebarRichText(PageItem):
     content = RichTextField()
 
     class Meta:
         verbose_name = "Sidebar RichText Item"
 
 
-class SidebarLink(SidebarItem, Orderable):
+class SidebarLink(PageItem, Orderable):
     title = models.CharField(max_length=100, blank=True, default="")
     url = models.CharField(max_length=500, blank=True, default="")
+
+
+class ActionBanner(PageItem):
+    title = models.CharField(max_length=500, blank=True, default="")
+    content = RichTextField()
+    image = FileField(max_length=300, format="Image")
+    button_title = models.CharField(max_length=500, blank=True, default="")
+    button_url = models.CharField(max_length=500, blank=True, default="")
 
 
 class HomePage(Page, RichText):

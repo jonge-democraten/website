@@ -15,7 +15,6 @@ from mezzanine.pages.models import RichTextPage
 from mezzanine.utils.admin import SingletonAdmin
 
 from website.jdpages.models import BlogCategoryPage
-from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import HomePage
 from website.jdpages.models import VisionPage
 from website.jdpages.models import VisionsPage
@@ -119,18 +118,10 @@ class BlogPageAdmin(PageAdmin):
     inlines = [PageHeaderImageInline]
 
 
-class DocumentInline(TabularDynamicInlineAdmin):
-    model = Document
-
-
 class CustomFormAdmin(FormAdmin):
     model = Form
     inlines = [PageHeaderImageInline]
     inlines.insert(0, FormAdmin.inlines[0])
-
-
-class DocumentListingAdmin(PageAdmin):
-    inlines = (DocumentInline, PageHeaderImageInline)
 
 
 admin.site.unregister(RichTextPage)
@@ -141,8 +132,3 @@ admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(VisionPage, VisionPageAdmin)
 admin.site.register(VisionsPage, VisionsPageAdmin)
 admin.site.register(BlogCategoryPage, BlogPageAdmin)
-admin.site.register(DocumentListing, DocumentListingAdmin)
-
-# we add some models to the admin for debugging, if we are in debug mode
-if settings.DEBUG:
-    admin.site.register(Document, DocumentAdmin)

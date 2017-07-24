@@ -2,9 +2,9 @@
 	<div class="collection-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
 		<h2>Standpunten overzicht</h2>
 		<div class="row">
-			<!-- START LOOP through opinion items -->
-				<!-- LOAD content-standpunt-item.html -->
-			<!-- END LOOP -->
+			{% for vision_page in page.get_content_model.vision_pages.all %}
+				{% include "components/content/standpunten/content_standpunt_item.html" %}
+			{% endfor %}
 		</div>
 	</div>
 	<div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">

@@ -1,9 +1,10 @@
 <article class="col-lg-4 col-md-4 col-sm-6 col-xs-6 collection-item">
-	<!-- SET href opinion item url -->
-	<a href="#">
+	<a href="{{ vision_page.get_absolute_url }}">
 		<figure>
-			<img src="resources/img/standpunt.jpg" alt="#" />
-			<figcaption>Onderwijs</figcaption>
+			{% if vision_page.get_content_model.image %}
+			<img src="{{ vision_page.get_content_model.image.url }}" alt="#" />
+			{% endif %}
+			<figcaption>{{ vision_page.get_content_model.title }}</figcaption>
 		</figure>
 	</a>
 </article>

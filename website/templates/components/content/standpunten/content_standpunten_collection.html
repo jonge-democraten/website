@@ -8,7 +8,15 @@
 		</div>
 	</div>
 	<div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
-		<!-- LOAD views/components/sidebar/sidebar-twitter.html -->
-		<!-- LOAD views/components/sidebar/sidebar-social.html -->
+		{% for item in page.get_content_model.sidebartwitter_set.all %}
+			{% if item.visible %}
+				{% include "components/sidebar/sidebar_twitter.html" %}
+			{% endif %}
+		{% endfor %}
+		{% for item in page.get_content_model.sidebarsocial_set.all %}
+			{% if item.visible %}
+				{% include "components/sidebar/sidebar_social.html" %}
+			{% endif %}
+		{% endfor %}
 	</div>
 </div>

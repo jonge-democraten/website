@@ -176,7 +176,7 @@ class VisionPage(Page, RichText):
 class VisionsPage(Page, RichText):
     """
     """
-    vision_pages = models.ManyToManyField(VisionPage)
+    vision_pages = models.ManyToManyField(VisionPage, blank=True)
 
     class Meta:
         verbose_name = 'VisionsPage'

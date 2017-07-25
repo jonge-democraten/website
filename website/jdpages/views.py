@@ -38,6 +38,6 @@ def get_page_header(page):
 def get_homepage_header():
     """ Returns the page header image of the homepage """
     homepage = HomePage.objects.values_list('id').first()
-    if len(homepage) == 0:
+    if not homepage:
         return None
     return get_page_header(homepage[0])

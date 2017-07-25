@@ -190,7 +190,7 @@ class HomePage(Page, RichText):
     header_title = models.CharField(max_length=300, blank=True, default="")
     header_subtitle = models.CharField(max_length=500, blank=True, default="")
     news_category = models.ForeignKey(BlogCategory, null=True, blank=True)
-    vision_pages = models.ManyToManyField(VisionPage, null=True, blank=True)
+    vision_pages = models.ManyToManyField(VisionPage, blank=True)
 
     @property
     def blog_posts(self):

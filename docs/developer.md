@@ -74,7 +74,7 @@ Add the following line to your `/etc/hosts` file to enable the subdomains,
 ### Windows
 
 #### Option 1: Native
-Install Python 3 and Git.  
+Install [Python 3](https://www.python.org/downloads/) and [Git](https://git-scm.com/download/win).  
 Get the code. Open a Windows command prompt and clone the website repo,
 ```
 git clone https://github.com/jonge-democraten/website.git
@@ -105,8 +105,8 @@ python website\manage.py migrate
 ```
 Load demo data and run the a development server,
 ```
-python website/manage.py loaddata demo_data
-python website/manage.py runserver
+python website\manage.py loaddata demo_data
+python website\manage.py runserver
 ```
 Visit [http://127.0.0.1:8000](http://127.0.0.1:8000) to view the website.
 

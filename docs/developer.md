@@ -103,7 +103,7 @@ Create local settings and initialise the database,
 python create_local_settings.py
 python website\manage.py migrate
 ```
-Load demo data and run the a development server,
+Load demo data and run a development server,
 ```
 python website\manage.py loaddata demo_data
 python website\manage.py runserver

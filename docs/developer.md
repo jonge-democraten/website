@@ -85,7 +85,7 @@ python -m venv env
 env\Scripts\activate.bat
 python -m pip install -U pip
 ```
-Download the pyldap Python wheel for your Python version from http://www.lfd.uci.edu/~gohlke/pythonlibs/#pyldap.  
+Download the pyldap Python wheel for your Python version from http://www.lfd.uci.edu/~gohlke/pythonlibs/#pyldap
 Install this wheel,
 ```
 pip install pyldap-<some specific version info here>.whl

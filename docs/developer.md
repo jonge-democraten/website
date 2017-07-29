@@ -3,9 +3,10 @@ This page contains information for jdwebsite developers.
 
 ## Installation
 Installation is easy on a Linux-like operating system.  
-For Windows and Mac, we advise to create a Linux virtual machine. Instructions are given below.
+For Windows and Mac, it requires some manual changes or a Linux virtual machine. Instructions are given below.
 
-<h3>Basics</h3>
+### Quick Install (Linux)
+
     $ ./clean_env.sh
     $ ./build_env.sh
     $ source ./env/bin/activate
@@ -14,32 +15,19 @@ For Windows and Mac, we advise to create a Linux virtual machine. Instructions a
     $ python website/manage.py loaddata demo_data #Optional, creates admin/admin
     $ python website/manage.py runserver
 
-<h3>Requirements</h3>
-**Linux**
+### Linux 
 
 Installation of the full project, and running a test server, can be done in a few minutes on any Linux machine. Just follow the steps under 'detailed instructions'. There is no need for manual configuration.
 
-Depending on your Linux distribution, you may need to install some system-level development packages. A list of these dependencies for Ubuntu is given below.
+**System-Level Dependencies**  
+Depending on your Linux distribution, you may need to install some system-level development packages. A list of these dependencies for Ubuntu (15.04) is given below,
 
-***Ubuntu (15.04) packages***
-
-The following packages are required:
 *python-virtualenv, python3-dev, libldap2-dev, libsasl2-dev, libxml2-dev, libxslt1-dev, zlib1g-dev, libjpeg-dev, libfreetype6-dev*
 
 Install these using the command,
 
     $ sudo apt-get install python-virtualenv python3-dev libldap2-dev libsasl2-dev libxml2-dev libxslt1-dev zlib1g-dev libjpeg-dev libfreetype6-dev
 
-**Windows and Mac**
-
-For Windows and Mac users, it is advised to install a Linux virtual machine and use this to install the project.
-
-* Follow the [instructions](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox) and install Ubuntu on VirtualBox.
-* Start Ubuntu in a VirtualBox, open the program called "Terminal" and install some required applications by entering the command,
-
-        $ sudo apt-get install python-virtualenv python3-dev libldap2-dev libsasl2-dev libxml2-dev libxslt1-dev zlib1g-dev libjpeg-dev
-
-<h3>Detailed instructions</h3>
 **Get the code**  
 Create a new clone of the project,
 
@@ -77,25 +65,57 @@ You can run a local test server with the command,
 
 and visit [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser to view the web interface.
 
-<h3>Hostnames</h3>
+### Hostnames
 Add the following line to your `/etc/hosts` file to enable the subdomains,
 
     127.0.0.1 jd.local lh.jd.local ams.jd.local
 
-<h3>Update and clean</h3>
-**Get the latest changes**  
-To get the latest version of the project, type the following git command in your project directory,
-    
-    (env) $ git pull
 
-Migrate possible database changes with,
+### Windows
 
-    (env) $ python website/manage.py migrate
+#### Option 1: Native
+Install [Python 3](https://www.python.org/downloads/) and [Git](https://git-scm.com/download/win).  
+Get the code. Open a Windows command prompt and clone the website repo,
+```
+git clone https://github.com/jonge-democraten/website.git
+```
+Enter the `website` directory, create a virtualenv, activate it, and upgrade pip,
+```
+python -m venv env
+env\Scripts\activate.bat
+python -m pip install -U pip
+```
+Download the pyldap Python wheel for your Python version from http://www.lfd.uci.edu/~gohlke/pythonlibs/#pyldap
+Install this wheel,
+```
+pip install pyldap-<some specific version info here>.whl
+```
+Install other requirements,
+```
+pip install -r requirements.txt
+```
+Edit `env\Lib\site-packages\rq\worker.py` and replace `def kill_horse(self, sig=signal.SIGKILL):`
+with `def kill_horse(self, sig=signal.SIGTERM):`.  
+This is required because RQ does not support Windows. We don't need it during development. This change prevents errors.
 
-**Clean project**  
-You can remove the virtual environment and database with,
+Create local settings and initialise the database,
+```
+python create_local_settings.py
+python website\manage.py migrate
+```
+Load demo data and run a development server,
+```
+python website\manage.py loaddata demo_data
+python website\manage.py runserver
+```
+Visit [http://127.0.0.1:8000](http://127.0.0.1:8000) to view the website.
 
-    $ ./clean_env.sh
+#### Option 2: Linux Virtual Machine
+
+For Windows and Mac users, it is advised to install a Linux virtual machine and use this to install the project.
+
+* Follow the [instructions](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox) and install Ubuntu on VirtualBox.
+* Follow the instructions above for installation on Linux.
 
 -----
 ## Workflow

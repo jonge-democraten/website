@@ -12,7 +12,7 @@ Based on Python, Django and [Mezzanine](http://mezzanine.jupo.org/). Open-source
 * **[Developer](http://jdwebsite.readthedocs.org/en/latest/developer/)**
 * **[Design](http://jdwebsite.readthedocs.org/en/latest/design/)**
 
-#### Quick install
+#### Quick Install (Linux)
 1. `$ ./clean_env.sh`
 1. `$ ./build_env.sh`
 1. `$ source ./env/bin/activate`  
@@ -20,3 +20,5 @@ Based on Python, Django and [Mezzanine](http://mezzanine.jupo.org/). Open-source
 1. `$ website/manage.py createdb`
 1. `$ website/manage.py loaddata demo_data` *optional, loads demo data (login: admin/admin)*
 1. `$ website/manage.py runserver`  
+
+[Windows installation instructions](http://jdwebsite.readthedocs.io/en/latest/developer/#windows) (development only)

@@ -2,31 +2,30 @@
 <?php require('components/component-nav.php'); ?>
 <?php require('components/component-header-default.php'); ?>
 <?php require('components/component-site-wrapper-start.php'); ?>
-<!-- start agenda detail specific -->
+<!-- start organisatie specific -->
 <section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
-	<div class="agenda detail-container">
-		<div class="detail-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
-			<div class="detail-item">
-				<h2>Jonge Democraten Brabant</h2>
-				<h3>Datum: 20 maart 2017 | Tijd: 20:00 | Locatie: Warenlaan 2, 5037 AB Tilburg</h3>
+	<div class="organisatie collection-container">
+		<div class="collection-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
+			<div class="collection-description">
+				<h2>Organisatie</h2>
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer turpis metus, consequat nec tellus a, ullamcorper efficitur libero. Nulla luctus eros a vestibulum elementum. Phasellus semper ut justo eu pharetra. Praesent pharetra iaculis urna vel aliquet. Fusce id neque ultricies, accumsan sapien vel, fringilla justo. Mauris pharetra bibendum nisl sed consectetur. Phasellus semper orci et dui varius gravida.
 
 					Fusce sed elementum augue, quis feugiat ante. Fusce at urna in nibh ultrices tempor. Maecenas enim dui, condimentum aliquet mollis nec, fringilla quis neque. Mauris a dui tempor, dictum augue quis, lacinia quam. Suspendisse varius diam et dolor malesuada, eget rhoncus odio finibus. Fusce eu dui egestas elit vehicula mattis. Curabitur gravida massa a felis gravida, ut venenatis ante rutrum.
 				</p>
-				<a class="button signin" href="#">Aanmelden</a>
-				<div class="maps">
-					<iframe style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Haagsche Bluf 63 2511 CN&key=AIzaSyAHw85FaqvTo0jH7esp93r4m5SiYx_SRdA" allowfullscreen></iframe>
-				</div>
+			</div>
+			<div class="row">
+				<?php foreach(Array(1,2,3,4,5,6) as $count): ?>
+					<?php require('components/content/organisatie/content-organisatie-item.php'); ?>
+				<?php endforeach; ?>
 			</div>
 		</div>
 		<div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
-			<?php require('components/sidebar/sidebar-agenda.php'); ?>
-			<?php require('components/sidebar/sidebar-social.php'); ?>
+			<?php require('components/sidebar/sidebar-twitter.php'); ?>
 		</div>
 	</div>
 </section>
-<!-- end agenda detail specific -->
+<!-- end organisatie specific -->
 <?php require('components/component-site-wrapper-end.php'); ?>
 <?php require('components/component-footer.php'); ?>
 <?php require('components/component-site-end.php'); ?>

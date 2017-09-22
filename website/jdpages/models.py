@@ -160,6 +160,9 @@ class ActionBanner(PageItem):
     button_title = models.CharField(max_length=500, blank=True, default="")
     button_url = models.CharField(max_length=500, blank=True, default="")
 
+    def __str__(self):
+        return self.title
+
 
 def validate_vision_image(imagepath):
     """ Validates the aspect ratio of a vision image. """
@@ -177,7 +180,8 @@ class VisionPage(Page, RichText):
     image = FileField(max_length=300, format="Image", blank=True, default="", validators=[validate_vision_image])
 
     class Meta:
-        verbose_name = 'VisionPage'
+        verbose_name = 'Standpunt pagina'
+        verbose_name_plural = "Standpunt paginas"
 
 
 class VisionsPage(Page, RichText):
@@ -186,7 +190,8 @@ class VisionsPage(Page, RichText):
     vision_pages = models.ManyToManyField(VisionPage, blank=True)
 
     class Meta:
-        verbose_name = 'VisionsPage'
+        verbose_name = 'Standpunten pagina'
+        verbose_name_plural = "Standpunten paginas"
 
 
 class HomePage(Page, RichText):
@@ -197,7 +202,7 @@ class HomePage(Page, RichText):
     header_title = models.CharField(max_length=300, blank=True, default="")
     header_subtitle = models.CharField(max_length=500, blank=True, default="")
     news_category = models.ForeignKey(BlogCategory, null=True, blank=True)
-    vision_pages = models.ManyToManyField(VisionPage, blank=True)
+    vision_pages = models.ManyToManyField(VisionPage, blank=True, verbose_name="Standpunt paginas")
 
     @property
     def blog_posts(self):
@@ -234,3 +239,7 @@ class SocialMediaUrls(SiteRelated):
     youtube_url = models.URLField(max_length=300, blank=True, default="")
     linkedin_url = models.URLField(max_length=300, blank=True, default="")
     instagram_url = models.URLField(max_length=300, blank=True, default="")
+
+    class Meta:
+        verbose_name = "Social media urls"
+        verbose_name_plural = "Social media urls"

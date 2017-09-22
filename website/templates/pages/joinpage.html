@@ -39,7 +39,9 @@
 </section>
 
 <section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
-<?php require('components/content/content-action-banner.php'); ?>
+    {% for action_banner in page.homepage.actionbanner_set.all %}
+        {% include "components/content/content_action_banner.html" %}
+    {% endfor %}
 </section>
 
 <section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">

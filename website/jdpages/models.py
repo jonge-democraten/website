@@ -130,6 +130,13 @@ class SidebarTwitter(PageItem):
 
 class SidebarSocial(PageItem):
 
+    @property
+    def urls(self):
+        smulrs = SocialMediaUrls.objects.all()
+        if smulrs.exists():
+            return smulrs[0]
+        return None
+
     class Meta:
         verbose_name = "Sidebar Social Media Item"
 
@@ -200,7 +207,6 @@ class HomePage(Page, RichText):
         verbose_name = 'Homepage'
 
 
-
 class BlogCategoryPage(Page, RichText):
     """
     Model for a page that displays a list of posts in a single blog category.
@@ -220,3 +226,11 @@ def get_public_blogposts(blog_category):
     blog_posts = BlogPost.objects.all().filter(categories=blog_category).filter(status=CONTENT_STATUS_PUBLISHED)
     return blog_posts.filter(publish_date__lte=timezone.now()).filter(Q(expiry_date__isnull=True)
                                                                       | Q(expiry_date__gte=timezone.now()))
+
+
+class SocialMediaUrls(SiteRelated):
+    facebook_url = models.URLField(max_length=300, blank=True, default="")
+    twitter_url = models.URLField(max_length=300, blank=True, default="")
+    youtube_url = models.URLField(max_length=300, blank=True, default="")
+    linkedin_url = models.URLField(max_length=300, blank=True, default="")
+    instagram_url = models.URLField(max_length=300, blank=True, default="")

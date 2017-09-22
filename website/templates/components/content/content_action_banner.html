@@ -1,12 +1,12 @@
 {% load mezzanine_tags %}
 
 <article class="action-banner-container">
-	<figure>
-		<img src="{{ action_banner.image.url }}" alt="#"/>
-		<figcaption>
-			<h2>{{ action_banner.title }}</h2>
-			{{ action_banner.content|richtext_filters|safe }}
-			<a href="{{ action_banner.button_url }}" class="button">{{ action_banner.button_title }}</a>
-		</figcaption>
-	</figure>
+    <figure>
+        <img src="{{ action_banner.image.url }}" alt="#"/>
+        <figcaption>
+            <h2>{{ action_banner.title }}</h2>
+            {{ action_banner.content|richtext_filters|safe }}
+            <a href="{{ action_banner.button_url }}" class="button">{{ action_banner.button_title }}</a>
+        </figcaption>
+    </figure>
 </article>

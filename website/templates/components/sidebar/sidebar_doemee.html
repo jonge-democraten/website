@@ -1,16 +1,16 @@
 {% if page.get_content_model.sidebarlink_set.all %}
-	{% with links=page.get_content_model.sidebarlink_set.all %}
-		<aside class="sidebar doemee collections-sidebar-container row">
-			<div class="collections-sidebar col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<h2 class="sidebar-title">Meer Jonge Democraten</h2>
-				<div class="sidebar-content">
-					<div class="sidebar-item">
-						{% for link in links %}
-						<a class="button" href="{{ link.url }}">{{ link.title }}</a>
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-		</aside>
-	{% endwith %}
+    {% with links=page.get_content_model.sidebarlink_set.all %}
+        <aside class="sidebar doemee collections-sidebar-container row">
+            <div class="collections-sidebar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="sidebar-title">Meer Jonge Democraten</h2>
+                <div class="sidebar-content">
+                    <div class="sidebar-item">
+                        {% for link in links %}
+                        <a class="button" href="{{ link.url }}">{{ link.title }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </aside>
+    {% endwith %}
 {% endif %}

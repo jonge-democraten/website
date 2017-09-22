@@ -69,6 +69,7 @@ class ActionBannerInline(StackedDynamicInlineAdmin):
 
 class SidebarAgendaInline(TabularDynamicInlineAdmin):
     model = SidebarAgenda
+    form = AlwaysChangedModelForm
     extra = 0
     verbose_name = "Sidebar agenda"
     verbose_name_plural = "Sidebar agenda"
@@ -76,6 +77,7 @@ class SidebarAgendaInline(TabularDynamicInlineAdmin):
 
 class SidebarSocialInline(TabularDynamicInlineAdmin):
     model = SidebarSocial
+    form = AlwaysChangedModelForm
     extra = 0
     verbose_name = "Sidebar social"
     verbose_name_plural = "Sidebar social"
@@ -83,6 +85,7 @@ class SidebarSocialInline(TabularDynamicInlineAdmin):
 
 class SidebarTwitterInline(TabularDynamicInlineAdmin):
     model = SidebarTwitter
+    form = AlwaysChangedModelForm
     extra = 0
     verbose_name = "Sidebar twitter"
     verbose_name_plural = "Sidebar twitter"
@@ -90,6 +93,7 @@ class SidebarTwitterInline(TabularDynamicInlineAdmin):
 
 class SidebarLinkInline(TabularDynamicInlineAdmin):
     model = SidebarLink
+    form = AlwaysChangedModelForm
     extra = 0
     verbose_name = "Sidebar links"
     verbose_name_plural = "Sidebar links"
@@ -97,6 +101,7 @@ class SidebarLinkInline(TabularDynamicInlineAdmin):
 
 class SidebarRichTextInline(TabularDynamicInlineAdmin):
     model = SidebarRichText
+    form = AlwaysChangedModelForm
     extra = 0
     verbose_name = "Sidebar content"
     verbose_name_plural = "Sidebar content"

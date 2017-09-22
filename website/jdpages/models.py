@@ -83,7 +83,7 @@ class PageHeaderImage(SiteRelated):
 
 class PageItem(SiteRelated):
     page = models.ForeignKey(Page, blank=False, null=True)
-    visible = models.BooleanField(default=False)
+    visible = models.BooleanField(default=True)
 
     class Meta:
         abstract = True

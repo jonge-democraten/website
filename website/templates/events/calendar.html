@@ -18,10 +18,12 @@
 {% endblock %}
 
 {% block extra_css %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static "website/css/fullcalendar.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/fullcalendar.css' %}" />
 {% endblock %}
 
+
 {% block main %}
+
 <section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
     <div class="standard detail-container">
         <div class="detail-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -62,7 +64,6 @@
         </div>
     </div>
 </section>
-</div>
 
 {% endblock %}
 

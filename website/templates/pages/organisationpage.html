@@ -1,8 +1,11 @@
-<?php require('components/component-site-start.php'); ?>
-<?php require('components/component-nav.php'); ?>
-<?php require('components/component-header-default.php'); ?>
-<?php require('components/component-site-wrapper-start.php'); ?>
-<!-- start organisatie specific -->
+{% extends "base.html" %}
+
+{% load mezzanine_tags %}
+
+{% block meta_title %}{% block meta_title2 %}{{ page.meta_title }}{% endblock %}{% endblock %}
+
+{% block main %}
+
 <section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
 	<div class="organisatie collection-container">
 		<div class="collection-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -25,7 +28,6 @@
 		</div>
 	</div>
 </section>
-<!-- end organisatie specific -->
-<?php require('components/component-site-wrapper-end.php'); ?>
-<?php require('components/component-footer.php'); ?>
-<?php require('components/component-site-end.php'); ?>
+
+{{ block.super }}
+{% endblock %}

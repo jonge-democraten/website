@@ -1,8 +1,21 @@
 {% extends "base.html" %}
 
-{% load mezzanine_tags %}
+{% load i18n mezzanine_tags static fullcalendar %}
 
 {% block meta_title %}{% block meta_title2 %}{{ page.meta_title }}{% endblock %}{% endblock %}
+
+{% block extra_js %}{{ block.super }}
+<script type="text/javascript" src="{% static 'website/js/leaflet.js' %}"></script>
+<script type="text/javascript">
+L.Icon.Default.imagePath = "{% static 'website/images/leaflet/' %}";
+</script>
+<script type="text/javascript" src="{% static 'website/js/events.js' %}"></script>
+{% endblock %}
+
+{% block extra_css %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/vendor/leaflet.css' %}" />
+{% endblock %}
+
 
 {% block main %}
 
@@ -10,17 +23,29 @@
 	<div class="agenda detail-container">
 		<div class="detail-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
 			<div class="detail-item">
-				<h2>Jonge Democraten Brabant</h2>
-				<h3>Datum: 20 maart 2017 | Tijd: 20:00 | Locatie: Warenlaan 2, 5037 AB Tilburg</h3>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer turpis metus, consequat nec tellus a, ullamcorper efficitur libero. Nulla luctus eros a vestibulum elementum. Phasellus semper ut justo eu pharetra. Praesent pharetra iaculis urna vel aliquet. Fusce id neque ultricies, accumsan sapien vel, fringilla justo. Mauris pharetra bibendum nisl sed consectetur. Phasellus semper orci et dui varius gravida.
+				<h2>{{ occurrence.event.title }} - {{ occurrence.description }}</h2>
 
-					Fusce sed elementum augue, quis feugiat ante. Fusce at urna in nibh ultrices tempor. Maecenas enim dui, condimentum aliquet mollis nec, fringilla quis neque. Mauris a dui tempor, dictum augue quis, lacinia quam. Suspendisse varius diam et dolor malesuada, eget rhoncus odio finibus. Fusce eu dui egestas elit vehicula mattis. Curabitur gravida massa a felis gravida, ut venenatis ante rutrum.
+				<h3>Datum:
+					{% if occurrence.start_time.day == occurrence.start_time.day %}
+						{{ occurrence.start_time|date:"n F Y" }} | Tijd: {{ occurrence.start_time|date:"G:i" }} - {{ occurrence.end_time|date:"G:i" }}
+					{% else %}
+						{{ occurrence.start_time|date:"n F Y" }}, {{ occurrence.start_time|date:"G:i"  }} - {{ occurrence.end_time|date:"n F Y" }}, {{ occurrence.end_time|date:"G:i"  }}
+					{% endif %}
+					| Tijd: {{ occurrence.start_time|date:"G:i" }} - {{ occurrence.end_time|date:"G:i" }}
+					| Locatie: <span id="occurrence-location">{{ occurrence.location }}</span>
+				</h3>
+
+				<p>
+					{{ occurrence.event.content|richtext_filters|safe }}
 				</p>
-				<a class="button signin" href="#">Aanmelden</a>
-				<div class="maps">
-					<iframe style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Haagsche Bluf 63 2511 CN&key=AIzaSyAHw85FaqvTo0jH7esp93r4m5SiYx_SRdA" allowfullscreen></iframe>
-				</div>
+
+				<div id="event-map"></div>
+
+				<br/>
+
+				<p>
+        			<a class="button" href="{% url 'fullcalendar-monthly-view' occurrence.start_time.year occurrence.start_time.month %}">&laquo; terug naar de agenda</a>
+    			</p>
 			</div>
 		</div>
 		<div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">

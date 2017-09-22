@@ -200,7 +200,6 @@ class HomePage(Page, RichText):
         verbose_name = 'Homepage'
 
 
-
 class BlogCategoryPage(Page, RichText):
     """
     Model for a page that displays a list of posts in a single blog category.

@@ -15,3 +15,9 @@ ul.events-legend li {
 ul.events-legend {
     padding: 0px;
 }
+
+#event-map {
+    display: none; /* Hide by default, will be restored to block by javascript */
+    height: 300px;
+    max-width: 810px;
+}

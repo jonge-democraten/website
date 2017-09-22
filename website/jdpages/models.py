@@ -142,10 +142,14 @@ class SidebarSocial(PageItem):
 
 
 class SidebarRichText(PageItem):
+    title = models.CharField(max_length=100, blank=True, default="")
     content = RichTextField()
 
     class Meta:
         verbose_name = "Sidebar RichText Item"
+
+    def __str__(self):
+        return self.title
 
 
 class SidebarLink(PageItem, Orderable):

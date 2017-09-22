@@ -16,7 +16,7 @@ from __future__ import absolute_import, unicode_literals
 ADMIN_MENU_ORDER = (
     ("Content", ("pages.Page", "blog.BlogPost", "events.Event", "jdpages.Footer",
         ("Media Library", "fb_browse"), "hemres.Newsletter")),
-    ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting", "jdpages.SidebarBannerWidget",)),
+    ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting", "jdpages.SocialMediaUrls",)),
     ("Users", ("auth.User", "auth.Group", "janeus.JaneusUser", "janeus.JaneusRole", )),
 
     ("Newsletter templating", ("hemres.NewsletterTemplate")),

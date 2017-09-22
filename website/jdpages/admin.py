@@ -29,6 +29,7 @@ from website.jdpages.models import SidebarSocial
 from website.jdpages.models import SidebarTwitter
 from website.jdpages.models import SidebarLink
 from website.jdpages.models import SidebarRichText
+from website.jdpages.models import SocialMediaUrls
 
 
 class AlwaysChangedModelForm(ModelForm):
@@ -139,6 +140,12 @@ class FooterAdmin(SingletonAdmin):
     verbose_name_plural = "Footer"
 
 
+class SocialMediaUrlsAdmin(SingletonAdmin):
+    model = SocialMediaUrls
+    verbose_name = "Social media urls"
+    verbose_name_plural = "Social media urls"
+
+
 admin.site.unregister(RichTextPage)
 admin.site.register(RichTextPage, RichtTextPageAdmin)
 
@@ -153,3 +160,4 @@ admin.site.register(BlogCategoryPage, BlogPageAdmin)
 admin.site.register(Footer, FooterAdmin)
 admin.site.register(FooterInfo)
 admin.site.register(FooterLinks, FooterLinksAdmin)
+admin.site.register(SocialMediaUrls, SocialMediaUrlsAdmin)

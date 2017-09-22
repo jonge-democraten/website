@@ -99,7 +99,7 @@ class SidebarLinkInline(TabularDynamicInlineAdmin):
     verbose_name_plural = "Sidebar Links"
 
 
-class SidebarRichTextInline(TabularDynamicInlineAdmin):
+class SidebarRichTextInline(StackedDynamicInlineAdmin):
     model = SidebarRichText
     form = AlwaysChangedModelForm
     extra = 0

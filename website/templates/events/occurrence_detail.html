@@ -27,11 +27,11 @@ L.Icon.Default.imagePath = "{% static 'website/images/leaflet/' %}";
 
 				<h3>Datum:
 					{% if occurrence.start_time.day == occurrence.start_time.day %}
-						{{ occurrence.start_time|date:"n F Y" }} | Tijd: {{ occurrence.start_time|date:"G:i" }} - {{ occurrence.end_time|date:"G:i" }}
+						{{ occurrence.start_time|date:"n F Y" }}
+						| Tijd: {{ occurrence.start_time|date:"G:i" }} - {{ occurrence.end_time|date:"G:i" }}
 					{% else %}
 						{{ occurrence.start_time|date:"n F Y" }}, {{ occurrence.start_time|date:"G:i"  }} - {{ occurrence.end_time|date:"n F Y" }}, {{ occurrence.end_time|date:"G:i"  }}
 					{% endif %}
-					| Tijd: {{ occurrence.start_time|date:"G:i" }} - {{ occurrence.end_time|date:"G:i" }}
 					| Locatie: <span id="occurrence-location">{{ occurrence.location }}</span>
 				</h3>
 
@@ -49,8 +49,10 @@ L.Icon.Default.imagePath = "{% static 'website/images/leaflet/' %}";
 			</div>
 		</div>
 		<div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
+			{% with page=page_for_sidebars %}
 			{% include "components/sidebar/sidebar_agenda.html" %}
 			{% include "components/sidebar/sidebar_social.html" %}
+			{% endwith %}
 		</div>
 	</div>
 </section>

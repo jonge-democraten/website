@@ -5,31 +5,45 @@
                 <h2 class="sidebar-title"><i class="gd gd-social"></i> Social</h2>
                 <div class="sidebar-content">
                     <ul>
+                        {% if item.urls.facebook_url %}
                         <li>
-                            <a target="_blank" href="https://www.facebook.com/jongedemocraten">
+                            <a target="_blank" href="{{ item.urls.facebook_url }}">
                                 <i class="gd gd-facebook-s"></i>
                             </a>
                         </li>
+                        {% endif %}
+
+                        {% if item.urls.twitter_url %}
                         <li>
-                            <a target="_blank" href="https://twitter.com/jongedemocraten">
+                            <a target="_blank" href="{{ item.urls.twitter_url }}">
                                 <i class="gd gd-twitter-s"></i>
                             </a>
                         </li>
+                        {% endif %}
+
+                        {% if item.urls.youtube_url %}
                         <li>
-                            <a target="_blank" href="https://www.youtube.com/user/jongedemocraten">
+                            <a target="_blank" href="{{ item.urls.youtube_url }}">
                                 <i class="gd gd-youtube-s"></i>
                             </a>
                         </li>
+                        {% endif %}
+
+                        {% if item.urls.linkedin_url %}
                         <li>
-                            <a target="_blank" href="https://www.linkedin.com/groups/1039477/profile">
+                            <a target="_blank" href="{{ item.urls.linkedin_url }}">
                                 <i class="gd gd-linkedin-s"></i>
                             </a>
                         </li>
+                        {% endif %}
+
+                        {% if item.urls.instagram_url %}
                         <li>
-                            <a target="_blank" href="https://www.instagram.com/jongedemocraten/?hl=nl">
+                            <a target="_blank" href="{{ item.urls.instagram_url }}">
                                 <i class="gd gd-instagram-s"></i>
                             </a>
                         </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

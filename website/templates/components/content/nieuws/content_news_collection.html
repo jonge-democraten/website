@@ -12,10 +12,6 @@
 		</div>
 	</div>
 	<div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
-		{% for item in page.get_content_model.sidebaragenda_set.all %}
-			{% if item.visible %}
-				{% include "components/sidebar/sidebar_agenda.html" %}
-			{% endif %}
-		{% endfor %}
+		{% include "components/sidebar/sidebar_agenda.html" %}
 	</div>
 </div>

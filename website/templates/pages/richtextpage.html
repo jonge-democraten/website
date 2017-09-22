@@ -15,26 +15,18 @@
 			</div>
 		</div>
 		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            {% for item in page.get_content_model.sidebaragenda_set.all %}
-                {% if item.visible %}
-                    {% include "components/sidebar/sidebar_agenda.html" %}
-                {% endif %}
-            {% endfor %}
-            {% for item in page.get_content_model.sidebartwitter_set.all %}
-                {% if item.visible %}
-                    {% include "components/sidebar/sidebar_twitter.html" %}
-                {% endif %}
-            {% endfor %}
-            {% for item in page.get_content_model.sidebarsocial_set.all %}
-                {% if item.visible %}
-                    {% include "components/sidebar/sidebar_social.html" %}
-                {% endif %}
-            {% endfor %}
+            {% include "components/sidebar/sidebar_agenda.html" %}
+
+            {% include "components/sidebar/sidebar_twitter.html" %}
+
+            {% include "components/sidebar/sidebar_social.html" %}
+
             {% for item in page.get_content_model.sidebarrichtext_set.all %}
                 {% if item.visible %}
                     {% include "components/sidebar/sidebar_block.html" %}
                 {% endif %}
             {% endfor %}
+
             {% if page.get_content_model.sidebarlink_set.all %}
                 {% with links=page.get_content_model.sidebarlink_set.all %}
                     {% include "components/sidebar/sidebar_doemee.html" %}

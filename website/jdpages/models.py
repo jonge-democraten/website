@@ -30,6 +30,8 @@ from mezzanine.pages.models import Page
 def validate_header_image(imagepath):
     """ Validates the resolution of a header image. """
     absolute_imagepath = os.path.join(settings.MEDIA_ROOT, str(imagepath))
+    if not os.path.exists(absolute_imagepath):
+        raise ValidationError('The file for this header does not exist anymore. Please remove or replace this header before saving the page.')
     im = Image.open(absolute_imagepath)
     width, height = im.size
     if width != 610 or height != 290:

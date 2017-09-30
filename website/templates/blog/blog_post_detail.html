@@ -1,40 +1,48 @@
-<?php require('components/component-site-start.php'); ?>
-<?php require('components/component-nav.php'); ?>
-<?php require('components/component-header-default.php'); ?>
-<?php require('components/component-site-wrapper-start.php'); ?>
-<!-- start nieuws detail specific -->
-<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
-	<div class="news detail-container">
-		<div class="detail-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
-			<div class="detail-item">
-				<h2>Jonge Democraten Brabant</h2>
-				<h3><i class="gd gd-clock"></i>17 februari 2017 </h3>
-				<figure>
-					<img src="resources/img/news.jpg" alt="#" />
-				</figure>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer turpis metus, consequat nec tellus a, ullamcorper efficitur libero. Nulla luctus eros a vestibulum elementum. Phasellus semper ut justo eu pharetra. Praesent pharetra iaculis urna vel aliquet. Fusce id neque ultricies, accumsan sapien vel, fringilla justo. Mauris pharetra bibendum nisl sed consectetur. Phasellus semper orci et dui varius gravida.
+{% extends "base.html" %}
 
-					Fusce sed elementum augue, quis feugiat ante. Fusce at urna in nibh ultrices tempor. Maecenas enim dui, condimentum aliquet mollis nec, fringilla quis neque. Mauris a dui tempor, dictum augue quis, lacinia quam. Suspendisse varius diam et dolor malesuada, eget rhoncus odio finibus. Fusce eu dui egestas elit vehicula mattis. Curabitur gravida massa a felis gravida, ut venenatis ante rutrum.
-				</p>
-				<div class="category-container">
-					<span class="container-label">Categorie:</span><?php foreach(Array(1,2) as $count): ?>
-						<a href="nieuws.php" class="category-item">persberichten</a>
-					<?php endforeach; ?>
-				</div>
-				<div class="social-container">
-					<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jongedemocraten.nl/" class="social-item">Facebook<i class="gd gd-facebook"></i></a>
-					<a target="_blank" href="https://twitter.com/share?url=https://jongedemocraten.nl&via=JongeDemocraten&text=#" class="social-item">Twitter<i class="gd gd-twitter"></i></a>
-				</div>
-			</div>
-		</div>
-		<div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
-			<?php require('components/sidebar/sidebar-categories.php'); ?>
-			<?php require('components/sidebar/sidebar-agenda.php'); ?>
-		</div>
-	</div>
+{% load i18n mezzanine_tags static %}
+
+{% block meta_title %}
+  {% block meta_title2 %}
+    {% if page %}
+      {{ page.meta_title }}
+    {% else %}
+      {% trans "Blogpost" %}
+    {% endif %}
+  {% endblock %}
+{% endblock %}
+
+{% block main %}
+
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+  <div class="news detail-container">
+    <div class="detail-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <div class="detail-item">
+        <h2>{{ blog_post.title }}</h2>
+        <h3><i class="gd gd-clock"></i>{{ blog_post.publish_date|date:"d M Y" }}</h3>
+        {% if blog_post.featured_image %}
+        <figure>
+          <img src="{{ blog_post.featured_image.url }}" alt="#" />
+        </figure>
+        {% endif %}
+        {{ blog_post.content|richtext_filters|safe }}
+        <div class="category-container">
+          <span class="container-label">Categorie:</span><?php foreach(Array(1,2) as $count): ?>
+            <a href="nieuws.php" class="category-item">persberichten</a>
+          <?php endforeach; ?>
+        </div>
+        <div class="social-container">
+          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jongedemocraten.nl/" class="social-item">Facebook<i class="gd gd-facebook"></i></a>
+          <a target="_blank" href="https://twitter.com/share?url=https://jongedemocraten.nl&via=JongeDemocraten&text=#" class="social-item">Twitter<i class="gd gd-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <?php require('components/sidebar/sidebar-categories.php'); ?>
+      <?php require('components/sidebar/sidebar-agenda.php'); ?>
+    </div>
+  </div>
 </section>
-<!-- end nieuws detail specific -->
-<?php require('components/component-site-wrapper-end.php'); ?>
-<?php require('components/component-footer.php'); ?>
-<?php require('components/component-site-end.php'); ?>
+
+{% endblock %}
+

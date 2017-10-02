@@ -56,6 +56,10 @@
 
             <link rel="stylesheet" href="{% static 'website/css/responsive.css' %}">
         <![endif]-->
+
+        {% if piwik_url %}
+            {% include "elements/piwik_tracking_code.html" %}
+        {% endif %}
     </head>
     <body>
         <!--[if lt IE 8]>

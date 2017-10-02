@@ -7,41 +7,21 @@
 {% block main %}
 
 <section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
-	<div class="standard detail-container">
-		<div class="detail-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
-			<div class="detail-item">
-				<h2>{{ page.title }}</h2>
-				{{ page.richtextpage.content|richtext_filters|safe }}
-			</div>
-		</div>
-		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            {% for item in page.get_content_model.sidebaragenda_set.all %}
-                {% if item.visible %}
-                    {% include "components/sidebar/sidebar_agenda.html" %}
-                {% endif %}
-            {% endfor %}
-            {% for item in page.get_content_model.sidebartwitter_set.all %}
-                {% if item.visible %}
-                    {% include "components/sidebar/sidebar_twitter.html" %}
-                {% endif %}
-            {% endfor %}
-            {% for item in page.get_content_model.sidebarsocial_set.all %}
-                {% if item.visible %}
-                    {% include "components/sidebar/sidebar_social.html" %}
-                {% endif %}
-            {% endfor %}
-            {% for item in page.get_content_model.sidebarrichtext_set.all %}
-                {% if item.visible %}
-                    {% include "components/sidebar/sidebar_block.html" %}
-                {% endif %}
-            {% endfor %}
-            {% if page.get_content_model.sidebarlink_set.all %}
-                {% with links=page.get_content_model.sidebarlink_set.all %}
-                    {% include "components/sidebar/sidebar_doemee.html" %}
-                {% endwith %}
-            {% endif %}
-		</div>
-	</div>
+    <div class="standard detail-container">
+        <div class="detail-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="detail-item">
+                <h2>{{ page.title }}</h2>
+                {{ page.richtextpage.content|richtext_filters|safe }}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            {% include "components/sidebar/sidebar_agenda.html" %}
+            {% include "components/sidebar/sidebar_twitter.html" %}
+            {% include "components/sidebar/sidebar_social.html" %}
+            {% include "components/sidebar/sidebar_block.html" %}
+            {% include "components/sidebar/sidebar_doemee.html" %}
+        </div>
+    </div>
 </section>
 
 {{ block.super }}

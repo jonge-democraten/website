@@ -1,34 +1,38 @@
-<aside class="sidebar social collections-sidebar-container row">
-	<div class="collections-sidebar col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		<h2 class="sidebar-title"><i class="gd gd-social"></i> Social</h2>
-		<div class="sidebar-content">
-			<ul>
-				<li>
-					<a target="_blank" href="https://www.facebook.com/jongedemocraten">
-						<i class="gd gd-facebook-s"></i>
-					</a>
-				</li>
-				<li>
-					<a target="_blank" href="https://twitter.com/jongedemocraten">
-						<i class="gd gd-twitter-s"></i>
-					</a>
-				</li>
-				<li>
-					<a target="_blank" href="https://www.youtube.com/user/jongedemocraten">
-						<i class="gd gd-youtube-s"></i>
-					</a>
-				</li>
-				<li>
-					<a target="_blank" href="https://www.linkedin.com/groups/1039477/profile">
-						<i class="gd gd-linkedin-s"></i>
-					</a>
-				</li>
-				<li>
-					<a target="_blank" href="https://www.instagram.com/jongedemocraten/?hl=nl">
-						<i class="gd gd-instagram-s"></i>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-</aside>
+{% for item in page.get_content_model.sidebarsocial_set.all %}
+    {% if item.visible %}
+        <aside class="sidebar social collections-sidebar-container row">
+            <div class="collections-sidebar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="sidebar-title"><i class="gd gd-social"></i> Social</h2>
+                <div class="sidebar-content">
+                    <ul>
+                        <li>
+                            <a target="_blank" href="https://www.facebook.com/jongedemocraten">
+                                <i class="gd gd-facebook-s"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://twitter.com/jongedemocraten">
+                                <i class="gd gd-twitter-s"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.youtube.com/user/jongedemocraten">
+                                <i class="gd gd-youtube-s"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.linkedin.com/groups/1039477/profile">
+                                <i class="gd gd-linkedin-s"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.instagram.com/jongedemocraten/?hl=nl">
+                                <i class="gd gd-instagram-s"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+    {% endif %}
+{% endfor %}

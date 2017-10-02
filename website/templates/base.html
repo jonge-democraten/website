@@ -1,18 +1,19 @@
 {% include "components/site_start.html" %}
 {% include "components/nav.html" %}
+
 {% if page.homepage %}
     {% include "components/header_home.html" %}
 {% else %}
     {% include "components/header_default.html" %}
 {% endif %}
-{% include "components/site_wrapper_start.html" %}
 
-{% if piwik_url %}
-    {% include "elements/piwik_tracking_code.html" %}
-{% endif %}
+<div class="container-fluid">
+	<div class="row">
 
-{% block main %}{% endblock %}
+    {% block main %}{% endblock %}
 
-{% include "components/site_wrapper_end.html" %}
+	</div>
+</div>
+
 {% include "components/footer.html" %}
 {% include "components/site_end.html" %}

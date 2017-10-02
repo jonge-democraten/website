@@ -83,7 +83,7 @@ class PageHeaderImage(SiteRelated):
 
 class PageItem(SiteRelated):
     page = models.ForeignKey(Page, blank=False, null=True)
-    visible = models.BooleanField(default=False)
+    visible = models.BooleanField(default=True)
 
     class Meta:
         abstract = True
@@ -130,15 +130,26 @@ class SidebarTwitter(PageItem):
 
 class SidebarSocial(PageItem):
 
+    @property
+    def urls(self):
+        smulrs = SocialMediaUrls.objects.all()
+        if smulrs.exists():
+            return smulrs[0]
+        return None
+
     class Meta:
         verbose_name = "Sidebar Social Media Item"
 
 
 class SidebarRichText(PageItem):
+    title = models.CharField(max_length=100, blank=True, default="")
     content = RichTextField()
 
     class Meta:
         verbose_name = "Sidebar RichText Item"
+
+    def __str__(self):
+        return self.title
 
 
 class SidebarLink(PageItem, Orderable):
@@ -152,6 +163,9 @@ class ActionBanner(PageItem):
     image = FileField(max_length=300, format="Image")
     button_title = models.CharField(max_length=500, blank=True, default="")
     button_url = models.CharField(max_length=500, blank=True, default="")
+
+    def __str__(self):
+        return self.title
 
 
 def validate_vision_image(imagepath):
@@ -170,7 +184,8 @@ class VisionPage(Page, RichText):
     image = FileField(max_length=300, format="Image", blank=True, default="", validators=[validate_vision_image])
 
     class Meta:
-        verbose_name = 'VisionPage'
+        verbose_name = 'Standpunt pagina'
+        verbose_name_plural = "Standpunt paginas"
 
 
 class VisionsPage(Page, RichText):
@@ -179,7 +194,8 @@ class VisionsPage(Page, RichText):
     vision_pages = models.ManyToManyField(VisionPage, blank=True)
 
     class Meta:
-        verbose_name = 'VisionsPage'
+        verbose_name = 'Standpunten pagina'
+        verbose_name_plural = "Standpunten paginas"
 
 
 class HomePage(Page, RichText):
@@ -190,7 +206,7 @@ class HomePage(Page, RichText):
     header_title = models.CharField(max_length=300, blank=True, default="")
     header_subtitle = models.CharField(max_length=500, blank=True, default="")
     news_category = models.ForeignKey(BlogCategory, null=True, blank=True)
-    vision_pages = models.ManyToManyField(VisionPage, blank=True)
+    vision_pages = models.ManyToManyField(VisionPage, blank=True, verbose_name="Standpunt paginas")
 
     @property
     def blog_posts(self):
@@ -198,7 +214,6 @@ class HomePage(Page, RichText):
 
     class Meta:
         verbose_name = 'Homepage'
-
 
 
 class BlogCategoryPage(Page, RichText):
@@ -220,3 +235,15 @@ def get_public_blogposts(blog_category):
     blog_posts = BlogPost.objects.all().filter(categories=blog_category).filter(status=CONTENT_STATUS_PUBLISHED)
     return blog_posts.filter(publish_date__lte=timezone.now()).filter(Q(expiry_date__isnull=True)
                                                                       | Q(expiry_date__gte=timezone.now()))
+
+
+class SocialMediaUrls(SiteRelated):
+    facebook_url = models.URLField(max_length=300, blank=True, default="")
+    twitter_url = models.URLField(max_length=300, blank=True, default="")
+    youtube_url = models.URLField(max_length=300, blank=True, default="")
+    linkedin_url = models.URLField(max_length=300, blank=True, default="")
+    instagram_url = models.URLField(max_length=300, blank=True, default="")
+
+    class Meta:
+        verbose_name = "Social media urls"
+        verbose_name_plural = "Social media urls"

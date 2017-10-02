@@ -29,6 +29,7 @@ from website.jdpages.models import SidebarSocial
 from website.jdpages.models import SidebarTwitter
 from website.jdpages.models import SidebarLink
 from website.jdpages.models import SidebarRichText
+from website.jdpages.models import SocialMediaUrls
 
 
 class AlwaysChangedModelForm(ModelForm):
@@ -55,50 +56,55 @@ class FooterLinksAdmin(admin.ModelAdmin):
 
 class PageHeaderImageInline(TabularDynamicInlineAdmin):
     model = PageHeaderImage
-    verbose_name = "Header image"
-    verbose_name_plural = "Header images"
+    verbose_name = "Header Image"
+    verbose_name_plural = "Header Images"
 
 
 class ActionBannerInline(StackedDynamicInlineAdmin):
     model = ActionBanner
     extra = 1
-    verbose_name = "Action banner"
-    verbose_name_plural = "Action banner"
+    verbose_name = "Action Banner"
+    verbose_name_plural = "Action Banner"
 
 
 class SidebarAgendaInline(TabularDynamicInlineAdmin):
     model = SidebarAgenda
+    form = AlwaysChangedModelForm
     extra = 0
-    verbose_name = "Sidebar agenda"
-    verbose_name_plural = "Sidebar agenda"
+    verbose_name = "Sidebar Agenda"
+    verbose_name_plural = "Sidebar Agenda"
 
 
 class SidebarSocialInline(TabularDynamicInlineAdmin):
     model = SidebarSocial
+    form = AlwaysChangedModelForm
     extra = 0
-    verbose_name = "Sidebar social"
-    verbose_name_plural = "Sidebar social"
+    verbose_name = "Sidebar Social"
+    verbose_name_plural = "Sidebar Social"
 
 
 class SidebarTwitterInline(TabularDynamicInlineAdmin):
     model = SidebarTwitter
+    form = AlwaysChangedModelForm
     extra = 0
     verbose_name = "Sidebar twitter"
-    verbose_name_plural = "Sidebar twitter"
+    verbose_name_plural = "Sidebar Twitter"
 
 
 class SidebarLinkInline(TabularDynamicInlineAdmin):
     model = SidebarLink
+    form = AlwaysChangedModelForm
     extra = 0
-    verbose_name = "Sidebar links"
-    verbose_name_plural = "Sidebar links"
+    verbose_name = "Sidebar Links"
+    verbose_name_plural = "Sidebar Links"
 
 
-class SidebarRichTextInline(TabularDynamicInlineAdmin):
+class SidebarRichTextInline(StackedDynamicInlineAdmin):
     model = SidebarRichText
+    form = AlwaysChangedModelForm
     extra = 0
-    verbose_name = "Sidebar content"
-    verbose_name_plural = "Sidebar content"
+    verbose_name = "Sidebar Content"
+    verbose_name_plural = "Sidebar Content"
 
 
 class HomePageAdmin(PageAdmin):
@@ -109,11 +115,15 @@ class HomePageAdmin(PageAdmin):
 class VisionsPageAdmin(PageAdmin):
     model = VisionsPage
     inlines = [PageHeaderImageInline, SidebarTwitterInline]
+    verbose_name = "Standpunten Pagina"
+    verbose_name_plural = "Standpunten Pagina"
 
 
 class VisionPageAdmin(PageAdmin):
     model = VisionPage
     inlines = [PageHeaderImageInline, SidebarTwitterInline]
+    verbose_name = "Standpunt Pagina"
+    verbose_name_plural = "Standpunt Pagina"
 
 
 class RichtTextPageAdmin(PageAdmin):
@@ -139,6 +149,12 @@ class FooterAdmin(SingletonAdmin):
     verbose_name_plural = "Footer"
 
 
+class SocialMediaUrlsAdmin(SingletonAdmin):
+    model = SocialMediaUrls
+    verbose_name = "Social media urls"
+    verbose_name_plural = "Social media urls"
+
+
 admin.site.unregister(RichTextPage)
 admin.site.register(RichTextPage, RichtTextPageAdmin)
 
@@ -153,3 +169,4 @@ admin.site.register(BlogCategoryPage, BlogPageAdmin)
 admin.site.register(Footer, FooterAdmin)
 admin.site.register(FooterInfo)
 admin.site.register(FooterLinks, FooterLinksAdmin)
+admin.site.register(SocialMediaUrls, SocialMediaUrlsAdmin)

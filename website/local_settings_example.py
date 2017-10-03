@@ -39,6 +39,11 @@ DATABASES = {
 USE_L10N = True
 LANGUAGE_CODE = "en-US"
 
+# STATIC and MEDIA root need to be set in production!
+# STATIC_ROOT = "<path-to-project>/static"
+# MEDIA_ROOT = "<path-to-project>/media"
+
+
 ###################
 # JANEUS SETTINGS #
 ###################

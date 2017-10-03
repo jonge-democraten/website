@@ -1,8 +1,12 @@
 import logging
-logger = logging.getLogger(__name__)
+
+from fullcalendar.views import OccurrenceView
 
 from website.jdpages.models import HomePage
+from website.jdpages.models import SidebarSocial
 from website.jdpages.models import PageHeaderImage
+
+logger = logging.getLogger(__name__)
 
 
 def get_page_header(page):
@@ -41,3 +45,11 @@ def get_homepage_header():
     if not homepage:
         return None
     return get_page_header(homepage[0])
+
+
+class OccuranceJDView(OccurrenceView):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_for_sidebars'] = HomePage.objects.all().first()
+        return context

@@ -5,6 +5,8 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.views.defaults import page_not_found
 
+from website.jdpages.views import OccuranceJDView
+
 # from mezzanine.core.views import direct_to_template
 
 
@@ -70,6 +72,7 @@ urlpatterns += patterns(
 
     url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
 
+    url(r'^events/event/(?P<event_slug>[\w-]+)/(?P<pk>\d+)/$', OccuranceJDView.as_view(), name='fullcalendar-occurrence'),
     # URLs for events
     url("^events/", include("fullcalendar.urls")),
 

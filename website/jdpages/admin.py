@@ -148,12 +148,25 @@ class OrganisationMemberAdmin(admin.ModelAdmin):
     model = OrganisationMember
     verbose_name = "Organisatie Lid"
     verbose_name_plural = "Organisatie Leden"
+    list_display = (
+        'name',
+        'image',
+        'facebook_url',
+        'twitter_url',
+    )
+    search_fields = ['name']
 
 
 class OrganisationPartMemberAdmin(admin.ModelAdmin):
     model = OrganisationPartMember
     verbose_name = "Organisatie Functie"
     verbose_name_plural = "Organisatie Functies"
+    list_display = (
+        'member',
+        'organisation_part',
+        'role',
+    )
+    search_fields = ['member__name']
 
 
 class RichtTextPageAdmin(PageAdmin):

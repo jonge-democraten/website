@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="row">
-                {% for member in page.organisationpartpage.organisationmember_set.all %}
+                {% for function in page.organisationpartpage.organisationpartmember_set.all %}
                     {% include "components/content/bestuur/content_bestuur_item.html" %}
                 {% endfor %}
                 </div>

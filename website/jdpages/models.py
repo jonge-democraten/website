@@ -216,6 +216,16 @@ class OrganisationPartPage(Page, RichText):
         verbose_name_plural = "Organisatie-onderdeel paginas"
 
 
+class OrganisationPage(Page, RichText):
+    """
+    """
+    organisation_part_pages = models.ManyToManyField(OrganisationPartPage, blank=True)
+
+    class Meta:
+        verbose_name = 'Organisatie pagina'
+        verbose_name_plural = "Organisatie paginas"
+
+
 class HomePage(Page, RichText):
     """
     Page model for the site homepage.

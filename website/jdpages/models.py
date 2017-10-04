@@ -230,14 +230,30 @@ class OrganisationMember(SiteRelated):
     """
     """
     name = models.CharField(max_length=200, blank=False, default="")
-    role = models.CharField(max_length=200, blank=False, default="")
     content = RichTextField()
     image = FileField(max_length=300, format="Image", blank=True, default="")
-    organisation_parts = models.ManyToManyField(OrganisationPartPage, blank=True)
+    facebook_url = models.URLField(blank=True, default="")
+    twitter_url = models.URLField(blank=True, default="")
 
     class Meta:
         verbose_name = 'Organisatie lid'
-        verbose_name_plural = "Organisatie lid"
+        verbose_name_plural = "Organisatie leden"
+
+    def __str__(self):
+        return self.name
+
+
+class OrganisationPartMember(SiteRelated):
+    member = models.ForeignKey(OrganisationMember)
+    organisation_part = models.ForeignKey(OrganisationPartPage, null=True, blank=True)
+    role = models.CharField(max_length=200, blank=False, default="")
+
+    class Meta:
+        verbose_name = 'Organisatie functie'
+        verbose_name_plural = "Organisatie functies"
+
+    def __str__(self):
+        return self.role + ' - ' + self.member.name
 
 
 class HomePage(Page, RichText):

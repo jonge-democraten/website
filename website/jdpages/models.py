@@ -226,7 +226,7 @@ class OrganisationPage(Page, RichText):
         verbose_name_plural = "Organisatie paginas"
 
 
-class OrganisationPartMember(SiteRelated):
+class OrganisationMember(SiteRelated):
     """
     """
     name = models.CharField(max_length=200, blank=False, default="")
@@ -236,8 +236,8 @@ class OrganisationPartMember(SiteRelated):
     organisation_parts = models.ManyToManyField(OrganisationPartPage, blank=True)
 
     class Meta:
-        verbose_name = 'Organisatie-onderdeel lid'
-        verbose_name_plural = "Organisatie-onderdeel lid"
+        verbose_name = 'Organisatie lid'
+        verbose_name_plural = "Organisatie lid"
 
 
 class HomePage(Page, RichText):

@@ -23,6 +23,7 @@ from website.jdpages.models import HomePage
 from website.jdpages.models import OrganisationPage
 from website.jdpages.models import OrganisationPartPage
 from website.jdpages.models import OrganisationMember
+from website.jdpages.models import OrganisationPartMember
 from website.jdpages.models import VisionPage
 from website.jdpages.models import VisionsPage
 from website.jdpages.models import ActionBanner
@@ -149,6 +150,12 @@ class OrganisationMemberAdmin(admin.ModelAdmin):
     verbose_name_plural = "Organisatie Leden"
 
 
+class OrganisationPartMemberAdmin(admin.ModelAdmin):
+    model = OrganisationPartMember
+    verbose_name = "Organisatie Functie"
+    verbose_name_plural = "Organisatie Functies"
+
+
 class RichtTextPageAdmin(PageAdmin):
     inlines = [
         PageHeaderImageInline, SidebarAgendaInline, SidebarSocialInline,
@@ -191,8 +198,10 @@ admin.site.register(VisionPage, VisionPageAdmin)
 admin.site.register(VisionsPage, VisionsPageAdmin)
 admin.site.register(BlogCategoryPage, BlogPageAdmin)
 
+admin.site.register(OrganisationMember, OrganisationMemberAdmin)
+admin.site.register(OrganisationPartMember, OrganisationPartMemberAdmin)
+
 admin.site.register(Footer, FooterAdmin)
 admin.site.register(FooterInfo)
-admin.site.register(OrganisationMember, OrganisationMemberAdmin)
 admin.site.register(FooterLinks, FooterLinksAdmin)
 admin.site.register(SocialMediaUrls, SocialMediaUrlsAdmin)

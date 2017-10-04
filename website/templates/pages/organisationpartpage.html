@@ -12,20 +12,8 @@
             <div class="row">
                 <div class="basic-container">
                     <div class="basic-content">
-                        <h2>Jonge Democraten Brabant (hardcoded text)</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer turpis metus, consequat nec
-                            tellus a, ullamcorper efficitur libero. Nulla luctus eros a vestibulum elementum. Phasellus
-                            semper ut justo eu pharetra. Praesent pharetra iaculis urna vel aliquet. Fusce id neque
-                            ultricies, accumsan sapien vel, fringilla justo. Mauris pharetra bibendum nisl sed
-                            consectetur. Phasellus semper orci et dui varius gravida.
-
-                            Fusce sed elementum augue, quis feugiat ante. Fusce at urna in nibh ultrices tempor.
-                            Maecenas enim dui, condimentum aliquet mollis nec, fringilla quis neque. Mauris a dui
-                            tempor, dictum augue quis, lacinia quam. Suspendisse varius diam et dolor malesuada, eget
-                            rhoncus odio finibus. Fusce eu dui egestas elit vehicula mattis. Curabitur gravida massa a
-                            felis gravida, ut venenatis ante rutrum.
-                        </p>
+                        <h2>{{ page.title }}</h2>
+                        {{ page.organisationpartpage.content|richtext_filters|safe }}
                     </div>
                 </div>
                 <div class="row">

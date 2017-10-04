@@ -226,6 +226,20 @@ class OrganisationPage(Page, RichText):
         verbose_name_plural = "Organisatie paginas"
 
 
+class OrganisationPartMember(SiteRelated):
+    """
+    """
+    name = models.CharField(max_length=200, blank=False, default="")
+    role = models.CharField(max_length=200, blank=False, default="")
+    content = RichTextField()
+    image = FileField(max_length=300, format="Image", blank=True, default="")
+    organisation_parts = models.ManyToManyField(OrganisationPartPage, blank=True)
+
+    class Meta:
+        verbose_name = 'Organisatie-onderdeel lid'
+        verbose_name_plural = "Organisatie-onderdeel lid"
+
+
 class HomePage(Page, RichText):
     """
     Page model for the site homepage.

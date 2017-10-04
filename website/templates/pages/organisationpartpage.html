@@ -17,9 +17,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <?php foreach(Array(1,2,3,4,5,6,7,8,9) as $count): ?>
-                    <?php require('components/content/bestuur/content-bestuur-item.php'); ?>
-                    <?php endforeach; ?>
+                {% for member in page.organisationpartpage.organisationmember_set.all %}
+                    {% include "components/content/bestuur/content_bestuur_item.html" %}
+                {% endfor %}
                 </div>
             </div>
         </div>

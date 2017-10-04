@@ -1,14 +1,14 @@
+{% load mezzanine_tags %}
+
+
 <article class="list-item col-lg-4 col-md-6 col-sm-4 col-xs-6">
     <div>
-        <figure>
-            <img src="resources/img/bestuur.jpg" alt="#"/>
-        </figure>
-        <h2>Wouter van Erkel</h2>
-        <h3>Voorzitter</h3>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque imperdiet eu erat nec elementum. Nam ut
-            tortor non lectus molestie.
-        </p>
+        {% if member.image %}
+        <figure><img src="{{ member.image.url }}" alt="Person portrait"/></figure>
+        {% endif %}
+        <h2>{{ member.name }}</h2>
+        <h3>{{ member.role }}</h3>
+        {{ member.content|richtext_filters|safe }}
         <!-- SET href with personal social -->
         <div class="social-container">
             <a href="#" class="social-item">Facebook<i class="gd gd-facebook"></i></a>

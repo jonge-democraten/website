@@ -168,14 +168,18 @@ class ActionBanner(PageItem):
         return self.title
 
 
-def validate_vision_image(imagepath):
-    """ Validates the aspect ratio of a vision image. """
+def validate_images_aspect_ratio(imagepath, required_aspect_ratio, max_difference):
+    """ Validates the aspect ratio of an image. """
     absolute_imagepath = os.path.join(settings.MEDIA_ROOT, str(imagepath))
     im = Image.open(absolute_imagepath)
     width, height = im.size
     aspect_ratio = width/height
-    if abs(aspect_ratio-1.5) > 0.1:
+    if abs(aspect_ratio - required_aspect_ratio) > max_difference:
         raise ValidationError('Image aspect ratio should be 1.5 (for example 300x200px or 600x400px), selected image is %i x %i. Please resize the image.' % (width, height))
+
+
+def validate_vision_image(imagepath, aspect_ratio, max_difference):
+    validate_images_aspect_ratio(imagepath, required_aspect_ratio=1.5, max_difference=0.1)
 
 
 class VisionPage(Page, RichText):
@@ -196,6 +200,20 @@ class VisionsPage(Page, RichText):
     class Meta:
         verbose_name = 'Standpunten pagina'
         verbose_name_plural = "Standpunten paginas"
+
+
+def validate_organisation_image(imagepath):
+    validate_images_aspect_ratio(imagepath, required_aspect_ratio=1.5, max_difference=0.1)
+
+
+class OrganisationPartPage(Page, RichText):
+    """
+    """
+    image = FileField(max_length=300, format="Image", blank=True, default="", validators=[validate_organisation_image])
+
+    class Meta:
+        verbose_name = 'Organisatie-onderdeel pagina'
+        verbose_name_plural = "Organisatie-onderdeel paginas"
 
 
 class HomePage(Page, RichText):

@@ -13,6 +13,7 @@ from mezzanine.pages.models import RichTextPage
 from website.jdpages.models import BlogCategoryPage
 from mezzanine.forms.models import Form
 from website.jdpages.models import HomePage
+from website.jdpages.models import OrganisationPage
 from website.jdpages.models import OrganisationPartPage
 from website.jdpages.models import VisionPage
 from website.jdpages.models import VisionsPage
@@ -24,6 +25,7 @@ from website.jdpages.views import get_page_header
 @processor_for(HomePage)
 @processor_for(VisionPage)
 @processor_for(VisionsPage)
+@processor_for(OrganisationPage)
 @processor_for(OrganisationPartPage)
 @processor_for(BlogCategoryPage)
 @processor_for(RichTextPage)

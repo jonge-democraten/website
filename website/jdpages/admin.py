@@ -20,6 +20,8 @@ from website.jdpages.models import FooterLink
 from website.jdpages.models import FooterLinks
 from website.jdpages.models import FooterInfo
 from website.jdpages.models import HomePage
+from website.jdpages.models import OrganisationPage
+from website.jdpages.models import OrganisationPartPage
 from website.jdpages.models import VisionPage
 from website.jdpages.models import VisionsPage
 from website.jdpages.models import ActionBanner
@@ -102,7 +104,7 @@ class SidebarLinkInline(TabularDynamicInlineAdmin):
 class SidebarRichTextInline(StackedDynamicInlineAdmin):
     model = SidebarRichText
     form = AlwaysChangedModelForm
-    extra = 0
+    extra = 1
     verbose_name = "Sidebar Content"
     verbose_name_plural = "Sidebar Content"
 
@@ -124,6 +126,20 @@ class VisionPageAdmin(PageAdmin):
     inlines = [PageHeaderImageInline, SidebarTwitterInline]
     verbose_name = "Standpunt Pagina"
     verbose_name_plural = "Standpunt Pagina"
+
+
+class OrganisationPageAdmin(PageAdmin):
+    model = OrganisationPage
+    inlines = [PageHeaderImageInline, SidebarTwitterInline]
+    verbose_name = "Organisatie Pagina"
+    verbose_name_plural = "Organisatie Pagina"
+
+
+class OrganisationPartPageAdmin(PageAdmin):
+    model = OrganisationPartPage
+    inlines = [PageHeaderImageInline, SidebarTwitterInline]
+    verbose_name = "Organisatieonderdeel Pagina"
+    verbose_name_plural = "Organisatieonderdeel Pagina"
 
 
 class RichtTextPageAdmin(PageAdmin):
@@ -162,6 +178,8 @@ admin.site.unregister(Form)
 admin.site.register(Form, CustomFormAdmin)
 
 admin.site.register(HomePage, HomePageAdmin)
+admin.site.register(OrganisationPartPage, OrganisationPartPageAdmin)
+admin.site.register(OrganisationPage, OrganisationPageAdmin)
 admin.site.register(VisionPage, VisionPageAdmin)
 admin.site.register(VisionsPage, VisionsPageAdmin)
 admin.site.register(BlogCategoryPage, BlogPageAdmin)

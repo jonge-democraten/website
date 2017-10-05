@@ -168,14 +168,18 @@ class ActionBanner(PageItem):
         return self.title
 
 
-def validate_vision_image(imagepath):
-    """ Validates the aspect ratio of a vision image. """
+def validate_images_aspect_ratio(imagepath, required_aspect_ratio, max_difference):
+    """ Validates the aspect ratio of an image. """
     absolute_imagepath = os.path.join(settings.MEDIA_ROOT, str(imagepath))
     im = Image.open(absolute_imagepath)
     width, height = im.size
     aspect_ratio = width/height
-    if abs(aspect_ratio-1.5) > 0.1:
-        raise ValidationError('Image aspect ratio should be 1.5 (for example 300x200px or 600x400px), selected image is %i x %i. Please resize the image.' % (width, height))
+    if abs(aspect_ratio - required_aspect_ratio) > max_difference:
+        raise ValidationError('Image aspect ratio should be %i, selected image is %i x %i. Please resize the image.' % (required_aspect_ratio, width, height))
+
+
+def validate_vision_image(imagepath, aspect_ratio, max_difference):
+    validate_images_aspect_ratio(imagepath, required_aspect_ratio=1.5, max_difference=0.1)
 
 
 class VisionPage(Page, RichText):
@@ -196,6 +200,60 @@ class VisionsPage(Page, RichText):
     class Meta:
         verbose_name = 'Standpunten pagina'
         verbose_name_plural = "Standpunten paginas"
+
+
+def validate_organisation_image(imagepath):
+    validate_images_aspect_ratio(imagepath, required_aspect_ratio=1.5, max_difference=0.1)
+
+
+class OrganisationPartPage(Page, RichText):
+    """
+    """
+    image = FileField(max_length=300, format="Image", blank=True, default="", validators=[validate_organisation_image])
+
+    class Meta:
+        verbose_name = 'Organisatie-onderdeel pagina'
+        verbose_name_plural = "Organisatie-onderdeel paginas"
+
+
+class OrganisationPage(Page, RichText):
+    """
+    """
+    organisation_part_pages = models.ManyToManyField(OrganisationPartPage, blank=True)
+
+    class Meta:
+        verbose_name = 'Organisatie pagina'
+        verbose_name_plural = "Organisatie paginas"
+
+
+class OrganisationMember(SiteRelated):
+    """
+    """
+    name = models.CharField(max_length=200, blank=False, default="")
+    content = RichTextField()
+    image = FileField(max_length=300, format="Image", blank=True, default="")
+    facebook_url = models.URLField(blank=True, default="")
+    twitter_url = models.URLField(blank=True, default="")
+
+    class Meta:
+        verbose_name = 'Organisatie lid'
+        verbose_name_plural = "Organisatie leden"
+
+    def __str__(self):
+        return self.name
+
+
+class OrganisationPartMember(SiteRelated):
+    member = models.ForeignKey(OrganisationMember)
+    organisation_part = models.ForeignKey(OrganisationPartPage, null=True, blank=True)
+    role = models.CharField(max_length=200, blank=False, default="")
+
+    class Meta:
+        verbose_name = 'Organisatie functie'
+        verbose_name_plural = "Organisatie functies"
+
+    def __str__(self):
+        return self.role + ' - ' + self.member.name
 
 
 class HomePage(Page, RichText):

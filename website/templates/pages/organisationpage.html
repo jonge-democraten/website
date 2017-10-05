@@ -10,24 +10,13 @@
     <div class="organisatie collection-container">
         <div class="collection-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
             <div class="collection-description">
-                <h2>Organisatie</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer turpis metus, consequat nec tellus
-                    a, ullamcorper efficitur libero. Nulla luctus eros a vestibulum elementum. Phasellus semper ut justo
-                    eu pharetra. Praesent pharetra iaculis urna vel aliquet. Fusce id neque ultricies, accumsan sapien
-                    vel, fringilla justo. Mauris pharetra bibendum nisl sed consectetur. Phasellus semper orci et dui
-                    varius gravida.
-
-                    Fusce sed elementum augue, quis feugiat ante. Fusce at urna in nibh ultrices tempor. Maecenas enim
-                    dui, condimentum aliquet mollis nec, fringilla quis neque. Mauris a dui tempor, dictum augue quis,
-                    lacinia quam. Suspendisse varius diam et dolor malesuada, eget rhoncus odio finibus. Fusce eu dui
-                    egestas elit vehicula mattis. Curabitur gravida massa a felis gravida, ut venenatis ante rutrum.
-                </p>
+                <h2>{{ page.title }}</h2>
+                {{ page.organisationpage.content|richtext_filters|safe }}
             </div>
             <div class="row">
-                <?php foreach(Array(1,2,3,4,5,6) as $count): ?>
-                <?php require('components/content/organisatie/content-organisatie-item.php'); ?>
-                <?php endforeach; ?>
+                {% for organisation_part_page in page.get_content_model.organisation_part_pages.all %}
+                    {% include "components/content/organisatie/content_organisatie_item.html" %}
+                {% endfor %}
             </div>
         </div>
         <div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">

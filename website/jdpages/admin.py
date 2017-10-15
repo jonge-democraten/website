@@ -182,7 +182,7 @@ class BlogPageAdmin(PageAdmin):
 
 class CustomFormAdmin(FormAdmin):
     model = Form
-    inlines = [PageHeaderImageInline]
+    inlines = [PageHeaderImageInline, SidebarRichTextInline]
     inlines.insert(0, FormAdmin.inlines[0])
 
 

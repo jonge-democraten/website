@@ -10,7 +10,6 @@ jQuery(function($) {
                 "sensor": "false"
             },
             success: function(data) {
-                console.log(data);
                 if(data.length == 0) {
                     return;
                 }

@@ -328,7 +328,7 @@ OPTIONAL_APPS = (
 #########################
 
 # Directory of the logfiles
-LOG_DIR = os.path.join(PROJECT_ROOT, 'log')
+LOG_DIR = os.path.join(os.path.dirname(PROJECT_ROOT), 'log')
 
 # Max. logfile size
 LOGFILE_MAXSIZE = 10 * 1024 * 1024

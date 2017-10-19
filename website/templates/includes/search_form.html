@@ -4,9 +4,8 @@
 
 <form action="{% url "search" %}" role="search">
 
-    <input type="text" name="q" size="24" value="{{ request.REQUEST.q }}">
+    <input type="text" name="q" size="24" value="{{ request.GET.q }}">
     <input type="submit" class="button" value="{% trans "Zoek" %}">
-
 
 {% if search_model_choices %}
     {% if search_model_choices|length == 1 %}
@@ -17,7 +16,7 @@
         <option value="">{% trans "Everything" %}</option>
         {% for verbose_name, model in search_model_choices %}
         <option value="{{ model }}"
-            {% if model == request.REQUEST.type  %}selected{% endif %}>
+            {% if model == request.GET.type  %}selected{% endif %}>
             {{ verbose_name }}
         </option>
         {% endfor %}

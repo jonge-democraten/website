@@ -15,22 +15,6 @@ register_setting(
     default=(),
 )
 
-SIDEBAR_AGENDA_SETTINGS = (
-    (1, _("Just this site")),
-    (2, _("This site and the main site")),
-    (3, _("All sites")),
-    (4, _("Main site")),
-)
-
-register_setting(
-    name="SIDEBAR_AGENDA_SITES",
-    description=_("For which sites should events be displayed in the sidebar "
-                  "upcoming events listing of this site?"),
-    editable=True,
-    choices=SIDEBAR_AGENDA_SETTINGS,
-    default=2,
-)
-
 register_setting(
     name="PIWIK_SITE_ID",
     description=_("The Piwik site ID. This is the ID that is set in Piwik to track this site."),

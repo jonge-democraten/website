@@ -1,5 +1,4 @@
 import logging
-logger = logging.getLogger(__name__)
 
 from django.contrib.sites.models import Site
 
@@ -7,6 +6,8 @@ from mezzanine.conf import settings
 
 from website.jdpages.views import get_homepage_header
 from website.jdpages.models import Footer
+
+logger = logging.getLogger(__name__)
 
 
 def site_properties(request):

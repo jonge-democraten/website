@@ -1,5 +1,4 @@
 import logging
-logger = logging.getLogger(__name__)
 
 from django.conf import settings
 from django.contrib import admin
@@ -34,6 +33,8 @@ from website.jdpages.models import SidebarTwitter
 from website.jdpages.models import SidebarLink
 from website.jdpages.models import SidebarRichText
 from website.jdpages.models import SocialMediaUrls
+
+logger = logging.getLogger(__name__)
 
 
 class AlwaysChangedModelForm(ModelForm):

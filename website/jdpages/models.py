@@ -6,17 +6,12 @@ from datetime import datetime
 import os
 from string import punctuation
 import logging
-logger = logging.getLogger(__name__)
 
 from PIL import Image
 
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q
-from django.utils.translation import ugettext_lazy as _
-from django.utils.encoding import force_text
 from django.utils import timezone
 from django.conf import settings
 
@@ -26,6 +21,8 @@ from mezzanine.core.fields import RichTextField
 from mezzanine.core.models import Orderable, RichText, SiteRelated
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.models import Page
+
+logger = logging.getLogger(__name__)
 
 
 class FooterLinks(SiteRelated):

@@ -1,5 +1,4 @@
 import logging
-logger = logging.getLogger(__name__)
 
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
@@ -12,6 +11,8 @@ from mezzanine.core.models import CONTENT_STATUS_PUBLISHED, CONTENT_STATUS_DRAFT
 from mezzanine.pages.models import RichTextPage
 
 from fullcalendar.models import Occurrence
+
+logger = logging.getLogger(__name__)
 
 
 class TestCaseAdminLogin(TestCase):

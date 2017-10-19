@@ -4,7 +4,6 @@ Read the mezzanine documentation for more info.
 """
 
 import logging
-logger = logging.getLogger(__name__)
 
 from mezzanine.blog.views import blog_post_list
 from mezzanine.pages.page_processors import processor_for
@@ -19,6 +18,7 @@ from website.jdpages.models import VisionPage
 from website.jdpages.models import VisionsPage
 from website.jdpages.views import get_page_header
 
+logger = logging.getLogger(__name__)
 
 
 @processor_for(Form)

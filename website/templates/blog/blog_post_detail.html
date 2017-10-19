@@ -4,8 +4,8 @@
 
 {% block meta_title %}
   {% block meta_title2 %}
-    {% if page %}
-      {{ page.meta_title }}
+    {% if blog_post %}
+      {{ blog_post.title }}
     {% else %}
       {% trans "Blogpost" %}
     {% endif %}

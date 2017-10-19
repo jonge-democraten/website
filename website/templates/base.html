@@ -9,7 +9,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Jonge Democraten</title>
+        <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} - {{ settings.SITE_TITLE }}{% else %}Jonge Democraten{% endif %}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" sizes="57x57" href="{% static 'website/img/favicon/apple-icon-57x57.png' %}">

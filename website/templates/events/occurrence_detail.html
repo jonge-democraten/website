@@ -2,7 +2,7 @@
 
 {% load i18n mezzanine_tags static fullcalendar %}
 
-{% block meta_title %}{% block meta_title2 %}{{ page.meta_title }}{% endblock %}{% endblock %}
+{% block meta_title %}{% block meta_title2 %}{{ occurrence.event.title }} - {{ occurrence.description }}{% endblock %}{% endblock %}
 
 {% block extra_js %}{{ block.super }}
 <script type="text/javascript" src="{% static 'website/js/leaflet.js' %}"></script>

@@ -91,8 +91,8 @@ class TestBlogCategoryPage(TestCaseAdminLogin):
         """ Tests whether the page is part of the menu. """
         response = self.client.get('/')
         html = str(response.content)
-        self.assertTrue('<a href="/blogcategory1page/">BlogCategory1Page</a>' in html)
-        self.assertTrue('<a href="/blogcategory2page/">BlogCategory2Page</a>' in html)
+        self.assertTrue('<a href="/blogcategory1page/">blogcategory1page</a>' in html)
+        self.assertTrue('<a href="/blogcategory2page/">blogcategory2page</a>' in html)
 
     def test_blogpost_titles(self):
         """  Tests whether the blog post titles are shown on a blog category page. """

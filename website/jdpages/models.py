@@ -268,7 +268,8 @@ class HomePage(Page, RichText):
         return get_public_blogposts(self.news_category)
 
     class Meta:
-        verbose_name = 'Homepage'
+        verbose_name = 'Home pagina'
+        verbose_name_plural = "Home paginas"
 
 
 class BlogCategoryPage(Page, RichText):
@@ -281,8 +282,8 @@ class BlogCategoryPage(Page, RichText):
                                        help_text='Show only the first paragraph of a blog post.')
 
     class Meta:
-        verbose_name = "Blog category page"
-        verbose_name_plural = "Blog category pages"
+        verbose_name = "Blog categorie pagina"
+        verbose_name_plural = "Blog categorie paginas"
 
 
 def get_public_blogposts(blog_category):

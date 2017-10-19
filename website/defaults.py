@@ -38,6 +38,13 @@ register_setting(
     default=1,
 )
 
+register_setting(
+    name="TWITTER_NAME",
+    description=_("The twitter timeline name."),
+    editable=True,
+    default="JongeDemocraten",
+)
+
 # A list of unused Mezzanine settings that should be hidden in the admin
 HIDDEN_SETTINGS = (
     'COMMENTS_ACCOUNT_REQUIRED',

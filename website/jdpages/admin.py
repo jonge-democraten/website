@@ -3,10 +3,11 @@ logger = logging.getLogger(__name__)
 
 from django.conf import settings
 from django.contrib import admin
-from django.utils.functional import curry
 from django.forms.models import ModelForm
+from django.contrib.admin import TabularInline
 
 from mezzanine.core.admin import TabularDynamicInlineAdmin
+from mezzanine.core.admin import StackedDynamicInlineAdmin
 from mezzanine.forms.models import Form
 from mezzanine.forms.admin import FormAdmin
 from mezzanine.pages.admin import PageAdmin
@@ -14,17 +15,25 @@ from mezzanine.pages.models import RichTextPage
 from mezzanine.utils.admin import SingletonAdmin
 
 from website.jdpages.models import BlogCategoryPage
-from website.jdpages.models import ColumnElement, ColumnElementWidget
-from website.jdpages.models import DocumentListing, Document
+from website.jdpages.models import Footer
+from website.jdpages.models import FooterLink
+from website.jdpages.models import FooterLinks
+from website.jdpages.models import FooterInfo
 from website.jdpages.models import HomePage
-from website.jdpages.models import HorizontalPosition
-from website.jdpages.models import PageHeaderImageWidget
-from website.jdpages.models import SocialMediaButton
-from website.jdpages.models import Sidebar
-from website.jdpages.models import SidebarBlogCategoryWidget
-from website.jdpages.models import SidebarBannerWidget
-from website.jdpages.models import SidebarTabsWidget
-from website.jdpages.models import SidebarTwitterWidget
+from website.jdpages.models import OrganisationPage
+from website.jdpages.models import OrganisationPartPage
+from website.jdpages.models import OrganisationMember
+from website.jdpages.models import OrganisationPartMember
+from website.jdpages.models import VisionPage
+from website.jdpages.models import VisionsPage
+from website.jdpages.models import ActionBanner
+from website.jdpages.models import PageHeaderImage
+from website.jdpages.models import SidebarAgenda
+from website.jdpages.models import SidebarSocial
+from website.jdpages.models import SidebarTwitter
+from website.jdpages.models import SidebarLink
+from website.jdpages.models import SidebarRichText
+from website.jdpages.models import SocialMediaUrls
 
 
 class AlwaysChangedModelForm(ModelForm):
@@ -40,151 +49,172 @@ class AlwaysChangedModelForm(ModelForm):
         return True
 
 
+class FooterLinkInline(TabularDynamicInlineAdmin):
+    model = FooterLink
+
+
+class FooterLinksAdmin(admin.ModelAdmin):
+    model = FooterLinks
+    inlines = [FooterLinkInline]
+
+
 class PageHeaderImageInline(TabularDynamicInlineAdmin):
-    model = PageHeaderImageWidget
-    verbose_name = "Header image"
-    verbose_name_plural = "Header images"
+    model = PageHeaderImage
+    verbose_name = "Header Image"
+    verbose_name_plural = "Header Images"
 
 
-class ColumnElementWidgetInline(TabularDynamicInlineAdmin):
-    """ Base admin class for a column element """
-
-    model = ColumnElementWidget
-
-    def get_formset(self, request, obj=None, **kwargs):
-        """ 
-        Adds the initial value of the horizontal position to the formset.
-        Note: does not work for the 'Add another' button in the admin.
-        """
-        initial = [{'horizontal_position': self.get_default_position()}]
-        formset = super(ColumnElementWidgetInline, self).get_formset(request, obj, **kwargs)
-        formset.__init__ = curry(formset.__init__, initial=initial)
-        return formset
+class ActionBannerInline(StackedDynamicInlineAdmin):
+    model = ActionBanner
+    extra = 1
+    verbose_name = "Action Banner"
+    verbose_name_plural = "Action Banner"
 
 
-class LeftColumnElementWidgetInline(ColumnElementWidgetInline):
-    """ Inline for a widget in the left column of a column page """
-
-    verbose_name_plural = 'Left column widgets'
-
-    def get_queryset(self, request):
-        return ColumnElementWidget.objects.filter(horizontal_position=self.get_default_position())
-
-    @staticmethod
-    def get_default_position():
-        return HorizontalPosition.LEFT
+class SidebarAgendaInline(TabularDynamicInlineAdmin):
+    model = SidebarAgenda
+    form = AlwaysChangedModelForm
+    extra = 0
+    verbose_name = "Sidebar Agenda"
+    verbose_name_plural = "Sidebar Agenda"
 
 
-class RightColumnElementWidgetInline(ColumnElementWidgetInline):
-    """ Inline for a widget in the right column of a column page """
+class SidebarSocialInline(TabularDynamicInlineAdmin):
+    model = SidebarSocial
+    form = AlwaysChangedModelForm
+    extra = 0
+    verbose_name = "Sidebar Social"
+    verbose_name_plural = "Sidebar Social"
 
-    verbose_name_plural = 'Right column widgets'
 
-    def get_queryset(self, request):
-        return ColumnElementWidget.objects.filter(horizontal_position=self.get_default_position())
+class SidebarTwitterInline(TabularDynamicInlineAdmin):
+    model = SidebarTwitter
+    form = AlwaysChangedModelForm
+    extra = 0
+    verbose_name = "Sidebar twitter"
+    verbose_name_plural = "Sidebar Twitter"
 
-    @staticmethod
-    def get_default_position():
-        return HorizontalPosition.RIGHT
+
+class SidebarLinkInline(TabularDynamicInlineAdmin):
+    model = SidebarLink
+    form = AlwaysChangedModelForm
+    extra = 0
+    verbose_name = "Sidebar Links"
+    verbose_name_plural = "Sidebar Links"
+
+
+class SidebarRichTextInline(StackedDynamicInlineAdmin):
+    model = SidebarRichText
+    form = AlwaysChangedModelForm
+    extra = 1
+    verbose_name = "Sidebar Content"
+    verbose_name_plural = "Sidebar Content"
 
 
 class HomePageAdmin(PageAdmin):
-    inlines = [PageHeaderImageInline, LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
+    model = HomePage
+    inlines = [PageHeaderImageInline, ActionBannerInline, SidebarAgendaInline, SidebarTwitterInline, SidebarSocialInline]
+
+
+class VisionsPageAdmin(PageAdmin):
+    model = VisionsPage
+    inlines = [PageHeaderImageInline, SidebarTwitterInline]
+    verbose_name = "Standpunten Pagina"
+    verbose_name_plural = "Standpunten Pagina"
+
+
+class VisionPageAdmin(PageAdmin):
+    model = VisionPage
+    inlines = [PageHeaderImageInline, SidebarTwitterInline]
+    verbose_name = "Standpunt Pagina"
+    verbose_name_plural = "Standpunt Pagina"
+
+
+class OrganisationPageAdmin(PageAdmin):
+    model = OrganisationPage
+    inlines = [PageHeaderImageInline, SidebarTwitterInline]
+    verbose_name = "Organisatie Pagina"
+    verbose_name_plural = "Organisatie Pagina"
+
+
+class OrganisationPartPageAdmin(PageAdmin):
+    model = OrganisationPartPage
+    inlines = [PageHeaderImageInline, SidebarTwitterInline]
+    verbose_name = "Organisatieonderdeel Pagina"
+    verbose_name_plural = "Organisatieonderdeel Pagina"
+
+
+class OrganisationMemberAdmin(admin.ModelAdmin):
+    model = OrganisationMember
+    verbose_name = "Organisatie Lid"
+    verbose_name_plural = "Organisatie Leden"
+    list_display = (
+        'name',
+        'image',
+        'facebook_url',
+        'twitter_url',
+    )
+    search_fields = ['name']
+
+
+class OrganisationPartMemberAdmin(admin.ModelAdmin):
+    model = OrganisationPartMember
+    verbose_name = "Organisatie Functie"
+    verbose_name_plural = "Organisatie Functies"
+    list_display = (
+        'member',
+        'organisation_part',
+        'role',
+    )
+    search_fields = ['member__name']
 
 
 class RichtTextPageAdmin(PageAdmin):
-    inlines = [PageHeaderImageInline, LeftColumnElementWidgetInline, RightColumnElementWidgetInline]
-
-
-class DocumentAdmin(admin.ModelAdmin):
-    list_display = ('description', 'document', 'document_listing')
-
-
-class ColumnElementAdmin(admin.ModelAdmin):
-    list_display = ('id', 'content_object', 'content_type', 'object_id', 'site',)
-
-
-class ColumnElementWidgetAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'column_element', 'page', 'max_items', 'horizontal_position', 'site')
+    inlines = [
+        PageHeaderImageInline, SidebarAgendaInline, SidebarSocialInline,
+        SidebarTwitterInline, SidebarLinkInline, SidebarRichTextInline
+    ]
 
 
 class BlogPageAdmin(PageAdmin):
     inlines = [PageHeaderImageInline]
 
 
-class DocumentInline(TabularDynamicInlineAdmin):
-    model = Document
-
-
 class CustomFormAdmin(FormAdmin):
     model = Form
-    inlines = [PageHeaderImageInline]
+    inlines = [PageHeaderImageInline, SidebarRichTextInline]
     inlines.insert(0, FormAdmin.inlines[0])
 
 
-class DocumentListingAdmin(PageAdmin):
-    inlines = (DocumentInline, PageHeaderImageInline)
+class FooterAdmin(SingletonAdmin):
+    model = Footer
+    verbose_name = "Footer"
+    verbose_name_plural = "Footer"
 
 
-class SidebarBlogCategoryWidgetInline(admin.TabularInline):
-    model = SidebarBlogCategoryWidget
-    extra = 2
-    max_num = 2
-    verbose_name = "Blogs"
-    verbose_name_plural = "Blogs"
-
-
-class SidebarTwitterWidgetInline(admin.TabularInline):
-    model = SidebarTwitterWidget
-    verbose_name = "Twitter feed"
-    verbose_name_plural = "Twitter feed"
-
-
-class SidebarTabsWidgetInline(admin.TabularInline):
-    model = SidebarTabsWidget
-    verbose_name = "Events and newsletter tabs"
-    verbose_name_plural = "Events and newsletter tabs"
-
-
-class SidebarBannerWidgetAdmin(admin.ModelAdmin):
-    model = SidebarBannerWidget
-    list_display = ('id', 'active', 'title', 'image', 'url')
-
-
-class SocialMediaButtonInline(TabularDynamicInlineAdmin):
-    model = SocialMediaButton
-    verbose_name = "Social media buttons"
-    verbose_name_plural = "Social media buttons"
-
-
-class SidebarAdmin(SingletonAdmin):
-    model = Sidebar
-    inlines = (SidebarBlogCategoryWidgetInline,
-               SidebarTwitterWidgetInline,
-               SidebarTabsWidgetInline,
-               SocialMediaButtonInline,)
-
-
-class SidebarElementWidgetAdmin(admin.ModelAdmin):
-    list_display = ('id', 'sidebar_element', 'site')
-
-
-class SocialMediaButtonGroupAdmin(admin.ModelAdmin):
-    inlines = (SocialMediaButtonInline,)
+class SocialMediaUrlsAdmin(SingletonAdmin):
+    model = SocialMediaUrls
+    verbose_name = "Social media urls"
+    verbose_name_plural = "Social media urls"
 
 
 admin.site.unregister(RichTextPage)
 admin.site.register(RichTextPage, RichtTextPageAdmin)
+
 admin.site.unregister(Form)
 admin.site.register(Form, CustomFormAdmin)
-admin.site.register(HomePage, HomePageAdmin)
-admin.site.register(BlogCategoryPage, BlogPageAdmin)
-admin.site.register(Sidebar, SidebarAdmin)
-admin.site.register(SidebarBannerWidget, SidebarBannerWidgetAdmin)
-admin.site.register(DocumentListing, DocumentListingAdmin)
 
-# we add some models to the admin for debugging, if we are in debug mode
-if settings.DEBUG:
-    admin.site.register(ColumnElement, ColumnElementAdmin)
-    admin.site.register(ColumnElementWidget, ColumnElementWidgetAdmin)
-    admin.site.register(Document, DocumentAdmin)
+admin.site.register(HomePage, HomePageAdmin)
+admin.site.register(OrganisationPartPage, OrganisationPartPageAdmin)
+admin.site.register(OrganisationPage, OrganisationPageAdmin)
+admin.site.register(VisionPage, VisionPageAdmin)
+admin.site.register(VisionsPage, VisionsPageAdmin)
+admin.site.register(BlogCategoryPage, BlogPageAdmin)
+
+admin.site.register(OrganisationMember, OrganisationMemberAdmin)
+admin.site.register(OrganisationPartMember, OrganisationPartMemberAdmin)
+
+admin.site.register(Footer, FooterAdmin)
+admin.site.register(FooterInfo)
+admin.site.register(FooterLinks, FooterLinksAdmin)
+admin.site.register(SocialMediaUrls, SocialMediaUrlsAdmin)

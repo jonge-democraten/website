@@ -1,0 +1,30 @@
+{% load mezzanine_tags %}
+
+<footer class="container-fluid">
+    <div class="row">
+        <div class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+            <div class="row">
+                <div class="widget col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <h2>{{ footer.links_left.title }}</h2>
+                    <ul>
+                        {% for link in footer.links_left.footerlink_set.all %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="widget col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <h2>{{ footer.links_middle.title }}</h2>
+                    <ul>
+                        {% for link in footer.links_middle.footerlink_set.all %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="widget col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <h2>{{ footer.info_right.title }}</h2>
+                    {{ footer.info_right.content|richtext_filters|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -14,18 +14,14 @@ from __future__ import absolute_import, unicode_literals
 # Controls the ordering and grouping of the admin menu.
 #
 ADMIN_MENU_ORDER = (
-    ("Content", ("pages.Page", "blog.BlogPost", "events.Event", 
-        ("Media Library", "fb_browse"), "jdpages.Sidebar", "hemres.Newsletter")),
-    ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting", "jdpages.SidebarBannerWidget",)),
+    ("Content", ("pages.Page", "blog.BlogPost", "events.Event",
+        ("Media Library", "fb_browse"), "hemres.Newsletter")),
+    ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "jdpages.Footer", "jdpages.SocialMediaUrls", "jdpages.OrganisationMember", "jdpages.OrganisationPartMember", "conf.Setting",)),
     ("Users", ("auth.User", "auth.Group", "janeus.JaneusUser", "janeus.JaneusRole", )),
 
     ("Newsletter templating", ("hemres.NewsletterTemplate")),
     ("Newsletter subscriptions", ("hemres.MailingList", "hemres.EmailSubscriber", "hemres.JaneusSubscriber")),
     ("Sending newsletters", ("hemres.NewsletterToList", "hemres.NewsletterToSubscriber")),
-
-    ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget",
-                      "jdpages.SidebarElement", "jdpages.SidebarElementWidget",
-                      "jdpages.Document", "jdpages.SidebarTwitter",)),
 )
 
 
@@ -80,7 +76,7 @@ PAGE_MENU_TEMPLATES = (
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
-# BLOG_USE_FEATURED_IMAGE = True
+BLOG_USE_FEATURED_IMAGE = True
 
 # Models that are included in a search
 SEARCH_MODEL_CHOICES = ('pages.Page', 'blog.BlogPost', 'events.Occurrence')
@@ -239,7 +235,6 @@ TEMPLATES = [{'APP_DIRS': True,
                                                  'django.core.context_processors.tz',
                                                  'mezzanine.conf.context_processors.settings',
                                                  'mezzanine.pages.context_processors.page',
-                                                 'website.jdpages.context_processors.sidebar',
                                                  'website.jdpages.context_processors.site_properties',
                                                  'website.jdpages.context_processors.piwik',
                                                  'website.jdpages.context_processors.homepage_header'),
@@ -273,7 +268,6 @@ INSTALLED_APPS = (
     "mezzanine.forms",
     "mezzanine.pages",
     "mezzanine.galleries",
-    "mezzanine.twitter",
     "captcha",
     "website",
     "website.core",
@@ -433,8 +427,7 @@ try:
 except SystemError as e:  # relative imports do not work when using `manage.py runserver`: (Parent module '' not loaded, cannot perform relative import)
     from local_settings import *
 except ImportError as e:
-    if "local_settings" not in str(e):
-        raise e
+    from local_settings import *
 
 
 ####################
@@ -581,6 +574,7 @@ TEMPLATE_ACCESSIBLE_SETTINGS = ('ACCOUNTS_APPROVAL_REQUIRED', 'ACCOUNTS_VERIFICA
 
 TEMPLATE_ACCESSIBLE_SETTINGS += ('SIDEBAR_AGENDA_SITES',)
 TEMPLATE_ACCESSIBLE_SETTINGS += ('PIWIK_SITE_ID',)
+TEMPLATE_ACCESSIBLE_SETTINGS += ('TWITTER_NAME',)
 
 ###################
 # JANEUS SETTINGS #

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% load mezzanine_tags %}
+
+{% block meta_title %}{% block meta_title2 %}{{ page.meta_title }}{% endblock %}{% endblock %}
+
+{% block main %}
+
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+    <div class="content-container">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="doemee basic-container">
+                    <div class="basic-content">
+                        <h2>Jonge Democraten Brabant (hardcoded text)</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer turpis metus, consequat nec
+                            tellus a, ullamcorper efficitur libero. Nulla luctus eros a vestibulum elementum. Phasellus
+                            semper ut justo eu pharetra. Praesent pharetra iaculis urna vel aliquet. Fusce id neque
+                            ultricies, accumsan sapien vel, fringilla justo. Mauris pharetra bibendum nisl sed
+                            consectetur. Phasellus semper orci et dui varius gravida.
+
+                            Fusce sed elementum augue, quis feugiat ante. Fusce at urna in nibh ultrices tempor.
+                            Maecenas enim dui, condimentum aliquet mollis nec, fringilla quis neque. Mauris a dui
+                            tempor, dictum augue quis, lacinia quam. Suspendisse varius diam et dolor malesuada, eget
+                            rhoncus odio finibus. Fusce eu dui egestas elit vehicula mattis. Curabitur gravida massa a
+                            felis gravida, ut venenatis ante rutrum.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer turpis metus, consequat nec
+                            tellus a, ullamcorper efficitur libero. Nulla luctus eros a vestibulum elementum. Phasellus
+                            semper ut justo eu pharetra. Praesent pharetra iaculis urna vel aliquet. Fusce id neque
+                            ultricies, accumsan sapien vel, fringilla justo. Mauris pharetra bibendum nisl sed
+                            consectetur. Phasellus semper orci et dui varius gravida.
+
+                            Fusce sed elementum augue, quis feugiat ante. Fusce at urna in nibh ultrices tempor.
+                            Maecenas enim dui, condimentum aliquet mollis nec, fringilla quis neque. Mauris a dui
+                            tempor, dictum augue quis, lacinia quam. Suspendisse varius diam et dolor malesuada, eget
+                            rhoncus odio finibus. Fusce eu dui egestas elit vehicula mattis. Curabitur gravida massa a
+                            felis gravida, ut venenatis ante rutrum.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer turpis metus, consequat nec
+                            tellus a, ullamcorper efficitur libero. Nulla luctus eros a vestibulum elementum. Phasellus
+                            semper ut justo eu pharetra. Praesent pharetra iaculis urna vel aliquet. Fusce id neque
+                            ultricies, accumsan sapien vel, fringilla justo. Mauris pharetra bibendum nisl sed
+                            consectetur. Phasellus semper orci et dui varius gravida.
+
+                            Fusce sed elementum augue, quis feugiat ante. Fusce at urna in nibh ultrices tempor.
+                            Maecenas enim dui, condimentum aliquet mollis nec, fringilla quis neque. Mauris a dui
+                            tempor, dictum augue quis, lacinia quam. Suspendisse varius diam et dolor malesuada, eget
+                            rhoncus odio finibus. Fusce eu dui egestas elit vehicula mattis. Curabitur gravida massa a
+                            felis gravida, ut venenatis ante rutrum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            {% include "components/sidebar/sidebar_twitter.html" %}
+        </div>
+    </div>
+</section>
+
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+    {% for action_banner in page.homepage.actionbanner_set.all %}
+        {% include "components/content/content_action_banner.html" %}
+    {% endfor %}
+</section>
+
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+    <?php require('components/content/content-doemee-banner.php'); ?>
+</section>
+
+{{ block.super }}
+{% endblock %}

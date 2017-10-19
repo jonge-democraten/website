@@ -13,13 +13,6 @@ from mezzanine.pages.models import RichTextPage
 
 from fullcalendar.models import Occurrence
 
-from website.jdpages.models import ColumnElement
-from website.jdpages.models import Sidebar
-from website.jdpages.views import BlogCategorySidebarItem
-from website.jdpages.views import TwitterSidebarItem
-from website.jdpages.views import TabsSidebarItem
-from website.jdpages.views import SocialMediaButtonGroupItem
-
 
 class TestCaseAdminLogin(TestCase):
     """ Test case with client and login as admin function. """
@@ -37,59 +30,6 @@ class TestCaseAdminLogin(TestCase):
         response = self.client.post('/admin/login/?next=/admin/', {'username': 'admin', 'password': 'admin'}, follow=True)
         self.assertEqual(response.status_code, 200)
         return response
-
-
-class TestColumnElement(TestCase):
-    """ ColumnElement test case. """
-
-    def test_auto_create(self):
-        """
-        Tests whether two ColumnElements are created when a BlogCategory is created,
-        and that the elements contain a reference to the category object.
-        """
-        category = BlogCategory.objects.create(title="Test Blog")
-        content_type = ContentType.objects.get(model="blogcategory")
-        elements = ColumnElement.objects.filter(object_id=category.id, content_type=content_type)
-        for element in elements:
-            self.assertEqual(element.get_object(), category)
-
-    def test_auto_delete(self):
-        """
-        Tests whether the related ColumnElements are automatically deleted
-        when a BlogCategory is deleted.
-        """
-        category = BlogCategory.objects.create(title="Test Blog")
-        content_type = ContentType.objects.get(model="blogcategory")
-        elements = ColumnElement.objects.filter(object_id=category.id, content_type=content_type)
-        for element in elements:
-            self.assertEqual(element.get_object(), category)
-        catid = category.id
-        category.delete()
-        self.assertEqual(BlogCategory.objects.count(), 0)
-        self.assertEqual(ColumnElement.objects.filter(object_id=catid, content_type=content_type).exists(), False)
-
-
-class TestSidebar(TestCaseAdminLogin):
-    """ Tests the sidebar and its widgets. """
-    fixtures = ['test_sidebar.json']
-
-    def test_edit_sidebar_admin_view(self):
-        """ Tests whether the change sidebar admin view response is OK (200). """
-        sidebars = Sidebar.objects.all()
-        self.assertEquals(sidebars.count(), 1)
-        sidebar = sidebars[0]
-        response = self.client.get('/admin/jdpages/sidebar/' + str(sidebar.id) + '/', follow=True)
-        self.assertEqual(response.status_code, 200)
-
-    def test_view_items_sidebar(self):
-        """ Tests whether the sidebar view items exist in the homepage context. """
-        response = self.client.get('/')
-        self.assertEqual(response.status_code, 200)
-        items = response.context['sidebar_items']
-        self.assertTrue(type(items[0]) == BlogCategorySidebarItem)
-        self.assertTrue(type(items[1]) == TabsSidebarItem)
-        self.assertTrue(type(items[2]) == TwitterSidebarItem)
-        self.assertTrue(type(items[3]) == SocialMediaButtonGroupItem)
 
 
 class TestPage(TestCaseAdminLogin):

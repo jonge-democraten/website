@@ -1,0 +1,12 @@
+<article class="col-lg-4 col-md-4 col-sm-6 col-xs-6 collection-item">
+    <a href="{{ organisation_part_page.get_absolute_url }}">
+        <figure>
+            {% if organisation_part_page.get_content_model.image %}
+            <img src="{{ organisation_part_page.get_content_model.image.url }}" alt="#"/>
+            {% else %}
+            <img src="" alt="#"/>
+            {% endif %}
+            <figcaption>{{ organisation_part_page.get_content_model.title }}</figcaption>
+        </figure>
+    </a>
+</article>

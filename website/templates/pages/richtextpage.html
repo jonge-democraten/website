@@ -1,36 +1,28 @@
 {% extends "base.html" %}
-{% load mezzanine_tags keyword_tags %}
+
+{% load mezzanine_tags %}
 
 {% block meta_title %}{% block meta_title2 %}{{ page.meta_title }}{% endblock %}{% endblock %}
 
-{% block meta_keywords %}{% metablock %}
-{% keywords_for page as keywords %}
-{% for keyword in keywords %}
-    {% if not forloop.first %}, {% endif %}
-    {{ keyword }}
-{% endfor %}
-{% endmetablock %}{% endblock %}
-
-{% block meta_description %}{% block meta_description2 %}{% metablock %}
-{{ page.description }}
-{% endmetablock %}{% endblock %}{% endblock %}
-
 {% block main %}
 
-{% include "elements/page_header_image.html" %}
-
-<div id="homeDiv">
-    <div class="item-page">
-    
-        <h2><a href="{{ page.get_absolute_url }}">{% editable page.title %}{{ page.title }}{% endeditable %}</a></h2>
-        
-        {% editable page.richtextpage.content %}
-        {{ page.richtextpage.content|richtext_filters|safe }}
-        {% endeditable %}
-        
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+    <div class="standard detail-container">
+        <div class="detail-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="detail-item">
+                <h2>{{ page.title }}</h2>
+                {{ page.richtextpage.content|richtext_filters|safe }}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            {% include "components/sidebar/sidebar_agenda.html" %}
+            {% include "components/sidebar/sidebar_twitter.html" %}
+            {% include "components/sidebar/sidebar_social.html" %}
+            {% include "components/sidebar/sidebar_block.html" %}
+            {% include "components/sidebar/sidebar_doemee.html" %}
+        </div>
     </div>
-</div> <!-- homeDiv -->
+</section>
 
-{% include "elements/two_columns.html" %}
-
+{{ block.super }}
 {% endblock %}

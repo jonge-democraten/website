@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load mezzanine_tags %}
+
+{% block meta_title %}{% block meta_title2 %}{{ page.meta_title }}{% endblock %}{% endblock %}
+
+{% block main %}
+
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+    <div class="bestuur list-container">
+        <div class="list-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="basic-container">
+                    <div class="basic-content">
+                        <h2>{{ page.title }}</h2>
+                        {{ page.organisationpartpage.content|richtext_filters|safe }}
+                    </div>
+                </div>
+                <div class="row">
+                {% for function in page.organisationpartpage.organisationpartmember_set.all %}
+                    {% include "components/content/bestuur/content_bestuur_item.html" %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            {% include "components/sidebar/sidebar_twitter.html" %}
+        </div>
+    </div>
+</section>
+
+{{ block.super }}
+{% endblock %}

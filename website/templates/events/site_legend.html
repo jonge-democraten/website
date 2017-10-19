@@ -1,7 +1,11 @@
 {% if legend %}
 <ul class="events-legend">
     {% for site_name, data in legend.items %}
-    <a href="//{{ data.siteDomain }}{% url 'fullcalendar-calendar' %}"><li style="color: {{ data.textColor }}; background-color: {{ data.backgroundColor }}; border: 1px solid {{ data.borderColor }};">{{ site_name }}</li></a>
+    <a class="event-legend-item" href="//{{ data.siteDomain }}{% url 'fullcalendar-calendar' %}">
+        <li style="color: {{ data.textColor }}; background-color: {{ data.backgroundColor }}; border: 1px solid {{ data.borderColor }};">
+            <h5>{{ site_name }}</h5>
+        </li>
+    </a>
     {% endfor %}
 </ul>
 {% endif %}

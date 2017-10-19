@@ -1,77 +1,61 @@
 {% extends "base.html" %}
-{% load i18n mezzanine_tags staticfiles fullcalendar %}
 
-{% block meta_title %}{% block meta_title2 %}{{ occurrence.title }}{% endblock %}{% endblock %}
+{% load i18n mezzanine_tags static fullcalendar %}
+
+{% block meta_title %}{% block meta_title2 %}{{ page.meta_title }}{% endblock %}{% endblock %}
 
 {% block extra_js %}{{ block.super }}
-<script type="text/javascript" src="{% static "website/js/leaflet.js" %}"></script>
+<script type="text/javascript" src="{% static 'website/js/leaflet.js' %}"></script>
 <script type="text/javascript">
-L.Icon.Default.imagePath = "{% static "website/images/leaflet/" %}";
+L.Icon.Default.imagePath = "{% static 'website/images/leaflet/' %}";
 </script>
-<script type="text/javascript" src="{% static "website/js/events.js" %}"></script>
-{% endblock %}l
+<script type="text/javascript" src="{% static 'website/js/events.js' %}"></script>
+{% endblock %}
 
 {% block extra_css %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static "website/css/leaflet.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/vendor/leaflet.css' %}" />
 {% endblock %}
+
 
 {% block main %}
-<div id="homeAreaDiv">
-    <div id="homeImageDiv"><img src="{% static "website/images/congres_tafels.jpg" %}" alt="" /></div>
-    <div id="homeLogoDiv"></div>
-</div>
 
-<div id="homeDiv">
-    {% editable occurrence.event.title %}<h2>{{ occurrence.event.title }}</h2>{% endeditable %}
-    {% if occurrence.description %}
-    {% editable occurrence.description %}<h3>{{ occurrence.description }}</h3>{% endeditable %}
-    {% endif %}
-    <hr />
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+	<div class="agenda detail-container">
+		<div class="detail-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
+			<div class="detail-item">
+				<h2>{{ occurrence.event.title }} - {{ occurrence.description }}</h2>
 
-    {% editable occurrence.start_time occurrence.end_time occurrence.location %}
-    <p>
-        <strong>{% trans "When" %}:</strong> {% occurrence_duration occurrence %}<br />
-        {% if occurrence.location %}
-        <strong>{% trans "Where" %}:</strong> <span id="occurrence-location">{{ occurrence.location }}</span><br />
-        {% endif %}
-        {% if occurrence.event.event_category %}
-        <strong>{% trans "Category" %}:</strong> {{ occurrence.event.event_category }}
-        {% endif %}
-    </p>
-    {% endeditable %}
+				<h3>Datum:
+					{% if occurrence.start_time.day == occurrence.start_time.day %}
+						{{ occurrence.start_time|date:"n F Y" }}
+						| Tijd: {{ occurrence.start_time|date:"G:i" }} - {{ occurrence.end_time|date:"G:i" }}
+					{% else %}
+						{{ occurrence.start_time|date:"n F Y" }}, {{ occurrence.start_time|date:"G:i"  }} - {{ occurrence.end_time|date:"n F Y" }}, {{ occurrence.end_time|date:"G:i"  }}
+					{% endif %}
+					| Locatie: <span id="occurrence-location">{{ occurrence.location }}</span>
+				</h3>
 
-    <div id="event-map"></div>
+				<p>
+					{{ occurrence.event.content|richtext_filters|safe }}
+				</p>
 
-    {% editable occurrence.event.content %}
-    {{ occurrence.event.content|richtext_filters|safe }}
-    {% endeditable %}
+				<div id="event-map"></div>
 
-        <div class="itp-social-buttons-box">
-            <div class="itp-sbb-nl">
-                  <div class="itp-sb-right" align="right">
-                  {% spaceless %}
-                      <a href="https://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ occurrence.event.title|urlencode }}" title="Submit to Facebook" target="_blank" >
-                      <img src="{% static "website/images/icons/facebook_bw.png" %}" alt="Submit to Facebook" />
-                      </a>
+				<br/>
 
-                      <a href="https://plus.google.com/share?url={{ request.build_absolute_uri }}" title="Submit to Google+" target="_blank">
-                      <img src="{% static "website/images/icons/google_bw.png" %}" alt="Submit to Google Bookmarks" />
-                      </a>
+				<p>
+        			<a class="button" href="{% url 'fullcalendar-monthly-view' occurrence.start_time.year occurrence.start_time.month %}">&laquo; terug naar de agenda</a>
+    			</p>
+			</div>
+		</div>
+		<div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
+			{% with page=page_for_sidebars %}
+			{% include "components/sidebar/sidebar_agenda.html" %}
+			{% include "components/sidebar/sidebar_social.html" %}
+			{% endwith %}
+		</div>
+	</div>
+</section>
 
-                      <a href="http://twitter.com/home?status={{ occurrence.event.title|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" title="Submit to Twitter" target="_blank" >
-                      <img src="{% static "website/images/icons/twitter_bw.png" %}" alt="Submit to Twitter"/>
-                      </a>
-                  {% endspaceless %}
-                  </div>
-            </div>
-        </div>
-
-
-    <p>
-        <a href="{% url "fullcalendar-monthly-view" occurrence.start_time.year occurrence.start_time.month %}">&laquo; {% trans "Back to calendar" %}</a>
-    </p>
-
-</div>
+{{ block.super }}
 {% endblock %}
-
-

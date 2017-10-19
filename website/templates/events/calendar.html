@@ -1,55 +1,69 @@
 {% extends "base.html" %}
-{% load i18n mezzanine_tags staticfiles fullcalendar %}
+
+{% load i18n mezzanine_tags static fullcalendar %}
 
 {% block meta_title %}{% block meta_title2 %}{% trans "Calendar" %}{% endblock %}{% endblock %}
 
 {% block extra_js %}{{ block.super }}
-<script type="text/javascript" src="{% static "website/js/moment.min.js" %}"></script>
-<script type="text/javascript" src="{% static "website/js/fullcalendar.js" %}"></script>
-<script type="text/javascript" src="{% static "website/js/lang/fullcalendar-nl.js" %}"></script>
+<script type="text/javascript" src="{% static 'website/js/moment.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'website/js/fullcalendar.js' %}"></script>
+<script type="text/javascript" src="{% static 'website/js/lang/fullcalendar-nl.js' %}"></script>
 
 <script type="text/javascript">
     window.__calendar_default_date = "{{ default_date }}";
     window.__calendar_events_url = "{{ json_uri }}";
 </script>
 
-<script type="text/javascript" src="{% static "website/js/calendar.js" %}"></script>
+<script type="text/javascript" src="{% static 'website/js/calendar.js' %}"></script>
 {% endblock %}
 
 {% block extra_css %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static "website/css/fullcalendar.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/fullcalendar.css' %}" />
 {% endblock %}
 
+
 {% block main %}
-<div id="homeAreaDiv">
-    <div id="homeImageDiv"><img src="{% static "website/images/congres_tafels.jpg" %}" alt="" /></div>
-    <div id="homeLogoDiv"></div>
-</div>
 
-<div id="homeDiv">
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+    <div class="standard detail-container">
+        <div class="detail-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="detail-item">
 
-    <h2>{% trans "Calendar" %}</h2>
-    <noscript>
-        {% show_agenda %}
-    </noscript>
+                <h2>Agenda</h2>
 
-    <p id="calendar-error">
-        {% trans "Hmm.. something went wrong with loading the events." %}
-    </p>
+                <noscript>
+                    {% show_agenda %}
+                </noscript>
 
-    <div id="event-calendar">
+                <p id="calendar-error" style="display:none;">
+                    {% trans "Hmm.. something went wrong with loading the events." %}
+                </p>
 
+                <div id="event-calendar"></div>
+
+                {% if not is_main_site %}
+                <a href="{{ main_site_url }}{% url 'fullcalendar-calendar' %}">Terug naar landelijke kalender</a>
+                {% endif %}
+
+                <p id="calendar-loading" style="display: none;">
+                    <img src="{% static 'mezzanine/img/loadingAnimation.gif' %}" alt="Loading..." />
+                </p>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <aside class="sidebar row">
+                <div class="collections-sidebar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="sidebar-title"><i class="gd gd-agenda"></i> Afdelingen</h2>
+                    <div class="sidebar-content">
+                        {% events_site_legend %}
+                    </div>
+                </div>
+            </aside>
+        </div>
     </div>
-    {% if not is_main_site %}
-    <a href="{{ main_site_url }}{% url 'fullcalendar-calendar' %}">Terug naar landelijke kalender</a>
-    {% endif %}
-    {% events_site_legend %}
+</section>
 
-    <p id="calendar-loading">
-        <img src="{% static "mezzanine/img/loadingAnimation.gif" %}" alt="Loading..." />
-    </p>
-    
-</div>
 {% endblock %}
 
 

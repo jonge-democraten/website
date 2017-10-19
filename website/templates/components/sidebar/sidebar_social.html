@@ -1,0 +1,52 @@
+{% for item in page.get_content_model.sidebarsocial_set.all %}
+    {% if item.visible %}
+        <aside class="sidebar social collections-sidebar-container row">
+            <div class="collections-sidebar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="sidebar-title"><i class="gd gd-social"></i> Social</h2>
+                <div class="sidebar-content">
+                    <ul>
+                        {% if item.urls.facebook_url %}
+                        <li>
+                            <a target="_blank" href="{{ item.urls.facebook_url }}">
+                                <i class="gd gd-facebook-s"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% if item.urls.twitter_url %}
+                        <li>
+                            <a target="_blank" href="{{ item.urls.twitter_url }}">
+                                <i class="gd gd-twitter-s"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% if item.urls.youtube_url %}
+                        <li>
+                            <a target="_blank" href="{{ item.urls.youtube_url }}">
+                                <i class="gd gd-youtube-s"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% if item.urls.linkedin_url %}
+                        <li>
+                            <a target="_blank" href="{{ item.urls.linkedin_url }}">
+                                <i class="gd gd-linkedin-s"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% if item.urls.instagram_url %}
+                        <li>
+                            <a target="_blank" href="{{ item.urls.instagram_url }}">
+                                <i class="gd gd-instagram-s"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </aside>
+    {% endif %}
+{% endfor %}

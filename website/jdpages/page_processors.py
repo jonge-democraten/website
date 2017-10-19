@@ -12,15 +12,21 @@ from mezzanine.pages.models import RichTextPage
 
 from website.jdpages.models import BlogCategoryPage
 from mezzanine.forms.models import Form
-from website.jdpages.models import HomePage, DocumentListing
-from website.jdpages.models import ColumnElementWidget
-from website.jdpages.models import HorizontalPosition
-from website.jdpages.views import create_column_items, get_page_header
+from website.jdpages.models import HomePage
+from website.jdpages.models import OrganisationPage
+from website.jdpages.models import OrganisationPartPage
+from website.jdpages.models import VisionPage
+from website.jdpages.models import VisionsPage
+from website.jdpages.views import get_page_header
 
 
-@processor_for(DocumentListing)
+
 @processor_for(Form)
 @processor_for(HomePage)
+@processor_for(VisionPage)
+@processor_for(VisionsPage)
+@processor_for(OrganisationPage)
+@processor_for(OrganisationPartPage)
 @processor_for(BlogCategoryPage)
 @processor_for(RichTextPage)
 def add_header_images(request, page):
@@ -29,16 +35,6 @@ def add_header_images(request, page):
     if page_header:
         page_header.title = page.title
     return {"page_header": page_header}
-
-
-@processor_for(HomePage)
-@processor_for(RichTextPage)
-def add_column_elements(request, page):
-    element_widgets_left = ColumnElementWidget.objects.filter(horizontal_position=HorizontalPosition.LEFT).filter(page=page)
-    column_left_items = create_column_items(element_widgets_left)
-    element_widgets_right = ColumnElementWidget.objects.filter(horizontal_position=HorizontalPosition.RIGHT).filter(page=page)
-    column_right_items = create_column_items(element_widgets_right)
-    return {"column_left_items": column_left_items, "column_right_items": column_right_items}
 
 
 @processor_for(BlogCategoryPage)

@@ -6,10 +6,6 @@ class JDPagesConfig(AppConfig):
     label = 'jdpages'
     verbose_name = "JD Pages"
 
-    # noinspection PyUnresolvedReferences
-    def ready(self):
-        import website.jdpages.signals
-
 
 class CoreConfig(AppConfig):
     name = 'website.core'

@@ -303,3 +303,11 @@ class SocialMediaUrls(SiteRelated):
     class Meta:
         verbose_name = "Social media urls"
         verbose_name_plural = "Social media urls"
+
+class WordLidPage(Page, RichText):
+    """
+    """
+    
+    class Meta:
+        verbose_name = 'WordLidPage'
+

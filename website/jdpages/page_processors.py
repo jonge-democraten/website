@@ -29,6 +29,7 @@ logger = logging.getLogger(__name__)
 @processor_for(OrganisationPartPage)
 @processor_for(BlogCategoryPage)
 @processor_for(RichTextPage)
+@processor_for(WordLidPage)
 def add_header_images(request, page):
     page_header = get_page_header(page)
 

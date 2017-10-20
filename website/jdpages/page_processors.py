@@ -16,10 +16,10 @@ from website.jdpages.models import OrganisationPage
 from website.jdpages.models import OrganisationPartPage
 from website.jdpages.models import VisionPage
 from website.jdpages.models import VisionsPage
+from website.jdpages.models import WordLidPage
 from website.jdpages.views import get_page_header
 
 logger = logging.getLogger(__name__)
-
 
 @processor_for(Form)
 @processor_for(HomePage)

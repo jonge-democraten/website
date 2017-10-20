@@ -106,7 +106,6 @@ class SidebarLinkInline(TabularDynamicInlineAdmin):
 
 class SidebarRichTextInline(StackedDynamicInlineAdmin):
     model = SidebarRichText
-    form = AlwaysChangedModelForm
     extra = 1
     verbose_name = "Sidebar Content"
     verbose_name_plural = "Sidebar Content"

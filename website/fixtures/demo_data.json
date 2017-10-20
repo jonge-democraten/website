@@ -289,11 +289,11 @@
     "publish_date": "2014-12-21T21:35:53Z",
     "created": "2014-12-21T21:35:53.992Z",
     "content_model": "richtextpage",
-    "title": "normale pagina",
+    "title": "pagina",
     "keywords_string": "",
     "gen_description": true,
     "in_menus": "1",
-    "titles": "normale pagina",
+    "titles": "pagina",
     "updated": "2017-07-25T22:17:31.068Z",
     "description": "\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus eget erat efficitur porta. Donec a lorem urna. Morbi tincidunt ligula eget lectus condimentum, vitae consequat leo eleifend. Vivamus a porttitor felis. Curabitur suscipit, erat et varius egestas, odio ante pretium ante, a consectetur ligula urna non ante. Vivamus in libero convallis, tempus sem non, dignissim quam. Nam molestie diam nec leo dignissim, et iaculis erat aliquet. Praesent ullamcorper massa libero, non tempus eros commodo egestas. Nulla lorem elit, auctor id malesuada sit amet, semper in orci. Maecenas faucibus, risus vitae venenatis lacinia, erat mi venenatis augue, sit amet interdum dolor felis ut ante. Morbi a facilisis ante, in lobortis urna. Etiam ut nunc quis libero interdum aliquam eu at magna. Nunc vehicula risus eleifend molestie vulputate. Mauris diam odio, congue eget lorem id, finibus imperdiet sem."
   }
@@ -523,11 +523,11 @@
     "publish_date": "2014-12-29T16:34:15Z",
     "created": "2014-12-29T16:34:15.695Z",
     "content_model": "link",
-    "title": "external link",
+    "title": "link",
     "keywords_string": "",
     "gen_description": true,
     "in_menus": "1",
-    "titles": "external link",
+    "titles": "link",
     "updated": "2017-07-25T21:36:20.814Z",
     "description": "external link"
   }

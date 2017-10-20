@@ -33,6 +33,7 @@ from website.jdpages.models import SidebarTwitter
 from website.jdpages.models import SidebarLink
 from website.jdpages.models import SidebarRichText
 from website.jdpages.models import SocialMediaUrls
+from website.jdpages.models import ThatsWhyItem
 from website.jdpages.models import WordLidPage
 
 logger = logging.getLogger(__name__)
@@ -112,6 +113,12 @@ class SidebarRichTextInline(StackedDynamicInlineAdmin):
     verbose_name = "Sidebar Content"
     verbose_name_plural = "Sidebar Content"
 
+class ThatsWhyInline(TabularDynamicInlineAdmin):
+    model = ThatsWhyItem
+    form = AlwaysChangedModelForm
+    extra = 0
+    verbose_name = "That's why item"
+    verbose_name_plural = "That's why items"
 
 class HomePageAdmin(PageAdmin):
     model = HomePage
@@ -184,7 +191,7 @@ class BlogPageAdmin(PageAdmin):
 class WordLidAdmin(PageAdmin):
     model = WordLidPage
     inlines = [
-      PageHeaderImageInline, ActionBannerInline, SidebarTwitterInline, SidebarLinkInline
+      PageHeaderImageInline, ActionBannerInline, SidebarTwitterInline, SidebarLinkInline, ThatsWhyInline
     ]
 
 class CustomFormAdmin(FormAdmin):

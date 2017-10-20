@@ -311,3 +311,13 @@ class WordLidPage(Page, RichText):
     class Meta:
         verbose_name = 'WordLidPage'
 
+class ThatsWhyItem(PageItem, Orderable):
+    title = models.CharField(max_length=100, blank=True, default="")
+
+    class Meta:
+        verbose_name = "That's why item"
+        verbose_name_plural = "That's why items"
+
+    def __str__(self):
+        return self.title
+

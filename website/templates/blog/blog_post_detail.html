@@ -3,13 +3,11 @@
 {% load mezzanine_tags static %}
 
 {% block meta_title %}
-  {% block meta_title2 %}
-    {% if blog_post %}
-      {{ blog_post.title }}
-    {% else %}
-      Blogpost
-    {% endif %}
-  {% endblock %}
+  {% if blog_post %}
+    {{ blog_post.title }}
+  {% else %}
+    Blogpost
+  {% endif %}
 {% endblock %}
 
 {% block main %}

@@ -3,13 +3,11 @@
 {% load mezzanine_tags %}
 
 {% block meta_title %}
-{% block meta_title2 %}
-{% if page %}
-{{ page.meta_title }}
-{% else %}
-Blog
-{% endif %}
-{% endblock %}
+  {% if page %}
+    {{ page.meta_title }}
+  {% else %}
+    Blog
+  {% endif %}
 {% endblock %}
 
 {% block main %}

@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% load i18n mezzanine_tags static %}
+{% load mezzanine_tags static %}
 
 {% block meta_title %}
   {% block meta_title2 %}
     {% if blog_post %}
       {{ blog_post.title }}
     {% else %}
-      {% trans "Blogpost" %}
+      Blogpost
     {% endif %}
   {% endblock %}
 {% endblock %}

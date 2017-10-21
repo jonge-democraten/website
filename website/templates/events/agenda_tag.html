@@ -1,4 +1,3 @@
-{% load i18n %}
     {% for occurrence in occurrences %}
         {% ifchanged occurrence.start_time.day occurrence.start_time.month occurrence.start_time.year %}
         {% if not forloop.first %}</ul>{% endif %}
@@ -13,7 +12,7 @@
         {% endif %}
     {% empty %}
     <p>
-        {% trans "There are no upcoming events." %}
+        There are no upcoming events.
     </p>
     {% endfor %}
 

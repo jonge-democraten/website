@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% load i18n mezzanine_tags staticfiles %}
+{% load mezzanine_tags staticfiles %}
 
-{% block meta_title %}{% block meta_title2 %}{% trans "Upcoming events" %}{% endblock %}{% endblock %}
+{% block meta_title %}{% block meta_title2 %}Upcoming events{% endblock %}{% endblock %}
 
 {% block main %}
 <div id="homeDiv">
-    <h2>{% trans "Upcoming events" %}</h2>
+    <h2>Upcoming events</h2>
     {% for occurrence in occurrence_list %}
         {% ifchanged occurrence.start_time.day occurrence.start_time.month occurrence.start_time.year %}
         {% if not forloop.first %}</ul>{% endif %}
@@ -20,7 +20,7 @@
         {% endif %}
     {% empty %}
     <p>
-        {% trans "There are no upcoming events." %}
+        There are no upcoming events.
     </p>
     {% endfor %}
 </div>

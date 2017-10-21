@@ -1,11 +1,11 @@
-{% load static pages_tags i18n future %}
+{% load static pages_tags future %}
 
 <ul class="nav navbar-nav" role="menu">
 {% spaceless %}
 {% for page in page_branch %}
     {% if not has_home and page.is_primary and forloop.first %}
     <li class="{% if on_home %} active {% endif %}">
-        <a href="{% url 'home' %}">{% trans "Home" %}</a>
+        <a href="{% url 'home' %}">Home</a>
     </li>
     {% endif %}
     {% if page.in_menu and page.is_primary %}

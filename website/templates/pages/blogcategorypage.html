@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% load i18n mezzanine_tags %}
+{% load mezzanine_tags %}
 
 {% block meta_title %}
 {% block meta_title2 %}
 {% if page %}
 {{ page.meta_title }}
 {% else %}
-{% trans "Blog" %}
+Blog
 {% endif %}
 {% endblock %}
 {% endblock %}
@@ -22,7 +22,7 @@
                 <h2>{{ blog_post.title }}</h2>
                 <h3><i class="gd gd-clock"></i>{{ blog_post.publish_date|date:"d M Y" }}</h3>
                 {{ blog_post.description_from_content|richtext_filters|safe }}
-                <a class="button" href="{{ blog_post.get_absolute_url }}">{% trans "Lees verder" %}</a>
+                <a class="button" href="{{ blog_post.get_absolute_url }}">Lees verder</a>
             </article>
             {% endfor %}
             <div class="pagination">

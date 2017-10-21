@@ -1,18 +1,15 @@
+{% if page.get_content_model.thatswhyitem_set.all %}
 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-    <div class="doemee basic-container row">
-        <div class="basic-content">
-            <h2>Daarom Jonge Democraten</h2>
-            <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li>Mauris non dolor sed quam hendrerit auctor.</li>
-                <li>Cras augue odio, dictum in posuere id, dapibus in elit.</li>
-                <li>Aenean pellentesque rutrum lectus, eget vulputate dolor auctor et.</li>
-                <li>Cras nulla ipsum, egestas at urna quis, mattis convallis justo.</li>
-                <li>Aenean pellentesque rutrum lectus, eget vulputate dolor auctor et.</li>
-            </ul>
-        </div>
+  <div class="doemee basic-container row">
+    <div class="basic-content">
+      <h2>Daarom Jonge Democraten</h2>
+        <ul>
+          {% for item in page.get_content_model.thatswhyitem_set.all %}
+            <li>{{ item.title }}</li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
-</div>
-<div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
-    <!-- LOAD views/components/sidebar/sidebar-doemee.html -->
-</div>
+  </div>
+{% endif %}
+

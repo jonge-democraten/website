@@ -16,12 +16,7 @@
     <div class="news list-container">
         <div class="list-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
             {% for blog_post in blog_posts.object_list %}
-            <article class="list-item">
-                <h2>{{ blog_post.title }}</h2>
-                <h3><i class="gd gd-clock"></i>{{ blog_post.publish_date|date:"d M Y" }}</h3>
-                {{ blog_post.description_from_content|richtext_filters|safe }}
-                <a class="button" href="{{ blog_post.get_absolute_url }}">Lees verder</a>
-            </article>
+              {% include "components/content/nieuws/content_news_item.html" %}
             {% endfor %}
             <div class="pagination">
                 <h3>{% pagination_for blog_posts %}</h3>

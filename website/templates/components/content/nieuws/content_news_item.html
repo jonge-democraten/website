@@ -1,13 +1,13 @@
+{% load mezzanine_tags %}
+
 <article class="list-item">
-    <h2>Lorem ipsum dolor sit amet, econsectetur adipiscing elit.</h2>
-    <h3><i class="gd gd-clock"></i>17 februari 2017 </h3>
-    <figure>
-        <img src="resources/img/news.jpg" alt="#"/>
-    </figure>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur eadipiscing elit. Nunc varius lacinia justo, vitae scelerisque nunc
-        auctor vitae.
-    </p>
-    <!-- SET href news item url -->
-    <a class="button" href="#">Lees verder</a>
+  <h2>{{ blog_post.title }}</h2>
+  <h3><i class="gd gd-clock"></i>{{ blog_post.publish_date|date:"d M Y" }}</h3>
+  <figure class="list">
+    {% if blog_post.featured_image %}
+      <img src="{{ blog_post.featured_image.url }}" alt="#"/>
+    {% endif %}
+  </figure>
+  {{ blog_post.description_from_content|richtext_filters|safe }}
+  <a class="button" href="{{ blog_post.get_absolute_url }}">Lees verder</a>
 </article>

@@ -1,0 +1,75 @@
+/**
+ *	Afdelingskaartje
+ */
+#afdelingskaart {
+	overflow: hidden;
+}
+.mobile #afdelingskaart {
+	margin-left: -20px;
+	margin-right: -20px;
+}
+.gemeente {
+	fill: #ccc;
+	opacity: .9;
+}
+.gemeente:hover {
+	opacity: 1;
+	stroke: #444;
+}
+.gemeentegrens {
+	fill: none;
+	stroke: #fff;
+	stroke-width: .75px;
+	stroke-linejoin: round;
+}
+.graticule {
+	fill: none;
+	stroke: #000;
+	stroke-opacity: .3;
+	stroke-width: .5px;
+}
+.graticule.outline {
+	stroke: #333;
+	stroke-opacity: 1;
+	stroke-width: 1.5px;
+}
+
+#afdelingskaart {
+	position: relative;
+}
+
+.infobox {
+	font-size: 12px;
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	color: #fff;
+	min-width: 196px;
+	min-height: 58px;
+	background: rgba(0,0,0,.75);
+	border-radius: 8px;
+	padding: 8px 12px;
+	transition: background .2s;
+	-o-transition: background .2s; /* Opera */
+	-moz-transition: background .2s; /* Firefox 4 */
+	-webkit-transition: background .2s; /* Safari and Chrome */
+	box-shadow: 1px 1px 3px rgba(0,0,0,.25);
+}
+
+.infobox h2, .mobile section.content #afdelingskaart .infobox h2, h3#selected-gemeente {
+	color: white;
+	font-family: sans-serif;
+	margin: .6em 0;
+	white-space: nowrap;
+	text-shadow: 1px 1px 0 rgba(0,0,0,.4);
+}
+
+.infobox h2, .mobile section.content #afdelingskaart .infobox h2 {
+	font-size: 1.5em;
+}
+
+.mobile section.content #afdelingskaart .infobox h2 {
+	position: static;
+	top: 0;
+	color: #fff;
+}

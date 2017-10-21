@@ -1,5 +1,6 @@
 {% load static %}
 {% load pages_tags %}
+{% load mezzanine_tags %}
 
 <nav class="navbar navbar-fixed-top">
     <div class="force-xlg-container col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
@@ -26,4 +27,7 @@
     </div>
 </nav>
 
-{% include "components/search.html" %}
+<div class="search-box">
+  {% search_form %}
+</div>
+

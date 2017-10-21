@@ -1,31 +1,6 @@
-{% load mezzanine_tags i18n future %}
-
-<div id="searchDiv">
-
-<form action="{% url "search" %}" role="search">
-
-    <input type="text" name="q" size="24" value="{{ request.GET.q }}">
-    <input type="submit" class="button" value="{% trans "Zoek" %}">
-
-{% if search_model_choices %}
-    {% if search_model_choices|length == 1 %}
-    <input type="hidden" name="type" value="{{ search_model_choices.0.1 }}">
-    {% else %}
-    <div class="form-group">
-    <select class="form-control" name="type">
-        <option value="">{% trans "Everything" %}</option>
-        {% for verbose_name, model in search_model_choices %}
-        <option value="{{ model }}"
-            {% if model == request.GET.type  %}selected{% endif %}>
-            {{ verbose_name }}
-        </option>
-        {% endfor %}
-    </select>
-    </div>
-    {% endif %}
-{% endif %}
-
-
+<form class="force-xlg-container col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0"
+  action="{% url "search" %}" role="search">
+  <input type="text" name="q" value="{{ request.REQUEST.q }}" placeholder="Waar ben je naar op zoek?" autocomplete="off" />
+  <button type="submit" name="search-submit" class="gd gd-search-s">Zoeken..</button>
 </form>
 
-</div>

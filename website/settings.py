@@ -140,7 +140,10 @@ TEMPLATE_LOADERS = (
     "django.template.loaders.app_directories.Loader",
 )
 
-AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend", 'janeus.backend.JaneusBackend')
+AUTHENTICATION_BACKENDS = (
+    "mezzanine.core.auth_backends.MezzanineBackend",
+    'janeus.backend.JaneusBackend'
+)
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -309,6 +312,7 @@ MIDDLEWARE_CLASSES = (
     # "mezzanine.core.middleware.SSLRedirectMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
+    "janeus.utils.CurrentRequestMiddleware"
 )
 
 # Store these package names here as they may change in the future since

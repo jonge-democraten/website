@@ -14,3 +14,5 @@ icalendar==3.11
 -e git+https://github.com/jonge-democraten/hemres@0.14#egg=hemres
 inlinestyler==0.2.3
 django-robots==2.0
+# pillow is normally defined by mezzanine, but thumbnails fail with pillow 4.3.0, see https://github.com/stephenmcd/mezzanine/issues/1785
+pillow==4.1.1

@@ -16,11 +16,11 @@ a.navbar-brand > img { color: #ffffff; text-indent: 0; margin-top: -1em; height:
 button.search {margin: 18px 5px;padding: 4px;outline: none;font-size: 1.2em;line-height: 1;}
 button.search.mobile { border: none; background: none; font-size: 1.5em; margin: 23px 0 21px; padding: 0; line-height: 0; }
 
-.nav>li>.word-lid, .nav>li>.word-lid:focus {display: inline-block;border: 3px solid #6e9236;color: #ffffff;background-color: #91c149;padding: 8px 28px 8px 22px;}
+.nav>li>.word-lid, .nav>li>.word-lid:focus {display: inline-block;border: 2px solid #6e9236;color: #ffffff;background-color: #91c149;padding: 8px;}
 .nav>li:hover>.word-lid, .nav>li>.word-lid:hover { background-color: #6e9236; border: 3px solid #6e9236; }
 
 .nav .word-lid { margin: 13px 0px 13px 7.5px; }
-.nav .word-lid i { margin-right: 10px; vertical-align: sub; }
+.nav .word-lid i { margin-right: 4px; vertical-align: sub; }
 
 ul.nav li ul { display: none; list-style: none; position: absolute; min-width: 200px; background-color: #91c149; padding: 8px 8px; background-size: 100% auto; background-repeat: no-repeat; background-position: right top; background-image: url(../../img/sidebarvorm.png); }
 ul.nav li:hover > ul { padding-top: 5px; display: block; top: 65px; }

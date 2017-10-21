@@ -1,4 +1,4 @@
-{% load pages_tags i18n future %}
+{% load static pages_tags i18n future %}
 
 <ul class="nav navbar-nav" role="menu">
 {% spaceless %}
@@ -17,6 +17,7 @@
 {% endfor %}
 {% endspaceless %}
     <!-- START STATIC MENU ITEMS -->
+    <li><a class="english" href="/english"><img src="{% static 'website/img/uk.png' %}" /></a></li>
     <li class="hidden-xs"><button class="search"><i class="gd gd-search-o"></i></button></li>
     <li><a class="word-lid" href="/word-lid"><i class="gd gd-heart"></i> word lid</a></li>
     <!-- END STATIC MENU ITEMS -->

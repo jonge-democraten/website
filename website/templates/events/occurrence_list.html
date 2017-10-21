@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load mezzanine_tags staticfiles %}
 
-{% block meta_title %}Upcoming events{% endblock %}
+{% block meta_title %}Aankomende evenementen{% endblock %}
 
 {% block main %}
 <div id="homeDiv">
-    <h2>Upcoming events</h2>
+    <h2>Aankomende evenementen</h2>
     {% for occurrence in occurrence_list %}
         {% ifchanged occurrence.start_time.day occurrence.start_time.month occurrence.start_time.year %}
         {% if not forloop.first %}</ul>{% endif %}
@@ -20,7 +20,7 @@
         {% endif %}
     {% empty %}
     <p>
-        There are no upcoming events.
+        Er zijn geen aankomende evemenenten.
     </p>
     {% endfor %}
 </div>

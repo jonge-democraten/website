@@ -572,6 +572,9 @@ FILEBROWSER_EXTENSIONS = {
     'Code': ['.html', '.py', '.js', '.css']
 }
 
+# Max. Upload Size in Bytes:
+FILEBROWSER_MAX_UPLOAD_SIZE = 20 * 1024 * 1024
+
 #####################
 # TEMPLATE SETTINGS #
 #####################

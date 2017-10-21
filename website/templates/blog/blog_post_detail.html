@@ -19,9 +19,9 @@
         <h2>{{ blog_post.title }}</h2>
         <h3><i class="gd gd-clock"></i>{{ blog_post.publish_date|date:"d M Y" }}</h3>
         {% if blog_post.featured_image %}
-        <figure>
-          <img src="{{ blog_post.featured_image.url }}" alt="#" />
-        </figure>
+          <figure>
+            <img src="{{ blog_post.featured_image.url }}" alt="#" />
+          </figure>
         {% endif %}
         {{ blog_post.content|richtext_filters|safe }}
         <div class="category-container">

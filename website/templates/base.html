@@ -34,6 +34,12 @@
         <link rel="stylesheet" href="{% static 'website/css/main.css' %}">
 
         {% block extra_css %}{% endblock %}
+
+        <script src="{% static 'website/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="resources/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="{% static 'website/js/vendor/bootstrap.min.js' %}"></script>
+
         {% block extra_js %}{% endblock %}
         {% block extra_head %}{% endblock %}
 
@@ -93,10 +99,6 @@
 
         {% include "components/footer.html" %}
 
-        <script src="{% static 'website/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="resources/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        <script src="{% static 'website/js/vendor/bootstrap.min.js' %}"></script>
         <script src="{% static 'website/js/main.js' %}"></script>
     </body>
 

@@ -25,9 +25,10 @@
         {% endif %}
         {{ blog_post.content|richtext_filters|safe }}
         <div class="category-container">
-          <span class="container-label">Categorie:</span><?php foreach(Array(1,2) as $count): ?>
-            <a href="nieuws.php" class="category-item">persberichten</a>
-          <?php endforeach; ?>
+          <span class="container-label">Categorie:</span>
+          {% for category in blog_post.categories.all %}
+            <a href="{% url "blog_post_list_category" category.slug %}" class="category-item">{{ category.title }}</a>
+          {% endfor %}
         </div>
         <div class="social-container">
           <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jongedemocraten.nl/" class="social-item">Facebook<i class="gd gd-facebook"></i></a>

@@ -1,8 +1,6 @@
 {% load static %}
 
 <!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]><html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" lang="nl"> <!--<![endif]-->
 
@@ -43,33 +41,6 @@
         {% block extra_js %}{% endblock %}
         {% block extra_head %}{% endblock %}
 
-        <!--[if lt IE 8]>
-            <link rel="stylesheet" href="{% static 'website/css/fonts.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/components/icons.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/components/pagination.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/general.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/base.css' %}">
-
-            <link rel="stylesheet" href="{% static 'website/css/components/action-banner.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/components/agenda.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/components/bestuur.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/components/contact.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/components/doemee.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/components/nieuws.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/components/organisatie.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/components/organisatie.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/components/standpunten.css' %}">
-
-            <link rel="stylesheet" href="{% static 'website/css/components/navigation.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/components/header.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/components/sidebar.css' %}">
-            <link rel="stylesheet" href="{% static 'website/css/components/footer.css' %}">
-
-            <link rel="stylesheet" href="{% static 'website/css/responsive.css' %}">
-
-            <link rel="stylesheet" href="{% static 'website/css/components/afdelingskaart.css' %}">
-        <![endif]-->
-
         {% if piwik_url %}
             {% include "component/piwik_tracking_code.html" %}
         {% endif %}
@@ -77,9 +48,6 @@
     </head>
 
     <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
 
         {% include "components/nav.html" %}
 

@@ -1,7 +1,7 @@
 django==1.8.18
 mezzanine==4.2.2
 # bleach is fixed for hemres, hemres should update to bleach 2.0 becuase future mezzanine requires bleach 2.0
-bleach==1.4.3
+bleach==1.5
 grappelli-safe==0.4.7
 django-simple-captcha==0.5.5
 django-rq==0.9.6
@@ -9,7 +9,7 @@ django-formtools==2.1
 icalendar==3.11.7
 -e git+https://github.com/jonge-democraten/mezzanine-fullcalendar@0.6.13#egg=fullcalendar
 -e git+https://github.com/jonge-democraten/janeus@1.5#egg=janeus
--e git+https://github.com/jonge-democraten/hemres@0.15#egg=hemres
+-e git+https://github.com/jonge-democraten/hemres@0.16#egg=hemres
 inlinestyler==0.2.3
 django-robots==3.0
 PyMySQL==0.7.11

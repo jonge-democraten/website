@@ -1,7 +1,5 @@
 django==1.8.18
-mezzanine==4.2.2
-# bleach is fixed for hemres, hemres should update to bleach 2.0 becuase future mezzanine requires bleach 2.0
-bleach==1.5
+mezzanine==4.2.3
 grappelli-safe==0.4.7
 django-simple-captcha==0.5.5
 django-rq==0.9.6

@@ -123,6 +123,12 @@ class VisionsPageAdmin(PageAdmin):
     verbose_name = "Standpuntenpagina"
     verbose_name_plural = "Standpuntenpagina's"
 
+    def get_form(self, request, obj=None, **kwargs):
+        # remove the '+' (add) button for vision pages, should not be created here
+        form = super().get_form(request, obj, **kwargs)
+        form.base_fields["vision_pages"].widget.can_add_related = False
+        return form
+
 class VisionPageAdmin(PageAdmin):
     model = VisionPage
     inlines = [PageHeaderImageInline, SidebarTwitterInline]
@@ -134,6 +140,12 @@ class OrganisationPageAdmin(PageAdmin):
     inlines = [PageHeaderImageInline, SidebarTwitterInline]
     verbose_name = "Organisatiepagina"
     verbose_name_plural = "Organisatiepagina's"
+
+    def get_form(self, request, obj=None, **kwargs):
+        # remove the '+' (add) button for part pages, should not be created here
+        form = super().get_form(request, obj, **kwargs)
+        form.base_fields["organisation_part_pages"].widget.can_add_related = False
+        return form
 
 class OrganisationPartPageAdmin(PageAdmin):
     model = OrganisationPartPage

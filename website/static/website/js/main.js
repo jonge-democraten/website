@@ -59,7 +59,7 @@
 			
 			if(size.portrait.height === parent.height && size.portrait.width >= parent.width){
 				orientations.push(Array(target, 'portrait'));
-			} else if(size.landscape.width === parent.width && size.landscape.height >= parent.height){
+			} else {
 				orientations.push(Array(target, 'landscape'));
 			}
 		});

@@ -175,7 +175,7 @@ def validate_images_aspect_ratio(imagepath, required_aspect_ratio, max_differenc
         raise ValidationError('Image aspect ratio should be %i, selected image is %i x %i. Please resize the image.' % (required_aspect_ratio, width, height))
 
 
-def validate_vision_image(imagepath, aspect_ratio, max_difference):
+def validate_vision_image(imagepath):
     validate_images_aspect_ratio(imagepath, required_aspect_ratio=1.5, max_difference=0.1)
 
 

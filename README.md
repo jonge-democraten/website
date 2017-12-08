@@ -4,7 +4,7 @@ jdwebsite
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jonge-democraten/website/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jonge-democraten/website/?branch=master)
 [![Dependency Status](https://gemnasium.com/jonge-democraten/website.svg)](https://gemnasium.com/jonge-democraten/website)  
 A website application and content management system developed for the [Jonge Democraten](http://jongedemocraten.nl/).  
-Based on Python, Django and [Mezzanine](http://mezzanine.jupo.org/). Open-source and under the MIT-licence. 
+Based on Python 3.4+, Django and [Mezzanine](http://mezzanine.jupo.org/). Open-source and under the MIT-licence. 
 
 #### Documentation
 * **[User](http://jdwebsite.readthedocs.org/en/latest/user/)**

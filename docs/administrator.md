@@ -32,7 +32,9 @@ For MySQL, see [http://dev.mysql.com/doc/refman/5.6/en/mysql-tzinfo-to-sql.html]
 
 ### Twitter Feed Update
 
-The twitter feed needs to be updated with tweets. This can be done via a poll twitter script,
+The [Mezzanine Twitter app](http://mezzanine.jupo.org/docs/twitter-integration.html?highlight=twitter) is used to consume, store and display tweets.
+
+The twitter feed needs to be updated with tweets via a script that calls the `poll_twitter` management command,
 `/usr/local/bin/poll_twiter.sh`:
 
 ```bash

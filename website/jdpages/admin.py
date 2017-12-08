@@ -125,11 +125,13 @@ class ThatsWhyInline(TabularDynamicInlineAdmin):
 
 class HomePageAdmin(PageAdmin):
     model = HomePage
+    filter_vertical = ['vision_pages']
     inlines = [PageHeaderImageInline, ActionBannerInline, SidebarAgendaInline, SidebarTwitterInline, SidebarSocialInline]
 
 
 class VisionsPageAdmin(PageAdmin):
     model = VisionsPage
+    filter_vertical = ['vision_pages']
     inlines = [PageHeaderImageInline, SidebarTwitterInline]
     verbose_name = "Standpuntenpagina"
     verbose_name_plural = "Standpuntenpagina's"
@@ -151,6 +153,7 @@ class VisionPageAdmin(PageAdmin):
 class OrganisationPageAdmin(PageAdmin):
     model = OrganisationPage
     inlines = [PageHeaderImageInline, SidebarTwitterInline]
+    filter_vertical = ['organisation_part_pages']
     verbose_name = "Organisatiepagina"
     verbose_name_plural = "Organisatiepagina's"
 

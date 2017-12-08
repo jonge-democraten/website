@@ -1,10 +1,28 @@
 {% overextends "admin/login.html" %}
 
+{% block title %}Jonge Democraten Achterkant{% endblock %}
+
+{% block content %}
+{{ block.super }}
+
+{% if form.non_field_errors %}
+    <div style="margin: auto; margin-top: 30px; padding: 20px; color: white; background-color: #bb3a32; width: 500px; border-radius: 4px;">
+        <h2>LET OP: Afdelingen kunnen alleen op hun afdelingssite inloggen</h2>
+        <br/>
+        <h4>Het is alleen mogelijk om in te loggen via de login pagina van jouw afdeling.</h4>
+        <h4>Ga dus bijvoorbeeld naar utrecht.jd.nl/admin om in te loggen op de achterkant van Utrecht.</h4>
+    </div>
+{% endif %}
+{% endblock %}
+
 {% block extrastyle %}
     {{ block.super }}
-    <style>       
+    <style>
         p#forgot-password {
             display: none;
         }
-    </style>       
+        form#login-form {
+            min-height: 0px;
+        }
+    </style>
 {% endblock %}

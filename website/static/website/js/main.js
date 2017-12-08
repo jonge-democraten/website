@@ -59,6 +59,8 @@
 			
 			if(size.portrait.height === parent.height && size.portrait.width >= parent.width){
 				orientations.push(Array(target, 'portrait'));
+			} else if (parent.height >= size.landscape.height) {
+				orientations.push(Array(target, 'portrait'));
 			} else {
 				orientations.push(Array(target, 'landscape'));
 			}

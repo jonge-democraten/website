@@ -57,20 +57,24 @@ class FooterLinkInline(TabularDynamicInlineAdmin):
     verbose_name = "Footer link"
     verbose_name_plural = "Footer links"
 
+
 class FooterLinksAdmin(admin.ModelAdmin):
     model = FooterLinks
     inlines = [FooterLinkInline]
+
 
 class PageHeaderImageInline(TabularDynamicInlineAdmin):
     model = PageHeaderImage
     verbose_name = "Header image"
     verbose_name_plural = "Header images"
 
+
 class ActionBannerInline(StackedDynamicInlineAdmin):
     model = ActionBanner
     extra = 1
     verbose_name = "Action banner"
     verbose_name_plural = "Action banners"
+
 
 class SidebarAgendaInline(TabularDynamicInlineAdmin):
     model = SidebarAgenda
@@ -79,12 +83,14 @@ class SidebarAgendaInline(TabularDynamicInlineAdmin):
     verbose_name = "Agenda sidebar"
     verbose_name_plural = "Agenda sidebars"
 
+
 class SidebarSocialInline(TabularDynamicInlineAdmin):
     model = SidebarSocial
     form = AlwaysChangedModelForm
     extra = 0
     verbose_name = "Social sidebar"
     verbose_name_plural = "Social sidebars"
+
 
 class SidebarTwitterInline(TabularDynamicInlineAdmin):
     model = SidebarTwitter
@@ -93,6 +99,7 @@ class SidebarTwitterInline(TabularDynamicInlineAdmin):
     verbose_name = "Twitter sidebar"
     verbose_name_plural = "Twitter sidebars"
 
+
 class SidebarLinkInline(TabularDynamicInlineAdmin):
     model = SidebarLink
     form = AlwaysChangedModelForm
@@ -100,11 +107,13 @@ class SidebarLinkInline(TabularDynamicInlineAdmin):
     verbose_name = "Link list sidebar"
     verbose_name_plural = "Link list sidebars"
 
+
 class SidebarRichTextInline(StackedDynamicInlineAdmin):
     model = SidebarRichText
     extra = 1
     verbose_name = "Content sidebar"
     verbose_name_plural = "Content sidebars"
+
 
 class ThatsWhyInline(TabularDynamicInlineAdmin):
     model = ThatsWhyItem
@@ -113,9 +122,11 @@ class ThatsWhyInline(TabularDynamicInlineAdmin):
     verbose_name = "That's why item"
     verbose_name_plural = "That's why items"
 
+
 class HomePageAdmin(PageAdmin):
     model = HomePage
     inlines = [PageHeaderImageInline, ActionBannerInline, SidebarAgendaInline, SidebarTwitterInline, SidebarSocialInline]
+
 
 class VisionsPageAdmin(PageAdmin):
     model = VisionsPage
@@ -129,11 +140,13 @@ class VisionsPageAdmin(PageAdmin):
         form.base_fields["vision_pages"].widget.can_add_related = False
         return form
 
+
 class VisionPageAdmin(PageAdmin):
     model = VisionPage
     inlines = [PageHeaderImageInline, SidebarTwitterInline]
     verbose_name = "Standpuntpagina"
     verbose_name_plural = "Standpuntpagina's"
+
 
 class OrganisationPageAdmin(PageAdmin):
     model = OrganisationPage
@@ -147,11 +160,13 @@ class OrganisationPageAdmin(PageAdmin):
         form.base_fields["organisation_part_pages"].widget.can_add_related = False
         return form
 
+
 class OrganisationPartPageAdmin(PageAdmin):
     model = OrganisationPartPage
     inlines = [PageHeaderImageInline, SidebarTwitterInline]
     verbose_name = "Organisatieonderdeelpagina"
     verbose_name_plural = "Organisatieonderdeelpagina's"
+
 
 class OrganisationMemberAdmin(admin.ModelAdmin):
     model = OrganisationMember
@@ -165,6 +180,7 @@ class OrganisationMemberAdmin(admin.ModelAdmin):
     )
     search_fields = ['name']
 
+
 class OrganisationPartMemberAdmin(admin.ModelAdmin):
     model = OrganisationPartMember
     verbose_name = "Organisatiefunctie"
@@ -176,14 +192,17 @@ class OrganisationPartMemberAdmin(admin.ModelAdmin):
     )
     search_fields = ['member__name']
 
+
 class RichtTextPageAdmin(PageAdmin):
     inlines = [
         PageHeaderImageInline, SidebarAgendaInline, SidebarSocialInline,
         SidebarTwitterInline, SidebarLinkInline, SidebarRichTextInline
     ]
 
+
 class BlogPageAdmin(PageAdmin):
     inlines = [PageHeaderImageInline]
+
 
 class WordLidAdmin(PageAdmin):
     model = WordLidPage
@@ -196,15 +215,18 @@ class CustomFormAdmin(FormAdmin):
     inlines = [PageHeaderImageInline, SidebarRichTextInline]
     inlines.insert(0, FormAdmin.inlines[0])
 
+
 class FooterAdmin(SingletonAdmin):
     model = Footer
     verbose_name = "Footer"
     verbose_name_plural = "Footers"
 
+
 class SocialMediaUrlsAdmin(SingletonAdmin):
     model = SocialMediaUrls
     verbose_name = "Social media url list"
     verbose_name_plural = "Social media url lists"
+
 
 admin.site.unregister(RichTextPage)
 admin.site.register(RichTextPage, RichtTextPageAdmin)

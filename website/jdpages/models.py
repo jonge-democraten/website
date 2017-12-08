@@ -307,12 +307,14 @@ class SocialMediaUrls(SiteRelated):
         verbose_name = "Social media urls"
         verbose_name_plural = "Social media urls"
 
+
 class WordLidPage(Page, RichText):
     """
     """
     
     class Meta:
         verbose_name = 'WordLidPage'
+
 
 class ThatsWhyItem(PageItem, Orderable):
     title = models.CharField(max_length=100, blank=True, default="")

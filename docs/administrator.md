@@ -12,7 +12,6 @@ This guide is written for administrators of the JD website.
 
 This document has three purposes:
 * provide instructions for *deploying* a stable and secure instance of the website;
-* provide a step-by-step walkthrough of *importing* the data in an old Joomla installation to your new website;
 * provide guidance for *day-to-day administration* of an active instance of the website.
 
 ## Deployment
@@ -30,6 +29,32 @@ The instructions at [https://docs.djangoproject.com/en/1.8/ref/databases/](https
 Make sure the database contains the timezone tables, needed by the calendar app.
 
 For MySQL, see [http://dev.mysql.com/doc/refman/5.6/en/mysql-tzinfo-to-sql.html](http://dev.mysql.com/doc/refman/5.6/en/mysql-tzinfo-to-sql.html).
+
+### Twitter Feed Update
+
+The twitter feed needs to be updated with tweets. This can be done via a poll twitter script,
+`/usr/local/bin/poll_twiter.sh`:
+
+```bash
+#!/bin/sh
+#
+
+PROJECTDIR="/usr/share/website/site/website"
+VENVDIR="/usr/share/website/site/env"
+RUNAS="website"
+
+sudo -u ${RUNAS} -H bash -c "source $VENVDIR/bin/activate; 
+${PROJECTDIR}/manage.py poll_twitter"
+```
+
+Create a cronjob to run the script every 10 minutes,
+`/etc/cron.d/website-twitter`:
+
+```bash
+MAILTO=root
+*/10 * * * * root /usr/local/bin/poll_twitter.sh 2>&1 | logger 
+-tpoll_twitter
+```
 
 ## Day-to-day administration
 

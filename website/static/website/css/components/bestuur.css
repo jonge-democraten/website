@@ -1,0 +1,7 @@
+.bestuur.list-container { margin-top: 30px; }
+
+.bestuur .list-item { margin: 0 0 30px; }
+.bestuur .list-item > div { padding: 15px; background-color: #ffffff; }
+.bestuur .list-item h3 {font-family: 'latoregular';font-weight: normal;margin: 3px 0 2px;font-size: 14px;}
+
+.bestuur .social-container { margin: 0px 0; }

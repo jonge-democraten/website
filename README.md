@@ -13,6 +13,8 @@ Based on Python, Django and [Mezzanine](http://mezzanine.jupo.org/). Open-source
 * **[Design](http://jdwebsite.readthedocs.org/en/latest/design/)**
 
 #### Quick Install (Linux)
+Detailed instructions can be found in the [developer documentation](http://jdwebsite.readthedocs.org/en/latest/developer/).
+
 1. `$ ./clean_env.sh`
 1. `$ ./build_env.sh`
 1. `$ source ./env/bin/activate`  

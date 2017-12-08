@@ -1,0 +1,15 @@
+{% if page.get_content_model.thatswhyitem_set.all %}
+<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+  <div class="doemee basic-container row">
+    <div class="basic-content">
+      <h2>Daarom Jonge Democraten</h2>
+        <ul>
+          {% for item in page.get_content_model.thatswhyitem_set.all %}
+            <li>{{ item.title }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endif %}
+

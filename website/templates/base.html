@@ -1,105 +1,73 @@
+{% load static %}
+
 <!doctype html>
-<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
-{% load pages_tags mezzanine_tags i18n future staticfiles %}
-{% ifinstalled mezzanine.blog %}{% load blog_tags %}{% endifinstalled %}
+<!--[if IE 8]><html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="nl"> <!--<![endif]-->
 
-<head>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
-<meta name="description" content="{% block meta_description %}{% endblock %}">
-<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} - {{ settings.SITE_TITLE }}{% endif %}</title>
-<link rel="shortcut icon" href="{% static "website/images/jdicon.png" %}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} - {{ settings.SITE_TITLE }}{% else %}Jonge Democraten{% endif %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" sizes="57x57" href="{% static 'website/img/favicon/apple-icon-57x57.png' %}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{% static 'website/img/favicon/apple-icon-60x60.png' %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'website/img/favicon/apple-icon-72x72.png' %}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{% static 'website/img/favicon/apple-icon-76x76.png' %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'website/img/favicon/apple-icon-114x114.png' %}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{% static 'website/img/favicon/apple-icon-120x120.png' %}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{% static 'website/img/favicon/apple-icon-144x144.png' %}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{% static 'website/img/favicon/apple-icon-152x152.png' %}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'website/img/favicon/apple-icon-180x180.png' %}">
+        <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'website/img/favicon/android-icon-192x192.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'website/img/favicon/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{% static 'website/img/favicon/favicon-96x96.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'website/img/favicon/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static 'website/img/favicon/manifest.json' %}">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png' %}">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" href="{% static 'website/css/vendor/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'website/css/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'website/css/main.css' %}">
 
-{% ifinstalled mezzanine.blog %}
-{% blog_categories as categories %}
-<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
-<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
-{% if categories %}
-{% for category in categories %}
-<link rel="alternate" type="application/rss+xml" title="{{ category }} RSS" href="{% url "blog_post_feed_category" category.slug "rss" %}">
-<link rel="alternate" type="application/atom+xml" title="{{ category }} Atom" href="{% url "blog_post_feed_category" category.slug "atom" %}">
-{% endfor %}
-{% endif %}
-{% endifinstalled %}
+        {% block extra_css %}{% endblock %}
 
-{% compress css %}
-<link rel="stylesheet" href="{% static "website/css/template.css" %}" type="text/css" />
-{% block extra_css %}{% endblock %}
-{% endcompress %}
+        <script src="{% static 'website/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="resources/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="{% static 'website/js/vendor/bootstrap.min.js' %}"></script>
 
-{% compress js %}
-<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
-<script src="{% static "mezzanine/js/"|add:settings.JQUERY_UI_FILENAME %}"></script>
-<script>
-$(function() {
-  $( "#tabs" ).tabs();
-});
-</script>
-{% block extra_js %}{% endblock %}
-{% endcompress %}
+        {% block extra_js %}{% endblock %}
+        {% block extra_head %}{% endblock %}
 
-<!--[if lt IE 9]>
-<script src="{% static "website/js/html5shiv.js" %}"></script>
-<script src="{% static "website/js/respond.min.js" %}"></script>
-<![endif]-->
+        {% if piwik_url %}
+            {% include "component/piwik_tracking_code.html" %}
+        {% endif %}
 
-<meta name="twitter:card" value="summary">
-<meta name="twitter:creator" value="@JongeDemocraten">
-<meta name="twitter:site" value="@JongeDemocraten">
-<meta property="og:url" content="{{ request.build_absolute_uri }}">
-<meta property="og:title" content="{% block meta_title2 %}{% endblock %}{% if settings.SITE_TITLE %} - {{ settings.SITE_TITLE }}{% endif %}">
-<meta property="og:description" content="{% block meta_description2 %}{% endblock %}">
-<meta property="og:image" content="{% static "/static/website/images/logo.png" %}">
+    </head>
 
-{% block extra_head %}{% endblock %}
-</head>
+    <body>
 
-<body id="{% block body_id %}body{% endblock %}">
+        {% include "components/nav.html" %}
 
-<div id="outerDiv">
-    <div id="innerDiv">
-        <div id="headerDiv">
-            {% include "elements/header.html" %}
+        {% if page.homepage %}
+            {% include "components/header_home.html" %}
+        {% else %}
+            {% include "components/header_default.html" %}
+        {% endif %}
 
-            <div id="menuDiv">
-                {% page_menu "pages/menus/jdmenu.html" %}
-            </div> <!-- menuDiv -->
+        <div class="container-fluid">
+            <div class="row">
 
-        {% search_form %}
+            {% block main %}{% endblock %}
 
-        </div> <!-- headerDiv -->
+            </div>
+        </div>
 
-        <div id="contentDiv" class="clearing">
+        {% include "components/footer.html" %}
 
-            <div id="contentLeftDiv" class="clearing">
-                {% block main %}{% endblock %}               
-            </div> <!-- contentLeftDiv -->
+        <script src="{% static 'website/js/main.js' %}"></script>
+    </body>
 
-            <div id="contentRightDiv">
-                
-                {% for item in sidebar_items %}
-                    <div class="moduletable">
-                        {% with template_name=item.get_template_name %}
-                            {% include "elements/"|add:template_name %}
-                        {% endwith %}
-                    </div>
-                {% endfor %}
-                
-            </div> <!-- contentRightDiv -->
-            
-        </div> <!-- contentDiv -->
-
-    </div> <!-- innerDiv -->
-</div> <!-- outerDiv -->
-
-{% include "elements/footer.html" %}
-
-{% include "includes/footer_scripts.html" %}
-
-{% if piwik_url %}
-    {% include "elements/piwik_tracking_code.html" %}
-{% endif %}
-
-</body>
 </html>

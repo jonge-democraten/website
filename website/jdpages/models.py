@@ -6,25 +6,57 @@ from datetime import datetime
 import os
 from string import punctuation
 import logging
-logger = logging.getLogger(__name__)
 
 from PIL import Image
 
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q
-from django.utils.translation import ugettext_lazy as _
-from django.utils.encoding import force_text
 from django.utils import timezone
 from django.conf import settings
 
 from mezzanine.blog.models import BlogCategory, BlogPost
 from mezzanine.core.fields import FileField
+from mezzanine.core.fields import RichTextField
 from mezzanine.core.models import Orderable, RichText, SiteRelated
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.pages.models import Page
+
+logger = logging.getLogger(__name__)
+
+
+class FooterLinks(SiteRelated):
+    title = models.CharField(max_length=100, blank=True, default="")
+
+    def __str__(self):
+        return self.title
+
+
+class FooterLink(SiteRelated, Orderable):
+    title = models.CharField(max_length=100, blank=True, default="")
+    url = models.CharField(max_length=500, blank=True, default="")
+    footer_links = models.ForeignKey(FooterLinks, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+
+class FooterInfo(SiteRelated):
+    title = models.CharField(max_length=100, blank=True, default="")
+    content = RichTextField()
+
+    def __str__(self):
+        return self.title
+
+
+class Footer(SiteRelated):
+    links_left = models.OneToOneField(FooterLinks, auto_created=True, related_name="links_left")
+    links_middle = models.OneToOneField(FooterLinks, auto_created=True, related_name="links_right")
+    info_right = models.OneToOneField(FooterInfo, auto_created=True)
+
+    class Meta:
+        verbose_name = "Footer"
+        verbose_name_plural = "Footer"
 
 
 def validate_header_image(imagepath):
@@ -35,246 +67,29 @@ def validate_header_image(imagepath):
             'The file for this header does not exist anymore. Please remove or replace this header before saving the page.')
     im = Image.open(absolute_imagepath)
     width, height = im.size
-    if width != 610 or height != 290:
-        raise ValidationError('Image should be 610 x 290 pixels, selected image is %i x %i. Please resize the image.' % (width, height))
+    aspect_ratio = width/height
+    if aspect_ratio < 2.0:
+        raise ValidationError('Image aspect ratio should be at least 2 (for example 2000x1000px). The selected image is %i x %i. Please resize the image.' % (width, height))
+    if width < 1000:
+        raise ValidationError('Image resolution is too low. It should be at least 1000px wide. The selected image is %i x %i. Please find a larger image.' % (width, height))
 
 
-class PageHeaderImageWidget(SiteRelated):
+class PageHeaderImage(SiteRelated):
     """ Page header image. """
     name = models.CharField(max_length=1000, blank=True, null=False, default="")
     page = models.ForeignKey(Page, blank=False, null=True)
     image = FileField(max_length=200, format="Image", validators=[validate_header_image])
 
 
-class ColumnElement(SiteRelated):
-    """
-    A generic column element with reference to any model object.
-    Designed to be created when a supported model is created, see signals.py.
-    The ColumnElementWidget contains the information on how to display the
-    model object of this element.
-    """
-    COMPACT = 'CP'
-
-    SUBTYPES = (
-        (COMPACT, 'Compact'),
-    )
-
-    name = models.CharField(max_length=1000, blank=True, null=False, default="")
-    content_type = models.ForeignKey(ContentType, blank=True, null=True)
-    object_id = models.PositiveIntegerField(blank=False, null=True, verbose_name='related object id')
-    content_object = GenericForeignKey('content_type', 'object_id')
-    subtype = models.CharField(max_length=2, choices=SUBTYPES, blank=True, null=False, default="")
-
-    def __str__(self):
-        return str(self.name) + ' (' + str(self.content_type) + ')'
-
-    def get_object(self):
-        """ Returns the content object. """
-        return self.content_type.model_class().objects.get(id=self.object_id)
-
-    class Meta:
-        verbose_name = 'Column element'
-
-
-class HorizontalPosition():
-    """ Horizontal position of a user interface object. """
-    LEFT = 'Left'
-    RIGHT = 'Right'
-    POSITION_CHOICES = (
-        (LEFT, 'Left'),
-        (RIGHT, 'Right'),
-    )
-
-
-class ColumnElementWidget(Orderable, SiteRelated):
-    """
-    User interface object that shows some data in a html column on a page.
-    Contains a reference to some generic data represented by ColumnElement.
-    Contains a html item factory that generates the html for the supported
-    element types. Each element contains of one or more items.
-    """
-    title = models.CharField(max_length=1000, blank=True, null=False, default="")
-    column_element = models.ForeignKey(ColumnElement, blank=False, null=True)
+class PageItem(SiteRelated):
     page = models.ForeignKey(Page, blank=False, null=True)
-    max_items = models.PositiveIntegerField(default=3, blank=False, null=False)
-    horizontal_position = models.CharField(max_length=20,
-                                           choices=HorizontalPosition.POSITION_CHOICES,
-                                           default=HorizontalPosition.RIGHT)
-
-    def __str__(self):
-        return str(self.column_element) + ' widget'
+    visible = models.BooleanField(default=True)
 
     class Meta:
-        verbose_name = 'Column widget'
+        abstract = True
 
 
-class Sidebar(SiteRelated):
-    """ Site sidebar that can contain sidebar widgets. """
-
-    def __str__(self):
-        return "Sidebar"
-
-    class Meta:
-        verbose_name = "Sidebar"
-        verbose_name_plural = "Sidebar"
-
-
-class SidebarBlogCategoryWidget(SiteRelated):
-    """
-    Blog category widget that can be placed on a sidebar.
-    Its corresponding view item contains the template information.
-    """
-    title = models.CharField(max_length=200, blank=False, null=False, default="")
-    sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
-    blog_category = models.ForeignKey(BlogCategory, blank=False, null=True)
-
-    def __str__(self):
-        return str(self.blog_category) + ' widget'
-
-    class Meta:
-        verbose_name = 'Sidebar blogcategory'
-
-
-class SidebarTabsWidget(SiteRelated):
-    """
-    Tabs widget that can be placed on a sidebar.
-    The widget contains the upcoming events and newsletter registration tabs.
-    """
-    active = models.BooleanField(default=True, blank=False, null=False)
-    sidebar = models.OneToOneField(Sidebar, blank=False, null=False)
-
-    class Meta:
-        verbose_name = 'Sidebar tabs widget'
-
-
-class SidebarTwitterWidget(SiteRelated):
-    """
-    Twitter widget that can be placed on a sidebar.
-    The actual twitter settings can be found in the site settings.
-    This is just the element that can be placed on a sidebar.
-    """
-    active = models.BooleanField(default=False, blank=False, null=False)
-    sidebar = models.OneToOneField(Sidebar, blank=False, null=False)
-
-    class Meta:
-        verbose_name = 'Sidebar twitter widget'
-
-
-class SidebarBannerWidget(models.Model):
-    """ Banner that can be placed on a sidebar """
-    title = models.CharField(max_length=200, blank=False, null=False, default="")
-    active = models.BooleanField(blank=False, null=False, default=True)
-    image = FileField(max_length=200, format="Image")
-    url = models.URLField(max_length=200, help_text='http://www.example.com')
-    description = models.CharField(max_length=200, blank=True, null=False, default="",
-                                   help_text='This is shown as tooltip and alt text.')
-
-    def __str__(self):
-        return str(self.title) + ' widget'
-
-    class Meta:
-        verbose_name = 'Global sidebar banner'
-
-
-class SocialMediaButton(Orderable, SiteRelated):
-    """ Social media button that can be placed on a sidebar. """
-
-    FACEBOOK = 'FB'
-    LINKEDIN = 'LI'
-    TWITTER = 'TW'
-    YOUTUBE = 'YT'
-
-    SOCIAL_MEDIA_CHOICES = (
-        (FACEBOOK, 'Facebook'),
-        (LINKEDIN, 'LinkedIn'),
-        (TWITTER, 'Twitter'),
-        (YOUTUBE, 'YouTube'),
-    )
-
-    SOCIAL_MEDIA_ICONS = {
-        FACEBOOK: 'facebook.png',
-        LINKEDIN: 'linkedin.png',
-        TWITTER: 'twitter.png',
-        YOUTUBE: 'youtube.png',
-    }
-
-    type = models.CharField(max_length=2, choices=SOCIAL_MEDIA_CHOICES)
-    url = models.URLField(max_length=200)
-    sidebar = models.ForeignKey(Sidebar, blank=False, null=False)
-
-    def get_icon_url(self):
-        return 'website/images/icons/' + SocialMediaButton.SOCIAL_MEDIA_ICONS[str(self.type)]
-
-    def get_type_name(self):
-        for choice in SocialMediaButton.SOCIAL_MEDIA_CHOICES:
-            if choice[0] == self.type:
-                return choice[1]
-        assert False  # there should always be a name
-        return 'undefined type'
-
-    def __str__(self):
-        return str(type)
-
-    class Meta:
-        verbose_name = 'Social media button'
-
-
-class HomePage(Page, RichText):
-    """
-    Page model for the site homepage.
-    Only works properly when url points to the homepage '/' as url.
-    """
-
-    class Meta:
-        verbose_name = 'Homepage'
-
-
-class DocumentListing(Page, RichText):
-    """
-    Page model for document listing pages.
-    """
-
-    class Meta:
-        verbose_name = "Document Listing"
-        verbose_name_plural = "Document Listings"
-
-
-class Document(Orderable):
-    """
-    Model for a document in a DocumentListing.
-    """
-
-    document_listing = models.ForeignKey(DocumentListing, related_name="documents")
-    document = FileField(_("Document"), max_length=200, format="Document")
-    description = models.CharField(_("Description"), max_length=1000, blank=True)
-
-    def __str__(self):
-        return self.description
-
-    class Meta:
-        verbose_name = "Document"
-        verbose_name_plural = "Documents"
-
-    def save(self, *args, **kwargs):
-        """
-        If no description is given when created, create one from the
-        file name.
-
-        Code copied from mezzanine.galleries.models.GalleryImage
-        """
-        if not self.description:
-            name = force_text(self.document.name)
-            name = name.rsplit("/", 1)[-1].rsplit(".", 1)[0]
-            name = name.replace("'", "")
-            name = "".join([c if c not in punctuation else " " for c in name])
-            name = "".join([s.upper() if i == 0 or name[i - 1] == " " else s
-                            for i, s in enumerate(name)])
-            self.description = name
-        super(Document, self).save(*args, **kwargs)
-
-
-class EventColumnElement(SiteRelated):
-    """ Column Element model for an Event """
+class SidebarAgenda(PageItem):
     SITE = 'SI'
     ALL = 'AL'
     MAIN = 'MA'
@@ -288,6 +103,9 @@ class EventColumnElement(SiteRelated):
     )
 
     type = models.CharField(max_length=2, choices=EVENT_CHOICES)
+
+    class Meta:
+        verbose_name = "Sidebar Agenda Item"
 
     def get_name(self):
         if self.type == self.MAIN_AND_SITE:
@@ -304,6 +122,160 @@ class EventColumnElement(SiteRelated):
         return self.get_name()
 
 
+class SidebarTwitter(PageItem):
+
+    class Meta:
+        verbose_name = "Sidebar Twitter Item"
+
+
+class SidebarSocial(PageItem):
+
+    @property
+    def urls(self):
+        smulrs = SocialMediaUrls.objects.all()
+        if smulrs.exists():
+            return smulrs[0]
+        return None
+
+    class Meta:
+        verbose_name = "Sidebar Social Media Item"
+
+
+class SidebarRichText(PageItem):
+    title = models.CharField(max_length=100, blank=True, default="")
+    content = RichTextField()
+
+    class Meta:
+        verbose_name = "Sidebar RichText Item"
+
+    def __str__(self):
+        return self.title
+
+
+class SidebarLink(PageItem, Orderable):
+    title = models.CharField(max_length=100, blank=True, default="")
+    url = models.CharField(max_length=500, blank=True, default="")
+
+
+class ActionBanner(PageItem):
+    title = models.CharField(max_length=500, blank=True, default="")
+    content = RichTextField()
+    image = FileField(max_length=300, format="Image")
+    button_title = models.CharField(max_length=500, blank=True, default="")
+    button_url = models.CharField(max_length=500, blank=True, default="")
+
+    def __str__(self):
+        return self.title
+
+
+def validate_images_aspect_ratio(imagepath, required_aspect_ratio, max_difference):
+    """ Validates the aspect ratio of an image. """
+    absolute_imagepath = os.path.join(settings.MEDIA_ROOT, str(imagepath))
+    im = Image.open(absolute_imagepath)
+    width, height = im.size
+    aspect_ratio = width/height
+    if abs(aspect_ratio - required_aspect_ratio) > max_difference:
+        raise ValidationError('Image aspect ratio should be %i, selected image is %i x %i. Please resize the image.' % (required_aspect_ratio, width, height))
+
+
+def validate_vision_image(imagepath):
+    validate_images_aspect_ratio(imagepath, required_aspect_ratio=1.5, max_difference=0.1)
+
+
+class VisionPage(Page, RichText):
+    """
+    """
+    image = FileField(max_length=300, format="Image", blank=True, default="", validators=[validate_vision_image])
+
+    class Meta:
+        verbose_name = 'Standpunt pagina'
+        verbose_name_plural = "Standpunt paginas"
+
+
+class VisionsPage(Page, RichText):
+    """
+    """
+    vision_pages = models.ManyToManyField(VisionPage, blank=True, verbose_name="Standpunt pagina's")
+
+    class Meta:
+        verbose_name = 'Standpunten pagina'
+        verbose_name_plural = "Standpunten paginas"
+
+
+def validate_organisation_image(imagepath):
+    validate_images_aspect_ratio(imagepath, required_aspect_ratio=1.5, max_difference=0.1)
+
+
+class OrganisationPartPage(Page, RichText):
+    """
+    """
+    image = FileField(max_length=300, format="Image", blank=True, default="", validators=[validate_organisation_image])
+
+    class Meta:
+        verbose_name = 'Organisatie-onderdeel pagina'
+        verbose_name_plural = "Organisatie-onderdeel paginas"
+
+
+class OrganisationPage(Page, RichText):
+    """
+    """
+    organisation_part_pages = models.ManyToManyField(OrganisationPartPage, blank=True, verbose_name="Organisatie onderdelen")
+
+    class Meta:
+        verbose_name = 'Organisatie pagina'
+        verbose_name_plural = "Organisatie paginas"
+
+
+class OrganisationMember(SiteRelated):
+    """
+    """
+    name = models.CharField(max_length=200, blank=False, default="")
+    content = RichTextField()
+    image = FileField(max_length=300, format="Image", blank=True, default="")
+    email = models.EmailField(blank=True, default="")
+    facebook_url = models.URLField(blank=True, default="")
+    twitter_url = models.URLField(blank=True, default="")
+
+    class Meta:
+        verbose_name = 'Organisatie lid'
+        verbose_name_plural = "Organisatie leden"
+
+    def __str__(self):
+        return self.name
+
+
+class OrganisationPartMember(SiteRelated):
+    member = models.ForeignKey(OrganisationMember)
+    organisation_part = models.ForeignKey(OrganisationPartPage, null=True, blank=True)
+    role = models.CharField(max_length=200, blank=False, default="")
+
+    class Meta:
+        verbose_name = 'Organisatie functie'
+        verbose_name_plural = "Organisatie functies"
+
+    def __str__(self):
+        return self.role + ' - ' + self.member.name
+
+
+class HomePage(Page, RichText):
+    """
+    Page model for the site homepage.
+    Only works properly when url points to the homepage '/' as url.
+    """
+    header_title = models.CharField(max_length=300, blank=True, default="")
+    header_subtitle = models.CharField(max_length=500, blank=True, default="")
+    news_category = models.ForeignKey(BlogCategory, null=True, blank=True)
+    vision_pages = models.ManyToManyField(VisionPage, blank=True, verbose_name="Standpunt pagina's")
+
+    @property
+    def blog_posts(self):
+        return get_public_blogposts(self.news_category)
+
+    class Meta:
+        verbose_name = 'Home pagina'
+        verbose_name_plural = "Home paginas"
+
+
 class BlogCategoryPage(Page, RichText):
     """
     Model for a page that displays a list of posts in a single blog category.
@@ -314,8 +286,8 @@ class BlogCategoryPage(Page, RichText):
                                        help_text='Show only the first paragraph of a blog post.')
 
     class Meta:
-        verbose_name = "Blog category page"
-        verbose_name_plural = "Blog category pages"
+        verbose_name = "Blog categorie pagina"
+        verbose_name_plural = "Blog categorie paginas"
 
 
 def get_public_blogposts(blog_category):
@@ -325,15 +297,33 @@ def get_public_blogposts(blog_category):
                                                                       | Q(expiry_date__gte=timezone.now()))
 
 
-def create_columnelement_for_blogcategory(blog_category, compact_view):
-    """ Creates a column element model for a (new) blog category """
-    blog_category_element = ColumnElement.objects.create()
-    blog_category_element.name = blog_category.title
-    if compact_view:
-        blog_category_element.name += ' Headlines'
-    blog_category_element.content_type = ContentType.objects.get_for_model(BlogCategory)
-    blog_category_element.object_id = blog_category.id
-    blog_category_element.site_id = blog_category.site_id
-    if compact_view:
-        blog_category_element.subtype = ColumnElement.COMPACT
-    blog_category_element.save(update_site=False)
+class SocialMediaUrls(SiteRelated):
+    facebook_url = models.URLField(max_length=300, blank=True, default="")
+    twitter_url = models.URLField(max_length=300, blank=True, default="")
+    youtube_url = models.URLField(max_length=300, blank=True, default="")
+    linkedin_url = models.URLField(max_length=300, blank=True, default="")
+    instagram_url = models.URLField(max_length=300, blank=True, default="")
+
+    class Meta:
+        verbose_name = "Social media urls"
+        verbose_name_plural = "Social media urls"
+
+
+class WordLidPage(Page, RichText):
+    """
+    """
+    
+    class Meta:
+        verbose_name = 'WordLidPage'
+
+
+class ThatsWhyItem(PageItem, Orderable):
+    title = models.CharField(max_length=100, blank=True, default="")
+
+    class Meta:
+        verbose_name = "That's why item"
+        verbose_name_plural = "That's why items"
+
+    def __str__(self):
+        return self.title
+

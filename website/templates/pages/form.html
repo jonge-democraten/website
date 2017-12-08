@@ -13,40 +13,48 @@ label.control-label {
 form.mezzanine-form>div.choicefield>ul>li {
     display: inline;
 }
-form.mezzanine-form>div.charfield>textarea {
-    width: 50%;
+p.help-block {
+    display: none;
 }
 </style>
 {% endblock %}
 
 {% block main %}
 
-{% include "elements/page_header_image.html" %}
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+    <div class="contact detail-container">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="basic-container">
+                    <div class="basic-content">
+                        <h2>{{ page.title }}</h2>
+                        {% if request.GET.sent %}
+                            {{ page.form.response|richtext_filters|safe }}
+                        {% else %}
+                            {% with page.form as page_form %}
+                            {{ page_form.content|richtext_filters|safe }}
+                            {% endwith %}
 
-{{ block.super }}
-{% if request.GET.sent %}
-    {% editable page.form.response %}
-    {{ page.form.response|richtext_filters|safe }}
-    {% endeditable %}
-{% else %}
-    {% with page.form as page_form %}
-    {% editable page_form.content %}
-    {{ page_form.content|richtext_filters|safe }}
-    {% endeditable %}
-    {% endwith %}
+                            {% errors_for form %}
 
-    {% errors_for form %}
-
-    <form class="mezzanine-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-        {% fields_for form %}
-        <div class="form-actions">
-            <input class="btn btn-primary btn-lg" type="submit" value="{{ page.form.button_text }}">
+                            <form class="mezzanine-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+                                {% fields_for form %}
+                                <div class="form-actions">
+                                    <input type="submit" value="{{ page.form.button_text }}">
+                                </div>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
-{% endif %}
+        <div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            {% include "components/sidebar/sidebar_block.html" %}
+        </div>
+    </div>
+</section>
 
 {% endblock %}
-
 
 {% block extra_js %}
 {{ block.super }}

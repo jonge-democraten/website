@@ -1,0 +1,42 @@
+.navbar-nav { float: right; }
+nav.navbar { background-color: #ffffff; height: 65px; font-family: 'alegreya_sansbold'; font-size: 14px; }
+
+.navbar h1 { margin: 0; }
+a.navbar-brand { color: #91c149; text-indent: -99999px; height: 65px; padding: 9px 0px; margin: 0 !important; }
+a.navbar-brand > img { color: #ffffff; text-indent: 0; margin-top: -1em; height: 100%; }
+
+.nav li a{ color: #000000; margin: 19px 9px; padding: 5px 0px; line-height: 1; border: 2px solid transparent; }
+
+.nav button { border: none; padding: 0; background-color: transparent; }
+.nav>li:hover > a, .nav>li:focus > a, .nav>li>a:hover, .nav>li>a:focus {background-color: transparent;/* border-bottom: 3px solid #90c340; */}
+.nav li.active a::after, .nav > li:hover > a::after {height: 3px;width: 100%;background-color: #90c340;content: ' ';display: block;position: absolute;top: 100%;}
+.nav li:hover a.word-lid::after { display: none; }
+
+
+button.search {margin: 18px 5px;padding: 4px;outline: none;font-size: 1.2em;line-height: 1;}
+button.search.mobile { border: none; background: none; font-size: 1.5em; margin: 23px 0 21px; padding: 0; line-height: 0; }
+
+.nav>li>.word-lid, .nav>li>.word-lid:focus {display: inline-block;border: 2px solid #6e9236;color: #ffffff;background-color: #91c149;padding: 8px;}
+.nav>li:hover>.word-lid, .nav>li>.word-lid:hover { background-color: #6e9236; border: 2px solid #6e9236; }
+
+.nav .word-lid { margin: 13px 0px 13px 7.5px; }
+.nav .word-lid i { margin-right: 4px; vertical-align: sub; }
+
+ul.nav li ul { display: none; list-style: none; position: absolute; min-width: 200px; background-color: #91c149; padding: 8px 8px; background-size: 100% auto; background-repeat: no-repeat; background-position: right top; background-image: url(../../img/sidebarvorm.png); }
+ul.nav li:hover > ul { padding-top: 5px; display: block; top: 65px; }
+ul.nav li:hover > ul > li > a {color: #ffffff;padding: 5px 3px;display: inline-block;width: 100%;margin: 0;text-decoration: none;}
+ul.nav li > ul > li:hover > a::after {height: 2px;width: 100%;background-color: #ffffff;content: ' ';display: block;position: absolute;bottom: 0;}
+
+.search-box form::before { content:' '; display: block; position: absolute; left: 15px; width: 3px; height: 100%; background-color: #ffffff; }
+.search-box { background-color: #91c149; padding: 15px 0; display: none; top: 0px; width: 100%; z-index: 6; position:fixed; box-shadow: 0 0 2px 0 #949494; }
+.search-box input[type="text"] { border: none; height: auto; padding: 1px 30px 1px 10px; margin: 0; font-size: 16px; line-height: 1; color: #ffffff; background-color: transparent; }
+.search-box form > button { position: absolute; top: 0; right: 15px; text-indent: -999999px; font-size: 1.6em; background-color: transparent; border: none; }
+.search-box form button::after { text-indent: 0; background-image: url(../../img/Iconen_Wit_Onderzoek_v1.0.png); background-repeat: no-repeat; }
+
+
+
+.search-box ::-webkit-input-placeholder { color: #ffffff; color: rgba(255, 255, 255, 0.75); }
+.search-box :-moz-placeholder { color: #ffffff; opacity: 1; color: rgba(255, 255, 255, 0.75); }
+.search-box ::-moz-placeholder { color: #ffffff; opacity: 1; color: rgba(255, 255, 255, 0.75); }
+.search-box :-ms-input-placeholder { color: #ffffff; color: rgba(255, 255, 255, 0.75); }
+.search-box ::-ms-input-placeholder { color: #ffffff; color: rgba(255, 255, 255, 0.75); }

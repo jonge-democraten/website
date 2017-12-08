@@ -1,0 +1,16 @@
+.action-banner-container { margin: 30px 0 0; }
+.action-banner-container figcaption {position: absolute;top: 50%;transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);-o-transform: translateY(-50%);-webkit-transform: translateY(-50%);left: 30px;background-color: #ffffff;max-width: 450px;padding: 30px;}
+.action-banner-container figcaption{/* position: relative; *//* transform: none; */}
+
+.action-banner-container figcaption h2 { margin: 0; font-size: 24px; font-weight: bold; color: #474747; }
+
+.action-banner-container p { margin: 10px 0; }
+
+.action-banner-container figure {padding: 30px;position: relative;overflow: hidden;min-height: 400px;}
+
+.action-banner-container img { position: absolute; left: 50%; top: 50%; height: 100%; max-width: none; transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); }
+.action-banner-container img.landscape { width: 100%; }
+.action-banner-container img.portrait { height: 100%; }
+
+.action-banner-container .button { background-color: #5d777f; border: 2px solid #5d777f; }
+.action-banner-container .button:hover { background-color: #546a71; }

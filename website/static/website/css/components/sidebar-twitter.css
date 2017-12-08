@@ -1,0 +1,15 @@
+div.tweet { padding: 8px; }
+div.tweet:hover { background-color:rgba(24, 28, 32, 0.6); }
+
+div.tweet a { color: #fff; text-decoration: none; }
+
+div.tweet > div { margin-bottom: 8px; }
+
+div.tweet > div.retweeter-info { color: #ccd6dd; }
+
+div.tweet > div.tweeter-info > a { height: 40px; }
+div.tweet > div.tweeter-info > a > div > img.tweeter-profile-image { float: left; height: 40px; margin-right: 8px; }
+div.tweet > div.tweeter-info > a > div > div.tweeter-name { overflow: hidden; }
+div.tweet > div.tweeter-info > a > div > div.tweeter-name > span.tweeter-fullname:hover { color: #a6cf66; }
+div.tweet > div.tweeter-info > a > div > div.tweeter-name > span.tweeter-username { color: #ccd6dd; }
+

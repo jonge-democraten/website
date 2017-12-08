@@ -1,0 +1,50 @@
+{% load twitter_tags i18n %}
+
+{% tweets_default as tweets %}
+
+{% for item in page.get_content_model.sidebartwitter_set.all %}
+  {% if item.visible %}
+    <aside class="sidebar collections-sidebar-container row">
+      <div class="collections-sidebar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h2 class="sidebar-title"><i class="gd gd-twitter-o"></i> Twitter</h2>
+        <div class="sidebar-content">
+          <div class="twitter-tweets">
+            {% for tweet in tweets %}
+              <div class="tweet">
+                {% if tweet.retweeter_user_name %}
+                  <div class="retweeter-info">
+                    {{ tweet.retweeter_full_name }} heeft geretweet
+                  </div>
+                {% endif %}
+                <div class="tweeter-info">
+                  <a href="https://twitter.com/intent/user?screen_name={{ tweet.user_name }}" target="_blank">
+                    <div>
+                      <img class="tweeter-profile-image" src="{{ tweet.profile_image_url|cut:'http:' }}" />
+                      <div class="tweeter-name">
+                        <span class="tweeter-fullname">{{ tweet.full_name }}</span><br />
+                        <span class="tweeter-username">@{{ tweet.user_name }}</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="tweet-text">
+                  {{ tweet.text|safe }}
+                </div>
+                <div class="tweet-actions">
+                  <a href="https://twitter.com/{{ tweet.user_name }}/statuses/{{ tweet.remote_id }}" target="_blank">{% blocktrans with sometime=tweet.created_at|timesince %}{{ sometime }}{% endblocktrans %}</a>
+                  &bull;
+                  <a href="https://twitter.com/intent/tweet?in_reply_to={{ tweet.remote_id }}" target="_blank">reply</a>
+                  &bull;
+                  <a href="https://twitter.com/intent/retweet?tweet_id={{ tweet.remote_id }}" target="_blank">retweet</a>
+                  &bull;
+                  <a href="https://twitter.com/intent/favorite?tweet_id={{ tweet.remote_id }}" target="_blank">favorite</a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </aside>
+  {% endif %}
+{% endfor %}
+<script async defer src="//platform.twitter.com/widgets.js" charset="utf-8"></script>

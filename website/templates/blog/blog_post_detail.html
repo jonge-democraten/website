@@ -1,93 +1,46 @@
 {% extends "base.html" %}
-{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags staticfiles %}
 
-{% block meta_title %}{% block meta_title2 %}{{ blog_post.meta_title }}{% endblock %}{% endblock %}
+{% load mezzanine_tags static %}
 
-{% block meta_keywords %}{% metablock %}
-{% keywords_for blog_post as tags %}
-{% for tag in tags %}{% if not forloop.first %}, {% endif %}{{ tag }}{% endfor %}
-{% endmetablock %}{% endblock %}
-
-{% block meta_description %}{% block meta_description2 %}{% metablock %}
-{{ blog_post.description }}
-{% endmetablock %}{% endblock %}{% endblock %}
+{% block meta_title %}
+  {% if blog_post %}
+    {{ blog_post.title }}
+  {% else %}
+    Blogpost
+  {% endif %}
+{% endblock %}
 
 {% block main %}
 
-{% with "Blogpost" as custom_title %}
-{% include "elements/page_header_image.html" %}
-{% endwith %}
-
-<div id="homeDiv">
-    <div class="item-page">
-    
-        <h2><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h2>
-        {% block blog_post_list_post_metainfo %}
-            {% editable blog_post.publish_date %}
-            <dl class="article-info">
-                <dd class="createdby">
-                {% trans "Geplaatst door" %}
-
-                {% with blog_post.user as author %}
-                    {{ author.get_full_name|default:author.username }}
-                {% endwith %}
-                <br/>
-                {{ blog_post.publish_date|date:"d M Y" }}
-                </dd>
-            </dl>
-            {% endeditable %}
-        {% endblock %}
-        
-        {% block blog_post_detail_content %}
-        {% editable blog_post.content %}
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+  <div class="news detail-container">
+    <div class="detail-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <div class="detail-item">
+        <h2>{{ blog_post.title }}</h2>
+        <h3><i class="gd gd-clock"></i>{{ blog_post.publish_date|date:"d M Y" }}</h3>
+        {% if blog_post.featured_image %}
+          <figure>
+            <img src="{{ blog_post.featured_image.url }}" alt="#" />
+          </figure>
+        {% endif %}
         {{ blog_post.content|richtext_filters|safe }}
-        {% endeditable %}
-        {% endblock %}
-        
-        {% block blog_post_detail_sharebuttons %}
-        {% set_short_url_for blog_post %}
-
-        <div class="itp-social-buttons-box">
-            <div class="itp-sbb-nl">
-                  <div class="itp-sb-right" align="right">
-                  {% spaceless %}
-                      <a href="https://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}" title="Submit to Facebook" target="_blank" >
-                      <img src="{% static "website/images/icons/facebook_bw.png" %}" alt="Submit to Facebook" />
-                      </a>
-
-                      <a href="https://plus.google.com/share?url={{ request.build_absolute_uri }}" title="Submit to Google+" target="_blank">
-                      <img src="{% static "website/images/icons/google_bw.png" %}" alt="Submit to Google Bookmarks" />
-                      </a>
-
-                      <a href="http://twitter.com/home?status={{ blog_post.title|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" title="Submit to Twitter" target="_blank" >
-                      <img src="{% static "website/images/icons/twitter_bw.png" %}" alt="Submit to Twitter"/>
-                      </a>
-                  {% endspaceless %}
-                  </div>
-            </div>
+        <div class="category-container">
+          <span class="container-label">Categorie:</span>
+          {% for category in blog_post.categories.all %}
+            <a href="{% url "blog_post_list_category" category.slug %}" class="category-item">{{ category.title }}</a>
+          {% endfor %}
         </div>
-
-        {% endblock %}
-        
-        {% block blog_post_previous_next %}
-        <ul>
-        {% with blog_post.get_previous_by_publish_date as previous %}
-        {% if previous %}
-        <li>
-            <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
-        </li>
-        {% endif %}
-        {% endwith %}
-        {% with blog_post.get_next_by_publish_date as next %}
-        {% if next %}
-        <li>
-            <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
-        </li>
-        {% endif %}
-        {% endwith %}
-        </ul>
-        {% endblock %}
-
+        <div class="social-container">
+          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jongedemocraten.nl/" class="social-item">Facebook<i class="gd gd-facebook"></i></a>
+          <a target="_blank" href="https://twitter.com/share?url=https://jongedemocraten.nl&via=JongeDemocraten&text=#" class="social-item">Twitter<i class="gd gd-twitter"></i></a>
+        </div>
+      </div>
     </div>
-</div>
+    <div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <?php require('components/sidebar/sidebar-agenda.php'); ?>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
+

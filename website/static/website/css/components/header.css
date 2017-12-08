@@ -1,0 +1,18 @@
+header.large-view { position: relative; height: 400px; overflow:hidden; }
+header.small-view{ position: relative; height: 250px; overflow:hidden; }
+header.large-view::before, header.small-view::before { content: ' '; position: absolute; top: 0; bottom: 0; left: 0; height: 100%; width: 100%; background:url(../../img/feather.png) no-repeat; background-size: cover; z-index: 1; }
+
+header.large-view figcaption { padding-right: 45%; }
+header.small-view figcaption { padding-right: 45%; }
+
+.large-view figure, header.small-view figure { height: 100%; }
+
+header > figure > img { position: absolute; min-height: initial; min-width: initial; top: 50%; left: 50%; transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); max-width: none; max-height: none; }
+header > figure > img.landscape { max-width: 100%; }
+header > figure > img.portrait { max-height: 100%; }
+header > figure > figcaption { position: relative; z-index: 5; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); color: #ffffff; }
+header > figure > figcaption.container {padding-right: 45%;}
+
+header > figure > figcaption > h2, header > figure > figcaption > h3 { margin: 0; }
+header > figure > figcaption > h2 {font-size: 34px;font-weight: bold;text-transform: uppercase;margin-bottom: 7px;text-shadow: 0 0 25px #000000;}
+header > figure > figcaption > h3 {font-size: 20px;text-shadow: 0 0 10px #000000;}

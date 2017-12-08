@@ -1,0 +1,1 @@
+Directory for logs, makes it easier to exclude logs from searches during development.

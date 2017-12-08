@@ -14,18 +14,14 @@ from __future__ import absolute_import, unicode_literals
 # Controls the ordering and grouping of the admin menu.
 #
 ADMIN_MENU_ORDER = (
-    ("Content", ("pages.Page", "blog.BlogPost", "events.Event", 
-        ("Media Library", "fb_browse"), "jdpages.Sidebar", "hemres.Newsletter")),
-    ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "conf.Setting", "jdpages.SidebarBannerWidget",)),
+    ("Content", ("pages.Page", "blog.BlogPost", "events.Event",
+        ("Media Library", "fb_browse"), "hemres.Newsletter")),
+    ("Site", ("blog.BlogCategory", "sites.Site", "redirects.Redirect", "jdpages.Footer", "jdpages.SocialMediaUrls", "jdpages.OrganisationMember", "jdpages.OrganisationPartMember", "conf.Setting",)),
     ("Users", ("auth.User", "auth.Group", "janeus.JaneusUser", "janeus.JaneusRole", )),
 
     ("Newsletter templating", ("hemres.NewsletterTemplate")),
     ("Newsletter subscriptions", ("hemres.MailingList", "hemres.EmailSubscriber", "hemres.JaneusSubscriber")),
     ("Sending newsletters", ("hemres.NewsletterToList", "hemres.NewsletterToSubscriber")),
-
-    ("Debug models", ("jdpages.ColumnElement", "jdpages.ColumnElementWidget",
-                      "jdpages.SidebarElement", "jdpages.SidebarElementWidget",
-                      "jdpages.Document", "jdpages.SidebarTwitter",)),
 )
 
 
@@ -80,7 +76,7 @@ PAGE_MENU_TEMPLATES = (
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
-# BLOG_USE_FEATURED_IMAGE = True
+BLOG_USE_FEATURED_IMAGE = True
 
 # Models that are included in a search
 SEARCH_MODEL_CHOICES = ('pages.Page', 'blog.BlogPost', 'events.Occurrence')
@@ -107,7 +103,7 @@ USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "en-US"
+LANGUAGE_CODE = "nl-NL"
 
 # Supported languages
 _ = lambda s: s
@@ -242,7 +238,6 @@ TEMPLATES = [{'APP_DIRS': True,
                                                  'django.core.context_processors.tz',
                                                  'mezzanine.conf.context_processors.settings',
                                                  'mezzanine.pages.context_processors.page',
-                                                 'website.jdpages.context_processors.sidebar',
                                                  'website.jdpages.context_processors.site_properties',
                                                  'website.jdpages.context_processors.piwik',
                                                  'website.jdpages.context_processors.homepage_header'),
@@ -338,7 +333,7 @@ OPTIONAL_APPS = (
 #########################
 
 # Directory of the logfiles
-LOG_DIR = PROJECT_ROOT
+LOG_DIR = os.path.join(os.path.dirname(PROJECT_ROOT), 'log')
 
 # Max. logfile size
 LOGFILE_MAXSIZE = 10 * 1024 * 1024
@@ -437,8 +432,7 @@ try:
 except SystemError as e:  # relative imports do not work when using `manage.py runserver`: (Parent module '' not loaded, cannot perform relative import)
     from local_settings import *
 except ImportError as e:
-    if "local_settings" not in str(e):
-        raise e
+    from local_settings import *
 
 
 ####################
@@ -586,8 +580,8 @@ FILEBROWSER_MAX_UPLOAD_SIZE = 20 * 1024 * 1024
 
 TEMPLATE_ACCESSIBLE_SETTINGS = ('ACCOUNTS_APPROVAL_REQUIRED', 'ACCOUNTS_VERIFICATION_REQUIRED', 'ADMIN_MENU_COLLAPSED', 'BITLY_ACCESS_TOKEN', 'BLOG_USE_FEATURED_IMAGE', 'COMMENTS_DISQUS_SHORTNAME', 'COMMENTS_NUM_LATEST', 'COMMENTS_DISQUS_API_PUBLIC_KEY', 'COMMENTS_DISQUS_API_SECRET_KEY', 'COMMENTS_USE_RATINGS', 'DEV_SERVER', 'FORMS_USE_HTML5', 'GRAPPELLI_INSTALLED', 'GOOGLE_ANALYTICS_ID', 'JQUERY_FILENAME', 'JQUERY_UI_FILENAME', 'LOGIN_URL', 'LOGOUT_URL', 'SITE_TITLE', 'SITE_TAGLINE', 'USE_L10N')
 
-TEMPLATE_ACCESSIBLE_SETTINGS += ('SIDEBAR_AGENDA_SITES',)
 TEMPLATE_ACCESSIBLE_SETTINGS += ('PIWIK_SITE_ID',)
+TEMPLATE_ACCESSIBLE_SETTINGS += ('TWITTER_NAME',)
 
 ###################
 # JANEUS SETTINGS #

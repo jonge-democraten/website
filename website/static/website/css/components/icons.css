@@ -1,0 +1,278 @@
+.gd {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+}
+
+.gd-heart::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/Iconen_Wit_Hartje_v1.0.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-search-s::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/Iconen_Wit_Onderzoek_v1.0.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-clock::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/Iconen_Groen_Klok_v1.0.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-search::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/Iconen_Wit_Onderzoek_v1.0.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-search-o::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/Iconen_Green_Onderzoek_v1.0.png);
+    background-size: contain;
+    content: ' ';
+    background-repeat: no-repeat;
+}
+
+.gd-agenda::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/Iconen_Wit_Agenda_v1.0.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-arrow-right::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-arrow-20.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-arrow-right-o::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-arrow-20-white.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-social::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-share-6.png);
+    background-size: contain;
+    content: ' ';
+}
+
+
+.gd-twitter::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-twitter-2.png);
+    background-size: contain;
+    content: ' ';
+}
+
+
+.gd-youtube::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-youtube-7.png);
+    background-size: contain;
+    content: ' ';
+}
+
+
+.gd-email::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-email-2.png);
+    background-size: contain;
+    content: ' ';
+}
+
+
+.gd-twitter::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-twitter-2.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-twitter-o::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-twitter-1.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-linkedin::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-linkedin-2.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-instagram::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-instagram-12.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-facebook::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-facebook-2.png);
+    background-size: contain;
+    content: ' ';
+}
+
+
+.gd-youtube-s::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-youtube-7-white.png);
+    background-size: contain;
+    content: ' ';
+}
+
+
+.gd-twitter-s::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-twitter-2-white.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-linkedin-s::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-linkedin-2-white.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-instagram-s::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-instagram-12-white.png);
+    background-size: contain;
+    content: ' ';
+}
+
+.gd-facebook-s::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-facebook-2-white.png);
+    background-size: contain;
+    content: ' ';
+}

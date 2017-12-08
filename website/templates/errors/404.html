@@ -1,24 +1,33 @@
 {% extends "base.html" %}
 
-{% block meta_title %}{% block meta_title2 %}
+{% block meta_title %}
 Pagina niet gevonden
-{% endblock %}{% endblock %}
+{% endblock %}
 
 {% block title %}
 Pagina niet gevonden
 {% endblock %}
 
 {% block main %}
-<h3>Pagina niet gevonden</h3>
-Helaas, het is niet gelukt om deze pagina te vinden.
 
-Ga terug naar de <a href="/">hoofdpagina</a> of:
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+  <div class="search collection-container">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="collection-content row">
+        <h2>Pagina niet gevonden</h2>
+        <p>Helaas, het is niet gelukt om deze pagina te vinden.</p>
+        <p>Ga terug naar de <a href="/">hoofdpagina</a> of:</p>
 
-<ul>
-    <li><a href="https://jongedemocraten.nl/word-lid/">Word lid</a></li>
-    <li><a href="https://jongedemocraten.nl/events/">Agenda</a></li>
-    <li><a href="https://jongedemocraten.nl/afdelingen/">Afdelingen</a></li>
-    <li><a href="https://jongedemocraten.nl/contact/">Contact</a></li>
-    <li><a href="https://jongedemocraten.nl/admin/">Inloggen (voor beheerders)</a></li>
-</ul>
+        <ul>
+          <li><a href="https://jongedemocraten.nl/word-lid/">Word lid</a></li>
+          <li><a href="https://jongedemocraten.nl/events/">Agenda</a></li>
+          <li><a href="https://jongedemocraten.nl/afdelingen/">Afdelingen</a></li>
+          <li><a href="https://jongedemocraten.nl/contact/">Contact</a></li>
+          <li><a href="https://jongedemocraten.nl/admin/">Inloggen (voor beheerders)</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

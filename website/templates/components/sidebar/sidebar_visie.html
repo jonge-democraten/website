@@ -1,0 +1,12 @@
+<aside class="sidebar collections-sidebar-container row">
+    <div class="collections-sidebar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h2 class="sidebar-title">Complete Visie</h2>
+        <div class="sidebar-content">
+            <div class="vision-container">
+                {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"|make_list %}
+                <a class="vision-item" target="_blank" href="https://visie.jongedemocraten.nl/standpunten/{{ letter }}" >{{ letter}}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</aside>

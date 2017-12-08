@@ -79,7 +79,7 @@ jQuery(function($) {
             toolbar: ("insertfile undo redo | cut copy paste | styleselect | bold italic | " +
                       "alignleft aligncenter alignright alignjustify | " +
                       "bullist numlist outdent indent | link image media table | " +
-                      "code fullscreen"),
+                      "code fullscreen | anchor"),
             file_browser_callback: custom_file_browser,
             content_css: window.__tinymce_css,
             valid_elements: "*[*]"  // Don't strip anything since this is handled by bleach.

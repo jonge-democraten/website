@@ -1,0 +1,97 @@
+@media (min-width: 1600px){
+    .force-xlg-container { width: 70%; margin: 0 12.5%; }
+    .action-banner-container figure{ min-height: 500px; }
+}
+
+@media (min-width : 992px){
+}
+
+@media (max-width : 991px){
+    button.search { margin: 20px 6px; padding: 4px; }
+    
+    .nav>li>.word-lid, .nav>li>.word-lid:focus { padding: 8px 18px 8px 12px; }
+    .nav li a { color: #000000; margin: 20px 0px; padding: 5px 3px; line-height: 1; border: 2px solid transparent; }
+    .nav>li>.word-lid, .nav>li>.word-lid:focus { display: inline-block; border: 3px solid #6e9236; color: #ffffff; background-color: #8dbb48; padding: 8px 18px 8px 12px; }
+    .nav .word-lid { margin: 15px 0px 15px 3px; }
+
+    header > figure > figcaption.container { padding-right: 25%; }
+
+    .collection-item-content.large { padding-top: 1.5em; }
+    .collection-item-content h2 { font-size: 14px; }
+    .collection-item-content.large h3 { position: absolute; top: 0; font-size: 12px; margin: 0; }
+    .news .collection-item h3 > i { margin-top: -2px; margin-right: 5px; }
+
+    .collection-item figure.list { width: 25%; float: left; padding-right:15px; }
+    .collection-item .collection-item-content:not(.large) { width: 75%; float: left; }
+
+    aside.sidebar { margin: 30px 0 0; padding: 0; }
+
+    .news .collection-content { margin: 0; }
+
+    .action-banner-container { margin: 30px 0 0; }
+
+    .standpunten.collection-container { margin: 0; }
+    .standpunten.collection-container .collection-content { margin: 30px 0 0; }
+
+    .mobile-row{ padding: 0; max-width: 400px; }
+
+    .agenda .sidebar-content .sidebar-item { display: none; }
+    .agenda .sidebar-content .sidebar-item:first-child { display: block; }
+
+    .collection-item figcaption { padding: 5px 10px; }
+
+    .widget { margin-bottom: 30px !important; }
+
+    .action-banner-container figcaption {left: 0;top: 0;max-width:none;position: relative;transform: none;}
+
+    .basic-container { margin-bottom: 0; }
+    .news.list-container .basic-container { margin-bottom: 30px; }
+
+    .bestuur .list-item { margin: 30px 0 0px; }
+}
+
+@media (max-width : 767px){
+    .navbar-toggle .icon-bar { border: 1px solid #91c149; background-color: #91c149; height: 3px; }
+    .navbar-toggle {margin: 15px;}
+    a.navbar-brand{ margin-left:15px !important; }
+    ul.nav li:hover > ul{ padding-top: 0px; }
+
+    .nav>li>.word-lid, .nav>li>.word-lid:focus{ margin: 2px; padding: 5px 3px; line-height: 1; border:none; width: 100%; background-color: transparent; }
+    .nav>li>.word-lid i { display: none; }
+    .nav li:hover a.word-lid, .nav li:hover a.word-lid:hover { background-color:transparent; border: none; }
+
+    div#navbar > ul {width: 100%;margin: 10px 0;}
+    div#navbar {position: absolute;top: 65px;left: 0;right: 0;width: 100%;background-color: #91c149;background-image: url(../img/sidebarvorm.png);background-size: auto 100%;background-repeat: no-repeat;background-position: right -9px center;}
+
+    ul.nav li ul { display: block; background: none; position: relative; padding: 1px 0px 2px 30px; }
+    .nav li a { color: #ffffff; margin: 2px 0; display: inline-block; }
+
+    .nav li.active a { width: 100%; }
+    .nav>li:hover > a, .nav>li>a:hover, .nav>li>a:focus { border-bottom: 2px solid transparent; }
+    
+    ul.nav li ul {display: block;position: relative;padding: 0 0 0 30px;background: none;/* border-top: 3px solid #ffffff; */top: 0 !important;}
+    /*ul.nav li> ul > li:hover > a { border-bottom: 1px solid transparent; }*/
+    ul.nav li:hover > ul > li > a { padding: 5px 3px; margin: 2px 0; }
+
+    .nav li.active a::after, .nav > ul > li:hover a::after{ background-color: #ffffff; }
+    ul.nav li > ul > li:hover > a::after{ display: none; }
+
+    header.large-view { height: 250px; }
+    header.small-view { height: 125px; }
+    header.large-view figcaption, header.small-view figcaption { padding-right: 15%; }
+    header > figure > figcaption > h2 { font-size: 20px; } 
+    header > figure > figcaption > h3 { font-size: 14px; }
+}
+
+@media (max-width : 550px){
+    .collection-item  { width: 100%; }   
+    .action-banner-container figure { padding: 15px; }
+}
+
+@media (max-width : 400px){
+    .list-item  { width: 100%; }
+}
+
+@media (max-width : 300px){
+    a.navbar-brand > img { height: 80%; top: 10%; } 
+}

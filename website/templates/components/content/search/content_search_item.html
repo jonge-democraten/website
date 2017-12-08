@@ -1,0 +1,5 @@
+<article class="collection-item">
+  <h2>{{ result }}</h2>
+  <p>{{ result.description|truncatewords_html:20|safe }}</p>
+  <a href="{{ result.get_absolute_url }}" class="button">Lees meer</a>
+</article>

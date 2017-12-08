@@ -1,0 +1,33 @@
+{% load static %}
+{% load pages_tags %}
+{% load mezzanine_tags %}
+
+<nav class="navbar navbar-fixed-top">
+    <div class="force-xlg-container col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <button class="search mobile hidden-lg hidden-md hidden-sm pull-right"><i class="gd gd-search-o"></i>
+            </button>
+            <h1>
+                <a class="navbar-brand" href="{{ main_site_url }}">
+                    Jonge Democraten
+                    <img src="{% static 'website/img/JDLogo.png' %}" alt="Jonge Democraten"/>
+                </a>
+            </h1>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse pull-right">
+            {% page_menu "pages/menus/jdmenu.html" %}
+        </div>
+    </div>
+</nav>
+
+<div class="search-box">
+  {% search_form %}
+</div>
+

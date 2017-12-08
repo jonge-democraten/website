@@ -1,0 +1,17 @@
+{% load mezzanine_tags %}
+
+<div class="news collection-container">
+    <div class="collection-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div class="row">
+            {% with blog_post=blog_posts.first %}
+            {% include "components/content/nieuws/content_news_collection_item_large.html" %}
+            {% endwith %}
+            {% for blog_post in blog_posts %}
+            {% include "components/content/nieuws/content_news_collection_item_small.html" %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        {% include "components/sidebar/sidebar_agenda.html" %}
+    </div>
+</div>

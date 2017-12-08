@@ -1,0 +1,20 @@
+{% load mezzanine_tags %}
+
+<article class="collection-item col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <a href="{{ blog_post.get_absolute_url }}">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <figure class="">
+                    <img src="{{ blog_post.featured_image.url }}" alt="#"/>
+                </figure>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 collection-item-content large">
+                <h2>{{ blog_post.title }}</h2>
+                <h3><i class="gd gd-clock"></i>{{ blog_post.publish_date|date:"j F Y" }}</h3>
+                <p class="hidden-xs">
+                    {{ blog_post.description_from_content|richtext_filters|safe }}
+                </p>
+            </div>
+        </div>
+    </a>
+</article>

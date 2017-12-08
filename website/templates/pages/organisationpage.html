@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load mezzanine_tags %}
+
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
+
+{% block main %}
+
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+    <div class="organisatie collection-container">
+        <div class="collection-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="collection-description">
+                <h2>{{ page.title }}</h2>
+                {{ page.organisationpage.content|richtext_filters|safe }}
+            </div>
+            <div class="row">
+                {% for organisation_part_page in page.get_content_model.organisation_part_pages.all %}
+                    {% include "components/content/organisatie/content_organisatie_item.html" %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            {% include "components/sidebar/sidebar_twitter.html" %}
+        </div>
+    </div>
+</section>
+
+{{ block.super }}
+{% endblock %}

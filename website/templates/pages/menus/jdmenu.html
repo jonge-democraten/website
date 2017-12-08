@@ -1,19 +1,24 @@
-{% load pages_tags i18n future %}
+{% load static pages_tags %}
 
-<ul class="menu">
+<ul class="nav navbar-nav" role="menu">
 {% spaceless %}
 {% for page in page_branch %}
     {% if not has_home and page.is_primary and forloop.first %}
     <li class="{% if on_home %} active {% endif %}">
-        <a href="{% url "home" %}">{% trans "Home" %}</a>
+        <a href="{% url 'home' %}">Home</a>
     </li>
     {% endif %}
     {% if page.in_menu and page.is_primary %}
     <li class="{% if page.is_current_or_ascendant %} current active deeper parent {% endif %}">
-        <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+        <a href="{{ page.get_absolute_url }}">{{ page.title | lower }}</a>
         {% page_menu "pages/menus/jdsubmenu.html" page %}
     </li>
     {% endif %}
 {% endfor %}
 {% endspaceless %}
+    <!-- START STATIC MENU ITEMS -->
+    <li><a class="english" href="/english"><img src="{% static 'website/img/uk.png' %}" /></a></li>
+    <li class="hidden-xs"><button class="search"><i class="gd gd-search-o"></i></button></li>
+    <li><a class="word-lid" href="/word-lid"><i class="gd gd-heart"></i> word lid</a></li>
+    <!-- END STATIC MENU ITEMS -->
 </ul>

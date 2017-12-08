@@ -1,5 +1,4 @@
 {% overextends "admin/includes_grappelli/header.html" %}
-{% load i18n %}
 
 {% block userlinks %}
 <li><a href="https://jdwebsite.readthedocs.org/en/latest/user/" target="_blank">Documentatie</a></li>
@@ -9,6 +8,6 @@
 {% else %}
     <li><a href="{{ root_path }}logout/">
 {% endif %}
-{% trans 'Log out' %}</a></li>
+Log out</a></li>
 
 {% endblock %}

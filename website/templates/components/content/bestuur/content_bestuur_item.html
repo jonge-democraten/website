@@ -1,0 +1,26 @@
+{% load mezzanine_tags %}
+
+
+<article class="list-item col-lg-4 col-md-6 col-sm-4 col-xs-6">
+    <div>
+        {% if function.member.image %}
+        <figure><img src="{{ function.member.image.url }}" alt="Person portrait"/></figure>
+        {% endif %}
+        <h2>{{ function.member.name }}</h2>
+        <h3>{{ function.role }}</h3>
+        {{ function.member.content|richtext_filters|safe }}
+
+        <div class="social-container">
+            {% if function.member.facebook_url %}
+                <a href="{{ function.member.facebook_url }}" class="social-item">Facebook<i class="gd gd-facebook"></i></a>
+            {% endif %}
+            {% if function.member.twitter_url %}
+                <a href="{{ function.member.twitter_url }}" class="social-item">Twitter<i class="gd gd-twitter"></i></a>
+            {% endif %}
+            {% if function.member.email %}
+                <a href="mailto:{{ function.member.email }}" class="social-item">Email<i class="gd gd-email"></i></a>
+            {% endif %}
+        </div>
+
+    </div>
+</article>

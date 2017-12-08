@@ -1,50 +1,29 @@
 {% extends "base.html" %}
 
-{% load i18n future mezzanine_tags %}
+{% load mezzanine_tags %}
 
-{% block meta_title %}{% block meta_title2 %}{% trans "Search Results" %}{% endblock %}{% endblock %}
-{% block title %}{% trans "Search Results" %}{% endblock %}
-{% block extra_head %}
-<meta name="robots" content="noindex">
-{% endblock %}
-
-{% block breadcrumb_menu %}
-<li>
-    <a href="{% url "home" %}">{% trans "Home" %}</a>
-</li>
-<li class="active">{% trans "Search Results" %}</li>
-{% endblock %}
+{% block meta_title %}Zoekresultaten{% endblock %}
 
 {% block main %}
 
-{% with "Zoek" as custom_title %}
-{% include "elements/page_header_image.html" %}
-{% endwith %}
-
-<div id="homeDiv">
-
-    <p>
-    {% if results.paginator.count == 0 %}
-    {% blocktrans %}
-    <h2>Geen resultaten voor '{{ query }}'</h2>
-    {% endblocktrans %}
-    {% else %}
-    {% blocktrans with start=results.start_index end=results.end_index total=results.paginator.count %}
-    <h2>{{ total }} pagina's gevonden voor '{{ query }}'</h2>
-    {% endblocktrans %}
-    {% endif %}
-    </p>
-
-    <div id="search-results">
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+  <div class="search collection-container">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <div class="collection-content row">
+        <h2>Zoekresultaten</h2>
         {% for result in results.object_list %}
-        <h4><a href="{{ result.get_absolute_url }}">{{ result }}</a></h4>
-        <p>{{ result.description|truncatewords_html:20|safe }}
-        <a href="{{ result.get_absolute_url }}">{% trans "read more" %}</a></p>
+          {% include "components/content/search/content_search_item.html" %}
         {% endfor %}
+        <div class="pagination">
+          <h3>{% pagination_for results %}</h3>
+        </div>
+      </div>
     </div>
-
-    {% pagination_for results %}
-
-</div>
+    <div class="mobile-row col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      {% include "components/sidebar/sidebar_twitter.html" %}
+    </div>
+  </div>
+</section>
 
 {% endblock %}
+

@@ -2,21 +2,25 @@
 
 {% load mezzanine_tags %}
 
-{% block meta_title %}{% block meta_title2 %}Home{% endblock %}{% endblock %}
+{% block meta_title %}Home{% endblock %}
 
 {% block main %}
 
-{% include "elements/page_header_image.html" %}
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+    {% with blog_posts=page.homepage.blog_posts %}
+        {% include "components/content/nieuws/content_news_collection.html" %}
+    {% endwith %}
+</section>
 
-<div id="homeDiv">
-    <div class="item-page">
-        {% editable page.homepage.content %}
-        {{ page.homepage.content|richtext_filters|safe }}
-        {% endeditable %}
-    </div>
-</div>
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+    {% for action_banner in page.homepage.actionbanner_set.all %}
+        {% include "components/content/content_action_banner.html" %}
+    {% endfor %}
+</section>
 
-{% include "elements/two_columns.html" %}
+<section class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+    {% include "components/content/standpunten/content_standpunten_collection.html" %}
+</section>
 
 {{ block.super }}
 {% endblock %}

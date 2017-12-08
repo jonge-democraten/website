@@ -1,4 +1,6 @@
 // Test for SVG-support
+console.log('ready');
+
 if (!document.createElementNS || !document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect) {
 	var err = '<strong>Je browser bevat helaas geen ondersteuning voor SVG, dat is vereist voor weergave van de kaart. Probeer je browser te upgraden, of gebruik een andere (nieuwere) webbrowser.</strong>';
 	document.getElementById('afdelingskaart').innerHTML = err;
@@ -59,6 +61,7 @@ queue()
 }
 
 function ready(error, nl, afdelingen) {
+    console.log('ready', afdelingen);
 	var afdById = {};
 
 	for(var afd in afdelingen) {
@@ -84,7 +87,7 @@ function ready(error, nl, afdelingen) {
 			.attr("d", mappath)
 			.attr("id", function(d) { return d.id; })
 			.on("mouseover", function(d, i) {
-				d3.select("h3").text(d.properties.name);
+				d3.select("#selected-gemeente").text(d.properties.name);
 				var a = getAfdeling(d.id);
 				if (a != '') {
 					d3.select(".infobox h2").text(a);

@@ -12,7 +12,6 @@ This guide is written for administrators of the JD website.
 
 This document has three purposes:
 * provide instructions for *deploying* a stable and secure instance of the website;
-* provide a step-by-step walkthrough of *importing* the data in an old Joomla installation to your new website;
 * provide guidance for *day-to-day administration* of an active instance of the website.
 
 ## Deployment
@@ -30,6 +29,34 @@ The instructions at [https://docs.djangoproject.com/en/1.8/ref/databases/](https
 Make sure the database contains the timezone tables, needed by the calendar app.
 
 For MySQL, see [http://dev.mysql.com/doc/refman/5.6/en/mysql-tzinfo-to-sql.html](http://dev.mysql.com/doc/refman/5.6/en/mysql-tzinfo-to-sql.html).
+
+### Twitter Feed Update
+
+The [Mezzanine Twitter app](http://mezzanine.jupo.org/docs/twitter-integration.html?highlight=twitter) is used to consume, store and display tweets.
+
+The twitter feed needs to be updated with tweets via a script that calls the `poll_twitter` management command,
+`/usr/local/bin/poll_twiter.sh`:
+
+```bash
+#!/bin/sh
+#
+
+PROJECTDIR="/usr/share/website/site/website"
+VENVDIR="/usr/share/website/site/env"
+RUNAS="website"
+
+sudo -u ${RUNAS} -H bash -c "source $VENVDIR/bin/activate; 
+${PROJECTDIR}/manage.py poll_twitter"
+```
+
+Create a cronjob to run the script every 10 minutes,
+`/etc/cron.d/website-twitter`:
+
+```bash
+MAILTO=root
+*/10 * * * * root /usr/local/bin/poll_twitter.sh 2>&1 | logger 
+-tpoll_twitter
+```
 
 ## Day-to-day administration
 
@@ -68,54 +95,3 @@ Backing up is done by making a copy of the following data:
 Restoring a backup is done by overwriting the current data with the data from the backup.
 
 Be sure to run the restored data on the same version of the website codebase as the one used when backing it up.
-
-## Importing data from Joomla
-
-When deploying the website for production, you will not want to use the demo data. Instead, you want to import data from an existing website. For our existing Joomla installation, we have provided migration scripts.
-
-### How to migrate
-
-**Preparations**
-
-1. Make a list of all blog posts and events that have been created in the past month on all department websites. Note their current URLs.
-1. For every item on the list, find its new URL on the test environtment.
-1. Enter these URLs into the `import_redirect()` function of `/website/management/commands/jd_finalize.py`. Examples are provided there.
-
-**Actual migration**
-
-1. Log in to the server as root
-1. Switch to the website user: `su -s/bin/bash website`.
-1. Go to your home directory: `cd`.
-1. Run `./migrate.sh`.
-1. Create a local admin user with a *strong* password.
-1. If an error occurs, fix it and rerun `./migrate.sh`. Note any warnings.
-
-**Post-migration testing**
-
-1. Test the website after migration. Does everything work?
-1. Check especially whether the content concerning the warnings in the previous step works.
-1. If you run into any problems, fix them and go back to running `./migrate.sh`.
-
-**Switching the sites**
-
-1. Rename the main Mezzanine site to jongedemocraten.nl.
-1. Change the Apache config to rename the site to jongedemocraten.nl in the config for this website. The config for the Joomla website should be renamed to someting else, e.g. oldsite.jongedemocraten.nl.
-1. Protect access to the old site with a client certificate requirement. Peek at the phpmyadmin config to see how to do this.
-
-### Functionality of the migration scripts
-
-**migrate.sh**
-
-`migrate.sh` is the migration script that calls all others. It is kept outside of the repository because it contains database credentials. It makes use of the Django manage.py interface to run further migration steps.
-
-**jd_pre.py**
-
-By default, the syncdb command creates a site named 'example.com' with site ID 1. Since we depend on the main site to have site ID 1, we want to rename the example.com site to our own name. `jd_pre.py` takes care of that.
-
-**jd_joomla_import_site.py**
-
-The import process happens on a site-by-site basis. `migrate.sh` calls `jd_joomla_import_site.py` once for every site. This script then handles retrieving the content (pages, blog posts, blog categories, events) from the old site and importing it into the new one.
-
-**jd_finalize.py**
-
-Even though `jd_joomla_import_site.py` handles most content, there are some things that it cannot do. Therefore, it is necessary to have an additional step, after importing all sites and their content. `jd_finalize.py` provides this step. It is run only once. It sets all configuration options for all sites, such as Twitter search queries, sidebar blogs, menu layout, group permissions, column elements and many other things. It also migrates the newsletters and their subscribers.

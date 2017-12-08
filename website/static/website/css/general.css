@@ -41,7 +41,10 @@ h4{font-size: 16px;/* text-decoration: underline; */}
 h5{font-size: 14px;/* text-decoration: underline; *//* font-style: italic; */}
 h6{font-size: 14px;/* font-style: italic; */text-decoration: underline;}
 
-p { margin:0 0 10px; }
+p {
+    margin:0 0 10px;
+    word-wrap: break-word;
+}
 
 ul, ol{ padding-left:30px; margin-bottom: 10px; }
 ol{ list-style: decimal; }

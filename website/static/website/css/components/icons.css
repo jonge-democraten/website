@@ -142,6 +142,19 @@
 }
 
 
+.gd-email::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: url(../../img/iconmonstr-email-2.png);
+    background-size: contain;
+    content: ' ';
+}
+
+
 .gd-twitter::after {
     position: absolute;
     top: 0;

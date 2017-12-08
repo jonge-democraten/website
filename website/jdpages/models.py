@@ -232,6 +232,7 @@ class OrganisationMember(SiteRelated):
     name = models.CharField(max_length=200, blank=False, default="")
     content = RichTextField()
     image = FileField(max_length=300, format="Image", blank=True, default="")
+    email = models.EmailField(blank=True, default="")
     facebook_url = models.URLField(blank=True, default="")
     twitter_url = models.URLField(blank=True, default="")
 

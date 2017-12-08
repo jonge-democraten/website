@@ -17,6 +17,9 @@
             {% if function.member.twitter_url %}
                 <a href="{{ function.member.twitter_url }}" class="social-item">Twitter<i class="gd gd-twitter"></i></a>
             {% endif %}
+            {% if function.member.email %}
+                <a href="mailto:{{ function.member.email }}" class="social-item">Email<i class="gd gd-email"></i></a>
+            {% endif %}
         </div>
 
     </div>

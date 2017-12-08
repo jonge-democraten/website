@@ -189,7 +189,7 @@ class VisionPage(Page, RichText):
 
     class Meta:
         verbose_name = 'Standpunt pagina'
-        verbose_name_plural = "Standpunt paginas"
+        verbose_name_plural = "Standpunt pagina's"
 
 
 class VisionsPage(Page, RichText):
@@ -199,7 +199,7 @@ class VisionsPage(Page, RichText):
 
     class Meta:
         verbose_name = 'Standpunten pagina'
-        verbose_name_plural = "Standpunten paginas"
+        verbose_name_plural = "Standpunten pagina's"
 
 
 def validate_organisation_image(imagepath):
@@ -213,7 +213,7 @@ class OrganisationPartPage(Page, RichText):
 
     class Meta:
         verbose_name = 'Organisatie-onderdeel pagina'
-        verbose_name_plural = "Organisatie-onderdeel paginas"
+        verbose_name_plural = "Organisatie-onderdeel pagina's"
 
 
 class OrganisationPage(Page, RichText):
@@ -223,7 +223,7 @@ class OrganisationPage(Page, RichText):
 
     class Meta:
         verbose_name = 'Organisatie pagina'
-        verbose_name_plural = "Organisatie paginas"
+        verbose_name_plural = "Organisatie pagina's"
 
 
 class OrganisationMember(SiteRelated):
@@ -273,7 +273,7 @@ class HomePage(Page, RichText):
 
     class Meta:
         verbose_name = 'Home pagina'
-        verbose_name_plural = "Home paginas"
+        verbose_name_plural = "Home pagina's"
 
 
 class BlogCategoryPage(Page, RichText):
@@ -287,7 +287,7 @@ class BlogCategoryPage(Page, RichText):
 
     class Meta:
         verbose_name = "Blog categorie pagina"
-        verbose_name_plural = "Blog categorie paginas"
+        verbose_name_plural = "Blog categorie pagina's"
 
 
 def get_public_blogposts(blog_category):
@@ -312,9 +312,10 @@ class SocialMediaUrls(SiteRelated):
 class WordLidPage(Page, RichText):
     """
     """
-    
+
     class Meta:
-        verbose_name = 'WordLidPage'
+        verbose_name = 'Word lid pagina'
+        verbose_name_plural = "Standpunt pagina's"
 
 
 class ThatsWhyItem(PageItem, Orderable):

@@ -152,7 +152,7 @@ class VisionPageAdmin(PageAdmin):
 
 class OrganisationPageAdmin(PageAdmin):
     model = OrganisationPage
-    inlines = [PageHeaderImageInline, SidebarTwitterInline]
+    inlines = [PageHeaderImageInline, SidebarAgendaInline, SidebarTwitterInline, SidebarSocialInline]
     filter_vertical = ['organisation_part_pages']
     verbose_name = "Organisatiepagina"
     verbose_name_plural = "Organisatiepagina's"
@@ -166,7 +166,7 @@ class OrganisationPageAdmin(PageAdmin):
 
 class OrganisationPartPageAdmin(PageAdmin):
     model = OrganisationPartPage
-    inlines = [PageHeaderImageInline, SidebarTwitterInline]
+    inlines = [PageHeaderImageInline, SidebarAgendaInline, SidebarTwitterInline, SidebarSocialInline]
     verbose_name = "Organisatieonderdeelpagina"
     verbose_name_plural = "Organisatieonderdeelpagina's"
 

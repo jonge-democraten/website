@@ -35,7 +35,7 @@ For MySQL, see [http://dev.mysql.com/doc/refman/5.6/en/mysql-tzinfo-to-sql.html]
 The [Mezzanine Twitter app](http://mezzanine.jupo.org/docs/twitter-integration.html?highlight=twitter) is used to consume, store and display tweets.
 
 The twitter feed needs to be updated with tweets via a script that calls the `poll_twitter` management command,
-`/usr/local/bin/poll_twiter.sh`:
+`/usr/local/bin/poll_twitter.sh`:
 
 ```bash
 #!/bin/sh
@@ -45,8 +45,7 @@ PROJECTDIR="/usr/share/website/site/website"
 VENVDIR="/usr/share/website/site/env"
 RUNAS="website"
 
-sudo -u ${RUNAS} -H bash -c "source $VENVDIR/bin/activate; 
-${PROJECTDIR}/manage.py poll_twitter"
+sudo -u ${RUNAS} -H bash -c "source $VENVDIR/bin/activate; ${PROJECTDIR}/manage.py poll_twitter"
 ```
 
 Create a cronjob to run the script every 10 minutes,
@@ -54,8 +53,7 @@ Create a cronjob to run the script every 10 minutes,
 
 ```bash
 MAILTO=root
-*/10 * * * * root /usr/local/bin/poll_twitter.sh 2>&1 | logger 
--tpoll_twitter
+*/10 * * * * root /usr/local/bin/poll_twitter.sh 2>&1 | logger -tpoll_twitter
 ```
 
 ## Day-to-day administration

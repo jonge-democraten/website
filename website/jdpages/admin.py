@@ -14,7 +14,6 @@ from mezzanine.pages.models import RichTextPage
 from mezzanine.utils.admin import SingletonAdmin
 
 from website.jdpages.models import BlogCategoryPage
-from website.jdpages.models import DocumentListing, Document
 from website.jdpages.models import Footer
 from website.jdpages.models import FooterLink
 from website.jdpages.models import FooterLinks
@@ -232,14 +231,6 @@ class SocialMediaUrlsAdmin(SingletonAdmin):
     verbose_name_plural = "Social media url lists"
 
 
-class DocumentInline(TabularDynamicInlineAdmin):
-    model = Document
-
-
-class DocumentListingAdmin(PageAdmin):
-    inlines = (DocumentInline, PageHeaderImageInline)
-
-
 admin.site.unregister(RichTextPage)
 admin.site.register(RichTextPage, RichtTextPageAdmin)
 
@@ -252,7 +243,6 @@ admin.site.register(OrganisationPage, OrganisationPageAdmin)
 admin.site.register(VisionPage, VisionPageAdmin)
 admin.site.register(VisionsPage, VisionsPageAdmin)
 admin.site.register(BlogCategoryPage, BlogPageAdmin)
-admin.site.register(DocumentListing, DocumentListingAdmin)
 admin.site.register(WordLidPage, WordLidAdmin)
 
 admin.site.register(OrganisationMember, OrganisationMemberAdmin)

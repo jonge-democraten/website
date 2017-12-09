@@ -13,6 +13,8 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q
 from django.utils import timezone
+from django.utils.translation import ugettext_lazy as _
+from django.utils.encoding import force_text
 from django.conf import settings
 
 from mezzanine.blog.models import BlogCategory, BlogPost
@@ -274,6 +276,50 @@ class HomePage(Page, RichText):
     class Meta:
         verbose_name = 'Home pagina'
         verbose_name_plural = "Home pagina's"
+
+
+class DocumentListing(Page, RichText):
+    """
+    Page model for document listing pages.
+    """
+
+    class Meta:
+        verbose_name = "Document Listing"
+        verbose_name_plural = "Document Listings"
+
+
+class Document(Orderable):
+    """
+    Model for a document in a DocumentListing.
+    """
+
+    document_listing = models.ForeignKey(DocumentListing, related_name="documents")
+    document = FileField(_("Document"), max_length=200, format="Document")
+    description = models.CharField(_("Description"), max_length=1000, blank=True)
+
+    def __str__(self):
+        return self.description
+
+    class Meta:
+        verbose_name = "Document"
+        verbose_name_plural = "Documents"
+
+    def save(self, *args, **kwargs):
+        """
+        If no description is given when created, create one from the
+        file name.
+
+        Code copied from mezzanine.galleries.models.GalleryImage
+        """
+        if not self.description:
+            name = force_text(self.document.name)
+            name = name.rsplit("/", 1)[-1].rsplit(".", 1)[0]
+            name = name.replace("'", "")
+            name = "".join([c if c not in punctuation else " " for c in name])
+            name = "".join([s.upper() if i == 0 or name[i - 1] == " " else s
+                            for i, s in enumerate(name)])
+            self.description = name
+        super(Document, self).save(*args, **kwargs)
 
 
 class BlogCategoryPage(Page, RichText):

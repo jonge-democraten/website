@@ -189,14 +189,6 @@ class Migration(migrations.Migration):
             name='site',
         ),
         migrations.RemoveField(
-            model_name='document',
-            name='document_listing',
-        ),
-        migrations.RemoveField(
-            model_name='documentlisting',
-            name='page_ptr',
-        ),
-        migrations.RemoveField(
             model_name='eventcolumnelement',
             name='site',
         ),
@@ -271,12 +263,6 @@ class Migration(migrations.Migration):
         ),
         migrations.DeleteModel(
             name='ColumnElementWidget',
-        ),
-        migrations.DeleteModel(
-            name='Document',
-        ),
-        migrations.DeleteModel(
-            name='DocumentListing',
         ),
         migrations.DeleteModel(
             name='EventColumnElement',

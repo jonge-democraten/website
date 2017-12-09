@@ -1,5 +1,7 @@
 import logging
 
+from mezzanine.pages.models import RichTextPage
+
 from fullcalendar.views import OccurrenceView
 
 from website.jdpages.models import HomePage
@@ -7,6 +9,16 @@ from website.jdpages.models import SidebarSocial
 from website.jdpages.models import PageHeaderImage
 
 logger = logging.getLogger(__name__)
+
+
+def get_homepage_id():
+    homepage = HomePage.objects.values_list('id').first()
+    if homepage is not None:
+        return homepage[0]
+    pages = RichTextPage.objects.filter(slug='/')
+    if pages.exists():
+        return pages[0].id
+    return None
 
 
 def get_page_header(page):
@@ -31,20 +43,20 @@ def get_page_header(page):
         return get_page_header(page.parent)
 
     # Try from first homepage
-    homepage = HomePage.objects.values_list('id').first()
-    if len(homepage) != 0:
+    homepage = get_homepage_id()
+    if homepage is not None:
         # Since we give get_page_header an integer, there is no infinite recursion here...
-        return get_page_header(homepage[0])
+        return get_page_header(homepage)
 
     return None
 
 
 def get_homepage_header():
     """ Returns the page header image of the homepage """
-    homepage = HomePage.objects.values_list('id').first()
-    if not homepage:
+    homepage_id = get_homepage_id()
+    if homepage_id is None:
         return None
-    return get_page_header(homepage[0])
+    return get_page_header(homepage_id)
 
 
 class OccuranceJDView(OccurrenceView):

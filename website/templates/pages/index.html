@@ -6,7 +6,11 @@
 
 {% block main %}
 
-{% include "pages/homepage_content.html" %}
+{% if page.homepage %}
+    {% include "pages/homepage_content.html" %}
+{% else %}
+    {% include "pages/richtextpage_content.html" %}
+{% endif %}
 
 {{ block.super }}
 {% endblock %}

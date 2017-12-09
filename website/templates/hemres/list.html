@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 {% block main %}
 
-<p>De volgende nieuwsbrieven zijn het afgelopen jaar verzonden:</p>
-
-<p>
-{% for l in letters %}
-<a href="{% url 'view_newsletter' l.id %}">{{l.subject}}</a> ({{l.date|date:'j F Y'}}) <br/>
-{% endfor %}
-</p>
+<section class="force-xlg-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="standard detail-container">
+        <div class="detail-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="detail-item">
+                <h2>De volgende nieuwsbrieven zijn het afgelopen jaar verzonden</h2>
+                <p>
+                {% for l in letters %}
+                <a href="{% url 'view_newsletter' l.id %}">{{l.subject}}</a> ({{l.date|date:'j F Y'}}) <br/>
+                {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock main %} 

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load mezzanine_tags %}
+{% load mezzanine_tags jdtags %}
 
 {% block meta_title %}{{ page.meta_title }}{% endblock %}
 
@@ -19,6 +19,9 @@
                 <div class="row">
                 {% for function in page.organisationpartpage.organisationpartmember_set.all %}
                     {% include "components/content/bestuur/content_bestuur_item.html" %}
+                    {% if forloop.counter|divisible:3 %}
+                      <br style="clear: both" />
+                    {% endif %}
                 {% endfor %}
                 </div>
             </div>

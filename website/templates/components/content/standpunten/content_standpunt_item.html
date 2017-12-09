@@ -12,8 +12,8 @@
 </article>
 
 {% if forloop.counter|divisibleby:3 %}
-<div class="clearfix visible-lg-block visible-md-block"></div>
+<div class="clearfix visible-lg-block visible-md-block" style="z-index: -1;"></div>
 {% endif %}
 {% if forloop.counter|divisibleby:2 %}
-<div class="clearfix visible-sm-block visible-xs-block"></div>
+<div class="clearfix visible-sm-block visible-xs-block" style="z-index: -1;"></div>
 {% endif %}

@@ -56,6 +56,50 @@ MAILTO=root
 */10 * * * * root /usr/local/bin/poll_twitter.sh 2>&1 | logger -tpoll_twitter
 ```
 
+### Hemres: newsletter sending
+
+Hemres is used to create and send newsletters. The newsletters need to be sent via a script that calls the `hemres_send` management command, `/usr/local/bin/send_newsletters.sh`:
+
+```bash
+#!/bin/sh
+#
+
+PROJECTDIR="/usr/share/website/site/website"
+VENVDIR="/usr/share/website/site/env"
+RUNAS="website"
+
+sudo -u ${RUNAS} -H bash -c "source $VENVDIR/bin/activate; ${PROJECTDIR}/manage.py hemres_send /tmp/hemres.lock"
+```
+
+Create a cronjob to run the script every 10 minutes, `/etc/cron.d/website-twitter`:
+
+```bash
+MAILTO=root
+*/10 * * * * root /usr/local/bin/send_newsletters.sh 2>&1 | logger -themres_send
+```
+
+### Hemres: daily cleanup
+
+Hemres needs a daily cleanup to delete the contact information of people who are no longer subscribed to any newsletters. The cleanup nees to be run via a script that calls the `hemres_cleanup` managemnt command, `/usr/local/bin/hemres_cleanup.sh`:
+
+```bash
+#!/bin/sh
+#
+
+PROJECTDIR="/usr/share/website/site/website"
+VENVDIR="/usr/share/website/site/env"
+RUNAS="website"
+
+sudo -u ${RUNAS} -H bash -c "source $VENVDIR/bin/activate; ${PROJECTDIR}/manage.py hemres_cleanup"
+```
+
+Create a cronjob to run the script every day, `/etc/cron.d/website-hemres-cleanup`:
+
+```bash
+MAILTO=root
+18 4 * * * root /usr/local/bin/hemres_cleanup.sh 2>&1 | logger -themres_cleanup
+```
+
 ## Day-to-day administration
 
 Some tasks come up during day-to-day administration of the website. Here is how to perform them.

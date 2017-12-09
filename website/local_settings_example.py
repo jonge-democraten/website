@@ -41,9 +41,9 @@ LANGUAGE_CODE = "nl-NL"
 
 # STATIC and MEDIA root and url need to be set in production!
 # STATIC_ROOT = "<path-to-project>/static"
-# STATIC URL = /static
+# STATIC_URL = /static/
 # MEDIA_ROOT = "<path-to-project>/media"
-# MEDIA_URL = /media
+# MEDIA_URL = /media/
 
 ###################
 # JANEUS SETTINGS #

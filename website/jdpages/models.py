@@ -247,7 +247,7 @@ class OrganisationMember(SiteRelated):
 class OrganisationPartMember(SiteRelated):
     member = models.ForeignKey(OrganisationMember)
     organisation_part = models.ForeignKey(OrganisationPartPage, null=True, blank=True)
-    role = models.CharField(max_length=200, blank=False, default="")
+    role = models.CharField(max_length=200, blank=True, default="")
 
     class Meta:
         verbose_name = 'Organisatie functie'

@@ -7,7 +7,9 @@
         <figure><img src="{{ function.member.image.url }}" alt="Person portrait"/></figure>
         {% endif %}
         <h2>{{ function.member.name }}</h2>
+        {% if function.role %}
         <h3>{{ function.role }}</h3>
+        {% endif %}
         {{ function.member.content|richtext_filters|safe }}
 
         <div class="social-container">

@@ -7,7 +7,9 @@
             {% include "components/content/nieuws/content_news_collection_item_large.html" %}
             {% endwith %}
             {% for blog_post in blog_posts %}
-            {% include "components/content/nieuws/content_news_collection_item_small.html" %}
+                {% if not forloop.first %}
+                    {% include "components/content/nieuws/content_news_collection_item_small.html" %}
+                {% endif %}
             {% endfor %}
         </div>
     </div>

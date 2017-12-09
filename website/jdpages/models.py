@@ -269,7 +269,7 @@ class HomePage(Page, RichText):
 
     @property
     def blog_posts(self):
-        return get_public_blogposts(self.news_category)
+        return get_public_blogposts(self.news_category)[:4]
 
     class Meta:
         verbose_name = 'Home pagina'

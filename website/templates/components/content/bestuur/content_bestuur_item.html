@@ -1,7 +1,7 @@
 {% load mezzanine_tags %}
 
 
-<article class="list-item col-lg-4 col-md-6 col-sm-4 col-xs-6">
+<article class="list-item col-lg-4 col-md-6 col-sm-6 col-xs-6">
     <div>
         {% if function.member.image %}
         <figure><img src="{{ function.member.image.url }}" alt="Person portrait"/></figure>
@@ -23,6 +23,12 @@
                 <a href="mailto:{{ function.member.email }}" class="social-item">Email<i class="gd gd-email"></i></a>
             {% endif %}
         </div>
-
     </div>
 </article>
+
+{% if forloop.counter|divisibleby:3 %}
+<div class="clearfix visible-lg-block"></div>
+{% endif %}
+{% if forloop.counter|divisibleby:2 %}
+<div class="clearfix visible-sm-block visible-md-block visible-xs-block"></div>
+{% endif %}

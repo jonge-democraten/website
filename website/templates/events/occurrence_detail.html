@@ -26,7 +26,7 @@ L.Icon.Default.imagePath = "{% static 'website/images/leaflet/' %}";
 				<h2>{{ occurrence.event.title }} - {{ occurrence.description }}</h2>
 
 				<h3>Datum:
-					{% if occurrence.start_time.day == occurrence.start_time.day %}
+					{% if occurrence.start_time.day == occurrence.end_time.day %}
 						{{ occurrence.start_time|date:"n F Y" }}
 						| Tijd: {{ occurrence.start_time|date:"G:i" }} - {{ occurrence.end_time|date:"G:i" }}
 					{% else %}

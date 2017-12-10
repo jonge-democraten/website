@@ -27,10 +27,10 @@ L.Icon.Default.imagePath = "{% static 'website/images/leaflet/' %}";
 
 				<h3>Datum:
 					{% if occurrence.start_time.day == occurrence.end_time.day %}
-						{{ occurrence.start_time|date:"n F Y" }}
+						{{ occurrence.start_time|date:"j F Y" }}
 						| Tijd: {{ occurrence.start_time|date:"G:i" }} - {{ occurrence.end_time|date:"G:i" }}
 					{% else %}
-						{{ occurrence.start_time|date:"n F Y" }}, {{ occurrence.start_time|date:"G:i"  }} - {{ occurrence.end_time|date:"n F Y" }}, {{ occurrence.end_time|date:"G:i"  }}
+						{{ occurrence.start_time|date:"j F Y" }}, {{ occurrence.start_time|date:"G:i"  }} - {{ occurrence.end_time|date:"n F Y" }}, {{ occurrence.end_time|date:"G:i"  }}
 					{% endif %}
 					| Locatie: <span id="occurrence-location">{{ occurrence.location }}</span>
 				</h3>

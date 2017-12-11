@@ -38,3 +38,4 @@ a.social-item i { text-indent: 0; display: block; margin-top: -1em; }
 
 .content-container { margin-top: 30px; }
 
+.blog-post-item { cursor:pointer; }

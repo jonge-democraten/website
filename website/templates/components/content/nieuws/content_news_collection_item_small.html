@@ -1,21 +1,23 @@
 {% load mezzanine_tags %}
 
-<article class="collection-item col-lg-4 col-md-4 col-sm-12 col-xs-12">
-    <a href="{{ blog_post.get_absolute_url }}">
-        {% if blog_post.featured_image %}
-        <figure class="list">
-            <img src="{{ blog_post.featured_image.url }}" alt="#"/>
-        </figure>
-        {% endif %}
-        <div class="collection-item-content small">
-            <h2>{{ blog_post.title }}</h2>
-            <h3 class="hidden-xs"><i class="gd gd-clock"></i>{{ blog_post.publish_date|date:"j F Y" }}</h3>
-            <p class="hidden-xs">
-                {{ blog_post.description_from_content|richtext_filters|safe }}
-            </p>
-        </div>
-    </a>
+<article id="{{ blog_post.id }}" class="collection-item blog-post-item col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    {% if blog_post.featured_image %}
+    <figure class="list">
+        <img src="{{ blog_post.featured_image.url }}" alt="#"/>
+    </figure>
+    {% endif %}
+    <div class="collection-item-content small">
+        <h2>{{ blog_post.title }}</h2>
+        <h3 class="hidden-xs"><i class="gd gd-clock"></i>{{ blog_post.publish_date|date:"j F Y" }}</h3>
+        <p class="hidden-xs">
+            {{ blog_post.description_from_content|richtext_filters|safe }}
+        </p>
+    </div>
 </article>
 
-
-
+<script>
+$('#{{ blog_post.id }}').click(function(e) {
+  e.preventDefault();
+  window.location = '{{ blog_post.get_absolute_url }}';
+});
+</script>

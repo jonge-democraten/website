@@ -1,27 +1,32 @@
 {% load mezzanine_tags %}
 
-<article class="collection-item col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <a href="{{ blog_post.get_absolute_url }}">
-        <div class="row">
-            {% if blog_post.featured_image %}
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <figure class="">
-                    <img src="{{ blog_post.featured_image.url }}" alt="#"/>
-                </figure>
-            </div>
-            {% endif %}
-
-            {% if blog_post.featured_image %}
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 collection-item-content large">
-            {% else %}
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 collection-item-content large">
-            {% endif %}
-                <h2>{{ blog_post.title }}</h2>
-                <h3><i class="gd gd-clock"></i>{{ blog_post.publish_date|date:"j F Y" }}</h3>
-                <p class="hidden-xs">
-                    {{ blog_post.description_from_content|richtext_filters|safe }}
-                </p>
-            </div>
+<article id="{{ blog_post.id }}" class="collection-item blog-post-item col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="row">
+        {% if blog_post.featured_image %}
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <figure class="">
+                <img src="{{ blog_post.featured_image.url }}" alt="#"/>
+            </figure>
         </div>
-    </a>
+        {% endif %}
+
+        {% if blog_post.featured_image %}
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 collection-item-content large">
+        {% else %}
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 collection-item-content large">
+        {% endif %}
+            <h2>{{ blog_post.title }}</h2>
+            <h3><i class="gd gd-clock"></i>{{ blog_post.publish_date|date:"j F Y" }}</h3>
+            <p class="hidden-xs">
+                {{ blog_post.description_from_content|richtext_filters|safe }}
+            </p>
+        </div>
+    </div>
 </article>
+
+<script>
+$('#{{ blog_post.id }}').click(function(e) {
+  e.preventDefault();
+  window.location = '{{ blog_post.get_absolute_url }}';
+});
+</script>

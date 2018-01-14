@@ -17,7 +17,10 @@
 {% endfor %}
 {% endspaceless %}
     <!-- START STATIC MENU ITEMS -->
-    <li><a class="english" href="/english"><img src="{% static 'website/img/uk.png' %}" /></a></li>
+    {% if request.META.HTTP_HOST and "friesland" in request.META.HTTP_HOST %}
+      <li><a class="flag" href="/frysk"><img src="{% static 'website/img/frysk.png' %}" /></a></li>
+    {% endif %}
+    <li><a class="flag" href="/english"><img src="{% static 'website/img/uk.png' %}" /></a></li>
     <li class="hidden-xs"><button class="search"><i class="gd gd-search-o"></i></button></li>
     <li><a class="word-lid" href="/word-lid"><i class="gd gd-heart"></i> word lid</a></li>
     <!-- END STATIC MENU ITEMS -->

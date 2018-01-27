@@ -70,8 +70,10 @@ def validate_header_image(imagepath):
     aspect_ratio = width/height
     if aspect_ratio < 2.0:
         raise ValidationError('Image aspect ratio should be at least 2 (for example 2000x1000px). The selected image is %i x %i. Please resize the image.' % (width, height))
-    if width < 1000:
-        raise ValidationError('Image resolution is too low. It should be at least 1000px wide. The selected image is %i x %i. Please find a larger image.' % (width, height))
+    if width < 1500:
+        raise ValidationError('Image resolution is too low. Width should at least be 1500px. The selected image is %i x %i. Please find a larger image.' % (width, height))
+    if height < 250:
+        raise ValidationError('Image resolution is too low. Height should at least be 250px. The selected image is %i x %i. Please find a larger image.' % (width, height))
 
 
 class PageHeaderImage(SiteRelated):

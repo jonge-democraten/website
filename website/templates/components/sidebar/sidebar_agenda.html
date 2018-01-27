@@ -1,17 +1,17 @@
 {% load fullcalendar %}
 
-{% for item in page.get_content_model.sidebaragenda_set.all %}
-    {% if item.visible %}
+{% for agenda in page.get_content_model.sidebaragenda_set.all %}
+    {% if agenda.visible %}
         <aside class="sidebar agenda collections-sidebar-container row">
             <div class="collections-sidebar col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h2 class="sidebar-title"><i class="gd gd-agenda"></i> Agenda</h2>
                 <div class="sidebar-content">
 
-                    {% if item.type == 'AL' %}
+                    {% if agenda.type == 'AL' %}
                         {% get_agenda limit=6 as items %}
-                    {% elif item.type == 'SM' %}
+                    {% elif agenda.type == 'SM' %}
                         {% get_site_and_main_agenda limit=6 as items %}
-                    {% elif item.type == 'MA' %}
+                    {% elif agenda.type == 'MA' %}
                         {% get_main_agenda limit=6 as items %}
                     {% else %}
                         {% get_site_agenda limit=6 as items %}
@@ -22,6 +22,13 @@
                         <a href="//{{ item.event.site }}{{ item.get_absolute_url }}">
                             <h3>{{ item.start_time|date:"j F Y" }}</h3>
                             <p>{{ item.title }}</p>
+			    {% if agenda.type == 'AL' %}
+				<p>{{ item.site.name }}</p>
+			    {% endif %}
+			    
+			    	
+			    	
+                        	    
                         </a>
                     </div>
                     {% endfor %}

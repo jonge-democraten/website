@@ -36,6 +36,13 @@ a.social-item i { text-indent: 0; display: block; margin-top: -1em; }
 .detail-item > h2:first-child { margin-bottom: 15px; }
 .detail-content { padding: 30px; background-color: #ffffff; }
 
+.detail-content-calendar { padding: 30px; background-color: #ffffff; }
+@media only screen and (max-width: 40em) {
+  .detail-content-calendar {
+    padding: 3px;
+  }
+}
+
 .content-container { margin-top: 30px; }
 
 .blog-post-item { cursor:pointer; }

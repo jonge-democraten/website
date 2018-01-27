@@ -1,11 +1,12 @@
 {% load static %}
+{% load mezzanine_tags %}
 
 <header class="small-view">
     <figure>
         {% if page_header.image %}
-            <img src="{{ page_header.image.url }}" alt="#"/>
+            <img src="{{ MEDIA_URL }}{% thumbnail page_header.image 2500 0 upscale=True quality=75 %}" alt="#"/>
         {% else %}
-            <img src="{{ homepage_header.image.url }}" alt="#"/>
+            <img src="{{ MEDIA_URL }}{% thumbnail homepage_header.image 2500 0 upscale=True quality=75 %}" alt="#"/>
         {% endif %}
         <figcaption class="force-xlg-container col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
             <h2>{{ page.title }}</h2>

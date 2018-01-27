@@ -44,7 +44,7 @@ There are two blog related views and templates: one for a blog category page, an
 ## Page header image
 The page header is the image on top of each page (not site). Below the site header and menu bar.
 
-Multiple images can be added from the media library to function als page header image. The images need to be exactly 610 x 290 pixels to be accepted.
+Multiple images can be added from the media library to function als page header image.
 In case multiple images are set, a random image will be selected on each page request. 
 In case no image is set, the homepage image will be used. 
 
@@ -63,13 +63,6 @@ Add a `add_header_images()` processor for the new custom page, derived from Mezz
 @processor_for(ExamplePage)
 def add_header_images(request, page):
     ...
-```
-
-Finally, include the header template in your custom page template to show the image header on the page,
-```Python
-{% if page_header %}
-    {% include "elements/page_header_image.html" %}
-{% endif %}
 ```
 
 ## Events

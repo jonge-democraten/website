@@ -1,20 +1,20 @@
 {% if legend %}
 <ul class="events-legend">
-    {% for site_name, data in legend.items %}
-    <a class="event-legend-item" href="//{{ data.siteDomain }}{% url 'fullcalendar-calendar' %}">
-	<div>
-        <li style="color: {{ data.textColor }}; background-color: {{ data.backgroundColor }}; border: 1px solid {{ data.borderColor }};"> 
-	   <h5>{{ site_name }} </h5>  
-        </li>
-	    {% for site_name_2, data_2 in legend.items %}
-		{% if data.siteDomain == data_2.siteDomain  %}
-	    		<a style="color: white;" class="sidebar-item" href="//{{ data_2.siteDomain }}{% url 'fullcalendar-calendar' %}ical" >
-		    		ICal
-	   		</a>
+	{% for site_name, data in legend.items %}
+		<a class="event-legend-item" href="//{{ data.siteDomain }}{% url 'fullcalendar-calendar' %}">
+		<div>
+			<li style="color: {{ data.textColor }}; background-color: {{ data.backgroundColor }}; border: 1px solid {{ data.borderColor }};"> 
+				<h5>{{ site_name }} </h5>  
+			</li>
+			{% for site_name_2, data_2 in legend.items %}
+				{% if data.siteDomain == data_2.siteDomain  %}
+					<a style="color: white;" class="sidebar-item" href="//{{ data_2.siteDomain }}{% url 'fullcalendar-calendar' %}ical" >
+		    			ICal
+					</a>
 		</div>
-		{% endif %}
-	    {% endfor %}
-    {% endfor %}
+				{% endif %}
+			{% endfor %}
+	{% endfor %}
 </ul>
 {% endif %}
 

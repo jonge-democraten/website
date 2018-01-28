@@ -40,10 +40,15 @@
                 </p>
 
                 <div id="event-calendar"></div>
-
+				
+				<div>
                 {% if not is_main_site %}
-                <a href="{{ main_site_url }}{% url 'fullcalendar-calendar' %}">Terug naar landelijke kalender</a>
+                <a style="float:left"; href="{{ main_site_url }}{% url 'fullcalendar-calendar' %}">Terug naar landelijke kalender</a>
                 {% endif %}
+				<a style="float:right"; class="detail-item" href="//{{ request.get_host }}{% url 'fullcalendar-calendar' %}ical">
+					ICal
+				</a>
+				</div>
 
                 <p id="calendar-loading" style="display: none;">
                     <img src="{% static 'mezzanine/img/loadingAnimation.gif' %}" alt="Loading..." />
@@ -56,7 +61,7 @@
                 <div class="collections-sidebar col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <h2 class="sidebar-title"><i class="gd gd-agenda"></i> Afdelingen</h2>
                     <div class="sidebar-content">
-                        {% events_site_legend %}
+                        {% events_site_legend %} 
                     </div>
                 </div>
             </aside>

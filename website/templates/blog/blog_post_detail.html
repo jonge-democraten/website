@@ -31,8 +31,8 @@
           {% endfor %}
         </div>
         <div class="social-container">
-          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jongedemocraten.nl/" class="social-item">Facebook<i class="gd gd-facebook"></i></a>
-          <a target="_blank" href="https://twitter.com/share?url=https://jongedemocraten.nl&via=JongeDemocraten&text=#" class="social-item">Twitter<i class="gd gd-twitter"></i></a>
+          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.get_full_path }}" class="social-item">Facebook<i class="gd gd-facebook"></i></a>
+          <a target="_blank" href="https://twitter.com/share?url={{ request.get_full_path }}&via=JongeDemocraten&text=#" class="social-item">Twitter<i class="gd gd-twitter"></i></a>
         </div>
       </div>
     </div>

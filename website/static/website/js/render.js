@@ -11,7 +11,8 @@ var afdColors = {
     "Limburg": "#37a5dd",
     "Overijssel": "#903f98",
     "Groningen": "#4555a5",
-    "Friesland": "#f05355"
+    "Friesland": "#f05355",
+    "Wageningen": "#69b8e0"
 };
 
 

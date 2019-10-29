@@ -13,4 +13,4 @@ django-robots==3.0
 PyMySQL==0.7.11
 django_debug_toolbar==1.8
 # pillow is normally defined by mezzanine, but thumbnails fail with pillow 4.3.0, see https://github.com/stephenmcd/mezzanine/issues/1785
-pillow==4.1.1
+pillow==6.2.0
